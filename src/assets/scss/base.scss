@@ -1,0 +1,90 @@
+// Add only non-css vars, not rules, or they will be imported many times.
+$font-primary: "Poppins", sans-serif;
+$font-secondary: "Montserrat", sans-serif;
+
+// Colors
+$color-text: #000507;
+$color-text-blue: #00B0EA;
+$color-text-green: #8AC557;
+$color-medium-gray: #676767;
+$color-medium-light-gray: #B0B1B3;
+$color-dark-gray: #343532;
+$color-gray: #676767;
+$color-bglight: #FFFFFF;
+$color-light-gray: #F0F0F0;
+$color-silver: #C0C0C0;
+$color-light-bg: #E8F1EF;
+$color-fundraiser-bg: #F9FAFB;
+$color-lightest-gray: #FBFBFB;
+$color-lightest-green: #F7FCF0;
+$color-brownish: #f5f1e0;
+$color-blueish: #E8F1EF;
+
+$color-share-facebook: #3b5998;
+$color-share-twitter: #1DA1F2;
+$color-share-linkedin: #0077B5;
+$color-share-instagram: #e4405f;
+$color-share-email: #DB4437;
+$color-share-gmail: #DB4437;
+$blue: $color-text-blue;
+
+$color-emphasis: $color-text-blue;
+$color-emphasis-alt: $color-text-green;
+$white: #FFFFFF;
+$max-flickity-width: 620px;
+
+// Breakpoints
+$mobile: ( max:  768px );
+$tablet: ( min:  769px );
+$desktop: ( min:  1025px );
+$widescreen: ( min:  1261px );
+$fullhd: ( min:  1408px );
+
+@mixin breakpoint($map) {
+  $query: "";
+  @if map-has-key($map, min) { $query: append($query, "(min-width: #{map-get($map, min)})") }
+  @if map-has-key($map, min) and map-has-key($map, max) { $query: append($query, "and") }
+  @if map-has-key($map, max) { $query: append($query, "(max-width: #{map-get($map, max)})") }
+  @media screen and #{$query} { @content; }
+}
+
+// Widths and containers
+$max-container-width: 1344px;
+$max-fluid-container-width: 1162px;
+$max-combo-wrapper-width: 960px;
+
+
+
+// These variable definitions are here for the GiveItUpForGood version
+// Colors
+$secondary: #d22127;
+$primary: #233e84;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// Fonts
+$font-family-base: 'Poppins';
+$headings-font-family: 'Montserrat';
+$headings-font-weight: 900;
+
+// Buttons
+$btn-border-radius: 0;
+
+
+
+// These variable definitions are here for the RideForGood version
+// Colors
+$primary: #8EC63F;
+$secondary: #FF9600;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// Fonts
+$font-family-base: 'Poppins';
+$headings-font-family: 'Montserrat';
+$headings-font-weight: 900;
+
+// Buttons
+$btn-border-radius: 0;
