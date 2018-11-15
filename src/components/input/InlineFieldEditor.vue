@@ -6,8 +6,8 @@
       :disable-close= "userDialogSpinner"
       v-on:modal:close="closeUserDialog()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
     <div class="action-icons-wrapper" :class="{'is-open': fieldIsOpen}" v-if="editionIsEnabled">
       <div class="action-icon-wrapper" @click="openEdition()" :class="{'hide-icon': fieldIsOpen}">
@@ -68,158 +68,156 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
-import Vue from "vue"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
+import Vue from 'vue';
 
 export default {
-  props: [ "type", "value", "errorText", "allowEmpty", "removeReturns", "layout", "location", "placeholder", "editionIsEnabled" ],
-  data () {
+  props: ['type', 'value', 'errorText', 'allowEmpty', 'removeReturns', 'layout', 'location', 'placeholder', 'editionIsEnabled'],
+  data() {
     return {
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       fieldIsOpen: false,
       fieldValue: this.value,
-      errorMessage: "",
-      blurTimeout: null
-    }
+      errorMessage: '',
+      blurTimeout: null,
+    };
   },
   components: {
     Icons,
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   methods: {
-    cancelEdition () {
-      this.fieldIsOpen = false
-      this.errorMessage = ""
+    cancelEdition() {
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
     },
-    openEdition () {
+    openEdition() {
       if (!this.editionIsEnabled) {
-        return
+        return;
       }
-      this.fieldIsOpen = true
-      this.fieldValue = this.value
+      this.fieldIsOpen = true;
+      this.fieldValue = this.value;
       Vue.nextTick(() => {
-        this.$refs.input.focus()
-      })
+        this.$refs.input.focus();
+      });
     },
-    calculateRows () {
-      let rows = this.fieldValue ? Math.ceil(this.fieldValue.length / 60) : 0
+    calculateRows() {
+      let rows = this.fieldValue ? Math.ceil(this.fieldValue.length / 60) : 0;
       if (this.fieldValue) {
-        rows += this.fieldValue.split(/\n/).length
+        rows += this.fieldValue.split(/\n/).length;
       }
-      return rows > 2 ? rows : 2
+      return rows > 2 ? rows : 2;
     },
     /*
      * This method will save a field if it can be validated.
      */
-    saveField () {
+    saveField() {
       if (!this.fieldIsOpen) {
-        return
+        return;
       }
       return new Promise((resolve, reject) => {
-        clearTimeout(this.blurTimeout)
+        clearTimeout(this.blurTimeout);
         if (this.validateField()) {
-          this.userDialogModal = true
-          this.$store.dispatch("SAVE_INLINE_FIELD", { location: this.location, route: this.$route, value: this.fieldValue })
+          this.userDialogModal = true;
+          this.$store.dispatch('SAVE_INLINE_FIELD', { location: this.location, route: this.$route, value: this.fieldValue })
             .then(() => {
-              this.cancelEdition()
-              this.fieldIsOpen = false
-              this.userDialogModal = false
-              resolve(this.fieldValue)
+              this.cancelEdition();
+              this.fieldIsOpen = false;
+              this.userDialogModal = false;
+              resolve(this.fieldValue);
             })
-            .catch(err => {
-              console.log(err)
-              this.userDialogModal = false
-              reject(err)
-            })
+            .catch((err) => {
+              console.log(err);
+              this.userDialogModal = false;
+              reject(err);
+            });
         } else {
-          this.errorMessage = this.errorText
-          this.userDialogModal = false
-          resolve()
+          this.errorMessage = this.errorText;
+          this.userDialogModal = false;
+          resolve();
         }
-      })
+      });
     },
-    tabPressed (e) {
-      if (this.type === "textarea") {
-        this.removeTrailingReturn()
+    tabPressed(e) {
+      if (this.type === 'textarea') {
+        this.removeTrailingReturn();
       }
       this.saveField()
-        .then(data => {
+        .then((data) => {
           if (data) {
             if (!e.shiftKey) {
-              this.$emit("next:field")
+              this.$emit('next:field');
             } else {
-              this.$emit("previous:field")
+              this.$emit('previous:field');
             }
           }
         })
-        .catch(err => {
-          return err
-        })
+        .catch(err => err);
     },
-    enterPressed (e) {
+    enterPressed(e) {
       if (!e.shiftKey) {
-        this.removeTrailingReturn()
-        this.saveField()
+        this.removeTrailingReturn();
+        this.saveField();
       }
     },
-    removeTrailingReturn () {
+    removeTrailingReturn() {
       // Remove leading and trailing carriage return on save
       if (this.fieldValue) {
-        this.fieldValue = this.fieldValue.replace(/^[\r\n]+|[\r\n]+$/g, "")
+        this.fieldValue = this.fieldValue.replace(/^[\r\n]+|[\r\n]+$/g, '');
       }
     },
     /**
      * The timeout is needed so an external button can save before the blur cancels the edition
      */
-    blurInput () {
+    blurInput() {
       this.blurTimeout = setTimeout(() => {
-        this.cancelEdition()
-      }, 200)
+        this.cancelEdition();
+      }, 200);
     },
-    validateField () {
-      if (this.type === "text") {
+    validateField() {
+      if (this.type === 'text') {
         if (validator.validateTextNoHtml(this.fieldValue, this.allowEmpty)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-      if (this.type === "textarea") {
+      if (this.type === 'textarea') {
         if (validator.validateTextNoHtml(this.fieldValue, this.allowEmpty)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-      if (this.type === "url") {
+      if (this.type === 'url') {
         if (validator.validateURL(this.fieldValue)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-      if (this.type === "email") {
+      if (this.type === 'email') {
         if (validator.validateEmail(this.fieldValue)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-    }
+    },
   },
   watch: {
-    fieldValue (newVal) {
+    fieldValue(newVal) {
       // Remove any triple carriage return.
       if (this.fieldValue) {
-        this.fieldValue = newVal.replace(/(\r\n|\r|\n){3,}/g, "$1\n")
+        this.fieldValue = newVal.replace(/(\r\n|\r|\n){3,}/g, '$1\n');
         // Remove all carriage returns if this should be treated like an input.
         if (this.removeReturns) {
-          this.fieldValue = newVal.replace(/(\r\n|\r|\n)/g, "")
+          this.fieldValue = newVal.replace(/(\r\n|\r|\n)/g, '');
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

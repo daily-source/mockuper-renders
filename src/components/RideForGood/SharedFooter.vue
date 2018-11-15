@@ -1,6 +1,6 @@
 <template>
-  <footer 
-    class="footer" 
+  <footer
+    class="footer"
     id="footer"
   >
     <div class="footer__contents">
@@ -61,10 +61,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'SharedFooter',
-  }
-  
+export default {
+  name: 'SharedFooter',
+};
+
 </script>
 
 <style lang="scss">
@@ -97,12 +97,12 @@
     text-transform: none;
   }
 
-  .footer__logo-container { 
-    text-align: center; 
+  .footer__logo-container {
+    text-align: center;
   }
 
-  .footer__logo-container img { 
-    max-width: 180px; 
+  .footer__logo-container img {
+    max-width: 180px;
     width: 100%;
   }
 

@@ -2,56 +2,56 @@ const state = {
   bannerImages: [
     {
       imgName: 'banner-img-4-v2.png',
-      type: 'local'
+      type: 'local',
     },
     {
       imgName: 'banner-img-2-v2.png',
-      type: 'local'
+      type: 'local',
     },
     {
       imgName: 'banner-img-3.jpg',
-      type: 'local'
-    }
+      type: 'local',
+    },
   ],
-  current: null
-}
+  current: null,
+};
 
 const getters = {
 
-}
+};
 
 const actions = {
-  switchBannerImage( { commit }, index ) {
+  switchBannerImage({ commit }, index) {
     commit({
       type: 'changeCurrentBannerImage',
-      index: index,
-    })
+      index,
+    });
   },
-  switchBannerImageUrl( { commit }, url ) {
+  switchBannerImageUrl({ commit }, url) {
     commit({
       type: 'changeCurrentBannerImageUrl',
-      url: url
-    })
-  }
-}
+      url,
+    });
+  },
+};
 
 const mutations = {
-  changeCurrentBannerImage( state, data ) {
-    const bannerImage = state.bannerImages[data.index]
-    state.current = bannerImage
+  changeCurrentBannerImage(state, data) {
+    const bannerImage = state.bannerImages[data.index];
+    state.current = bannerImage;
   },
-  changeCurrentBannerImageUrl( state, data ) {
+  changeCurrentBannerImageUrl(state, data) {
     state.current = {
       imgUrl: data.url,
-      type: 'external'
-    }
-  }
-}
+      type: 'external',
+    };
+  },
+};
 
 export default {
   namespaced: true,
   state,
   actions,
   getters,
-  mutations
-}
+  mutations,
+};

@@ -1,7 +1,7 @@
 <template v-if="canRender">
   <div class="column is-centered nonprofit-search-field-wrapper" :class="{'standalone columns': standalone}">
     <VueSelect
-      transition="fade" 
+      transition="fade"
       label="name"
       :filterable="false"
       :options="options"
@@ -19,7 +19,7 @@
           </div>
       </template>
       <template slot="selected-option" slot-scope="option">
-        <div class="selected ellipsis-text">           
+        <div class="selected ellipsis-text">
           {{ option.NAME }}
         </div>
       </template>
@@ -28,32 +28,32 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import VueSelect from "vue-select"
-import debounce from "lodash/debounce"
+import Icons from '@/components/general/Icons.vue';
+import VueSelect from 'vue-select';
+import debounce from 'lodash/debounce';
 
-const IRSSearchAPI = process.env.IRS_SEARCH_API_URL
+const IRSSearchAPI = process.env.IRS_SEARCH_API_URL;
 
 export default {
-  props: ["standalone", "placeholder", "defaultValue"],
+  props: ['standalone', 'placeholder', 'defaultValue'],
   components: {
     Icons,
-    VueSelect
+    VueSelect,
   },
-  data () {
+  data() {
     return {
       canRender: false,
       selected: null,
-      options: []
-    }
+      options: [],
+    };
   },
   /**
    * Display this form only in the browser, not in the server.
    */
-  mounted () {
-    this.canRender = true
+  mounted() {
+    this.canRender = true;
     if (this.defaultValue) {
-      this.selected = this.defaultValue
+      this.selected = this.defaultValue;
     }
   },
 
@@ -62,36 +62,36 @@ export default {
    * avoid flooding the server with calls).
    */
   methods: {
-    onSearch (search, loading) {
-      loading(true)
-      this.search(loading, search, this)
+    onSearch(search, loading) {
+      loading(true);
+      this.search(loading, search, this);
     },
     search: debounce((loading, search, vm) => {
       fetch(
-        `${IRSSearchAPI}/nonprofits/search/${escape(search)}`
-      ).then(res => {
-        res.json().then(json => (vm.options = json))
-        loading(false)
-      })
-    }, 350)
+        `${IRSSearchAPI}/nonprofits/search/${escape(search)}`,
+      ).then((res) => {
+        res.json().then(json => (vm.options = json));
+        loading(false);
+      });
+    }, 350),
   },
   /**
    * Upon selection, emit selected value.
    * The parent component can react to the event like this v-on:selected="doSomething($event)".
    */
   watch: {
-    selected (newVal) {
+    selected(newVal) {
       if (newVal) {
-        this.$emit("selected", newVal)
+        this.$emit('selected', newVal);
       } else {
-        this.$emit("selected", null)
+        this.$emit('selected', null);
       }
     },
-    defaultValue (newVal) {
-      this.selected = newVal
-    }
-  }
-}
+    defaultValue(newVal) {
+      this.selected = newVal;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -121,8 +121,8 @@ export default {
       @include breakpoint($tablet) {
         .open-indicator {
           bottom: 12px;
-        }        
-      }    
+        }
+      }
     }
     input[type=search] {
       text-align: left;
@@ -148,7 +148,7 @@ export default {
   }
 
   .ellipsis-text {
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -160,11 +160,11 @@ export default {
     .v-select {
       .dropdown-toggle {
         .clear {
-          
+
         }
         .open-indicator {
           bottom: 7px;
-        }      
+        }
       }
     }
   }

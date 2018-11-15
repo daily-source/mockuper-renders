@@ -44,107 +44,107 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
-import AppHeader from "@/components/RideForGood/AppHeader.vue"
-import FundraiserHeader from "@/components/fundraiser/FundraiserHeader.vue"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
+import AppHeader from '@/components/RideForGood/AppHeader.vue';
+import FundraiserHeader from '@/components/fundraiser/FundraiserHeader.vue';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  name: "fundraiser",
+  name: 'fundraiser',
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
     AppHeader,
-    SharedFooter: () => import("@/components/RideForGood/SharedFooter.vue"),
+    SharedFooter: () => import('@/components/RideForGood/SharedFooter.vue'),
     FundraiserHeader,
-    FundraiserHero: () => import("@/components/fundraiser/FundraiserHero.vue"),
-    FundraiserParticipant: () => import("@/components/fundraiser/FundraiserParticipant.vue"),
-    FundraiserLowerBody: () => import("@/components/fundraiser/FundraiserLowerBody.vue"),
-    DonateView: () => import("./DonateView.vue")
+    FundraiserHero: () => import('@/components/fundraiser/FundraiserHero.vue'),
+    FundraiserParticipant: () => import('@/components/fundraiser/FundraiserParticipant.vue'),
+    FundraiserLowerBody: () => import('@/components/fundraiser/FundraiserLowerBody.vue'),
+    DonateView: () => import('./DonateView.vue'),
   },
-  data () {
+  data() {
     return {
       enableEditionForThisFundraiser: false,
-      canRender: false
-    }
+      canRender: false,
+    };
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
    * in the template, ./src/App.vue
    */
-  metaInfo () {
+  metaInfo() {
     if (!this.fundraiser.participant) {
-      return {}
+      return {};
     }
-    var description = `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`
-    var title = this.fundraiser.name
-    var img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${this.fundraiser.data.media[0].src}`
+    const description = `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`;
+    const title = this.fundraiser.name;
+    const img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${this.fundraiser.data.media[0].src}`;
     return {
-      title: title,
+      title,
       meta: [
-        { vmid: "description", name: "description", content: description },
-        { vmid: "og:title", property: "og:title", content: title },
-        { vmid: "og:description", property: "og:description", content: description },
-        { vmid: "twitter:card", property: "twitter:card", content: "summary_large_image" },
-        { vmid: "og:image", property: "og:image", content: img },
-        { vmid: "og:image:width", property: "og:image:width", content: "800" },
-        { vmid: "og:image:height", property: "og:image:height", content: "533" }
-      ]
-    }
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', property: 'og:description', content: description },
+        { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
+        { vmid: 'og:image', property: 'og:image', content: img },
+        { vmid: 'og:image:width', property: 'og:image:width', content: '800' },
+        { vmid: 'og:image:height', property: 'og:image:height', content: '533' },
+      ],
+    };
   },
   computed: {
-    fundraiser () {
-      return this.$store.state.fundraiser
+    fundraiser() {
+      return this.$store.state.fundraiser;
     },
-    donateModal () {
-      return this.$route.name
+    donateModal() {
+      return this.$route.name;
     },
-    donateActive () {
-      return this.donateModal === "fundraiser/donate"
+    donateActive() {
+      return this.donateModal === 'fundraiser/donate';
     },
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    canManageThisFundraiser () {
-      return false
-    }
+    canManageThisFundraiser() {
+      return false;
+    },
   },
 
   /**
    * If this is a donation view, redirect to the corresponding fundraiser on close event.
    */
   methods: {
-    closeDonation () {
-      this.$router.push({ name: "fundraiser", params: this.$route.params })
+    closeDonation() {
+      this.$router.push({ name: 'fundraiser', params: this.$route.params });
     },
-    enableEdition (ref) {
+    enableEdition(ref) {
       if (!this.loggedIn) {
-        this.showLoginModal = true
+        this.showLoginModal = true;
       } else {
-        this.showLoginModal = false
+        this.showLoginModal = false;
         // determine if the user manages this fundraiser
         if (this.canManageThisFundraiser) {
-          this.enableEditionForThisFundraiser = true
+          this.enableEditionForThisFundraiser = true;
           if (ref) {
             setTimeout(() => {
-              this.$scrollTo(`#${ref}`, { offset: -200 })
-            }, 1000)
+              this.$scrollTo(`#${ref}`, { offset: -200 });
+            }, 1000);
           }
         }
       }
     },
-    closeEdition () {
-      this.enableEditionForThisFundraiser = false
-      this.$refs.FundraiserParticipant.$refs.imageEditor.cancelEdition()
+    closeEdition() {
+      this.enableEditionForThisFundraiser = false;
+      this.$refs.FundraiserParticipant.$refs.imageEditor.cancelEdition();
       // this.$scrollTo("body", { offset: -200 })
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">

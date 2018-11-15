@@ -91,6 +91,6 @@
 
 <script>
 export default {
-  name: 'AppHeader'
-}
+  name: 'AppHeader',
+};
 </script>

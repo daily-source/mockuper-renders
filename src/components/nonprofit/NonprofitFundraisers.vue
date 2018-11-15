@@ -25,16 +25,16 @@
 </template>
 
 <script>
-import ProgressBar from "@/components/general/ProgressBar.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import ProgressBar from '@/components/general/ProgressBar.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: ["fundraisers", "limit"],
+  props: ['fundraisers', 'limit'],
   components: {
     LazyLoadedImage,
-    ProgressBar
-  }
-}
+    ProgressBar,
+  },
+};
 </script>
 
 <style scoped lang="scss">

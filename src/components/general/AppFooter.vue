@@ -3,7 +3,7 @@
     <div class="hero-body">
       <div class="social-icons">
         <div class="container">
-          Share it! 
+          Share it!
           <div class="icon-wrapper" @click="shareFB()">
             <Icons iconwidth="32px" iconheight="32px" icon="facebook" class="share-icon-gray" />
           </div>
@@ -130,52 +130,52 @@
 </style>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as sharer from "../../util/sharer.js"
+import Icons from '@/components/general/Icons.vue';
+import * as sharer from '../../util/sharer.js';
 
 export default {
   components: {
-    Icons
+    Icons,
   },
   computed: {
-    footerMenuLinks () {
-      return this.$store.state.common.footerMenuLinks
-    }
+    footerMenuLinks() {
+      return this.$store.state.common.footerMenuLinks;
+    },
   },
-  data () {
+  data() {
     return {
-      shareText: "Check out this website I found!",
-      siteName: "GiveItUpForGood",
-      shareWindowTitle: "Sharing"
-    }
+      shareText: 'Check out this website I found!',
+      siteName: 'GiveItUpForGood',
+      shareWindowTitle: 'Sharing',
+    };
   },
   methods: {
-    loadScripts () {
-      if (typeof window !== "undefined" && window.FB) {
-        window.FB.XFBML.parse()
+    loadScripts() {
+      if (typeof window !== 'undefined' && window.FB) {
+        window.FB.XFBML.parse();
       }
-      if (window.addthis.layers && typeof window.addthis.layers.refresh === "function") {
-        window.addthis.layers.refresh()
+      if (window.addthis.layers && typeof window.addthis.layers.refresh === 'function') {
+        window.addthis.layers.refresh();
       }
     },
-    shareFB () {
-      sharer.shareOnFacebook(null, this.shareText, this.siteName, this.shareWindowTitle)
+    shareFB() {
+      sharer.shareOnFacebook(null, this.shareText, this.siteName, this.shareWindowTitle);
     },
-    shareTweet () {
-      sharer.shareOnTwitter(null, this.shareText, this.siteName, this.shareWindowTitle)
+    shareTweet() {
+      sharer.shareOnTwitter(null, this.shareText, this.siteName, this.shareWindowTitle);
     },
-    shareLinkedIn () {
-      sharer.shareOnLinkedIn(null, this.shareText, this.siteName, this.shareWindowTitle)
+    shareLinkedIn() {
+      sharer.shareOnLinkedIn(null, this.shareText, this.siteName, this.shareWindowTitle);
     },
-    shareEmail () {
-      sharer.shareByEmail(null, this.shareText, this.siteName, this.shareWindowTitle)
+    shareEmail() {
+      sharer.shareByEmail(null, this.shareText, this.siteName, this.shareWindowTitle);
     },
-    donate () {
-      this.$emit("donateFromButton")
+    donate() {
+      this.$emit('donateFromButton');
     },
-    currentYear () {
-      return (new Date()).getFullYear()
-    }
-  }
-}
+    currentYear() {
+      return (new Date()).getFullYear();
+    },
+  },
+};
 </script>

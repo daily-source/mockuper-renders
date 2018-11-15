@@ -36,80 +36,79 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  props: [ "parent" ],
+  props: ['parent'],
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    DonateForm: () => import("@/components/donate/DonateForm.vue"),
-    DonateThankYou: () => import("@/components/donate/DonateThankYou.vue"),
-    DonateUserCreated: () => import("@/components/donate/DonateUserCreated.vue")
+    DonateForm: () => import('@/components/donate/DonateForm.vue'),
+    DonateThankYou: () => import('@/components/donate/DonateThankYou.vue'),
+    DonateUserCreated: () => import('@/components/donate/DonateUserCreated.vue'),
   },
-  data () {
+  data() {
     return {
-      donationStatus: "started"
-    }
+      donationStatus: 'started',
+    };
   },
   computed: {
-    fundraiser () {
-      return this.$store.state.fundraiser
+    fundraiser() {
+      return this.$store.state.fundraiser;
     },
-    nonprofit () {
-      return this.$store.state.nonprofit
+    nonprofit() {
+      return this.$store.state.nonprofit;
     },
-    donationData () {
-      return this.$store.state.userActions.donation
+    donationData() {
+      return this.$store.state.userActions.donation;
     },
-    common () {
-      return this.$store.state.common
-    }
+    common() {
+      return this.$store.state.common;
+    },
   },
-  mounted () {
-    document.body.classList.add("no-scroll")
+  mounted() {
+    document.body.classList.add('no-scroll');
   },
-  destroyed () {
-    document.body.classList.remove("no-scroll")
+  destroyed() {
+    document.body.classList.remove('no-scroll');
   },
   methods: {
-    scrollModalTop () {
-      const wrapper = this.$el.querySelector("#donate-view-modal-wrapper")
-      wrapper.scrollTop = 0
-    }
+    scrollModalTop() {
+      const wrapper = this.$el.querySelector('#donate-view-modal-wrapper');
+      wrapper.scrollTop = 0;
+    },
   },
-  metaInfo () {
-    var description = this.parent === "nonprofit" ? `Donate to this tax exempt organization. ${this.nonprofit.NTEE_CD || this.nonprofit.ACTIVITY}` : `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`
-    var title = this.parent === "nonprofit" ? this.nonprofit.NAME : this.fundraiser.name
-    var imgSrc =
-    this.parent === "nonprofit"
+  metaInfo() {
+    const description = this.parent === 'nonprofit' ? `Donate to this tax exempt organization. ${this.nonprofit.NTEE_CD || this.nonprofit.ACTIVITY}` : `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`;
+    const title = this.parent === 'nonprofit' ? this.nonprofit.NAME : this.fundraiser.name;
+    const imgSrc = this.parent === 'nonprofit'
       ? this.nonprofit.data.hero
         ? this.nonprofit.data.hero.src
         : this.nonprofit.data.default_hero.src
-      : this.fundraiser.data.media[0].src
-    var img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`
-    var imgWidth = this.parent === "nonprofit" ? 1024 : 800
-    var imgHeight = this.parent === "nonprofit" ? 340 : 533
+      : this.fundraiser.data.media[0].src;
+    const img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
+    const imgWidth = this.parent === 'nonprofit' ? 1024 : 800;
+    const imgHeight = this.parent === 'nonprofit' ? 340 : 533;
     return {
       title: `Donate | ${title}`,
       meta: [
-        { vmid: "description", name: "description", content: description },
-        { vmid: "title", property: "title", content: title },
-        { vmid: "og:title", property: "og:title", content: title },
-        { vmid: "og:description", property: "og:description", content: description },
-        { vmid: "twitter:card", property: "twitter:card", content: "summary_large_image" },
-        { vmid: "og:image", property: "og:image", content: img },
-        { vmid: "og:image:width", property: "og:image:width", content: imgWidth },
-        { vmid: "og:image:height", property: "og:image:height", content: imgHeight }
-      ]
-    }
-  }
-}
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'title', property: 'title', content: title },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', property: 'og:description', content: description },
+        { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
+        { vmid: 'og:image', property: 'og:image', content: img },
+        { vmid: 'og:image:width', property: 'og:image:width', content: imgWidth },
+        { vmid: 'og:image:height', property: 'og:image:height', content: imgHeight },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -129,7 +128,7 @@ export default {
       }
     }
     &__second {
-      color: $color-emphasis-alt;      
+      color: $color-emphasis-alt;
     }
   }
 }

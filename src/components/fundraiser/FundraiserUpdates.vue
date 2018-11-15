@@ -1,6 +1,6 @@
 <template>
   <div class="updates__wrapper">
-    <div :class="{'current': update.id === currentId}" 
+    <div :class="{'current': update.id === currentId}"
         :id="`update_${update.id}`"
         class="update__wrapper"
         v-for="(update, index) in updates">
@@ -84,39 +84,39 @@
 </style>
 
 <script>
-import Vue from "vue"
-import ShareDonateToolbar from "@/components/general/ShareDonateToolbar.vue"
+import Vue from 'vue';
+import ShareDonateToolbar from '@/components/general/ShareDonateToolbar.vue';
 
 export default {
-  data () {
+  data() {
     return {
-      showFullUpdate: {}
-    }
+      showFullUpdate: {},
+    };
   },
   components: {
-    ShareDonateToolbar
+    ShareDonateToolbar,
   },
   computed: {
-    currentId () {
-      return parseInt(this.$route.query.update_id, 10)
-    }
-  },
-  props: [ "updates", "maxchar", "count", "fundraiserId" ],
-  methods: {
-    excerpt (content) {
-      var stripHtml = content.replace(/<\/?[^>]+(>|$)/g, "")
-      return stripHtml.substring(0, this.maxchar)
+    currentId() {
+      return parseInt(this.$route.query.update_id, 10);
     },
-    toggleIndex (index) {
+  },
+  props: ['updates', 'maxchar', 'count', 'fundraiserId'],
+  methods: {
+    excerpt(content) {
+      const stripHtml = content.replace(/<\/?[^>]+(>|$)/g, '');
+      return stripHtml.substring(0, this.maxchar);
+    },
+    toggleIndex(index) {
       if (!this.showFullUpdate[index]) {
-        Vue.set(this.showFullUpdate, index, true)
+        Vue.set(this.showFullUpdate, index, true);
       } else {
-        Vue.set(this.showFullUpdate, index, false)
+        Vue.set(this.showFullUpdate, index, false);
       }
     },
-    openShareBox (update) {
-      alert(`${window.location.origin}${window.location.pathname}?update_id=${update.id}`)
-    }
-  }
-}
+    openShareBox(update) {
+      alert(`${window.location.origin}${window.location.pathname}?update_id=${update.id}`);
+    },
+  },
+};
 </script>

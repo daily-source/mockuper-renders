@@ -1,5 +1,5 @@
 const state = {
-  data:[
+  data: [
     {
       name: 'soda',
       label: 'Soda',
@@ -22,7 +22,7 @@ const state = {
     },
     {
       name: 'nice-restaurants',
-      label: 'Nice restaurants'
+      label: 'Nice restaurants',
     },
     {
       name: 'tv-internet-spending',
@@ -82,7 +82,7 @@ const state = {
     },
     {
       name: 'travel',
-      label: "Travel",
+      label: 'Travel',
     },
     {
       name: 'gas',
@@ -104,63 +104,63 @@ const state = {
     },
   ],
   selected: [],
-  expanded: false
-}
+  expanded: false,
+};
 
 const mutations = {
-  setExpanded (state, {expanded}) {
-    state.expanded = expanded
+  setExpanded(state, { expanded }) {
+    state.expanded = expanded;
   },
 
-  setSelected (state, {selected}) {
-    state.selected = selected
-  }
-}
+  setSelected(state, { selected }) {
+    state.selected = selected;
+  },
+};
 
 const actions = {
   toggleExpanded({ state, commit }) {
-    commit('setExpanded', {expanded: !state.expanded})
+    commit('setExpanded', { expanded: !state.expanded });
   },
 
-  pushSelected ({ state, commit }, {choice, customLabel}) {
-    const isAlreadyAdded = state.selected.find(data => data.name === choice.name)
-    if(!isAlreadyAdded) {
+  pushSelected({ state, commit }, { choice, customLabel }) {
+    const isAlreadyAdded = state.selected.find(data => data.name === choice.name);
+    if (!isAlreadyAdded) {
       state.selected.push({
         perMonthValue: 0,
-        label: customLabel ? customLabel : choice.label,
-        name: choice.name
-      })
-      commit('setSelected', {selected: state.selected})
+        label: customLabel || choice.label,
+        name: choice.name,
+      });
+      commit('setSelected', { selected: state.selected });
     }
   },
 
-  removeSelected({state, commit}, {choice}) {
-    const selected = state.selected.filter(data => data.name !== choice.name)
-    commit('setSelected', {selected: selected})
+  removeSelected({ state, commit }, { choice }) {
+    const selected = state.selected.filter(data => data.name !== choice.name);
+    commit('setSelected', { selected });
   },
 
-  setSelectedPercentValue({state, commit}, {choice, perMonthValue}) {
-    state.selected.find(data => {
-      if( data.name === choice.name ) data.perMonthValue = perMonthValue
-    } )
-    commit('setSelected', {selected: state.selected})
+  setSelectedPercentValue({ state, commit }, { choice, perMonthValue }) {
+    state.selected.find((data) => {
+      if (data.name === choice.name) data.perMonthValue = perMonthValue;
+    });
+    commit('setSelected', { selected: state.selected });
   },
 
-  changeSelectedLabel({state, commit}, {choice, label}) {
-    state.selected.forEach(data => {
-      if ( data.name === choice.name ) data.label = label
-    })
+  changeSelectedLabel({ state, commit }, { choice, label }) {
+    state.selected.forEach((data) => {
+      if (data.name === choice.name) data.label = label;
+    });
 
-    commit('setSelected', {selected: state.selected})
-  }
-}
+    commit('setSelected', { selected: state.selected });
+  },
+};
 
-const getters = {}
+const getters = {};
 
 export default {
   namespaced: true,
   state,
   mutations,
   actions,
-  getters
-}
+  getters,
+};

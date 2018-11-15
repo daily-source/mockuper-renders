@@ -116,22 +116,22 @@
 </template>
 
 <script>
-import LogInModal from "@/components/general/LogInModal.vue"
-import DonateFormHeading from "@/components/donate/DonateFormHeading.vue"
-import DonateBillingMethod from "@/components/donate/DonateBillingMethod.vue"
-import DonatePasswordModal from "@/components/donate/DonatePasswordModal.vue"
-import DonationBoxes from "@/components/input/DonationBoxes.vue"
-import DonationFrequency from "@/components/input/DonationFrequency.vue"
-import DonationComment from "@/components/input/DonationComment.vue"
-import DonateError from "@/components/donate/DonateError.vue"
-import DonateProcessing from "@/components/donate/DonateProcessing.vue"
-import InputEmail from "@/components/input/InputEmail.vue"
-import InputName from "@/components/input/InputName.vue"
-import StoredPaymentMethods from "@/components/input/StoredPaymentMethods.vue"
-import * as validator from "../../util/validator.js"
+import LogInModal from '@/components/general/LogInModal.vue';
+import DonateFormHeading from '@/components/donate/DonateFormHeading.vue';
+import DonateBillingMethod from '@/components/donate/DonateBillingMethod.vue';
+import DonatePasswordModal from '@/components/donate/DonatePasswordModal.vue';
+import DonationBoxes from '@/components/input/DonationBoxes.vue';
+import DonationFrequency from '@/components/input/DonationFrequency.vue';
+import DonationComment from '@/components/input/DonationComment.vue';
+import DonateError from '@/components/donate/DonateError.vue';
+import DonateProcessing from '@/components/donate/DonateProcessing.vue';
+import InputEmail from '@/components/input/InputEmail.vue';
+import InputName from '@/components/input/InputName.vue';
+import StoredPaymentMethods from '@/components/input/StoredPaymentMethods.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: ["submitButtonLabel", "trigger", "givingLevels", "parent", "nonprofit", "fundraiser"],
+  props: ['submitButtonLabel', 'trigger', 'givingLevels', 'parent', 'nonprofit', 'fundraiser'],
   components: {
     DonateBillingMethod,
     DonateFormHeading,
@@ -144,18 +144,18 @@ export default {
     InputEmail,
     InputName,
     LogInModal,
-    StoredPaymentMethods
+    StoredPaymentMethods,
   },
-  data () {
+  data() {
     return {
       accountNeededModal: false,
       accountCleared: false,
-      volunteerFor: "",
-      nonprofitIs: "",
-      emailErrorMsg: "Please enter a valid Email",
-      nameErrorMsg: "This field is required",
-      firstnameErrorMsg: "",
-      lastnameErrorMsg: "",
+      volunteerFor: '',
+      nonprofitIs: '',
+      emailErrorMsg: 'Please enter a valid Email',
+      nameErrorMsg: 'This field is required',
+      firstnameErrorMsg: '',
+      lastnameErrorMsg: '',
       newPaymentMethodIsValid: false,
       submitButtonDisabled: true,
       donateErrorModal: false,
@@ -163,19 +163,19 @@ export default {
       donation: {
         isNewPaymentMethod: false,
         paymentMethod: {
-          method: "card",
+          method: 'card',
           cardNumber: null,
           expirationMonth: null,
           expirationYear: null,
           securityCode: null,
           savePaymentMethod: true,
-          billingZip: null
+          billingZip: null,
         },
         storedPaymentMethod: {
           cardId: null,
           lastFour: null,
           expirationMonth: null,
-          expirationYear: null
+          expirationYear: null,
         },
         firstname: null,
         lastname: null,
@@ -183,154 +183,154 @@ export default {
         isAnonymous: false,
         isGift: false,
         givingLevel: {},
-        email: "",
-        frequency: "",
-        comment: "",
-        trigger: this.trigger
-      }
-    }
+        email: '',
+        frequency: '',
+        comment: '',
+        trigger: this.trigger,
+      },
+    };
   },
   methods: {
-    submitDonate () {
+    submitDonate() {
       // disable submit button while processing
-      this.submitButtonDisabled = true
+      this.submitButtonDisabled = true;
       // Recurring or want to save payment method, login modal needed.
       if (this.accountNeeded && !this.accountCleared && !this.loggedIn) {
-        this.accountNeededModal = true
-        this.submitButtonDisabled = false
+        this.accountNeededModal = true;
+        this.submitButtonDisabled = false;
       } else {
         // send data to payment processor: if no 'save' option or no 'recurring' selected, process and provide login info afterwards
-        this.sendPaymentData()
+        this.sendPaymentData();
       }
     },
-    validateSubmit () {
+    validateSubmit() {
       if (!this.submitButtonDisabled) {
-        this.submitDonate()
+        this.submitDonate();
       }
     },
-    unauthorize () {
-      this.submitButtonDisabled = false
+    unauthorize() {
+      this.submitButtonDisabled = false;
     },
-    authorize () {
-      this.accountCleared = true
-      this.accountNeededModal = false
+    authorize() {
+      this.accountCleared = true;
+      this.accountNeededModal = false;
     },
-    toggleNewPaymentMethod () {
-      this.donation.isNewPaymentMethod = !this.donation.isNewPaymentMethod
+    toggleNewPaymentMethod() {
+      this.donation.isNewPaymentMethod = !this.donation.isNewPaymentMethod;
     },
     /**
      * If the donation attempt generated an error, delete the billing data introduced
      * and allow the user to restart the donation.
      */
-    handleDonateError () {
-      this.donateErrorModal = false
-      this.donation.paymentMethod = {}
-      this.donation.isNewPaymentMethod = true
-      this.donation.paymentMethod.expiration_month = null
-      this.donation.paymentMethod.expiration_year = null
-      this.donation.paymentMethod.cardNumber = null
-      this.donation.paymentMethod.securityCode = null
+    handleDonateError() {
+      this.donateErrorModal = false;
+      this.donation.paymentMethod = {};
+      this.donation.isNewPaymentMethod = true;
+      this.donation.paymentMethod.expiration_month = null;
+      this.donation.paymentMethod.expiration_year = null;
+      this.donation.paymentMethod.cardNumber = null;
+      this.donation.paymentMethod.securityCode = null;
     },
     /**
      * Perform an on-client validation before enabling the submit button.
      * This will disable the submission to avoid sending incomplete data to the backend.
      */
-    validateAllFields () {
-      const validEmail = validator.validateEmail(this.donation.email)
-      const validUnlogged = validEmail && this.donation.lastname && this.donation.firstname && this.newPaymentMethodIsValid
-      const validLoggedNewPayment = this.loggedIn && this.newPaymentMethodIsValid && this.donation.isNewPaymentMethod
-      const validStoredPayment = this.donation.storedPaymentMethod ? validator.validateExpirationDate(this.donation.storedPaymentMethod.expiration_month, this.donation.storedPaymentMethod.expiration_year) : false
-      const validLoggedStoredPayment = this.loggedIn && !this.donation.isNewPaymentMethod && validStoredPayment
+    validateAllFields() {
+      const validEmail = validator.validateEmail(this.donation.email);
+      const validUnlogged = validEmail && this.donation.lastname && this.donation.firstname && this.newPaymentMethodIsValid;
+      const validLoggedNewPayment = this.loggedIn && this.newPaymentMethodIsValid && this.donation.isNewPaymentMethod;
+      const validStoredPayment = this.donation.storedPaymentMethod ? validator.validateExpirationDate(this.donation.storedPaymentMethod.expiration_month, this.donation.storedPaymentMethod.expiration_year) : false;
+      const validLoggedStoredPayment = this.loggedIn && !this.donation.isNewPaymentMethod && validStoredPayment;
 
       if (validUnlogged || validLoggedNewPayment || validLoggedStoredPayment) {
-        this.submitButtonDisabled = false
+        this.submitButtonDisabled = false;
       } else {
-        this.submitButtonDisabled = true
+        this.submitButtonDisabled = true;
       }
     },
     /**
      * Send payment data to the API, once cleared.
      * Enable the processing modal component while the donation is being processed.
      */
-    sendPaymentData () {
-      this.donateProcessingModal = true
-      return this.$store.dispatch("SEND_DONATION", {
-        donation: this.donation
+    sendPaymentData() {
+      this.donateProcessingModal = true;
+      return this.$store.dispatch('SEND_DONATION', {
+        donation: this.donation,
       })
-        .then(data => {
-          this.$emit("success", { data: data })
-          this.donateProcessingModal = false
+        .then((data) => {
+          this.$emit('success', { data });
+          this.donateProcessingModal = false;
         })
-        .catch(err => {
-          this.donateErrorModal = true
-          this.donateProcessingModal = false
-          console.log(err)
-        })
-    }
+        .catch((err) => {
+          this.donateErrorModal = true;
+          this.donateProcessingModal = false;
+          console.log(err);
+        });
+    },
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userName () {
-      return this.$store.state.user.fullname
+    userName() {
+      return this.$store.state.user.fullname;
     },
-    paymentMethods () {
-      return this.$store.state.user.payment_methods
+    paymentMethods() {
+      return this.$store.state.user.payment_methods;
     },
-    accountNeeded () {
-      return this.donation.frequency !== "once" || this.donation.paymentMethod.savePaymentMethod
-    }
+    accountNeeded() {
+      return this.donation.frequency !== 'once' || this.donation.paymentMethod.savePaymentMethod;
+    },
   },
-  mounted () {
-    this.validateAllFields()
+  mounted() {
+    this.validateAllFields();
   },
   watch: {
-    "donation.firstname": function (newVal, oldVal) {
-      this.validateAllFields()
+    'donation.firstname': function (newVal, oldVal) {
+      this.validateAllFields();
       if (!newVal) {
-        this.firstnameErrorMsg = "This field is required"
+        this.firstnameErrorMsg = 'This field is required';
       } else {
-        this.firstnameErrorMsg = ""
+        this.firstnameErrorMsg = '';
       }
     },
-    "donation.lastname": function (newVal, oldVal) {
-      this.validateAllFields()
+    'donation.lastname': function (newVal, oldVal) {
+      this.validateAllFields();
       if (!newVal) {
-        this.lastnameErrorMsg = "This field is required"
+        this.lastnameErrorMsg = 'This field is required';
       } else {
-        this.lastnameErrorMsg = ""
+        this.lastnameErrorMsg = '';
       }
     },
-    "donation.email": function (newVal, oldVal) {
-      this.validateAllFields()
+    'donation.email': function (newVal, oldVal) {
+      this.validateAllFields();
       if (newVal && newVal.length > 3) {
         if (!validator.validateEmail(newVal)) {
-          this.emailErrorMsg = "Email is invalid"
+          this.emailErrorMsg = 'Email is invalid';
         } else {
-          this.emailErrorMsg = ""
+          this.emailErrorMsg = '';
         }
       }
     },
-    "donation.isNewPaymentMethod": function (newVal) {
-      this.validateAllFields()
+    'donation.isNewPaymentMethod': function (newVal) {
+      this.validateAllFields();
     },
-    "donation.storedPaymentMethod": function (newVal, oldVal) {
-      this.validateAllFields()
+    'donation.storedPaymentMethod': function (newVal, oldVal) {
+      this.validateAllFields();
     },
-    loggedIn (newVal) {
+    loggedIn(newVal) {
       if (newVal) {
-        this.$emit("logged:in")
+        this.$emit('logged:in');
         // If the user has logged in but has already inserted new Card data.
         if (this.donation.paymentMethod.cardNumber) {
-          this.donation.isNewPaymentMethod = true
+          this.donation.isNewPaymentMethod = true;
         }
       } else {
-        this.$emit("logged:out")
+        this.$emit('logged:out');
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

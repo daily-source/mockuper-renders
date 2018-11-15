@@ -15,8 +15,8 @@
           :disable-close= "userDialogSpinner"
           v-on:modal:close="closeModals()"
         >
-          <div slot="header">Processing...</div> 
-          <div slot="content"><p>{{userDialogMessage}}</p></div> 
+          <div slot="header">Processing...</div>
+          <div slot="content"><p>{{userDialogMessage}}</p></div>
         </UserDialog>
         <form @keyup.enter="validateSubmit()">
           <InputPassword
@@ -45,65 +45,65 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: ["state"],
-  data () {
+  props: ['state'],
+  data() {
     return {
       editing: false,
       fieldValue: this.value,
-      errorMessage: "",
+      errorMessage: '',
       blurTimeout: null,
       submitButtonDisabled: true,
       form: {},
       userDialogSpinner: false,
       userDialogModal: false,
-      userDialogMessage: ""
-    }
+      userDialogMessage: '',
+    };
   },
   components: {
-    InputPassword: () => import("@/components/input/InputPassword.vue"),
-    UserDialog: () => import("@/components/general/UserDialog.vue"),
-    Modal: () => import("@/components/general/Modal.vue"),
-    Icons
+    InputPassword: () => import('@/components/input/InputPassword.vue'),
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
+    Modal: () => import('@/components/general/Modal.vue'),
+    Icons,
   },
   methods: {
-    validateSubmit () {
+    validateSubmit() {
       if (this.submitButtonDisabled) {
-        return
+        return;
       }
-      this.submitPasswordChangeRequest()
+      this.submitPasswordChangeRequest();
     },
-    closeModals () {
-      this.userDialogModal = false
-      this.$emit("modal:close")
+    closeModals() {
+      this.userDialogModal = false;
+      this.$emit('modal:close');
     },
     /**
      * Submit a password change request.
      * TODO: this needs to take into account the social login option.
      */
-    submitPasswordChangeRequest () {
-      this.userDialogMessage = ""
-      this.userDialogModal = true
-      this.userDialogSpinner = true
-      return this.$store.dispatch("SUBMIT_PASSWORD_CHANGE_REQUEST", { form: this.form })
+    submitPasswordChangeRequest() {
+      this.userDialogMessage = '';
+      this.userDialogModal = true;
+      this.userDialogSpinner = true;
+      return this.$store.dispatch('SUBMIT_PASSWORD_CHANGE_REQUEST', { form: this.form })
         .then(() => {
-          this.userDialogMessage = "Your password was changed successfully!"
-          this.userDialogSpinner = false
+          this.userDialogMessage = 'Your password was changed successfully!';
+          this.userDialogSpinner = false;
         })
-        .catch(err => {
+        .catch((err) => {
           if (err.code === 401) {
-            this.userDialogMessage = "Unauthorized. Your current password was incorrect."
+            this.userDialogMessage = 'Unauthorized. Your current password was incorrect.';
           } else {
-            this.userDialogMessage = "Error: " + err.message
+            this.userDialogMessage = `Error: ${err.message}`;
           }
-          this.userDialogSpinner = false
-          console.log(err)
-        })
-    }
-  }
-}
+          this.userDialogSpinner = false;
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

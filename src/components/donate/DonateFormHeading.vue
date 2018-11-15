@@ -17,23 +17,23 @@
 
 <script>
 export default {
-  props: ["parent", "nonprofit", "fundraiser"],
+  props: ['parent', 'nonprofit', 'fundraiser'],
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userFirstName () {
-      return this.$store.state.user.firstname
-    }
-  }
-}
+    userFirstName() {
+      return this.$store.state.user.firstname;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
 .login-highlight {
   padding: 7px 10px;
   margin-bottom: 0;
-  animation: fadeHighlight 7s ease-in-out;  
+  animation: fadeHighlight 7s ease-in-out;
 }
 
 </style>

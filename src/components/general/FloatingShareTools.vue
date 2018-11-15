@@ -84,56 +84,56 @@
 </style>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as sharer from "../../util/sharer.js"
+import Icons from '@/components/general/Icons.vue';
+import * as sharer from '../../util/sharer.js';
 
 export default {
-  props: [ "urlParams", "text", "via", "title" ],
+  props: ['urlParams', 'text', 'via', 'title'],
   components: {
-    Icons
+    Icons,
   },
-  data () {
+  data() {
     return {
-      isVisible: false
-    }
+      isVisible: false,
+    };
   },
   methods: {
-    handleScroll () {
-      var nonpScrolltop = this.$refs.nonpToolbar.getBoundingClientRect()
-      var top = window.pageYOffset || document.documentElement.scrollTop
-      var docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight
+    handleScroll() {
+      const nonpScrolltop = this.$refs.nonpToolbar.getBoundingClientRect();
+      const top = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
       if (nonpScrolltop.y < 93 && top < docHeight - 1000) {
-        this.isVisible = true
+        this.isVisible = true;
       } else {
-        this.isVisible = false
+        this.isVisible = false;
       }
     },
-    fb () {
+    fb() {
       if (this.isVisible) {
-        sharer.shareOnFacebook(this.urlParams, this.text, this.via, this.title)
+        sharer.shareOnFacebook(this.urlParams, this.text, this.via, this.title);
       }
     },
-    tweet () {
+    tweet() {
       if (this.isVisible) {
-        sharer.shareOnTwitter(this.urlParams, this.text, this.via, this.title)
+        sharer.shareOnTwitter(this.urlParams, this.text, this.via, this.title);
       }
     },
-    linkedIn () {
+    linkedIn() {
       if (this.isVisible) {
-        sharer.shareOnLinkedIn(this.urlParams, this.text, this.via, this.title)
+        sharer.shareOnLinkedIn(this.urlParams, this.text, this.via, this.title);
       }
     },
-    email () {
+    email() {
       if (this.isVisible) {
-        sharer.shareByEmail(this.urlParams, this.text, this.via, this.title)
+        sharer.shareByEmail(this.urlParams, this.text, this.via, this.title);
       }
-    }
+    },
   },
-  mounted () {
-    window.addEventListener("scroll", this.handleScroll)
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
   },
-  destroyed () {
-    window.removeEventListener("scroll", this.handleScroll)
-  }
-}
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+};
 </script>

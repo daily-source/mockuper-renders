@@ -6,8 +6,8 @@
       :disable-close= "userDialogSpinner"
       v-on:modal:close="closeUserDialog()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
 
     <h3>Settings</h3>
@@ -99,72 +99,72 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       userDialogSpinner: false,
-      passwordChangeModal: false
-    }
+      passwordChangeModal: false,
+    };
   },
   components: {
-    DonateBillingMethod: () => import("@/components/donate/DonateBillingMethod.vue"),
-    UserDialog: () => import("@/components/general/UserDialog.vue"),
-    Icons: () => import("@/components/general/Icons.vue"),
-    ModalPasswordChange: () => import("@/components/login/ModalPasswordChange.vue"),
-    EditableTextField: () => import("@/components/input/EditableTextField.vue"),
-    EditableImageField: () => import("@/components/input/EditableImageField.vue")
+    DonateBillingMethod: () => import('@/components/donate/DonateBillingMethod.vue'),
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
+    Icons: () => import('@/components/general/Icons.vue'),
+    ModalPasswordChange: () => import('@/components/login/ModalPasswordChange.vue'),
+    EditableTextField: () => import('@/components/input/EditableTextField.vue'),
+    EditableImageField: () => import('@/components/input/EditableImageField.vue'),
   },
   computed: {
-    userData () {
-      return this.$store.state.user
-    }
+    userData() {
+      return this.$store.state.user;
+    },
   },
   methods: {
-    openEdition (fieldName) {
-      this.$refs[fieldName].openEdition()
+    openEdition(fieldName) {
+      this.$refs[fieldName].openEdition();
     },
-    removePaymentMethod (id) {
-      this.userDialogModal = true
-      this.userDialogSpinner = true
-      return this.$store.dispatch("REMOVE_PAYMENT_METHOD", { id: id })
-        .then(data => {
-          this.userDialogMessage = "The payment method was removed."
-          this.userDialogSpinner = false
+    removePaymentMethod(id) {
+      this.userDialogModal = true;
+      this.userDialogSpinner = true;
+      return this.$store.dispatch('REMOVE_PAYMENT_METHOD', { id })
+        .then((data) => {
+          this.userDialogMessage = 'The payment method was removed.';
+          this.userDialogSpinner = false;
         })
-        .catch(err => {
-          this.userDialogMessage = "An error occurred. Try again later."
-          this.userDialogSpinner = false
-          console.log(err)
-        })
+        .catch((err) => {
+          this.userDialogMessage = 'An error occurred. Try again later.';
+          this.userDialogSpinner = false;
+          console.log(err);
+        });
     },
-    updateUserField (fieldName, newValue) {
+    updateUserField(fieldName, newValue) {
       if (this.$store.state.user[fieldName] === newValue) {
-        return
+        return;
       }
-      this.userDialogModal = true
-      this.userDialogSpinner = true
-      return this.$store.dispatch("UPDATE_USER_FIELD", { field: fieldName, value: newValue })
-        .then(data => {
-          this.userDialogModal = false
+      this.userDialogModal = true;
+      this.userDialogSpinner = true;
+      return this.$store.dispatch('UPDATE_USER_FIELD', { field: fieldName, value: newValue })
+        .then((data) => {
+          this.userDialogModal = false;
         })
-        .catch(err => {
-          this.userDialogMessage = "An error occurred. Try again later."
-          this.userDialogSpinner = false
-          console.log(err)
-        })
+        .catch((err) => {
+          this.userDialogMessage = 'An error occurred. Try again later.';
+          this.userDialogSpinner = false;
+          console.log(err);
+        });
     },
-    updateAvatar (blob) {
+    updateAvatar(blob) {
       // TODO: dispatch event to update the image in the DB
-      console.log(blob)
+      console.log(blob);
     },
-    closeUserDialog () {
-      this.userDialogMessage = ""
-      this.userDialogModal = false
-    }
-  }
-}
+    closeUserDialog() {
+      this.userDialogMessage = '';
+      this.userDialogModal = false;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

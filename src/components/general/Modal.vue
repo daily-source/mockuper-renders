@@ -27,33 +27,33 @@
 
 <script>
 export default {
-  props: [ "disableClose", "preventBodyScroll", "state", "size", "enableEsc", "theme" ],
-  data () {
+  props: ['disableClose', 'preventBodyScroll', 'state', 'size', 'enableEsc', 'theme'],
+  data() {
     return {
-      modalActive: false
-    }
+      modalActive: false,
+    };
   },
   methods: {
-    openModal () {
-      this.$emit("modal:open")
+    openModal() {
+      this.$emit('modal:open');
     },
-    closeModal () {
-      this.$emit("modal:close")
-    }
+    closeModal() {
+      this.$emit('modal:close');
+    },
   },
-  mounted () {
+  mounted() {
     /*
      * Create an event listener so that the modal can be closed on esc key press.
      */
     if (this.enableEsc) {
-      document.body.addEventListener("keyup", e => {
+      document.body.addEventListener('keyup', (e) => {
         if (e.keyCode === 27) {
-          this.closeModal()
+          this.closeModal();
         }
-      })
+      });
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">

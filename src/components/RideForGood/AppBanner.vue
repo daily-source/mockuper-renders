@@ -11,48 +11,46 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import { mapState } from 'vuex'
+import Icons from '@/components/general/Icons.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'AppBanner',
 
   components: {
-    Icons
+    Icons,
   },
 
-  props: ["disableHero"],
+  props: ['disableHero'],
 
   computed: {
     ...mapState({
-      currentBg: state => state.bannerSwitcher ? state.bannerSwitcher.current : '',
+      currentBg: state => (state.bannerSwitcher ? state.bannerSwitcher.current : ''),
     }),
-    version () {
-      return this.$route.query.version
-    }
+    version() {
+      return this.$route.query.version;
+    },
   },
 
   methods: {
-    imagePath( imgName ) {
-      return require('@/assets/img/images/' + imgName )
+    imagePath(imgName) {
+      return require(`@/assets/img/images/${imgName}`);
     },
 
     getBgImage() {
       if (this.disableHero) {
-        return
+        return;
       }
-      if( this.currentBg ) {
-        if( this.currentBg.type == 'local' ) {
-          return this.imagePath( this.currentBg.imgName )
-        } else {
-          return this.currentBg.imgUrl
+      if (this.currentBg) {
+        if (this.currentBg.type == 'local') {
+          return this.imagePath(this.currentBg.imgName);
         }
-      } else {
-        return this.imagePath( 'banner-img-1.jpg' );
+        return this.currentBg.imgUrl;
       }
+      return this.imagePath('banner-img-1.jpg');
     },
   },
-}
+};
 </script>
 
 <style lang="scss">

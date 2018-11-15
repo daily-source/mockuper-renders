@@ -44,87 +44,85 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
-import Vue from "vue"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
+import Vue from 'vue';
 
 export default {
-  props: [ "label", "type", "value", "errorText" ],
-  data () {
+  props: ['label', 'type', 'value', 'errorText'],
+  data() {
     return {
       fieldIsOpen: false,
       fieldValue: this.value,
-      errorMessage: "",
-      blurTimeout: null
-    }
+      errorMessage: '',
+      blurTimeout: null,
+    };
   },
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    cancelEdition () {
-      this.fieldIsOpen = false
-      this.errorMessage = ""
+    cancelEdition() {
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
     },
-    openEdition () {
-      this.fieldValue = this.value
-      this.fieldIsOpen = true
+    openEdition() {
+      this.fieldValue = this.value;
+      this.fieldIsOpen = true;
       Vue.nextTick(() => {
-        this.$refs.input.focus()
-      })
+        this.$refs.input.focus();
+      });
     },
-    saveField (id) {
+    saveField(id) {
       return new Promise((resolve, reject) => {
         if (!this.fieldIsOpen) {
-          reject("err")
+          reject('err');
         }
-        clearTimeout(this.blurTimeout)
+        clearTimeout(this.blurTimeout);
         if (this.validateAllFields()) {
-          this.$emit("input:save", this.fieldValue)
-          this.cancelEdition()
-          resolve()
+          this.$emit('input:save', this.fieldValue);
+          this.cancelEdition();
+          resolve();
         } else {
-          this.errorMessage = this.errorText
+          this.errorMessage = this.errorText;
         }
-      })
+      });
     },
-    next (e) {
+    next(e) {
       this.saveField()
         .then(() => {
           if (!e.shiftKey) {
-            this.$emit("next:field")
+            this.$emit('next:field');
           } else {
-            this.$emit("previous:field")
+            this.$emit('previous:field');
           }
         })
-        .catch(err => {
-          return err
-        })
+        .catch(err => err);
     },
     /**
      * This is needed in order to allow an external button to save before the blur cancels the edition
      */
-    blurInput () {
+    blurInput() {
       this.blurTimeout = setTimeout(() => {
-        this.cancelEdition()
-      }, 200)
+        this.cancelEdition();
+      }, 200);
     },
-    validateAllFields () {
-      if (this.type === "name") {
+    validateAllFields() {
+      if (this.type === 'name') {
         if (validator.validateName(this.fieldValue)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-      if (this.type === "email") {
+      if (this.type === 'email') {
         if (validator.validateEmail(this.fieldValue)) {
-          return true
+          return true;
         }
-        return false
+        return false;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -3,8 +3,8 @@
       :class="{'is-reply': isReply, 'current': comment.id === currentId}"
       :id="`comment_${comment.id}`">
     <div class="comment-item__avatar">
-      <avatar 
-        username="comment.commenter.fullname" 
+      <avatar
+        username="comment.commenter.fullname"
         :rounded="false" :src="comment.avatar"></avatar>
     </div>
     <div class="comment-item__content">
@@ -81,39 +81,39 @@
 </style>
 
 <script>
-import ShareDonateToolbar from "@/components/general/ShareDonateToolbar.vue"
-import CommentReply from "@/components/general/CommentReply.vue"
-import Avatar from "vue-avatar"
-import Icons from "@/components/general/Icons.vue"
+import ShareDonateToolbar from '@/components/general/ShareDonateToolbar.vue';
+import CommentReply from '@/components/general/CommentReply.vue';
+import Avatar from 'vue-avatar';
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: [ "comment", "is-reply", "fundraiserId" ],
+  props: ['comment', 'is-reply', 'fundraiserId'],
   components: {
     Avatar,
     CommentReply,
     Icons,
-    ShareDonateToolbar
+    ShareDonateToolbar,
   },
-  data () {
+  data() {
     return {
       showReplyBox: false,
       inReplyTo: null,
-      openShareBox: false
-    }
+      openShareBox: false,
+    };
   },
   computed: {
-    currentId () {
-      return parseInt(this.$route.query.comment_id, 10)
-    }
+    currentId() {
+      return parseInt(this.$route.query.comment_id, 10);
+    },
   },
   methods: {
-    openReplyBox (payload) {
-      this.showReplyBox = true
-      this.inReplyTo = payload.commentId
+    openReplyBox(payload) {
+      this.showReplyBox = true;
+      this.inReplyTo = payload.commentId;
     },
-    openShareBoxx () {
-      alert(`${window.location.origin}${window.location.pathname}?comment_id=${this.comment.id}`)
-    }
-  }
-}
+    openShareBoxx() {
+      alert(`${window.location.origin}${window.location.pathname}?comment_id=${this.comment.id}`);
+    },
+  },
+};
 </script>

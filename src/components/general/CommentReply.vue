@@ -15,7 +15,7 @@
       <!--
         If not logged in, provide the login link
         If user doesn't want to log in, then use name/comment combo (avatar???)
-        
+
       -->
       <p v-if="loggedIn" :class="{'login-highlight': loggedIn}">
         Commenting as <span v-html="userFullName"></span>.
@@ -81,75 +81,74 @@ textarea {
 
 .login-highlight {
   display: inline;
-  animation: fadeHighlight 7s ease-in-out;  
+  animation: fadeHighlight 7s ease-in-out;
 }
 
 </style>
 
 <script>
-import LogInModal from "@/components/general/LogInModal.vue"
-import RegisterOrLoginModal from "@/components/general/RegisterOrLoginModal.vue"
+import LogInModal from '@/components/general/LogInModal.vue';
+import RegisterOrLoginModal from '@/components/general/RegisterOrLoginModal.vue';
 
 export default {
-  props: [ "inReplyTo" ],
+  props: ['inReplyTo'],
   components: {
     LogInModal,
-    RegisterOrLoginModal
+    RegisterOrLoginModal,
   },
-  data () {
+  data() {
     return {
-      commentBody: "",
+      commentBody: '',
       fax: 1,
-      fullName: "",
-      showLoginModal: false
-    }
+      fullName: '',
+      showLoginModal: false,
+    };
   },
-  mounted () {
-    this.$refs.faxthis.classList.add("indented")
+  mounted() {
+    this.$refs.faxthis.classList.add('indented');
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userFullName () {
+    userFullName() {
       if (this.$store.state.user) {
-        return this.$store.state.user.fullname
-      } else {
-        return null
+        return this.$store.state.user.fullname;
       }
-    }
+      return null;
+    },
   },
   methods: {
-    closeLoginModal () {
-      this.showLoginModal = false
+    closeLoginModal() {
+      this.showLoginModal = false;
     },
-    validateAndSend () {
+    validateAndSend() {
       if (this.loggedIn) {
-        this.sendForm()
+        this.sendForm();
       } else {
-        this.showLoginModal = true
+        this.showLoginModal = true;
       }
     },
-    sendForm () {
-      return this.$store.dispatch("WRITE_COMMENT", {
+    sendForm() {
+      return this.$store.dispatch('WRITE_COMMENT', {
         comment: this.commentBody,
         reply: this.inReplyTo,
         fullName: this.userFullName || this.fullName,
         fundraiserId: this.$route.params.id,
-        contact_us_by_fax_only: this.fax
+        contact_us_by_fax_only: this.fax,
       })
-        .then(data => {
-          alert(`"${data.data.comment}", added by ${data.data.fullName}`)
+        .then((data) => {
+          alert(`"${data.data.comment}", added by ${data.data.fullName}`);
         })
-        .catch(err => {
-          console.log(err)
-        })
-    }
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   watch: {
-    showLoginModal: function (value) {
-      console.log("comment reply", value)
-    }
-  }
-}
+    showLoginModal(value) {
+      console.log('comment reply', value);
+    },
+  },
+};
 </script>

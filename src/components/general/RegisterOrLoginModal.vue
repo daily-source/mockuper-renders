@@ -15,8 +15,8 @@
           :state="userDialogModal"
           :disable-close= "userDialogDisableClose"
         >
-          <div slot="header">Processing</div> 
-          <div slot="content"><p>{{userDialogMessage}}</p></div> 
+          <div slot="header">Processing</div>
+          <div slot="content"><p>{{userDialogMessage}}</p></div>
         </UserDialog>
         <div class="columns">
           <div class="column is-6">
@@ -109,16 +109,16 @@
 </template>
 
 <script>
-import Modal from "@/components/general/Modal.vue"
-import ModalForgetPassword from "@/components/login/ModalForgetPassword.vue"
-import InputEmail from "@/components/input/InputEmail.vue"
-import InputName from "@/components/input/InputName.vue"
-import InputPassword from "@/components/input/InputPassword.vue"
-import SocialLogin from "@/components/login/SocialLogin.vue"
-import * as validator from "../../util/validator.js"
+import Modal from '@/components/general/Modal.vue';
+import ModalForgetPassword from '@/components/login/ModalForgetPassword.vue';
+import InputEmail from '@/components/input/InputEmail.vue';
+import InputName from '@/components/input/InputName.vue';
+import InputPassword from '@/components/input/InputPassword.vue';
+import SocialLogin from '@/components/login/SocialLogin.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "state" ],
+  props: ['state'],
   //  props: [ "layout", "login", "signup", "showOnly", "display", "requireName", "register" ],
   components: {
     InputEmail,
@@ -127,132 +127,130 @@ export default {
     ModalForgetPassword,
     SocialLogin,
     Modal,
-    UserDialog: () => import("@/components/general/UserDialog.vue"),
-    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
+    UserManagementLinks: () => import('@/components/login/UserManagementLinks.vue'),
   },
-  data () {
+  data() {
     return {
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogMessage: "",
+      userDialogMessage: '',
       userDialogDisableClose: true,
       loginForm: {},
       registerForm: {},
       loginFormSubmitDisabled: true,
       registerFormSubmitDisabled: true,
       showingLoginModal: false,
-      errorMessage: "",
-      welcomeMessage: "",
+      errorMessage: '',
+      welcomeMessage: '',
       submitButtonDisabled: true,
       form: {},
-      forgetPasswordEmail: "",
-      timeout: null
-    }
+      forgetPasswordEmail: '',
+      timeout: null,
+    };
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userName () {
-      return this.$store.state.user.fullname
-    }
+    userName() {
+      return this.$store.state.user.fullname;
+    },
   },
   methods: {
     /*
      * Validate the login fields.
      */
-    validateLoginFields () {
+    validateLoginFields() {
       if (validator.validateEmail(this.loginForm.email) && validator.validatePassword(this.loginForm.password)) {
-        this.loginFormSubmitDisabled = false
-        return true
-      } else {
-        this.loginFormSubmitDisabled = true
-        return false
+        this.loginFormSubmitDisabled = false;
+        return true;
       }
+      this.loginFormSubmitDisabled = true;
+      return false;
     },
-    validateRegisterFields () {
+    validateRegisterFields() {
       if (validator.validateEmail(this.registerForm.email) && validator.validatePassword(this.registerForm.password) && this.registerForm.password === this.registerForm.passwordConfirmation && validator.validateName(this.registerForm.firstname) && validator.validateName(this.registerForm.lastname)) {
-        this.registerFormSubmitDisabled = false
-        return true
-      } else {
-        this.registerFormSubmitDisabled = true
-        return false
+        this.registerFormSubmitDisabled = false;
+        return true;
       }
+      this.registerFormSubmitDisabled = true;
+      return false;
     },
-    validateLoginSubmit () {
+    validateLoginSubmit() {
       if (this.validateLoginFields()) {
-        this.submitLoginForm()
+        this.submitLoginForm();
       }
     },
-    validateRegisterSubmit () {
+    validateRegisterSubmit() {
       if (this.validateRegisterFields()) {
-        this.submitRegisterForm()
+        this.submitRegisterForm();
       }
     },
-    closeModal () {
-      this.$emit("modal:close")
+    closeModal() {
+      this.$emit('modal:close');
     },
     /*
      * Submit the login form.
      * Enable the 'processing' modal while the API responds.
      */
-    submitLoginForm () {
+    submitLoginForm() {
       if (!this.loginFormSubmitDisabled) {
-        this.loginFormSubmitDisabled = true
-        this.userDialogModal = true
-        this.userDialogSpinner = true
-        this.userDialogMessage = ""
-        return this.$store.dispatch("AUTHENTICATE_USER", {
+        this.loginFormSubmitDisabled = true;
+        this.userDialogModal = true;
+        this.userDialogSpinner = true;
+        this.userDialogMessage = '';
+        return this.$store.dispatch('AUTHENTICATE_USER', {
           email: this.loginForm.email,
-          password: this.loginForm.password
+          password: this.loginForm.password,
         })
-          .then(data => {
+          .then((data) => {
             if (data) {
-              this.$emit("logged:in")
-              this.closeModal()
+              this.$emit('logged:in');
+              this.closeModal();
             } else {
-              this.errorMessage = "Wrong password or email does not exist"
-              this.userDialogModal = false
+              this.errorMessage = 'Wrong password or email does not exist';
+              this.userDialogModal = false;
             }
           })
-          .catch(err => {
-            console.log("error: ", err)
-          })
+          .catch((err) => {
+            console.log('error: ', err);
+          });
       }
     },
     /*
      * Submit the register form.
      * Enable the 'processing' modal while the API responds.
      */
-    submitRegisterForm () {
+    submitRegisterForm() {
       if (!this.registerFormSubmitDisabled) {
-        this.registerFormSubmitDisabled = true
-        this.userDialogModal = true
-        this.userDialogSpinner = true
-        this.userDialogMessage = ""
-        return this.$store.dispatch("AUTHENTICATE_USER", {
+        this.registerFormSubmitDisabled = true;
+        this.userDialogModal = true;
+        this.userDialogSpinner = true;
+        this.userDialogMessage = '';
+        return this.$store.dispatch('AUTHENTICATE_USER', {
           lastname: this.registerForm.lastname,
           firstname: this.registerForm.firstname,
           email: this.registerForm.email,
           password: this.registerForm.password,
-          passwordConfirmation: this.registerForm.passwordConfirmation
+          passwordConfirmation: this.registerForm.passwordConfirmation,
         })
-          .then(data => {
+          .then((data) => {
             if (data) {
-              this.$emit("logged:in")
-              this.closeModal()
+              this.$emit('logged:in');
+              this.closeModal();
             } else {
-              this.errorMessage = "Wrong password or email does not exist"
-              this.userDialogModal = false
+              this.errorMessage = 'Wrong password or email does not exist';
+              this.userDialogModal = false;
             }
           })
-          .catch(err => {
-            console.log("error: ", err)
-          })
+          .catch((err) => {
+            console.log('error: ', err);
+          });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

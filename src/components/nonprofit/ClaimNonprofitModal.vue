@@ -15,8 +15,8 @@
           :state="userDialogModal"
           :disable-close= "userDialogDisableClose"
         >
-          <div slot="header">Processing</div> 
-          <div slot="content"><p>{{userDialogMessage}}</p></div> 
+          <div slot="header">Processing</div>
+          <div slot="content"><p>{{userDialogMessage}}</p></div>
         </UserDialog>
         <div class="">
           <p class="is-centered">To manage this nonprofit, please complete this form. Once approved, this nonprofit will appear in your account and you will be able to manage it.</p>
@@ -37,48 +37,48 @@
 </template>
 
 <script>
-import Modal from "@/components/general/Modal.vue"
+import Modal from '@/components/general/Modal.vue';
 
 export default {
-  props: [ "state" ],
+  props: ['state'],
   components: {
     Modal,
-    UserDialog: () => import("@/components/general/UserDialog.vue"),
-    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
+    UserManagementLinks: () => import('@/components/login/UserManagementLinks.vue'),
   },
-  data () {
+  data() {
     return {
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogMessage: "",
+      userDialogMessage: '',
       userDialogDisableClose: true,
       loginForm: {},
       registerForm: {},
       loginFormSubmitDisabled: true,
       registerFormSubmitDisabled: true,
       showingLoginModal: false,
-      errorMessage: "",
-      welcomeMessage: "",
+      errorMessage: '',
+      welcomeMessage: '',
       submitButtonDisabled: true,
       form: {},
-      forgetPasswordEmail: "",
-      timeout: null
-    }
+      forgetPasswordEmail: '',
+      timeout: null,
+    };
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userName () {
-      return this.$store.state.user.fullname
-    }
+    userName() {
+      return this.$store.state.user.fullname;
+    },
   },
   methods: {
-    closeModal () {
-      this.$emit("modal:close")
-    }
-  }
-}
+    closeModal() {
+      this.$emit('modal:close');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

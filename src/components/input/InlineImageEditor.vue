@@ -8,8 +8,8 @@
         :disable-close= "userDialogSpinner"
         v-on:modal:close="cancelEdition()"
       >
-        <div slot="header">{{userDialogHeading}}</div> 
-        <div slot="content"><p>{{userDialogMessage}}</p></div> 
+        <div slot="header">{{userDialogHeading}}</div>
+        <div slot="content"><p>{{userDialogMessage}}</p></div>
       </UserDialog>
       <div class="editable-field-wrapper flex-one" :class="{'columns': !isStandalone}">
         <div :class="{'flex-one': isBackgroundImage && !fieldIsOpen, 'column is-6': !isStandalone}">
@@ -95,150 +95,150 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import Icons from '@/components/general/Icons.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "item", "layout", "location", "openId", "openDefault", "isBackgroundImage", "alt", "editionIsEnabled", "type", "is-standalone", "disableOrientation", "initialRatio", "defaultImage", "required", "defaultText" ],
-  data () {
+  props: ['item', 'layout', 'location', 'openId', 'openDefault', 'isBackgroundImage', 'alt', 'editionIsEnabled', 'type', 'is-standalone', 'disableOrientation', 'initialRatio', 'defaultImage', 'required', 'defaultText'],
+  data() {
     return {
       croppaObject: {},
-      croppaInitialImage: "",
+      croppaInitialImage: '',
       ratio: 1,
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       fieldIsOpen: false,
       fieldValue: this.value,
-      errorMessage: "",
-      blurTimeout: null
-    }
+      errorMessage: '',
+      blurTimeout: null,
+    };
   },
   components: {
     Icons,
     LazyLoadedImage,
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   computed: {
-    calculateWidth () {
-      if (typeof window === "undefined" || typeof this.$el === "undefined") {
-        return 400
+    calculateWidth() {
+      if (typeof window === 'undefined' || typeof this.$el === 'undefined') {
+        return 400;
       }
-      let wrapperWidth = this.$el.clientWidth
-      if (this.type === "avatar") {
-        if (this.layout === "overlay") {
-          return wrapperWidth - 12
+      const wrapperWidth = this.$el.clientWidth;
+      if (this.type === 'avatar') {
+        if (this.layout === 'overlay') {
+          return wrapperWidth - 12;
         }
-        return wrapperWidth / 2 - 12
+        return wrapperWidth / 2 - 12;
       }
-      return wrapperWidth < 400 ? wrapperWidth - 6 : 400
+      return wrapperWidth < 400 ? wrapperWidth - 6 : 400;
     },
-    calculateHeight () {
-      return this.calculateWidth * this.ratio
+    calculateHeight() {
+      return this.calculateWidth * this.ratio;
     },
-    initialImage () {
-      return typeof this.item !== "undefined" ? this.item.src : ""
+    initialImage() {
+      return typeof this.item !== 'undefined' ? this.item.src : '';
     },
-    staticImage () {
-      return this.initialImage ? this.initialImage : this.defaultImage ? this.defaultImage.src : ""
-    }
+    staticImage() {
+      return this.initialImage ? this.initialImage : this.defaultImage ? this.defaultImage.src : '';
+    },
   },
-  mounted () {
+  mounted() {
     if (this.openDefault) {
-      this.openEdition()
+      this.openEdition();
     }
     if (this.initialRatio) {
-      this.ratio = this.initialRatio
+      this.ratio = this.initialRatio;
     }
-    this.croppaInitialImage = this.initialImage
+    this.croppaInitialImage = this.initialImage;
   },
   methods: {
-    cancelEdition () {
+    cancelEdition() {
       if (this.fieldIsOpen && !this.croppaObject.hasImage()) {
-        this.$emit("image:remove")
+        this.$emit('image:remove');
       }
-      this.fieldIsOpen = false
-      this.errorMessage = ""
-      this.userDialogModal = false
-      this.$emit("edition:close", this._uid)
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
+      this.userDialogModal = false;
+      this.$emit('edition:close', this._uid);
     },
-    openEdition () {
+    openEdition() {
       if (!this.editionIsEnabled) {
-        return
+        return;
       }
-      this.fieldIsOpen = true
-      this.$emit("edition:open", this._uid)
+      this.fieldIsOpen = true;
+      this.$emit('edition:open', this._uid);
     },
-    clearField () {
+    clearField() {
       if (this.croppaObject && this.croppaObject.hasImage()) {
-        this.croppaObject.remove()
+        this.croppaObject.remove();
       }
     },
-    useDefault () {
-      this.croppaInitialImage = this.defaultImage.src
-      this.croppaObject.refresh()
+    useDefault() {
+      this.croppaInitialImage = this.defaultImage.src;
+      this.croppaObject.refresh();
     },
-    removeImage () {
-      this.userDialogModal = true
-      this.userDialogSpinner = true
-      this.errorMessage = ""
-      if (typeof this.item !== "undefined") {
-        this.$store.dispatch("REMOVE_IMAGE", { location: this.location, route: this.$route, id: this.item.id })
+    removeImage() {
+      this.userDialogModal = true;
+      this.userDialogSpinner = true;
+      this.errorMessage = '';
+      if (typeof this.item !== 'undefined') {
+        this.$store.dispatch('REMOVE_IMAGE', { location: this.location, route: this.$route, id: this.item.id })
           .then(() => {
-            this.cancelEdition()
+            this.cancelEdition();
           })
-          .catch(err => {
-            this.userDialogSpinner = false
-            this.errorMessage = "An unknown error occurred."
-            console.log(err)
-          })
+          .catch((err) => {
+            this.userDialogSpinner = false;
+            this.errorMessage = 'An unknown error occurred.';
+            console.log(err);
+          });
       } else {
-        this.cancelEdition()
+        this.cancelEdition();
       }
     },
     /*
      * This method will save an image to the library if it can be validated.
      */
-    saveImage () {
+    saveImage() {
       if (!this.fieldIsOpen) {
-        return
+        return;
       }
-      this.userDialogModal = true
+      this.userDialogModal = true;
       this.croppaObject.generateBlob(
-        blob => {
+        (blob) => {
           if (!blob) {
-            this.userDialogMessage = "The image couldn't be generated."
-            this.userDialogSpinner = false
+            this.userDialogMessage = "The image couldn't be generated.";
+            this.userDialogSpinner = false;
           } else {
-            this.userDialogSpinner = true
-            this.$store.dispatch("SAVE_IMAGE_FIELD", { location: this.location, route: this.$route, blob: blob })
+            this.userDialogSpinner = true;
+            this.$store.dispatch('SAVE_IMAGE_FIELD', { location: this.location, route: this.$route, blob })
               .then(() => {
-                this.cancelEdition()
+                this.cancelEdition();
               })
-              .catch(err => {
-                console.log(err)
-              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         },
-        "image/jpeg",
-        0.8
-      ) // 80% compressed jpeg file
-    }
+        'image/jpeg',
+        0.8,
+      ); // 80% compressed jpeg file
+    },
   },
   watch: {
     /*
      * Close this instance if another one was opened.
      */
-    openId (newValue) {
+    openId(newValue) {
       if (this.fieldIsOpen) {
         if (newValue !== this._uid) {
-          this.fieldIsOpen = false
+          this.fieldIsOpen = false;
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -422,7 +422,7 @@ export default {
       top: 10px;
       left: 10px;
       right: unset;
-    }    
+    }
   }
 }
 

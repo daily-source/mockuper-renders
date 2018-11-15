@@ -6,8 +6,8 @@
       :disable-close= "userDialogSpinner"
       v-on:modal:close="closeUserDialog()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
     <div class="action-icons-wrapper" :class="{'is-open': fieldIsOpen}" v-if="editionIsEnabled">
       <div class="action-icon-wrapper" @click="openEdition()" :class="{'hide-icon': fieldIsOpen}">
@@ -44,111 +44,109 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: [ "type", "value", "errorText", "allowEmpty", "removeReturns", "layout", "location", "placeholder", "editionIsEnabled", "defaultOpen" ],
-  data () {
+  props: ['type', 'value', 'errorText', 'allowEmpty', 'removeReturns', 'layout', 'location', 'placeholder', 'editionIsEnabled', 'defaultOpen'],
+  data() {
     return {
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       fieldIsOpen: false,
       fieldValue: this.value,
-      errorMessage: "",
-      blurTimeout: null
-    }
+      errorMessage: '',
+      blurTimeout: null,
+    };
   },
   components: {
     Icons,
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   methods: {
-    cancelEdition () {
-      this.fieldIsOpen = false
-      this.errorMessage = ""
-      this.$emit("edit:close")
+    cancelEdition() {
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
+      this.$emit('edit:close');
     },
-    openEdition () {
+    openEdition() {
       if (!this.editionIsEnabled) {
-        return
+        return;
       }
-      this.fieldIsOpen = true
-      this.fieldValue = this.value
+      this.fieldIsOpen = true;
+      this.fieldValue = this.value;
     },
     /*
      * This method will save a field if it can be validated.
      */
-    saveField () {
+    saveField() {
       if (!this.fieldIsOpen) {
-        return
+        return;
       }
       if (!this.location) {
-        this.$emit("edit:save")
-        this.cancelEdition()
-        return
+        this.$emit('edit:save');
+        this.cancelEdition();
+        return;
       }
       return new Promise((resolve, reject) => {
-        clearTimeout(this.blurTimeout)
+        clearTimeout(this.blurTimeout);
         if (this.fieldValue) {
-          this.userDialogModal = true
-          console.log("content: ", this.fieldValue)
-          this.$store.dispatch("SAVE_INLINE_FIELD", { location: this.location, route: this.$route, value: this.fieldValue })
+          this.userDialogModal = true;
+          console.log('content: ', this.fieldValue);
+          this.$store.dispatch('SAVE_INLINE_FIELD', { location: this.location, route: this.$route, value: this.fieldValue })
             .then(() => {
-              this.cancelEdition()
-              this.fieldIsOpen = false
-              this.userDialogModal = false
-              resolve(this.fieldValue)
+              this.cancelEdition();
+              this.fieldIsOpen = false;
+              this.userDialogModal = false;
+              resolve(this.fieldValue);
             })
-            .catch(err => {
-              console.log(err)
-              this.userDialogModal = false
-              reject(err)
-            })
+            .catch((err) => {
+              console.log(err);
+              this.userDialogModal = false;
+              reject(err);
+            });
         } else {
-          this.errorMessage = this.errorText
-          this.userDialogModal = false
-          resolve()
+          this.errorMessage = this.errorText;
+          this.userDialogModal = false;
+          resolve();
         }
-      })
+      });
     },
-    tabPressed (e) {
+    tabPressed(e) {
       this.saveField()
-        .then(data => {
+        .then((data) => {
           if (data) {
             if (!e.shiftKey) {
-              this.$emit("next:field")
+              this.$emit('next:field');
             } else {
-              this.$emit("previous:field")
+              this.$emit('previous:field');
             }
           }
         })
-        .catch(err => {
-          return err
-        })
+        .catch(err => err);
     },
-    enterPressed (e) {
+    enterPressed(e) {
       if (!e.shiftKey) {
-        this.saveField()
+        this.saveField();
       }
     },
     /**
      * The timeout is needed so an external button can save before the blur cancels the edition
      */
-    blurInput () {
+    blurInput() {
       this.blurTimeout = setTimeout(() => {
-        this.cancelEdition()
-      }, 200)
+        this.cancelEdition();
+      }, 200);
+    },
+  },
+  mounted() {
+    require('@/components/plugins/VueWYSIWYG.js');
+    if (this.defaultOpen) {
+      this.openEdition();
     }
   },
-  mounted () {
-    require("@/components/plugins/VueWYSIWYG.js")
-    if (this.defaultOpen) {
-      this.openEdition()
-    }
-  }
-}
+};
 </script>
 
 <style lang="scss">

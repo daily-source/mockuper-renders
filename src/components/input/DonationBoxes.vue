@@ -37,45 +37,45 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
   components: {
-    Icons
+    Icons,
   },
-  data () {
+  data() {
     return {
-      boxes: [ 25, 50, 100, 250, 500, 1000 ],
+      boxes: [25, 50, 100, 250, 500, 1000],
       donation: {
         amount: 350,
         customAmount: 350,
-        isCustomAmount: true
-      }
-    }
+        isCustomAmount: true,
+      },
+    };
   },
-  props: ["givingLevels"],
+  props: ['givingLevels'],
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userFirstName () {
-      return this.$store.state.user.firstname
-    }
+    userFirstName() {
+      return this.$store.state.user.firstname;
+    },
   },
   methods: {
-    selectAmount (amount) {
-      this.donation.isCustomAmount = false
-      this.donation.amount = amount
-      this.$emit("input:box", amount)
+    selectAmount(amount) {
+      this.donation.isCustomAmount = false;
+      this.donation.amount = amount;
+      this.$emit('input:box', amount);
     },
-    selectLevel (level) {
-      this.donation.isCustomAmount = false
-      this.donation.amount = level.amount
-      this.$emit("input:box", level.amount)
-      this.$emit("input:level", level)
-    }
-  }
-}
+    selectLevel(level) {
+      this.donation.isCustomAmount = false;
+      this.donation.amount = level.amount;
+      this.$emit('input:box', level.amount);
+      this.$emit('input:level', level);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -89,7 +89,7 @@ export default {
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
-  }  
+  }
 }
 .amount-box {
   color: white;

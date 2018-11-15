@@ -146,7 +146,7 @@
             <div
               @click=""
               v-for="(item, index) in nonprofit.data.media"
-            >            
+            >
               <LazyLoadedImage
                 class="nonprofit-extended__media-item"
                 :is-background="true"
@@ -176,69 +176,69 @@
 </template>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
-import SharingIconsRow from "@/components/general/SharingIconsRow.vue"
-import Icons from "@/components/general/Icons.vue"
-import Flickity from "@/components/plugins/Flickity.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import DonateAction from '@/components/general/DonateAction.vue';
+import SharingIconsRow from '@/components/general/SharingIconsRow.vue';
+import Icons from '@/components/general/Icons.vue';
+import Flickity from '@/components/plugins/Flickity.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "nonprofit", "editing", "canEdit" ],
+  props: ['nonprofit', 'editing', 'canEdit'],
   components: {
     DonateAction,
     Icons,
     Flickity,
     SharingIconsRow,
     LazyLoadedImage,
-    MediaEditor: () => import("@/components/input/MediaEditor.vue"),
-    NonprofitIRSData: () => import("@/components/nonprofit/NonprofitIRSData.vue"),
-    MediaViewer: () => import("@/components/general/MediaViewer.vue"),
-    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
+    MediaEditor: () => import('@/components/input/MediaEditor.vue'),
+    NonprofitIRSData: () => import('@/components/nonprofit/NonprofitIRSData.vue'),
+    MediaViewer: () => import('@/components/general/MediaViewer.vue'),
+    InlineFieldEditor: () => import('@/components/input/InlineFieldEditor.vue'),
   },
-  data () {
+  data() {
     return {
       nonprofitMediaCarouselOptions: {
         initialIndex: 0,
         prevNextButtons: false,
         pageDots: false,
         wrapAround: true,
-        autoPlay: true
-      }
-    }
+        autoPlay: true,
+      },
+    };
   },
   methods: {
-    stopFlickity () {
-      this.$refs.carousel.pausePlayer()
+    stopFlickity() {
+      this.$refs.carousel.pausePlayer();
     },
-    startFlickity () {
-      this.$refs.carousel.unpausePlayer()
+    startFlickity() {
+      this.$refs.carousel.unpausePlayer();
     },
-    enableEdition () {
-      this.$emit("edit:open")
+    enableEdition() {
+      this.$emit('edit:open');
     },
-    openEdition (fieldName) {
-      this.$refs[fieldName].openEdition()
+    openEdition(fieldName) {
+      this.$refs[fieldName].openEdition();
     },
-    closeEdition (fieldName) {
-      this.$emit("edit:close")
+    closeEdition(fieldName) {
+      this.$emit('edit:close');
     },
-    openChildEdition (fieldName) {
-      this.$refs.nonprofitIRSDataTable.openEdition(fieldName)
+    openChildEdition(fieldName) {
+      this.$refs.nonprofitIRSDataTable.openEdition(fieldName);
     },
-    triggerMediaViewer (cell) {
-      this.$refs.mediaViewer.openModal()
-      this.$refs.mediaViewer.$refs.flickity.select(cell)
+    triggerMediaViewer(cell) {
+      this.$refs.mediaViewer.openModal();
+      this.$refs.mediaViewer.$refs.flickity.select(cell);
+    },
+  },
+  mounted() {
+    const carousel = this.$refs.carousel;
+    if (carousel) {
+      carousel.on('staticClick', (event, pointer, cellElement, cellIndex) => {
+        this.triggerMediaViewer(cellIndex);
+      });
     }
   },
-  mounted () {
-    const carousel = this.$refs.carousel
-    if (carousel) {
-      carousel.on("staticClick", (event, pointer, cellElement, cellIndex) => {
-        this.triggerMediaViewer(cellIndex)
-      })
-    }
-  }
-}
+};
 </script>
 
 <style scoped lang="scss">

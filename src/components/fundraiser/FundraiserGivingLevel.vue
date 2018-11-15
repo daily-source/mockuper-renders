@@ -16,14 +16,14 @@
 </template>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
+import DonateAction from '@/components/general/DonateAction.vue';
 
 export default {
-  props: [ "level", "fundraiser" ],
+  props: ['level', 'fundraiser'],
   components: {
-    DonateAction
-  }
-}
+    DonateAction,
+  },
+};
 </script>
 
 <style scoped lang="scss">

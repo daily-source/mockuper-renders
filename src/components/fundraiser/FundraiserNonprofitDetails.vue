@@ -30,16 +30,16 @@
 </template>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import DonateAction from '@/components/general/DonateAction.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "fundraiser" ],
+  props: ['fundraiser'],
   components: {
     DonateAction,
-    LazyLoadedImage
-  }
-}
+    LazyLoadedImage,
+  },
+};
 </script>
 
 <style scoped lang="scss">

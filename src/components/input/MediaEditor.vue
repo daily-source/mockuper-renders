@@ -57,37 +57,37 @@
 
 <script>
 export default {
-  props: [ "mediaSource", "location" ],
-  data () {
+  props: ['mediaSource', 'location'],
+  data() {
     return {
       existingImageOpenId: null,
       newImageOpenId: null,
-      newMedia: []
-    }
+      newMedia: [],
+    };
   },
   components: {
-    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue"),
-    InlineVideoEditor: () => import("@/components/input/InlineVideoEditor.vue")
+    InlineImageEditor: () => import('@/components/input/InlineImageEditor.vue'),
+    InlineVideoEditor: () => import('@/components/input/InlineVideoEditor.vue'),
   },
   methods: {
-    addImage () {
+    addImage() {
       if (!this.newImageOpenId) {
-        this.newMedia.push({ src: "", type: "image" })
+        this.newMedia.push({ src: '', type: 'image' });
       }
     },
-    addVideo () {
+    addVideo() {
       if (!this.newImageOpenId) {
-        this.newMedia.push({ src: "", type: "video" })
+        this.newMedia.push({ src: '', type: 'video' });
       }
     },
-    removeNewImage () {
-      this.newMedia.pop()
+    removeNewImage() {
+      this.newMedia.pop();
     },
-    removeNewVideo () {
-      this.newMedia.pop()
-    }
-  }
-}
+    removeNewVideo() {
+      this.newMedia.pop();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

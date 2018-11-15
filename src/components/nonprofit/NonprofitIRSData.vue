@@ -98,28 +98,28 @@
 <script>
 
 export default {
-  props: [ "nonprofit", "editing", "canEdit" ],
+  props: ['nonprofit', 'editing', 'canEdit'],
   components: {
-    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
+    InlineFieldEditor: () => import('@/components/input/InlineFieldEditor.vue'),
   },
   methods: {
-    enableEdition () {
-      this.$emit("edit:open")
+    enableEdition() {
+      this.$emit('edit:open');
     },
-    closeEdition () {
-      this.$emit("edit:close")
+    closeEdition() {
+      this.$emit('edit:close');
     },
-    openEdition (fieldName) {
-      this.$refs[fieldName].openEdition()
+    openEdition(fieldName) {
+      this.$refs[fieldName].openEdition();
     },
-    emitPreviousField () {
-      this.$emit("edit:previous")
+    emitPreviousField() {
+      this.$emit('edit:previous');
     },
-    emitNextField () {
-      this.$emit("edit:next")
-    }
-  }
-}
+    emitNextField() {
+      this.$emit('edit:next');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -175,7 +175,7 @@ export default {
   }
 
   .table-row {
-    font-size: 20px;    
+    font-size: 20px;
   }
   .table-heading {
     font-weight: bold;

@@ -1,96 +1,96 @@
-import Vue from "vue"
-import Router from "vue-router"
-import Meta from "vue-meta"
+import Vue from 'vue';
+import Router from 'vue-router';
+import Meta from 'vue-meta';
 // import { Store } from "../store"
 // const store = Store()
 
-Vue.use(Router)
+Vue.use(Router);
 Vue.use(Meta, {
-  ssrAttribute: "data-vue-meta-server-rendered"
-})
+  ssrAttribute: 'data-vue-meta-server-rendered',
+});
 
 // route-level code splitting
-const Nonprofit = () => import("@/views/Nonprofit.vue")
-const HomePage = () => import("@/views/HomePage.vue")
-const ExplorePage = () => import("@/views/ExplorePage.vue")
-const VolunteerPage = () => import("@/views/VolunteerPage.vue")
-const Fundraiser = () => import("@/views/Fundraiser.vue")
-const Default404 = () => import("@/views/Default404.vue")
-const MyAccount = () => import("@/views/MyAccount.vue")
-const CreateFundraiser = () => import("@/views/CreateFundraiser.vue")
+const Nonprofit = () => import('@/views/Nonprofit.vue');
+const HomePage = () => import('@/views/HomePage.vue');
+const ExplorePage = () => import('@/views/ExplorePage.vue');
+const VolunteerPage = () => import('@/views/VolunteerPage.vue');
+const Fundraiser = () => import('@/views/Fundraiser.vue');
+const Default404 = () => import('@/views/Default404.vue');
+const MyAccount = () => import('@/views/MyAccount.vue');
+const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
 
 export default new Router({
-  mode: "history",
+  mode: 'history',
   fallback: false,
   saveScrollPosition: true,
-  scrollBehavior (to, from, savedPosition) {
-    if (!to.name.includes("/donate")) {
+  scrollBehavior(to, from, savedPosition) {
+    if (!to.name.includes('/donate')) {
       // Retain position if we are opening a donate (modal) route
-      return { y: 0 }
+      return { y: 0 };
     }
   },
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: HomePage
+      path: '/',
+      name: 'home',
+      component: HomePage,
     },
     {
-      path: "/explore",
-      name: "explore",
-      component: ExplorePage
+      path: '/explore',
+      name: 'explore',
+      component: ExplorePage,
     },
     {
-      path: "/volunteer",
-      name: "volunteer",
-      component: VolunteerPage
+      path: '/volunteer',
+      name: 'volunteer',
+      component: VolunteerPage,
     },
     {
-      path: "/nonprofit",
-      redirect: "/explore"
+      path: '/nonprofit',
+      redirect: '/explore',
     },
     {
-      path: "/nonprofit/:ein",
-      name: "nonprofit",
-      component: Nonprofit
+      path: '/nonprofit/:ein',
+      name: 'nonprofit',
+      component: Nonprofit,
     },
     {
-      path: "/nonprofit/:ein/donate",
-      name: "nonprofit/donate",
-      component: Nonprofit
+      path: '/nonprofit/:ein/donate',
+      name: 'nonprofit/donate',
+      component: Nonprofit,
     },
     {
-      path: "/fundraiser",
-      redirect: "/explore"
+      path: '/fundraiser',
+      redirect: '/explore',
     },
     {
-      path: "/fundraiser/create",
-      name: "fundraiser/create",
-      component: CreateFundraiser
+      path: '/fundraiser/create',
+      name: 'fundraiser/create',
+      component: CreateFundraiser,
     },
     {
-      path: "/fundraiser/:id",
-      name: "fundraiser",
-      component: Fundraiser
+      path: '/fundraiser/:id',
+      name: 'fundraiser',
+      component: Fundraiser,
     },
     {
-      path: "/fundraiser/:id/donate",
-      name: "fundraiser/donate",
-      component: Fundraiser
+      path: '/fundraiser/:id/donate',
+      name: 'fundraiser/donate',
+      component: Fundraiser,
     },
     {
-      path: "/404",
-      name: "Default",
-      component: Default404
+      path: '/404',
+      name: 'Default',
+      component: Default404,
     },
     {
-      path: "/account",
-      redirect: "/account/settings"
+      path: '/account',
+      redirect: '/account/settings',
     },
     {
-      path: "/account/:path",
-      name: "account",
-      component: MyAccount
-    }
-  ]
-})
+      path: '/account/:path',
+      name: 'account',
+      component: MyAccount,
+    },
+  ],
+});

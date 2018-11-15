@@ -22,51 +22,50 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "label", "required" ],
-  data () {
+  props: ['label', 'required'],
+  data() {
     return {
       form: {},
-      errorMessage: "",
+      errorMessage: '',
       errorMessageTimeout: 5000,
-      timeout: null
-    }
+      timeout: null,
+    };
   },
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    validateAllFields () {
+    validateAllFields() {
       if (validator.validateEmail(this.form.email)) {
-        this.$emit("input:valid")
-        return true
-      } else {
-        this.$emit("input:invalid")
-        return false
+        this.$emit('input:valid');
+        return true;
       }
+      this.$emit('input:invalid');
+      return false;
     },
-    refreshFieldValidation () {
-      this.errorMessage = ""
-      clearTimeout(this.timeout)
+    refreshFieldValidation() {
+      this.errorMessage = '';
+      clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
         if (!validator.validateEmail(this.form.email)) {
-          this.errorMessage = "Email is invalid"
+          this.errorMessage = 'Email is invalid';
         } else {
-          this.errorMessage = ""
+          this.errorMessage = '';
         }
-      }, this.errorMessageTimeout)
-    }
+      }, this.errorMessageTimeout);
+    },
   },
   watch: {
-    "form.email": function () {
-      this.validateAllFields()
-      this.refreshFieldValidation()
-    }
-  }
-}
+    'form.email': function () {
+      this.validateAllFields();
+      this.refreshFieldValidation();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

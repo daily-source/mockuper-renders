@@ -190,146 +190,135 @@
 <script>
 
 export default {
-  props: [ "fundraiser", "editing", "canEdit" ],
+  props: ['fundraiser', 'editing', 'canEdit'],
   components: {
-    FundraiserGivingLevel: () => import("@/components/fundraiser/FundraiserGivingLevel.vue"),
-    FundraiserNonprofitDetails: () => import("@/components/fundraiser/FundraiserNonprofitDetails.vue"),
-    FundraiserUpdates: () => import("@/components/fundraiser/FundraiserUpdates.vue"),
-    Comments: () => import("@/components/general/Comments.vue"),
-    DonateAction: () => import("@/components/general/DonateAction.vue"),
-    DonorsList: () => import("@/components/general/DonorsList.vue"),
-    InlineRichTextEditor: () => import("@/components/input/InlineRichTextEditor.vue")
+    FundraiserGivingLevel: () => import('@/components/fundraiser/FundraiserGivingLevel.vue'),
+    FundraiserNonprofitDetails: () => import('@/components/fundraiser/FundraiserNonprofitDetails.vue'),
+    FundraiserUpdates: () => import('@/components/fundraiser/FundraiserUpdates.vue'),
+    Comments: () => import('@/components/general/Comments.vue'),
+    DonateAction: () => import('@/components/general/DonateAction.vue'),
+    DonorsList: () => import('@/components/general/DonorsList.vue'),
+    InlineRichTextEditor: () => import('@/components/input/InlineRichTextEditor.vue'),
   },
-  data () {
+  data() {
     return {
       currentTab: 1,
       mounted: false,
-      tempUpdateContent: "",
-      newUpdate: false
-    }
+      tempUpdateContent: '',
+      newUpdate: false,
+    };
   },
   computed: {
-    moreComments () {
-      return false
-      return showMoreButton(this.$store.state, "comments")
+    moreComments() {
+      return false;
+      return showMoreButton(this.$store.state, 'comments');
     },
-    moreDonations () {
-      return false
-      return showMoreButton(this.$store.state, "donations")
+    moreDonations() {
+      return false;
+      return showMoreButton(this.$store.state, 'donations');
     },
-    moreUpdates () {
-      return false
-      return showMoreButton(this.$store.state, "updates")
+    moreUpdates() {
+      return false;
+      return showMoreButton(this.$store.state, 'updates');
     },
-    donationsByAmount () {
-      var donations = this.$store.state.donations.data
+    donationsByAmount() {
+      const donations = this.$store.state.donations.data;
       if (!donations) {
-        return []
+        return [];
       }
-      var sorted = donations.slice().sort((a, b) => {
-        return b.amount > a.amount
-      })
-      return sorted
+      const sorted = donations.slice().sort((a, b) => b.amount > a.amount);
+      return sorted;
     },
-    donationsByDate () {
-      var donations = this.$store.state.donations.data
+    donationsByDate() {
+      const donations = this.$store.state.donations.data;
       if (!donations) {
-        return []
+        return [];
       }
-      var sorted = donations.slice().sort((a, b) => {
-        return b.timestamp > a.timestamp
-      })
-      return sorted
+      const sorted = donations.slice().sort((a, b) => b.timestamp > a.timestamp);
+      return sorted;
     },
-    donationsBySharing () {
-      var donations = this.$store.state.donations.data
+    donationsBySharing() {
+      const donations = this.$store.state.donations.data;
       if (!donations) {
-        return []
+        return [];
       }
-      var sorted = donations.slice().sort((a, b) => {
-        return a.amount > b.amount
-      })
-      var modified = []
+      const sorted = donations.slice().sort((a, b) => a.amount > b.amount);
+      const modified = [];
       if (sorted.length) {
-        donations.map(part => {
-          var p = Object.assign({}, part)
-          p.amount = p.amount * 2.2
-          modified.push(p)
-        })
-        return modified
-      } else {
-        return [] 
+        donations.map((part) => {
+          const p = Object.assign({}, part);
+          p.amount *= 2.2;
+          modified.push(p);
+        });
+        return modified;
       }
+      return [];
     },
-    updatesCount () {
-      return this.$store.state.updates.data.length      
+    updatesCount() {
+      return this.$store.state.updates.data.length;
     },
-    updates () {
-      return this.$store.state.updates.data
+    updates() {
+      return this.$store.state.updates.data;
     },
-    comments () {
-      return this.$store.state.comments.data
+    comments() {
+      return this.$store.state.comments.data;
     },
-    common () {
-      return this.$store.state.common
-    }
+    common() {
+      return this.$store.state.common;
+    },
   },
   methods: {
     /**
      * Fetch the comments for this fundraiser.
      * This was abstracted to a function so that it can be reused.
      */
-    loadMoreComments (paginated = true) {
+    loadMoreComments(paginated = true) {
       if (this.moreComments) {
-        const fundraiserId = this.$route.params.id
-        return this.$store.dispatch("FETCH_COMMENTS", { fundraiserId: fundraiserId, paginated: paginated })
-          .then(data => {
-            return data
-          })
-          .catch(err => {
-            console.log(err)
-          })
+        const fundraiserId = this.$route.params.id;
+        return this.$store.dispatch('FETCH_COMMENTS', { fundraiserId, paginated })
+          .then(data => data)
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     /**
      * Fetch the donations for this fundraiser.
      * This was abstracted to a function so that it can be reused.
      */
-    loadMoreDonations (paginated = true) {
+    loadMoreDonations(paginated = true) {
       if (this.moreDonations) {
-        const fundraiserId = this.$route.params.id
-        return this.$store.dispatch("FETCH_DONATIONS", { fundraiserId: fundraiserId, paginated: paginated })
-          .then(data => {
-            return data
-          })
-          .catch(err => {
-            console.log(err)
-          })
+        const fundraiserId = this.$route.params.id;
+        return this.$store.dispatch('FETCH_DONATIONS', { fundraiserId, paginated })
+          .then(data => data)
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     /**
      * Fetch the updates for this fundraiser.
      * This was abstracted to a function so that it can be reused.
      */
-    loadMoreUpdates (paginated = true) {
+    loadMoreUpdates(paginated = true) {
       return new Promise((resolve, reject) => {
-        const fundraiserId = this.$route.params.id
+        const fundraiserId = this.$route.params.id;
         if (this.moreUpdates) {
-          return this.$store.dispatch("FETCH_UPDATES", { fundraiserId: fundraiserId, paginated: paginated })
-            .then(data => {
-              resolve(data)
+          return this.$store.dispatch('FETCH_UPDATES', { fundraiserId, paginated })
+            .then((data) => {
+              resolve(data);
             })
-            .catch(err => {
-              reject(err)
-            })
+            .catch((err) => {
+              reject(err);
+            });
         }
-      })
+      });
     },
     /**
      * Select the active tab.
      */
-    loadTab (tab) {
-      this.currentTab = tab
+    loadTab(tab) {
+      this.currentTab = tab;
     },
     /**
      * Recursively keep loading updates until the update in the params is found.
@@ -337,28 +326,22 @@ export default {
      * This is needed when the visiting URL includes an update parameter,
      * which indicates a visitor coming from a shared update in the fundraiser page.
      */
-    loadUpdatesAndScrollTo (itemId) {
-      const target = `#update_${itemId}`
+    loadUpdatesAndScrollTo(itemId) {
+      const target = `#update_${itemId}`;
 
-      var targetExists = this.updates.find(update => {
-        return update.id === parseInt(itemId, 10)
-      })
+      const targetExists = this.updates.find(update => update.id === parseInt(itemId, 10));
       if (targetExists) {
-        this.$scrollTo(target, { offset: -200 })
+        this.$scrollTo(target, { offset: -200 });
+      } else if (this.moreUpdates) {
+        return this.loadMoreUpdates()
+          .then((data) => {
+            if (data) {
+              return this.loadUpdatesAndScrollTo(itemId);
+            }
+          })
+          .catch(err => err);
       } else {
-        if (this.moreUpdates) {
-          return this.loadMoreUpdates()
-            .then(data => {
-              if (data) {
-                return this.loadUpdatesAndScrollTo(itemId)
-              }
-            })
-            .catch(err => {
-              return err
-            })
-        } else {
-          return { code: 404 }
-        }
+        return { code: 404 };
       }
     },
     /**
@@ -367,102 +350,96 @@ export default {
      * This is needed when the visiting URL includes a comment parameter,
      * which indicates a visitor coming from a shared comment in the fundraiser page.
      */
-    loadCommentsAndScrollTo (itemId) {
-      const target = `#comment_${itemId}`
+    loadCommentsAndScrollTo(itemId) {
+      const target = `#comment_${itemId}`;
 
-      var targetExists = false
-      this.comments.forEach(comment => {
+      let targetExists = false;
+      this.comments.forEach((comment) => {
         if (comment.id === parseInt(itemId, 10)) {
-          targetExists = true
+          targetExists = true;
         }
 
         if (comment.replies && comment.replies.length) {
-          var a = comment.replies.find(reply => {
-            return reply.id === parseInt(itemId, 10)
-          })
+          const a = comment.replies.find(reply => reply.id === parseInt(itemId, 10));
           if (a) {
-            targetExists = true
+            targetExists = true;
           }
         }
-      })
+      });
 
       if (targetExists) {
-        this.$scrollTo(target, { offset: -200 })
+        this.$scrollTo(target, { offset: -200 });
+      } else if (this.moreComments && this.mounted) {
+        return this.loadMoreComments()
+          .then((data) => {
+            if (data) {
+              return this.loadCommentsAndScrollTo(itemId);
+            }
+          })
+          .catch(err => err);
       } else {
-        if (this.moreComments && this.mounted) {
-          return this.loadMoreComments()
-            .then(data => {
-              if (data) {
-                return this.loadCommentsAndScrollTo(itemId)
-              }
-            })
-            .catch(err => {
-              return err
-            })
-        } else {
-          return { code: 404 }
-        }
+        return { code: 404 };
       }
     },
-    closeEditor () {
-      this.$emit("edit:close")
+    closeEditor() {
+      this.$emit('edit:close');
     },
-    openEditor () {
-      this.$emit("edit:open")
+    openEditor() {
+      this.$emit('edit:open');
     },
-    addNewUpdate () {
-      this.newUpdate = true
+    addNewUpdate() {
+      this.newUpdate = true;
     },
-    closeNewUpdate () {
-      this.newUpdate = false
-      this.tempUpdateContent = ""
+    closeNewUpdate() {
+      this.newUpdate = false;
+      this.tempUpdateContent = '';
     },
-    saveNewUpdate () {
-      this.$store.dispatch("ADD_NEW_UPDATE", {
+    saveNewUpdate() {
+      this.$store.dispatch('ADD_NEW_UPDATE', {
         fundraiserId: this.fundraiser.fundraiser_id,
-        update: this.tempUpdateContent
+        update: this.tempUpdateContent,
       }).then(() => {
-        console.log("update added")
-      }).catch(err => {
-        console.log(err)
-      })
-    }
+        console.log('update added');
+      }).catch((err) => {
+        console.log(err);
+      });
+    },
   },
   /**
    * Load updates, comments and donations on the mounted hook.
    * Below-the-fold items, are only loaded in the client, not in the server.
    */
-  mounted () {
+  mounted() {
     if (this.moreUpdates && this.$store.state.updates.current === 1) {
-      this.loadMoreUpdates()
+      this.loadMoreUpdates();
     }
     if (this.moreComments && this.$store.state.comments.current === 1) {
-      this.loadMoreComments()
+      this.loadMoreComments();
     }
     if (this.moreDonations && this.$store.state.donations.current === 1) {
-      this.loadMoreDonations()
+      this.loadMoreDonations();
     }
 
     /**
      * If there's an update ID in the URL params, recursively load updates and scroll to them.
      */
-    const updateId = this.$route.query.update_id
+    const updateId = this.$route.query.update_id;
     if (updateId && this.moreUpdates) {
-      this.currentTab = 5
+      this.currentTab = 5;
       setTimeout(() => {
-        this.loadUpdatesAndScrollTo(updateId)
-      }, 4500)
+        this.loadUpdatesAndScrollTo(updateId);
+      }, 4500);
     }
 
     /**
      * If there's a comment ID in the URL params, recursively load comments and scroll to them.
      */
-    const commentId = this.$route.query.comment_id
+    const commentId = this.$route.query.comment_id;
     if (commentId && this.moreComments) {
-      this.currentTab = 4
+      this.currentTab = 4;
       setTimeout(() => {
-        this.loadCommentsAndScrollTo(commentId)
-      }, 4500)
+        this.loadCommentsAndScrollTo(commentId);
+      }, 4500);
     }
   },
   watch: {
@@ -471,25 +448,25 @@ export default {
      * This way there are 2x updates shown in the tab compared to the main (default) home view,
      * where there are by default just 1x updates being shown.
      */
-    currentTab (newVal) {
+    currentTab(newVal) {
       if (newVal === 5) {
         if (this.moreUpdates) {
-          this.loadMoreUpdates()
+          this.loadMoreUpdates();
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 
 /**
  * Helper function to determine if the show more button should appear or not.
  */
-function showMoreButton (state, arg) {
-  const limit = state[arg].limit
-  const current = state[arg].current
-  const count = state.fundraiser[`${arg}_count`]
-  const totalPages = Math.ceil(count / limit)
-  return totalPages >= current
+function showMoreButton(state, arg) {
+  const limit = state[arg].limit;
+  const current = state[arg].current;
+  const count = state.fundraiser[`${arg}_count`];
+  const totalPages = Math.ceil(count / limit);
+  return totalPages >= current;
 }
 </script>
 

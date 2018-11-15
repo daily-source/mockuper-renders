@@ -13,7 +13,7 @@
           alt=""
           :src="iconsrc"
           v-if="duplicate === true"
-          
+
         ></LazyLoadedImage>
       </div>
       <div>
@@ -51,19 +51,19 @@
 </template>
 
 <script>
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "iconsrc", "duplicate", "layout", "reverse", "large" ],
+  props: ['iconsrc', 'duplicate', 'layout', 'reverse', 'large'],
   components: {
-    LazyLoadedImage
+    LazyLoadedImage,
   },
   methods: {
-    imageClicked () {
-      this.$emit("image:clicked")
-    }
-  }
-}
+    imageClicked() {
+      this.$emit('image:clicked');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

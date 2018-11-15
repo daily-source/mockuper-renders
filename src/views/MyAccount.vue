@@ -31,7 +31,7 @@
           <div class="container">
             <div class="columns">
               <div class="column is-3">
-                <UserManagementLinks></UserManagementLinks>            
+                <UserManagementLinks></UserManagementLinks>
               </div>
               <div class="column is-9">
                 <transition-group name="list-complete" tag="div">
@@ -66,45 +66,45 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  name: "account",
+  name: 'account',
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import("@/components/general/AppFooter.vue"),
-    AppHeader: () => import("@/components/general/AppHeader.vue"),
-    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue"),
-    LogInModal: () => import("@/components/general/LogInModal.vue"),
-    AccountSettings: () => import("@/components/account/AccountSettings.vue"),
-    AccountFundraisers: () => import("@/components/account/AccountFundraisers.vue"),
-    AccountDonations: () => import("@/components/account/AccountDonations.vue"),
-    AccountNonprofits: () => import("@/components/account/AccountNonprofits.vue")
+    AppFooter: () => import('@/components/general/AppFooter.vue'),
+    AppHeader: () => import('@/components/general/AppHeader.vue'),
+    UserManagementLinks: () => import('@/components/login/UserManagementLinks.vue'),
+    LogInModal: () => import('@/components/general/LogInModal.vue'),
+    AccountSettings: () => import('@/components/account/AccountSettings.vue'),
+    AccountFundraisers: () => import('@/components/account/AccountFundraisers.vue'),
+    AccountDonations: () => import('@/components/account/AccountDonations.vue'),
+    AccountNonprofits: () => import('@/components/account/AccountNonprofits.vue'),
   },
 
   /**
    * Return stored data for this view.
    */
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    path () {
-      return this.$route.params.path
-    }
+    path() {
+      return this.$route.params.path;
+    },
   },
-  metaInfo () {
+  metaInfo() {
     return {
-      title: "My Account"
-    }
-  }
-}
+      title: 'My Account',
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">

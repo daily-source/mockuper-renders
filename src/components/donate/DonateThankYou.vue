@@ -42,75 +42,75 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import LogInModal from "@/components/general/LogInModal.vue"
-import InputPassword from "@/components/input/InputPassword.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import LogInModal from '@/components/general/LogInModal.vue';
+import InputPassword from '@/components/input/InputPassword.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "parent", "fundraiser", "nonprofit" ],
-  data () {
+  props: ['parent', 'fundraiser', 'nonprofit'],
+  data() {
     return {
       form: {},
       emailFound: false,
-      submitButtonDisabled: false
-    }
+      submitButtonDisabled: false,
+    };
   },
   components: {
     Icons,
     InputPassword,
-    LogInModal
+    LogInModal,
   },
   computed: {
-    email () {
-      return this.$store.state.userActions.donation.email
+    email() {
+      return this.$store.state.userActions.donation.email;
     },
-    loggedIn () {
-      return this.$store.state.user.loggedIn
-    }
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
+    },
   },
   methods: {
-    validateAllFields () {
-      const validPass = validator.validatePassword(this.form.password)
-      const validPassConf = validPass && this.form.password === this.form.passwordConfirmation
+    validateAllFields() {
+      const validPass = validator.validatePassword(this.form.password);
+      const validPassConf = validPass && this.form.password === this.form.passwordConfirmation;
       if (validPass && validPassConf || validPass && this.emailFound) { // eslint-disable-line no-mixed-operators
-        this.submitButtonDisabled = false
+        this.submitButtonDisabled = false;
       } else {
-        this.submitButtonDisabled = true
+        this.submitButtonDisabled = true;
       }
     },
-    submitPassword () {
-      this.submitButtonDisabled = true
-      return this.$store.dispatch("CREATE_USER", {
+    submitPassword() {
+      this.submitButtonDisabled = true;
+      return this.$store.dispatch('CREATE_USER', {
         email: this.email,
-        password: this.form.password
+        password: this.form.password,
       })
-        .then(data => {
-          this.$emit("success", { data: data })
+        .then((data) => {
+          this.$emit('success', { data });
         })
-        .catch(err => {
-          this.$emit("err", { err })
-          console.log(err)
-        })
-    }
+        .catch((err) => {
+          this.$emit('err', { err });
+          console.log(err);
+        });
+    },
   },
-  mounted () {
+  mounted() {
     // get a response on whether the email has been already used
-    return this.$store.dispatch("LOOK_UP_EMAIL", {
-      email: this.email
+    return this.$store.dispatch('LOOK_UP_EMAIL', {
+      email: this.email,
     })
-      .then(data => {
+      .then((data) => {
         if (data) {
-          this.emailFound = true
+          this.emailFound = true;
         } else {
-          this.emailFound = false
+          this.emailFound = false;
         }
       })
-      .catch(err => {
-        console.log("error: ", err)
-      })
-  }
-}
+      .catch((err) => {
+        console.log('error: ', err);
+      });
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -138,7 +138,7 @@ p {
       }
     }
     &__second {
-      color: $color-emphasis-alt;      
+      color: $color-emphasis-alt;
     }
   }
 }

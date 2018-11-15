@@ -40,74 +40,73 @@
         <span class="error-message">{{lastnameErrorMessage}}</span>
       </div>
     </div>
-    
+
   </div>
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "label", "required" ],
-  data () {
+  props: ['label', 'required'],
+  data() {
     return {
       form: {},
-      firstnameErrorMessage: "",
-      lastnameErrorMessage: "",
+      firstnameErrorMessage: '',
+      lastnameErrorMessage: '',
       firstnameTimeout: null,
       lastnameTimeout: null,
       timeout: null,
-      errorMessageTimeout: 5000
-    }
+      errorMessageTimeout: 5000,
+    };
   },
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    validateAllFields () {
+    validateAllFields() {
       if (validator.validateName(this.form.firstname) && validator.validateName(this.form.lastname)) {
-        this.$emit("input:valid")
-        return true
-      } else {
-        this.$emit("input:invalid")
-        return false
+        this.$emit('input:valid');
+        return true;
       }
+      this.$emit('input:invalid');
+      return false;
     },
-    refreshFirstNameValidation () {
-      this.firstnameErrorMessage = ""
-      clearTimeout(this.firstnameTimeout)
+    refreshFirstNameValidation() {
+      this.firstnameErrorMessage = '';
+      clearTimeout(this.firstnameTimeout);
       this.firstnameTimeout = setTimeout(() => {
         if (!validator.validateName(this.form.firstname)) {
-          this.firstnameErrorMessage = "This field is required"
+          this.firstnameErrorMessage = 'This field is required';
         } else {
-          this.firstnameErrorMessage = ""
+          this.firstnameErrorMessage = '';
         }
-      }, this.errorMessageTimeout)
+      }, this.errorMessageTimeout);
     },
-    refreshLastNameValidation () {
-      this.lastnameErrorMessage = ""
-      clearTimeout(this.lastnameTimeout)
+    refreshLastNameValidation() {
+      this.lastnameErrorMessage = '';
+      clearTimeout(this.lastnameTimeout);
       this.lastnameTimeout = setTimeout(() => {
         if (!validator.validateName(this.form.lastname)) {
-          this.lastnameErrorMessage = "This field is required"
+          this.lastnameErrorMessage = 'This field is required';
         } else {
-          this.lastnameErrorMessage = ""
+          this.lastnameErrorMessage = '';
         }
-      }, this.errorMessageTimeout)
-    }
+      }, this.errorMessageTimeout);
+    },
   },
   watch: {
-    "form.firstname": function () {
-      this.validateAllFields()
-      this.refreshFirstNameValidation()
+    'form.firstname': function () {
+      this.validateAllFields();
+      this.refreshFirstNameValidation();
     },
-    "form.lastname": function () {
-      this.validateAllFields()
-      this.refreshLastNameValidation()
-    }
-  }
-}
+    'form.lastname': function () {
+      this.validateAllFields();
+      this.refreshLastNameValidation();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

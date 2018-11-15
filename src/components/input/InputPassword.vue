@@ -10,7 +10,7 @@
           <input class="input" type="password" name="action" placeholder=""
             :required="required"
             v-model="form.currentPassword"
-            autocomplete="current-password" 
+            autocomplete="current-password"
             :id="`input-current-password_${_uid}`"
             v-on:input="$emit('input:currentPassword', $event.target.value)"
           >
@@ -27,7 +27,7 @@
           <input class="input" type="password" name="action" placeholder=""
             :required="required"
             v-model="form.password"
-            autocomplete="current-password new-password" 
+            autocomplete="current-password new-password"
             :id="`input-password_${_uid}`"
             v-on:input="$emit('input:password', $event.target.value)"
           >
@@ -47,7 +47,7 @@
           <input class="input" type="password" name="action" placeholder=""
             :required="required"
             v-model="form.passwordConfirmation"
-            autocomplete="current-password new-password" 
+            autocomplete="current-password new-password"
             :id="`input-password-confirmation_${_uid}`"
             v-on:input="$emit('input:passwordConfirmation', $event.target.value)"
           >
@@ -61,90 +61,89 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "label", "duplicate", "required", "provideFeedback", "errorMessage", "requireCurrentPassword" ],
-  data () {
+  props: ['label', 'duplicate', 'required', 'provideFeedback', 'errorMessage', 'requireCurrentPassword'],
+  data() {
     return {
       form: {},
-      passwordErrorMessage: "",
-      passwordConfirmationErrorMessage: "",
+      passwordErrorMessage: '',
+      passwordConfirmationErrorMessage: '',
       timeout: null,
       timeoutConf: null,
-      errorMessageTimeout: 6000
-    }
+      errorMessageTimeout: 6000,
+    };
   },
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    validateAllFields () {
-      const validCurrentPass = validator.validatePassword(this.form.currentPassword) || !this.requireCurrentPassword
-      const validPass = validator.validatePassword(this.form.password)
-      const validPassConf = this.form.password === this.form.passwordConfirmation || !this.duplicate
+    validateAllFields() {
+      const validCurrentPass = validator.validatePassword(this.form.currentPassword) || !this.requireCurrentPassword;
+      const validPass = validator.validatePassword(this.form.password);
+      const validPassConf = this.form.password === this.form.passwordConfirmation || !this.duplicate;
       if (validCurrentPass && validPass && validPassConf) {
-        this.$emit("input:valid")
-        return true
-      } else {
-        this.$emit("input:invalid")
-        return false
+        this.$emit('input:valid');
+        return true;
       }
+      this.$emit('input:invalid');
+      return false;
     },
-    refreshPasswordConfirmationField () {
-      this.validateAllFields()
-      this.passwordConfirmationErrorMessage = ""
-      clearTimeout(this.timeoutConf)
+    refreshPasswordConfirmationField() {
+      this.validateAllFields();
+      this.passwordConfirmationErrorMessage = '';
+      clearTimeout(this.timeoutConf);
       this.timeoutConf = setTimeout(() => {
         if (this.form.passwordConfirmation !== this.form.password) {
-          this.passwordConfirmationErrorMessage = "The passwords do not match."
+          this.passwordConfirmationErrorMessage = 'The passwords do not match.';
         } else {
-          this.passwordConfirmationErrorMessage = ""
+          this.passwordConfirmationErrorMessage = '';
         }
-      }, this.errorMessageTimeout)
+      }, this.errorMessageTimeout);
     },
-    refreshPasswordField () {
-      this.validateAllFields()
-      this.passwordErrorMessage = ""
-      clearTimeout(this.timeout)
+    refreshPasswordField() {
+      this.validateAllFields();
+      this.passwordErrorMessage = '';
+      clearTimeout(this.timeout);
 
       if (this.provideFeedback) {
         this.timeout = setTimeout(() => {
           if (!validator.validatePasswordLength(this.form.password)) {
-            this.passwordErrorMessage += "The password needs to be at least 8 characters long. "
+            this.passwordErrorMessage += 'The password needs to be at least 8 characters long. ';
           }
           if (!validator.validatePasswordCapital(this.form.password)) {
-            this.passwordErrorMessage += "Add at least one capital letter. "
+            this.passwordErrorMessage += 'Add at least one capital letter. ';
           }
           if (!validator.validatePasswordLower(this.form.password)) {
-            this.passwordErrorMessage += "Add at least one lower-case letter. "
+            this.passwordErrorMessage += 'Add at least one lower-case letter. ';
           }
           if (!validator.validatePasswordNumber(this.form.password)) {
-            this.passwordErrorMessage += "Add at least one number. "
+            this.passwordErrorMessage += 'Add at least one number. ';
           }
           if (!validator.validatePasswordSpecial(this.form.password)) {
-            this.passwordErrorMessage += "Add at least one special character. "
+            this.passwordErrorMessage += 'Add at least one special character. ';
           }
-        }, this.errorMessageTimeout)
+        }, this.errorMessageTimeout);
       }
-    }
+    },
   },
   watch: {
-    "form.currentPassword": function () {
-      this.validateAllFields()
+    'form.currentPassword': function () {
+      this.validateAllFields();
     },
-    "form.password": function () {
-      this.validateAllFields()
-      this.refreshPasswordConfirmationField()
-      this.refreshPasswordField()
+    'form.password': function () {
+      this.validateAllFields();
+      this.refreshPasswordConfirmationField();
+      this.refreshPasswordField();
     },
-    "form.passwordConfirmation": function (newVal, oldVal) {
-      this.validateAllFields()
-      this.refreshPasswordConfirmationField()
-    }
-  }
-}
+    'form.passwordConfirmation': function (newVal, oldVal) {
+      this.validateAllFields();
+      this.refreshPasswordConfirmationField();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

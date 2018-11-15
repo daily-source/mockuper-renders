@@ -11,7 +11,7 @@
           <slot name="heading">
             <span v-if="loggedIn">Your account</span>
             <span v-if="!loggedIn && !register">Login</span>
-            <span v-if="!loggedIn && register">Register</span>            
+            <span v-if="!loggedIn && register">Register</span>
           </slot>
         </h1>
         <slot name="intro">
@@ -112,16 +112,16 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import ModalForgetPassword from "@/components/login/ModalForgetPassword.vue"
-import InputEmail from "@/components/input/InputEmail.vue"
-import InputName from "@/components/input/InputName.vue"
-import InputPassword from "@/components/input/InputPassword.vue"
-import SocialLogin from "@/components/login/SocialLogin.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import ModalForgetPassword from '@/components/login/ModalForgetPassword.vue';
+import InputEmail from '@/components/input/InputEmail.vue';
+import InputName from '@/components/input/InputName.vue';
+import InputPassword from '@/components/input/InputPassword.vue';
+import SocialLogin from '@/components/login/SocialLogin.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "layout", "login", "signup", "showOnly", "display", "requireName", "register" ],
+  props: ['layout', 'login', 'signup', 'showOnly', 'display', 'requireName', 'register'],
   components: {
     Icons,
     InputEmail,
@@ -129,99 +129,99 @@ export default {
     InputPassword,
     ModalForgetPassword,
     SocialLogin,
-    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue")
+    UserManagementLinks: () => import('@/components/login/UserManagementLinks.vue'),
   },
-  data () {
+  data() {
     return {
       showingLoginModal: this.display || false,
-      errorMessage: "",
-      welcomeMessage: "",
+      errorMessage: '',
+      welcomeMessage: '',
       submitButtonDisabled: true,
       form: {},
-      forgetPasswordEmail: "",
-      timeout: null
-    }
+      forgetPasswordEmail: '',
+      timeout: null,
+    };
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
     },
-    userName () {
-      return this.$store.state.user.fullname
-    }
+    userName() {
+      return this.$store.state.user.fullname;
+    },
   },
   methods: {
-    setEmail (event) {
-      this.form.email = event
-      this.forgetPasswordEmail = event
+    setEmail(event) {
+      this.form.email = event;
+      this.forgetPasswordEmail = event;
     },
-    openLoginBox () {
-      this.showingLoginModal = true
+    openLoginBox() {
+      this.showingLoginModal = true;
     },
-    closeLoginBox () {
-      this.showingLoginModal = false
-      clearTimeout(this.timeout)
-      this.$emit("modal:close")
+    closeLoginBox() {
+      this.showingLoginModal = false;
+      clearTimeout(this.timeout);
+      this.$emit('modal:close');
     },
-    logUserOut () {
-      this.$store.commit("LOG_OFF", { status: false })
-      this.closeLoginBox()
+    logUserOut() {
+      this.$store.commit('LOG_OFF', { status: false });
+      this.closeLoginBox();
     },
-    validateSubmit () {
+    validateSubmit() {
       if (!this.submitButtonDisabled) {
-        this.logUserIn()
+        this.logUserIn();
       }
     },
-    loginOrRegister () {
+    loginOrRegister() {
       if (this.register) {
-        this.closeLoginBox()
+        this.closeLoginBox();
       } else {
-        this.logUserIn()
+        this.logUserIn();
       }
     },
-    validateAllFields () {
-      const validName = validator.validateName(this.form.firstname) && validator.validateName(this.form.lastname)
-      const validPass = validator.validatePassword(this.form.password) && !this.register || validator.validatePassword(this.form.password) && this.form.password === this.form.passwordConfirmation
+    validateAllFields() {
+      const validName = validator.validateName(this.form.firstname) && validator.validateName(this.form.lastname);
+      const validPass = validator.validatePassword(this.form.password) && !this.register || validator.validatePassword(this.form.password) && this.form.password === this.form.passwordConfirmation;
       if (validPass && validator.validateEmail(this.form.email) && (validName && this.requireName || !this.requireName)) {
-        this.submitButtonDisabled = false
+        this.submitButtonDisabled = false;
       } else {
-        this.submitButtonDisabled = true
+        this.submitButtonDisabled = true;
       }
     },
-    logUserIn () {
+    logUserIn() {
       if (!this.submitButtonDisabled) {
-        this.submitButtonDisabled = true
-        return this.$store.dispatch("AUTHENTICATE_USER", {
+        this.submitButtonDisabled = true;
+        return this.$store.dispatch('AUTHENTICATE_USER', {
           email: this.form.email,
-          password: this.form.password
+          password: this.form.password,
         })
-          .then(data => {
+          .then((data) => {
             if (data) {
               // provide some feedback
-              this.welcomeMessage = `You are logged in, ${this.userName}`
-              this.$emit("modal:logged")
+              this.welcomeMessage = `You are logged in, ${this.userName}`;
+              this.$emit('modal:logged');
               this.timeout = setTimeout(() => {
-                this.showingLoginModal = false
-              }, 6000)
+                this.showingLoginModal = false;
+              }, 6000);
             } else {
-              this.validateAllFields()
-              this.errorMessage = "Wrong password or email does not exist"
+              this.validateAllFields();
+              this.errorMessage = 'Wrong password or email does not exist';
             }
           })
-          .catch(err => {
-            console.log("error: ", err)
-          })
+          .catch((err) => {
+            console.log('error: ', err);
+          });
       }
-    }
+    },
   },
   watch: {
-    display: function (value) {
+    display(value) {
       if (value) {
-        this.showingLoginModal = value
+        this.showingLoginModal = value;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

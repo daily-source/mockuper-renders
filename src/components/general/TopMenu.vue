@@ -73,7 +73,7 @@
     &:hover {
       text-decoration: underline;
     }
-  } 
+  }
 }
 
 .navbar-menu {
@@ -129,15 +129,15 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      showMobileMenu: false
-    }
+      showMobileMenu: false,
+    };
   },
   methods: {
-    toggleMenu () {
-      this.showMobileMenu = !this.showMobileMenu
-    }
-  }
-}
+    toggleMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
+  },
+};
 </script>

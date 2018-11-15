@@ -67,23 +67,23 @@
 </template>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
-import ProgressBar from "@/components/general/ProgressBar.vue"
-import Flickity from "@/components/plugins/Flickity.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import DonateAction from '@/components/general/DonateAction.vue';
+import ProgressBar from '@/components/general/ProgressBar.vue';
+import Flickity from '@/components/plugins/Flickity.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "fundraiser", "canEdit", "editing" ],
+  props: ['fundraiser', 'canEdit', 'editing'],
   components: {
     DonateAction,
     Flickity,
     LazyLoadedImage,
     ProgressBar,
-    MediaEditor: () => import("@/components/input/MediaEditor.vue"),
-    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue"),
-    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue")
+    MediaEditor: () => import('@/components/input/MediaEditor.vue'),
+    InlineImageEditor: () => import('@/components/input/InlineImageEditor.vue'),
+    VuePlyrWrapper: () => import('@/components/general/VuePlyrWrapper.vue'),
   },
-  data () {
+  data() {
     return {
       canRender: false,
       currentCell: null,
@@ -92,42 +92,42 @@ export default {
         prevNextButtons: true,
         pageDots: true,
         wrapAround: true,
-        autoPlay: false
-      }
-    }
+        autoPlay: false,
+      },
+    };
   },
   methods: {
-    openEdition () {
-      this.$emit("edit:open")
-    }
+    openEdition() {
+      this.$emit('edit:open');
+    },
   },
-  mounted () {
-    this.canRender = true
+  mounted() {
+    this.canRender = true;
 
     /** Listen to a flickity event:
      * if there's a slide change and the previous one had a video, pause it.
      */
-    const flick = this.$refs.flickity
-    this.currentCell = 0
-    flick.on("change", () => {
+    const flick = this.$refs.flickity;
+    this.currentCell = 0;
+    flick.on('change', () => {
       // Auto play if there's video in the selected cell.
-      if (flick.$flickity.cells[flick.selectedIndex()].element.className.indexOf("plyr") > -1) {
-        this.$refs[`plyr_${flick.selectedIndex()}`][0].player.play()
+      if (flick.$flickity.cells[flick.selectedIndex()].element.className.indexOf('plyr') > -1) {
+        this.$refs[`plyr_${flick.selectedIndex()}`][0].player.play();
       }
       // Auto pause if there's video in the previously selected cell.
-      if (flick.$flickity.cells[this.currentCell].element.className.indexOf("plyr") > -1) {
+      if (flick.$flickity.cells[this.currentCell].element.className.indexOf('plyr') > -1) {
         setTimeout(() => {
-          this.$refs[`plyr_${this.currentCell}`][0].player.pause()
-        }, 50)
+          this.$refs[`plyr_${this.currentCell}`][0].player.pause();
+        }, 50);
       }
-      this.$emit("slideChange", flick)
+      this.$emit('slideChange', flick);
 
       setTimeout(() => {
-        this.currentCell = flick.selectedIndex()
-      }, 50)
-    })
-  }
-}
+        this.currentCell = flick.selectedIndex();
+      }, 50);
+    });
+  },
+};
 </script>
 
 <style scoped lang="scss">

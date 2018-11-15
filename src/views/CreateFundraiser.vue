@@ -11,40 +11,40 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  name: "nonprofit",
+  name: 'nonprofit',
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import("@/components/general/AppFooter.vue"),
-    AppHeader: () => import("@/components/general/AppHeader.vue"),
-    NonprofitForm: () => import("@/components/nonprofit/NonprofitForm.vue")
+    AppFooter: () => import('@/components/general/AppFooter.vue'),
+    AppHeader: () => import('@/components/general/AppHeader.vue'),
+    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
    * in the template, ./src/App.vue
    */
-  metaInfo () {
-    var description = "Create a fundraiser and do good."
-    var title = "Create"
+  metaInfo() {
+    const description = 'Create a fundraiser and do good.';
+    const title = 'Create';
     return {
-      title: title,
+      title,
       meta: [
-        { vmid: "description", name: "description", content: description },
-        { vmid: "og:title", property: "og:title", content: title },
-        { vmid: "og:description", property: "og:description", content: description }
-      ]
-    }
-  }
-}
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', property: 'og:description', content: description },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">

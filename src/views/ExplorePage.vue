@@ -66,7 +66,7 @@
       <WaysSupport :version="version || 1">
         <div slot="heading">
           <h1 class="section-title title title-blue">Ways to support our nonprofit’s work</h1>
-        </div>        
+        </div>
       </WaysSupport>
 
       <AppFooter></AppFooter>
@@ -135,7 +135,7 @@
       <WaysSupport :version="version">
         <div slot="heading">
           <h1 class="section-title title">Ways to support our nonprofit’s work</h1>
-        </div>        
+        </div>
       </WaysSupport>
 
       <AppFooter></AppFooter>
@@ -144,83 +144,81 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  name: "explore",
+  name: 'explore',
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import("@/components/general/AppFooter.vue"),
-    AppHeader: () => import("@/components/general/AppHeader.vue"),
-    LazyLoadedImage: () => import("@/components/plugins/LazyLoadedImage"),
-    TopMenu: () => import("@/components/general/TopMenu.vue"),
-    NonprofitAjaxSearch: () => import("@/components/general/NonprofitAjaxSearch.vue"),
-    NonprofitFundraisers: () => import("@/components/nonprofit/NonprofitFundraisers.vue"),
-    NonprofitForm: () => import("@/components/nonprofit/NonprofitForm.vue"),
-    WaysSupport: () => import("@/components/explore/WaysSupport.vue")
+    AppFooter: () => import('@/components/general/AppFooter.vue'),
+    AppHeader: () => import('@/components/general/AppHeader.vue'),
+    LazyLoadedImage: () => import('@/components/plugins/LazyLoadedImage'),
+    TopMenu: () => import('@/components/general/TopMenu.vue'),
+    NonprofitAjaxSearch: () => import('@/components/general/NonprofitAjaxSearch.vue'),
+    NonprofitFundraisers: () => import('@/components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
+    WaysSupport: () => import('@/components/explore/WaysSupport.vue'),
   },
-  data () {
+  data() {
     return {
       showMoreWebsitesNotice: false,
       canRender: false,
       showSocialMedia: false,
       otherSites: [
-        { name: "Quitathon", url: "https://quitathon.org", imgsrc: "/static/assets/images/other-sites/quitathon.png" },
-        { name: "Loseathon", url: "https://loseathon.org", imgsrc: "/static/assets/images/other-sites/loseathon.png" },
-        { name: "Bike for Good", url: "https://bike-for-good.org", imgsrc: "/static/assets/images/other-sites/bike-for-good.png" },
-        { name: "Polar plunge for Good", url: "https://polar-plunge-for-good.org", imgsrc: "/static/assets/images/other-sites/polar-plunge-for-good.png" },
-        { name: "Give it up for Good", url: "https://give-it-up.org", imgsrc: "/static/assets/images/other-sites/give-it-up-for-good.png" },
-        { name: "Run for Good", url: "https://run-for-good.org", imgsrc: "/static/assets/images/other-sites/run-for-good.png" }
-      ]
-    }
+        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: '/static/assets/images/other-sites/quitathon.png' },
+        { name: 'Loseathon', url: 'https://loseathon.org', imgsrc: '/static/assets/images/other-sites/loseathon.png' },
+        { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: '/static/assets/images/other-sites/bike-for-good.png' },
+        { name: 'Polar plunge for Good', url: 'https://polar-plunge-for-good.org', imgsrc: '/static/assets/images/other-sites/polar-plunge-for-good.png' },
+        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: '/static/assets/images/other-sites/give-it-up-for-good.png' },
+        { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: '/static/assets/images/other-sites/run-for-good.png' },
+      ],
+    };
   },
-  metaInfo () {
+  metaInfo() {
     return {
-      title: "Explore",
+      title: 'Explore',
       meta: [
-        { vmid: "og:title", property: "og:title", content: "Explore multiple ways to do good!" },
-        { vmid: "description", name: "description", content: "Check out Volunteerathons to donate to and nonprofits that are doing good deeds and that also need your help." },
-        { vmid: "twitter:card", property: "twitter:card", content: "summary_large_image" },
-        { vmid: "og:image:width", property: "og:image:width", content: "1280" },
-        { vmid: "og:image:height", property: "og:image:height", content: "680" },
-        { vmid: "og:image", property: "og:image", content: `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}/public/volunteerathon-screenshot.png` }
-      ]
-    }
+        { vmid: 'og:title', property: 'og:title', content: 'Explore multiple ways to do good!' },
+        { vmid: 'description', name: 'description', content: 'Check out Volunteerathons to donate to and nonprofits that are doing good deeds and that also need your help.' },
+        { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
+        { vmid: 'og:image:width', property: 'og:image:width', content: '1280' },
+        { vmid: 'og:image:height', property: 'og:image:height', content: '680' },
+        { vmid: 'og:image', property: 'og:image', content: `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}/public/volunteerathon-screenshot.png` },
+      ],
+    };
   },
-  mounted () {
-    this.canRender = true
+  mounted() {
+    this.canRender = true;
   },
-  asyncData ({ store, route: { params: { ein } } }) {
-    return new Promise((resolve, reject) => {
-      return store.dispatch("FETCH_EXPLORE_FUNDRAISERS")
-        .then(data => {
-          resolve(data)
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
+  asyncData({ store, route: { params: { ein } } }) {
+    return new Promise((resolve, reject) => store.dispatch('FETCH_EXPLORE_FUNDRAISERS')
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        reject(err);
+      }));
   },
   computed: {
-    fundraisers () {
-      return this.$store.state.explore.fundraisers.data
+    fundraisers() {
+      return this.$store.state.explore.fundraisers.data;
     },
-    version () {
-      return parseInt(this.$route.query.version, 10) || 0
-    }
+    version() {
+      return parseInt(this.$route.query.version, 10) || 0;
+    },
   },
   methods: {
-    goToNonprofit (nonprofit) {
-      this.$router.push(`/nonprofit/${nonprofit.EIN}`)
-    }
-  }
-}
+    goToNonprofit(nonprofit) {
+      this.$router.push(`/nonprofit/${nonprofit.EIN}`);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

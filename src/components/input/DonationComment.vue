@@ -29,29 +29,29 @@
 
 <script>
 export default {
-  props: ["fundraiser"],
-  data () {
+  props: ['fundraiser'],
+  data() {
     return {
       donation: {
-        comment: "",
-        isAnonymous: false
-      }
-    }
+        comment: '',
+        isAnonymous: false,
+      },
+    };
   },
   computed: {
-    userName () {
-      return this.$store.state.user.userName
-    }
+    userName() {
+      return this.$store.state.user.userName;
+    },
   },
   watch: {
-    "donation.isAnonymous": function (newVal) {
-      this.$emit("input:anonymous", newVal)
+    'donation.isAnonymous': function (newVal) {
+      this.$emit('input:anonymous', newVal);
     },
-    "donation.comment": function (newVal) {
-      this.$emit("input:comment", newVal)
-    }
-  }
-}
+    'donation.comment': function (newVal) {
+      this.$emit('input:comment', newVal);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -78,7 +78,6 @@ export default {
 .centered {
   text-align: center;
 }
-
 
 
 </style>

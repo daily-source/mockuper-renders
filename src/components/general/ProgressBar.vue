@@ -59,6 +59,6 @@ p {
 
 <script>
 export default {
-  props: [ "fundraiser", "size" ]
-}
+  props: ['fundraiser', 'size'],
+};
 </script>

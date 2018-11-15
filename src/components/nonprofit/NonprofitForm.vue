@@ -113,51 +113,51 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: ["submitButtonLabel", "enableNonprofitSearch"],
+  props: ['submitButtonLabel', 'enableNonprofitSearch'],
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
     Icons,
-    ComboBox: () => import("@/components/general/ComboBox.vue"),
-    NonprofitAjaxSearch: () => import("@/components/general/NonprofitAjaxSearch.vue")
+    ComboBox: () => import('@/components/general/ComboBox.vue'),
+    NonprofitAjaxSearch: () => import('@/components/general/NonprofitAjaxSearch.vue'),
   },
-  mounted () {
-    this.canRender = true
-    let storedForm = window.localStorage.getItem("nonprofitForm")
+  mounted() {
+    this.canRender = true;
+    const storedForm = window.localStorage.getItem('nonprofitForm');
     if (storedForm) {
-      this.form = JSON.parse(storedForm)
+      this.form = JSON.parse(storedForm);
     }
   },
-  data () {
+  data() {
     return {
       canRender: false,
       form: {},
-      errorMessage: "",
-      nonprofitErrorMessage: "",
-      nonprofitIsErrorMessage: "",
-      hoursErrorMessage: "",
-      targetNonprofitErrorMessage: ""
-    }
+      errorMessage: '',
+      nonprofitErrorMessage: '',
+      nonprofitIsErrorMessage: '',
+      hoursErrorMessage: '',
+      targetNonprofitErrorMessage: '',
+    };
   },
   /**
    * TODO: validate form, submit data to api, display thank you or error dialog.
    */
   methods: {
     setNonprofit($event) {
-      console.log($event)
-    }
+      console.log($event);
+    },
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
-    }
-  }
-}
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -32,20 +32,20 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import Modal from "@/components/general/Modal.vue"
-import Flickity from "@/components/plugins/Flickity.vue"
-import Vue from "vue"
+import Icons from '@/components/general/Icons.vue';
+import Modal from '@/components/general/Modal.vue';
+import Flickity from '@/components/plugins/Flickity.vue';
+import Vue from 'vue';
 
 export default {
-  props: [ "media" ],
+  props: ['media'],
   components: {
     Icons,
     Flickity,
     Modal,
-    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue")
+    VuePlyrWrapper: () => import('@/components/general/VuePlyrWrapper.vue'),
   },
-  data () {
+  data() {
     return {
       modalState: false,
       currentCell: null,
@@ -56,62 +56,62 @@ export default {
         pageDots: false,
         wrapAround: true,
         adaptiveHeight: true,
-        lazyLoad: true
-      }
-    }
+        lazyLoad: true,
+      },
+    };
   },
   methods: {
-    openModal () {
-      this.modalState = true
-      this.$emit("modal:open")
+    openModal() {
+      this.modalState = true;
+      this.$emit('modal:open');
     },
-    closeModals () {
-      this.modalState = false
-      this.$emit("modal:close")
+    closeModals() {
+      this.modalState = false;
+      this.$emit('modal:close');
 
       // On close, pause the current slide if it's a video.
-      const flick = this.$refs.flickity
-      if (flick.$flickity.cells[this.currentCell].element.className.indexOf("plyr") > -1) {
-        this.$refs[`plyr_${this.currentCell}`][0].player.pause()
+      const flick = this.$refs.flickity;
+      if (flick.$flickity.cells[this.currentCell].element.className.indexOf('plyr') > -1) {
+        this.$refs[`plyr_${this.currentCell}`][0].player.pause();
       }
-    }
+    },
   },
   watch: {
-    modalState (value) {
+    modalState(value) {
       if (value) {
         Vue.nextTick(() => {
-          this.$refs.flickity.resize()
-        })
+          this.$refs.flickity.resize();
+        });
       }
-    }
+    },
   },
-  mounted () {
-    const flick = this.$refs.flickity
-    this.currentCell = 0
-    this.canRender = true
+  mounted() {
+    const flick = this.$refs.flickity;
+    this.currentCell = 0;
+    this.canRender = true;
 
     /** Listen to a flickity event:
      * if there's a slide change and the previous one had a video, pause it.
      */
-    flick.on("change", () => {
+    flick.on('change', () => {
       // Auto play if there's video in the selected cell.
-      if (flick.$flickity.cells[flick.selectedIndex()].element.className.indexOf("plyr") > -1) {
-        this.$refs[`plyr_${flick.selectedIndex()}`][0].player.play()
+      if (flick.$flickity.cells[flick.selectedIndex()].element.className.indexOf('plyr') > -1) {
+        this.$refs[`plyr_${flick.selectedIndex()}`][0].player.play();
       }
       // Auto pause if there's video in the previously selected cell.
-      if (flick.$flickity.cells[this.currentCell].element.className.indexOf("plyr") > -1) {
+      if (flick.$flickity.cells[this.currentCell].element.className.indexOf('plyr') > -1) {
         setTimeout(() => {
-          this.$refs[`plyr_${this.currentCell}`][0].player.pause()
-        }, 50)
+          this.$refs[`plyr_${this.currentCell}`][0].player.pause();
+        }, 50);
       }
-      this.$emit("slideChange", flick)
+      this.$emit('slideChange', flick);
 
       setTimeout(() => {
-        this.currentCell = flick.selectedIndex()
-      }, 50)
-    })
-  }
-}
+        this.currentCell = flick.selectedIndex();
+      }, 50);
+    });
+  },
+};
 </script>
 
 <style lang="scss">

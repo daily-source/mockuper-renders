@@ -66,43 +66,43 @@
 </style>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
-import Icons from "@/components/general/Icons.vue"
-import ShareBox from "@/components/general/ShareBox.vue"
+import DonateAction from '@/components/general/DonateAction.vue';
+import Icons from '@/components/general/Icons.vue';
+import ShareBox from '@/components/general/ShareBox.vue';
 
 export default {
-  props: [ "allowComment", "commentId", "urlParams", "text", "via", "title", "trigger", "fundraiserId", "updateId" ],
+  props: ['allowComment', 'commentId', 'urlParams', 'text', 'via', 'title', 'trigger', 'fundraiserId', 'updateId'],
   components: {
     DonateAction,
     Icons,
-    ShareBox
+    ShareBox,
   },
-  data () {
+  data() {
     return {
-      openShareBox: false
-    }
+      openShareBox: false,
+    };
   },
   watch: {
-    openShareBox (value) {
+    openShareBox(value) {
       if (value) {
-        document.body.addEventListener("click", this.listenToBodyClick)
+        document.body.addEventListener('click', this.listenToBodyClick);
       } else {
-        document.body.removeEventListener("click", this.listenToBodyClick)
+        document.body.removeEventListener('click', this.listenToBodyClick);
       }
-    }
+    },
   },
   methods: {
-    listenToBodyClick (event) {
-      if (!event.target.closest(".share-toolbar__share-wrapper")) {
-        this.openShareBox = false
+    listenToBodyClick(event) {
+      if (!event.target.closest('.share-toolbar__share-wrapper')) {
+        this.openShareBox = false;
       }
     },
-    replyTo (commentId) {
-      this.$emit("replyTo", { commentId: commentId })
+    replyTo(commentId) {
+      this.$emit('replyTo', { commentId });
     },
-    share (commentId) {
-      this.openShareBox = !this.openShareBox
-    }
-  }
-}
+    share(commentId) {
+      this.openShareBox = !this.openShareBox;
+    },
+  },
+};
 </script>

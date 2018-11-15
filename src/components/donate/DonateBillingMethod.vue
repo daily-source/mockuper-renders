@@ -111,93 +111,92 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
   props: {
     payment: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      creditCardNumberErrorMessage: "",
-      expirationDateErrorMessage: "",
-      billingZipErrorMessage: "",
+      creditCardNumberErrorMessage: '',
+      expirationDateErrorMessage: '',
+      billingZipErrorMessage: '',
       timeoutCardNumber: null,
-      timeoutZip: null
-    }
+      timeoutZip: null,
+    };
   },
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    getYearArray () {
-      const currentYear = (new Date()).getFullYear() - 2000
-      var yearArray = []
-      for (var i = currentYear; i < currentYear + 12; i++) {
-        yearArray.push(i)
+    getYearArray() {
+      const currentYear = (new Date()).getFullYear() - 2000;
+      const yearArray = [];
+      for (let i = currentYear; i < currentYear + 12; i++) {
+        yearArray.push(i);
       }
-      return yearArray
+      return yearArray;
     },
-    validateAllFields () {
-      const validCardNumber = validator.validateCreditCardNumber(this.payment.cardNumber)
-      const validCVV = validator.validatePasswordNumber(this.payment.securityCode)
-      const validExpirationDate = validator.validateExpirationDate(this.payment.expirationMonth, this.payment.expirationYear)
-      const validZIP = validator.validateZipCode(this.payment.billingZip)
+    validateAllFields() {
+      const validCardNumber = validator.validateCreditCardNumber(this.payment.cardNumber);
+      const validCVV = validator.validatePasswordNumber(this.payment.securityCode);
+      const validExpirationDate = validator.validateExpirationDate(this.payment.expirationMonth, this.payment.expirationYear);
+      const validZIP = validator.validateZipCode(this.payment.billingZip);
       if (validCardNumber && validExpirationDate && validCVV && validZIP) {
-        this.$emit("form:valid")
-        return true
-      } else {
-        this.$emit("form:invalid")
-        return false
+        this.$emit('form:valid');
+        return true;
       }
-    }
+      this.$emit('form:invalid');
+      return false;
+    },
   },
   watch: {
-    "payment.cardNumber": function (newVal, oldVal) {
-      var vm = this
-      this.creditCardNumberErrorMessage = ""
-      this.validateAllFields()
-      this.payment.cardNumber = validator.formatNumber(newVal, oldVal, 16)
-      clearTimeout(this.timeoutCardNumber)
+    'payment.cardNumber': function (newVal, oldVal) {
+      const vm = this;
+      this.creditCardNumberErrorMessage = '';
+      this.validateAllFields();
+      this.payment.cardNumber = validator.formatNumber(newVal, oldVal, 16);
+      clearTimeout(this.timeoutCardNumber);
       this.timeoutCardNumber = setTimeout(() => {
         if (validator.validateCreditCardNumber(newVal)) {
-          vm.creditCardNumberErrorMessage = ""
+          vm.creditCardNumberErrorMessage = '';
         } else {
-          vm.creditCardNumberErrorMessage = "Please enter all the digits"
+          vm.creditCardNumberErrorMessage = 'Please enter all the digits';
         }
-      }, 5000)
+      }, 5000);
     },
-    "payment.expirationMonth": function (newVal, oldVal) {
-      this.validateAllFields()
+    'payment.expirationMonth': function (newVal, oldVal) {
+      this.validateAllFields();
     },
-    "payment.expirationYear": function (newVal, oldVal) {
-      this.validateAllFields()
+    'payment.expirationYear': function (newVal, oldVal) {
+      this.validateAllFields();
     },
-    "payment.securityCode": function (newVal, oldVal) {
-      this.validateAllFields()
-      this.payment.securityCode = validator.formatNumber(newVal, oldVal, 4)
+    'payment.securityCode': function (newVal, oldVal) {
+      this.validateAllFields();
+      this.payment.securityCode = validator.formatNumber(newVal, oldVal, 4);
     },
-    "payment.billingZip": function (newVal, oldVal) {
-      this.validateAllFields()
-      this.payment.billingZip = validator.formatNumber(newVal, oldVal, 5)
+    'payment.billingZip': function (newVal, oldVal) {
+      this.validateAllFields();
+      this.payment.billingZip = validator.formatNumber(newVal, oldVal, 5);
 
-      var vm = this
-      this.billingZipErrorMessage = ""
-      clearTimeout(this.timeoutZip)
+      const vm = this;
+      this.billingZipErrorMessage = '';
+      clearTimeout(this.timeoutZip);
       this.timeoutZip = setTimeout(() => {
         if (validator.validateZipCode(newVal)) {
-          vm.billingZipErrorMessage = ""
+          vm.billingZipErrorMessage = '';
         } else {
-          vm.billingZipErrorMessage = "Please introduce a valid ZIP code"
+          vm.billingZipErrorMessage = 'Please introduce a valid ZIP code';
         }
-      }, 5000)
-    }
-  }
-}
+      }, 5000);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -219,7 +218,7 @@ export default {
     @include breakpoint($tablet) {
       display: flex;
       flex-direction: row;
-      align-items: center;      
+      align-items: center;
     }
   }
 }

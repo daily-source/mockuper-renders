@@ -26,7 +26,7 @@
           ></InlineImageEditor>
         </figure>
         <div class="fundraiser-participant__details" :class="{'column is-5': editing}">
-          <h3 class="fundraiser-participant__name">by 
+          <h3 class="fundraiser-participant__name">by
             <div class="emphasis">
               <InlineFieldEditor
                 type="text"
@@ -121,31 +121,31 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import SharingIconsRow from "@/components/general/SharingIconsRow.vue"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import Icons from '@/components/general/Icons.vue';
+import SharingIconsRow from '@/components/general/SharingIconsRow.vue';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "fundraiser", "editing", "canEdit" ],
+  props: ['fundraiser', 'editing', 'canEdit'],
   components: {
     Icons,
     LazyLoadedImage,
     SharingIconsRow,
-    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue"),
-    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue")
+    InlineFieldEditor: () => import('@/components/input/InlineFieldEditor.vue'),
+    InlineImageEditor: () => import('@/components/input/InlineImageEditor.vue'),
   },
   methods: {
-    closeEditor () {
-      this.$emit("edit:close")
+    closeEditor() {
+      this.$emit('edit:close');
     },
-    openEditor () {
-      this.$emit("edit:open")
+    openEditor() {
+      this.$emit('edit:open');
     },
-    openEdition (ref) {
-      this.$refs[ref].openEdition()
-    }
-  }
-}
+    openEdition(ref) {
+      this.$refs[ref].openEdition();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -158,11 +158,11 @@ export default {
   &.is-editing {
     @include breakpoint($mobile) {
       display: block;
-    }    
+    }
   }
 
   &__wrapper {
-    padding-top: 20px;    
+    padding-top: 20px;
   }
 
   &__name {
@@ -237,7 +237,7 @@ export default {
       width: 600px;
       @include breakpoint($mobile) {
         width: 100%;
-      }      
+      }
     }
   }
 

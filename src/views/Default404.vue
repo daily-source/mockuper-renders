@@ -12,28 +12,28 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
+import Vue from 'vue';
+import VueMeta from 'vue-meta';
 
-Vue.use(VueMeta)
+Vue.use(VueMeta);
 
 export default {
-  name: "account",
+  name: 'account',
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import("@/components/general/AppFooter.vue"),
-    AppHeader: () => import("@/components/general/AppHeader.vue")
+    AppFooter: () => import('@/components/general/AppFooter.vue'),
+    AppHeader: () => import('@/components/general/AppHeader.vue'),
   },
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: "404"
-    }
-  }
-}
+      title: '404',
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -9,30 +9,30 @@
  * This is a fork of the original vueflickity component.
  * Modified to work with SSR: https://github.com/drewjbartlett/vue-flickity
  */
-var Flickity = {}
+let Flickity = {};
 
 export default {
   props: {
-    options: Object
+    options: Object,
   },
 
-  mounted () {
-    Flickity = require("flickity")
-    this.init()
+  mounted() {
+    Flickity = require('flickity');
+    this.init();
   },
 
-  beforeDestroy () {
-    this.$flickity.destroy()
-    this.$flickity = null
+  beforeDestroy() {
+    this.$flickity.destroy();
+    this.$flickity = null;
   },
 
   methods: {
     /**
      * Initialize a new flickity and emit init event.
      */
-    init () {
-      this.$flickity = new Flickity(this.$el, this.options)
-      this.$emit("init", this.$flickity)
+    init() {
+      this.$flickity = new Flickity(this.$el, this.options);
+      this.$emit('init', this.$flickity);
     },
 
     /**
@@ -40,8 +40,8 @@ export default {
      *
      * @return {Flickity}
      */
-    flickity () {
-      return this.$flickity
+    flickity() {
+      return this.$flickity;
     },
 
     /**
@@ -55,8 +55,8 @@ export default {
      * @param {boolean} isWrapped
      * @param {boolean} isInstant
      */
-    select (index, isWrapped, isInstant) {
-      this.$flickity.select(index, isWrapped, isInstant)
+    select(index, isWrapped, isInstant) {
+      this.$flickity.select(index, isWrapped, isInstant);
     },
 
     /**
@@ -65,8 +65,8 @@ export default {
      * @param {boolean} isWrapped
      * @param {boolean} isInstant
      */
-    next (isWrapped, isInstant) {
-      this.$flickity.next(isWrapped, isInstant)
+    next(isWrapped, isInstant) {
+      this.$flickity.next(isWrapped, isInstant);
     },
 
     /**
@@ -75,8 +75,8 @@ export default {
      * @param {boolean} isWrapped
      * @param {boolean} isInstant
      */
-    previous (isWrapped, isInstant) {
-      this.$flickity.previous(isWrapped, isInstant)
+    previous(isWrapped, isInstant) {
+      this.$flickity.previous(isWrapped, isInstant);
     },
 
     /**
@@ -86,8 +86,8 @@ export default {
      * @param {boolean} isWrapped
      * @param {boolean} isInstant
      */
-    selectCell (value, isWrapped, isInstant) {
-      this.$flickity.selectCell(value, isWrapped, isInstant)
+    selectCell(value, isWrapped, isInstant) {
+      this.$flickity.selectCell(value, isWrapped, isInstant);
     },
 
     /**
@@ -97,15 +97,15 @@ export default {
     /**
      * Trigger a resize event
      */
-    resize () {
-      this.$flickity.resize()
+    resize() {
+      this.$flickity.resize();
     },
 
     /**
      * Trigger a reposition event
      */
-    reposition () {
-      this.$flickity.reposition()
+    reposition() {
+      this.$flickity.reposition();
     },
 
     /**
@@ -117,8 +117,8 @@ export default {
      *
      * @param {array|HTMLElement|NodeList} elements
      */
-    prepend (elements) {
-      this.$flickity.prepend(elements)
+    prepend(elements) {
+      this.$flickity.prepend(elements);
     },
 
     /**
@@ -126,8 +126,8 @@ export default {
      *
      * @param {array|HTMLElement|NodeList} elements
      */
-    append (elements) {
-      this.$flickity.append(elements)
+    append(elements) {
+      this.$flickity.append(elements);
     },
 
     /**
@@ -136,8 +136,8 @@ export default {
      * @param {array|HTMLElement|NodeList} elements
      * @param {number} index
      */
-    insert (elements, index) {
-      this.$flickity.insert(elements, index)
+    insert(elements, index) {
+      this.$flickity.insert(elements, index);
     },
 
     /**
@@ -145,8 +145,8 @@ export default {
      *
      * @param {array|HTMLElement|NodeList} elements
      */
-    remove (elements) {
-      this.$flickity.remove(elements)
+    remove(elements) {
+      this.$flickity.remove(elements);
     },
 
     /**
@@ -156,37 +156,37 @@ export default {
     /**
      * Trigger a playPlayer event
      */
-    playPlayer () {
-      this.$flickity.playPlayer()
+    playPlayer() {
+      this.$flickity.playPlayer();
     },
 
     /**
      * Trigger a stopPlayer event
      */
-    stopPlayer () {
-      this.$flickity.stopPlayer()
+    stopPlayer() {
+      this.$flickity.stopPlayer();
     },
 
     /**
      * Trigger a pausePlayer event
      */
-    pausePlayer () {
-      this.$flickity.pausePlayer()
+    pausePlayer() {
+      this.$flickity.pausePlayer();
     },
 
     /**
      * Trigger a unpausePlayer event
      */
-    unpausePlayer () {
-      this.$flickity.unpausePlayer()
+    unpausePlayer() {
+      this.$flickity.unpausePlayer();
     },
 
     /**
      * Trigger a rerender event
      */
-    rerender () {
-      this.$flickity.destroy()
-      this.init()
+    rerender() {
+      this.$flickity.destroy();
+      this.init();
     },
 
     /**
@@ -196,15 +196,15 @@ export default {
     /**
      * Destroy the flickity instance
      */
-    destroy () {
-      this.$flickity.destroy()
+    destroy() {
+      this.$flickity.destroy();
     },
 
     /**
      * Trigger a rerender event
      */
-    reloadCells () {
-      this.$flickity.reloadCells()
+    reloadCells() {
+      this.$flickity.reloadCells();
     },
 
     /**
@@ -212,8 +212,8 @@ export default {
      *
      * @return {array}
      */
-    getCellElements () {
-      return this.$flickity.getCellElements()
+    getCellElements() {
+      return this.$flickity.getCellElements();
     },
 
     /**
@@ -221,8 +221,8 @@ export default {
      *
      * @return {Flickity}
      */
-    data () {
-      return Flickity.data(this.$el)
+    data() {
+      return Flickity.data(this.$el);
     },
 
     /**
@@ -235,8 +235,8 @@ export default {
      * @param {string} eventName
      * @param {function} listener
      */
-    on (eventName, listener) {
-      this.$flickity.on(eventName, listener)
+    on(eventName, listener) {
+      this.$flickity.on(eventName, listener);
     },
 
     /**
@@ -245,8 +245,8 @@ export default {
      * @param {string} eventName
      * @param {function} listener
      */
-    off (eventName, listener) {
-      this.$flickity.off(eventName, listener)
+    off(eventName, listener) {
+      this.$flickity.off(eventName, listener);
     },
 
     /**
@@ -255,8 +255,8 @@ export default {
      * @param {string} eventName
      * @param {function} listener
      */
-    once (eventName, listener) {
-      this.$flickity.once(eventName, listener)
+    once(eventName, listener) {
+      this.$flickity.once(eventName, listener);
     },
 
     /**
@@ -268,8 +268,8 @@ export default {
      *
      * @return {HTMLElement}
      */
-    selectedElement () {
-      return this.$flickity.selectedElement
+    selectedElement() {
+      return this.$flickity.selectedElement;
     },
 
     /**
@@ -277,8 +277,8 @@ export default {
      *
      * @return {array}
      */
-    selectedElements () {
-      return this.$flickity.selectedElements
+    selectedElements() {
+      return this.$flickity.selectedElements;
     },
 
     /**
@@ -286,8 +286,8 @@ export default {
      *
      * @return {number}
      */
-    selectedIndex () {
-      return this.$flickity.selectedIndex
+    selectedIndex() {
+      return this.$flickity.selectedIndex;
     },
 
     /**
@@ -295,8 +295,8 @@ export default {
      *
      * @return {array}
      */
-    cells () {
-      return this.$flickity.cells
+    cells() {
+      return this.$flickity.cells;
     },
 
     /**
@@ -304,26 +304,26 @@ export default {
      *
      * @return {array}
      */
-    slides () {
-      return this.$flickity.slides
+    slides() {
+      return this.$flickity.slides;
     },
 
     /**
      * Disable dragging of slider
      */
-    disableDrag () {
-      this.$flickity.options.draggable = false
-      this.$flickity.updateDraggable()
+    disableDrag() {
+      this.$flickity.options.draggable = false;
+      this.$flickity.updateDraggable();
     },
 
     /**
      * Enable dragging of slider
      */
-    enableDrag () {
-      this.$flickity.options.draggable = true
-      this.$flickity.updateDraggable()
-    }
-  }
+    enableDrag() {
+      this.$flickity.options.draggable = true;
+      this.$flickity.updateDraggable();
+    },
+  },
 
-}
+};
 </script>

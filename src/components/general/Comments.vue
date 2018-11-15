@@ -29,19 +29,19 @@
 </style>
 
 <script>
-import Comment from "@/components/general/Comment.vue"
-import CommentReply from "@/components/general/CommentReply.vue"
+import Comment from '@/components/general/Comment.vue';
+import CommentReply from '@/components/general/CommentReply.vue';
 
 export default {
-  props: [ "comments", "more-comments", "fundraiserId" ],
+  props: ['comments', 'more-comments', 'fundraiserId'],
   components: {
     Comment,
-    CommentReply
+    CommentReply,
   },
   methods: {
-    loadMoreComments () {
-      this.$emit("loadMoreComments")
-    }
-  }
-}
+    loadMoreComments() {
+      this.$emit('loadMoreComments');
+    },
+  },
+};
 </script>

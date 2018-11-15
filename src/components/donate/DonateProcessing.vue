@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import Modal from "@/components/general/Modal.vue"
+import Modal from '@/components/general/Modal.vue';
 
 export default {
-  props: ["state"],
+  props: ['state'],
   components: {
-    Modal
-  }
-}
+    Modal,
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -66,12 +66,12 @@ export default {
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 40% { 
+  } 40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
-} 
+}
 </style>

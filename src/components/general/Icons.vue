@@ -119,6 +119,6 @@
 
 <script>
 export default {
-  props: [ "icon", "iconwidth", "iconheight", "color" ]
-}
+  props: ['icon', 'iconwidth', 'iconheight', 'color'],
+};
 </script>

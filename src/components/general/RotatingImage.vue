@@ -3,7 +3,7 @@
     <div class="transition-wrapper" v-for="(image, index) in imgarr" :key="image.imgsrc">
       <keep-alive>
         <LazyLoadedImage
-          class="card-content card-taller rotating-image" 
+          class="card-content card-taller rotating-image"
           :src="imgarr[index].imgsrc"
           :is-background="true"
           :class="{'is-active': index === currentImg % imgarr.length}"
@@ -14,39 +14,39 @@
 </template>
 
 <script>
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "imgarr", "delay", "interval" ],
+  props: ['imgarr', 'delay', 'interval'],
   components: {
-    LazyLoadedImage
+    LazyLoadedImage,
   },
-  data () {
+  data() {
     return {
       currentImg: 0,
-      timer: null
-    }
+      timer: null,
+    };
   },
-  mounted () {
-    this.startRotation()
+  mounted() {
+    this.startRotation();
   },
-  destroyed () {
-    clearInterval(this.timer)
+  destroyed() {
+    clearInterval(this.timer);
   },
   methods: {
-    startRotation () {
+    startRotation() {
       setTimeout(() => {
-        this.timer = setInterval(this.next, this.interval)
-      }, this.delay)
+        this.timer = setInterval(this.next, this.interval);
+      }, this.delay);
     },
-    next: function () {
-      this.currentImg++
+    next() {
+      this.currentImg++;
     },
-    prev: function () {
-      this.currentImg--
-    }
-  }
-}
+    prev() {
+      this.currentImg--;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -58,4 +58,3 @@ export default {
   opacity: 1;
 }
 </style>
-

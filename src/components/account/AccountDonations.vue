@@ -5,8 +5,8 @@
       :state="userDialogModal"
       v-on:modal:close="closeUserDialog()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
 
     <h3>Donations</h3>
@@ -49,23 +49,23 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
-      userDialogSpinner: false
-    }
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
+      userDialogSpinner: false,
+    };
   },
   components: {
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   computed: {
-    userData () {
-      return this.$store.state.user
-    }
-  }
-}
+    userData() {
+      return this.$store.state.user;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

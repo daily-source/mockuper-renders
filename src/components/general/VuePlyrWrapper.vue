@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import "vue-plyr"
+import 'vue-plyr';
 
 export default {
-  data () {
+  data() {
     return {
-      canRender: false
-    }
+      canRender: false,
+    };
   },
-  mounted () {
-    this.canRender = true
-  }
-}
+  mounted() {
+    this.canRender = true;
+  },
+};
 </script>
 
 <style lang="scss">

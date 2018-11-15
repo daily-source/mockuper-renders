@@ -145,7 +145,7 @@
 
   &.active {
     max-height: auto;
-    overflow: visible;    
+    overflow: visible;
   }
 
   @include breakpoint($tablet) {
@@ -209,7 +209,7 @@
   }
 
   div {
-    z-index: 10;    
+    z-index: 10;
     &.modal-trigger {
       z-index: 11;
     }
@@ -238,7 +238,7 @@
 
       img {
         max-width: 272px;
-        max-height: 49px;        
+        max-height: 49px;
       }
     }
 
@@ -276,14 +276,14 @@
 
       img {
         max-width: 272px;
-        max-height: 49px;        
+        max-height: 49px;
       }
 
       @include breakpoint($tablet) {
         img {
           max-width: 300px;
-          max-height: 53px;        
-        }        
+          max-height: 53px;
+        }
       }
 
       &.centered {
@@ -304,51 +304,51 @@
 </style>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import LogInModal from "@/components/general/LogInModal.vue"
+import Icons from '@/components/general/Icons.vue';
+import LogInModal from '@/components/general/LogInModal.vue';
 
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   components: {
     Icons,
-    LogInModal
+    LogInModal,
   },
-  props: ["layout"],
-  data () {
+  props: ['layout'],
+  data() {
     return {
       showSearchBar: false,
       showingMaxGoodSites: false,
       maxGoodSites: [
-        { name: "Volunteerathon", href: "#" },
-        { name: "Quitathon", href: "#" },
-        { name: "Loseathon", href: "#" },
-        { name: "Give it up for Good", href: "#" },
-        { name: "Vacation for Good", href: "#" },
-        { name: "Waterathon", href: "#" },
-        { name: "Christmas for Good", href: "#" },
-        { name: "MLK Day for Good", href: "#" },
-        { name: "The Lent Site", href: "#" },
-        { name: "Valentines for Good", href: "#" },
-        { name: "Fools for Good", href: "#" },
-        { name: "Resolutions for Good", href: "#" },
-        { name: "Run for good", href: "#" },
-        { name: "Bike for Good", href: "#" },
-        { name: "Walk for Good", href: "#" },
-        { name: "Birthdays for Good", href: "#" },
-        { name: "Polar Plunge for Good", href: "#" },
-        { name: "Bake for Good", href: "#" }
-      ]
-    }
+        { name: 'Volunteerathon', href: '#' },
+        { name: 'Quitathon', href: '#' },
+        { name: 'Loseathon', href: '#' },
+        { name: 'Give it up for Good', href: '#' },
+        { name: 'Vacation for Good', href: '#' },
+        { name: 'Waterathon', href: '#' },
+        { name: 'Christmas for Good', href: '#' },
+        { name: 'MLK Day for Good', href: '#' },
+        { name: 'The Lent Site', href: '#' },
+        { name: 'Valentines for Good', href: '#' },
+        { name: 'Fools for Good', href: '#' },
+        { name: 'Resolutions for Good', href: '#' },
+        { name: 'Run for good', href: '#' },
+        { name: 'Bike for Good', href: '#' },
+        { name: 'Walk for Good', href: '#' },
+        { name: 'Birthdays for Good', href: '#' },
+        { name: 'Polar Plunge for Good', href: '#' },
+        { name: 'Bake for Good', href: '#' },
+      ],
+    };
   },
   methods: {
-    toggleOtherMaxGoodSites () {
-      this.showingMaxGoodSites = !this.showingMaxGoodSites
-    }
+    toggleOtherMaxGoodSites() {
+      this.showingMaxGoodSites = !this.showingMaxGoodSites;
+    },
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
-    }
-  }
-}
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
+    },
+  },
+};
 </script>

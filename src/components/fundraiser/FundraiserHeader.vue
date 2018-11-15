@@ -34,16 +34,16 @@
 
 <script>
 export default {
-  props: [ "fundraiser", "editing" ],
+  props: ['fundraiser', 'editing'],
   components: {
-    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
+    InlineFieldEditor: () => import('@/components/input/InlineFieldEditor.vue'),
   },
   methods: {
-    closeEdition () {
-      this.$emit("edit:close")
-    }
-  }
-}
+    closeEdition() {
+      this.$emit('edit:close');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

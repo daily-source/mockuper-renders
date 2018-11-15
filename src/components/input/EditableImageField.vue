@@ -11,8 +11,8 @@
             v-if="avatar"
             width="200"
           />
-          <avatar 
-            :username="$store.state.user.firstname + ' ' + $store.state.user.lastname" 
+          <avatar
+            :username="$store.state.user.firstname + ' ' + $store.state.user.lastname"
             v-if="!avatar"
             :rounded="false"
           ></avatar>
@@ -60,46 +60,46 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: [ "label", "type", "avatar", "errorText" ],
-  data () {
+  props: ['label', 'type', 'avatar', 'errorText'],
+  data() {
     return {
       fieldIsOpen: false,
-      errorMessage: "",
-      myCroppa: {}
-    }
+      errorMessage: '',
+      myCroppa: {},
+    };
   },
   components: {
     Icons,
-    Avatar: () => import("vue-avatar")
+    Avatar: () => import('vue-avatar'),
   },
   methods: {
-    cancelEdition () {
-      this.fieldIsOpen = false
-      this.errorMessage = ""
+    cancelEdition() {
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
     },
-    openEdition () {
-      this.fieldIsOpen = true
-      this.errorMessage = ""
+    openEdition() {
+      this.fieldIsOpen = true;
+      this.errorMessage = '';
     },
-    saveField () {
+    saveField() {
       this.myCroppa.generateBlob(
-        blob => {
+        (blob) => {
           if (!blob) {
-            this.errorMessage = this.errorText
+            this.errorMessage = this.errorText;
           } else {
-            this.$emit("input:save", blob)
-            this.fieldIsOpen = false
+            this.$emit('input:save', blob);
+            this.fieldIsOpen = false;
           }
         },
-        "image/jpeg",
-        0.8
-      ) // 80% compressed jpeg file
-    }
-  }
-}
+        'image/jpeg',
+        0.8,
+      ); // 80% compressed jpeg file
+    },
+  },
+};
 </script>
 
 <style lang="scss">

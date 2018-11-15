@@ -7,7 +7,7 @@
         <div>
           <div v-if="emailFound && !socialLogin">
             <p>
-              The email {{email}} is already in use with an existing account. To save a payment method or make a recurring donation, you must either enter the password for the existing account:              
+              The email {{email}} is already in use with an existing account. To save a payment method or make a recurring donation, you must either enter the password for the existing account:
             </p>
             <InputPassword
               label="Password"
@@ -58,14 +58,14 @@
         </div>
         <div v-if="!emailFound">
           <p>Or sign up using a service: </p>
-          <LogInModal layout="social-signup"></LogInModal>          
+          <LogInModal layout="social-signup"></LogInModal>
         </div>
         <div class="columns is-centered padded-more" v-if="!emailFound || emailFound && socialLogin">
           <span v-if="emailFound">
-            (After you log in, your donation will go through)          
+            (After you log in, your donation will go through)
           </span>
           <span v-if="!emailFound">
-            (After you sign up, your donation will go through)          
+            (After you sign up, your donation will go through)
           </span>
         </div>
         <p>Or click <a @click="closeModal()">here</a> to return to the previous screen and deselect the option for <strong>saving the payment method</strong> or <strong>making a recurring donation</strong>, in which case no account is needed. </p>
@@ -76,110 +76,110 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import InputPassword from "@/components/input/InputPassword.vue"
-import LogInModal from "@/components/general/LogInModal.vue"
-import ModalForgetPassword from "@/components/login/ModalForgetPassword.vue"
-import Modal from "@/components/general/Modal.vue"
-import * as validator from "../../util/validator.js"
+import Icons from '@/components/general/Icons.vue';
+import InputPassword from '@/components/input/InputPassword.vue';
+import LogInModal from '@/components/general/LogInModal.vue';
+import ModalForgetPassword from '@/components/login/ModalForgetPassword.vue';
+import Modal from '@/components/general/Modal.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: [ "parent", "fundraiser", "nonprofit", "modalActive", "email", "donation" ],
-  data () {
+  props: ['parent', 'fundraiser', 'nonprofit', 'modalActive', 'email', 'donation'],
+  data() {
     return {
-      errorMessage: "",
+      errorMessage: '',
       form: {},
       emailFound: false,
       socialLogin: null,
       submitButtonDisabled: true,
-      authorized: false
-    }
+      authorized: false,
+    };
   },
   components: {
     Icons,
     InputPassword,
     LogInModal,
     Modal,
-    ModalForgetPassword
+    ModalForgetPassword,
   },
   methods: {
-    closeModal () {
-      this.$emit("close:modal")
+    closeModal() {
+      this.$emit('close:modal');
     },
-    validateSubmit () {
-      this.validateAllFields()
+    validateSubmit() {
+      this.validateAllFields();
       if (!this.submitButtonDisabled) {
-        this.submitPassword()
+        this.submitPassword();
       }
     },
-    validateAllFields () {
-      const validPass = validator.validatePassword(this.form.password)
-      const validPassConf = validPass && this.form.password === this.form.passwordConfirmation
+    validateAllFields() {
+      const validPass = validator.validatePassword(this.form.password);
+      const validPassConf = validPass && this.form.password === this.form.passwordConfirmation;
       if (validPass && validPassConf || validPass && this.emailFound) { // eslint-disable-line no-mixed-operators
-        this.submitButtonDisabled = false
+        this.submitButtonDisabled = false;
       } else {
-        this.submitButtonDisabled = true
+        this.submitButtonDisabled = true;
       }
     },
-    submitPassword () {
-      this.submitButtonDisabled = true
-      this.authorized = true
+    submitPassword() {
+      this.submitButtonDisabled = true;
+      this.authorized = true;
       if (this.emailFound) {
-        this.$store.dispatch("AUTHENTICATE_USER", {
+        this.$store.dispatch('AUTHENTICATE_USER', {
           email: this.email,
           password: this.form.password,
-          firstname: this.firstname
+          firstname: this.firstname,
         })
           .then((data) => {
             if (data) {
-              this.$emit("success")
+              this.$emit('success');
             } else {
-              this.submitButtonDisabled = false
-              this.errorMessage = "Wrong password"
+              this.submitButtonDisabled = false;
+              this.errorMessage = 'Wrong password';
             }
           })
-          .catch(err => {
-            this.$emit("error")
-            console.log("error: ", err)
-          })
+          .catch((err) => {
+            this.$emit('error');
+            console.log('error: ', err);
+          });
       } else {
-        this.$store.dispatch("CREATE_USER", {
+        this.$store.dispatch('CREATE_USER', {
           email: this.email,
           password: this.form.password,
           firstname: this.donation.firstname,
-          lastname: this.donation.lastname
+          lastname: this.donation.lastname,
         })
           .then((data) => {
-            this.$emit("success")
+            this.$emit('success');
           })
-          .catch(err => {
-            this.$emit("error")
-            console.log("error: ", err)
-          })
+          .catch((err) => {
+            this.$emit('error');
+            console.log('error: ', err);
+          });
       }
-    }
+    },
   },
   watch: {
     // get a response on whether the email has been already used
     // perform the lookup only if the modal is showing
-    modalActive () {
-      return this.$store.dispatch("LOOK_UP_EMAIL", {
-        email: this.email
+    modalActive() {
+      return this.$store.dispatch('LOOK_UP_EMAIL', {
+        email: this.email,
       })
-        .then(data => {
+        .then((data) => {
           if (data) {
-            this.emailFound = true
-            this.socialLogin = data.social_login
+            this.emailFound = true;
+            this.socialLogin = data.social_login;
           } else {
-            this.emailFound = false
+            this.emailFound = false;
           }
         })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-  }
-}
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -207,7 +207,7 @@ p {
       }
     }
     &__second {
-      color: $color-emphasis-alt;      
+      color: $color-emphasis-alt;
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="top-donors__wrapper" v-if="layout !== 'horizontal'">
       <h4 class="top-donors__title lower-body-right-column__title">
-        {{sectionTitle}} 
+        {{sectionTitle}}
         <span class="top-donors__view-all-cta" v-if="viewAllCta" @click="loadMoreDonations()">
           <a>{{viewAllCta}}</a>
         </span>
@@ -95,19 +95,19 @@
 </template>
 
 <script>
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "section-title", "view-all-cta", "donations", "layout", "show-more", "limit" ],
+  props: ['section-title', 'view-all-cta', 'donations', 'layout', 'show-more', 'limit'],
   methods: {
-    loadMoreDonations () {
-      this.$emit("loadDonationsTab")
-    }
+    loadMoreDonations() {
+      this.$emit('loadDonationsTab');
+    },
   },
   components: {
-    LazyLoadedImage
-  }
-}
+    LazyLoadedImage,
+  },
+};
 </script>
 
 <style scoped lang="scss">

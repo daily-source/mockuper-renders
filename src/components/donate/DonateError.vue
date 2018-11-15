@@ -16,19 +16,19 @@
 </template>
 
 <script>
-import Modal from "@/components/general/Modal.vue"
+import Modal from '@/components/general/Modal.vue';
 
 export default {
-  props: ["state"],
+  props: ['state'],
   components: {
-    Modal
+    Modal,
   },
   methods: {
-    dismiss () {
-      this.$emit("modal:close")
-    }
-  }
-}
+    dismiss() {
+      this.$emit('modal:close');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

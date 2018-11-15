@@ -5,8 +5,8 @@
       :state="userDialogModal"
       :diseable-close= "userDialogDisableClose"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
 
     <Modal
@@ -57,27 +57,27 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       userDialogSpinner: false,
       userDialogDisableClose: false,
-      createFundraiserModal: false
-    }
+      createFundraiserModal: false,
+    };
   },
   components: {
-    Modal: () => import("@/components/general/Modal.vue"),
-    NonprofitForm: () => import("@/components/nonprofit/NonprofitForm.vue"),
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    Modal: () => import('@/components/general/Modal.vue'),
+    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   computed: {
-    userData () {
-      return this.$store.state.user
-    }
-  }
-}
+    userData() {
+      return this.$store.state.user;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

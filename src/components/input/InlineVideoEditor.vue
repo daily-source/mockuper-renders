@@ -6,8 +6,8 @@
       :disable-close= "userDialogSpinner"
       v-on:modal:close="cancelEdition()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
     <div class="columns editable-field-wrapper">
       <div class="column is-6">
@@ -76,148 +76,149 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
-import * as validator from "../../util/validator.js"
-import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
+import Icons from '@/components/general/Icons.vue';
+import * as validator from '../../util/validator.js';
+import LazyLoadedImage from '@/components/plugins/LazyLoadedImage.js';
 
 export default {
-  props: [ "item", "layout", "location", "openId", "openDefault" ],
-  data () {
+  props: ['item', 'layout', 'location', 'openId', 'openDefault'],
+  data() {
     return {
       croppaObject: {},
       ratio: 1,
       userDialogSpinner: true,
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       fieldIsOpen: false,
       fieldValue: this.value,
       youTubeID: null,
-      errorMessage: "",
-      blurTimeout: null
-    }
+      errorMessage: '',
+      blurTimeout: null,
+    };
   },
   components: {
     Icons,
     LazyLoadedImage,
-    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue"),
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    VuePlyrWrapper: () => import('@/components/general/VuePlyrWrapper.vue'),
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   computed: {
-    calculateWidth () {
-      if (typeof window === "undefined" || typeof this.$el === "undefined") {
-        return 400
+    calculateWidth() {
+      if (typeof window === 'undefined' || typeof this.$el === 'undefined') {
+        return 400;
       }
-      let wrapperWidth = this.$el.clientWidth
-      return wrapperWidth < 400 ? wrapperWidth - 6 : 400
+      const wrapperWidth = this.$el.clientWidth;
+      return wrapperWidth < 400 ? wrapperWidth - 6 : 400;
     },
-    calculateHeight () {
-      return this.calculateWidth * this.ratio
+    calculateHeight() {
+      return this.calculateWidth * this.ratio;
     },
-    videoSource () {
+    videoSource() {
       if (!this.fieldIsOpen) {
-        return this.item.src || this.youTubeID
-      } else {
-        return this.youTubeID || this.item.src
+        return this.item.src || this.youTubeID;
       }
-    }
+      return this.youTubeID || this.item.src;
+    },
   },
-  mounted () {
+  mounted() {
     if (this.openDefault) {
-      this.openEdition()
+      this.openEdition();
     }
   },
   methods: {
-    cancelEdition () {
-      this.fieldIsOpen = false
-      this.errorMessage = ""
-      this.userDialogModal = false
-      this.$emit("edition:close", this._uid)
+    cancelEdition() {
+      this.fieldIsOpen = false;
+      this.errorMessage = '';
+      this.userDialogModal = false;
+      this.$emit('edition:close', this._uid);
     },
-    openEdition () {
-      this.fieldIsOpen = true
+    openEdition() {
+      this.fieldIsOpen = true;
       if (this.videoSource) {
-        this.fieldValue = `https://www.youtube.com/watch?v=${this.videoSource}`
+        this.fieldValue = `https://www.youtube.com/watch?v=${this.videoSource}`;
       }
-      this.$emit("edition:open", this._uid)
+      this.$emit('edition:open', this._uid);
     },
-    removeVideo () {
-      if (typeof this.item.id !== "undefined") {
-        this.$store.dispatch("REMOVE_VIDEO", { location: this.location, route: this.$route, id: this.item.id })
+    removeVideo() {
+      if (typeof this.item.id !== 'undefined') {
+        this.$store.dispatch('REMOVE_VIDEO', { location: this.location, route: this.$route, id: this.item.id })
           .then(() => {
-            this.cancelEdition()
+            this.cancelEdition();
           })
-          .catch(err => {
-            console.log(err)
-          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
-        this.cancelEdition()
+        this.cancelEdition();
       }
     },
     /*
      * This method will save an image to the library if it can be validated.
      */
-    saveVideo () {
+    saveVideo() {
       if (!this.youTubeID) {
-        this.userDialogModal = true
-        this.userDialogMessage = "Please add a valid YouTube URL."
-        this.userDialogSpinner = false
-        return
+        this.userDialogModal = true;
+        this.userDialogMessage = 'Please add a valid YouTube URL.';
+        this.userDialogSpinner = false;
+        return;
       }
-      this.userDialogModal = true
-      this.userDialogSpinner = true
+      this.userDialogModal = true;
+      this.userDialogSpinner = true;
       if (this.item.src) {
-        this.$store.dispatch("UPDATE_VIDEO", { location: this.location, route: this.$route, oldSrc: this.item.src, newSrc: this.youTubeID })
+        this.$store.dispatch('UPDATE_VIDEO', {
+          location: this.location, route: this.$route, oldSrc: this.item.src, newSrc: this.youTubeID,
+        })
           .then(() => {
-            this.userDialogSpinner = false
-            this.userDialogMessage = "The video has been updated."
+            this.userDialogSpinner = false;
+            this.userDialogMessage = 'The video has been updated.';
             setTimeout(() => {
-              this.cancelEdition()
-            }, 4000)
+              this.cancelEdition();
+            }, 4000);
           })
-          .catch(err => {
-            console.log(err)
-            this.userDialogSpinner = false
-            this.userDialogMessage = "An error occurred. Please try again."
-          })
+          .catch((err) => {
+            console.log(err);
+            this.userDialogSpinner = false;
+            this.userDialogMessage = 'An error occurred. Please try again.';
+          });
       } else {
-        this.$store.dispatch("ADD_VIDEO", { location: this.location, route: this.$route, youTubeID: this.youTubeID })
+        this.$store.dispatch('ADD_VIDEO', { location: this.location, route: this.$route, youTubeID: this.youTubeID })
           .then(() => {
-            this.userDialogSpinner = false
-            this.userDialogMessage = "The video has been added."
+            this.userDialogSpinner = false;
+            this.userDialogMessage = 'The video has been added.';
             setTimeout(() => {
-              this.cancelEdition()
-            }, 4000)
+              this.cancelEdition();
+            }, 4000);
           })
-          .catch(err => {
-            console.log(err)
-            this.userDialogSpinner = false
-            this.userDialogMessage = "An error occurred. Please try again."
-          })
+          .catch((err) => {
+            console.log(err);
+            this.userDialogSpinner = false;
+            this.userDialogMessage = 'An error occurred. Please try again.';
+          });
       }
-    }
+    },
   },
   watch: {
     /*
      * Close this instance if another one was opened.
      */
-    openId (newValue) {
+    openId(newValue) {
       if (this.fieldIsOpen) {
         if (newValue !== this._uid) {
-          this.fieldIsOpen = false
+          this.fieldIsOpen = false;
         }
       }
     },
-    fieldValue (videoURL) {
-      var videoID = validator.getYouTubeID(videoURL)
+    fieldValue(videoURL) {
+      const videoID = validator.getYouTubeID(videoURL);
       if (videoID) {
-        this.youTubeID = videoID
+        this.youTubeID = videoID;
       } else {
-        this.youTubeID = null
+        this.youTubeID = null;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

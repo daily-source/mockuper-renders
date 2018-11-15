@@ -16,14 +16,14 @@
 </template>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: ["layout"],
+  props: ['layout'],
   components: {
-    Icons
-  }
-}
+    Icons,
+  },
+};
 </script>
 
 <style scoped lang="scss">

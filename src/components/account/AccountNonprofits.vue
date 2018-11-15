@@ -6,8 +6,8 @@
       :diseable-close= "userDialogDisableClose"
       v-on:modal:close="closeUserDialog()"
     >
-      <div slot="header">{{userDialogHeading}}</div> 
-      <div slot="content"><p>{{userDialogMessage}}</p></div> 
+      <div slot="header">{{userDialogHeading}}</div>
+      <div slot="content"><p>{{userDialogMessage}}</p></div>
     </UserDialog>
 
     <h3>Nonprofits I manage</h3>
@@ -47,30 +47,30 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       userDialogModal: false,
-      userDialogHeading: "Processing...",
-      userDialogMessage: "",
+      userDialogHeading: 'Processing...',
+      userDialogMessage: '',
       userDialogSpinner: false,
-      userDialogDisableClose: false
-    }
+      userDialogDisableClose: false,
+    };
   },
   components: {
-    NonprofitAjaxSearch: () => import("@/components/general/NonprofitAjaxSearch.vue"),
-    UserDialog: () => import("@/components/general/UserDialog.vue")
+    NonprofitAjaxSearch: () => import('@/components/general/NonprofitAjaxSearch.vue'),
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
   },
   computed: {
-    userData () {
-      return this.$store.state.user
-    }
+    userData() {
+      return this.$store.state.user;
+    },
   },
   methods: {
-    goToNonprofit (ein) {
-      this.$router.push(`/nonprofit/${ein}`)
-    }
-  }
-}
+    goToNonprofit(ein) {
+      this.$router.push(`/nonprofit/${ein}`);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -15,8 +15,8 @@
         :disable-close= "userDialogSpinner"
         v-on:modal:close="closeModals()"
       >
-        <div slot="header">Processing...</div> 
-        <div slot="content"><p>{{userDialogMessage}}</p></div> 
+        <div slot="header">Processing...</div>
+        <div slot="content"><p>{{userDialogMessage}}</p></div>
       </UserDialog>
 
       <form @keyup.enter="validateSubmit()">
@@ -43,53 +43,52 @@
 </template>
 
 <script>
-import Modal from "@/components/general/Modal.vue"
-import * as validator from "../../util/validator.js"
+import Modal from '@/components/general/Modal.vue';
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: ["email"],
+  props: ['email'],
   components: {
-    UserDialog: () => import("@/components/general/UserDialog.vue"),
-    InputEmail: () => import("@/components/input/InputEmail.vue"),
-    Modal
+    UserDialog: () => import('@/components/general/UserDialog.vue'),
+    InputEmail: () => import('@/components/input/InputEmail.vue'),
+    Modal,
   },
   computed: {
     /*
      * Show the email input only if the previously entered email is not valid.
      */
-    showEmailInput () {
+    showEmailInput() {
       if (validator.validateEmail(this.email)) {
-        return false
-      } else {
-        return true
+        return false;
       }
+      return true;
     },
-    submitButtonDisabled () {
+    submitButtonDisabled() {
       if (this.validEmailInput || !this.showEmailInput) {
-        return false
+        return false;
       }
-      return true
-    }
+      return true;
+    },
   },
-  data () {
+  data() {
     return {
       userDialogSpinner: false,
       userDialogModal: false,
       userDialogDisableClose: false,
-      userDialogMessage: "",
+      userDialogMessage: '',
       childState: false,
-      emailInput: "",
-      validEmailInput: false
-    }
+      emailInput: '',
+      validEmailInput: false,
+    };
   },
   methods: {
-    closeModals () {
-      this.childState = false
-      this.userDialogModal = false
+    closeModals() {
+      this.childState = false;
+      this.userDialogModal = false;
     },
-    validateSubmit () {
+    validateSubmit() {
       if (!this.submitButtonDisabled) {
-        this.requestPassword()
+        this.requestPassword();
       }
     },
     /*
@@ -97,23 +96,23 @@ export default {
      * Use a temporary dialog window while the API call is performed.
      * Display the answer in the dialog box.
      */
-    requestPassword () {
-      this.userDialogSpinner = true
-      this.userDialogModal = true
-      this.userDialogMessage = ""
-      return this.$store.dispatch("SET_TEMPORARY_PASSWORD", { email: this.emailInput })
+    requestPassword() {
+      this.userDialogSpinner = true;
+      this.userDialogModal = true;
+      this.userDialogMessage = '';
+      return this.$store.dispatch('SET_TEMPORARY_PASSWORD', { email: this.emailInput })
         .then(() => {
-          this.userDialogMessage = "Your password has been reset. Please check your email."
-          this.userDialogSpinner = false
+          this.userDialogMessage = 'Your password has been reset. Please check your email.';
+          this.userDialogSpinner = false;
         })
-        .catch(err => {
-          this.userDialogMessage = "There has been an error. Please try again later."
-          this.userDialogSpinner = false
-          console.log(err)
-        })
-    }
-  }
-}
+        .catch((err) => {
+          this.userDialogMessage = 'There has been an error. Please try again later.';
+          this.userDialogSpinner = false;
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

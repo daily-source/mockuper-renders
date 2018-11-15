@@ -103,45 +103,45 @@
 </template>
 
 <script>
-import DonateAction from "@/components/general/DonateAction.vue"
-import ShareBox from "@/components/general/ShareBox.vue"
-import Icons from "@/components/general/Icons.vue"
+import DonateAction from '@/components/general/DonateAction.vue';
+import ShareBox from '@/components/general/ShareBox.vue';
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: [ "common", "nonprofit", "editing" ],
+  props: ['common', 'nonprofit', 'editing'],
   components: {
     DonateAction,
     Icons,
     ShareBox,
-    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue"),
-    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue")
+    InlineFieldEditor: () => import('@/components/input/InlineFieldEditor.vue'),
+    InlineImageEditor: () => import('@/components/input/InlineImageEditor.vue'),
   },
-  data () {
+  data() {
     return {
       showLoginModal: false,
-      shareText: "Check out this nonprofit!",
-      siteName: "Volunteerathon",
-      shareWindowTitle: "Share Nonprofit",
-      openShareBox: false
-    }
+      shareText: 'Check out this nonprofit!',
+      siteName: 'Volunteerathon',
+      shareWindowTitle: 'Share Nonprofit',
+      openShareBox: false,
+    };
   },
   computed: {
-    loggedIn () {
-      return this.$store.state.user.loggedIn
-    }
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
+    },
   },
   methods: {
-    share (commentId) {
-      this.openShareBox = !this.openShareBox
+    share(commentId) {
+      this.openShareBox = !this.openShareBox;
     },
-    enableEdition () {
-      this.$emit("edit:open")
+    enableEdition() {
+      this.$emit('edit:open');
     },
-    closeEdition () {
-      this.$emit("edit:close")
-    }
-  }
-}
+    closeEdition() {
+      this.$emit('edit:close');
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -57,17 +57,17 @@
 </style>
 
 <script>
-import Icons from "@/components/general/Icons.vue"
+import Icons from '@/components/general/Icons.vue';
 
 export default {
-  props: [ "showOnly" ],
+  props: ['showOnly'],
   components: {
-    Icons
+    Icons,
   },
   methods: {
-    openLoginBox () {
-      console.log("open social login")
-    }
-  }
-}
+    openLoginBox() {
+      console.log('open social login');
+    },
+  },
+};
 </script>

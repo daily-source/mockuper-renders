@@ -45,19 +45,19 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       donation: {
-        frequency: "once"
-      }
-    }
+        frequency: 'once',
+      },
+    };
   },
   watch: {
-    "donation.frequency": function (newVal) {
-      this.$emit("input:frequency", newVal)
-    }
-  }
-}
+    'donation.frequency': function (newVal) {
+      this.$emit('input:frequency', newVal);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

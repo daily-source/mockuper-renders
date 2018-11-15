@@ -21,39 +21,39 @@
 </template>
 
 <script>
-import * as validator from "../../util/validator.js"
+import * as validator from '../../util/validator.js';
 
 export default {
-  props: ["paymentMethods", "isNewPaymentMethod"],
-  data () {
+  props: ['paymentMethods', 'isNewPaymentMethod'],
+  data() {
     return {
       donation: {
-        storedPaymentMethod: null
-      }
-    }
+        storedPaymentMethod: null,
+      },
+    };
   },
   computed: {
-    userName () {
-      return this.$store.state.user.userName
+    userName() {
+      return this.$store.state.user.userName;
     },
-    loggedIn () {
-      return this.$store.state.user.loggedIn
-    }
+    loggedIn() {
+      return this.$store.state.user.loggedIn;
+    },
   },
   methods: {
-    isValidPaymentMethod (paymentMethod) {
-      return validator.validateExpirationDate(paymentMethod.expiration_month, paymentMethod.expiration_year)
+    isValidPaymentMethod(paymentMethod) {
+      return validator.validateExpirationDate(paymentMethod.expiration_month, paymentMethod.expiration_year);
     },
-    toggleNewPaymentMethod () {
-      this.$emit("toggle:paymentMethod")
-    }
+    toggleNewPaymentMethod() {
+      this.$emit('toggle:paymentMethod');
+    },
   },
   watch: {
-    "donation.storedPaymentMethod": function (newVal) {
-      this.$emit("input:storedPaymentMethod", newVal)
-    }
-  }
-}
+    'donation.storedPaymentMethod': function (newVal) {
+      this.$emit('input:storedPaymentMethod', newVal);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
