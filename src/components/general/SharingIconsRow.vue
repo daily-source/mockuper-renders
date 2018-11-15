@@ -156,8 +156,8 @@
 }
 </style>
 <script>
-import Icons from "Components/general/Icons.vue"
-import DonateAction from "Components/general/DonateAction.vue"
+import Icons from "@/components/general/Icons.vue"
+import DonateAction from "@/components/general/DonateAction.vue"
 import * as sharer from "../../util/sharer.js"
 
 export default {

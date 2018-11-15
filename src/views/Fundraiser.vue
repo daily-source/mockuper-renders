@@ -46,8 +46,8 @@
 <script>
 import Vue from "vue"
 import VueMeta from "vue-meta"
-import AppHeader from "Components/RideForGood/AppHeader.vue"
-import FundraiserHeader from "Components/fundraiser/FundraiserHeader.vue"
+import AppHeader from "@/components/RideForGood/AppHeader.vue"
+import FundraiserHeader from "@/components/fundraiser/FundraiserHeader.vue"
 
 Vue.use(VueMeta)
 
@@ -59,16 +59,17 @@ export default {
    */
   components: {
     AppHeader,
-    SharedFooter: () => import("Components/RideForGood/SharedFooter.vue"),
+    SharedFooter: () => import("@/components/RideForGood/SharedFooter.vue"),
     FundraiserHeader,
-    FundraiserHero: () => import("Components/fundraiser/FundraiserHero.vue"),
-    FundraiserParticipant: () => import("Components/fundraiser/FundraiserParticipant.vue"),
-    FundraiserLowerBody: () => import("Components/fundraiser/FundraiserLowerBody.vue"),
+    FundraiserHero: () => import("@/components/fundraiser/FundraiserHero.vue"),
+    FundraiserParticipant: () => import("@/components/fundraiser/FundraiserParticipant.vue"),
+    FundraiserLowerBody: () => import("@/components/fundraiser/FundraiserLowerBody.vue"),
     DonateView: () => import("./DonateView.vue")
   },
   data () {
     return {
-      enableEditionForThisFundraiser: false
+      enableEditionForThisFundraiser: false,
+      canRender: false
     }
   },
   /**
@@ -77,6 +78,9 @@ export default {
    * in the template, ./src/App.vue
    */
   metaInfo () {
+    if (!this.fundraiser.participant) {
+      return {}
+    }
     var description = `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`
     var title = this.fundraiser.name
     var img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${this.fundraiser.data.media[0].src}`
@@ -107,36 +111,10 @@ export default {
       return this.$store.state.user.loggedIn
     },
     canManageThisFundraiser () {
-      let userFundraisers = this.$store.state.user.fundraisers
-      if (userFundraisers && userFundraisers.length) {
-        let fundraisersToManage = userFundraisers.filter(item => {
-          return item.id === this.fundraiser.fundraiser_id
-        })
-        if (fundraisersToManage.length) {
-          return true
-        } else {
-          return false
-        }
-      } else {
-        return false
-      }
+      return false
     }
   },
 
-  /**
-   * Fetch data and store it just before entering the view.
-   */
-  asyncData ({ store, route: { params: { id } } }) {
-    return new Promise((resolve, reject) => {
-      store.dispatch("FETCH_FUNDRAISER", { id })
-        .then(data => {
-          resolve(data)
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
-  },
   /**
    * If this is a donation view, redirect to the corresponding fundraiser on close event.
    */

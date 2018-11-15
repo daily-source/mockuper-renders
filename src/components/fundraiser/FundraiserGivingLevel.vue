@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
+import DonateAction from "@/components/general/DonateAction.vue"
 
 export default {
   props: [ "level", "fundraiser" ],

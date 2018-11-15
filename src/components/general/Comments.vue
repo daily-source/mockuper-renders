@@ -29,8 +29,8 @@
 </style>
 
 <script>
-import Comment from "Components/general/Comment.vue"
-import CommentReply from "Components/general/CommentReply.vue"
+import Comment from "@/components/general/Comment.vue"
+import CommentReply from "@/components/general/CommentReply.vue"
 
 export default {
   props: [ "comments", "more-comments", "fundraiserId" ],

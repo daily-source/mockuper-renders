@@ -1,6 +1,6 @@
-@import "~bulma/css/bulma.min.css";
-@import "~bootstrap/scss/bootstrap";
-@import "~flickity/dist/flickity.min.css";
-@import "./_common.scss";
-@import "./transitions.scss";
-@import "./typography.scss";
+@import "../../../node_modules/bulma/css/bulma.min.css";
+@import "../../../node_modules/flickity/dist/flickity.min.css";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "@/assets/scss/common.scss";
+@import "@/assets/scss/transitions.scss";
+@import "@/assets/scss/typography.scss";

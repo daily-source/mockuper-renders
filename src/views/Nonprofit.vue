@@ -95,9 +95,9 @@
 <script>
 import Vue from "vue"
 import VueMeta from "vue-meta"
-import RegisterOrLoginModal from "Components/general/RegisterOrLoginModal.vue"
-import ClaimNonprofitModal from "Components/nonprofit/ClaimNonprofitModal.vue"
-import AppBanner from 'Components/GiveItUp/AppBanner.vue'
+import RegisterOrLoginModal from "@/components/general/RegisterOrLoginModal.vue"
+import ClaimNonprofitModal from "@/components/nonprofit/ClaimNonprofitModal.vue"
+import AppBanner from '@/components/GiveItUp/AppBanner.vue'
 
 Vue.use(VueMeta)
 
@@ -115,15 +115,15 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    SharedFooter: () => import("Components/RideForGood/SharedFooter.vue"),
-    AppHeader: () => import("Components/RideForGood/AppHeader.vue"),
-    NonprofitHero: () => import("Components/nonprofit/NonprofitHero.vue"),
+    SharedFooter: () => import("@/components/RideForGood/SharedFooter.vue"),
+    AppHeader: () => import("@/components/RideForGood/AppHeader.vue"),
+    NonprofitHero: () => import("@/components/nonprofit/NonprofitHero.vue"),
     DonateView: () => import("./DonateView.vue"),
-    DonorsList: () => import("Components/general/DonorsList.vue"),
-    FloatingShareTools: () => import("Components/general/FloatingShareTools.vue"),
-    NonprofitAbout: () => import("Components/nonprofit/NonprofitAbout.vue"),
-    NonprofitFundraisers: () => import("Components/nonprofit/NonprofitFundraisers.vue"),
-    NonprofitForm: () => import("Components/nonprofit/NonprofitForm.vue"),
+    DonorsList: () => import("@/components/general/DonorsList.vue"),
+    FloatingShareTools: () => import("@/components/general/FloatingShareTools.vue"),
+    NonprofitAbout: () => import("@/components/nonprofit/NonprofitAbout.vue"),
+    NonprofitFundraisers: () => import("@/components/nonprofit/NonprofitFundraisers.vue"),
+    NonprofitForm: () => import("@/components/nonprofit/NonprofitForm.vue"),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
     AppBanner
@@ -165,7 +165,7 @@ export default {
       return this.$store.state.fundraisers.data
     },
     donations () {
-      return this.$store.state.donations.data
+      return this.$store.state.donationsByAmount.data
     },
     topFundraisers () {
       return this.$store.state.topFundraisers.data
@@ -199,20 +199,6 @@ export default {
     }
   },
 
-  /**
-   * Fetch data and store it just before entering the view.
-   */
-  asyncData ({ store, route: { params: { ein } } }) {
-    return new Promise((resolve, reject) => {
-      return store.dispatch("FETCH_NONPROFIT", { ein })
-        .then(data => {
-          resolve(data)
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
-  },
   /**
    * Exclude the fundraisers, donors and top donors blocks from getting rendered in the server.
    * This speeds up the process and reduces the size of the document (so TTFB improves).

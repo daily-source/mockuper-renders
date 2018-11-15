@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: ["submitButtonLabel", "enableNonprofitSearch"],
@@ -123,8 +123,8 @@ export default {
    */
   components: {
     Icons,
-    ComboBox: () => import("Components/general/ComboBox.vue"),
-    NonprofitAjaxSearch: () => import("Components/general/NonprofitAjaxSearch.vue")
+    ComboBox: () => import("@/components/general/ComboBox.vue"),
+    NonprofitAjaxSearch: () => import("@/components/general/NonprofitAjaxSearch.vue")
   },
   mounted () {
     this.canRender = true

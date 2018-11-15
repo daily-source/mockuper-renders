@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 import * as validator from "../../util/validator.js"
 import Vue from "vue"
 
@@ -88,7 +88,7 @@ export default {
   },
   components: {
     Icons,
-    UserDialog: () => import("Components/general/UserDialog.vue")
+    UserDialog: () => import("@/components/general/UserDialog.vue")
   },
   methods: {
     cancelEdition () {

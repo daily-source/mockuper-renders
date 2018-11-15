@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
-import Modal from "Components/general/Modal.vue"
-import Flickity from "Components/plugins/Flickity.vue"
+import Icons from "@/components/general/Icons.vue"
+import Modal from "@/components/general/Modal.vue"
+import Flickity from "@/components/plugins/Flickity.vue"
 import Vue from "vue"
 
 export default {
@@ -43,7 +43,7 @@ export default {
     Icons,
     Flickity,
     Modal,
-    VuePlyrWrapper: () => import("Components/general/VuePlyrWrapper.vue")
+    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue")
   },
   data () {
     return {

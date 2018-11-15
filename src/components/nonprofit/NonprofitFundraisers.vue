@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import ProgressBar from "Components/general/ProgressBar.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import ProgressBar from "@/components/general/ProgressBar.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: ["fundraisers", "limit"],

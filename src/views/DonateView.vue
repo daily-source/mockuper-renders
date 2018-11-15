@@ -48,9 +48,9 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    DonateForm: () => import("Components/donate/DonateForm.vue"),
-    DonateThankYou: () => import("Components/donate/DonateThankYou.vue"),
-    DonateUserCreated: () => import("Components/donate/DonateUserCreated.vue")
+    DonateForm: () => import("@/components/donate/DonateForm.vue"),
+    DonateThankYou: () => import("@/components/donate/DonateThankYou.vue"),
+    DonateUserCreated: () => import("@/components/donate/DonateUserCreated.vue")
   },
   data () {
     return {

@@ -81,10 +81,10 @@
 </style>
 
 <script>
-import ShareDonateToolbar from "Components/general/ShareDonateToolbar.vue"
-import CommentReply from "Components/general/CommentReply.vue"
+import ShareDonateToolbar from "@/components/general/ShareDonateToolbar.vue"
+import CommentReply from "@/components/general/CommentReply.vue"
 import Avatar from "vue-avatar"
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: [ "comment", "is-reply", "fundraiserId" ],

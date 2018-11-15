@@ -116,18 +116,18 @@
 </template>
 
 <script>
-import LogInModal from "Components/general/LogInModal.vue"
-import DonateFormHeading from "Components/donate/DonateFormHeading.vue"
-import DonateBillingMethod from "Components/donate/DonateBillingMethod.vue"
-import DonatePasswordModal from "Components/donate/DonatePasswordModal.vue"
-import DonationBoxes from "Components/input/DonationBoxes.vue"
-import DonationFrequency from "Components/input/DonationFrequency.vue"
-import DonationComment from "Components/input/DonationComment.vue"
-import DonateError from "Components/donate/DonateError.vue"
-import DonateProcessing from "Components/donate/DonateProcessing.vue"
-import InputEmail from "Components/input/InputEmail.vue"
-import InputName from "Components/input/InputName.vue"
-import StoredPaymentMethods from "Components/input/StoredPaymentMethods.vue"
+import LogInModal from "@/components/general/LogInModal.vue"
+import DonateFormHeading from "@/components/donate/DonateFormHeading.vue"
+import DonateBillingMethod from "@/components/donate/DonateBillingMethod.vue"
+import DonatePasswordModal from "@/components/donate/DonatePasswordModal.vue"
+import DonationBoxes from "@/components/input/DonationBoxes.vue"
+import DonationFrequency from "@/components/input/DonationFrequency.vue"
+import DonationComment from "@/components/input/DonationComment.vue"
+import DonateError from "@/components/donate/DonateError.vue"
+import DonateProcessing from "@/components/donate/DonateProcessing.vue"
+import InputEmail from "@/components/input/InputEmail.vue"
+import InputName from "@/components/input/InputName.vue"
+import StoredPaymentMethods from "@/components/input/StoredPaymentMethods.vue"
 import * as validator from "../../util/validator.js"
 
 export default {

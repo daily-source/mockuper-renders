@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "imgarr", "delay", "interval" ],

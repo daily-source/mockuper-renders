@@ -37,14 +37,14 @@
 </template>
 
 <script>
-import Modal from "Components/general/Modal.vue"
+import Modal from "@/components/general/Modal.vue"
 
 export default {
   props: [ "state" ],
   components: {
     Modal,
-    UserDialog: () => import("Components/general/UserDialog.vue"),
-    UserManagementLinks: () => import("Components/login/UserManagementLinks.vue")
+    UserDialog: () => import("@/components/general/UserDialog.vue"),
+    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue")
   },
   data () {
     return {

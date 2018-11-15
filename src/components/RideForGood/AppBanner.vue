@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 import { mapState } from 'vuex'
 
 export default {
@@ -34,7 +34,7 @@ export default {
 
   methods: {
     imagePath( imgName ) {
-      return require('public/images/' + imgName )
+      return require('@/assets/img/images/' + imgName )
     },
 
     getBgImage() {

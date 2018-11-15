@@ -109,12 +109,12 @@
 </template>
 
 <script>
-import Modal from "Components/general/Modal.vue"
-import ModalForgetPassword from "Components/login/ModalForgetPassword.vue"
-import InputEmail from "Components/input/InputEmail.vue"
-import InputName from "Components/input/InputName.vue"
-import InputPassword from "Components/input/InputPassword.vue"
-import SocialLogin from "Components/login/SocialLogin.vue"
+import Modal from "@/components/general/Modal.vue"
+import ModalForgetPassword from "@/components/login/ModalForgetPassword.vue"
+import InputEmail from "@/components/input/InputEmail.vue"
+import InputName from "@/components/input/InputName.vue"
+import InputPassword from "@/components/input/InputPassword.vue"
+import SocialLogin from "@/components/login/SocialLogin.vue"
 import * as validator from "../../util/validator.js"
 
 export default {
@@ -127,8 +127,8 @@ export default {
     ModalForgetPassword,
     SocialLogin,
     Modal,
-    UserDialog: () => import("Components/general/UserDialog.vue"),
-    UserManagementLinks: () => import("Components/login/UserManagementLinks.vue")
+    UserDialog: () => import("@/components/general/UserDialog.vue"),
+    UserManagementLinks: () => import("@/components/login/UserManagementLinks.vue")
   },
   data () {
     return {

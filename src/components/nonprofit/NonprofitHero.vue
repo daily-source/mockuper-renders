@@ -103,9 +103,9 @@
 </template>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
-import ShareBox from "Components/general/ShareBox.vue"
-import Icons from "Components/general/Icons.vue"
+import DonateAction from "@/components/general/DonateAction.vue"
+import ShareBox from "@/components/general/ShareBox.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: [ "common", "nonprofit", "editing" ],
@@ -113,8 +113,8 @@ export default {
     DonateAction,
     Icons,
     ShareBox,
-    InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue"),
-    InlineImageEditor: () => import("Components/input/InlineImageEditor.vue")
+    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue"),
+    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue")
   },
   data () {
     return {

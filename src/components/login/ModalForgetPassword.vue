@@ -43,14 +43,14 @@
 </template>
 
 <script>
-import Modal from "Components/general/Modal.vue"
+import Modal from "@/components/general/Modal.vue"
 import * as validator from "../../util/validator.js"
 
 export default {
   props: ["email"],
   components: {
-    UserDialog: () => import("Components/general/UserDialog.vue"),
-    InputEmail: () => import("Components/input/InputEmail.vue"),
+    UserDialog: () => import("@/components/general/UserDialog.vue"),
+    InputEmail: () => import("@/components/input/InputEmail.vue"),
     Modal
   },
   computed: {

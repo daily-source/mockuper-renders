@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import DonateAction from "@/components/general/DonateAction.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "fundraiser" ],

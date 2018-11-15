@@ -57,7 +57,7 @@
 </style>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: [ "showOnly" ],

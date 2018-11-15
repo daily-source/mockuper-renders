@@ -4,9 +4,9 @@ import VueAxios from "vue-axios"
 
 Vue.use(VueAxios, axios)
 
-const baseURL = process.env.BASE_API
-const IRSSearchAPI = process.env.IRS_SEARCH_API_URL
-const commentAPI = process.env.COMMENT_API
+const baseURL = process.env.VUE_APP_BASE_API
+const IRSSearchAPI = process.env.VUE_APP_IRS_SEARCH_API_URL
+const commentAPI = process.env.VUE_APP_COMMENT_API
 
 /*
  * Fetch nonprofit. This will return the nonprofit data from the API, or

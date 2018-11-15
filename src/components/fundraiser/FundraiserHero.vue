@@ -67,10 +67,10 @@
 </template>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
-import ProgressBar from "Components/general/ProgressBar.vue"
-import Flickity from "Components/plugins/Flickity.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import DonateAction from "@/components/general/DonateAction.vue"
+import ProgressBar from "@/components/general/ProgressBar.vue"
+import Flickity from "@/components/plugins/Flickity.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "fundraiser", "canEdit", "editing" ],
@@ -79,9 +79,9 @@ export default {
     Flickity,
     LazyLoadedImage,
     ProgressBar,
-    MediaEditor: () => import("Components/input/MediaEditor.vue"),
-    InlineImageEditor: () => import("Components/input/InlineImageEditor.vue"),
-    VuePlyrWrapper: () => import("Components/general/VuePlyrWrapper.vue")
+    MediaEditor: () => import("@/components/input/MediaEditor.vue"),
+    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue"),
+    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue")
   },
   data () {
     return {

@@ -121,9 +121,9 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
-import SharingIconsRow from "Components/general/SharingIconsRow.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import Icons from "@/components/general/Icons.vue"
+import SharingIconsRow from "@/components/general/SharingIconsRow.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "fundraiser", "editing", "canEdit" ],
@@ -131,8 +131,8 @@ export default {
     Icons,
     LazyLoadedImage,
     SharingIconsRow,
-    InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue"),
-    InlineImageEditor: () => import("Components/input/InlineImageEditor.vue")
+    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue"),
+    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue")
   },
   methods: {
     closeEditor () {

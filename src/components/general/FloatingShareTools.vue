@@ -84,7 +84,7 @@
 </style>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 import * as sharer from "../../util/sharer.js"
 
 export default {

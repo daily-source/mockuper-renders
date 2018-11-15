@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import AppHeader from 'Components/RideForGood/AppHeader.vue'
-import AppBanner from 'Components/RideForGood/AppBanner.vue'
-import SharedFooter from 'Components/RideForGood/SharedFooter.vue'
+import AppHeader from '@/components/RideForGood/AppHeader.vue'
+import AppBanner from '@/components/RideForGood/AppBanner.vue'
+import SharedFooter from '@/components/RideForGood/SharedFooter.vue'
 
 export default {
   name: 'BaseLayout',

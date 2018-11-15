@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "iconsrc", "duplicate", "layout", "reverse", "large" ],

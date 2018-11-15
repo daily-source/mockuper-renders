@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Modal from "Components/general/Modal.vue"
+import Modal from "@/components/general/Modal.vue"
 
 export default {
   props: ["state"],

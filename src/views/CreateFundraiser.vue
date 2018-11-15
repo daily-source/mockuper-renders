@@ -23,9 +23,9 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import("Components/general/AppFooter.vue"),
-    AppHeader: () => import("Components/general/AppHeader.vue"),
-    NonprofitForm: () => import("Components/nonprofit/NonprofitForm.vue")
+    AppFooter: () => import("@/components/general/AppFooter.vue"),
+    AppHeader: () => import("@/components/general/AppHeader.vue"),
+    NonprofitForm: () => import("@/components/nonprofit/NonprofitForm.vue")
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses

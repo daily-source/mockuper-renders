@@ -176,11 +176,11 @@
 </template>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
-import SharingIconsRow from "Components/general/SharingIconsRow.vue"
-import Icons from "Components/general/Icons.vue"
-import Flickity from "Components/plugins/Flickity.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import DonateAction from "@/components/general/DonateAction.vue"
+import SharingIconsRow from "@/components/general/SharingIconsRow.vue"
+import Icons from "@/components/general/Icons.vue"
+import Flickity from "@/components/plugins/Flickity.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "nonprofit", "editing", "canEdit" ],
@@ -190,10 +190,10 @@ export default {
     Flickity,
     SharingIconsRow,
     LazyLoadedImage,
-    MediaEditor: () => import("Components/input/MediaEditor.vue"),
-    NonprofitIRSData: () => import("Components/nonprofit/NonprofitIRSData.vue"),
-    MediaViewer: () => import("Components/general/MediaViewer.vue"),
-    InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue")
+    MediaEditor: () => import("@/components/input/MediaEditor.vue"),
+    NonprofitIRSData: () => import("@/components/nonprofit/NonprofitIRSData.vue"),
+    MediaViewer: () => import("@/components/general/MediaViewer.vue"),
+    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
   },
   data () {
     return {

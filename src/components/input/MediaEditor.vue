@@ -66,8 +66,8 @@ export default {
     }
   },
   components: {
-    InlineImageEditor: () => import("Components/input/InlineImageEditor.vue"),
-    InlineVideoEditor: () => import("Components/input/InlineVideoEditor.vue")
+    InlineImageEditor: () => import("@/components/input/InlineImageEditor.vue"),
+    InlineVideoEditor: () => import("@/components/input/InlineVideoEditor.vue")
   },
   methods: {
     addImage () {

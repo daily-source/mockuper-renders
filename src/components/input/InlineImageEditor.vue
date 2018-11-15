@@ -95,8 +95,8 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import Icons from "@/components/general/Icons.vue"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "item", "layout", "location", "openId", "openDefault", "isBackgroundImage", "alt", "editionIsEnabled", "type", "is-standalone", "disableOrientation", "initialRatio", "defaultImage", "required", "defaultText" ],
@@ -118,7 +118,7 @@ export default {
   components: {
     Icons,
     LazyLoadedImage,
-    UserDialog: () => import("Components/general/UserDialog.vue")
+    UserDialog: () => import("@/components/general/UserDialog.vue")
   },
   computed: {
     calculateWidth () {

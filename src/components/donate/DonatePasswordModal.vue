@@ -76,11 +76,11 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
-import InputPassword from "Components/input/InputPassword.vue"
-import LogInModal from "Components/general/LogInModal.vue"
-import ModalForgetPassword from "Components/login/ModalForgetPassword.vue"
-import Modal from "Components/general/Modal.vue"
+import Icons from "@/components/general/Icons.vue"
+import InputPassword from "@/components/input/InputPassword.vue"
+import LogInModal from "@/components/general/LogInModal.vue"
+import ModalForgetPassword from "@/components/login/ModalForgetPassword.vue"
+import Modal from "@/components/general/Modal.vue"
 import * as validator from "../../util/validator.js"
 
 export default {

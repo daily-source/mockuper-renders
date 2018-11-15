@@ -85,7 +85,7 @@
 
 <script>
 import Vue from "vue"
-import ShareDonateToolbar from "Components/general/ShareDonateToolbar.vue"
+import ShareDonateToolbar from "@/components/general/ShareDonateToolbar.vue"
 
 export default {
   data () {

@@ -76,9 +76,9 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 import * as validator from "../../util/validator.js"
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "item", "layout", "location", "openId", "openDefault" ],
@@ -100,8 +100,8 @@ export default {
   components: {
     Icons,
     LazyLoadedImage,
-    VuePlyrWrapper: () => import("Components/general/VuePlyrWrapper.vue"),
-    UserDialog: () => import("Components/general/UserDialog.vue")
+    VuePlyrWrapper: () => import("@/components/general/VuePlyrWrapper.vue"),
+    UserDialog: () => import("@/components/general/UserDialog.vue")
   },
   computed: {
     calculateWidth () {

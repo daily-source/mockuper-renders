@@ -100,7 +100,7 @@
 export default {
   props: [ "nonprofit", "editing", "canEdit" ],
   components: {
-    InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue")
+    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
   },
   methods: {
     enableEdition () {

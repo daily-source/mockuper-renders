@@ -29,7 +29,7 @@
               <router-link to='/'>
                 <img
                 class='footer__logo'
-                src="~public/max-good-logo-428x180.png"
+                src="@/assets/img/max-good-logo-428x180.png"
                 alt="Maximum for Good Logo"
                 >
               </router-link>

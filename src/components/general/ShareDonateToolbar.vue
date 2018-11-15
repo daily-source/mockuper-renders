@@ -66,9 +66,9 @@
 </style>
 
 <script>
-import DonateAction from "Components/general/DonateAction.vue"
-import Icons from "Components/general/Icons.vue"
-import ShareBox from "Components/general/ShareBox.vue"
+import DonateAction from "@/components/general/DonateAction.vue"
+import Icons from "@/components/general/Icons.vue"
+import ShareBox from "@/components/general/ShareBox.vue"
 
 export default {
   props: [ "allowComment", "commentId", "urlParams", "text", "via", "title", "trigger", "fundraiserId", "updateId" ],

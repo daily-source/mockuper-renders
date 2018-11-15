@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: ["state"],
@@ -63,9 +63,9 @@ export default {
     }
   },
   components: {
-    InputPassword: () => import("Components/input/InputPassword.vue"),
-    UserDialog: () => import("Components/general/UserDialog.vue"),
-    Modal: () => import("Components/general/Modal.vue"),
+    InputPassword: () => import("@/components/input/InputPassword.vue"),
+    UserDialog: () => import("@/components/general/UserDialog.vue"),
+    Modal: () => import("@/components/general/Modal.vue"),
     Icons
   },
   methods: {

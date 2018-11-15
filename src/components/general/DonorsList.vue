@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
+import LazyLoadedImage from "@/components/plugins/LazyLoadedImage.js"
 
 export default {
   props: [ "section-title", "view-all-cta", "donations", "layout", "show-more", "limit" ],

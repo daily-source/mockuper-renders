@@ -58,7 +58,7 @@
                   <div class="user-optional__updates-wrapper">
                     <FundraiserUpdates
                       :updates="updates"
-                      :count="fundraiser.updates_count"
+                      :count="updatesCount"
                       :fundraiser-id="fundraiser.fundraiser_id"
                       maxchar="700" />
                     <button class="button is-warning is-load-more" @click="loadMoreUpdates()" v-if="moreUpdates">Load more updates</button>
@@ -124,7 +124,7 @@
                   <div class="user-optional__updates-wrapper">
                     <FundraiserUpdates
                       :updates="updates"
-                      :count="fundraiser.updates_count"
+                      :count="updatesCount"
                       :fundraiser-id="fundraiser.fundraiser_id"
                       maxchar="700" />
                     <button class="button is-warning is-load-more" @click="loadMoreUpdates()" v-if="moreUpdates">Load more updates</button>
@@ -192,13 +192,13 @@
 export default {
   props: [ "fundraiser", "editing", "canEdit" ],
   components: {
-    FundraiserGivingLevel: () => import("Components/fundraiser/FundraiserGivingLevel.vue"),
-    FundraiserNonprofitDetails: () => import("Components/fundraiser/FundraiserNonprofitDetails.vue"),
-    FundraiserUpdates: () => import("Components/fundraiser/FundraiserUpdates.vue"),
-    Comments: () => import("Components/general/Comments.vue"),
-    DonateAction: () => import("Components/general/DonateAction.vue"),
-    DonorsList: () => import("Components/general/DonorsList.vue"),
-    InlineRichTextEditor: () => import("Components/input/InlineRichTextEditor.vue")
+    FundraiserGivingLevel: () => import("@/components/fundraiser/FundraiserGivingLevel.vue"),
+    FundraiserNonprofitDetails: () => import("@/components/fundraiser/FundraiserNonprofitDetails.vue"),
+    FundraiserUpdates: () => import("@/components/fundraiser/FundraiserUpdates.vue"),
+    Comments: () => import("@/components/general/Comments.vue"),
+    DonateAction: () => import("@/components/general/DonateAction.vue"),
+    DonorsList: () => import("@/components/general/DonorsList.vue"),
+    InlineRichTextEditor: () => import("@/components/input/InlineRichTextEditor.vue")
   },
   data () {
     return {
@@ -210,16 +210,22 @@ export default {
   },
   computed: {
     moreComments () {
+      return false
       return showMoreButton(this.$store.state, "comments")
     },
     moreDonations () {
+      return false
       return showMoreButton(this.$store.state, "donations")
     },
     moreUpdates () {
+      return false
       return showMoreButton(this.$store.state, "updates")
     },
     donationsByAmount () {
       var donations = this.$store.state.donations.data
+      if (!donations) {
+        return []
+      }
       var sorted = donations.slice().sort((a, b) => {
         return b.amount > a.amount
       })
@@ -227,6 +233,9 @@ export default {
     },
     donationsByDate () {
       var donations = this.$store.state.donations.data
+      if (!donations) {
+        return []
+      }
       var sorted = donations.slice().sort((a, b) => {
         return b.timestamp > a.timestamp
       })
@@ -234,6 +243,9 @@ export default {
     },
     donationsBySharing () {
       var donations = this.$store.state.donations.data
+      if (!donations) {
+        return []
+      }
       var sorted = donations.slice().sort((a, b) => {
         return a.amount > b.amount
       })
@@ -248,6 +260,9 @@ export default {
       } else {
         return [] 
       }
+    },
+    updatesCount () {
+      return this.$store.state.updates.data.length      
     },
     updates () {
       return this.$store.state.updates.data

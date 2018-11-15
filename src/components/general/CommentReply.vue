@@ -87,8 +87,8 @@ textarea {
 </style>
 
 <script>
-import LogInModal from "Components/general/LogInModal.vue"
-import RegisterOrLoginModal from "Components/general/RegisterOrLoginModal.vue"
+import LogInModal from "@/components/general/LogInModal.vue"
+import RegisterOrLoginModal from "@/components/general/RegisterOrLoginModal.vue"
 
 export default {
   props: [ "inReplyTo" ],

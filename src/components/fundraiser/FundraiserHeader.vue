@@ -36,7 +36,7 @@
 export default {
   props: [ "fundraiser", "editing" ],
   components: {
-    InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue")
+    InlineFieldEditor: () => import("@/components/input/InlineFieldEditor.vue")
   },
   methods: {
     closeEdition () {

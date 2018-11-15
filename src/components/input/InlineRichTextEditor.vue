@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import Icons from "Components/general/Icons.vue"
+import Icons from "@/components/general/Icons.vue"
 
 export default {
   props: [ "type", "value", "errorText", "allowEmpty", "removeReturns", "layout", "location", "placeholder", "editionIsEnabled", "defaultOpen" ],
@@ -62,7 +62,7 @@ export default {
   },
   components: {
     Icons,
-    UserDialog: () => import("Components/general/UserDialog.vue")
+    UserDialog: () => import("@/components/general/UserDialog.vue")
   },
   methods: {
     cancelEdition () {
@@ -143,7 +143,7 @@ export default {
     }
   },
   mounted () {
-    require("Components/plugins/VueWYSIWYG.js")
+    require("@/components/plugins/VueWYSIWYG.js")
     if (this.defaultOpen) {
       this.openEdition()
     }
