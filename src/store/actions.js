@@ -35,7 +35,7 @@ export default {
    */
   FETCH_NONPROFIT: ({ commit, dispatch, state }, { ein }) => new Promise((resolve, reject) => fetchNonprofit(ein)
     .then((data) => {
-      commit('SET_NONPROFIT', { nonprofit: data });
+      commit('ADD_NEW_NONPROFIT', { nonprofit: data });
       resolve(data);
     })
     .catch((err) => {

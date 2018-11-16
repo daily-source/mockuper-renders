@@ -62,7 +62,8 @@ export default {
       return this.$store.state.fundraiser;
     },
     nonprofit() {
-      return this.$store.state.nonprofit;
+      const ein = this.$route.params.ein
+      return this.$store.state.nonprofit[ein];
     },
     donationData() {
       return this.$store.state.userActions.donation;

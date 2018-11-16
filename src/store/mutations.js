@@ -7,6 +7,10 @@ export default {
   SET_NONPROFIT: (state, { nonprofit }) => {
     state.nonprofit = nonprofit;
   },
+  ADD_NEW_NONPROFIT: (state, { nonprofit }) => {
+    nonprofit['data'] = {}
+    state.nonprofit[nonprofit.EIN] = nonprofit
+  },
   SET_FUNDRAISER: (state, { fundraiser }) => {
     state.fundraiser = fundraiser;
   },

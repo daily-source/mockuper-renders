@@ -226,15 +226,14 @@ export default {
       if (!donations) {
         return [];
       }
-      const sorted = donations.slice().sort((a, b) => b.amount > a.amount);
+      const sorted = donations.sort((a, b) => {
+        return b.amount - a.amount
+      });
       return sorted;
     },
     donationsByDate() {
       const donations = this.$store.state.donations.data;
-      if (!donations) {
-        return [];
-      }
-      const sorted = donations.slice().sort((a, b) => b.timestamp > a.timestamp);
+      const sorted = donations.slice().sort((a, b) => b.timestamp - a.timestamp);
       return sorted;
     },
     donationsBySharing() {

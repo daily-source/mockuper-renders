@@ -29,6 +29,7 @@
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
+
     <NonprofitAbout
       :nonprofit="nonprofit"
       :editing="enableEditionForThisNonprofit"
@@ -159,13 +160,14 @@ export default {
       return this.$route.params.ein;
     },
     nonprofit() {
-      return this.$store.state.nonprofit;
+      const ein = this.$route.params.ein
+      return this.$store.state.nonprofit[ein];
     },
     fundraisers() {
       return this.$store.state.fundraisers.data;
     },
     donations() {
-      return this.$store.state.donationsByAmount.data;
+      return this.$store.state.donations.data;
     },
     topFundraisers() {
       return this.$store.state.topFundraisers.data;
@@ -183,14 +185,6 @@ export default {
       return this.$store.state.user.loggedIn;
     },
     canManageThisNonprofit() {
-      const userNonprofits = this.$store.state.user.nonprofits;
-      if (userNonprofits && userNonprofits.length) {
-        const nonprofitsToManage = userNonprofits.filter(item => item.ein === this.nonprofit.EIN);
-        if (nonprofitsToManage.length) {
-          return true;
-        }
-        return false;
-      }
       return false;
     },
   },
@@ -200,11 +194,28 @@ export default {
    * This speeds up the process and reduces the size of the document (so TTFB improves).
    */
   mounted() {
-    this.loadFundraisers();
+    //this.loadFundraisers();
     this.loadMoreDonations();
     this.loadMoreTopFundraisers();
+    this.loadNonprofitData();
   },
   methods: {
+    loadNonprofitData () {
+      const ein = this.$route.params.ein
+      if (this.$store.state.nonprofit.hasOwnProperty(ein)) {
+        return
+      } 
+      return new Promise((resolve, reject) => {
+        return this.$store.dispatch("FETCH_NONPROFIT", { ein })
+          .then(data => {
+            resolve(data)
+          })
+          .catch(err => {
+            reject(err)
+          })
+      })
+
+    },
     /**
      * Fetch fundraisers for this EIN. If no fundraisers are returned, reset the store info,
      * so that it doesn't display info from other nonprofits.
@@ -254,9 +265,10 @@ export default {
      * and fetch again the data for the other sections.
      */
     ein(ein) {
-      this.loadFundraisers();
+      //this.loadFundraisers();
       this.loadMoreDonations();
       this.loadMoreTopFundraisers();
+      this.loadNonprofitData();
     },
   },
 };

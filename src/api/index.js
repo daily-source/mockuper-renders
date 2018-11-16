@@ -15,30 +15,12 @@ const commentAPI = process.env.VUE_APP_COMMENT_API;
  */
 export function fetchNonprofit(ein) {
   return new Promise((resolve, reject) => {
-    Vue.axios.get(`${baseURL}/nonprofits/${ein}`)
+    Vue.axios.get(`${IRSSearchAPI}/nonprofits/${ein}`)
       .then((response) => {
-        if (response.data.length) {
-          // Nonprofit was found in main system (nonprofit is not generic)
-          resolve(response.data[0]);
-        } else {
-          // Nonprofit was not found in main system (nonprofit is generic)
-          // Fetch generic resources from main system and nonprofit data from the IRS service
-          const promises = [];
-          promises.push(Vue.axios.get(`${IRSSearchAPI}/nonprofits/${ein}`));
-          promises.push(Vue.axios.get(`${baseURL}/default`));
-          Vue.axios.all(promises)
-            .then((result) => {
-              const res = result[0].data[0];
-              res.data = result[1].data.data;
-              resolve(res);
-            })
-            .catch(() => {
-              reject({ code: 404 });
-            });
-        }
+        resolve(response.data[0]);
       })
-      .catch((e) => {
-        reject(e);
+      .catch(() => {
+        reject({ code: 404 });
       });
   });
 }
