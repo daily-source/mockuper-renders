@@ -1,7 +1,7 @@
 <template>
   <div class="container is-fluid white-bg fundraiser-content__wrapper">
     <div class="columns fundraiser-content" v-if="!editing">
-      <div class="column is-two-thirds-desktop fundraiser-content__left">
+      <div :class="`column is-two-thirds-desktop fundraiser-content__left l_version_${version}`">
         <div class="fundraiser-photo-section">
           <flickity
             ref="flickity"
@@ -28,7 +28,7 @@
           </flickity>
         </div>
       </div>
-      <div class="column is-one-third-desktop fundraiser-content__right">
+      <div :class="`column is-one-third-desktop fundraiser-content__right r_version_${version}`">
         <div class="fundraiser-pledge">
           <div class="fundraiser-pledge__heading" v-if="fundraiser.participant">
             <p class="button-wrapper" v-if="canEdit">
@@ -100,6 +100,11 @@ export default {
     openEdition() {
       this.$emit('edit:open');
     },
+  },
+  computed: {
+    version () {
+      return this.$route.query.version
+    }
   },
   mounted() {
     this.canRender = true;
@@ -289,5 +294,11 @@ export default {
     }
   }
 
+}
+.l_version_1 {
+  display: none;
+}
+.r_version_1 {
+  width: 100% !important;
 }
 </style>

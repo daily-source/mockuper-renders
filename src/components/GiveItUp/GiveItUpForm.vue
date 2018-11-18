@@ -78,7 +78,58 @@
         </div>
       </div>
       <div class="text-center mt-5">
-        <button class="btn btn-primary btn-lg">Continue</button>
+        <button class="btn btn-primary btn-lg" @click="lastFormStep()">Continue</button>
+      </div>
+    </section>
+    <section id="last-last-step" class="py-4" v-if="moreForm">
+      <div class="container total-container text-primary" >
+        <div class="columns">
+          <div class="column is-4 total-raised-container">
+            Title
+            <p class="small">This shows at the top of your "Give It Up For Good" page.</p>
+          </div>
+          <div class="column is-8">
+            <input 
+              v-model="fundraiser.title"
+              type="text" 
+              class="form-control" 
+            >
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-4 total-raised-container">
+            Description
+            <p class="small">Share what you're doing, why you're doing it and/or what's the mission of the nonprofit.</p>
+          </div>
+          <div class="column is-8">
+            <textarea 
+              v-model="fundraiser.description"
+              type="text" 
+              class="form-control" 
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-4 total-raised-container">
+            Banner photo
+            <p class="small">Upload up to 10 photos related to your Give It Up for Good effort and/or the nonprofit it helps</p>
+          </div>
+          <div class="column is-8">
+            <button class="button is-warning">Browse files</button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-4 total-raised-container">
+            Your photo (optional)
+          </div>
+          <div class="column is-8">
+            <button class="button is-warning">Browse files</button>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <button class="btn btn-primary btn-lg" :disabled="!canPublish">Publish fundraiser</button>
       </div>
     </section>
   </div>
@@ -105,12 +156,14 @@ export default {
     return {
       canRender: false,
       nextStep: false,
+      moreForm: false,
       total: null,
       totalInput: null,
       totalRate: 'month',
       customChoiceNum: 3,
       itemsToShow: 13,
       showError: false,
+      fundraiser: {}
     }
   },
 
@@ -149,6 +202,9 @@ export default {
     },
     nonprofitName () {
       return this.$store.state.nonprofit.data.name || this.$store.state.nonprofit.NAME
+    },
+    canPublish () {
+      return this.fundraiser.title && this.fundraiser.description
     }
 
   },
@@ -219,6 +275,22 @@ export default {
       var that = this
       this.$nextTick(() => {
         that.smoothScroll('choices')
+      })
+
+    },
+    lastFormStep () {
+      if (this.selected.length <= 0) {
+        this.showError = true
+        return
+      } 
+
+      this.showError = false
+      this.moreForm = true
+
+      // Smoothscroll on next tick to make sure the how-much section is loaded before we scroll
+      var that = this
+      this.$nextTick(() => {
+        that.smoothScroll('last-last-step')
       })
 
     },
@@ -296,6 +368,9 @@ export default {
     .mb-2 {
       margin-bottom: 2rem !important;
     }
+  }
+  .small {
+    font-size: 17px;
   }
 </style>
 

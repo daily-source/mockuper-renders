@@ -147,10 +147,11 @@ export default new Vuex.Store({
           { id: '8', type: 'image', src: `${baseUrl}img/fundraiser-hero-9x16.jpg` },
           { id: '9', type: 'image', src: `${baseUrl}img/fundraiser-hero-16x9.jpg` },
           { id: '10', type: 'video', src: 'NbpRu-yzNfs' },
+          { id: '11', type: 'image', src: `${baseUrl}img/giveitup-demo-pic.png` },
         ],
       },
       participant: {
-        name: 'Carol',
+        name: 'Joan',
         fullname: 'Joan Engelman',
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
