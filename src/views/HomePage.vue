@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import AppHeader from '@/components/RideForGood/AppHeader.vue';
-import AppBanner from '@/components/RideForGood/AppBanner.vue';
-import SharedFooter from '@/components/RideForGood/SharedFooter.vue';
+import AppHeader from '@/components/GiveItUp/AppHeader.vue';
+import AppBanner from '@/components/GiveItUp/AppBanner.vue';
+import SharedFooter from '@/components/Shared/SharedFooter.vue';
 import NonprofitForm from '@/components/nonprofit/NonprofitForm.vue';
 
 export default {

@@ -34,8 +34,8 @@
             <p class="button-wrapper" v-if="canEdit">
               <a class="button is-light is-rounded is-medium" @click="openEdition()" v-if="!editing">Edit this fundraiser</a>
             </p>
-            <p>{{fundraiser.participant.name}} will ride 130 miles from Stockbridge to Boston on May 5 to raise money for <router-link :to="`/nonprofit/${fundraiser.nonprofit.EIN}`">{{fundraiser.nonprofit.name}}</router-link>.</p>
-            <p class="fundraiser-pledge__subheading">Please support {{fundraiser.participant.name}}'s Ride For Good</p>
+            <p>{{fundraiser.participant.name}} will give up candy for 3 months to raise money for <router-link :to="`/nonprofit/${fundraiser.nonprofit.EIN}`">{{fundraiser.nonprofit.name}}</router-link>.</p>
+            <p class="fundraiser-pledge__subheading">Please support {{fundraiser.participant.name}}'s efforts</p>
           </div>
           <div class="button fundraiser-pledge__cta is-success is-large">
             <DonateAction

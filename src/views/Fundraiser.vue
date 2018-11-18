@@ -46,7 +46,7 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from '@/components/RideForGood/AppHeader.vue';
+import AppHeader from '@/components/GiveItUp/AppHeader.vue';
 import FundraiserHeader from '@/components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);
@@ -59,7 +59,7 @@ export default {
    */
   components: {
     AppHeader,
-    SharedFooter: () => import('@/components/RideForGood/SharedFooter.vue'),
+    SharedFooter: () => import('@/components/Shared/SharedFooter.vue'),
     FundraiserHeader,
     FundraiserHero: () => import('@/components/fundraiser/FundraiserHero.vue'),
     FundraiserParticipant: () => import('@/components/fundraiser/FundraiserParticipant.vue'),
