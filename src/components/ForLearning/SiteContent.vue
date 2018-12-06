@@ -166,6 +166,10 @@ import Flickity from '@/components/plugins/Flickity.vue'
 export default {
   name: 'SiteContent',
 
+  components: {
+    Flickity,
+  },
+
   data () {
     return {
       sliderMainOpts: {
@@ -179,21 +183,20 @@ export default {
       },
     }
   },
-
-  components: {
-    Flickity,
-  },
 }
 </script>
 
 <style lang='scss'>
   .intro__heading {
-    max-width: 85%;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.25em;
     font-weight: 700 !important;
     color: $color-gray !important;
+
+    @include breakpoint($desktop) {
+      max-width: 85%;
+    }
   }
 
   .slider {
@@ -211,7 +214,14 @@ export default {
         padding: 15px;
         box-sizing: border-box;
         align-items: center;
+        flex-direction: row;
         height: 400px;
+
+        @include breakpoint($mobile) {
+          height: 350px;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     }
 
@@ -225,6 +235,10 @@ export default {
       justify-content: center;
       align-items: center;
 
+      @include breakpoint($mobile) {
+        max-width: 100%;
+      }
+
       .logo-img {
         object-fit: contain;
         object-position: center;
@@ -235,12 +249,19 @@ export default {
     }
 
     .slide-img {
+      object-fit: cover;
       position: absolute;
-      right: 15px;
-      top: 15px;
       width: 50%;
       max-width: 50%;
-      object-fit: cover;
+      right: 15px;
+      top: 15px;
+
+
+      @include breakpoint($mobile) {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+      }
 
       &--full-height {
         height: calc(100% - 30px);
@@ -256,7 +277,12 @@ export default {
   }
 
   .slider__nav {
-    margin-top: 1em;
+    display: none;
+
+    @include breakpoint($desktop) {
+      margin-top: 1em;
+      display: block;
+    }
 
     .slide__wrapper {
       width: 22%;
@@ -285,9 +311,17 @@ export default {
     font-size: 1.125em;
     padding-bottom: 0;
 
+    @include breakpoint($mobile) {
+      max-width: 100%;
+    }
+
     h4 {
       color: $color-gray;
       margin-bottom: 0;
+
+      @include breakpoint($mobile) {
+        font-size: 1em !important;
+      }
     }
   }
 
@@ -299,6 +333,10 @@ export default {
       margin-right: auto;
       margin-top: 1em;
       color: $color-gray;
+
+      @include breakpoint($mobile) {
+        max-width: 100%;
+      }
     }
     .website__wrapper {
       padding: 15px;
@@ -317,6 +355,11 @@ export default {
         max-width: 50%;
         margin-left: auto;
         margin-right: auto;
+        @include breakpoint($mobile) {
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
       
     }

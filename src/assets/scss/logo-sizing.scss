@@ -21,6 +21,10 @@
   .logo-img {
     max-width: 240px;
 
+    @include breakpoint($mobile) {
+      max-width: 100% !important;
+    }
+
     &--wide {
       max-width: 300px;
     }
