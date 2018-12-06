@@ -1,26 +1,23 @@
 <template>
   <div class="layout-base">
     <app-header />
-    <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
+    <site-content />
     <SharedFooter></SharedFooter>
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/RideForGood/AppHeader.vue';
-import AppBanner from '@/components/RideForGood/AppBanner.vue';
-import SharedFooter from '@/components/RideForGood/SharedFooter.vue';
-import NonprofitForm from '@/components/nonprofit/NonprofitForm.vue';
+import AppHeader from '@/components/ForLearning/AppHeader.vue'
+import SiteContent from '@/components/ForLearning/SiteContent.vue'
+import SharedFooter from '@/components/general/SharedFooter.vue'
 
 export default {
   name: 'BaseLayout',
 
   components: {
     AppHeader,
-    AppBanner,
+    SiteContent,
     SharedFooter,
-    NonprofitForm,
   },
 
   metaInfo() {

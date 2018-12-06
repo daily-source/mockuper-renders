@@ -9,7 +9,7 @@ $color-text-green: #8AC557;
 $color-medium-gray: #676767;
 $color-medium-light-gray: #B0B1B3;
 $color-dark-gray: #343532;
-$color-gray: #676767;
+$color-gray: #5a5a5a;
 $color-bglight: #FFFFFF;
 $color-light-gray: #F0F0F0;
 $color-silver: #C0C0C0;
@@ -88,3 +88,19 @@ $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
+
+// These variables are here for the ForLearning
+$primary: #99cc67;
+$secondary: #0095d9;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// Footer variables
+$footer-bg: #f0f0f0 !default;
+$footer-nav-columns: 2;
+$footer-color: #3d3d3d;
+$footer-nav-link-color: $footer-color;
+$footer-nav-link-hover-color: $primary;
+$footer-copyright-bg: darken($footer-bg, 50%);
+$footer-logo-max-width: 180px;

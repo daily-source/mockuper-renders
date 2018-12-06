@@ -16,7 +16,9 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: ['/Users/cdelvasto/Documents/play/mockupper/@/assets/scss/main.scss'],
+      patterns: [
+        path.resolve(__dirname, 'src/assets/scss/main.scss')
+      ],
     },
   },
 };

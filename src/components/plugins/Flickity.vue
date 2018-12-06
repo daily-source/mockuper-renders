@@ -17,7 +17,7 @@ export default {
   },
 
   mounted() {
-    Flickity = require('flickity');
+    Flickity = require('flickity-as-nav-for');
     this.init();
   },
 
