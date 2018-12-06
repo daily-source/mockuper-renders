@@ -38,7 +38,7 @@ blockquote {
 }
 
 .container {
-  margin: 0 20px;
+  margin: 0 auto;
 
   @include breakpoint($tablet) {
     margin: auto;
@@ -540,8 +540,14 @@ p.is-centered {
     border-radius: $btn-border-radius;
   }
 }
-.social-nav {
+.social__nav {
   text-align: right;
+
+  @include breakpoint($mobile) {
+    text-align: center;
+    width: 100%;
+    justify-content: center !important;
+  }
 
   .nav-item {
     padding-left: .25em;
