@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import Datetime from 'vue-datetime';
 import Vue from 'vue';
 import App from './App.vue';
