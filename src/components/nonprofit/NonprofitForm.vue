@@ -55,7 +55,10 @@
             <div class="column is-5 form-column__input-column">
               <div class="control input-wrapper">
                 <Icons icon="calendar" class="input-icon" iconwidth="20px" iconheight="20px" color="#999"></Icons>
-                <datetime v-model="form.date"></datetime>
+                <datetime 
+                  v-model="form.date"
+                  input-class='input'
+                />
               </div>
             </div>
           </div>
@@ -179,12 +182,8 @@ export default {
   }
   &__label-column {
     text-align: left;
-    .label {
-    }
   }
-  &__input-column {
 
-  }
   &__button-column {
     .button {
       display: block;
@@ -192,9 +191,11 @@ export default {
       border-radius: 20px !important;
     }
   }
+
   &__extra-padded {
     margin-bottom: 35px;
   }
+
   &__left-padded {
     padding-left: 80px;
     padding-right: 0;
@@ -286,9 +287,9 @@ h1 {
 }
 
 
-.input-wrapper .input-icon {
-  top: 0;
-}
+// .input-wrapper .input-icon {
+//   top: 0;
+// }
 
 .radio + .radio {
   margin-left: 0;
