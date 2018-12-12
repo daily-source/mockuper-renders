@@ -1,7 +1,7 @@
 <template>
   <div class="container is-fluid white-bg fundraiser-content__wrapper">
     <div class="columns fundraiser-content" v-if="!editing">
-      <div class="column is-two-thirds-desktop fundraiser-content__left">
+      <div :class="`column is-two-thirds-desktop fundraiser-content__left l_version_${version}`">
         <div class="fundraiser-photo-section">
           <flickity
             ref="flickity"
@@ -28,14 +28,14 @@
           </flickity>
         </div>
       </div>
-      <div class="column is-one-third-desktop fundraiser-content__right">
+      <div :class="`column is-one-third-desktop fundraiser-content__right r_version_${version}`">
         <div class="fundraiser-pledge">
           <div class="fundraiser-pledge__heading" v-if="fundraiser.participant">
             <p class="button-wrapper" v-if="canEdit">
               <a class="button is-light is-rounded is-medium" @click="openEdition()" v-if="!editing">Edit this fundraiser</a>
             </p>
-            <p>{{fundraiser.participant.name}} will ride 130 miles from Stockbridge to Boston on May 5 to raise money for <router-link :to="`/nonprofit/${fundraiser.nonprofit.EIN}`">{{fundraiser.nonprofit.name}}</router-link>.</p>
-            <p class="fundraiser-pledge__subheading">Please support {{fundraiser.participant.name}}'s Ride For Good</p>
+            <p>{{fundraiser.participant.name}} will give up candy for 3 months to raise money for <router-link :to="`/nonprofit/${fundraiser.nonprofit.EIN}`">{{fundraiser.nonprofit.name}}</router-link>.</p>
+            <p class="fundraiser-pledge__subheading">Please support {{fundraiser.participant.name}}'s efforts</p>
           </div>
           <div class="button fundraiser-pledge__cta is-success is-large">
             <DonateAction
@@ -100,6 +100,11 @@ export default {
     openEdition() {
       this.$emit('edit:open');
     },
+  },
+  computed: {
+    version () {
+      return this.$route.query.version
+    }
   },
   mounted() {
     this.canRender = true;
@@ -291,5 +296,11 @@ export default {
     }
   }
 
+}
+.l_version_1 {
+  display: none;
+}
+.r_version_1 {
+  width: 100% !important;
 }
 </style>

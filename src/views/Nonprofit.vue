@@ -19,16 +19,10 @@
     ></NonprofitHero>
 
 
-    <div class="container">
-      <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
-    </div>
-
-    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
-      <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </NonprofitForm>
+    <app-banner :disable-hero="true" />
+    <GiveItUpForm></GiveItUpForm>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
-
 
     <NonprofitAbout
       :nonprofit="nonprofit"
@@ -43,9 +37,9 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's giving something up to raise money for this nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Ride For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's giving something up to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -94,109 +88,121 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import VueMeta from 'vue-meta';
-import RegisterOrLoginModal from '@/components/general/RegisterOrLoginModal.vue';
-import ClaimNonprofitModal from '@/components/nonprofit/ClaimNonprofitModal.vue';
-import AppBanner from '@/components/GiveItUp/AppBanner.vue';
+import Vue from "vue"
+import VueMeta from "vue-meta"
+import RegisterOrLoginModal from "@/components/general/RegisterOrLoginModal.vue"
+import ClaimNonprofitModal from "@/components/nonprofit/ClaimNonprofitModal.vue"
+import AppBanner from '@/components/GiveItUp/AppBanner.vue'
 
-Vue.use(VueMeta);
+Vue.use(VueMeta)
 
 export default {
-  name: 'nonprofit',
-  data() {
+  name: "nonprofit",
+  data () {
     return {
       showLoginModal: false,
       showClaimNonprofitModal: false,
-      enableEditionForThisNonprofit: false,
-    };
+      enableEditionForThisNonprofit: false
+    }
   },
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    SharedFooter: () => import('@/components/RideForGood/SharedFooter.vue'),
-    AppHeader: () => import('@/components/RideForGood/AppHeader.vue'),
-    NonprofitHero: () => import('@/components/nonprofit/NonprofitHero.vue'),
-    DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('@/components/general/DonorsList.vue'),
-    FloatingShareTools: () => import('@/components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('@/components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('@/components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
+    SharedFooter: () => import('@/components/Shared/SharedFooter.vue'),
+    AppHeader: () => import("@/components/GiveItUp/AppHeader.vue"),
+    NonprofitHero: () => import("@/components/nonprofit/NonprofitHero.vue"),
+    DonateView: () => import("./DonateView.vue"),
+    DonorsList: () => import("@/components/general/DonorsList.vue"),
+    FloatingShareTools: () => import("@/components/general/FloatingShareTools.vue"),
+    NonprofitAbout: () => import("@/components/nonprofit/NonprofitAbout.vue"),
+    NonprofitFundraisers: () => import("@/components/nonprofit/NonprofitFundraisers.vue"),
+    GiveItUpForm: () => import("@/components/GiveItUp/GiveItUpForm.vue"),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
-    AppBanner,
+    AppBanner
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
    * in the template, ./src/App.vue
    */
-  metaInfo() {
-    const activity = this.nonprofit.NTEE_CD !== '0'
+  metaInfo () {
+    var activity = this.nonprofit.NTEE_CD !== "0"
       ? `NTEE Classification: ${this.nonprofit.NTEE_CD}`
-      : `Activity: ${this.nonprofit.ACTIVITY}`;
-    const description = `Tax exempt organization. ${activity}`;
-    const name = this.nonprofit.NAME;
-    const imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src;
-    const imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
+      : `Activity: ${this.nonprofit.ACTIVITY}`
+    var description = `Tax exempt organization. ${activity}`
+    var name = this.nonprofit.NAME
+    var imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src
+    var imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`
     return {
       title: name,
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: name },
-        { vmid: 'og:description', property: 'og:description', content: description },
-        { vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
-        { vmid: 'og:image:width', property: 'og:image:width', content: '1024' },
-        { vmid: 'og:image:height', property: 'og:image:height', content: '340' },
-        { vmid: 'og:image', property: 'og:image', content: imgUrl },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: name },
+        { vmid: "og:description", property: "og:description", content: description },
+        { vmid: "twitter:card", property: "twitter:card", content: "summary_large_image" },
+        { vmid: "og:image:width", property: "og:image:width", content: "1024" },
+        { vmid: "og:image:height", property: "og:image:height", content: "340" },
+        { vmid: "og:image", property: "og:image", content: imgUrl }
+      ]
+    }
   },
   computed: {
-    ein() {
-      return this.$route.params.ein;
+    ein () {
+      return this.$route.params.ein
     },
     nonprofit() {
       const ein = this.$route.params.ein
       return this.$store.state.nonprofit[ein];
     },
-    fundraisers() {
-      return this.$store.state.fundraisers.data;
+    fundraisers () {
+      return this.$store.state.fundraisers.data
     },
-    donations() {
-      return this.$store.state.donations.data;
+    donations () {
+      return this.$store.state.donations.data
     },
-    topFundraisers() {
-      return this.$store.state.topFundraisers.data;
+    topFundraisers () {
+      return this.$store.state.topFundraisers.data
     },
-    common() {
-      return this.$store.state.common;
+    common () {
+      return this.$store.state.common
     },
-    donateModal() {
-      return this.$route.name;
+    donateModal () {
+      return this.$route.name
     },
-    donateActive() {
-      return this.donateModal.includes('/donate');
+    donateActive () {
+      return this.donateModal.includes("/donate")
     },
-    loggedIn() {
-      return this.$store.state.user.loggedIn;
+    loggedIn () {
+      return this.$store.state.user.loggedIn
     },
-    canManageThisNonprofit() {
-      return false;
-    },
+    canManageThisNonprofit () {
+      let userNonprofits = this.$store.state.user.nonprofits
+      if (userNonprofits && userNonprofits.length) {
+        let nonprofitsToManage = userNonprofits.filter(item => {
+          return item.ein === this.nonprofit.EIN
+        })
+        if (nonprofitsToManage.length) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
   },
 
   /**
    * Exclude the fundraisers, donors and top donors blocks from getting rendered in the server.
    * This speeds up the process and reduces the size of the document (so TTFB improves).
    */
-  mounted() {
-    //this.loadFundraisers();
-    this.loadMoreDonations();
-    this.loadMoreTopFundraisers();
+  mounted () {
+    //this.loadFundraisers()
+    this.loadMoreDonations()
+    this.loadMoreTopFundraisers()
     this.loadNonprofitData();
   },
   methods: {
@@ -239,39 +245,39 @@ export default {
         .then(data => data)
         .catch(err => err);
     },
-    closeDonation() {
-      this.$router.push({ name: 'nonprofit', params: this.$route.params });
+    closeDonation () {
+      this.$router.push({ name: "nonprofit", params: this.$route.params })
     },
-    enableEdition() {
+    enableEdition () {
       if (!this.loggedIn) {
-        this.showLoginModal = true;
+        this.showLoginModal = true
       } else {
-        this.showLoginModal = false;
+        this.showLoginModal = false
         // determine if the nonprofit is in the list
         if (this.canManageThisNonprofit) {
-          this.enableEditionForThisNonprofit = true;
+          this.enableEditionForThisNonprofit = true
         } else {
-          this.showClaimNonprofitModal = true;
+          this.showClaimNonprofitModal = true
         }
       }
     },
-    closeEdition() {
-      this.enableEditionForThisNonprofit = false;
-    },
+    closeEdition () {
+      this.enableEditionForThisNonprofit = false
+    }
   },
   watch: {
     /**
      * As the view will be reused even if the ein param changes, we need to watch it
      * and fetch again the data for the other sections.
      */
-    ein(ein) {
+    ein: function (ein) {
       //this.loadFundraisers();
       this.loadMoreDonations();
       this.loadMoreTopFundraisers();
       this.loadNonprofitData();
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -284,7 +290,7 @@ export default {
     font-size: 24px;
     width: 40%;
     max-width: 450px;
-  }
+  }  
 }
 
 .nonprofit-intro {

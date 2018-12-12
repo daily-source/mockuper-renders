@@ -2,16 +2,15 @@
   <div class="layout-base">
     <app-header />
     <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
+    <GiveItUpForm></GiveItUpForm>
     <SharedFooter></SharedFooter>
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/RideForGood/AppHeader.vue';
-import AppBanner from '@/components/RideForGood/AppBanner.vue';
-import SharedFooter from '@/components/RideForGood/SharedFooter.vue';
-import NonprofitForm from '@/components/nonprofit/NonprofitForm.vue';
+import AppHeader from '@/components/GiveItUp/AppHeader.vue';
+import AppBanner from '@/components/GiveItUp/AppBanner.vue';
+import SharedFooter from '@/components/Shared/SharedFooter.vue';
 
 export default {
   name: 'BaseLayout',
@@ -20,7 +19,7 @@ export default {
     AppHeader,
     AppBanner,
     SharedFooter,
-    NonprofitForm,
+    GiveItUpForm: () => import("@/components/GiveItUp/GiveItUpForm.vue")
   },
 
   metaInfo() {

@@ -4,7 +4,7 @@
       <div class="fundraiser-lower__body-wrapper">
         <div class="tabs is-toggle">
           <div class="tabs__bottom-line"></div>
-          <ul>
+          <ul class="no-bottom-margin">
             <li @click="currentTab = 1" :class="{'is-active': currentTab === 1}"><a>Home</a></li>
             <li @click="currentTab = 2" :class="{'is-active': currentTab === 2}">
               <a>Donors ({{donationsByAmount.length}})</a>
@@ -545,5 +545,8 @@ function showMoreButton(state, arg) {
 }
 .new-update-wrapper {
   margin-top: 80px;
+}
+.no-bottom-margin {
+  margin-bottom: 0;
 }
 </style>
