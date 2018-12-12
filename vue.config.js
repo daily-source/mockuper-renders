@@ -9,14 +9,17 @@ module.exports = {
       // pass options to sass-loader
       sass: {
         // @/ is an alias to src/
-        data: '@import "@/assets/scss/base.scss";',
+        // data: '@import "@/assets/scss/_base.scss";',
       },
     },
   },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: [path.resolve(__dirname, '/assets/scss/base.scss')],
+      patterns: [
+        path.resolve(__dirname, 'src/assets/scss/_breakpoints.scss'),
+        path.resolve(__dirname, 'src/assets/scss/_variables.scss'), 
+      ]
     },
   },
 };
