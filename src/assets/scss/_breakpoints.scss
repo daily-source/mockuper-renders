@@ -1,11 +1,13 @@
 @mixin breakpoint($breakpoint) {
   $query: '';
 
-  @if unit($breakpoint) == 'px' and ($breakpoint/1px) >= 769 {
+  @if unit($breakpoint) == "px" and ($breakpoint/1px) >= 769 {
     $query: "(min-width: 769px)";
-  } else {
+  } @else {
     $query: "(max-width: 768px)";
   }
 
-  @media #{$query} { @content; }
+  @media #{$query} { 
+    @content; 
+  }
 }
