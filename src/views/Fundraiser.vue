@@ -19,15 +19,18 @@
       :can-edit="canManageThisFundraiser"
       :editing="enableEditionForThisFundraiser"
       v-on:edit:open="enableEdition()"
-    ></FundraiserHero>
+    >
+      <p slot="copytext">
+        {{fundraiser.User.firstName}} will volunteer {{fundraiser.fundraiserDetails.hours}} hours {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`">{{fundraiser.Nonprofit.NAME}}</router-link> to raise money for the same nonprofit
+      </p>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Volunteerathon</span>
+    </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
       ref="FundraiserParticipant"
       :fundraiser="fundraiser"
       :editing="enableEditionForThisFundraiser"
       :can-edit="canManageThisFundraiser"
-      v-on:edit:close="closeEdition()"
-      v-on:edit:open="enableEdition('FundraiserParticipant')"
     ></FundraiserParticipant>
     <FundraiserLowerBody
       id="FundraiserLowerBody"
@@ -35,8 +38,6 @@
       :key="donateModal"
       :can-edit="canManageThisFundraiser"
       :editing="enableEditionForThisFundraiser"
-      v-on:edit:close="closeEdition()"
-      v-on:edit:open="enableEdition('FundraiserLowerBody')"
     ></FundraiserLowerBody>
 
     <SharedFooter></SharedFooter>
@@ -46,8 +47,8 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from '@/components/RideForGood/AppHeader.vue';
-import FundraiserHeader from '@/components/fundraiser/FundraiserHeader.vue';
+import AppHeader from 'Components/RideForGood/AppHeader.vue';
+import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);
 
@@ -59,11 +60,11 @@ export default {
    */
   components: {
     AppHeader,
-    SharedFooter: () => import('@/components/RideForGood/SharedFooter.vue'),
+    SharedFooter: () => import('Components/RideForGood/SharedFooter.vue'),
     FundraiserHeader,
-    FundraiserHero: () => import('@/components/fundraiser/FundraiserHero.vue'),
-    FundraiserParticipant: () => import('@/components/fundraiser/FundraiserParticipant.vue'),
-    FundraiserLowerBody: () => import('@/components/fundraiser/FundraiserLowerBody.vue'),
+    FundraiserHero: () => import('Components/fundraiser/FundraiserHero.vue'),
+    FundraiserParticipant: () => import('Components/fundraiser/FundraiserParticipant.vue'),
+    FundraiserLowerBody: () => import('LocalComponents/fundraiser/FundraiserLowerBody.vue'),
     DonateView: () => import('./DonateView.vue'),
   },
   data() {
@@ -81,7 +82,7 @@ export default {
     if (!this.fundraiser.participant) {
       return {};
     }
-    const description = `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.nonprofit.name}`;
+    const description = `Support ${this.fundraiser.participant.name}'s volunteerathon: ${this.fundraiser.name} for the nonprofit ${this.fundraiser.Nonprofit.name}`;
     const title = this.fundraiser.name;
     const img = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${this.fundraiser.data.media[0].src}`;
     return {

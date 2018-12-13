@@ -1,0 +1,3 @@
+[submodule "src/xthon-core"]
+	path = src/xthon-core
+	url = git@github.com:dailysourceorg/xthon-core.git

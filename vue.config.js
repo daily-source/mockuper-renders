@@ -1,6 +1,14 @@
 const path = require('path');
 
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "Components": path.resolve(__dirname, 'src/xthon-core/lib/components'),
+        "LocalComponents": path.resolve(__dirname, 'src/components'),
+      }
+    }
+  },
   chainWebpack: config => {
     config.module.rules.delete('eslint');
   },
@@ -9,14 +17,17 @@ module.exports = {
       // pass options to sass-loader
       sass: {
         // @/ is an alias to src/
-        data: '@import "@/assets/scss/base.scss";',
+        data: '@import "@/xthon-core/lib/assets/scss/base.scss"; @import "@/assets/scss/base.scss";',
       },
     },
   },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: [path.resolve(__dirname, '/assets/scss/base.scss')],
+      patterns: [
+        path.resolve(__dirname, '@/xthon-core/lib/assets/scss/base.scss'),
+        path.resolve(__dirname, '@/assets/scss/base.scss')        
+      ],
     },
   },
 };

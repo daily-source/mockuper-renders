@@ -148,7 +148,7 @@ export default new Vuex.Store({
         ],
       },
       participant: {
-        name: 'Carol',
+        name: 'Joan',
         fullname: 'Joan Engelman',
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
@@ -158,12 +158,24 @@ export default new Vuex.Store({
           src: `${baseUrl}img/donor-8.jpg`,
         },
       },
-      nonprofit: {
+      User: {
+        firstName: "Joan",
+        lastName: "Engelman"
+      },
+      fundraiserDetails: {
+        hours: 40
+      },
+      counters: {
+        donationsCount: 10,
+        commentsCount: 10,
+        updatesCount: 10
+      },
+      Nonprofit: {
         logo_square: `${baseUrl}img/fundraiser-feed-the-children-logo-square.png`,
         logo: {
           src: `${baseUrl}img/fundraiser-feed-the-children-logo.png`,
         },
-        name: 'MELROSE MASSACHUSETTS TELEVISION',
+        NAME: 'MELROSE MASSACHUSETTS TELEVISION',
         website: 'https://melrose-massachusetts.tv',
         EIN: 43138428,
         STREET: '360 MAIN ST',
@@ -176,6 +188,10 @@ export default new Vuex.Store({
         SUBSECTION: 3,
         NTEE_CD: '0',
         SORT_NAME: '0',
+        data: {
+          name: "MELROSE MASSACHUSETTS TELEVISION TV",
+          media: []
+        }
       },
       giving_levelsx: [
         {
@@ -271,11 +287,27 @@ export default new Vuex.Store({
           id: 22,
           author_id: 24,
           fundraiser_id: 254,
+          User: {
+            nickname: "Mark",
+            firstName: "Mark",
+            lastName: "Twain",
+            avatar: {
+              src: "https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png"
+            }
+          },
           avatar: 'https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png',
           comment: '<p>This is great that you’re doing this good deed to help other people in need. I myself have needed help in the past and gladly, I have found this site.</p>',
           timestamp: 1517415125000,
           fullname: 'Mark Twain',
           name: 'Alison',
+          User: {
+            nickname: "Alison",
+            firstName: "Alison",
+            lastName: "Twain",
+            avatar: {
+              src: "https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png"
+            }
+          },
           replies: [
             {
               id: 23,
@@ -287,6 +319,14 @@ export default new Vuex.Store({
               timestamp: 1526504544000,
               fullname: 'George Gerschwinn',
               name: 'George',
+              User: {
+                nickname: "George",
+                firstName: "George",
+                lastName: "Twain",
+                avatar: {
+                  src: "https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png"
+                }
+              },
             },
             {
               id: 24,
@@ -298,6 +338,14 @@ export default new Vuex.Store({
               timestamp: 1521504544000,
               fullname: 'Dave Weckl',
               name: 'Dave',
+              User: {
+                nickname: "Dave",
+                firstName: "Dave",
+                lastName: "Twain",
+                avatar: {
+                  src: "https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png"
+                }
+              },
             },
           ],
         },
@@ -311,6 +359,14 @@ export default new Vuex.Store({
           timestamp: 1526504544000,
           fullname: 'Jen Zuckerberg',
           name: 'Jen',
+          User: {
+            nickname: "Jen",
+            firstName: "Jen",
+            lastName: "Martin",
+            avatar: {
+              src: ""
+            }
+          },
         },
         {
           id: 26,
@@ -322,6 +378,14 @@ export default new Vuex.Store({
           timestamp: 1521504544000,
           fullname: 'Martin Luc-Defau',
           name: 'Martin',
+          User: {
+            nickname: "Martin",
+            firstName: "Martin",
+            lastName: "Luc-Defau",
+            avatar: {
+              src: ""
+            }
+          },
         },
       ],
       current: 1,
@@ -329,19 +393,18 @@ export default new Vuex.Store({
       latest: null,
     },
     donations: {
+      byAmount: {
+        data: [
+          { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
+        ]
+      },
+      byDate: {
+        data: [
+          { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
+        ]
+      },
       data: [
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 721,
-          amount: 45,
-          fullname: 'Francisca Morana',
-          firstname: 'Francisca',
-          lastname: 'Morana',
-          avatar: `${baseUrl}img/donor-1.jpg`,
-          timestamp: 1521504544000,
-          public: true,
-        },
+        { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
         {
           fundraiser_id: 254,
           nonprofit_ein: 43138428,
