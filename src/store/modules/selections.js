@@ -94,12 +94,12 @@ const state = {
     },
     {
       name: 'meals-higher',
-      label: 'Meals higher than',
+      label: 'Meals higher than: ',
       hasCustomField: true,
     },
     {
       name: 'concerts-higher',
-      label: 'Concerts higher than',
+      label: 'Concerts higher than: ',
       hasCustomField: true,
     },
   ],

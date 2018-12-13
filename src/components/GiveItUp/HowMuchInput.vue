@@ -1,100 +1,62 @@
-<style lang="scss">
-  .how-much__input-wrap {
-    border-top: 1px solid #ddd;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-    border-collapse: collapse;
-
-    &:first-of-type {
-      border-top: 0;
-    }
-
-    &:last-of-type {
-      border-bottom: 1px solid #ddd;
-    }
-
-    .how-much__input {
-      max-width: 20% !important;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-    .how-much__input-custom-percent {
-      max-width: 130px;
-    }
-
-    .locked {
-      font-size: 14px;
-    }
-  }
-</style>
-
 <template>
   <div class="how-much__input-wrap">
-    <h4 class="mb-3">{{input.label}}:</h4>
-    <div class="row">
-      <div class="col-md-7 col-12">
+    <h4 class="how-much__label">{{input.label}}:</h4>
+    <div class="columns is-mobile">
+      <div class="column is-7">
         <div class="input-data">
-          <div class="d-flex align-items-center">
+          <div class="is-flex input-data__container align-items-center">
             I normally spend
-            <div class="input-group how-much__input">
-              <div class="input-group-prepend">
-                <span class="font-weight-bold input-group-text">$</span>
-              </div>
-              <input type="number" step=".001" class="form-control" v-model="amount">
+            <div class="how-much__input">
+              <input-group 
+                v-model='amount'
+                prependText='$'
+              />
             </div>
             per
-            <select
-              class="custom-select how-much__input form-control"
-              :id="input.name+'__rate-select'"
-              v-model="rate"
-            >
-              <option value="day">day</option>
-              <option value="week">week</option>
-              <option value="month">month</option>
-              <option value="year">year</option>
-            </select>
+            <div class="how-much__input select">
+              <select
+                :id="input.name+'__rate-select'"
+                v-model="rate"
+              >
+                <option value="day">day</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-5 col-12">
-        <div class="custom-control mb-2 custom-radio">
-          <input
-            v-model="giveUpOption"
-            value="all"
-            class="custom-control-input"
-            type="radio"
-            :id="input.name+'-all'"
-          >
-          <label class="custom-control-label" :for="input.name+'-all'">Give it up completely</label>
+      <div class="column is-5">
+        <div class="control">
+          <radio
+            v-model='giveUpOption'
+            :value='"all"'
+            :checked='giveUpOption=="all"'
+            :id="`${input.name}-all`"
+            label='Give it up completely'
+          />
         </div>
-        <div class="reduce-by__row d-flex align-items-center">
-          <div class="custom-control mb-2 custom-radio mr-2">
-            <input
-              v-model="giveUpOption"
-              value="percent"
-              class="custom-control-input"
-              type="radio"
-              :id="input.name+'-percent'"
-            >
-            <label class="custom-control-label" :for="input.name+'-percent'">Reduce by:</label>
+        <div class="reduce-by__row is-flex">
+          <div class="control">
+            <radio
+              v-model='giveUpOption'
+              :checked='giveUpOption=="percent"'
+              :value='"percent"'
+              :id="`${input.name}-percent`"
+              label='Reduce by:'
+            />
           </div>
           <div class="form-group percent-input mb-0">
             <label :for="input.name+'custom-percent'" class="sr-only">Reduce by custom %</label>
-            <div class="input-group how-much__input-custom-percent">
-              <input
-                v-model="giveUpPercent"
-                :disabled="giveUpOption === 'all'"
-                class="form-control"
-                :type="giveUpOption === 'all' ? 'text' : 'number'"
-                step=".001"
-                placeholder="Enter"
-              >
-              <div class="input-group-prepend">
-                <span class="font-weight-bold input-group-text">%</span>
-              </div>
+            <input-group
+              v-model="giveUpPercent"
+              :disabled="giveUpOption === 'all'"
+              :type="giveUpOption === 'all' ? 'text' : 'number'"
+              placeholder="Enter"
+              appendText='%'
+            />
           </div>
-        </div>
         </div>
       </div>
     </div>
@@ -102,10 +64,17 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
+import InputGroup from '@/components/input/InputGroup'
+import Radio from '@/components/input/Radio'
 
 export default {
   name: 'HowMuchInput',
+
+  components: {
+    InputGroup,
+    Radio,
+  },
 
   props: ['input'],
 
@@ -164,3 +133,47 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .how-much__input-wrap {
+    border-top: 1px solid #ddd;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border-collapse: collapse;
+
+    &:first-of-type {
+      border-top: 0;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .how-much__input {
+      max-width: 20% !important;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .locked {
+      font-size: 14px;
+    }
+  }
+
+  .percent-input {
+    .input-group {
+      max-width: 130px !important;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .input-data__container,
+  .reduce-by__row {
+    align-items: center;
+  }
+
+  .how-much__label {
+    margin-bottom: 1em;
+  }
+</style>

@@ -1,12 +1,12 @@
 <template>
   <div :class="`version_${version}`">
-    <section id="choices" class="py-4" >
+    <section id="choices" class="section" >
       <div class="container">
-        <h3 class="text-center text-primary">Pick what to give up or use less of:</h3>
-        <p class="text-center"></p>
-        <div class="choices__input-container py-3">
-          <div class="row" v-if="choices && choices.length > 0">
-            <div class="col-md-3" v-for="(choice, index) in choices" :key="index" v-if="displayCheckbox(index)">
+        <h3 class="has-text-centered has-text-primary">Pick what to give up or use less of:</h3>
+
+        <div class="choices__input-container">
+          <div class="columns is-multiline is-mobile" v-if="choices && choices.length > 0">
+            <div class="column is-one-quarter" v-for="(choice, index) in choices" :key="index" v-if="displayCheckbox(index)">
               <choice-checkbox 
                 :choice="choice" 
                 @choiceChanged="inputHandler"
@@ -19,17 +19,19 @@
             </div>
           </div>
         </div>
-        <div class="expand-container text-right">
+
+        <div class="expand-container has-text-right">
           <a href="#" @click.stop.prevent="toggleExpanded"> {{ expand ? 'Show less ideas' : 'Show more ideas' }} </a>
         </div>
-        <div class="btn-container text-center">
-          <button class="btn btn-lg btn-primary text-uppercase" @click="showNext" v-if="version">Next: choose how much</button>
-          <button class="btn btn-lg btn-primary text-uppercase" @click="showNext" v-else>Next: choose how long</button>
-          <p class="text-danger d-block mt-3" v-if="showError">*You must choose at least one item before you can do the next step. To choose an item, click the checkbox to the left of the item</p>
+        <div class="btn-container has-text-centered">
+          <button class="button is-primary is-uppercase has-text-weight-bold" @click="showNext">
+            {{ version ? 'Next: choose how much' : 'Next: choose how long' }}
+          </button>
+          <p class="has-text-danger is-block mt-3" v-if="showError">*You must choose at least one item before you can do the next step. To choose an item, click the checkbox to the left of the item</p>
         </div>
       </div>
     </section>
-    <section id="how-much" class="py-4" v-if="nextStep">
+    <section id="how-much" v-if="nextStep">
       <div class="container">
         <p>You can add another item by checking off its box above. You can remove an item by unchecking it.</p>
         <how-much-input 
@@ -38,31 +40,33 @@
           :input="input"
           @inputChanged="computeTotal"
         />
-        <div class="total-container text-primary">
-          <div class="total-rate-container d-flex align-items-center mb-2">
+        <div class="total-container has-text-primary">
+          <div class="total-rate-container is-flex align-items-center">
             Do this for
             <input 
               v-model="totalInput"
               type="number" 
-              class="form-control total-number-input" 
+              class="input total-number-input" 
             >
-            <select 
-              v-model="totalRate"
-              class="custom-selectx form-control total-select-input" 
-            >
-              <option value="day">days</option>
-              <option value="week">weeks</option>
-              <option value="month" selected>months</option>
-              <option value="year">years</option>
-            </select>
+            <div class="select">
+              <select 
+                v-model="totalRate"
+                class="total-select-input" 
+              >
+                <option value="day">days</option>
+                <option value="week">weeks</option>
+                <option value="month" selected>months</option>
+                <option value="year">years</option>
+              </select>
+            </div>
           </div>
           <div class="total-raised-container my-3">
             You will raise:
-            <span class="total text-success align-middle">
+            <span class="total has-text-success align-middle">
               {{ (total ? total : 0) | currencyFormat }}
             </span>
           </div>
-          <div class="nonprofit-select-container d-flex align-items-center">
+          <div class="nonprofit-select-container is-flex align-items-center">
             The money will go to: 
             <div class="form-group mb-0" v-if="version != 2">
               <label for="nonprofit" class="sr-only">Nonprofit</label>
@@ -77,8 +81,8 @@
           </div>
         </div>
       </div>
-      <div class="text-center mt-5">
-        <button class="btn btn-primary btn-lg" @click="lastFormStep()">Continue</button>
+      <div class="has-text-centered button-continue-container mt-5">
+        <button class="button is-primary is-uppercase has-text-weight-bold" @click="lastFormStep()">Continue</button>
       </div>
     </section>
     <section id="last-last-step" class="py-4" v-if="moreForm">
@@ -348,6 +352,7 @@ export default {
     font-weight: 700;
     font-size: 2rem;
     margin-left: -2px;
+    color: $secondary;
 
     span {
       font-size: 0.933em;
@@ -359,18 +364,47 @@ export default {
     margin-left: 8px;
     margin-right: 8px;
   }
-  .row {
-    margin-right: 0;
-    margin-left: 0;
-  }
 
   .version_2 {
     .mb-2 {
       margin-bottom: 2rem !important;
     }
   }
+
   .small {
     font-size: 17px;
+  }
+
+  .expand-container {
+    margin-top: 1em;
+  }
+
+  .choices__input-container {
+    margin-top: 1em;
+  }
+
+  .total-raised-container {
+    margin-bottom: 1rem;
+  }
+
+  .total-rate-container  {
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  .total-container {
+    .select { 
+      height: auto;
+    }
+
+    select {
+      font-size: 1rem;
+    }
+  }
+
+  .button-continue-container  {
+    margin-top: 2em;
+    margin-bottom: 2em;
   }
 </style>
 

@@ -1,37 +1,33 @@
-<style lang="scss">
-  .choice-checkbox {
-    .custom-control {
-      margin-bottom: .625em;
-      label {
-        font-size: 1.125em;
-      }
-    }
-    .input-group {
-      max-width: 150px;
-      margin-left: 1.5em;
-    }
-  }
-</style>
-
 <template>
   <div class="choice-checkbox mb-3">
-    <div class="custom-control custom-checkbox mb-0">
-      <input type="checkbox" class="custom-control-input" :id="choice.name" v-model="checked" :disabled="choice.hasCustomField && !customAmount">
-      <label class="custom-control-label" :for="choice.name">{{ choice.hasCustomField ? customLabelCombined : choice.label }}</label>
-    </div>
-    <div class="input-group input-group-sm" v-if="choice.hasCustomField">
-      <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-      <input v-model="customAmount" type="number" class="form-control">
-    </div>
+    <checkbox 
+      v-model='checked'
+      :disabled='choice.hasCustomField && !customAmount'
+      :id='choice.name'
+      :label='choice.label'
+    />
+    <input-group 
+      v-if='choice.hasCustomField'
+      v-model='customAmount'
+      placeholder='Enter amount'
+      prepend-text='$'
+    />
   </div>
 
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
+import Checkbox from '@/components/input/Checkbox'
+import InputGroup from '@/components/input/InputGroup'
 
 export default {
   name: 'ChoiceCheckbox',
+
+  components: {
+    Checkbox,
+    InputGroup
+  },
 
   props: ['choice'],
 
@@ -88,3 +84,19 @@ export default {
 
 };
 </script>
+
+<style lang="scss">
+  .choice-checkbox {
+    .custom-control {
+      label {
+        font-size: 1.125em;
+      }
+    }
+
+    .input-group {
+      max-width: 200px;
+      margin-left: 1.5em;
+    }
+
+  }
+</style>
