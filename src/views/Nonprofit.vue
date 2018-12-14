@@ -116,7 +116,7 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    SharedFooter: () => import('Components/RideForGood/SharedFooter.vue'),
+    SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),

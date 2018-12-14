@@ -6,6 +6,7 @@ module.exports = {
       alias: {
         "Public": path.resolve(__dirname, 'public'),
         "Components": path.resolve(__dirname, 'src/xthon-core/lib/components'),
+        "Core": path.resolve(__dirname, 'src/xthon-core/lib'),
         "LocalComponents": path.resolve(__dirname, 'src/components'),
       }
     }

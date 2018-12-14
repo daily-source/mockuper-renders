@@ -60,7 +60,7 @@ export default {
    */
   components: {
     AppHeader,
-    SharedFooter: () => import('Components/RideForGood/SharedFooter.vue'),
+    SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     FundraiserHeader,
     FundraiserHero: () => import('Components/fundraiser/FundraiserHero.vue'),
     FundraiserParticipant: () => import('Components/fundraiser/FundraiserParticipant.vue'),

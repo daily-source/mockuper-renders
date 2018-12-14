@@ -425,7 +425,7 @@ export default new Vuex.Store({
           },
           avatar: 'https://volunteerathon__fundraiser2.surge.sh/fundraiser/avatar.png',
           comment: '<p>This is great that you’re doing this good deed to help other people in need. I myself have needed help in the past and gladly, I have found this site.</p>',
-          timestamp: 1517415125000,
+          createdAt: 1517415125000,
           fullname: 'Mark Twain',
           name: 'Alison',
           User: {
@@ -444,7 +444,7 @@ export default new Vuex.Store({
               reply_to: 22,
               avatar: null,
               comment: '<p>Indeed, that’s fantastic.</p>',
-              timestamp: 1526504544000,
+              createdAt: 1526504544000,
               fullname: 'George Gerschwinn',
               name: 'George',
               User: {
@@ -463,7 +463,7 @@ export default new Vuex.Store({
               reply_to: 22,
               avatar: null,
               comment: '<p>Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-              timestamp: 1521504544000,
+              createdAt: 1521504544000,
               fullname: 'Dave Weckl',
               name: 'Dave',
               User: {
@@ -484,7 +484,7 @@ export default new Vuex.Store({
           reply_to: 22,
           avatar: null,
           comment: '<p>Indeed, that’s fantastic.</p>',
-          timestamp: 1526504544000,
+          createdAt: 1526504544000,
           fullname: 'Jen Zuckerberg',
           name: 'Jen',
           User: {
@@ -503,7 +503,7 @@ export default new Vuex.Store({
           reply_to: 22,
           avatar: null,
           comment: '<p>Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1521504544000,
+          createdAt: 1521504544000,
           fullname: 'Martin Luc-Defau',
           name: 'Martin',
           User: {
