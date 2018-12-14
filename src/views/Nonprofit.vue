@@ -167,10 +167,10 @@ export default {
       return this.$store.state.fundraisers.data;
     },
     donations() {
-      return this.$store.state.donations.data;
+      return this.$store.state.donations.byAmount.data;
     },
     topFundraisers() {
-      return this.$store.state.topFundraisers.data;
+      return this.$store.state.donations.topFundraisers.data;
     },
     common() {
       return this.$store.state.common;
