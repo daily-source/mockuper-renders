@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import AppHeader from '@/xthon-core/lib/components/RideForGood/AppHeader.vue';
-import AppBanner from '@/xthon-core/lib/components/RideForGood/AppBanner.vue';
-import SharedFooter from '@/xthon-core/lib/components/RideForGood/SharedFooter.vue';
-import NonprofitForm from '@/xthon-core/lib/components/Volunteerathon/NonprofitForm.vue';
+import AppHeader from 'Components/RideForGood/AppHeader.vue';
+import AppBanner from 'Components/RideForGood/AppBanner.vue';
+import SharedFooter from 'Components/RideForGood/SharedFooter.vue';
+import NonprofitForm from 'Components/Volunteerathon/NonprofitForm.vue';
 
 export default {
   name: 'BaseLayout',

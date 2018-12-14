@@ -23,8 +23,8 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import('@/components/general/AppFooter.vue'),
-    AppHeader: () => import('@/components/general/AppHeader.vue'),
+    AppFooter: () => import('Components/general/AppFooter.vue'),
+    AppHeader: () => import('Components/general/AppHeader.vue'),
   },
   metaInfo() {
     return {

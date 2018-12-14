@@ -96,9 +96,9 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import RegisterOrLoginModal from '@/components/general/RegisterOrLoginModal.vue';
-import ClaimNonprofitModal from '@/components/nonprofit/ClaimNonprofitModal.vue';
-import AppBanner from '@/components/GiveItUp/AppBanner.vue';
+import RegisterOrLoginModal from 'Components/general/RegisterOrLoginModal.vue';
+import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
+import AppBanner from 'Components/GiveItUp/AppBanner.vue';
 
 Vue.use(VueMeta);
 
@@ -116,15 +116,15 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    SharedFooter: () => import('@/components/RideForGood/SharedFooter.vue'),
-    AppHeader: () => import('@/components/RideForGood/AppHeader.vue'),
-    NonprofitHero: () => import('@/components/nonprofit/NonprofitHero.vue'),
+    SharedFooter: () => import('Components/RideForGood/SharedFooter.vue'),
+    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
+    NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('@/components/general/DonorsList.vue'),
-    FloatingShareTools: () => import('@/components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('@/components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('@/components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
+    DonorsList: () => import('Components/general/DonorsList.vue'),
+    FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
+    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitForm: () => import('Components/Volunteerathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
     AppBanner,

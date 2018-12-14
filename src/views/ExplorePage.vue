@@ -156,14 +156,14 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import('@/components/general/AppFooter.vue'),
-    AppHeader: () => import('@/components/general/AppHeader.vue'),
-    LazyLoadedImage: () => import('@/components/plugins/LazyLoadedImage'),
-    TopMenu: () => import('@/components/general/TopMenu.vue'),
-    NonprofitAjaxSearch: () => import('@/components/general/NonprofitAjaxSearch.vue'),
-    NonprofitFundraisers: () => import('@/components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('@/components/nonprofit/NonprofitForm.vue'),
-    WaysSupport: () => import('@/components/explore/WaysSupport.vue'),
+    AppFooter: () => import('Components/general/AppFooter.vue'),
+    AppHeader: () => import('Components/general/AppHeader.vue'),
+    LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
+    TopMenu: () => import('Components/general/TopMenu.vue'),
+    NonprofitAjaxSearch: () => import('Components/general/NonprofitAjaxSearch.vue'),
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitForm: () => import('Components/Volunteerathon/NonprofitForm.vue'),
+    WaysSupport: () => import('Components/explore/WaysSupport.vue'),
   },
   data() {
     return {

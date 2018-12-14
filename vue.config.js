@@ -4,6 +4,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
+        "Public": path.resolve(__dirname, 'public'),
         "Components": path.resolve(__dirname, 'src/xthon-core/lib/components'),
         "LocalComponents": path.resolve(__dirname, 'src/components'),
       }

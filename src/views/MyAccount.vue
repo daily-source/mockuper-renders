@@ -78,14 +78,14 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import('@/components/general/AppFooter.vue'),
-    AppHeader: () => import('@/components/general/AppHeader.vue'),
-    UserManagementLinks: () => import('@/components/login/UserManagementLinks.vue'),
-    LogInModal: () => import('@/components/general/LogInModal.vue'),
-    AccountSettings: () => import('@/components/account/AccountSettings.vue'),
-    AccountFundraisers: () => import('@/components/account/AccountFundraisers.vue'),
-    AccountDonations: () => import('@/components/account/AccountDonations.vue'),
-    AccountNonprofits: () => import('@/components/account/AccountNonprofits.vue'),
+    AppFooter: () => import('Components/general/AppFooter.vue'),
+    AppHeader: () => import('Components/general/AppHeader.vue'),
+    UserManagementLinks: () => import('Components/login/UserManagementLinks.vue'),
+    LogInModal: () => import('Components/general/LogInModal.vue'),
+    AccountSettings: () => import('Components/account/AccountSettings.vue'),
+    AccountFundraisers: () => import('Components/account/AccountFundraisers.vue'),
+    AccountDonations: () => import('Components/account/AccountDonations.vue'),
+    AccountNonprofits: () => import('Components/account/AccountNonprofits.vue'),
   },
 
   /**
