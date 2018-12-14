@@ -9,6 +9,7 @@
   </div>
 </template>
 
+<style src='./xthon-core/lib/assets/scss/main.scss' lang="scss"></style>
 <style src='./assets/scss/main.scss' lang="scss"></style>
 
 <style lang="scss">

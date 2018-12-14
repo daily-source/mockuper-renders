@@ -5,7 +5,7 @@ import mutations from './mutations';
 
 Vue.use(Vuex);
 
-const baseUrl = process.env.BASE_URL;
+const baseUrl = process.env.VUE_APP_BASE_URL;
 export default new Vuex.Store({
   state: {
     fullPath: '',
@@ -172,9 +172,6 @@ export default new Vuex.Store({
       },
       Nonprofit: {
         logo_square: `${baseUrl}img/fundraiser-feed-the-children-logo-square.png`,
-        logo: {
-          src: `${baseUrl}img/fundraiser-feed-the-children-logo.png`,
-        },
         NAME: 'MELROSE MASSACHUSETTS TELEVISION',
         website: 'https://melrose-massachusetts.tv',
         EIN: 43138428,
@@ -190,6 +187,9 @@ export default new Vuex.Store({
         SORT_NAME: '0',
         data: {
           name: "MELROSE MASSACHUSETTS TELEVISION TV",
+          logo: {
+            src: `${baseUrl}img/fundraiser-feed-the-children-logo.png`,
+          },
           media: []
         }
       },
@@ -232,7 +232,7 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: '<p>Latest update. Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1517915925000,
+          createdAt: 1517915925000,
           fullname: 'Alison Baxley',
           name: 'Alison',
           title: 'My fourth week of volunteering',
@@ -242,7 +242,7 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: '<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1517415125000,
+          createdAt: 1517415125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
           title: 'My first week of volunteering',
@@ -252,7 +252,7 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: '<p>Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1517395125000,
+          createdAt: 1517395125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
           title: 'My second week of volunteering',
@@ -262,7 +262,7 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: '<p>Y Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1517415125000,
+          createdAt: 1517415125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
           title: 'My first week of volunteering',
@@ -272,7 +272,7 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: '<p>X Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
-          timestamp: 1517395125000,
+          createdAt: 1517395125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
           title: 'My second week of volunteering',
@@ -395,77 +395,24 @@ export default new Vuex.Store({
     donations: {
       byAmount: {
         data: [
-          { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 721, amountInCents: 4500, User: { firstName: "Francisca", lastName: "Morana", nickname: "Fran", avatar: { src: `${baseUrl}img/donor-1.jpg` }}, fullname: 'Francisca Morana', firstName: 'Francisca', lastName: 'Morana', avatar: `${baseUrl}img/donor-1.jpg`, createdAt: 1521504544000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 722, amountInCents: 3000, fullname: 'Ariadna Beckenbauer', firstName: 'Ariadna', lastName: 'Beckenbauer', createdAt: 1526504544000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 723, amountInCents: 3500, fullname: 'Andreas Higgins', firstName: 'Andreas', lastName: 'Higgins', User: { avatar: { src: `${baseUrl}img/donor-4.jpg` } }, createdAt: 1539504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 724, amountInCents: 4000, fullname: 'Luisa Lane', firstName: 'Luisa', lastName: 'Lane', avatar: { src: `${baseUrl}img/donor-5.jpg` }, createdAt: 1536504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 725, amountInCents: 2500, fullname: 'Martin Fitzgerald', firstName: 'Martin', lastName: 'Fitzgerald', User: {avatar: { src: `${baseUrl}img/donor-6.jpg` }}, createdAt: 1516504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 726, amountInCents: 2500, fullname: 'Sandra Martignon', firstName: 'Sandra', lastName: 'Martignon', User: {avatar: { src: `${baseUrl}img/donor-10.jpg` }}, createdAt: 1540504944000, public: true, },
         ]
       },
       byDate: {
         data: [
-          { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 721, amountInCents: 4500, User: { firstName: "Francisca", lastName: "Morana", nickname: "Fran", avatar: { src: `${baseUrl}img/donor-1.jpg` }}, fullname: 'Francisca Morana', firstName: 'Francisca', lastName: 'Morana', avatar: `${baseUrl}img/donor-1.jpg`, createdAt: 1521504544000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 722, amountInCents: 3000, fullname: 'Ariadna Beckenbauer', firstName: 'Ariadna', lastName: 'Beckenbauer', createdAt: 1526504544000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 723, amountInCents: 3500, fullname: 'Andreas Higgins', firstName: 'Andreas', lastName: 'Higgins', avatar: { src: `${baseUrl}img/donor-4.jpg` }, createdAt: 1539504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 724, amountInCents: 4000, fullname: 'Luisa Lane', firstName: 'Luisa', lastName: 'Lane', avatar: { src: `${baseUrl}img/donor-5.jpg` }, createdAt: 1536504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 725, amountInCents: 2500, fullname: 'Martin Fitzgerald', firstName: 'Martin', lastName: 'Fitzgerald', User: {avatar: { src: `${baseUrl}img/donor-6.jpg` }}, createdAt: 1516504944000, public: true, },
+          { fundraiser_id: 254, nonprofit_ein: 43138428, user_id: 726, amountInCents: 2500, fullname: 'Sandra Martignon', firstName: 'Sandra', lastName: 'Martignon', User: {avatar: { src: `${baseUrl}img/donor-10.jpg` }}, createdAt: 1540504944000, public: true, },
         ]
       },
-      data: [
-        { fundraiser_id: 254,nonprofit_ein: 43138428,user_id: 721,amount: 45,fullname: 'Francisca Morana',firstname: 'Francisca',lastname: 'Morana',avatar: `${baseUrl}img/donor-1.jpg`,timestamp: 1521504544000,public: true, },
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 722,
-          amount: 30,
-          fullname: 'Ariadna Beckenbauer',
-          firstname: 'Ariadna',
-          lastname: 'Beckenbauer',
-          avatar: `${baseUrl}img/donor-3.jpg`,
-          timestamp: 1526504544000,
-          public: true,
-        },
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 723,
-          amount: 35,
-          fullname: 'Andreas Higgins',
-          firstname: 'Andreas',
-          lastname: 'Higgins',
-          avatar: `${baseUrl}img/donor-4.jpg`,
-          timestamp: 1539504944000,
-          public: true,
-        },
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 724,
-          amount: 40,
-          fullname: 'Luisa Lane',
-          firstname: 'Luisa',
-          lastname: 'Lane',
-          avatar: `${baseUrl}img/donor-5.jpg`,
-          timestamp: 1536504944000,
-          public: true,
-        },
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 725,
-          amount: 25,
-          fullname: 'Martin Fitzgerald',
-          firstname: 'Martin',
-          lastname: 'Fitzgerald',
-          avatar: `${baseUrl}img/donor-6.jpg`,
-          timestamp: 1516504944000,
-          public: true,
-        },
-        {
-          fundraiser_id: 254,
-          nonprofit_ein: 43138428,
-          user_id: 726,
-          amount: 25,
-          fullname: 'Sandra Martignon',
-          firstname: 'Sandra',
-          lastname: 'Martignon',
-          avatar: `${baseUrl}img/donor-10.jpg`,
-          timestamp: 1540504944000,
-          public: true,
-        },
-      ],
       current: 1,
       limit: 2,
     },
