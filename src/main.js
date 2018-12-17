@@ -5,7 +5,7 @@ import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
 import * as filters from "./xthon-core/lib/util/filters"
-import SmoothScroll from '@/components/plugins/smoothScroll';
+import SmoothScroll from 'Components/plugins/SmoothScroll';
 
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css';
