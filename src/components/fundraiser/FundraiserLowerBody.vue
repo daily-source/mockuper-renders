@@ -369,12 +369,12 @@ function showMoreButton (state, arg) {
     }
 
     .tabs {
-      @include breakpoint($tablet) {
+      @include tablet {
       }
       ul {
         justify-content: center;
 
-        @include breakpoint($tablet) {
+        @include tablet {
           justify-content: flex-start;
         }
       }
@@ -386,7 +386,7 @@ function showMoreButton (state, arg) {
     border-radius: 10px;
     display: flex;
     font-size: 16px;
-    @include breakpoint ($tablet) {
+    @include tablet {
       font-size: 22px;
       width: 70%;
     }
@@ -395,7 +395,7 @@ function showMoreButton (state, arg) {
     padding-right: 0.5rem;
   }
   &__right-column {
-    @include breakpoint($tablet) {
+    @include tablet {
       padding-left: 2.7rem;
     }
   }

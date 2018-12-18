@@ -51,7 +51,7 @@
   &:hover {
     opacity: 1;
   }
-  @include breakpoint($widescreen) {
+  @include widescreen {
     display: block;
   }
 }</style>
