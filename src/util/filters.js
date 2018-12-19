@@ -1,6 +1,7 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import { kebabCase } from 'lodash'
+import numeral from 'numeral'
 
 TimeAgo.locale(en);
 
@@ -62,4 +63,12 @@ export function currencyFormat(value) {
 
 export const slugify = (string) => {
   return kebabCase(string)
+}
+
+export const numberFormat = (val, format = '0,0') => { 
+  if(typeof val === 'number') {
+    return numeral(val).format(format)
+  }
+
+  return val
 }

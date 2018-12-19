@@ -28,10 +28,10 @@
         <div class="box-slider__hover-box">
           <h3 class='has-text-weight-bold'>{{ title }}</h3>
           <p v-if='cost'>
-            Approximate cost of saving a life: {{ cost }}
+            Approximate cost of saving a life: {{ cost | currencyFormat }}
           </p>
           <p>
-            A person dies every {{ deathsPerSecond || '????' }} seconds
+            A person dies every {{ (deathsPerSecond || '????') | numberFormat  }} seconds
           </p>
         </div>
       </div>
@@ -93,6 +93,7 @@ export default {
     generateImageKey(key) {
       return `${(this.$options.filters.slugify(this.title))}-image-${key}`
     }
+
   }
 }
 </script>
