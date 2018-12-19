@@ -49,6 +49,7 @@ Also, each container/site should have its own folder of components inside the li
 
 ### Workflow
 The git workflow when working with submodules is important. Please do the following:
+- Go to the xthon-core library and ensure that you are on a working branch. When setting up the project, the container will point the tip to a specific commit, but if you intend to perform changes, you need to checkout master and then create a new branch before performing any change.
 - If you perform changes to the container, just commit there from the root of the container (/).
 
 - If you perform changes to the library, do the following:
