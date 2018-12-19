@@ -1,30 +1,25 @@
 <template>
   <div class="layout-base">
     <app-header />
-    <app-banner />
-    <GiveItUpForm></GiveItUpForm>
-    <SharedFooter></SharedFooter>
+    <app-content />
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/GiveItUp/AppHeader.vue';
-import AppBanner from '@/components/GiveItUp/AppBanner.vue';
-import SharedFooter from '@/components/Shared/SharedFooter.vue';
+import AppHeader from '@/components/InSightInMind/AppHeader'
+import AppContent from '@/components/InSightInMind/AppContent'
 
 export default {
   name: 'BaseLayout',
 
   components: {
     AppHeader,
-    AppBanner,
-    SharedFooter,
-    GiveItUpForm: () => import("@/components/GiveItUp/GiveItUpForm.vue")
+    AppContent,
   },
 
   metaInfo() {
-    const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
-    const title = 'Raise money while riding!';
+    const description = 'Caring for the poorest half!';
+    const title = 'In sight In Mind!';
     return {
       title: 'Home',
       meta: [

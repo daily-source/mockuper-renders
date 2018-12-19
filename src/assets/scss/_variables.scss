@@ -56,11 +56,22 @@ $btn-border-radius: 0;
 
 // These variable definitions are here for the GiveItUpForGood version
 // Colors
-$secondary: #d22127 !default;
-$primary: #233e84 !default;
-$color-emphasis: $primary;
+// $secondary: #d22127 !default;
+// $primary: #233e84 !default;
+// $color-emphasis: $primary;
+// $color-emphasis-alt: $secondary;
+// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// In Sight In Mind
+$secondary: #f7931e;
+$primary: #8cc63f;
+$color-primary-shade: #7bae37;
+$color-primary-tint: #98cc52;
+$color-emphasis: $primary;  
 $color-emphasis-alt: $secondary;
-$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, .9);
+$box-slider-height: 280px;
+$box-slider-border-radius: 5px;
 
 // Fonts
 $font-family-base: 'Poppins';

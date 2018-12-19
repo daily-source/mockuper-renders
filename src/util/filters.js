@@ -1,5 +1,6 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import { kebabCase } from 'lodash'
 
 TimeAgo.locale(en);
 
@@ -57,4 +58,8 @@ export function currencyFormat(value) {
   });
 
   return formatter.format(value);
+}
+
+export const slugify = (string) => {
+  return kebabCase(string)
 }
