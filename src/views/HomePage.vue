@@ -11,7 +11,7 @@
 import AppHeader from 'Components/RideForGood/AppHeader.vue';
 import AppBanner from 'Components/RideForGood/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import NonprofitForm from 'Components/Volunteerathon/NonprofitForm.vue';
+import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
 
 export default {
   name: 'BaseLayout',
