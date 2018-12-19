@@ -38,6 +38,75 @@ Example:
 }
 ```
 
+## xthon-core library and workflow
+This project makes use of the xthon-core library, which includes the general components and also (preferably) the container components. It also includes the store actions, but in the future, it should be extendable, so that new store modules can be added to the container (aka the site that is intantiating the modules).
+
+In order to use the library, you need to run ```git submodule init``` and ```git submodule update``` right after cloning the project. Notice that this will set the library to a specific commit, in a detached state. If you intend to work with the core library (which often should be the case), then it makes sense to move the tip to master: ```git checkout master``` in the /src/xthon-core path.
+
+Notice that the container is also depending on a package coming from the xthon-core library. This was made in order to allow the main site to install also the library dependencies in the container, so that a new dependency does not need to be added to each of the sites as well, if it's required by one component in the library. The package itself is of no use except by the package.json dependencies list.
+
+Also, each container/site should have its own folder of components inside the library. This helps if other sites want to reuse the components, and they won't be included on each site's build if they are not instantiated. In the case of the store, for now we are using a global store. This could be enhanced by the use of modules, so it's a WIP.
+
+### Workflow
+The git workflow when working with submodules is important. Please do the following:
+- If you perform changes to the container, just commit there from the root of the container (/).
+
+- If you perform changes to the library, do the following:
+1. First, commit the changes to the library (/src/xthon-core)
+2. Then, go up to the root of the container and commit the changes to the parent site. Notice that when running ```git status```, it should show something like this:
+
+```
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   build/webpack.server.config.js
+  modified:   package.json
+  modified:   src/app.js
+  modified:   src/xthon-core (new commits)
+  modified:   yarn.lock
+```
+and not something like this:
+```
+  modified:   src/xthon-core (modified content)
+```
+which would imply that there are uncommited changes to the library.
+
+This order should be followed strictly, to avoid unnecessary commits and to ensure the parent repo is always up-to-date with the most recent changes in the library.
+
+
+3. If there are changes to the package.json file in the library, these need to be reflected in the parent. Bump the version in the library following (https://semver.org/)[https://semver.org/] guidelines, commit and push to the remote. After that, create a tag and push it to the remote:
+```
+git tag -a v0.0.25
+git push origin v.0.0.25
+```
+
+Then, update the library version in the container's package.json file to reflect that exact version:
+```
+"xthon-core": "github:dailysourceorg/xthon-core#0.0.25"
+```
+
+## Initial Set up
+Perform the following changes when creating a new container site.
+
+1. Update google fonts: there's an entry in the ```/build/webpack.base.config.js``` file where this bit needs to be updated with the corresponding fonts:
+```
+new GoogleFontsPlugin({
+  fonts: [
+    { family: "Source Sans Pro" },
+    { family: "Oswald", variants: [ "400", "700italic" ] }
+  ]
+})
+```
+2. Modify the scss vars in ```src/assets/base.scss``` to reflect the new fonts and also to match the branding of the new site.
+
+
+### Update the site's meta and images
+Go to ./src/App.vue and update the site's meta description, which will be used as the default if the views are not owerwriting it.
+
+Also, update the favicon and app logos in the public folder. These are site (container)-specific, therefore they are not included in the library.
+
+
 # .env
 
 Please add a .env file with the following values:
