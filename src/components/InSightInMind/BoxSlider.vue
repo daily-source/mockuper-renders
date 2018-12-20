@@ -41,6 +41,7 @@
 
 <script>
 import Flickity from '@/components/plugins/Flickity'
+import { random } from 'lodash'
 
 export default {
   name: 'BoxSlider',
@@ -63,6 +64,10 @@ export default {
     images: {
       type: Array,
     },
+    options: {
+      type: Object,
+      required: false,
+    }
   },
 
   components: {
@@ -71,12 +76,6 @@ export default {
 
   data () {
     return {
-      sliderOptions: {
-        draggable: false,
-        prevNextButtons: false,
-        pageDots: false, 
-        autoPlay: 5000,
-      },
       hovered: false, 
     }
   },
@@ -93,7 +92,20 @@ export default {
     generateImageKey(key) {
       return `${(this.$options.filters.slugify(this.title))}-image-${key}`
     }
+  },
 
+  computed: {
+    sliderOptions () {
+      const autoplaySpeed = random(5, 20) * 1000
+
+      return {
+        draggable: false,
+        prevNextButtons: false,
+        pageDots: false, 
+        autoPlay: autoplaySpeed,
+        ...this.options,
+      }
+    },
   }
 }
 </script>
@@ -154,8 +166,6 @@ export default {
     }
 
     p {
-      font-size: .875rem;
-
       &:last-child {
         margin-bottom: 0;
       }

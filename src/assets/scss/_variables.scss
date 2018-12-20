@@ -73,6 +73,16 @@ $color-emphasis-alt-modified: rgba($color-emphasis-alt, .9);
 $box-slider-height: 280px;
 $box-slider-border-radius: 5px;
 
+$theme-colors: () !default;
+
+$theme-colors: map-merge(
+  (
+    'primary': $primary,
+    'secondary': $secondary,
+  ),
+  $theme-colors
+);
+
 // Fonts
 $font-family-base: 'Poppins';
 $headings-font-family: 'Montserrat';

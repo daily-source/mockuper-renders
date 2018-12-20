@@ -1,0 +1,13 @@
+// Buttons
+//
+// Contains additional button options
+
+.button {
+  @each $color, $value in $theme-colors {
+    &.is-#{$color} {
+      color: get-color-yiq($value);
+      background-color: $value;
+      border-color: $value;
+    }
+  }
+}
