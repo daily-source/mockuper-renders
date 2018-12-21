@@ -39,8 +39,8 @@ export default {
       boxes: [
         {
           title: 'Terrorism Worldwide',
-          cost: 500000,
-          deathsPerSecond: 257,
+          cost: 4000000,
+          deathsPerSecond: 33729,
           message: 'All terrorism in the world combined',
           images: [
             {
@@ -100,7 +100,7 @@ export default {
         {
           message: 'Malnutrition and unclean water killing a child',
           cost: 110,
-          deathsPerSecond: 110,
+          deathsPerSecond: 3,
           title: 'MALNUTRITION AND UNCLEAN WATER KILLING A CHILD.',
           images: [
             {
@@ -124,8 +124,8 @@ export default {
         {
           message: 'Motor Vehicle Accidents in the U.S.',
           title: 'MOTOR VEHICLE ACCIDENTS IN THE U.S.',
-          cost: 110,
-          deathsPerSecond: 3,
+          cost: 300000,
+          deathsPerSecond: 717,
           images: [
             {
               name: 'car-1.png',
@@ -137,7 +137,7 @@ export default {
           message: 'All murders in the U.S.',
           title: 'ALL MURDERS IN THE U.S.',
           cost: 200000,
-          deathsPerSecond: 1572,
+          deathsPerSecond: 1752,
           images: [
             {
               name: 'murder-1.png',

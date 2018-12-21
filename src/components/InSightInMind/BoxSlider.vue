@@ -96,7 +96,7 @@ export default {
 
   computed: {
     sliderOptions () {
-      const autoplaySpeed = random(5, 20) * 1000
+      const autoplaySpeed = (this.deathsPerSecond || random(5, 20)) * 1000 
 
       return {
         draggable: false,
@@ -162,10 +162,11 @@ export default {
     h3 {
       font-family: $font-family-base;
       color: #fff;
-      font-size: 1.375rem;
+      font-size: 1.25rem;
     }
 
     p {
+      font-size: 1rem;
       &:last-child {
         margin-bottom: 0;
       }
