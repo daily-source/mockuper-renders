@@ -4,6 +4,7 @@ import actions from './actions';
 import mutations from './mutations';
 import selections from './modules/selections'
 import bannerSwitcher from './modules/bannerSwitcher'
+import counterwidgets from './modules/counterwidgets'
 
 Vue.use(Vuex);
 
@@ -501,6 +502,7 @@ export default new Vuex.Store({
   mutations,
   modules: {
     selections,
-    bannerSwitcher
+    bannerSwitcher,
+    counterwidgets
   }
 });

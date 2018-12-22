@@ -1,5 +1,5 @@
 // Add only non-css vars, not rules, or they will be imported many times.
-$font-primary: "Poppins", sans-serif;
+$font-primary: "Open Sans", sans-serif;
 $font-secondary: "Montserrat", sans-serif;
 
 // Colors
@@ -39,7 +39,7 @@ $max-fluid-container-width: 1162px;
 $max-combo-wrapper-width: 960px;
 
 // Fonts
-$font-family-base: 'Poppins';
+$font-family-base: 'Open Sans';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
 
@@ -56,16 +56,26 @@ $btn-border-radius: 0;
 
 // These variable definitions are here for the GiveItUpForGood version
 // Colors
-$secondary: #d22127 !default;
-$primary: #233e84 !default;
+// $secondary: #d22127 !default;
+// $primary: #233e84 !default;
+// $color-emphasis: $primary;
+// $color-emphasis-alt: $secondary;
+// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// Counters for the Poor color
+$primary: #E2AB40 !default;
+$secondary: #0069FF !default;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
 // Fonts
-$font-family-base: 'Poppins';
+$font-family-base: 'Source Sans Pro';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
+
+// General
+$border-radius: 4px;
 
 // Buttons
 $btn-border-radius: 0;
