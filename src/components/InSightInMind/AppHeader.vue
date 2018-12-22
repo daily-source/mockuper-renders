@@ -6,8 +6,8 @@
             <router-link to='/'>
               <img src='@/assets/img/in-sight-in-mind-logo.png' class='site-logo' alt="In Sight In Mind Logo">
             </router-link>
-            <p class="header__logo-motto">Each time a photo shows, someone is dying of that cause.</p>
           </div>
+          <p class="header__logo-motto">Each time a photo shows, someone is dying of that cause.</p>
         </div>
       </div>
     </header>
@@ -25,6 +25,8 @@ export default {
     padding-bottom: 1em;
     justify-content: center;
     color: $color-dark-gray;
+    flex-direction: column;
+    align-items: center;
 
     .header__logo {
       width: 100%;
@@ -32,11 +34,11 @@ export default {
       margin-left: auto;
       margin-right: auto;
       display: block;
+      margin-bottom: 1.375rem;
 
       &-motto {
-        margin-top: -1em;
         margin-bottom: 0;
-        font-size: .875em;
+        font-size: 1.5em;
       }
     }
 

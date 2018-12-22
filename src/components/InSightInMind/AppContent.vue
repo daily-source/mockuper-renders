@@ -1,7 +1,6 @@
 <template>
   <main class='site-content'>
     <section class="section">
-      <h4 class='has-text-grey has-text-weight-bold has-text-centered'>Hover your mouse over a cause for more information.</h4>
       <div class="container">
         <div class="columns is-multiline is-mobile">
           <div 
@@ -17,6 +16,7 @@
             />
           </div>
         </div>
+        <h4 class='has-text-grey has-text-weight-bold has-text-centered'>Hover your mouse over a cause for more information.</h4>
         <p class='has-text-centered'>
           <a href="#" class='more__link'>For links to information in this graphic, click here.</a>
         </p>
@@ -161,7 +161,7 @@ export default {
           message: 'Terrorism against someone from the U.S',
           title: 'TERRORISM AGAINST SOMEONE FROM THE U.S.',
           cost: 4000000,
-          deathsPerSecond: null,
+          deathsPerSecond: 1700000,
           images: [
             {
               name: 'terrorism-us-1.png',
@@ -189,7 +189,7 @@ export default {
     }
 
     h4 {
-      padding-bottom: .875rem;
+      margin-bottom: 12px;
       text-transform: underline;
     }
 

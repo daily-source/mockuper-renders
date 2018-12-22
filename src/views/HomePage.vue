@@ -2,12 +2,14 @@
   <div class="layout-base">
     <app-header />
     <app-content />
+    <shared-footer />
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/InSightInMind/AppHeader'
 import AppContent from '@/components/InSightInMind/AppContent'
+import SharedFooter from '@/components/Shared/SharedFooter'
 
 export default {
   name: 'BaseLayout',
@@ -15,6 +17,7 @@ export default {
   components: {
     AppHeader,
     AppContent,
+    SharedFooter,
   },
 
   metaInfo() {

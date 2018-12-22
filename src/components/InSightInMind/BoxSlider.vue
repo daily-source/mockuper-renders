@@ -6,18 +6,18 @@
   >
     <flickity
       :options='sliderOptions'
+      @click='goToImage'
+      ref='slider'
     >
       <div class="box-slider__slide box-slider__slide--title">
         <h2 class='box-slider-title__heading'>{{ message }}</h2>
       </div>
       <div 
         class="box-slider__slide box-slider__slide--image" 
-        v-for='(image, key) in images' 
-        :key='generateImageKey(key)'
       >
         <img 
-          :src='getImage(image.name)' 
-          :alt="image.alt"
+          :src='selectedImage.src' 
+          :alt="selectedImage.alt"
         >
       </div>
     </flickity>
@@ -64,9 +64,16 @@ export default {
     images: {
       type: Array,
     },
+
     options: {
       type: Object,
       required: false,
+    },
+
+    selected: {
+      type: Number,
+      required: false,
+      default: 0,
     }
   },
 
@@ -76,8 +83,18 @@ export default {
 
   data () {
     return {
-      hovered: false, 
+      hovered: false,
+      dataShown: false,
+      imageShowDuration: 1000,
+      ref: null,
+      selectedImageSlide: 1,
     }
+  },
+
+  mounted () {
+    this.ref = this.$refs.slider
+
+    this.playSlide()
   },
 
   methods: {
@@ -85,13 +102,46 @@ export default {
       this.hovered = !this.hovered
     },
 
-    getImage(imgName) {
+    playSlide () {
+      if(this.imageSlideDelay) {
+        this.goToImage()
+      }
+    },
+
+    getImage (imgName) {
       return require(`@/assets/img/images/in-sight-in-mind/${imgName}`)
     },
 
-    generateImageKey(key) {
-      return `${(this.$options.filters.slugify(this.title))}-image-${key}`
+    goToImage () {
+      if(this.imagesCount) {
+        setTimeout( () => {
+          this.ref.flickity().select(1)
+          this.setImageSelectedSlide()
+          if(this.images)
+          this.goToMainSlide()
+        }, this.imageSlideDelay)
+      }
+    },
+
+    goToMainSlide () {
+      setTimeout( () => {
+        this.ref.flickity().select(0)
+        this.goToImage()        
+      }, this.imageShowDuration)
+    },
+
+    setImageSelectedSlide () {
+      this.selectedImageSlide += 1
+
+      if(this.imagesCount > 1 ) {
+        if(this.selectedImageSlide > this.imagesCount) {
+          this.selectedImageSlide = 1
+        }
+      } else {
+        this.selectedImageSlide = 1
+      }
     }
+
   },
 
   computed: {
@@ -102,10 +152,35 @@ export default {
         draggable: false,
         prevNextButtons: false,
         pageDots: false, 
-        autoPlay: autoplaySpeed,
         ...this.options,
       }
     },
+
+    imagesCount () {
+      return this.images && this.images.length
+    },
+
+    imageSlideDelay () {
+      return this.deathsPerSecond * 1000
+    },
+
+    imagesSrc () {
+      const srcArray = []
+
+      this.images.forEach( img => {
+        const src = this.getImage(img.name)
+        srcArray.push({
+          src,
+          alt: img.alt
+        })
+      } )
+
+      return srcArray
+    },
+
+    selectedImage () {
+      return this.imagesSrc[this.selectedImageSlide - 1 ]
+    }
   }
 }
 </script>
