@@ -2,10 +2,10 @@ const state = {
   widgets: [
     {
       id: '1',
-      featuredImg: 'statue-of-liberty.jpg',
+      featuredImg: 0,
       title: 'Deaths now occurring from malnutrition and dirty water:',
       rate: 3,
-      message: 'null', 
+      message: '', 
     }
   ],
 

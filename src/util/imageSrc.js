@@ -8,14 +8,13 @@ const imageSrc = {
 
   computed: {
     imgPath () {
-      return `${this.imgBasePath}${this.imgFolderName}`
+      return `${this.imgBasePath}${this.imgFolderName || ''}`
     }
   },
 
   methods: {
     getImageSrc (imgName) {
-      console.log(`@/assets${this.imgPath}/${imgName}`)
-      return require(`@/assets${this.imgPath}/${imgName}`)
+      return require(`@/assets${this.imgPath}${imgName}`)
     }
   }
 }
