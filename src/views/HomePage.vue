@@ -20,6 +20,16 @@
         />
       </div>
     </section>
+    <section class="section">
+      <div class="img-container">
+        <img src="../assets/img/images/poor-kid.jpg" alt="Poor Kid">    
+      </div>
+    </section>
+    <section class="section">
+        <h2 class='has-text-centered'>Create your own counter page to share</h2>
+        <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
+        <counter-page-creator />
+    </section>
     <SharedFooter></SharedFooter>
   </div>
 </template>
@@ -28,6 +38,7 @@
 import AppHeader from '@/components/CountersForThePoor/AppHeader.vue';
 import AppBanner from '@/components/CountersForThePoor/AppBanner.vue';
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
+import CounterPageCreator from '@/components/CountersForThePoor/CounterPageCreator'
 import SharedFooter from '@/components/Shared/SharedFooter.vue';
 
 export default {
@@ -38,6 +49,7 @@ export default {
     AppBanner,
     WidgetCustomizer,
     SharedFooter,
+    CounterPageCreator,
   },
 
   metaInfo() {

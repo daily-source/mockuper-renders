@@ -24,18 +24,18 @@
         </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>Today: </span>
-          <span class='counter-widget-counter__value'>1,900 </span>
+          <span class='counter-widget-counter__value'>{{ getDeaths('day') | numberFormat}} </span>
         </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>This week: </span>
-          <span class='counter-widget-counter__value'>1,900 </span>
+          <span class='counter-widget-counter__value'>{{ getDeaths('week') | numberFormat }} </span>
         </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>This year: </span>
-          <span class='counter-widget-counter__value'>1,900 </span>
+          <span class='counter-widget-counter__value'>{{ getDeaths('year') | numberFormat }}  </span>
         </div>
         <div class="counter-widget__counter counter-widget__date-wrap">
-          <span class='counter-widget-counter__date'>July 29, 2014, 4:35:40 A.M E.T. </span>
+          <span class='counter-widget-counter__date'>{{ timeNow }}</span>
         </div>
       </div>
       <div class="counter-widget__details-right is-flex">
@@ -52,6 +52,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import * as moment from 'moment'
+
 import imageSrc from '@/util/imageSrc'
 import Icons from '@/components/general/Icons' 
 import InlineEditableField from './InlineEditableField'
@@ -64,15 +66,7 @@ export default {
     InlineEditableField,
   },
 
-  mixins: [imageSrc],
-
-  data () {
-    return {
-      imgFolderName: 'widget-imgs/'
-    }
-  },
-
-  props: {
+    props: {
     edit: {
       type: Boolean,
       default: false,
@@ -99,11 +93,50 @@ export default {
     }
   },
 
+  mixins: [imageSrc],
+
+  data () {
+    return {
+      imgFolderName: 'widget-imgs/',
+      timeNow: '',
+      workingDate: new Date
+    }
+  },
+
+  mounted () {
+    let now = new Date()
+    this.timeNow = this.getTimeNow()
+
+    this.updateTime()
+  },
+
+  methods: {
+    updateTime () {
+      setTimeout(() => {
+        this.timeNow = this.getTimeNow()
+        this.updateTime()
+      }, 1000)
+    },
+
+    getTimeNow () {
+      return moment().format('MMMM DD, YYYY hh:mm:ss A') 
+    },
+
+    getDifference (timeA, timeB, unit='seconds') {
+      timeA = moment(new Date(timeA))
+      timeB = moment(new Date(timeB))
+      return timeA.diff(timeB, unit)
+    },
+
+    getDeaths (span) {
+      return this.getDifference(this.timeNow, moment(this.workingDate).startOf(span)) * 3
+    },
+  },
+
   computed: {
     message: {
       get () {
         if(this.widget && this.widget.message) {
-          console.log('here')
           return this.widget.message
         }
 
@@ -130,7 +163,6 @@ export default {
         return value
       }
     },
-
     
     size () {
       if (this.editData && this.editData.size) {

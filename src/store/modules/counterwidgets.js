@@ -36,7 +36,30 @@ const state = {
       primary: '#000',
       secondary: '#fff',
     }
-  }
+  },
+
+  counters: [
+    {
+      title: 'Deaths now occuring from malnutrition and dirty water.',
+      rate: 3,
+      imgPreviews: [
+        'page-image-1.jpeg',
+        'page-image-2.jpg',
+        'page-image-3.jpg',
+        'page-image-4.jpg',
+      ]
+    },
+    {
+      title: 'Deaths now occuring from extreme poverty',
+      rate: 1327,
+      imgPreviews: [
+        'page-image-1.jpeg',
+        'page-image-2.jpg',
+        'page-image-3.jpg',
+        'page-image-4.jpg',
+      ]
+    }
+  ],
 }
 
 const getters = {}

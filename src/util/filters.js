@@ -1,5 +1,6 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import numeral from 'numeral'
 
 TimeAgo.locale(en);
 
@@ -57,4 +58,8 @@ export function currencyFormat(value) {
   });
 
   return formatter.format(value);
+}
+
+export const numberFormat = (value) => {
+  return numeral(value).format('0,0')
 }

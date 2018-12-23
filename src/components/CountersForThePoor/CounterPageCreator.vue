@@ -1,0 +1,108 @@
+<template>
+    <div class="counter-page-creator">
+      <form action="#">
+        <div class="columns counter-page-creator__columns">
+          <div class="column is-7">
+            Choose a non-profit for your widget to donate towards:
+          </div>
+          <nonprofit-ajax-search 
+            placeholder='Search...'
+            v-model='nonprofit'
+          />
+        </div>
+        <div class="columns counter-page-creator__columns">
+          <div class="column is-7">
+            Customize your title:
+          </div>
+          <div class="column">
+            <div class="select">
+              <select 
+                name="title"   
+                class="select is-block"
+                v-model='counter'
+              >
+                <option 
+                  v-for='(counter, index) in counters' 
+                  :key='index' 
+                  :value='index'
+                >
+                  {{ counter.title }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-multiline counter-page-creator__columns counter-page-creator__imgs">
+          <div class="column is-6 counter-page-creator__img-container" v-for='(imgPrev, index) in counters[counter].imgPreviews' :key='`img-preview-${index}`'>
+            <img 
+              :src="getImageSrc(imgPrev)" 
+              :alt="`Image Preview #${index}`"
+              :class='["is-block counter-page-creator__img", { "counter-page-creator__img--selected": selectedImg === index}]'
+              @click='selectedImg=index'
+            >
+          </div>
+        </div>
+        <div class="btn-container has-text-right counter-page-creator__columns">
+          <button type='submit' class='button is-primary has-text-weight-bold is-uppercase is-large'>
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import imageSrc from '@/util/imageSrc'
+import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
+
+export default {
+  name: 'CounterPageCreator',
+
+  components: {
+    NonprofitAjaxSearch,
+  },
+
+  mixins: [imageSrc],
+
+  data () {
+    return {
+      counter: 0,
+      nonprofit: '',
+      selectedImg: null,
+    }
+  },
+
+  computed: {
+    ...mapState({
+      counters: state => state.counterwidgets.counters
+    })
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  .counter-page-creator {
+    margin-top: 2rem;
+  }
+
+  .counter-page-creator__columns {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  .counter-page-creator__img {
+    width: 100%;
+    cursor: pointer;
+    filter: brightness(.7);
+    border-radius: 4px;
+    transition: filter .2s ease;
+
+    &--selected,
+    &:hover {
+      filter: brightness(1);
+    }
+  }
+</style>

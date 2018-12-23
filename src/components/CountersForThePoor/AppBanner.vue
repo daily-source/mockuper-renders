@@ -49,6 +49,7 @@ export default {
       background-color: rgba(#030000, .28);
       border: 2px solid $primary;
       border-radius: 4px;
+      margin-left: 0;
     }
   }
 
