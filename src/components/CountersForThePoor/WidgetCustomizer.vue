@@ -13,7 +13,7 @@
           <div class="widget-customizer-images__heading is-flex">
             <p>Choose an image you would like to use: </p>
             <p>
-              <button class='button is-text no-image-button is-clear'>No Image</button>
+              <button class='button is-text no-image-button is-clear is-paddingless'>No Image</button>
             </p>
           </div>
           <div class="widget-customizer-images__columns columns">

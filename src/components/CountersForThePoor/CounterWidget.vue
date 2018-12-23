@@ -1,17 +1,23 @@
 <template>
   <div :class="['counter-widget', {'counter-widget--edit': edit}]">
-    <h2 class='counter-widget__message' v-if='showMessage || edit'>
-      {{ message }}
-    </h2>
-    <h2 class='counter-widget__title' v-if='!edit && !showMessage'>
-      {{ widget && widget.title }}
-    </h2>
+    <div class="counter-widget__message-container" v-if='showMessage || edit'>
+      <inline-editable-field 
+        :value='message'
+        v-model='message'
+      />
+    </div>
+    <div class="counter-widget__title-container" v-if='!edit && !showMessage'>
+      <h2 class="counter-widget__title">
+        {{ title }}
+      </h2>
+    </div>
     <div class="counter-widget__details is-flex  ">
       <div class="counter-widget__counters">
         <div class="counter-widget__title-container" v-if='edit'>
-          <h2 class='counter-widget__title'>
-            {{ widget && widget.title }}
-          </h2>
+          <inline-editable-field 
+            :value='title'
+            v-model='title'
+          />
         </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>Today: </span>
@@ -44,9 +50,16 @@
 <script>
 import { mapState } from 'vuex'
 import imageSrc from '@/util/imageSrc'
+import Icons from '@/components/general/Icons' 
+import InlineEditableField from './InlineEditableField'
 
 export default {
   name: 'CounterWidget',
+
+  components: {
+    Icons,
+    InlineEditableField,
+  },
 
   mixins: [imageSrc],
 
@@ -84,19 +97,43 @@ export default {
   },
 
   computed: {
-    message () {
-      if(this.widget && this.widget.message) {
-        console.log('here')
-        return this.widget.message
-      }
+    message: {
+      get () {
+        if(this.widget && this.widget.message) {
+          console.log('here')
+          return this.widget.message
+        }
 
-      return 'Choose a short message for your own personal widget'
+        return 'Choose a short message for your own personal widget'
+      },
+
+      set (value) {
+        this.widget.message = value
+        return value
+      }
     },
+
+    title: {
+      get () {
+        if(this.widget && this.widget.title) {
+          return this.widget.title
+        }
+
+        return 'Name your widget'
+      },
+
+      set (value) {
+        this.widget.title = value
+        return value
+      }
+    },
+
     ...mapState({
       widget (state) {
         const widget = state.counterwidgets.widgets.find(widget => widget.id === this.id)
         return widget
       },
+
       featuredImg (state) {
         let img = state.counterwidgets.imgs[this.widget.featuredImg]
         if(this.edit && this.editData && this.editData.img !== null) {
@@ -123,9 +160,17 @@ export default {
     text-transform: uppercase;
   }
 
-  .counter-widget__message {
-    font-size: 1.25rem;
+  .counter-widget__message-container,
+  .counter-widget__title-container {
+    font-family: $headings-font-family;
+    font-size: 1.375rem;
+    font-weight: 800;
     text-align: center;
+    text-transform: uppercase;
+  }
+
+  .counter-widget__title-container {
+    text-align: left;
   }
 
   .counter-widget__counters {
@@ -175,6 +220,44 @@ export default {
   .counter-widget--edit {
     .counter-widget__details-right {
       justify-content: center;
+    }
+  }
+
+  .counter-widget__editable-field {
+    position: relative;
+
+    .button.counter-widget__edit-button {
+      position: absolute;
+      top: -10px;
+      right: -1rem;
+      border-radius: 100%;
+      box-shadow: 0 2px 16px 2px rgba(0,0,0,.2) !important
+    }
+  }
+
+  .counter-widget__title-container {
+    .counter-widget__edit-button {
+      right: 0;
+      top: 0;
+    }
+  } 
+</style>
+
+<style lang='scss'>
+  .counter-widget__message-container,
+  .counter-widget__title-container {
+    .editable__field-input {
+      text-tranform: uppercase;
+      text-transform: uppercase;
+      font-weight: 800;
+      text-tranform: uppercase;
+    }
+  }
+
+  .counter-widget__title-container {
+    .button.edit-button {
+      top: 0;
+      right: .5rem;
     }
   }
 </style>

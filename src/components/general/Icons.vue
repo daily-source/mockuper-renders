@@ -111,6 +111,16 @@
       </g>
     </svg>
 
+    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" v-if='icon === "edit"'>
+      <g id="Group_345" data-name="Group 345" transform="translate(-1684 -3034)">
+        <circle id="Ellipse_1" data-name="Ellipse 1" cx="17" cy="17" r="17" transform="translate(1684 3034)" fill="#e2ab40"/>
+        <g id="Group_344" data-name="Group 344" transform="translate(1693.338 3043.175)">
+          <path id="Path_1" data-name="Path 1" d="M79.891,35.254l2.391-2.391a.233.233,0,0,0,0-.338l-2.053-2.053a.233.233,0,0,0-.338,0L77.5,32.863Z" transform="translate(-66.883 -30.4)" fill="#fff"/>
+          <path id="Path_2" data-name="Path 2" d="M43.452,43.5l-8.838,8.838-1.063,3.139a.25.25,0,0,0,.314.314L37,54.729l8.838-8.838Z" transform="translate(-33.536 -40.337)" fill="#fff"/>
+        </g>
+      </g>
+    </svg>
+
   </div>
 </template>
 
