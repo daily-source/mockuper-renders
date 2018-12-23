@@ -19,7 +19,7 @@ module.exports = {
       // pass options to sass-loader
       sass: {
         // @/ is an alias to src/
-        data: '@import "@/xthon-core/lib/assets/scss/base.scss"; @import "@/assets/scss/base.scss";',
+        data: ' @import "@/assets/scss/base.scss"; @import "@/xthon-core/lib/assets/scss/base.scss";',
       },
     },
   },
@@ -27,8 +27,8 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'scss',
       patterns: [
+        path.resolve(__dirname, '@/assets/scss/base.scss'),        
         path.resolve(__dirname, '@/xthon-core/lib/assets/scss/base.scss'),
-        path.resolve(__dirname, '@/assets/scss/base.scss')        
       ],
     },
   },

@@ -21,7 +21,9 @@ Object.keys(filters).forEach((key) => {
 
 Vue.use(SmoothScroll);
 
-import store from './store';
+import {createStore} from './xthon-core/lib/store';
+
+const store = createStore()
 
 new Vue({
   router,
