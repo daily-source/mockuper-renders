@@ -34,9 +34,45 @@
               </div>
             </div>
           </div>
+          <div class="field">
+            <label>Choose a nonprofit for your widget to donate towards: </label>
+            <nonprofit-ajax-seach 
+              :placeholder='"Search"'
+            />
+          </div>
         </div>
-        <div class="column">
-
+        <div class="widget-customizer__fields column">
+          <form action="#">
+            <div class="field">
+              <label for="size" class='label'>Size: </label>
+              <div class="control">
+                <div class="select">
+                  <select name="size" id="size" v-model='size'>
+                    <option v-for='(size, index) in sizes' :key='index' :value="index">
+                      {{ size.label + ' (' + size.width + 'px)' }}
+                    </option>
+                  </select>
+                </div>
+                <small>To view all sizes, click <a href="#">here</a></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="color" class='label'>Color: </label>
+              <div class="control">
+                <div class="select">
+                  <select name="color" id="color" v-model='color'>
+                    <option v-for='(color, index) in colors' :key='index' :value="index">
+                      {{ color.label }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <small><a href="#">Choose custom colors</a></small>
+            </div>
+            <div class="button-container has-text-right">
+              <button class='button is-primary is-large is-uppercase has-text-weight-bold' type='submit'>Create</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -47,6 +83,7 @@
 import { mapState } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import CounterWidget from '@/components/CountersForThePoor/CounterWidget' 
+import NonprofitAjaxSeach from '@/components/general/NonprofitAjaxSearch'
 
 export default {
   name: 'WidgetCustomizer',
@@ -62,6 +99,7 @@ export default {
 
   components: {
     CounterWidget,
+    NonprofitAjaxSeach,
   },
 
   data () {
@@ -69,7 +107,9 @@ export default {
       imgFolderName: 'widget-imgs/',
       title: '',
       selectedImg: null,
-      noImage: false,
+      noImage: false,   
+      size: 'large',
+      color: 'black-and-white',
     }
   },
 
@@ -97,14 +137,18 @@ export default {
         img: this.selectedImg ? this.selectedImg : this.widgetFeaturedImg,
         title: this.title,
         message: this.message,
+        size: this.size,
+        color: this.color,
       }
     },
     ...mapState({
       imgs: state => state.counterwidgets.imgs,
+      sizes: state => state.counterwidgets.sizes,
+      colors: state => state.counterwidgets.colors,
       widgetFeaturedImg (state) {
         const widget = state.counterwidgets.widgets.find(widget => widget.id === this.id)
         return widget.featuredImg
-      }
+      },
     }),
   },
 }
@@ -112,7 +156,6 @@ export default {
 
 <style scoped lang='scss'>
   .widget {
-    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3rem;
@@ -163,6 +206,36 @@ export default {
         transform: scale(1.03);
         filter: brightness(1);
       }
+    }
+  }
+
+  .widget-customizer__fields {
+    display: flex;
+    flex-wrap: wrap;
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .button-container {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .field {
+      width: 100%;
+    }
+
+    label {
+      justify-content: flex-start;
+      font-weight: 700 !important;
+    }
+
+    .select {
+      display: block;
+      max-width: 100%;
     }
   }
 </style>

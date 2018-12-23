@@ -1,5 +1,8 @@
 <template>
-  <div :class="['counter-widget', {'counter-widget--edit': edit}]">
+  <div 
+    :class="['counter-widget', {'counter-widget--edit': edit}, `counter-widget--${size}`]"
+    :style='{width: `${sizes[size].width}px`}'  
+  >
     <div class="counter-widget__message-container" v-if='showMessage || edit'>
       <inline-editable-field 
         :value='message'
@@ -11,7 +14,7 @@
         {{ title }}
       </h2>
     </div>
-    <div class="counter-widget__details is-flex  ">
+    <div class="counter-widget__details is-flex ">
       <div class="counter-widget__counters">
         <div class="counter-widget__title-container" v-if='edit'>
           <inline-editable-field 
@@ -128,6 +131,17 @@ export default {
       }
     },
 
+    
+    size () {
+      if (this.editData && this.editData.size) {
+        return this.editData.size
+      } else if (this.widget.size) {
+        return this.widget.size
+      } else {
+        return 'large'
+      }
+    },
+
     ...mapState({
       widget (state) {
         const widget = state.counterwidgets.widgets.find(widget => widget.id === this.id)
@@ -140,7 +154,9 @@ export default {
           img = state.counterwidgets.imgs[this.editData.img]
         }
         return img
-      }
+      },
+
+      sizes: state => state.counterwidgets.sizes,
     })
   },
 }
@@ -150,6 +166,8 @@ export default {
   .counter-widget {
     color: #fff;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .counter-widget__title,
@@ -172,15 +190,6 @@ export default {
   .counter-widget__title-container {
     text-align: left;
   }
-
-  .counter-widget__counters {
-    flex-basis: 65%;
-    flex-shrink: 0;
-    flex-grow: 1;
-    max-width: 65%;
-    margin-right: 3rem;
-  }
-
   .counter-widget__counter {
     justify-content: space-between;
     align-items: center;
@@ -207,9 +216,15 @@ export default {
 
   .counter-widget__details-right {
     flex-wrap: wrap;
+    flex-direction: column;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
   }
 
   .counter-widget-details__image {
+    margin-bottom: 1rem;
     > img {
       width: 100%;
       height: 200px;
@@ -258,6 +273,49 @@ export default {
     .button.edit-button {
       top: 0;
       right: .5rem;
+    }
+  }
+
+  
+  .counter-widget__title,
+  .counter-widget__message {
+    color: inherit;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+
+  .counter-widget--large {
+    .counter-widget__details {
+      flex-direction: row;
+    }
+
+    .counter-widget__counters {
+      flex-basis: 65%;
+      flex-shrink: 0;
+      flex-grow: 1;
+      max-width: 65%;
+      margin-right: 3rem;
+      margin-bottom: 0;
+    }
+
+    
+    .counter-widget__title,
+    .counter-widget__message {
+      font-size: 1.375rem;
+    }
+  }
+
+  .counter-widget__details {
+    flex-direction: column;
+
+    .counter-widget__counters {
+      margin-bottom: 1em;
+    }
+
+    .counter-widget__title,
+    .counter-widget__message {
+      font-size: 1.125rem;
     }
   }
 </style>

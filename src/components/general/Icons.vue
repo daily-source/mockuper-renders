@@ -121,6 +121,15 @@
       </g>
     </svg>
 
+    <svg xmlns="http://www.w3.org/2000/svg" :style="{width: `${iconwidth}`, height: `${iconheight}`}" :viewBox="`0 0 30 30`" v-if='icon === "check-circle"'>
+      <g id="Core">
+        <g id="check-circle">
+          <path id="Shape" d="M15,0A15,15,0,1,0,30,15,15.044,15.044,0,0,0,15,0ZM12,22.5,4.5,15l2.1-2.1L12,18.3,23.4,6.9,25.5,9,12,22.5Z" :fill="color" fill-rule="evenodd"/>
+        </g>
+      </g>
+    </svg>
+
+
   </div>
 </template>
 

@@ -14,6 +14,29 @@ const state = {
     'mlk-sm.jpg',
     'poor-kid.jpg',
   ],
+
+  sizes: {
+    'large': {
+      label: 'Large',
+      width: 800,
+    },
+    'medium': {
+      label: 'Medium',
+      width: 500,
+    },
+    'small': {
+      label: 'Small',
+      width: 300,
+    }
+  },
+
+  colors: {
+    'black-and-white': {
+      label: 'Black and White',
+      primary: '#000',
+      secondary: '#fff',
+    }
+  }
 }
 
 const getters = {}

@@ -17,9 +17,9 @@
       @click='toggleEdit()'
     >
       <Icons 
-        icon='edit' 
-        :iconwidth='64'
-        :iconheight='64'
+        :icon='editOn ? "check-circle" : "edit"' 
+        :iconwidth='34'
+        :iconheight='34'
         :color='"#E2AB40"'
       />
     </button>
