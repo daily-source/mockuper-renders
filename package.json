@@ -16,8 +16,9 @@
     "vue-meta": "^1.5.0",
     "vue-no-ssr": "^0.2.2",
     "vue-router": "^3.0.1",
+    "vue2-google-maps": "^0.10.5",
     "vuex": "^3.0.1",
-    "xthon-core": "github:dailysourceorg/xthon-core#0.0.26"
+    "xthon-core": "github:dailysourceorg/xthon-core"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -29,9 +30,11 @@
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
+    "bulma": "^0.7.2",
     "chai": "^4.1.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "faker": "^4.1.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "node-sass": "^4.9.0",
     "path": "^0.12.7",

@@ -1,33 +1,27 @@
 <template>
   <div class="layout-base">
-    <app-header />
-    <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
-    <SharedFooter></SharedFooter>
+		<virtual-railroad-map />
+		<shared-footer />
   </div>
 </template>
 
 <script>
-import AppHeader from 'Components/RideForGood/AppHeader.vue';
-import AppBanner from 'Components/RideForGood/AppBanner.vue';
-import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
+import VirtualRailroadMap from 'LocalComponents/Map'
+import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
   name: 'BaseLayout',
 
   components: {
-    AppHeader,
-    AppBanner,
-    SharedFooter,
-    NonprofitForm,
-  },
+		VirtualRailroadMap,
+		SharedFooter,
+ 	},
 
   metaInfo() {
-    const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
-    const title = 'Raise money while riding!';
+    const description = 'The modern way to help free slaves';
+    const title = 'Virtual Railroad';
     return {
-      title: 'Home',
+      title: 'Home | Virtual Railroad',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
