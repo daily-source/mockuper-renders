@@ -12,10 +12,17 @@ class User {
 		this.userName = userName
 		this.firstName = firstName
 		this.lastName = lastName
-		this.latitude = latitude
-		this.longitude = longitude
+		this.latitude = parseFloat(latitude)
+		this.longitude = parseFloat(longitude)
 		this.picture = picture
 		this.about = about
+	}
+
+	getUserLocation () {
+		return {
+			lat: this.latitude,
+			lng: this.longitude,
+		}
 	}
 }
 

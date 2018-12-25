@@ -9,6 +9,7 @@ import SmoothScroll from 'Components/plugins/SmoothScroll';
 import * as VueGoogleMaps from 'vue2-google-maps'
 import { createStore } from './xthon-core/lib/store'
 import users from './store/modules/user'
+import nonprofits from './store/modules/nonprofits';
 // You need a specific loader for CSS files
 // import 'vue-datetime/dist/vue-datetime.css';
 Vue.config.productionTip = false;
@@ -31,6 +32,7 @@ Vue.use(VueGoogleMaps, {
 const store = createStore()
 
 store.registerModule('users', users)
+store.registerModule('nonprofits', nonprofits)
 
 new Vue({
   router,
