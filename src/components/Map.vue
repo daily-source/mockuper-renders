@@ -6,6 +6,8 @@
 					class='map'
 					:center='{lat: 0, lng: 0}'
 					:zoom='2'
+					@click='handleMapClicked'
+					ref='gmap'
 				>
 					<GmapMarker
 						v-if='userPosition'
@@ -18,25 +20,15 @@
 						:icon='require("@/assets/img/light_bulb_16.png")'
 						@click='setSelectedUser(user)'
 					/>
-					<GmapInfoWindow
-						v-if='selectedUser'
-						:position='selectedUser.getUserLocation()'
-						:options='infoWindowOptions'
-					>
-						<div class="user-info-window">
-							<h2 class='user-info-window__username'>{{ `${selectedUser.firstName} ${selectedUser.lastName}` }}</h2>
-							<div class="user-info-window__avatar">
-								<img :src="selectedUser.picture" class='user-info-window__avatar-img' alt="">
-							</div>
-							<a href="#" class='user-info-window__see-tracks'>See my tracks</a> <br />
-							<a href="#" class='user-info-window__view-profile button is-primary is-small'>View Profile</a>
-						</div>
-					</GmapInfoWindow>
 					<GmapMarker
 						v-for='(nonprofit, index) in nonprofits'
 						:key='`nonprofit-${index}`'
 						:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
 						:icon='require("@/assets/img/star_16.png")'
+					/>
+					<UserPopupWindow 
+						v-if='selectedUser'
+						:user='selectedUser'
 					/>
 				</GmapMap>
 			</div>
@@ -46,9 +38,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
 
 export default {
 	name: 'VirtualRailroadMap',
+
+	components: {
+		UserPopupWindow,
+	},
 
 	data () {
 		return {
@@ -79,9 +76,17 @@ export default {
 			}
 		},
 
+		handleMapClicked () {
+			this.setSelectedUser(null)
+		},
+
 		setSelectedUser (user) {
 			this.selectedUser = user
 		},
+
+		setPosition () {
+
+		}
 	},
 
 	computed: {

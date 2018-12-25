@@ -1,0 +1,61 @@
+<template>
+	<div class='user-info-wrap' :ref='refName'>
+		<div class="user-info-window">
+			<h4 class="user-info-window__title">
+				{{ `${user.firstName} ${user.lastName}` }}
+			</h4>
+			<img :src="user.picture" class='user-info-window__photo'>
+			<a href='#' class='user-info-window__link'>See my tracks</a>
+			<a href="#" class='user-info-window__link button is-primary is-small'>View Profile</a>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default ( function(x) { return x.default })(require('./userPopupWindowImpl.js'))
+</script>
+
+<style scoped lang='scss'>
+	.user-info-wrap {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(-50%, -100%);
+	}
+
+	.user-info-window {
+		min-height: 60px;
+		min-width: 60px;
+		max-width: 150px;
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: .5rem;
+		font-size: .875rem;
+		background-color: #fff;
+		border-radius: 5px;
+		font-family: inherit;
+		align-items: center;
+		text-align: center;
+	}
+
+	.user-info-window__title {
+		font-size: 1rem;
+		font-weight: 700;
+		font-family: $font-primary;
+		margin-bottom: .25rem;
+	}
+
+	.user-info-window__photo {
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		margin-bottom: .25rem;
+		object-fit: contain;
+	}
+
+	.user-info-window__link {
+		display: inline-block;
+		margin-bottom: .25rem;
+	}
+</style>
