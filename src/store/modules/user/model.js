@@ -1,14 +1,16 @@
 class User {
+	id
+	firstName
+	lastName
+	userName
+	latitude
+	longitude
+	picture
+	about
+	nonprofits
 
-	firstName;
-	lastName;
-	userName;
-	latitude;
-	longitude;
-	picture;
-	about;
-
-	constructor(userName, firstName, lastName, latitude, longitude, picture, about) {
+	constructor(id, userName, firstName, lastName, latitude, longitude, picture, about) {
+		this.id = id
 		this.userName = userName
 		this.firstName = firstName
 		this.lastName = lastName

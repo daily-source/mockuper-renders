@@ -2,8 +2,9 @@ import Nonprofit from './model'
 import Faker from 'faker'
 
 const generateNonprofits = (length = 5) => {
-	return [...Array(length)].map(() => {
+	return [...Array(length)].map((_, i) => {
 		return new Nonprofit(
+			i + 1,
 			Faker.company.companyName(),
 			Faker.lorem.sentence(),
 			Faker.address.state(),

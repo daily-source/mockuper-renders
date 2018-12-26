@@ -1,12 +1,16 @@
 <template>
-	<div class='user-info-wrap' :ref='refName'>
+	<div
+		@click.stop='false'
+		class='user-info-wrap' 
+		:ref='refName'
+	>
 		<div class="user-info-window">
 			<h4 class="user-info-window__title">
 				{{ `${user.firstName} ${user.lastName}` }}
 			</h4>
 			<img :src="user.picture" class='user-info-window__photo'>
-			<a href='#' class='user-info-window__link'>See my tracks</a>
-			<a href="#" class='user-info-window__link button is-primary is-small'>View Profile</a>
+			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>See my tracks</a>
+			<a @click.stop.prevent='profileClicked' href="#" class='user-info-window__link button is-primary is-small'>View Profile</a>
 		</div>
 	</div>
 </template>

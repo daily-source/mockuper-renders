@@ -26,6 +26,12 @@
 						:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
 						:icon='require("@/assets/img/star_16.png")'
 					/>
+					<GmapPolyline
+						v-for='(nonprofit, index) in selectedUserNonprofits'
+						:key='`userNonprofit-${index}`'
+						:path='generateNonprofitLinePath(nonprofit)'
+						:options='polylineOptions'
+					/>
 					<UserPopupWindow 
 						v-if='selectedUser'
 						:user='selectedUser'
@@ -37,7 +43,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+import { curvedLineGenerate } from './curvedpolyline/CurvedPolyline'
 import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
 
 export default {
@@ -50,13 +57,14 @@ export default {
 	data () {
 		return {
 			userPosition: null,
-			infoWindowOptions: {
-				pixelOffset: {
-					width: 0,
-					height: -10,
-				}
+			polylineOptions: {
+				geodesic: false,
+				strokeColor: '#4475b7',
+				strokeOpacity: 1.0,
+				strokeWeight: 2,
 			},
 			selectedUser: null,
+			selectedUserNonprofits: null,
 		}
 	},
 
@@ -77,15 +85,28 @@ export default {
 		},
 
 		handleMapClicked () {
+			console.log('clicked')
 			this.setSelectedUser(null)
 		},
 
 		setSelectedUser (user) {
 			this.selectedUser = user
+
+			if (user) {
+				this.selectedUserNonprofits = this.getUserNonprofits(user.id)
+			} else {
+				this.selectedUserNonprofits = null
+			}
 		},
 
-		setPosition () {
-
+		generateNonprofitLinePath(nonprofit) {
+			const path = curvedLineGenerate({
+			 	latStart: this.selectedUser.latitude, 
+				lngStart: this.selectedUser.longitude,
+				latEnd: nonprofit.latitude, 
+				lngEnd: nonprofit.longitude
+			})
+			return path		
 		}
 	},
 
@@ -93,6 +114,9 @@ export default {
 		...mapState({
 			users: state => state.users.data,
 			nonprofits: state => state.nonprofits.data,
+		}),
+		...mapGetters({
+			getUserNonprofits: 'users/getUserNonprofits'
 		})
 	},
 
@@ -100,7 +124,7 @@ export default {
 		userPosition () {
 			console.log('changed')
 		}
-	}
+	},
 }
 </script>
 

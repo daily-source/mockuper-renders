@@ -1,4 +1,5 @@
 import {MapElementFactory} from 'vue2-google-maps'
+import { mapGetters } from 'vuex'
 
 const props = {
 	user: {
@@ -14,26 +15,29 @@ export default MapElementFactory({
 	events,
 	name: 'userPopupWindow',
 	props,
+
 	data () {
 		return {
 			map: null,
 			ref: null,
 			refName: 'popupWindow',
+			nonprofits: null,
 		}
 	},
 
 	ctr:() => google.maps.OverlayView,
 
 	mounted () {
-		this.ref = (this.$refs[this.refName])
-		this.ref.parentNode.removeChild(this.ref)
+		this.ref = this.$refs[this.refName]
+		if(this.ref.parentNode) {
+			this.ref.parentNode.removeChild(this.ref)
+		}
 	},
 
 	methods: {
 		definePopupClass () {	
 			this.$userPopupWindowObject.onAdd = this.onAdd
 			this.$userPopupWindowObject.draw = this.draw
-			this.$userPopupWindowObject.stopEventPropagation = this.stopEventPropagation,
 			this.$userPopupWindowObject.onRemove = this.onRemove
 		},
 
@@ -60,18 +64,16 @@ export default MapElementFactory({
 
 		},
 
-		stopEventPropagation () {
-			 ['click', 'dblclick', 'contextmenu', 'wheel', 'mousedown', 'touchstart',
-     'pointerdown']
-        .forEach(function(event) {
-          this.ref.addEventListener(event, (e) => {
-            e.stopPropagation();
-          });
-        });
+		trackClicked () {
+			console.log('Track Clicked')
+		},
+
+		profileClicked () {
+			console.log('Profile Clicked')
 		},
 
 		onRemove () {
-			this.ref.parentElement.removeChild(this.ref)
+			// this.ref.parentElement.removeChild(this.ref)
 		}
 	},
 
