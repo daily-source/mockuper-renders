@@ -1,6 +1,6 @@
 import { MapElementFactory } from 'vue2-google-maps'
 
-const props = {
+const mappedProps = {
 	path: {
 		type: Array,
 		twoWay: true,
@@ -12,7 +12,7 @@ const props = {
 }
 
 export default MapElementFactory({
-	mappedProps: props,
+	mappedProps,
 	props: {
 		deepWatch: {
 			type: Boolean,

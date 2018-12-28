@@ -24,24 +24,22 @@ export const curvedLineGenerate = (Options = {}) => {
 		if(i == 4) {
 			offsetMultiplier = 1.5 * multiplier;
 		}
-		
+	
 		if(i >= 5) {
-			offsetMultiplier = (offsetLength * PointsOffset[i]) * multiplier;
+				offsetMultiplier = (offsetLength * PointsOffset[i]) * multiplier;
 		} else {
-			offsetMultiplier = (offsetLength * PointsOffset[i]) * multiplier;
+				offsetMultiplier = (offsetLength * PointsOffset[i]) * multiplier;
 		}
-
+		
+		
 		partLat = horizontal ? (latStart + ((latEnd - latStart) * Points[i])) + offsetMultiplier : (latStart + ((latEnd - latStart) * Points[i]))
 		partLng = horizontal ? (lngStart + ((lngEnd - lngStart) * Points[i])) : (lngStart + ((lngEnd - lngStart) * Points[i])) + offsetMultiplier
 
 		const segments = curvedLineSegment(lastLat, lastLng, partLat, partLng, gapWidth)
 
-		// for(let x in segments) {
-		// 	lines.push(segments[x])
-		// }
-		segments.forEach(s => {
-			lines.push(s)
-		})
+		for(let x in segments) {
+			lines.push(segments[x])
+		}
 
 		lastLat = partLat
 		lastLng = partLng
@@ -49,9 +47,11 @@ export const curvedLineGenerate = (Options = {}) => {
 
 	const segments = curvedLineSegment(lastLat, lastLng, latEnd, lngEnd, gapWidth)
 
-	segments.forEach(s => {
-		lines.push(s)
-	})
+	for(let y in segments) {
+		lines.push(segments[y])
+	}
+
+	console.log(lines)
 
 	return lines
 }

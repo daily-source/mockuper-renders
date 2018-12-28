@@ -1,4 +1,4 @@
-import {MapElementFactory} from 'vue2-google-maps'
+import { MapElementFactory } from 'vue2-google-maps'
 import { mapGetters } from 'vuex'
 
 const props = {
@@ -22,6 +22,7 @@ export default MapElementFactory({
 			ref: null,
 			refName: 'popupWindow',
 			nonprofits: null,
+			tracksActive: false,
 		}
 	},
 
@@ -29,6 +30,7 @@ export default MapElementFactory({
 
 	mounted () {
 		this.ref = this.$refs[this.refName]
+		this.tracksActive = false
 		if(this.ref.parentNode) {
 			this.ref.parentNode.removeChild(this.ref)
 		}
@@ -65,8 +67,12 @@ export default MapElementFactory({
 		},
 
 		trackClicked () {
-			console.log('track clicked')
-			this.$emit('seeTracksClicked', this)
+			if(this.tracksActive) {
+				this.$emit('previousViewClicked', this)	
+			} else {
+				this.tracksActive = true	
+				this.$emit('seeTracksClicked', this)
+			}
 		},
 
 		profileClicked () {

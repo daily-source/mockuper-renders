@@ -9,7 +9,7 @@
 				{{ `${user.firstName} ${user.lastName}` }}
 			</h4>
 			<img :src="user.picture" class='user-info-window__photo'>
-			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>See my tracks</a>
+			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>{{ tracksActive ? 'Previous View' : 'See my tracks' }} </a>
 			<a @click.stop.prevent='profileClicked' href="#" class='user-info-window__link button is-primary is-small'>View Profile</a>
 		</div>
 	</div>

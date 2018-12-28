@@ -29,7 +29,7 @@
 					<PolylineAnimatedSymbol
 						v-for='(nonprofit, index) in selectedUserNonprofits'
 						:key='`userNonprofit-${index}`'
-						:path='generateNonprofitLinePath(nonprofit)'
+						:path='setUserNonprofitPath(nonprofit)'
 						@polylineCreated='onPolylineCreate'
 						:options='polylineOptions'			
 					/>	
@@ -37,6 +37,7 @@
 						v-if='selectedUser'
 						:user='selectedUser'
 						@seeTracksClicked='seeTracks'
+						@previousViewClicked='setSelectedUser(null)'
 					/>
 				</GmapMap>
 			</div>
@@ -46,8 +47,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import { curvedLineGenerate } from './curvedpolyline/CurvedPolyline'
-import PolylineAnimatedSymbol from './curvedpolyline/CurvedPolylineComponent'
+import { curvedLineGenerate } from './CurvedPolyline'
+import PolylineAnimatedSymbol from './PolylineAnimatedSymbol'
 import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
 
 export default {
@@ -105,14 +106,13 @@ export default {
 			}
 		},
 
-		generateNonprofitLinePath(nonprofit) {
-			const path = curvedLineGenerate({
-			 	latStart: this.selectedUser.latitude, 
+		setUserNonprofitPath(nonprofit) {
+			return curvedLineGenerate({
+				latStart: this.selectedUser.latitude, 
 				lngStart: this.selectedUser.longitude,
 				latEnd: nonprofit.latitude, 
 				lngEnd: nonprofit.longitude
-			})
-			return path		
+			})		
 		},
 
 		seeTracks () {
