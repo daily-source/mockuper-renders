@@ -26,15 +26,17 @@
 						:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
 						:icon='require("@/assets/img/star_16.png")'
 					/>
-					<GmapPolyline
+					<PolylineAnimatedSymbol
 						v-for='(nonprofit, index) in selectedUserNonprofits'
 						:key='`userNonprofit-${index}`'
 						:path='generateNonprofitLinePath(nonprofit)'
-						:options='polylineOptions'
-					/>
+						@polylineCreated='onPolylineCreate'
+						:options='polylineOptions'			
+					/>	
 					<UserPopupWindow 
 						v-if='selectedUser'
 						:user='selectedUser'
+						@seeTracksClicked='seeTracks'
 					/>
 				</GmapMap>
 			</div>
@@ -45,6 +47,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import { curvedLineGenerate } from './curvedpolyline/CurvedPolyline'
+import PolylineAnimatedSymbol from './curvedpolyline/CurvedPolylineComponent'
 import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
 
 export default {
@@ -52,6 +55,7 @@ export default {
 
 	components: {
 		UserPopupWindow,
+		PolylineAnimatedSymbol,
 	},
 
 	data () {
@@ -65,6 +69,7 @@ export default {
 			},
 			selectedUser: null,
 			selectedUserNonprofits: null,
+			polylines: [],
 		}
 	},
 
@@ -96,6 +101,7 @@ export default {
 				this.selectedUserNonprofits = this.getUserNonprofits(user.id)
 			} else {
 				this.selectedUserNonprofits = null
+				this.polylines = []
 			}
 		},
 
@@ -107,6 +113,22 @@ export default {
 				lngEnd: nonprofit.longitude
 			})
 			return path		
+		},
+
+		seeTracks () {
+			console.log('something')
+			this.polylines.forEach(polyline => {
+				console.log(polyline)
+				polyline.animateCircle()
+			})
+		},
+
+		clearRefs () {
+			console.log(this.$refs)
+		},
+
+		onPolylineCreate (polyline) {
+			this.polylines.push(polyline)
 		}
 	},
 

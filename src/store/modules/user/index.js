@@ -1,9 +1,9 @@
 import User from './model'
-import Faker from 'faker'
+import {internet, name, address, image} from 'faker'
 
 const createUsers = (length = 5) => {
 	return [...Array(length)].map((_, i) => {
-		const user = new User(i+1, Faker.internet.userName(), Faker.name.firstName(), Faker.name.lastName(), Faker.address.latitude(), Faker.address.longitude(), Faker.image.avatar())
+		const user = new User(i+1, internet.userName(), name.firstName(), name.lastName(), address.latitude(), address.longitude(), image.avatar())
 		user.nonprofits = [1, 2, 3, 4, 5]
 		return user
 	})

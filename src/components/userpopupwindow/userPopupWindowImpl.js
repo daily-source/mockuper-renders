@@ -65,7 +65,8 @@ export default MapElementFactory({
 		},
 
 		trackClicked () {
-			console.log('Track Clicked')
+			console.log('track clicked')
+			this.$emit('seeTracksClicked', this)
 		},
 
 		profileClicked () {
