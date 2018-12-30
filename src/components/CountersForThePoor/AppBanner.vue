@@ -1,12 +1,10 @@
 <template>
-  <section id="banner" class='banner'>
-    <div class="banner__contents">
-      <div class="container banner-contents__container">
-        <counter-widget 
-          :id="'1'"
-        />
-      </div>
-    </div>
+  <section id="banner" class='section banner'>
+		<div class="banner__contents">
+			<counter-widget 
+				:id="'1'"
+			/>
+		</div>
   </section>
 </template>
 
@@ -39,8 +37,7 @@ export default {
 
   .banner__contents {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 4em;
     bottom: 30px;
 
     .counter-widget {
@@ -51,9 +48,5 @@ export default {
       border-radius: 4px;
       margin-left: 0;
     }
-  }
-
-  .banner-contents__container {
-    position: relative;
   }
 </style>

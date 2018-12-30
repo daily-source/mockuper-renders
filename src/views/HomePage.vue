@@ -6,9 +6,11 @@
       <div class="container">
         <h2 class="quote has-text-centered"> Give me your tired, your poor,  your huddled masses yearning to breathe free, the wretched refuse of your teeming shore.</h2>
       </div>
-      <div class="img-container">
-        <img src="../assets/img/images/mlk.jpg" alt="Martin Luther King" class='quote__img'>
-      </div>
+			<counter-widget-banner 
+				:widget-id='1'
+				:bg-image='require("../assets/img/images/mlk.jpg")'
+				:widget-position='["top", "left"]'
+			/>
     </section>
     <section class="widget-customize section">
       <div class="container">
@@ -21,9 +23,15 @@
       </div>
     </section>
     <section class="section">
-      <div class="img-container">
+      <!-- <div class="img-container">
         <img src="../assets/img/images/poor-kid.jpg" alt="Poor Kid">    
-      </div>
+			</div> -->
+			<counter-widget-banner 
+				:widget-id='1'
+				:bg-image='require("../assets/img/images/poor-kid.jpg")'
+				:widget-position='["center-y", "left"]'
+			/>
+
     </section>
     <section class="section">
         <h2 class='has-text-centered'>Create your own counter page to share</h2>
@@ -38,6 +46,7 @@
 import AppHeader from '@/components/CountersForThePoor/AppHeader.vue';
 import AppBanner from '@/components/CountersForThePoor/AppBanner.vue';
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
+import CounterWidgetBanner from '@/components/CountersForThePoor/CounterWidgetBanner'
 import CounterPageCreator from '@/components/CountersForThePoor/CounterPageCreator'
 import SharedFooter from '@/components/Shared/SharedFooter.vue';
 
@@ -47,6 +56,7 @@ export default {
   components: {
     AppHeader,
     AppBanner,
+		CounterWidgetBanner,
     WidgetCustomizer,
     SharedFooter,
     CounterPageCreator,

@@ -80,6 +80,9 @@ export default {
     editData: {
       type: Object,
       required: false,
+			default: () => {
+				return {}
+			}
     },
 
     noImage: {
@@ -122,14 +125,25 @@ export default {
       return moment().format('MMMM DD, YYYY hh:mm:ss A') 
     },
 
-    getDifference (timeA, timeB, unit='seconds') {
+    getTimeDifference (timeA, timeB, unit='seconds') {
       timeA = moment(new Date(timeA))
       timeB = moment(new Date(timeB))
       return timeA.diff(timeB, unit)
     },
 
     getDeaths (span) {
-      return this.getDifference(this.timeNow, moment(this.workingDate).startOf(span)) * 3
+      const diff = this.getTimeDifference(this.timeNow, moment(this.workingDate).startOf(span))
+			const remainder = diff % this.widget.rate
+
+			let val
+
+			if (remainder === 0) {
+				val = diff / this.widget.rate
+			} else {
+				val = (diff - remainder) / this.widget.rate
+			}
+
+			return val
     },
   },
 
@@ -176,7 +190,7 @@ export default {
 
     ...mapState({
       widget (state) {
-        const widget = state.counterwidgets.widgets.find(widget => widget.id === this.id)
+        const widget = state.counterwidgets.widgets.find(widget => parseInt(widget.id) === parseInt(this.id))
         return widget
       },
 

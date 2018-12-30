@@ -19,7 +19,7 @@ export default {
 <style scoped lang='scss'>
   .site-header {
     position: absolute;
-    top: 30px;
+    top: 15px;
     left: 0;
     right: 0;
     z-index: 10;
