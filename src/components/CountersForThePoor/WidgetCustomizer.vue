@@ -36,7 +36,7 @@
           </div>
           <div class="field">
             <label>Choose a nonprofit for your widget to donate towards: </label>
-            <nonprofit-ajax-seach 
+            <nonprofit-ajax-search 
               :placeholder='"Search"'
             />
           </div>
@@ -83,7 +83,7 @@
 import { mapState } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import CounterWidget from '@/components/CountersForThePoor/CounterWidget' 
-import NonprofitAjaxSeach from '@/components/general/NonprofitAjaxSearch'
+import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
 export default {
   name: 'WidgetCustomizer',
@@ -99,7 +99,7 @@ export default {
 
   components: {
     CounterWidget,
-    NonprofitAjaxSeach,
+    NonprofitAjaxSearch,
   },
 
   data () {
@@ -141,14 +141,16 @@ export default {
         color: this.color,
       }
     },
+
     ...mapState({
+      widgetFeaturedImg (state) {
+        const widget = state.counterwidgets.widgets.find(widget => parseInt(widget.id) === parseInt(this.id))
+        return widget.featuredImg
+      },
+
       imgs: state => state.counterwidgets.imgs,
       sizes: state => state.counterwidgets.sizes,
       colors: state => state.counterwidgets.colors,
-      widgetFeaturedImg (state) {
-        const widget = state.counterwidgets.widgets.find(widget => widget.id === this.id)
-        return widget.featuredImg
-      },
     }),
   },
 }

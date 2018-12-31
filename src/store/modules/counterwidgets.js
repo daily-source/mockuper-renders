@@ -1,10 +1,13 @@
+import { random } from 'lodash'
+
 const state = {
   widgets: [
     {
-      id: '1',
+      id: 1,
       featuredImg: 0,
-      title: 'Deaths now occurring from malnutrition and dirty water:',
+      counterId: 1,
       rate: 3,
+      title: '',
       message: '', 
     }
   ],
@@ -40,6 +43,7 @@ const state = {
 
   counters: [
     {
+      id: 1,
       title: 'Deaths now occuring from malnutrition and dirty water.',
       rate: 3,
       imgPreviews: [
@@ -50,6 +54,7 @@ const state = {
       ]
     },
     {
+      id: 2,
       title: 'Deaths now occuring from extreme poverty',
       rate: 1327,
       imgPreviews: [
@@ -64,9 +69,30 @@ const state = {
 
 const getters = {}
 
-const actions = {}
+const actions = {
+   addWidget ({ commit, state }, widget) {
+    if (!widget) return
+    const id = random(1000, 10000, false)
 
-const mutations = {}
+    const widgetData = {
+      id,
+      ...widget
+    }
+
+    commit('setWidgets', [
+      ...state.widgets,
+      widgetData
+    ])
+
+    return widgetData
+  },
+}
+
+const mutations = {
+  setWidgets (state, widgets) {
+    state.widgets = widgets
+  }
+}
 
 export default {
   namespaced: true,

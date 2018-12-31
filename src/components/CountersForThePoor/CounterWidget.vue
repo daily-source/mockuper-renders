@@ -11,7 +11,7 @@
     </div>
     <div class="counter-widget__title-container" v-if='!edit && !showMessage'>
       <h2 class="counter-widget__title">
-        {{ title }}
+        {{ counter.title }}
       </h2>
     </div>
     <div class="counter-widget__details is-flex ">
@@ -167,6 +167,8 @@ export default {
       get () {
         if(this.widget && this.widget.title) {
           return this.widget.title
+        } else if (this.counter) {
+          return this.counter.title
         }
 
         return 'Name your widget'
@@ -200,6 +202,12 @@ export default {
           img = state.counterwidgets.imgs[this.editData.img]
         }
         return img
+      },
+
+      counter (state) {
+        const counter = state.counterwidgets.counters.find(counter => parseInt(this.widget.counterId) === parseInt(counter.id))
+
+        return counter
       },
 
       sizes: state => state.counterwidgets.sizes,

@@ -16,16 +16,12 @@
       <div class="container">
         <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
         <p class='has-text-centered'>Once you create your customized widget you'll be provided with code to simply paste onto your website.  It's as easy as that!</p>
-
         <widget-customizer 
           id='1'
         />
       </div>
     </section>
     <section class="section">
-      <!-- <div class="img-container">
-        <img src="../assets/img/images/poor-kid.jpg" alt="Poor Kid">    
-			</div> -->
 			<counter-widget-banner 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'

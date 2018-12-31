@@ -1,13 +1,13 @@
 <template>
     <div class="counter-page-creator">
-      <form action="#">
+      <form @submit.prevent='createPage'>
         <div class="columns counter-page-creator__columns">
           <div class="column is-7">
             Choose a non-profit for your widget to donate towards:
           </div>
           <nonprofit-ajax-search 
             placeholder='Search...'
-            v-model='nonprofit'
+            v-model='widget.nonprofit'
           />
         </div>
         <div class="columns counter-page-creator__columns">
@@ -19,12 +19,12 @@
               <select 
                 name="title"   
                 class="select is-block"
-                v-model='counter'
+                v-model='widget.counterId'
               >
                 <option 
                   v-for='(counter, index) in counters' 
                   :key='index' 
-                  :value='index'
+                  :value='counter.id'
                 >
                   {{ counter.title }}
                 </option>
@@ -33,12 +33,12 @@
           </div>
         </div>
         <div class="columns is-multiline counter-page-creator__columns counter-page-creator__imgs">
-          <div class="column is-6 counter-page-creator__img-container" v-for='(imgPrev, index) in counters[counter].imgPreviews' :key='`img-preview-${index}`'>
+          <div class="column is-6 counter-page-creator__img-container" v-for='(imgPrev, index) in counters[widget.counterId].imgPreviews' :key='`img-preview-${index}`'>
             <img 
               :src="getImageSrc(imgPrev)" 
               :alt="`Image Preview #${index}`"
-              :class='["is-block counter-page-creator__img", { "counter-page-creator__img--selected": selectedImg === index}]'
-              @click='selectedImg=index'
+              :class='["is-block counter-page-creator__img", { "counter-page-creator__img--selected": widget.featuredImg === index}]'
+              @click='widget.featuredImg=index'
             >
           </div>
         </div>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
@@ -67,10 +67,24 @@ export default {
 
   data () {
     return {
-      counter: 0,
-      nonprofit: '',
-      selectedImg: null,
+      widget: {
+        nonprofit: '',
+        featuredImg: null,
+        counterId: 1,
+      },
     }
+  },
+
+  methods: {
+    async createPage () {
+      const widget = await this.addWidget(this.widget)
+
+      this.$router.push({ name: 'page', params: { id: widget.id } })
+    },
+
+    ...mapActions({
+      addWidget: 'counterwidgets/addWidget'
+    }),
   },
 
   computed: {
