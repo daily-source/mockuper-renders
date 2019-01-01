@@ -32,15 +32,11 @@
             </div>
           </div>
         </div>
-        <div class="columns is-multiline counter-page-creator__columns counter-page-creator__imgs">
-          <div class="column is-6 counter-page-creator__img-container" v-for='(imgPrev, index) in counters[widget.counterId].imgPreviews' :key='`img-preview-${index}`'>
-            <img 
-              :src="getImageSrc(imgPrev)" 
-              :alt="`Image Preview #${index}`"
-              :class='["is-block counter-page-creator__img", { "counter-page-creator__img--selected": widget.featuredImg === index}]'
-              @click='widget.featuredImg=index'
-            >
-          </div>
+        <div class="counter-page-creator__ft-img-chooser">
+          <featured-image-chooser 
+            :images='counters[widget.counterId].imgPreviews'
+						 @change='handleSliderChange'
+          />
         </div>
         <div class="btn-container has-text-right counter-page-creator__columns">
           <button type='submit' class='button is-primary has-text-weight-bold is-uppercase is-large'>
@@ -56,11 +52,16 @@ import { mapState, mapActions } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
+import FeaturedImageChooser from '@/components/CountersForThePoor/FeaturedImageChooser'
+import Flickity from '@/components/plugins/Flickity'
+
 export default {
   name: 'CounterPageCreator',
 
   components: {
     NonprofitAjaxSearch,
+    FeaturedImageChooser,
+    Flickity,
   },
 
   mixins: [imageSrc],
@@ -69,7 +70,7 @@ export default {
     return {
       widget: {
         nonprofit: '',
-        featuredImg: null,
+        featuredImg: 0,
         counterId: 1,
       },
     }
@@ -81,6 +82,10 @@ export default {
 
       this.$router.push({ name: 'page', params: { id: widget.id } })
     },
+
+		handleSliderChange (index) {
+			this.widget.featuredImg = index
+		},
 
     ...mapActions({
       addWidget: 'counterwidgets/addWidget'
@@ -119,4 +124,8 @@ export default {
       filter: brightness(1);
     }
   }
+
+	.btn-container {
+		margin-top: 1em;
+	}
 </style>

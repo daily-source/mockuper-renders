@@ -40,7 +40,11 @@
       </div>
       <div class="counter-widget__details-right is-flex">
         <div class="counter-widget-details__image" v-if='edit'>
-          <img :src="getImageSrc(featuredImg)" alt="">
+          <img
+            v-if='featuredImg'
+            :src="getImageSrc(featuredImg)" 
+            alt="Featured Image"
+          >
         </div>
         <router-link to='/' class='button is-primary counter-widget__button'>
           Help Now
@@ -201,6 +205,10 @@ export default {
         if(this.edit && this.editData && this.editData.img !== null) {
           img = state.counterwidgets.imgs[this.editData.img]
         }
+
+        if (this.noImage) {
+          img = null
+        }
         return img
       },
 
@@ -271,6 +279,7 @@ export default {
   .counter-widget__details-right {
     flex-wrap: wrap;
     flex-direction: column;
+    flex-grow: 1;
 
     @media (min-width: 600px) {
       flex-direction: row;

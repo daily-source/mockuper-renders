@@ -1,7 +1,9 @@
 <template>
   <div class="layout-base">
     <app-header />
-    <app-banner />
+    <app-banner 
+      :widget-id='1'
+    />
     <section class="quote-container section">
       <div class="container">
         <h2 class="quote has-text-centered"> Give me your tired, your poor,  your huddled masses yearning to breathe free, the wretched refuse of your teeming shore.</h2>

@@ -5,6 +5,7 @@
         :edit='true'
         :id="id"
         :edit-data='editData'
+				:no-image='noImage'
       />
     </div>
     <div class="widget-customizer__images">
@@ -13,7 +14,7 @@
           <div class="widget-customizer-images__heading is-flex">
             <p>Choose an image you would like to use: </p>
             <p>
-              <button class='button is-text no-image-button is-clear is-paddingless'>No Image</button>
+              <button class='button is-text no-image-button is-clear is-paddingless' @click='setWidgetNoImage()'>No Image</button>
             </p>
           </div>
           <div class="widget-customizer-images__columns columns">
@@ -115,8 +116,13 @@ export default {
 
   methods: {
     setSelectedImg (index) {
+			this.noImage = false
       this.selectedImg = index
     },
+
+		setWidgetNoImage () {
+			this.noImage = true
+		},
 
     getSelectedImg() {
       if(!this.noImage) {

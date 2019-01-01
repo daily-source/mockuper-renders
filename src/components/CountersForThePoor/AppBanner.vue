@@ -14,6 +14,13 @@ import CounterWidget from '@/components/CountersForThePoor/CounterWidget'
 export default {
   name: 'AppBanner',
 
+  props: {
+    widgetId: {
+      type: Number,
+      required: true,
+    }
+  },
+
   components: {
     CounterWidget,
   },
