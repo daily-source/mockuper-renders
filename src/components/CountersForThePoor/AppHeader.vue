@@ -22,7 +22,7 @@ export default {
     top: 15px;
     left: 0;
     right: 0;
-    z-index: 10;
+		z-index: 10;
 
     .logo {
       max-width: 300px;

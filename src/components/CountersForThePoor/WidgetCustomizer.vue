@@ -3,7 +3,7 @@
     <div class="widget">
       <counter-widget 
         :edit='true'
-        :id="id"
+        :id="widgetId"
         :edit-data='editData'
 				:no-image='noImage'
       />
@@ -90,8 +90,8 @@ export default {
   name: 'WidgetCustomizer',
 
   props: {
-    id: {
-      type: String,
+    widgetId: {
+      type: Number,
       required: true,
     },
   },
@@ -150,7 +150,7 @@ export default {
 
     ...mapState({
       widgetFeaturedImg (state) {
-        const widget = state.counterwidgets.widgets.find(widget => parseInt(widget.id) === parseInt(this.id))
+        const widget = state.counterwidgets.widgets.find(widget => parseInt(widget.id) === parseInt(this.widgetId))
         return widget.featuredImg
       },
 
@@ -170,7 +170,9 @@ export default {
   }
 
   .counter-widget {
-    color: #333;
+		color: #333;
+		background-color: #fff;
+		box-shadow: 0 2px 8px 2px rgba(0,0,0,.3);
     padding: 1.5rem;
     border: 2px solid $color-gray;
     border-radius: $border-radius;

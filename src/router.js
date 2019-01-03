@@ -12,7 +12,7 @@ Vue.use(Meta, {
 // route-level code splitting
 // const Nonprofit = () => import('@/views/Nonprofit.vue');
 const HomePage = () => import('@/views/HomePage.vue');
-const CustomPage = () => import('@/views/CustomPage.vue');
+const CounterCustomPage = () => import('@/views/CounterCustomPage.vue');
 // const ExplorePage = () => import('@/views/ExplorePage.vue');
 // const VolunteerPage = () => import('@/views/VolunteerPage.vue');
 // const Fundraiser = () => import('@/views/Fundraiser.vue');
@@ -39,7 +39,12 @@ export default new Router({
     {
       path: '/page/:id',
       name: 'page',
-      component: CustomPage,
+      component: CounterCustomPage,
+    },
+    {
+      path: '/404',
+      name: 'Default',
+      component: Default404,
     },
     // {
     //   path: '/explore',
@@ -84,11 +89,6 @@ export default new Router({
     //   name: 'fundraiser/donate',
     //   component: Fundraiser,
     // },
-    {
-      path: '/404',
-      name: 'Default',
-      component: Default404,
-    },
     // {
     //   path: '/account',
     //   redirect: '/account/settings',

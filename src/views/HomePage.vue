@@ -6,7 +6,7 @@
     />
     <section class="quote-container section">
       <div class="container">
-        <h2 class="quote has-text-centered"> Give me your tired, your poor,  your huddled masses yearning to breathe free, the wretched refuse of your teeming shore.</h2>
+        <h2 class='quote has-text-centered'>Give me your tired, your poor,  your huddled masses yearning to breathe free, the wretched refuse of your teeming shore.</h2>
       </div>
 			<counter-widget-banner 
 				:widget-id='1'
@@ -19,7 +19,7 @@
         <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
         <p class='has-text-centered'>Once you create your customized widget you'll be provided with code to simply paste onto your website.  It's as easy as that!</p>
         <widget-customizer 
-          id='1'
+          :widget-id='1'
         />
       </div>
     </section>
@@ -29,7 +29,6 @@
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'
 				:widget-position='["center-y", "left"]'
 			/>
-
     </section>
     <section class="section">
         <h2 class='has-text-centered'>Create your own counter page to share</h2>

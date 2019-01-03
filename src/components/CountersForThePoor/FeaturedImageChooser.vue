@@ -16,11 +16,14 @@
 					class='featured-image-chooser__img'
 					alt="Featured Image Chooser"
 				>
-				<div class='featured-image-chooser__slide-overlay'>
+				<!-- <div class='featured-image-chooser__slide-overlay' v-if='selected===index'>
 					<button class='button is-large is-uppercase is-primary has-text-weight-bold'>
 						Preview Banner
 					</button>
-				</div>
+				</div> -->
+			</div>
+			<div class='featured-image-chooser__slide featured-image-chooser__slide--no-img'>
+			<p class='featured-image-chooser__no-img-text'>No image</p>
 			</div>
 		</flickity>
 	</div>
@@ -52,6 +55,7 @@ export default {
 		return {
 			flickity: null,
 			selected: 0,
+			imgFolderName: 'widget-imgs/',
 		}
 	},
 
@@ -59,11 +63,15 @@ export default {
   	flickityInitialized (flickity) {
 			if (flickity) {
 				this.flickity = flickity
-				this.flickity.on('change', this.sliderChanged)
+				this.flickity.on('settle', this.sliderChanged)
 			}
 		},
 		
 		sliderChanged (index) {
+			if (index === this.images.length) {
+				index = null
+			}
+			this.selected = index
 			this.$emit('change', index, this.flickity)
 		},
 
@@ -88,7 +96,6 @@ export default {
 
 <style lang="scss">
   .featured-image-chooser {
-    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
 
@@ -97,9 +104,23 @@ export default {
       width: 66%;
       margin-right: 10px;
       display: flex;
-      align-items: center;
+			align-items: center;
+			border-radius: $border-radius;
+			overflow: hidden;
 
-      &.is-selected {
+			&--no-img {
+				background-color: #ddd;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			&:hover {
+				cursor: pointer;
+			}
+
+			&.is-selected {
+				border: 2px solid $primary;
          .featured-image-chooser__img {
            filter: brightness(1);
          }
@@ -134,6 +155,24 @@ export default {
 			background-color: rgba(0,0,0,.6);
 			opacity: 0;
 			transition: opacity .5s ease;
+		}
+
+		&__no-img-text {
+			font-size: 2rem;
+		}
+
+		.flickity-prev-next-button {
+			&.next {
+				right: -3.25em;
+			}
+
+			&.previous {
+				left: -3.25em;
+			}
+		}
+
+		.flickity-button-icon {
+			fill: #000;
 		}
 	}
 </style>

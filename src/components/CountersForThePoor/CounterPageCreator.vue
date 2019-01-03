@@ -1,6 +1,6 @@
 <template>
     <div class="counter-page-creator">
-      <form @submit.prevent='createPage'>
+      <form @submit.prevent='handleSubmit'>
         <div class="columns counter-page-creator__columns">
           <div class="column is-7">
             Choose a non-profit for your widget to donate towards:
@@ -31,9 +31,10 @@
               </select>
             </div>
           </div>
-        </div>
-        <div class="counter-page-creator__ft-img-chooser">
-          <featured-image-chooser 
+				</div>
+        <div class="counter-page-creator__ft-img-chooser counter-page-creator__columns">
+					<p class='has-text-weight-bold has-text-centered'>Choose an image to use as a background <br> <small class='has-text-weight-normal'>Select an image by clicking on the next and previous arrows. The image on the center is selected.</small></p>
+					<featured-image-chooser 
             :images='counters[widget.counterId].imgPreviews'
 						 @change='handleSliderChange'
           />
@@ -71,16 +72,17 @@ export default {
       widget: {
         nonprofit: '',
         featuredImg: 0,
-        counterId: 1,
+				counterId: 1,
+				rate: 3,
       },
     }
   },
 
   methods: {
-    async createPage () {
-      const widget = await this.addWidget(this.widget)
+		async handleSubmit () {
+      const page = await this.createPage(this.widget)
 
-      this.$router.push({ name: 'page', params: { id: widget.id } })
+      this.$router.push({ name: 'page', params: { id: page.id } })
     },
 
 		handleSliderChange (index) {
@@ -88,7 +90,7 @@ export default {
 		},
 
     ...mapActions({
-      addWidget: 'counterwidgets/addWidget'
+      createPage: 'counterwidgets/createPage'
     }),
   },
 
@@ -100,7 +102,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .counter-page-creator {
     margin-top: 2rem;
   }

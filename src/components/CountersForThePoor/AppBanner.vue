@@ -1,36 +1,76 @@
 <template>
-  <section id="banner" class='section banner'>
+	<section 
+		id="banner" 
+		class='section banner'
+		:style='{
+			backgroundImage: `url("${backgroundImage}")`
+		}'		
+	>
 		<div class="banner__contents">
 			<counter-widget 
-				:id="'1'"
+				:id="widgetId"
 			/>
 		</div>
   </section>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import imageSrc from '@/util/imageSrc'
+
 import CounterWidget from '@/components/CountersForThePoor/CounterWidget'
 
 export default {
-  name: 'AppBanner',
+	name: 'AppBanner',
+
+	mixins: [imageSrc],
 
   props: {
     widgetId: {
       type: Number,
-      required: true,
+			default: 1,
     }
   },
 
   components: {
     CounterWidget,
-  },
+	},
+
+	data () {
+		return {
+			imgFolderName: 'widget-imgs/'
+		}
+	},
+
+	computed: {
+		backgroundImage () {
+			const { featuredImg } = this.widget
+
+			if (featuredImg !== null) {
+				const img = this.counter.imgPreviews[featuredImg]
+
+				return this.getImageSrc(img)
+			}
+
+			return
+		},
+		
+		...mapState({
+			widget (state) {
+				return state.counterwidgets.widgets.find(widget => widget.id === parseInt(this.widgetId))
+			},
+
+			counter (state) {
+				return state.counterwidgets.counters.find(counter => counter.id === parseInt(this.widget.counterId))
+			},
+		})
+	},
 }
 </script>
 
 <style lang='scss'>
   .banner {
     position: relative;
-    background-image: url('../../assets/img/images/statue-of-liberty.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

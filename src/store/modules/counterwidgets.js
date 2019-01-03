@@ -8,9 +8,16 @@ const state = {
       counterId: 1,
       rate: 3,
       title: '',
-      message: '', 
+      message: '',
     }
   ],
+
+	pages: [
+		{
+			id: 1,
+			widgetId: 1,
+		}
+	],
 
   imgs: [
     'statue-of-liberty.jpg',
@@ -47,10 +54,9 @@ const state = {
       title: 'Deaths now occuring from malnutrition and dirty water.',
       rate: 3,
       imgPreviews: [
-        'page-image-1.jpeg',
-        'page-image-2.jpg',
-        'page-image-3.jpg',
-        'page-image-4.jpg',
+				'statue-of-liberty.jpg',
+				'mlk-sm.jpg',
+				'poor-kid.jpg',
       ]
     },
     {
@@ -58,10 +64,9 @@ const state = {
       title: 'Deaths now occuring from extreme poverty',
       rate: 1327,
       imgPreviews: [
-        'page-image-1.jpeg',
-        'page-image-2.jpg',
-        'page-image-3.jpg',
-        'page-image-4.jpg',
+				'statue-of-liberty.jpg',
+				'mlk-sm.jpg',
+				'poor-kid.jpg',
       ]
     }
   ],
@@ -70,7 +75,7 @@ const state = {
 const getters = {}
 
 const actions = {
-   addWidget ({ commit, state }, widget) {
+  async addWidget ({ commit, state }, widget) {
     if (!widget) return
     const id = random(1000, 10000, false)
 
@@ -79,19 +84,48 @@ const actions = {
       ...widget
     }
 
-    commit('setWidgets', [
-      ...state.widgets,
-      widgetData
-    ])
+    commit('addWidget', widgetData)
 
     return widgetData
   },
+
+	async createPage ({ state, commit, dispatch }, widget) {
+		let pageData
+
+		try {
+			const widgetData = await dispatch('addWidget', widget)
+			const id = random(1000, 10000, false)
+
+			pageData = {
+				id,
+				widgetId: widgetData.id
+			}
+
+			commit('addPage', pageData)
+		} catch (err) {
+			console.log(err)
+		}
+
+		return pageData
+	}
 }
 
 const mutations = {
-  setWidgets (state, widgets) {
-    state.widgets = widgets
-  }
+	addWidget(state, widget) {
+		state.widgets = [
+			...state.widgets,
+			widget
+		]
+
+		return widget
+	},
+
+	addPage (state, page) {
+		state.pages = [
+			...state.pages,
+			page,
+		]
+	}
 }
 
 export default {
