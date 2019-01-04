@@ -1,8 +1,6 @@
 <template>
 	<div class="layout-base">
-		<div class='intro'>
-			<p class='has-text-centered intro__text'>Here is a preview of your page. To publish it, register for a free account <a class='intro__text--link' href='#'>here</a>. Your changes will be saved while you register. If you have an account, login <a href='#' class='intro__text--link'>here</a>. To edit the page, click the pen icons below.</p>
-		</div>
+		<alert-bar />
 		<app-header />
 		<app-banner
 			:widget-id='widget.id'		
@@ -28,6 +26,7 @@
 <script>
 import { mapState } from 'vuex'
 
+import AlertBar from '@/components/CountersForThePoor/AlertBar'
 import AppHeader from '@/components/CountersForThePoor/AppHeader'
 import AppBanner from '@/components/CountersForThePoor/AppBanner'
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
@@ -38,6 +37,7 @@ export default {
 	name: 'CounterCustomPage',
 
 	components: {
+		AlertBar,
 		AppBanner,
 		AppHeader,
 		SharedFooter,
@@ -113,9 +113,5 @@ export default {
 		color: $primary;
 		text-decoration: underline;
 	}
-}
-
-.site-header {
-	top: 90px;
 }
 </style>

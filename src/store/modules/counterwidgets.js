@@ -9,14 +9,29 @@ const state = {
       rate: 3,
       title: '',
       message: '',
-    }
+    },
+    {
+      id: 2,
+      featuredImg: 1,
+      counterId: 2,
+      rate: 4,
+      title: 'This is a custom title.',
+      message: 'This is a custom message.',
+			userId: 1,
+    },
   ],
 
 	pages: [
 		{
 			id: 1,
 			widgetId: 1,
-		}
+			userId: 1,
+		},
+		{
+			id: 2,
+			widgetId: 2,
+			userId: 1,
+		},
 	],
 
   imgs: [
