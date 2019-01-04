@@ -9,15 +9,16 @@ const state = {
       rate: 3,
       title: '',
       message: '',
+      userId: 1,
     },
     {
       id: 2,
-      featuredImg: 1,
+      featuredImg: 2,
       counterId: 2,
       rate: 4,
       title: 'This is a custom title.',
       message: 'This is a custom message.',
-			userId: 1,
+      userId: 1,
     },
   ],
 
@@ -25,12 +26,28 @@ const state = {
 		{
 			id: 1,
 			widgetId: 1,
-			userId: 1,
+      userId: 1,
+      nonprofit: null,
 		},
 		{
 			id: 2,
 			widgetId: 2,
 			userId: 1,
+      nonprofit: {
+        ACTIVITY:"Testing products for public safety; Scientific research for government",
+        CITY:"CHICAGO",
+        CLASSIFICATION:"Charitable Organization; Educational Organization",
+        DEDUCTIBILITY:1,
+        EIN:521717675,
+        NAME:"ACCUTEST INC",
+        NTEE_CD:"Health Support Services",
+        SORT_NAME:"0",
+        STATE:"IL",
+        STREET:"PO BOX 71699",
+        SUBSECTION:"3",
+        ZIP:"60694-1699",
+        validated:true,
+      },
 		},
 	],
 
@@ -129,7 +146,7 @@ const mutations = {
 	addWidget(state, widget) {
 		state.widgets = [
 			...state.widgets,
-			widget
+			widget,
 		]
 
 		return widget

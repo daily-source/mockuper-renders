@@ -7,7 +7,7 @@
           </div>
           <nonprofit-ajax-search 
             placeholder='Search...'
-            v-model='widget.nonprofit'
+            @selected='handleNonprofitSelected'
           />
         </div>
         <div class="columns counter-page-creator__columns">
@@ -70,7 +70,7 @@ export default {
   data () {
     return {
       widget: {
-        nonprofit: '',
+        nonprofit: null,
         featuredImg: 0,
 				counterId: 1,
 				rate: 3,
@@ -87,7 +87,11 @@ export default {
 
 		handleSliderChange (index) {
 			this.widget.featuredImg = index
-		},
+    },
+    
+    handleNonprofitSelected (val) {
+      this.widget.nonprofit = val
+    },
 
     ...mapActions({
       createPage: 'counterwidgets/createPage'

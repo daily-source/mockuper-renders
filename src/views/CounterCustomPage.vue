@@ -5,6 +5,10 @@
 		<app-banner
 			:widget-id='widget.id'		
 		/>
+    <user-info 
+      :widget-id='widget.id'
+      v-if='id == 2'
+    />
     <section class="widget-customize section">
       <div class="container">
         <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
@@ -29,6 +33,7 @@ import { mapState } from 'vuex'
 import AlertBar from '@/components/CountersForThePoor/AlertBar'
 import AppHeader from '@/components/CountersForThePoor/AppHeader'
 import AppBanner from '@/components/CountersForThePoor/AppBanner'
+import UserInfo from '@/components/CountersForThePoor/UserInfo'
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
 import CounterPageCreator from '@/components/CountersForThePoor/CounterPageCreator'
 import SharedFooter from '@/components/Shared/SharedFooter'
@@ -38,8 +43,9 @@ export default {
 
 	components: {
 		AlertBar,
-		AppBanner,
 		AppHeader,
+		AppBanner,
+    UserInfo,
 		SharedFooter,
 		WidgetCustomizer,
 		CounterPageCreator,
@@ -113,5 +119,10 @@ export default {
 		color: $primary;
 		text-decoration: underline;
 	}
+
+}
+
+.banner {
+  margin-bottom: 0;
 }
 </style>
