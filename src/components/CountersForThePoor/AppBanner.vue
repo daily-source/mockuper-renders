@@ -90,8 +90,8 @@ export default {
     .counter-widget {
       max-width: 570px;
       padding:  1.5rem 2rem;
-      background-color: rgba(#030000, .28);
-      border: 2px solid $primary;
+      // background-color: rgba(#030000, .28);
+      // border: 2px solid $primary;
       border-radius: 4px;
       margin-left: 0;
     }
