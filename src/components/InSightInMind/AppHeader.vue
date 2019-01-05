@@ -7,6 +7,7 @@
               <img src='@/assets/img/in-sight-in-mind-logo.png' class='site-logo' alt="In Sight In Mind Logo">
             </router-link>
           </div>
+          <p class="header__logo-motto">This site displays how often people are dying of various causes.</p>
           <p class="header__logo-motto">Each time a photo shows, someone is dying of that cause.</p>
         </div>
       </div>
@@ -38,10 +39,8 @@ export default {
 
       &-motto {
         margin-bottom: 0;
-        font-size: 1.5em;
+        font-size: 1.033rem;
       }
     }
-
   }
-
 </style>

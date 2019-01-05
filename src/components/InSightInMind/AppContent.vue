@@ -2,9 +2,10 @@
   <main class='site-content'>
     <section class="section">
       <div class="container">
-        <div class="columns is-multiline is-mobile">
+        <div class="columns is-multiline is-mobile slider-columns">
           <div 
-            class="column is-4" v-for='box in boxes' 
+            class="column is-4 slider-columns__column" 
+            v-for='box in boxes' 
             :key='`${$options.filters.slugify(box.title)}-box`'
           >
             <box-slider 
@@ -197,6 +198,12 @@ export default {
       text-decoration: underline;
       display: inline-block;
       color: $color-gray;
+    }
+  }
+
+  .slider-columns {
+    &__column {
+      padding: .375rem;
     }
   }
 </style>

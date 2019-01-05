@@ -204,8 +204,8 @@ export default {
     background-image: linear-gradient(135deg, $primary 0%, $color-primary-tint 90%);
 
     img {
-      width: 100%;
-      height: 110%;
+      width: 130%;
+      height: 130%;
       object-fit: cover;
       display: block;
     }
@@ -271,5 +271,4 @@ export default {
   .box-fade-enter-leave {
     opacity: 1;
   }
-
 </style>
