@@ -4,9 +4,11 @@
 			<div class="container">
 				<GmapMap
 					class='map'
-					:center='{lat: 0, lng: 0}'
+					:center='{lat: 32.33888927939217, lng: 6.1015625}'
 					:zoom='2'
+					:mapTypeId='mapTypeId'
 					@click='handleMapClicked'
+					:options='google && mapOptions'
 					ref='gmap'
 				>
 					<GmapMarker
@@ -46,7 +48,10 @@
 </template>
 
 <script>
+import { gmapApi } from 'vue2-google-maps'
 import { mapState, mapGetters } from 'vuex'
+
+import mapStyles from '../mapStyles'
 import { curvedLineGenerate } from './CurvedPolyline'
 import PolylineAnimatedSymbol from './PolylineAnimatedSymbol'
 import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
@@ -68,6 +73,7 @@ export default {
 				strokeOpacity: 1.0,
 				strokeWeight: 2,
 			},
+			mapTypeId: 'virtual-railroad',
 			selectedUser: null,
 			selectedUserNonprofits: null,
 			polylines: [],
@@ -80,6 +86,10 @@ export default {
 				this.setUserLocation(coords.latitude, coords.longitude)
 			}
 		)
+
+		this.$refs.gmap.$mapPromise.then((map) => {
+			map.mapTypes.set(this.mapTypeId, this.customMapType)
+		})
 	},
 
 	methods: {
@@ -133,6 +143,33 @@ export default {
 	},
 
 	computed: {
+		google: gmapApi,
+
+		customMapType() {
+			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
+		},
+
+		mapTypeControlOptions() {
+			return {
+				mapTypeIds: [
+					this.google.maps.MapTypeId.ROADMAP,
+					this.google.maps.MapTypeId.HYBRID,
+					this.mapTypeId,
+				]
+			}
+		},
+
+		mapOptions () {
+			return {
+				mapTypeControlOptions: this.mapTypeControlOptions,
+				panControl: false,
+				streetViewControl: false,
+				zoomControlOptions: {
+					style: google.maps.ZoomControlStyle.SMALL,
+				}
+			}
+		},
+
 		...mapState({
 			users: state => state.users.data,
 			nonprofits: state => state.nonprofits.data,
@@ -145,6 +182,10 @@ export default {
 	watch: {
 		userPosition () {
 			console.log('changed')
+		},
+
+		google () {
+			console.log('Google object changed:', this.google)
 		}
 	},
 }
@@ -153,6 +194,9 @@ export default {
 <style scoped lang='scss'>
 .map {
 	height: 500px;
+	max-width: 995px;
+	margin-left: auto;
+	margin-right: auto;
 	width: 100%;
 }
 
