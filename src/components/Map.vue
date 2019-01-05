@@ -1,51 +1,60 @@
 <template>
-	<div class="virtual-railroad-map">
-		<section class="section">
-			<div class="container">
-				<GmapMap
-					class='map'
-					:center='{lat: 32.33888927939217, lng: 6.1015625}'
-					:zoom='2'
-					:mapTypeId='mapTypeId'
-					@click='handleMapClicked'
-					:options='google && mapOptions'
-					ref='gmap'
-				>
-					<GmapMarker
-						v-if='userPosition'
-						:position='userPosition'
-					/>
-					<GmapMarker
-						v-for='(user, index) in users'
-						:key='index'
-						:position='{lat: parseFloat(user.latitude), lng: parseFloat(user.longitude)}'
-						:icon='require("@/assets/img/light_bulb_16.png")'
-						@click='setSelectedUser(user)'
-					/>
-					<GmapMarker
-						v-for='(nonprofit, index) in nonprofits'
-						:key='`nonprofit-${index}`'
-						:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
-						:icon='require("@/assets/img/star_16.png")'
-					/>
-					<PolylineAnimatedSymbol
-						v-for='(nonprofit, index) in selectedUserNonprofits'
-						:key='`userNonprofit-${index}`'
-						:path='setUserNonprofitPath(nonprofit)'
-						@polylineCreated='onPolylineCreate'
-						:options='polylineOptions'			
-					/>	
-					<UserPopupWindow 
-						v-if='selectedUser'
-						:user='selectedUser'
-						@seeTracksClicked='seeTracks'
-						@previousViewClicked='setSelectedUser(null)'
-						@closeButtonClicked='setSelectedUser(null)'
-					/>
-				</GmapMap>
+	<section class="section virtual-railroad-map-section">
+		<div class="container">
+			<p class='has-text-centered virtual-railroad-map__intro'>Click the bulbs to see who's helping free slaves and where they're helping. Click <a href='#'>here </a> to be part of the Virtual Railroad.</p>
+			<GmapMap
+				class='map'
+				:center='{lat: 32.33888927939217, lng: 6.1015625}'
+				:zoom='2'
+				:mapTypeId='mapTypeId'
+				@click='handleMapClicked'
+				:options='google && mapOptions'
+				ref='gmap'
+			>
+				<GmapMarker
+					v-if='userPosition'
+					:position='userPosition'
+				/>
+				<GmapMarker
+					v-for='(user, index) in users'
+					:key='index'
+					:position='{lat: parseFloat(user.latitude), lng: parseFloat(user.longitude)}'
+					:icon='require("@/assets/img/light_bulb_16.png")'
+					@click='setSelectedUser(user)'
+				/>
+				<GmapMarker
+					v-for='(nonprofit, index) in nonprofits'
+					:key='`nonprofit-${index}`'
+					:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
+					:icon='require("@/assets/img/star_16.png")'
+				/>
+				<PolylineAnimatedSymbol
+					v-for='(nonprofit, index) in selectedUserNonprofits'
+					:key='`userNonprofit-${index}`'
+					:path='setUserNonprofitPath(nonprofit)'
+					@polylineCreated='onPolylineCreate'
+					:options='polylineOptions'			
+				/>	
+				<UserPopupWindow 
+					v-if='selectedUser'
+					:user='selectedUser'
+					@seeTracksClicked='seeTracks'
+					@previousViewClicked='setSelectedUser(null)'
+					@closeButtonClicked='setSelectedUser(null)'
+				/>
+			</GmapMap>
+		</div>
+		<div class='legends'>
+			<div class='container'>
+				<p>
+					<img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
+				</p>
+				<p>
+					<img src='@/assets/img/star_32.png' alt='Star'><span class='has-text-weight-bold'> = nonprofit helping to free slaves.</span> In the 1800s, slaves trying to escape north to freedom regularly relied on the North star as a beacon and compass because it's the only star in the sky that doesn't change its location. Today, slaves rely on nonprofits to help them gain their freedom and the nonprofits are steadfast in their commitment to free slaves, so we represent them with stars.
+				</p>
 			</div>
-		</section>
-	</div>
+		</div>
+	</section>
 </template>
 
 <script>
@@ -205,5 +214,29 @@ export default {
 	width: 80px;
 	height: 80px;
 	object-fit: cover;
+}
+
+.virtual-railroad-map-section {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+
+	.virtual-railroad-map__intro {
+		font-size: 16px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.legends {
+	padding-top: 1.25em;
+	padding-bottom: 1.25em;
+
+	p:not(:last-of-type) {
+		margin-bottom: 1.25em;
+	}
+
+	img {
+		vertical-align: middle;
+	}
 }
 </style>

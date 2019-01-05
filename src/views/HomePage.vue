@@ -1,11 +1,13 @@
 <template>
   <div class="layout-base">
+    <app-header />
 		<virtual-railroad-map />
 		<shared-footer />
   </div>
 </template>
 
 <script>
+import AppHeader from 'LocalComponents/AppHeader'
 import VirtualRailroadMap from 'LocalComponents/Map'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
@@ -13,6 +15,7 @@ export default {
   name: 'BaseLayout',
 
   components: {
+    AppHeader,
 		VirtualRailroadMap,
 		SharedFooter,
  	},
