@@ -11,6 +11,12 @@
 			<img :src="user.picture" class='user-info-window__photo'>
 			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>{{ tracksActive ? 'Previous View' : 'See my tracks' }} </a>
 			<a @click.stop.prevent='profileClicked' href="#" class='user-info-window__link button is-primary is-small'>View Profile</a>
+			<button
+				@click='closeButtonClicked' 
+				class='user-info-window__close-button'
+			>
+				<i class='fas fa-times'></i>
+			</button>
 		</div>
 	</div>
 </template>
@@ -30,11 +36,11 @@
 	.user-info-window {
 		min-height: 60px;
 		min-width: 60px;
-		max-width: 150px;
+		max-width: 180px;
 		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: .5rem;
+		padding: 1rem;
 		font-size: .875rem;
 		background-color: #fff;
 		border-radius: 5px;
@@ -61,5 +67,15 @@
 	.user-info-window__link {
 		display: inline-block;
 		margin-bottom: .25rem;
+	}
+
+	.user-info-window__close-button {
+		cursor: pointer;
+		border: 0;
+		padding: 0;
+		background-color: transparent;
+		position: absolute;
+		top: .25em;
+		right: .5em;
 	}
 </style>

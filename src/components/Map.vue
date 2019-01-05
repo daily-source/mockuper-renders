@@ -40,6 +40,7 @@
 						:user='selectedUser'
 						@seeTracksClicked='seeTracks'
 						@previousViewClicked='setSelectedUser(null)'
+						@closeButtonClicked='setSelectedUser(null)'
 					/>
 				</GmapMap>
 			</div>
@@ -51,10 +52,10 @@
 import { gmapApi } from 'vue2-google-maps'
 import { mapState, mapGetters } from 'vuex'
 
-import mapStyles from '../mapStyles'
-import { curvedLineGenerate } from './CurvedPolyline'
-import PolylineAnimatedSymbol from './PolylineAnimatedSymbol'
-import UserPopupWindow from './userpopupwindow/UserPopupWindow.vue'
+import mapStyles from '@/mapStyles'
+import { curvedLineGenerate } from 'LocalComponents/CurvedPolyline'
+import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
+import UserPopupWindow from 'LocalComponents/UserPopUpWindow/UserPopupWindow.vue'
 
 export default {
 	name: 'VirtualRailroadMap',
@@ -133,13 +134,9 @@ export default {
 			})
 		},
 
-		clearRefs () {
-			console.log(this.$refs)
-		},
-
 		onPolylineCreate (polyline) {
 			this.polylines.push(polyline)
-		}
+		},
 	},
 
 	computed: {
@@ -174,19 +171,10 @@ export default {
 			users: state => state.users.data,
 			nonprofits: state => state.nonprofits.data,
 		}),
+
 		...mapGetters({
 			getUserNonprofits: 'users/getUserNonprofits'
 		})
-	},
-
-	watch: {
-		userPosition () {
-			console.log('changed')
-		},
-
-		google () {
-			console.log('Google object changed:', this.google)
-		}
 	},
 }
 </script>
