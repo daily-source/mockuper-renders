@@ -1,5 +1,6 @@
 <template>
   <div class="layout-base">
+    <intro-video />
     <app-header />
 		<virtual-railroad-map />
 		<shared-footer />
@@ -7,8 +8,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import AppHeader from 'LocalComponents/AppHeader'
 import VirtualRailroadMap from 'LocalComponents/Map'
+import IntroVideo from 'LocalComponents/IntroVideo'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
@@ -17,7 +21,8 @@ export default {
   components: {
     AppHeader,
 		VirtualRailroadMap,
-		SharedFooter,
+    IntroVideo,
+    SharedFooter,
  	},
 
   metaInfo() {
@@ -33,5 +38,10 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState({
+      isPlaying: state => state.video.isPlaying,
+    })
+  },
 };
 </script>
