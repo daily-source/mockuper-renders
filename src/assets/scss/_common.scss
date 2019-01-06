@@ -593,3 +593,9 @@ p.is-centered {
 body {
 	background-color: $body-bg;
 }
+
+.mlk-banner {
+  .counter-widget-jumbotron__widget {
+    margin-top: 5em;
+  }
+}

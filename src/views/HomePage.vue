@@ -12,6 +12,7 @@
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/mlk.jpg")'
 				:widget-position='["top", "left"]'
+        class='mlk-banner'
 			/>
     </section>
     <section class="widget-customize section">
@@ -27,7 +28,7 @@
 			<counter-widget-banner 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'
-				:widget-position='["center-y", "left"]'
+				:widget-position='["top", "left"]'
 			/>
     </section>
     <section class="section">
@@ -63,7 +64,7 @@ export default {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
     return {
-      title: 'Home',
+      title: 'Counters for the Poor',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
