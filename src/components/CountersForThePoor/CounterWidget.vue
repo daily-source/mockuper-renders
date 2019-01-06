@@ -257,7 +257,7 @@ export default {
     align-items: center;
     margin-bottom: 1rem;
     padding-left: .5rem;
-    font-size: 1.125em;
+    font-size: 1.375em;
 
     &:last-child {
       margin-bottom: 0;

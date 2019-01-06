@@ -596,6 +596,16 @@ body {
 
 .mlk-banner {
   .counter-widget-jumbotron__widget {
-    margin-top: 5em;
+    margin-top: 2.5em;
+  }
+}
+
+.poor-kid-section {
+  .counter-widget__details {
+    display: block !important;
+  }
+
+  .counter-widget {
+    margin-top: -46px;
   }
 }

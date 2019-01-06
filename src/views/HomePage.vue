@@ -24,11 +24,11 @@
         />
       </div>
     </section>
-    <section class="section">
+    <section class="section poor-kid-section">
 			<counter-widget-banner 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'
-				:widget-position='["top", "left"]'
+				:widget-position='["center-y", "left"]'
 			/>
     </section>
     <section class="section">
