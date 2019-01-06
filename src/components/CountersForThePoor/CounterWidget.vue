@@ -363,7 +363,6 @@ export default {
       margin-bottom: 0;
     }
 
-    
     .counter-widget__title,
     .counter-widget__message {
       font-size: 1.5rem;
