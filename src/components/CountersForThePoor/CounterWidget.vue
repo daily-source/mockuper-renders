@@ -257,6 +257,7 @@ export default {
     align-items: center;
     margin-bottom: 1rem;
     padding-left: .5rem;
+    font-size: 1.125em;
 
     &:last-child {
       margin-bottom: 0;
@@ -365,7 +366,7 @@ export default {
     
     .counter-widget__title,
     .counter-widget__message {
-      font-size: 1.375rem;
+      font-size: 1.5rem;
     }
   }
 
