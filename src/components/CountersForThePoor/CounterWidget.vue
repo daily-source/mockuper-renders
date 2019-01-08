@@ -3,25 +3,13 @@
     :class="['counter-widget', {'counter-widget--edit': edit}, `counter-widget--${size}`]"
     :style='{width: `${sizes[size].width}px`}'  
   >
-    <div class="counter-widget__message-container" v-if='showMessage || edit'>
-      <inline-editable-field 
-        :value='message'
-        v-model='message'
-      />
-    </div>
-    <div class="counter-widget__title-container" v-if='!edit && !showMessage'>
+    <div class="counter-widget__title-container" v-if='!showMessage'>
       <h2 class="counter-widget__title">
         {{ counter.title }}
       </h2>
     </div>
     <div class="counter-widget__details is-flex ">
       <div class="counter-widget__counters">
-        <div class="counter-widget__title-container" v-if='edit'>
-          <inline-editable-field 
-            :value='title'
-            v-model='title'
-          />
-        </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>Today: </span>
           <span class='counter-widget-counter__value'>{{ getDeaths('day') | numberFormat}} </span>
@@ -46,6 +34,28 @@
             alt="Featured Image"
           >
         </div>
+        <router-link 
+          to='/' 
+          class='button is-primary counter-widget__button'
+          v-if='!edit'
+          >
+          Help Now
+        </router-link>
+      </div>
+    </div>
+    <div 
+      class='counter-widget__message-container'
+      v-if='edit && message'
+     >
+      <p class='counter-widget__message'>
+        {{ message }}
+      </p>
+    </div>
+    <div class='counter-widget__additional-details' v-if='edit'>
+      <div class='counter-widget__nonprofit-details'>
+        <p>Donations from this widget go to the nonprofit: {{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</p>
+      </div>
+      <div class='counter-widget__button-container'>
         <router-link to='/' class='button is-primary counter-widget__button'>
           Help Now
         </router-link>
@@ -60,17 +70,15 @@ import * as moment from 'moment'
 
 import imageSrc from '@/util/imageSrc'
 import Icons from '@/components/general/Icons' 
-import InlineEditableField from './InlineEditableField'
 
 export default {
   name: 'CounterWidget',
 
   components: {
     Icons,
-    InlineEditableField,
   },
 
-    props: {
+  props: {
     edit: {
       type: Boolean,
       default: false,
@@ -126,7 +134,7 @@ export default {
     },
 
     getTimeNow () {
-      return moment().format('MMMM DD, YYYY hh:mm:ss A') 
+      return moment().format('MMMM D, YYYY hh:mm:ss A') 
     },
 
     getTimeDifference (timeA, timeB, unit='seconds') {
@@ -152,34 +160,25 @@ export default {
   },
 
   computed: {
-    message: {
-      get () {
-        if(this.widget && this.widget.message) {
-          return this.widget.message
-        }
-
-        return 'Choose a short message for your own personal widget'
-      },
-
-      set (value) {
-        this.widget.message = value
-        return value
+    message () {
+      if (this.editData && this.editData.message) {
+        return this.editData.message
       }
+
+      return this.widget && this.widget.message
     },
 
-    title: {
+    nonprofit: {
       get () {
-        if(this.widget && this.widget.title) {
-          return this.widget.title
-        } else if (this.counter) {
-          return this.counter.title
+        if (this.editData && this.editData.nonprofit) {
+          return this.editData.nonprofit
         }
 
-        return 'Name your widget'
+        return this.widget.nonprofit || {}
       },
 
       set (value) {
-        this.widget.title = value
+        this.widget.nonprofit = value
         return value
       }
     },
@@ -192,6 +191,10 @@ export default {
       } else {
         return 'large'
       }
+    },
+
+    counterId () {
+      return (this.editData && this.editData.counterId) || this.widget.counterId
     },
 
     ...mapState({
@@ -213,9 +216,7 @@ export default {
       },
 
       counter (state) {
-        const counter = state.counterwidgets.counters.find(counter => parseInt(this.widget.counterId) === parseInt(counter.id))
-
-        return counter
+        return state.counterwidgets.counters.find(counter => parseInt(this.counterId) === parseInt(counter.id))
       },
 
       sizes: state => state.counterwidgets.sizes,
@@ -232,21 +233,23 @@ export default {
     margin-right: auto;
   }
 
-  .counter-widget__title,
-  .counter-widget__message {
+  .counter-widget__title {
     color: inherit;
     font-size: 1.375rem;
     font-weight: 800;
     text-transform: uppercase;
   }
 
-  .counter-widget__message-container,
   .counter-widget__title-container {
     font-family: $headings-font-family;
     font-size: 1.375rem;
     font-weight: 800;
     text-align: center;
     text-transform: uppercase;
+
+    .counter-widget--edit & {
+      text-transform: capitalize;
+    }
   }
 
   .counter-widget__title-container {
@@ -300,6 +303,14 @@ export default {
     .counter-widget__details-right {
       justify-content: center;
     }
+
+    .counter-widget__title {
+      text-transform: capitalize;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
   }
 
   .counter-widget__editable-field {
@@ -323,31 +334,9 @@ export default {
 </style>
 
 <style lang='scss'>
-  .counter-widget__message-container,
-  .counter-widget__title-container {
-    .editable__field-input {
-      text-tranform: uppercase;
-      text-transform: uppercase;
-      font-weight: 800;
-      text-tranform: uppercase;
-    }
-  }
-
-  .counter-widget__title-container {
-    .button.edit-button {
-      top: 0;
-      right: .5rem;
-    }
-  }
-
-  
-  .counter-widget__title,
   .counter-widget__message {
     color: inherit;
-    font-weight: 800;
-    text-transform: uppercase;
   }
-
 
   .counter-widget--large {
     .counter-widget__details {
@@ -363,8 +352,7 @@ export default {
       margin-bottom: 0;
     }
 
-    .counter-widget__title,
-    .counter-widget__message {
+    .counter-widget__title {
       font-size: 1.5rem;
     }
   }
@@ -376,9 +364,12 @@ export default {
       margin-bottom: 1em;
     }
 
-    .counter-widget__title,
-    .counter-widget__message {
+    .counter-widget__title {
       font-size: 1.125rem;
     }
+  }
+
+  .counter-widget__button-container {
+    text-align: right;
   }
 </style>

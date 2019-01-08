@@ -1,7 +1,7 @@
 <template>
-	<div class='feature-image-choose-wrapper'>
+	<div class='feature-image-chooser--slider'>
 		<flickity
-			class='featured-image-chooser'
+			class='featured-image-chooser__slider'
 			:options='sliderOptions'
 			@init='flickityInitialized'
 		>
@@ -16,14 +16,9 @@
 					class='featured-image-chooser__img'
 					alt="Featured Image Chooser"
 				>
-				<!-- <div class='featured-image-chooser__slide-overlay' v-if='selected===index'>
-					<button class='button is-large is-uppercase is-primary has-text-weight-bold'>
-						Preview Banner
-					</button>
-				</div> -->
 			</div>
 			<div class='featured-image-chooser__slide featured-image-chooser__slide--no-img'>
-			<p class='featured-image-chooser__no-img-text'>No image</p>
+				<p class='featured-image-chooser__no-img-text'>No image</p>
 			</div>
 		</flickity>
 	</div>
@@ -48,7 +43,7 @@ export default {
       default: () => {
         return []
       },
-    },
+		},
   },
 
 	data () {

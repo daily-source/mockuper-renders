@@ -6,7 +6,7 @@
     />
     <section class="quote-container section">
       <div class="container">
-        <h2 class='quote has-text-centered'>Give me your tired, your poor,  your huddled masses yearning to breathe free, the wretched refuse of your teeming shore.</h2>
+        <h2 class='quote has-text-centered'>"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness."<br /> <span class='author'>- Declaration of Independence</span></h2> 
       </div>
 			<counter-widget-banner 
 				:widget-id='1'
@@ -18,7 +18,7 @@
     <section class="widget-customize section">
       <div class="container">
         <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
-        <p class='has-text-centered'>Once you create your customized widget you'll be provided with code to simply paste onto your website.  It's as easy as that!</p>
+        <p class='has-text-centered'>Create your customized widget and we'll give you code to simply paste onto your website. It's as easy as that!</p>
         <widget-customizer 
           :widget-id='1'
         />
@@ -86,6 +86,13 @@ export default {
     font-size: 1.5rem;
     color: $color-gray;
     margin-bottom: 4rem;
+
+    .author {
+      color: $color-dark-gray;
+      font-size: 1.375rem;
+      display: block;
+      // font-style: normal;
+    }
   }
 
   .img-container {

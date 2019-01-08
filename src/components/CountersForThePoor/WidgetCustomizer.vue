@@ -10,65 +10,51 @@
     </div>
     <div class="widget-customizer__images">
       <div class="columns is-mobile">
-        <div class="column is-7">
-          <div class="widget-customizer-images__heading is-flex">
-            <p>Choose an image you would like to use: </p>
-            <p>
-              <button class='button is-text no-image-button is-clear is-paddingless' @click='setWidgetNoImage()'>No Image</button>
-            </p>
-          </div>
-          <div class="widget-customizer-images__columns columns">
-            <div class="column widget-customizer-image__column" v-for='(img, index) in imgs' :key='`widget-img-${index}`'>
-              <div 
-                :class="[
-                  'widget-customizer-image__container', 
-                  {
-                    'widget-customizer-image__container--is-selected': index === getSelectedImg() 
-                  }
-                ]"
-              >
-                <img  
-                  :src='getImageSrc(img)'
-                  :alt="`widget-image-${index}`"
-                  @click='setSelectedImg(index)'
-                >
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label>Choose a nonprofit for your widget to donate towards: </label>
-            <nonprofit-ajax-search 
-              :placeholder='"Search"'
-            />
-          </div>
-        </div>
         <div class="widget-customizer__fields column">
-          <form action="#">
+          <!-- TODO: Handle form submit. -->
+          <form @submit.prevent='() => false'>
+            <div class="widget-customizer__featured-images-wrapper">
+              <p class='has-text-weight-bold widget-customizer__fields-label'>Choose an image you would like to use: </p>
+              <featured-image-chooser 
+                :counter-id='widget.counterId'
+                @change='setSelectedImg'
+              />
+            </div>
             <div class="field">
-              <label for="size" class='label'>Size: </label>
+              <label class='widget-customizer__fields-label'>Customize your title: </label>
+              <counter-select 
+                :counter-id='widget.counterId'
+                v-model='counterId'
+              />
+            </div>
+            <div class='field'>
+              <label class='widget-customizer__fields-label' for='message'>Add a custom message(optional):</label>
+              <input 
+                type='text' 
+                class='input'
+                placeholder='Type a message here and it will show in the widget'
+                id='message'
+                v-model='message'
+              >
+            </div>
+            <div class="field">
+              <label class='widget-customizer__fields-label'>Choose a nonprofit that your widget will generate donations for: </label>
+              <nonprofit-ajax-search 
+                :placeholder='"Type a nonprofit to search..."'
+                @selected='setNonprofit'
+              />
+            </div>
+            <div class="field">
+              <label class='widget-customizer__field-label' for="size">Size: </label>
               <div class="control">
-                <div class="select">
+                <div class="select is-block">
                   <select name="size" id="size" v-model='size'>
                     <option v-for='(size, index) in sizes' :key='index' :value="index">
                       {{ size.label + ' (' + size.width + 'px)' }}
                     </option>
                   </select>
                 </div>
-                <small>To view all sizes, click <a href="#">here</a></small>
               </div>
-            </div>
-            <div class="field">
-              <label for="color" class='label'>Color: </label>
-              <div class="control">
-                <div class="select">
-                  <select name="color" id="color" v-model='color'>
-                    <option v-for='(color, index) in colors' :key='index' :value="index">
-                      {{ color.label }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <small><a href="#">Choose custom colors</a></small>
             </div>
             <div class="button-container has-text-right">
               <button class='button is-primary is-large is-uppercase has-text-weight-bold' type='submit'>Create</button>
@@ -84,6 +70,8 @@
 import { mapState } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import CounterWidget from '@/components/CountersForThePoor/CounterWidget' 
+import CounterSelect from '@/components/CountersForThePoor/CounterSelect'
+import FeaturedImageChooser from '@/components/CountersForThePoor/FeaturedImageChooser'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
 export default {
@@ -101,28 +89,32 @@ export default {
   components: {
     CounterWidget,
     NonprofitAjaxSearch,
+    CounterSelect,
+    FeaturedImageChooser,
   },
 
   data () {
     return {
       imgFolderName: 'widget-imgs/',
-      title: '',
       selectedImg: null,
       noImage: false,   
       size: 'large',
       color: 'black-and-white',
+      nonprofit: null,
+      counterId: 0,
+      message: '',
     }
   },
 
   methods: {
     setSelectedImg (index) {
-			this.noImage = false
+      if (index === null) {
+        this.noImage = true
+      } else {
+        this.noImage = false
+      }
       this.selectedImg = index
     },
-
-		setWidgetNoImage () {
-			this.noImage = true
-		},
 
     getSelectedImg() {
       if(!this.noImage) {
@@ -134,24 +126,33 @@ export default {
       }
 
       return false
+    },
+
+    setNonprofit (value) {
+      this.nonprofit = value
     }
   },
 
   computed: {
     editData () {
       return {
-        img: this.selectedImg ? this.selectedImg : this.widgetFeaturedImg,
+        img: this.getSelectedImg(),
         title: this.title,
         message: this.message,
         size: this.size,
         color: this.color,
+        nonprofit: this.nonprofit,
+        counterId: this.counterId,
       }
     },
 
+    widgetFeaturedImg (state) {
+      return this.widget.featuredImg
+    },
+
     ...mapState({
-      widgetFeaturedImg (state) {
-        const widget = state.counterwidgets.widgets.find(widget => parseInt(widget.id) === parseInt(this.widgetId))
-        return widget.featuredImg
+      widget (state) {
+        return state.counterwidgets.widgets.find(widget => widget.id == this.widgetId)
       },
 
       imgs: state => state.counterwidgets.imgs,
@@ -178,47 +179,6 @@ export default {
     border-radius: $border-radius;
   }
 
-  .widget-customizer-images__heading {
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .no-image-button {
-    padding: 0;
-    color: $primary;
-  }
-
-  .widget-customizer-image__column {
-    display: flex;
-  }
-
-  .widget-customizer-image__container {
-    border: 3px solid transparent;
-    overflow: hidden;
-    border-radius: $border-radius;
-    transition: border .2s ease;
-
-    > img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      display: block;
-      cursor: pointer;
-      transition: transform .5s ease, filter .2s ease;
-      filter: brightness(.5);
-    }
-
-    &--is-selected,
-    &:hover {
-      border-color: $primary;
-
-      > img {
-        transform: scale(1.03);
-        filter: brightness(1);
-      }
-    }
-  }
-
   .widget-customizer__fields {
     display: flex;
     flex-wrap: wrap;
@@ -229,23 +189,32 @@ export default {
       flex-wrap: wrap;
     }
 
+    .field {
+      width: 100%;
+      margin-top: 1em;
+    }
+
+    &-label {
+      display: block;
+      font-weight: 700 !important;
+      margin-bottom: .5em;
+    }
+
     .button-container {
       width: 100%;
       margin-top: auto;
-    }
-
-    .field {
-      width: 100%;
-    }
-
-    label {
-      justify-content: flex-start;
-      font-weight: 700 !important;
     }
 
     .select {
       display: block;
       max-width: 100%;
     }
+  }
+
+  .nonprofit-search-field-wrapper {
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 </style>

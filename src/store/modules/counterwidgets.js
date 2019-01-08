@@ -7,7 +7,6 @@ const state = {
       featuredImg: 0,
       counterId: 1,
       rate: 3,
-      title: '',
       message: '',
       userId: 1,
     },
@@ -16,7 +15,6 @@ const state = {
       featuredImg: 2,
       counterId: 2,
       rate: 4,
-      title: 'This is a custom title.',
       message: 'This is a custom message.',
       userId: 1,
     },
@@ -83,7 +81,7 @@ const state = {
   counters: [
     {
       id: 1,
-      title: 'Deaths now occuring from malnutrition and dirty water.',
+      title: 'Deaths now occuring from malnutrition and dirty water:',
       rate: 3,
       imgPreviews: [
 				'statue-of-liberty.jpg',
@@ -93,7 +91,7 @@ const state = {
     },
     {
       id: 2,
-      title: 'Deaths now occuring from extreme poverty',
+      title: 'Deaths now occuring from extreme poverty:',
       rate: 1327,
       imgPreviews: [
 				'statue-of-liberty.jpg',

@@ -35,8 +35,9 @@
         <div class="counter-page-creator__ft-img-chooser counter-page-creator__columns">
 					<p class='has-text-weight-bold has-text-centered'>Choose an image to use as a background <br> <small class='has-text-weight-normal'>Select an image by clicking on the next and previous arrows. The image on the center is selected.</small></p>
 					<featured-image-chooser 
-            :images='counters[widget.counterId].imgPreviews'
-						 @change='handleSliderChange'
+            :counter-id='widget.counterId'
+            type='slider'
+						@change='handleSliderChange'
           />
         </div>
         <div class="btn-container has-text-right counter-page-creator__columns">
