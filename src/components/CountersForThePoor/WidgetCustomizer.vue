@@ -185,4 +185,8 @@ export default {
     padding-top: 0;
     padding-bottom: 0;
   }
+
+  .widget-customizer__images {
+    margin-top: 1em;
+  }
 </style>

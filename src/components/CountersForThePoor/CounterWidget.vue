@@ -56,7 +56,7 @@
         <p>Donations from this widget go to the nonprofit: {{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</p>
       </div>
       <div class='counter-widget__button-container'>
-        <router-link to='/' class='button is-primary counter-widget__button'>
+        <router-link to='/' class='button counter-widget__button'>
           Help Now
         </router-link>
       </div>
@@ -327,7 +327,21 @@ export default {
       right: 0;
       top: 0;
     }
-  } 
+  }
+
+  .counter-widget--primary {
+    .button {
+      background-color: $primary;
+      color: #fff;
+    }
+  }
+
+  .counter-widget--secondary {
+    .button {
+      background-color: $secondary;
+      color: #fff;
+    }
+  }
 </style>
 
 <style lang='scss'>

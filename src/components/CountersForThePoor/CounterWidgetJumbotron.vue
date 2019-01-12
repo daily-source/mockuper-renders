@@ -1,13 +1,17 @@
 <template>
-	<div :class='["counter-widget-jumbotron", { "counter-widget-jumbotron--no-img": !bgImage }]'>
-		<div class='counter-widget-jumbotron__logo-container' v-if='showLogo'>
-			<img src='@/assets/img/counters-for-the-poor-gold.png' alt='Counters for the Poor Gold'>
+	<div :class='["counter-widget-jumbotron",  { "counter-widget-jumbotron--no-img": !bgImage }]'>
+		<div 
+			:class='["counter-widget-jumbotron__logo-container", logoPositionClass]' 
+			v-if='showLogo'
+		>
+			<img :src='logo' alt='Counters for the Poor Logo'>
 		</div>
 		<div 
 			:class='["counter-widget-jumbotron__widget", ...widgetPosition]'
 		>
 			<counter-widget 
 				:id='widgetId'
+				:class='`counter-widget--${color}`'
 			/>
 		</div>
 		<div class='counter-widget-jumbotron__img-container'>
@@ -65,6 +69,21 @@ export default {
 			default: false,
 		},
 
+		logoPosition: {
+			type: String,
+			required: false,
+			default: 'center',
+			validator: (value) => {
+				const choices = [
+					'top',
+					'center',
+					'right',
+				]
+
+				return choices.indexOf(value) !== -1
+			}
+		},
+
 		colorId: {
 			type: Number,
 			default: 0,
@@ -76,6 +95,21 @@ export default {
 	},
 
 	computed: {
+		logo () {
+			if (this.color === 'primary') {
+				return require('@/assets/img/counters-for-the-poor-gold.png')
+			}
+
+			return require('@/assets/img/counters-for-the-poor-blue.png')
+		},
+
+		logoPositionClass () {
+			const position = this.logoPosition
+			if (position) {
+				return `counter-widget-jumbotron__logo-container--${position}`
+			}
+		},
+
 		...mapState({
 			color (state) {
 				return state.counterwidgets.colors.find((color, index) => index == this.colorId)
@@ -101,6 +135,14 @@ export default {
 		right: 0;
 		margin-left: auto;
 		margin-right: auto;
+
+		&--right {
+			margin-right: 0 !important;
+		}
+
+		&--left {
+			margin-left: 0 !important;
+		}
 	}
 
 	&__img-container {
@@ -159,6 +201,30 @@ export default {
 		border: 2px solid $primary;
 		border-radius: 4px;
 		max-width: 570px;
+	}
+}
+</style>
+
+<style lang="scss">
+.counter-widget-jumbotron--no-img {
+	.counter-widget {
+		color: #000;
+		transform: scale(.9) !important;
+		max-width: 100% !important;
+	}
+
+	.counter-widget__details {
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.counter-widget__counters {
+		width: 80%;
+		margin-right: 0;
+	}
+
+	.button {
+		color: #000;
 	}
 }
 </style>

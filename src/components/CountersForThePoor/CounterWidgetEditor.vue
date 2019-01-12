@@ -4,6 +4,7 @@
       :widget-id='widgetId'
       :bg-image='backgroundImg'
       :widget-position='["bottom", "left"]'
+      :logo-position='theme.logoPosition'
       :show-logo='true'
       :colorId='theme.colorId'
     />
@@ -101,7 +102,7 @@ export default {
     max-height: 450px;
 
     &__logo-container {
-      max-width: 150px;
+      max-width: 200px;
       margin-left: auto;
       margin-right: auto;
     }

@@ -100,6 +100,7 @@ const state = {
         {
           colorId: 1,
           backgroundImageId: 2,
+          logoPosition: 'right',
         },
         {
           colorId: 1,
