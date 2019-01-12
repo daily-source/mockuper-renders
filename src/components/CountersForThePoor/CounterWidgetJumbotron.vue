@@ -1,7 +1,7 @@
 <template>
 	<div :class='["counter-widget-jumbotron", { "counter-widget-jumbotron--no-img": !bgImage }]'>
-		<div class='counter-widget-jumbotron__img-container'>
-			<img :src='bgImage' class='counter-widget-jumbotron__img' alt='Counter Widget Banner Image' v-if='bgImage'>
+		<div class='counter-widget-jumbotron__logo-container' v-if='showLogo'>
+			<img src='@/assets/img/counters-for-the-poor-gold.png' alt='Counters for the Poor Gold'>
 		</div>
 		<div 
 			:class='["counter-widget-jumbotron__widget", ...widgetPosition]'
@@ -10,10 +10,15 @@
 				:id='widgetId'
 			/>
 		</div>
+		<div class='counter-widget-jumbotron__img-container'>
+			<img :src='bgImage' class='counter-widget-jumbotron__img' alt='Counter Widget Banner Image' v-if='bgImage'>
+		</div>
 	</div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import { difference } from 'lodash'
 import CounterWidget from '@/components/CountersForThePoor/CounterWidget'
 
@@ -29,10 +34,12 @@ export default {
 			type: Number,
 			required: true,
 		},
+
 		bgImage: {
 			type: String,
 			required: false,
 		},
+
 		widgetPosition: {
 			type: Array,
 			validator: (value) => {
@@ -47,14 +54,33 @@ export default {
 				]
 				return difference(value, choices).length === 0
 			},
+
 			default: () => {
 				return ['top', 'left']
 			},
+		},
+
+		showLogo: {
+			type: Boolean,
+			default: false,
+		},
+
+		colorId: {
+			type: Number,
+			default: 0,
 		},
 	},
 
 	data () {
 		return {}
+	},
+
+	computed: {
+		...mapState({
+			color (state) {
+				return state.counterwidgets.colors.find((color, index) => index == this.colorId)
+			}
+		}),
 	}
 }
 </script>
@@ -65,6 +91,16 @@ export default {
 
 	&--no-img {
 		min-height: 450px;
+	}
+
+	&__logo-container {
+		position: absolute;
+		top: 1em;
+		max-width: 300px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	&__img-container {
@@ -109,6 +145,10 @@ export default {
 			display: flex;
 			height: 100%;
 			align-items: center;
+		}
+
+		&.bottom {
+			bottom: 2em;
 		}
 	}
 

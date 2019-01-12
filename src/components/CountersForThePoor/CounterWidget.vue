@@ -307,9 +307,6 @@ export default {
     .counter-widget__title {
       text-transform: capitalize;
       max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
     }
   }
 

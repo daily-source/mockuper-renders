@@ -10,15 +10,14 @@ Vue.use(Meta, {
 });
 
 // route-level code splitting
-// const Nonprofit = () => import('@/views/Nonprofit.vue');
+const Nonprofit = () => import('@/views/Nonprofit.vue');
 const HomePage = () => import('@/views/HomePage.vue');
-const CounterCustomPage = () => import('@/views/CounterCustomPage.vue');
-// const ExplorePage = () => import('@/views/ExplorePage.vue');
-// const VolunteerPage = () => import('@/views/VolunteerPage.vue');
-// const Fundraiser = () => import('@/views/Fundraiser.vue');
+const ExplorePage = () => import('@/views/ExplorePage.vue');
+const VolunteerPage = () => import('@/views/VolunteerPage.vue');
+const Fundraiser = () => import('@/views/Fundraiser.vue');
 const Default404 = () => import('@/views/Default404.vue');
-// const MyAccount = () => import('@/views/MyAccount.vue');
-// const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
+const MyAccount = () => import('@/views/MyAccount.vue');
+const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
 
 export default new Router({
   mode: 'history',
@@ -37,66 +36,61 @@ export default new Router({
       component: HomePage,
     },
     {
-      path: '/page/:id',
-      name: 'page',
-      component: CounterCustomPage,
+      path: '/explore',
+      name: 'explore',
+      component: ExplorePage,
+    },
+    {
+      path: '/volunteer',
+      name: 'volunteer',
+      component: VolunteerPage,
+    },
+    {
+      path: '/nonprofit',
+      redirect: '/explore',
+    },
+    {
+      path: '/nonprofit/:ein',
+      name: 'nonprofit',
+      component: Nonprofit,
+    },
+    {
+      path: '/nonprofit/:ein/donate',
+      name: 'nonprofit/donate',
+      component: Nonprofit,
+    },
+    {
+      path: '/fundraiser',
+      redirect: '/explore',
+    },
+    {
+      path: '/fundraiser/create',
+      name: 'fundraiser/create',
+      component: CreateFundraiser,
+    },
+    {
+      path: '/fundraiser/:id',
+      name: 'fundraiser',
+      component: Fundraiser,
+    },
+    {
+      path: '/fundraiser/:id/donate',
+      name: 'fundraiser/donate',
+      component: Fundraiser,
     },
     {
       path: '/404',
       name: 'Default',
       component: Default404,
     },
-    // {
-    //   path: '/explore',
-    //   name: 'explore',
-    //   component: ExplorePage,
-    // },
-    // {
-    //   path: '/volunteer',
-    //   name: 'volunteer',
-    //   component: VolunteerPage,
-    // },
-    // {
-    //   path: '/nonprofit',
-    //   redirect: '/explore',
-    // },
-    // {
-    //   path: '/nonprofit/:ein',
-    //   name: 'nonprofit',
-    //   component: Nonprofit,
-    // },
-    // {
-    //   path: '/nonprofit/:ein/donate',
-    //   name: 'nonprofit/donate',
-    //   component: Nonprofit,
-    // },
-    // {
-    //   path: '/fundraiser',
-    //   redirect: '/explore',
-    // },
-    // {
-    //   path: '/fundraiser/create',
-    //   name: 'fundraiser/create',
-    //   component: CreateFundraiser,
-    // },
-    // {
-    //   path: '/fundraiser/:id',
-    //   name: 'fundraiser',
-    //   component: Fundraiser,
-    // },
-    // {
-    //   path: '/fundraiser/:id/donate',
-    //   name: 'fundraiser/donate',
-    //   component: Fundraiser,
-    // },
-    // {
-    //   path: '/account',
-    //   redirect: '/account/settings',
-    // },
-    // {
-    //   path: '/account/:path',
-    //   name: 'account',
-    //   component: MyAccount,
-    // },
+    {
+      path: '/account',
+      redirect: '/account/settings',
+    },
+    {
+      path: '/account/:path',
+      name: 'account',
+      component: MyAccount,
+    },
   ],
 });

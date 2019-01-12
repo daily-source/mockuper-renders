@@ -8,7 +8,7 @@
       <div class="container">
         <h2 class='quote has-text-centered'>"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness."<br /> <span class='author'>- Declaration of Independence</span></h2> 
       </div>
-			<counter-widget-banner 
+			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/mlk.jpg")'
 				:widget-position='["top", "left"]'
@@ -25,7 +25,7 @@
       </div>
     </section>
     <section class="section">
-			<counter-widget-banner 
+			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'
 				:widget-position='["top", "left"]'
@@ -44,7 +44,7 @@
 import AppHeader from '@/components/CountersForThePoor/AppHeader.vue';
 import AppBanner from '@/components/CountersForThePoor/AppBanner.vue';
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
-import CounterWidgetBanner from '@/components/CountersForThePoor/CounterWidgetBanner'
+import CounterWidgetJumbotron from '@/components/CountersForThePoor/CounterWidgetJumbotron'
 import CounterPageCreator from '@/components/CountersForThePoor/CounterPageCreator'
 import SharedFooter from '@/components/Shared/SharedFooter.vue';
 
@@ -54,7 +54,7 @@ export default {
   components: {
     AppHeader,
     AppBanner,
-		CounterWidgetBanner,
+		CounterWidgetJumbotron,
     WidgetCustomizer,
     SharedFooter,
     CounterPageCreator,

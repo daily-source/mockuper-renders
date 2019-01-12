@@ -1,11 +1,9 @@
 <template>
   <div class="widget-customizer">
-    <div class="widget">
-      <counter-widget 
-        :edit='true'
-        :id="widgetId"
-        :edit-data='editData'
-				:no-image='noImage'
+    <div class="widget-customizer__widget-container">
+      <counter-widget-editor 
+        :widget-id='widgetId'
+        :theme='selectedTheme'
       />
     </div>
     <div class="widget-customizer__images">
@@ -17,7 +15,7 @@
               <p class='has-text-weight-bold widget-customizer__fields-label'>Choose an image you would like to use: </p>
               <featured-image-chooser 
                 :counter-id='widget.counterId'
-                @change='setSelectedImg'
+                @change='setSelectedTheme'
               />
             </div>
             <div class="field">
@@ -68,8 +66,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import imageSrc from '@/util/imageSrc'
-import CounterWidget from '@/components/CountersForThePoor/CounterWidget' 
+
+import CounterWidgetEditor from '@/components/CountersForThePoor/CounterWidgetEditor'
 import CounterSelect from '@/components/CountersForThePoor/CounterSelect'
 import FeaturedImageChooser from '@/components/CountersForThePoor/FeaturedImageChooser'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
@@ -84,48 +82,37 @@ export default {
     },
   },
 
-  mixins: [imageSrc],
-
   components: {
-    CounterWidget,
-    NonprofitAjaxSearch,
+    CounterWidgetEditor,
     CounterSelect,
     FeaturedImageChooser,
+    NonprofitAjaxSearch,
   },
 
   data () {
     return {
-      imgFolderName: 'widget-imgs/',
-      selectedImg: null,
       noImage: false,   
       size: 'large',
       color: 'black-and-white',
       nonprofit: null,
       counterId: 0,
       message: '',
+      selectedTheme: {
+        backgroundImageId: null,
+        colorId: 0,
+      },
     }
   },
 
   methods: {
-    setSelectedImg (index) {
-      if (index === null) {
+    setSelectedTheme (theme) {
+      if (theme.backgroundImageId === null) {
         this.noImage = true
       } else {
         this.noImage = false
       }
-      this.selectedImg = index
-    },
 
-    getSelectedImg() {
-      if(!this.noImage) {
-        if(this.selectedImg) {
-          return this.selectedImg
-        } else {
-          return this.widgetFeaturedImg
-        }
-      }
-
-      return false
+      this.selectedTheme = theme
     },
 
     setNonprofit (value) {
@@ -134,30 +121,11 @@ export default {
   },
 
   computed: {
-    editData () {
-      return {
-        img: this.getSelectedImg(),
-        title: this.title,
-        message: this.message,
-        size: this.size,
-        color: this.color,
-        nonprofit: this.nonprofit,
-        counterId: this.counterId,
-      }
-    },
-
-    widgetFeaturedImg (state) {
-      return this.widget.featuredImg
-    },
-
     ...mapState({
       widget (state) {
         return state.counterwidgets.widgets.find(widget => widget.id == this.widgetId)
       },
-
-      imgs: state => state.counterwidgets.imgs,
       sizes: state => state.counterwidgets.sizes,
-      colors: state => state.counterwidgets.colors,
     }),
   },
 }

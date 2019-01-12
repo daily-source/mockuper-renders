@@ -32,6 +32,7 @@ export default {
   data () {
     return {
       component: null,
+      selectedIndex: null,
     }
   },
 
@@ -50,7 +51,8 @@ export default {
     },
 
     handleImageChange (value) {
-      this.$emit('change', value)
+      this.selectedIndex = value
+      this.$emit('change', this.theme)
     }
   },
 
@@ -68,14 +70,30 @@ export default {
       return componentName
     },
 
-    featuredImgs () {
-      return this.counter.imgPreviews
+    // TODO: Currently, we do not allow a background image to have multiple color themes.
+    // Instead, we just find the first found theme. If we allow this in the future, we use
+    // filter instead of find.
+    theme () {
+      const theme = this.counter.themes.find(theme => theme.backgroundImageId == this.selectedIndex)
+
+      return theme || {
+        backgroundImageId: null,
+        colorId: 0,
+      }
     },
 
     ...mapState({
       counter (state) {
         return state.counterwidgets.counters.find(counter => counter.id == this.counterId)
       },
+
+      featuredImgs (state) {
+        return state.counterwidgets.backgroundImages
+      },
+
+      colors (state) {
+        return state.counterwidgets.colors
+      }
     })
   },
 }

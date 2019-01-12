@@ -46,7 +46,7 @@ export default {
 
   data () {
     return {
-      imgFolderName: 'widget-imgs/',
+      imgFolderName: 'widget-imgs/thumbnails/',
       selected: null,
     }
   },
@@ -120,7 +120,6 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
   }
 
   &__column--no-img {
@@ -138,7 +137,7 @@ export default {
     font-size: 1.125rem;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: #c0bebe;
+    background-color: #eee;
 
     @include selected-effect(rgba(0,0,0,.7), #dadada);
   }

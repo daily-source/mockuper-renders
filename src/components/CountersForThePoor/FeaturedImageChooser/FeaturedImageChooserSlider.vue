@@ -50,7 +50,7 @@ export default {
 		return {
 			flickity: null,
 			selected: 0,
-			imgFolderName: 'widget-imgs/',
+			imgFolderName: 'widget-imgs/thumbnails/',
 		}
 	},
 
@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .featured-image-chooser {
     margin-left: auto;
     margin-right: auto;
