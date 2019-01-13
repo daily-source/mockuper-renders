@@ -101,7 +101,7 @@ export default {
       message: '',
       selectedTheme: {
         backgroundImageId: null,
-        colorId: 0,
+        colorId: 1,
       },
     }
   },

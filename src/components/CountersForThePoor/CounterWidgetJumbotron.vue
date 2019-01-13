@@ -135,9 +135,15 @@ export default {
 <style scoped lang='scss'>
 .counter-widget-jumbotron {
 	position: relative;
+	max-height: 100vh;
+	overflow: hidden;
 
 	&--no-img {
 		min-height: 450px;
+
+		.counter-widget-jumbotron__widget {
+			background-color: transparent;
+		}
 	}
 
 	&__logo-container {
@@ -161,6 +167,11 @@ export default {
 	&__img-container {
 		margin-left: -1.5rem;
 		margin-right: -1.5rem;
+
+		img {
+			width: 100%;
+			display: block;
+		}
 	}
 
 	&__widget {
@@ -214,6 +225,14 @@ export default {
 		border: 2px solid $primary;
 		border-radius: 4px;
 		max-width: 570px;
+
+		&--primary {
+			border-color: $primary;
+		}
+
+		&--secondary {
+			border-color: $secondary;
+		}
 	}
 }
 </style>
@@ -221,9 +240,12 @@ export default {
 <style lang="scss">
 .counter-widget-jumbotron--no-img {
 	padding: 1.5em;
-	border-radius: $border-radius;
-	border: 2px solid #3a3a3a;
-	box-shadow: 0 2px 18px 0 rgba(0,0,0,.2);
+
+	.counter-widget-edit & {
+		border-radius: $border-radius;
+		border: 2px solid #3a3a3a;
+		box-shadow: 0 2px 18px 0 rgba(0,0,0,.2);
+	}
 
 	.counter-widget-jumbotron__widget {
 		position: static !important;

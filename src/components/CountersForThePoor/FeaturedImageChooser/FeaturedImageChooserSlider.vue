@@ -63,9 +63,6 @@ export default {
 		},
 		
 		sliderChanged (index) {
-			if (index === this.images.length) {
-				index = null
-			}
 			this.selected = index
 			this.$emit('change', index, this.flickity)
 		},

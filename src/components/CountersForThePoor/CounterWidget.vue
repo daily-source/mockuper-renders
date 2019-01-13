@@ -3,7 +3,7 @@
     :class="['counter-widget', {'counter-widget--edit': edit}, `counter-widget--${size}`]"
     :style='{width: `${sizes[size].width}px`}'  
   >
-    <div class="counter-widget__title-container" v-if='!showMessage'>
+    <div class="counter-widget__title-container">
       <h2 class="counter-widget__title">
         {{ counter.title }}
       </h2>
@@ -36,7 +36,7 @@
       </p>
     </div>
     <div class='counter-widget__additional-details'>
-      <div class='counter-widget__nonprofit-details' v-if='edit'>
+      <div class='counter-widget__nonprofit-details' v-if='edit || message'>
         <p>Donations from this widget go to the nonprofit: {{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</p>
       </div>
       <div class='counter-widget__button-container'>
@@ -85,11 +85,6 @@ export default {
       type: Boolean,
       required: false,
     },
-
-    showMessage: {
-      type: Boolean,
-      default: false,
-    }
   },
 
   mixins: [imageSrc],

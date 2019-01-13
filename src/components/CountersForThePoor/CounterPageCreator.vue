@@ -74,7 +74,8 @@ export default {
         nonprofit: null,
         featuredImg: 0,
 				counterId: 1,
-				rate: 3,
+        rate: 3,
+        themeId: 0,
       },
     }
   },
@@ -86,8 +87,8 @@ export default {
       this.$router.push({ name: 'page', params: { id: page.id } })
     },
 
-		handleSliderChange (index) {
-			this.widget.featuredImg = index
+		handleSliderChange (val, index) {
+      this.widget.themeId = index
     },
     
     handleNonprofitSelected (val) {

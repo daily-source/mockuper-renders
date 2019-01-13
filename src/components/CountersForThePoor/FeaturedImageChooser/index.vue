@@ -52,8 +52,8 @@ export default {
 
     handleImageChange (value) {
       this.selectedIndex = value
-      this.$emit('change', this.theme)
-    }
+      this.$emit('change', this.theme, this.selectedIndex)
+    },
   },
 
   computed: {
