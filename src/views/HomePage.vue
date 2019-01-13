@@ -11,8 +11,9 @@
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/mlk.jpg")'
-				:widget-position='["top", "left"]'
-        class='mlk-banner'
+				:widget-position='["bottom", "left"]'
+        :show-logo='true'
+        :color-id='0'
 			/>
     </section>
     <section class="widget-customize section">
@@ -28,7 +29,10 @@
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'
-				:widget-position='["center-y", "left"]'
+				:widget-position='["bottom", "left"]'
+        :color-id='1'
+        :show-logo='true'
+        :logo-position='"right"'
 			/>
     </section>
     <section class="section">
