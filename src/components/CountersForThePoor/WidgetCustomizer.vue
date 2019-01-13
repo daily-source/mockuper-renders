@@ -39,7 +39,8 @@
             </div>
             <div class="field">
               <label class='widget-customizer__fields-label'>Choose a nonprofit that your widget will generate donations for: </label>
-              <nonprofit-ajax-search 
+              <nonprofit-ajax-search
+                :default-value='widget.nonprofit' 
                 :placeholder='"Type a nonprofit to search..."'
                 @selected='setNonprofit'
               />

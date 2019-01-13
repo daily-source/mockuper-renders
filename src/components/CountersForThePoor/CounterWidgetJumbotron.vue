@@ -135,8 +135,6 @@ export default {
 <style scoped lang='scss'>
 .counter-widget-jumbotron {
 	position: relative;
-	max-height: 100vh;
-	overflow: hidden;
 
 	&--no-img {
 		min-height: 450px;

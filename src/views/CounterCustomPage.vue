@@ -2,6 +2,7 @@
 	<div class="layout-base">
 		<alert-bar />
     <counter-widget-jumbotron 
+      class='page-banner'
       :widget-id='widget.id'
       :show-logo='true'
       :color-id='theme.colorId'
@@ -141,7 +142,11 @@ export default {
 
 }
 
-.banner {
-  margin-bottom: 0;
+.page-banner {
+  max-height: 100vh;
+  overflow: hidden;
+  img {
+    max-height: 100vh;
+  }
 }
 </style>

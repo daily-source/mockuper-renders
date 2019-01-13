@@ -9,6 +9,7 @@ const state = {
       rate: 3,
       message: '',
       userId: 1,
+      themeId: 0,
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ const state = {
       rate: 4,
       message: 'This is a custom message.',
       userId: 1,
+      themeId: 1,
     },
   ],
 

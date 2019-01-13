@@ -36,8 +36,8 @@
       </p>
     </div>
     <div class='counter-widget__additional-details'>
-      <div class='counter-widget__nonprofit-details' v-if='edit || message'>
-        <p>Donations from this widget go to the nonprofit: {{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</p>
+      <div class='counter-widget__nonprofit-details' v-if='edit || nonprofit'>
+        <p>Donations from this widget go to the nonprofit: <span class='has-text-weight-bold'>{{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</span></p>
       </div>
       <div class='counter-widget__button-container'>
         <router-link to='/' class='button counter-widget__button'>
