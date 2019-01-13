@@ -7,18 +7,18 @@ const state = {
       featuredImg: 0,
       counterId: 1,
       rate: 3,
-      title: '',
       message: '',
       userId: 1,
+      themeId: 0,
     },
     {
       id: 2,
       featuredImg: 2,
       counterId: 2,
       rate: 4,
-      title: 'This is a custom title.',
       message: 'This is a custom message.',
       userId: 1,
+      themeId: 1,
     },
   ],
 
@@ -72,34 +72,66 @@ const state = {
     }
   },
 
-  colors: {
-    'black-and-white': {
-      label: 'Black and White',
-      primary: '#000',
-      secondary: '#fff',
-    }
-  },
+  colors: [
+    'primary',
+    'secondary',
+  ],
 
+  backgroundImages: [
+    'statue-of-liberty.jpg',
+    'mlk.jpg',
+    'poor-kid.jpg',
+  ],
+
+  // A background image ID of null means that no background image is to be displayed
+  // One background image is to one color only for now.
   counters: [
     {
       id: 1,
-      title: 'Deaths now occuring from malnutrition and dirty water.',
+      title: 'Deaths now occuring from malnutrition and dirty water:',
       rate: 3,
-      imgPreviews: [
-				'statue-of-liberty.jpg',
-				'mlk-sm.jpg',
-				'poor-kid.jpg',
-      ]
+      themes: [
+        {
+          colorId: 0,
+          backgroundImageId: 0,
+        },
+        {
+          colorId: 0,
+          backgroundImageId: 1,
+        },
+        {
+          colorId: 1,
+          backgroundImageId: 2,
+          logoPosition: 'right',
+        },
+        {
+          colorId: 1,
+          backgroundImageId: null,
+        }
+      ],
     },
     {
       id: 2,
-      title: 'Deaths now occuring from extreme poverty',
+      title: 'Deaths now occuring from extreme poverty:',
       rate: 1327,
-      imgPreviews: [
-				'statue-of-liberty.jpg',
-				'mlk-sm.jpg',
-				'poor-kid.jpg',
-      ]
+      themes: [
+        {
+          colorId: 0,
+          backgroundImageId: 0,
+        },
+        {
+          colorId: 0,
+          backgroundImageId: 1,
+        },
+        {
+          colorId: 1,
+          backgroundImageId: 2,
+        },
+        {
+          colorId: 1,
+          backgroundImageId: null,
+        }
+      ],
     }
   ],
 }

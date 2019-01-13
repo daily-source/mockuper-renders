@@ -47,7 +47,7 @@ export default {
 			const { featuredImg } = this.widget
 
 			if (featuredImg !== null) {
-				const img = this.counter.imgPreviews[featuredImg]
+				const img = this.backgroundImages[featuredImg]
 
 				return this.getImageSrc(img)
 			}
@@ -63,6 +63,8 @@ export default {
 			counter (state) {
 				return state.counterwidgets.counters.find(counter => counter.id === parseInt(this.widget.counterId))
 			},
+
+			backgroundImages: state => state.counterwidgets.backgroundImages
 		})
 	},
 }

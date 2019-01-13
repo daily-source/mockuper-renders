@@ -1,67 +1,69 @@
 <template>
   <section class="user-info section">
     <div class="container">
-      <p class='user-info__heading'>Donations made through this page will go to <span class='has-text-weight-bold'>{{ page.nonprofit.NAME }}</span></p>
-      <div class="user-info__columns is-flex">
-        <div class="user-info__column user-info__dropzone-column">
-          <vue2-dropzone
-            ref='profile-upload'
-            id='dropzone'
-            :options='dropzoneOptions'
-            :useCustomSlot='true'
-          >
-            <div class="dropzone-custom-content has-text-centered">
-              <icon 
-                icon="profile"
-                :iconheight='63'
-                :iconwidth='64'
+      <div class='user-info__wrapper'>
+        <p class='user-info__heading has-text-centered'>Donations made through this page will go to <span class='has-text-weight-bold'>{{ page.nonprofit.NAME }}</span></p>
+        <div class="user-info__columns is-flex">
+          <div class="user-info__column user-info__dropzone-column">
+            <vue2-dropzone
+              ref='profile-upload'
+              id='dropzone'
+              :options='dropzoneOptions'
+              :useCustomSlot='true'
+            >
+              <div class="dropzone-custom-content has-text-centered">
+                <icon 
+                  icon="profile"
+                  :iconheight='63'
+                  :iconwidth='64'
+                  color='#E2AB40'
+                />
+                <p class='dropzone-custom-content__text'>
+                  Drag and drop to upload your profile picture. <br />
+                  Or click to select a file from your computer
+                </p>
+              </div>
+            </vue2-dropzone>
+          </div>
+          <div class="user-info__column">
+            <p class='user-info__details'>
+              <icon
+                icon='user'
+                :iconwidth='24'
+                :iconheight='25'
                 color='#E2AB40'
               />
-              <p class='dropzone-custom-content__text'>
-                Drag and drop to upload your profile picture. <br />
-                Or click to select a file from your computer
-              </p>
-            </div>
-          </vue2-dropzone>
+              <span class="user-info__details-text">{{ `${user.firstName} ${user.lastName}` }}</span>
+            </p>
+            <p class='user-info__details'>
+              <icon
+                icon='map-marker'
+                :iconwidth='24'
+                :iconheight='24'
+                color='#E2AB40'
+              />
+              <span class="user-info__details-text">{{ `${user.street} ${user.city}, ${user.state} ${user.zip}, ${user.country}` }}</span>
+            </p>
+            <p class='user-info__details'>
+              <icon
+                icon='email'
+                :iconwidth='24'
+                :iconheight='24'
+                color='#E2AB40'
+              />
+              <span class="user-info__details-text">{{ user.email }}</span>
+            </p>
+            <p class='user-info__details'>
+              <icon
+                icon='phone'
+                :iconwidth='24'
+                :iconheight='24'
+                color='#E2AB40'
+              />
+              <span class="user-info__details-text">{{ user.phone }}</span>
+            </p>
+          </div>  
         </div>
-        <div class="user-info__column">
-          <p class='user-info__details'>
-            <icon
-              icon='user'
-              :iconwidth='24'
-              :iconheight='25'
-              color='#E2AB40'
-            />
-            <span class="user-info__details-text">{{ `${user.firstName} ${user.lastName}` }}</span>
-          </p>
-          <p class='user-info__details'>
-            <icon
-              icon='map-marker'
-              :iconwidth='24'
-              :iconheight='24'
-              color='#E2AB40'
-            />
-            <span class="user-info__details-text">{{ `${user.street} ${user.city}, ${user.state} ${user.zip}, ${user.country}` }}</span>
-          </p>
-          <p class='user-info__details'>
-            <icon
-              icon='email'
-              :iconwidth='24'
-              :iconheight='24'
-              color='#E2AB40'
-            />
-            <span class="user-info__details-text">{{ user.email }}</span>
-          </p>
-          <p class='user-info__details'>
-            <icon
-              icon='phone'
-              :iconwidth='24'
-              :iconheight='24'
-              color='#E2AB40'
-            />
-            <span class="user-info__details-text">{{ user.phone }}</span>
-          </p>
-         </div>  
       </div>
     </div>
   </section>  
@@ -111,8 +113,7 @@ export default {
 
 <style lang="scss" scoped>
   .user-info {
-    background-color: $secondary;
-    color: #fff;
+    color: #000;
   }
 
   .user-info__details {
@@ -149,6 +150,16 @@ export default {
   .dropzone-custom-content__text {
     font-size: .75rem;
     margin-top: 1em;
-    color: #fff;
+    color: #000;
+  }
+
+  .user-info__wrapper {
+    max-width: 800px !important;
+    border-radius: $border-radius;
+    margin-top: 1em;
+    box-shadow: 0px 18px 18px 6px rgba(0,0,0,.3);
+    padding: 2em;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

@@ -3,25 +3,13 @@
     :class="['counter-widget', {'counter-widget--edit': edit}, `counter-widget--${size}`]"
     :style='{width: `${sizes[size].width}px`}'  
   >
-    <div class="counter-widget__message-container" v-if='showMessage || edit'>
-      <inline-editable-field 
-        :value='message'
-        v-model='message'
-      />
-    </div>
-    <div class="counter-widget__title-container" v-if='!edit && !showMessage'>
+    <div class="counter-widget__title-container">
       <h2 class="counter-widget__title">
         {{ counter.title }}
       </h2>
     </div>
     <div class="counter-widget__details is-flex ">
       <div class="counter-widget__counters">
-        <div class="counter-widget__title-container" v-if='edit'>
-          <inline-editable-field 
-            :value='title'
-            v-model='title'
-          />
-        </div>
         <div class="counter-widget__counter is-flex">
           <span class='counter-widget-counter__label'>Today: </span>
           <span class='counter-widget-counter__value'>{{ getDeaths('day') | numberFormat}} </span>
@@ -38,15 +26,21 @@
           <span class='counter-widget-counter__date'>{{ timeNow }}</span>
         </div>
       </div>
-      <div class="counter-widget__details-right is-flex">
-        <div class="counter-widget-details__image" v-if='edit'>
-          <img
-            v-if='featuredImg'
-            :src="getImageSrc(featuredImg)" 
-            alt="Featured Image"
-          >
-        </div>
-        <router-link to='/' class='button is-primary counter-widget__button'>
+    </div>
+    <div 
+      class='counter-widget__message-container'
+      v-if='message'
+     >
+      <p class='counter-widget__message'>
+        {{ message }}
+      </p>
+    </div>
+    <div class='counter-widget__additional-details'>
+      <div class='counter-widget__nonprofit-details' v-if='edit || nonprofit.NAME'>
+        <p>Donations from this widget go to the nonprofit: <span class='has-text-weight-bold'>{{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</span></p>
+      </div>
+      <div class='counter-widget__button-container'>
+        <router-link to='/' class='button counter-widget__button'>
           Help Now
         </router-link>
       </div>
@@ -60,17 +54,15 @@ import * as moment from 'moment'
 
 import imageSrc from '@/util/imageSrc'
 import Icons from '@/components/general/Icons' 
-import InlineEditableField from './InlineEditableField'
 
 export default {
   name: 'CounterWidget',
 
   components: {
     Icons,
-    InlineEditableField,
   },
 
-    props: {
+  props: {
     edit: {
       type: Boolean,
       default: false,
@@ -81,7 +73,7 @@ export default {
       required: false,
     },
 
-    editData: {
+    widgetData: {
       type: Object,
       required: false,
 			default: () => {
@@ -93,11 +85,6 @@ export default {
       type: Boolean,
       required: false,
     },
-
-    showMessage: {
-      type: Boolean,
-      default: false,
-    }
   },
 
   mixins: [imageSrc],
@@ -126,7 +113,7 @@ export default {
     },
 
     getTimeNow () {
-      return moment().format('MMMM DD, YYYY hh:mm:ss A') 
+      return moment().format('MMMM D, YYYY hh:mm:ss A') 
     },
 
     getTimeDifference (timeA, timeB, unit='seconds') {
@@ -152,46 +139,41 @@ export default {
   },
 
   computed: {
-    message: {
-      get () {
-        if(this.widget && this.widget.message) {
-          return this.widget.message
-        }
-
-        return 'Choose a short message for your own personal widget'
-      },
-
-      set (value) {
-        this.widget.message = value
-        return value
+    message () {
+      if (this.widgetData && this.widgetData.message) {
+        return this.widgetData.message
       }
+
+      return this.widget && this.widget.message
     },
 
-    title: {
+    nonprofit: {
       get () {
-        if(this.widget && this.widget.title) {
-          return this.widget.title
-        } else if (this.counter) {
-          return this.counter.title
+        if (this.widgetData && this.widgetData.nonprofit) {
+          return this.widgetData.nonprofit
         }
 
-        return 'Name your widget'
+        return this.widget.nonprofit || {}
       },
 
       set (value) {
-        this.widget.title = value
+        this.widget.nonprofit = value
         return value
       }
     },
     
     size () {
-      if (this.editData && this.editData.size) {
-        return this.editData.size
+      if (this.widgetData && this.widgetData.size) {
+        return this.widgetData.size
       } else if (this.widget.size) {
         return this.widget.size
       } else {
         return 'large'
       }
+    },
+
+    counterId () {
+      return (this.widgetData && this.widgetData.counterId) || this.widget.counterId
     },
 
     ...mapState({
@@ -202,8 +184,8 @@ export default {
 
       featuredImg (state) {
         let img = state.counterwidgets.imgs[this.widget.featuredImg]
-        if(this.edit && this.editData && this.editData.img !== null) {
-          img = state.counterwidgets.imgs[this.editData.img]
+        if(this.edit && this.widgetData && this.widgetData.img !== null) {
+          img = state.counterwidgets.imgs[this.widgetData.img]
         }
 
         if (this.noImage) {
@@ -213,9 +195,7 @@ export default {
       },
 
       counter (state) {
-        const counter = state.counterwidgets.counters.find(counter => parseInt(this.widget.counterId) === parseInt(counter.id))
-
-        return counter
+        return state.counterwidgets.counters.find(counter => parseInt(this.counterId) === parseInt(counter.id))
       },
 
       sizes: state => state.counterwidgets.sizes,
@@ -232,32 +212,39 @@ export default {
     margin-right: auto;
   }
 
-  .counter-widget__title,
-  .counter-widget__message {
+  .counter-widget__title {
     color: inherit;
     font-size: 1.375rem;
     font-weight: 800;
-    text-transform: uppercase;
   }
 
-  .counter-widget__message-container,
   .counter-widget__title-container {
     font-family: $headings-font-family;
     font-size: 1.375rem;
     font-weight: 800;
     text-align: center;
     text-transform: uppercase;
+
+    .counter-widget--edit & {
+      text-transform: capitalize;
+    }
   }
 
   .counter-widget__title-container {
     text-align: left;
   }
+
+  .counter-widget__counters, 
+  .counter-widget__message-container,
+  .counter-widget__additional-details {
+    padding-left: .5rem;
+  }
+
   .counter-widget__counter {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    padding-left: .5rem;
-    font-size: 1.375em;
+    font-size: 1.125em;
 
     &:last-child {
       margin-bottom: 0;
@@ -300,6 +287,11 @@ export default {
     .counter-widget__details-right {
       justify-content: center;
     }
+
+    .counter-widget__title {
+      text-transform: capitalize;
+      max-width: 80%;
+    }
   }
 
   .counter-widget__editable-field {
@@ -319,35 +311,25 @@ export default {
       right: 0;
       top: 0;
     }
-  } 
+  }
+
+  .button {
+    background-color: $primary;
+    color: #fff;
+    border-color: transparent;
+  }
+
+  .counter-widget--secondary {
+    .button {
+      background-color: $secondary;
+    }
+  }
 </style>
 
 <style lang='scss'>
-  .counter-widget__message-container,
-  .counter-widget__title-container {
-    .editable__field-input {
-      text-tranform: uppercase;
-      text-transform: uppercase;
-      font-weight: 800;
-      text-tranform: uppercase;
-    }
-  }
-
-  .counter-widget__title-container {
-    .button.edit-button {
-      top: 0;
-      right: .5rem;
-    }
-  }
-
-  
-  .counter-widget__title,
   .counter-widget__message {
     color: inherit;
-    font-weight: 800;
-    text-transform: uppercase;
   }
-
 
   .counter-widget--large {
     .counter-widget__details {
@@ -359,12 +341,10 @@ export default {
       flex-shrink: 0;
       flex-grow: 1;
       max-width: 65%;
-      margin-right: 3rem;
       margin-bottom: 0;
     }
 
-    .counter-widget__title,
-    .counter-widget__message {
+    .counter-widget__title {
       font-size: 1.5rem;
     }
   }
@@ -376,9 +356,12 @@ export default {
       margin-bottom: 1em;
     }
 
-    .counter-widget__title,
-    .counter-widget__message {
+    .counter-widget__title {
       font-size: 1.125rem;
     }
+  }
+
+  .counter-widget__button-container {
+    text-align: right;
   }
 </style>

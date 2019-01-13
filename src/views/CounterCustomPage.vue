@@ -1,10 +1,15 @@
 <template>
 	<div class="layout-base">
 		<alert-bar />
-		<app-header />
-		<app-banner
-			:widget-id='widget.id'		
-		/>
+    <counter-widget-jumbotron 
+      class='page-banner'
+      :widget-id='widget.id'
+      :show-logo='true'
+      :color-id='theme.colorId'
+      :logo-position='theme.logoPosition'
+      :bg-image='backgroundImage'
+      :widget-position='["bottom", "left"]'
+    />
     <user-info 
       :widget-id='widget.id'
       v-if='id == 2'
@@ -29,27 +34,28 @@
 
 <script>
 import { mapState } from 'vuex'
+import imageSrc from '@/util/imageSrc'
 
 import AlertBar from '@/components/CountersForThePoor/AlertBar'
-import AppHeader from '@/components/CountersForThePoor/AppHeader'
-import AppBanner from '@/components/CountersForThePoor/AppBanner'
+import CounterWidgetJumbotron from '@/components/CountersForThePoor/CounterWidgetJumbotron'
 import UserInfo from '@/components/CountersForThePoor/UserInfo'
 import WidgetCustomizer from '@/components/CountersForThePoor/WidgetCustomizer'
 import CounterPageCreator from '@/components/CountersForThePoor/CounterPageCreator'
 import SharedFooter from '@/components/Shared/SharedFooter'
 
 export default {
-	name: 'CounterCustomPage',
+  name: 'CounterCustomPage',
+  
+  mixins: [imageSrc],
 
 	components: {
-		AlertBar,
-		AppHeader,
-		AppBanner,
+    AlertBar,
+    CounterWidgetJumbotron,
     UserInfo,
 		SharedFooter,
 		WidgetCustomizer,
 		CounterPageCreator,
-	},
+  },
 
   computed: {
     id () {
@@ -66,6 +72,10 @@ export default {
       return ''
     },
 
+    theme () {
+      return this.counter.themes[this.widget.themeId]
+    },
+
     ...mapState({
       page (state) {
 				return state.counterwidgets.pages.find(page => page.id === parseInt(this.id))
@@ -77,7 +87,17 @@ export default {
 
 			counter (state) {
 				return state.counterwidgets.counters.find(counter => counter.id === parseInt(this.widget.counterId))
-			},
+      },
+
+      backgroundImage (state) {
+        const img = state.counterwidgets.backgroundImages[this.theme.backgroundImageId]
+
+        if (img) {
+          return this.getImageSrc(`widget-imgs/${img}`)
+        }
+
+        return null
+      }
     })
   },
 
@@ -122,7 +142,11 @@ export default {
 
 }
 
-.banner {
-  margin-bottom: 0;
+.page-banner {
+  max-height: 100vh;
+  overflow: hidden;
+  img {
+    max-height: 100vh;
+  }
 }
 </style>
