@@ -99,11 +99,5 @@ export default {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
-
-  .widget-customize {
-    .widget-customizer {
-      margin-top: 3rem;
-    }
-  }
 </style>
 

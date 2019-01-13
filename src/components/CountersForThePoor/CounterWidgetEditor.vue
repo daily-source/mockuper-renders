@@ -7,6 +7,8 @@
       :logo-position='theme.logoPosition'
       :show-logo='true'
       :colorId='theme.colorId'
+      :widget-data='widgetData'
+      :edit='true'
     />
   </div>
 </template>
@@ -56,6 +58,11 @@ export default {
         }
       },
     },
+
+    widgetData: {
+      type: Object,
+      required: false,
+    },
   },
 
   computed: {
@@ -98,9 +105,6 @@ export default {
   }
 
   .counter-widget-jumbotron {
-    height: 450px;
-    max-height: 450px;
-
     &__logo-container {
       max-width: 200px;
       margin-left: auto;
@@ -112,7 +116,7 @@ export default {
 
       img {
         width: 100%;
-        height: 100%;
+        height: 450px;
         object-fit: cover;
       }
     }

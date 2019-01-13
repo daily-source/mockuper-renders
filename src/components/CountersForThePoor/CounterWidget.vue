@@ -26,33 +26,17 @@
           <span class='counter-widget-counter__date'>{{ timeNow }}</span>
         </div>
       </div>
-      <div class="counter-widget__details-right is-flex">
-        <div class="counter-widget-details__image" v-if='edit'>
-          <img
-            v-if='featuredImg'
-            :src="getImageSrc(featuredImg)" 
-            alt="Featured Image"
-          >
-        </div>
-        <router-link 
-          to='/' 
-          class='button is-primary counter-widget__button'
-          v-if='!edit'
-          >
-          Help Now
-        </router-link>
-      </div>
     </div>
     <div 
       class='counter-widget__message-container'
-      v-if='edit && message'
+      v-if='message'
      >
       <p class='counter-widget__message'>
         {{ message }}
       </p>
     </div>
-    <div class='counter-widget__additional-details' v-if='edit'>
-      <div class='counter-widget__nonprofit-details'>
+    <div class='counter-widget__additional-details'>
+      <div class='counter-widget__nonprofit-details' v-if='edit'>
         <p>Donations from this widget go to the nonprofit: {{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</p>
       </div>
       <div class='counter-widget__button-container'>
@@ -89,7 +73,7 @@ export default {
       required: false,
     },
 
-    editData: {
+    widgetData: {
       type: Object,
       required: false,
 			default: () => {
@@ -161,8 +145,8 @@ export default {
 
   computed: {
     message () {
-      if (this.editData && this.editData.message) {
-        return this.editData.message
+      if (this.widgetData && this.widgetData.message) {
+        return this.widgetData.message
       }
 
       return this.widget && this.widget.message
@@ -170,8 +154,8 @@ export default {
 
     nonprofit: {
       get () {
-        if (this.editData && this.editData.nonprofit) {
-          return this.editData.nonprofit
+        if (this.widgetData && this.widgetData.nonprofit) {
+          return this.widgetData.nonprofit
         }
 
         return this.widget.nonprofit || {}
@@ -184,8 +168,8 @@ export default {
     },
     
     size () {
-      if (this.editData && this.editData.size) {
-        return this.editData.size
+      if (this.widgetData && this.widgetData.size) {
+        return this.widgetData.size
       } else if (this.widget.size) {
         return this.widget.size
       } else {
@@ -194,7 +178,7 @@ export default {
     },
 
     counterId () {
-      return (this.editData && this.editData.counterId) || this.widget.counterId
+      return (this.widgetData && this.widgetData.counterId) || this.widget.counterId
     },
 
     ...mapState({
@@ -205,8 +189,8 @@ export default {
 
       featuredImg (state) {
         let img = state.counterwidgets.imgs[this.widget.featuredImg]
-        if(this.edit && this.editData && this.editData.img !== null) {
-          img = state.counterwidgets.imgs[this.editData.img]
+        if(this.edit && this.widgetData && this.widgetData.img !== null) {
+          img = state.counterwidgets.imgs[this.widgetData.img]
         }
 
         if (this.noImage) {
@@ -255,11 +239,17 @@ export default {
   .counter-widget__title-container {
     text-align: left;
   }
+
+  .counter-widget__counters, 
+  .counter-widget__message-container,
+  .counter-widget__additional-details {
+    padding-left: .5rem;
+  }
+
   .counter-widget__counter {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    padding-left: .5rem;
     font-size: 1.125em;
 
     &:last-child {
@@ -329,17 +319,15 @@ export default {
     }
   }
 
-  .counter-widget--primary {
-    .button {
-      background-color: $primary;
-      color: #fff;
-    }
+  .button {
+    background-color: $primary;
+    color: #fff;
+    border-color: transparent;
   }
 
   .counter-widget--secondary {
     .button {
       background-color: $secondary;
-      color: #fff;
     }
   }
 </style>
@@ -359,7 +347,6 @@ export default {
       flex-shrink: 0;
       flex-grow: 1;
       max-width: 65%;
-      margin-right: 3rem;
       margin-bottom: 0;
     }
 

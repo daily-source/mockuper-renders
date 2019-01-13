@@ -4,6 +4,7 @@
       <counter-widget-editor 
         :widget-id='widgetId'
         :theme='selectedTheme'
+        :widget-data='widgetData'
       />
     </div>
     <div class="widget-customizer__images">
@@ -32,6 +33,7 @@
                 class='input'
                 placeholder='Type a message here and it will show in the widget'
                 id='message'
+                :maxlength="55"
                 v-model='message'
               >
             </div>
@@ -121,6 +123,15 @@ export default {
   },
 
   computed: {
+    widgetData () {
+      const { counterId, message, nonprofit } = this
+      return {
+        counterId,
+        message,
+        nonprofit,
+      }
+    },
+
     ...mapState({
       widget (state) {
         return state.counterwidgets.widgets.find(widget => widget.id == this.widgetId)

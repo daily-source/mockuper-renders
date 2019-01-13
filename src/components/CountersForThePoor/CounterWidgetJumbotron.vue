@@ -12,6 +12,8 @@
 			<counter-widget 
 				:id='widgetId'
 				:class='`counter-widget--${color}`'
+				:widget-data='widgetData'
+				:edit='edit'
 			/>
 		</div>
 		<div class='counter-widget-jumbotron__img-container'>
@@ -87,6 +89,17 @@ export default {
 		colorId: {
 			type: Number,
 			default: 0,
+		},
+
+		widgetData: {
+			type: Object,
+			required: false,
+		},
+
+		edit: {
+			type: Boolean,
+			required: false,
+			default: false,
 		},
 	},
 
@@ -207,20 +220,55 @@ export default {
 
 <style lang="scss">
 .counter-widget-jumbotron--no-img {
+	padding: 1.5em;
+	border-radius: $border-radius;
+	border: 2px solid #3a3a3a;
+	box-shadow: 0 2px 18px 0 rgba(0,0,0,.2);
+
+	.counter-widget-jumbotron__widget {
+		position: static !important;
+	}
+
 	.counter-widget {
 		color: #000;
-		transform: scale(.9) !important;
+		position: static !important;
+		transform: scale(1) !important;
 		max-width: 100% !important;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.counter-widget__title {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 85%;
 	}
 
 	.counter-widget__details {
 		flex-direction: column;
 		align-items: center;
 	}
+
+	.counter-widget-jumbotron__logo-container {
+		position: static !important;
+	}
 	
-	.counter-widget__counters {
-		width: 80%;
-		margin-right: 0;
+	.counter-widget__counters,
+	.counter-widget__message-container,
+	.counter-widget__additional-details {
+		width: 90%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.counter-widget__message-container,
+	.counter-widget__additional-details {
+		max-width: 95%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.button {
