@@ -151,7 +151,9 @@ export default {
       return {
         draggable: false,
         prevNextButtons: false,
-        pageDots: false, 
+        pageDots: false,
+				selectedAttraction: .125,
+				friction: .7,
         ...this.options,
       }
     },
@@ -204,8 +206,8 @@ export default {
     background-image: linear-gradient(135deg, $primary 0%, $color-primary-tint 90%);
 
     img {
-      width: 130%;
-      height: 130%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
