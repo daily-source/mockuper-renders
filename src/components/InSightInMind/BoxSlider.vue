@@ -151,7 +151,9 @@ export default {
       return {
         draggable: false,
         prevNextButtons: false,
-        pageDots: false, 
+        pageDots: false,
+				selectedAttraction: .125,
+				friction: .7,
         ...this.options,
       }
     },
@@ -205,7 +207,7 @@ export default {
 
     img {
       width: 100%;
-      height: 110%;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
