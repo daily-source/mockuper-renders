@@ -88,7 +88,7 @@ const state = {
   counters: [
     {
       id: 1,
-      title: 'Deaths now occuring from malnutrition and dirty water:',
+      title: 'Deaths Now Occuring From Malnutrition and Dirty Water:',
       rate: 3,
       themes: [
         {
@@ -112,7 +112,7 @@ const state = {
     },
     {
       id: 2,
-      title: 'Deaths now occuring from extreme poverty:',
+      title: 'Deaths Now Occuring From Extreme Poverty:',
       rate: 1327,
       themes: [
         {

@@ -216,7 +216,6 @@ export default {
     color: inherit;
     font-size: 1.375rem;
     font-weight: 800;
-    text-transform: uppercase;
   }
 
   .counter-widget__title-container {
@@ -224,7 +223,6 @@ export default {
     font-size: 1.375rem;
     font-weight: 800;
     text-align: center;
-    text-transform: uppercase;
 
     .counter-widget--edit & {
       text-transform: capitalize;
