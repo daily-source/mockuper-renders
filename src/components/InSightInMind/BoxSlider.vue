@@ -4,23 +4,20 @@
     @mouseover='toggleHovered'
     @mouseout='toggleHovered'
   >
-    <flickity
-      :options='sliderOptions'
-      @click='goToImage'
-      ref='slider'
-    >
-      <div class="box-slider__slide box-slider__slide--title">
-        <h2 class='box-slider-title__heading'>{{ message }}</h2>
-      </div>
-      <div 
-        class="box-slider__slide box-slider__slide--image" 
-      >
-        <img 
-          :src='selectedImage.src' 
-          :alt="selectedImage.alt"
-        >
-      </div>
-    </flickity>
+		<div class="box-slider__slide box-slider__slide--title">
+			<h2 class='box-slider-title__heading'>{{ message }}</h2>
+		</div>
+    <transition name='box-fade'>
+			<div 
+				class="box-slider__slide box-slider__slide--image" 
+				v-if='showImage'
+			>
+				<img 
+					:src='selectedImage.src' 
+					:alt="selectedImage.alt"
+				>
+			</div>
+		</transition>
     <transition name='box-fade'>
       <div 
       class="box-slider__hover-box-wrap"
@@ -40,7 +37,6 @@
 </template>
 
 <script>
-import Flickity from '@/components/plugins/Flickity'
 import { random } from 'lodash'
 
 export default {
@@ -51,13 +47,16 @@ export default {
       type: String,
       required: true,
     },
+
     message: {
       type: String,
       required: true,
     },
+
     cost: {
       type: Number,
     },
+
     deathsPerSecond: {
       type: Number,
     },
@@ -77,87 +76,53 @@ export default {
     }
   },
 
-  components: {
-    Flickity,
-  },
-
   data () {
     return {
       hovered: false,
       dataShown: false,
       imageShowDuration: 1000,
-      ref: null,
-      selectedImageSlide: 1,
+      selectedImageIndex: 1,
+			showImage: false,
     }
   },
 
-  mounted () {
-    this.ref = this.$refs.slider
-
-    this.playSlide()
-  },
+	mounted () {
+		this.playSlider()
+	},
 
   methods: {
+		playSlider () {
+			const timeoutDur = this.showImage ? this.imageShowDuration : this.imageSlideDelay
+
+			setTimeout(() => {
+				this.showImage = !this.showImage
+				this.setSelectedImageIndex()
+				this.playSlider()
+			}, timeoutDur)
+		},
+
     toggleHovered () {
       this.hovered = !this.hovered
     },
 
-    playSlide () {
-      if(this.imageSlideDelay) {
-        this.goToImage()
-      }
-    },
+		setSelectedImageIndex () {
+			if (this.selectedImageIndex > this.imagesSrc.length) {
+				this.selectedImageIndex = 1
+
+				return
+			}
+
+			if (!this.showImage) {
+				this.selectedImageIndex += 1
+			}
+		},
 
     getImage (imgName) {
       return require(`@/assets/img/images/in-sight-in-mind/${imgName}`)
     },
-
-    goToImage () {
-      if(this.imagesCount) {
-        setTimeout( () => {
-          this.ref.flickity().select(1)
-          this.setImageSelectedSlide()
-          if(this.images)
-          this.goToMainSlide()
-        }, this.imageSlideDelay)
-      }
-    },
-
-    goToMainSlide () {
-      setTimeout( () => {
-        this.ref.flickity().select(0)
-        this.goToImage()        
-      }, this.imageShowDuration)
-    },
-
-    setImageSelectedSlide () {
-      this.selectedImageSlide += 1
-
-      if(this.imagesCount > 1 ) {
-        if(this.selectedImageSlide > this.imagesCount) {
-          this.selectedImageSlide = 1
-        }
-      } else {
-        this.selectedImageSlide = 1
-      }
-    }
-
   },
 
   computed: {
-    sliderOptions () {
-      const autoplaySpeed = (this.deathsPerSecond || random(5, 20)) * 1000 
-
-      return {
-        draggable: false,
-        prevNextButtons: false,
-        pageDots: false,
-				selectedAttraction: .125,
-				friction: .7,
-        ...this.options,
-      }
-    },
-
     imagesCount () {
       return this.images && this.images.length
     },
@@ -180,10 +145,10 @@ export default {
       return srcArray
     },
 
-    selectedImage () {
-      return this.imagesSrc[this.selectedImageSlide - 1 ]
-    }
-  }
+		selectedImage () {
+			return this.imagesSrc[this.selectedImageIndex - 1]
+		},
+  },
 }
 </script>
 
@@ -211,6 +176,14 @@ export default {
       object-fit: cover;
       display: block;
     }
+
+		&--image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 220px;
+		}
   }
 
   .box-slider-title__heading {
