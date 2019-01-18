@@ -51,12 +51,6 @@ const state = {
 		},
 	],
 
-  imgs: [
-    'statue-of-liberty.jpg',
-    'mlk-sm.jpg',
-    'poor-kid.jpg',
-  ],
-
   sizes: {
     'large': {
       label: 'Large',
@@ -80,7 +74,7 @@ const state = {
   backgroundImages: [
     'statue-of-liberty.jpg',
     'mlk.jpg',
-    'poor-kid.jpg',
+    'poor-kid-v1.jpg',
   ],
 
   // This is a combination of a color and a background image.
