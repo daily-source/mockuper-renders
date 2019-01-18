@@ -27,14 +27,14 @@
     <section class="section">
 			<counter-widget-jumbotron 
 				:widget-id='1'
-				:bg-image='require("../assets/img/images/poor-kid.jpg")'
+				:bg-image='require("../assets/img/images/widget-imgs/poor-kid-v1.jpg")'
 				:widget-position='["top", "left"]'
 			/>
     </section>
     <section class="section">
         <h2 class='has-text-centered'>Create your own counter page to share</h2>
         <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
-        <counter-page-creator />
+        <!-- <counter-page-creator /> -->
     </section>
     <SharedFooter></SharedFooter>
   </div>
@@ -64,7 +64,7 @@ export default {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
     return {
-      title: 'Counters for the Poor',
+      title: 'Counters for the Poor - v1',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
