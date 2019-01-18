@@ -9,7 +9,7 @@ const state = {
       rate: 3,
       message: '',
       userId: 1,
-      themeId: 0,
+      themeId: 1,
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const state = {
       rate: 4,
       message: 'This is a custom message.',
       userId: 1,
-      themeId: 1,
+      themeId: 2,
     },
   ],
 
@@ -75,6 +75,7 @@ const state = {
     'statue-of-liberty.jpg',
     'mlk.jpg',
     'poor-kid-v1.jpg',
+    'statue-of-liberty-v3.jpg',
   ],
 
   // This is a combination of a color and a background image.
@@ -83,7 +84,7 @@ const state = {
     {
       id: 1,
       colorId: 0,
-      backgroundImageId: 0,
+      backgroundImageId: 3,
     },
     {
       id: 2,

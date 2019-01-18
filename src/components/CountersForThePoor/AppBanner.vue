@@ -44,10 +44,10 @@ export default {
 
 	computed: {
 		backgroundImage () {
-			const { featuredImg } = this.widget
+			const { backgroundImageId } = this.theme
 
-			if (featuredImg !== null) {
-				const img = this.backgroundImages[featuredImg]
+			if (backgroundImageId !== null || backgroundImageId !== undefined) {
+				const img = this.backgroundImages[backgroundImageId]
 
 				return this.getImageSrc(img)
 			}
@@ -62,6 +62,10 @@ export default {
 
 			counter (state) {
 				return state.counterwidgets.counters.find(counter => counter.id === parseInt(this.widget.counterId))
+			},
+
+			theme (state) {
+				return state.counterwidgets.themes.find(theme => theme.id == this.widget.themeId)
 			},
 
 			backgroundImages: state => state.counterwidgets.backgroundImages
