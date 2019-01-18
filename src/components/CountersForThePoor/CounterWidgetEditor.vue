@@ -36,9 +36,9 @@ export default {
 
   props: {
     size: {
-      type: Number,
+      type: [Number, String],
       required: false,
-      default: 800,
+      default: 'large',
     },
 
     // TODO: Make required, remove default
@@ -85,6 +85,10 @@ export default {
         return state.counterwidgets.counters.find(counter => counter.id === this.widget.counterId)
       },
 
+			widgetSize (state) {
+				return state.counterwidgets.sizes[this.size].width
+			},
+
       backgroundImages: state => state.counterwidgets.backgroundImages,
     }),
   },
@@ -98,7 +102,7 @@ export default {
   overflow: hidden;
 
   .counter-widget {
-    transform: scale(0.6);
+    transform: scale(0.7);
     transform-origin: 0% 100%;
     background-color: transparent !important;
     border-color: transparent !important;
@@ -116,10 +120,17 @@ export default {
 
       img {
         width: 100%;
-        height: 450px;
+        height: 505px;
         object-fit: cover;
+        object-position: right center;
       }
     }
+
+		&--no-img {
+			.counter-widget-jumbotron__logo-container {
+				max-width: 300px;
+			}
+		}
   }
 }
 </style>

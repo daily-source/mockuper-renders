@@ -146,7 +146,7 @@ export default {
 
 	&__logo-container {
 		position: absolute;
-		top: 1em;
+		top: .25em;
 		max-width: 300px;
 		left: 0;
 		right: 0;
@@ -222,7 +222,7 @@ export default {
 		// background-color: rgba(3, 0, 0, 0.28);
 		// border: 2px solid $primary;
 		border-radius: 4px;
-		max-width: 570px;
+		max-width: 600px;
 
 		// &--primary {
 		// 	border-color: $primary;

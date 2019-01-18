@@ -36,7 +36,7 @@
         <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
         <counter-page-creator />
     </section>
-    <SharedFooter></SharedFooter>
+    <shared-footer />
   </div>
 </template>
 
@@ -63,8 +63,8 @@ export default {
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
-    return {
-      title: 'Counters for the Poor',
+    return {  
+      title: 'Counters for the Poor - v2',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
