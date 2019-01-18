@@ -25,13 +25,6 @@ export default {
 
   inheritAttrs: false,
 
-  props: {
-    value: {
-      type: String,
-      required: false, 
-    },
-  },
-
   data () {
     return {
       size: this.value,
