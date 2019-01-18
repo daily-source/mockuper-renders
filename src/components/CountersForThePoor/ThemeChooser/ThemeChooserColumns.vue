@@ -2,23 +2,25 @@
   <div class='featured-image-chooser--columns columns'>
     <div 
       class='featured-image-chooser__column column'
-      v-for='(image, index) in images'
-      @click='handleColumnClicked(index)'
-      :key='index'
+      v-for='theme in imageOpts'
+      @click='setSelectedIndex(theme.id)'
+      :key='theme.id'
     >
       <div 
-        :class='["featured-image-chooser__img-container", {"featured-image-chooser__img-container--selected": selected === index}]'
+        :class='["featured-image-chooser__img-container", {"featured-image-chooser__img-container--selected": selectedIndex == theme.id}]'
       >
-        <img 
-          :src='getImageSrc(image)' 
+        <img
+          :src='theme.imageSrc' 
           class='featured-image-chooser__img'
-          :alt='`Featured Image #${index}`'
+          alt='Featured Image'
         >
       </div>
     </div>
     <div 
       class='featured-image-chooser__column featured-image-chooser__column--no-img column'
-      @click='handleColumnClicked(null)'
+      v-for='theme in noImageOpts'
+      @click='setSelectedIndex(theme.id)'
+      :key='theme.id'
     >
       <div 
         :class='["featured-image-chooser-no-img__text", {"featured-image-chooser-no-img__text--selected": selected == null}]'
@@ -30,38 +32,12 @@
 </template>
 
 <script>
-import imageSrc from '@/util/imageSrc'
+import themeChooser from '@/util/themeChooser'
 
 export default {
-  name: 'FeaturedImageChooserColumns',
+  name: 'ThemeChooserColumns',
 
-  mixins: [imageSrc],
-
-  props: {
-    images: {
-      type: Array,
-      required: false,
-    }
-  },
-
-  data () {
-    return {
-      imgFolderName: 'widget-imgs/thumbnails/',
-      selected: null,
-    }
-  },
-
-  methods: {
-    handleColumnClicked (index) {
-      this.selected = index
-    }
-  },
-
-  watch: {
-    selected () {
-      this.$emit('change', this.selected)
-    },
-  }
+  mixins: [themeChooser],
 }
 </script>
 

@@ -5,6 +5,7 @@
         :widget-id='widgetId'
         :theme='selectedTheme'
         :widget-data='widgetData'
+				:size='size'
       />
     </div>
     <div class="widget-customizer__images">
@@ -13,10 +14,9 @@
           <!-- TODO: Handle form submit. -->
           <form @submit.prevent='() => false'>
             <div class="widget-customizer__featured-images-wrapper">
-              <p class='has-text-weight-bold widget-customizer__fields-label'>Choose an image you would like to use: </p>
-              <featured-image-chooser 
-                :counter-id='widget.counterId'
-                @change='setSelectedTheme'
+              <p class='has-text-weight-bold'>Click on the image you want to use: </p>
+              <theme-chooser 
+                @change='setSelectedThemeIndex'
               />
             </div>
             <div class="field">
@@ -27,7 +27,7 @@
               />
             </div>
             <div class='field'>
-              <label class='widget-customizer__fields-label' for='message'>Add a custom message(optional):</label>
+              <label class='widget-customizer__fields-label' for='message'>Add a custom message (optional):</label>
               <input 
                 type='text' 
                 class='input'
@@ -46,15 +46,11 @@
               />
             </div>
             <div class="field">
-              <label class='widget-customizer__field-label' for="size">Size: </label>
+              <label class='widget-customizer__fields-label' for="size"> Choose the size of your widget: </label>
               <div class="control">
-                <div class="select is-block">
-                  <select name="size" id="size" v-model='size'>
-                    <option v-for='(size, index) in sizes' :key='index' :value="index">
-                      {{ size.label + ' (' + size.width + 'px)' }}
-                    </option>
-                  </select>
-                </div>
+                <select-size 
+                  v-model='size'
+                />
               </div>
             </div>
             <div class="button-container has-text-right">
@@ -72,7 +68,8 @@ import { mapState } from 'vuex'
 
 import CounterWidgetEditor from '@/components/CountersForThePoor/CounterWidgetEditor'
 import CounterSelect from '@/components/CountersForThePoor/CounterSelect'
-import FeaturedImageChooser from '@/components/CountersForThePoor/FeaturedImageChooser'
+import SelectSize from '@/components/CountersForThePoor/SelectSize'
+import ThemeChooser from '@/components/CountersForThePoor/ThemeChooser'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
 export default {
@@ -88,34 +85,26 @@ export default {
   components: {
     CounterWidgetEditor,
     CounterSelect,
-    FeaturedImageChooser,
+    SelectSize,
+    ThemeChooser,
     NonprofitAjaxSearch,
   },
 
   data () {
     return {
       noImage: false,   
-      size: 'large',
+      size: 800,
       color: 'black-and-white',
       nonprofit: null,
-      counterId: 0,
+      counterId: null,
       message: '',
-      selectedTheme: {
-        backgroundImageId: null,
-        colorId: 1,
-      },
+      chooserSelectedTheme: null,
     }
   },
 
   methods: {
-    setSelectedTheme (theme) {
-      if (theme.backgroundImageId === null) {
-        this.noImage = true
-      } else {
-        this.noImage = false
-      }
-
-      this.selectedTheme = theme
+    setSelectedThemeIndex (index, theme) {
+      this.chooserSelectedTheme = theme
     },
 
     setNonprofit (value) {
@@ -133,11 +122,28 @@ export default {
       }
     },
 
+    selectedTheme () {
+      if (this.chooserSelectedTheme) {
+        return this.chooserSelectedTheme
+      } else {
+        return this.themes.find(theme => theme.id == this.widget.themeId)
+      }
+    },
+
     ...mapState({
       widget (state) {
         return state.counterwidgets.widgets.find(widget => widget.id == this.widgetId)
       },
-      sizes: state => state.counterwidgets.sizes,
+
+      counter (state) {
+        const id = this.counterId !== null ? this.counterId : this.widget.counterId
+
+        return state.counterwidgets.counters.find(counter => counter.id == id)
+      },
+
+      themes (state) {
+        return state.counterwidgets.themes
+      },
     }),
   },
 }
@@ -172,13 +178,23 @@ export default {
     .field {
       width: 100%;
       margin-top: 1em;
+			display: flex;
+			align-items: center;
+			padding-left: 2em;
+			padding-right: 2em;
     }
 
     &-label {
-      display: block;
+      display: inline-block;
+			min-width: 530px;
       font-weight: 700 !important;
-      margin-bottom: .5em;
     }
+
+		.control,
+		.counters-select__wrap {
+			flex-grow: 1;
+			flex-shrink: 1;
+		}
 
     .button-container {
       width: 100%;

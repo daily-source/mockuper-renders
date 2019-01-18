@@ -83,56 +83,43 @@ const state = {
     'poor-kid.jpg',
   ],
 
-  // A background image ID of null means that no background image is to be displayed
-  // One background image is to one color only for now.
+  // This is a combination of a color and a background image.
+  // Uses the index of the in the array above for now.
+  themes: [
+    {
+      id: 1,
+      colorId: 0,
+      backgroundImageId: 0,
+    },
+    {
+      id: 2,
+      colorId: 0,
+      backgroundImageId: 1,
+    },
+    {
+      id: 3,
+      colorId: 1,
+      backgroundImageId: 2,
+      logoPosition: 'right',
+    },
+    {
+      id: 4,
+      colorId: 1,
+      backgroundImageId: null,
+    },
+  ],
+
   counters: [
     {
       id: 1,
       title: 'Deaths Now Occuring From Malnutrition and Dirty Water:',
       rate: 3,
-      themes: [
-        {
-          colorId: 0,
-          backgroundImageId: 0,
-        },
-        {
-          colorId: 0,
-          backgroundImageId: 1,
-        },
-        {
-          colorId: 1,
-          backgroundImageId: 2,
-          logoPosition: 'right',
-        },
-        {
-          colorId: 1,
-          backgroundImageId: null,
-        }
-      ],
     },
     {
       id: 2,
       title: 'Deaths Now Occuring From Extreme Poverty:',
       rate: 1327,
-      themes: [
-        {
-          colorId: 0,
-          backgroundImageId: 0,
-        },
-        {
-          colorId: 0,
-          backgroundImageId: 1,
-        },
-        {
-          colorId: 1,
-          backgroundImageId: 2,
-        },
-        {
-          colorId: 1,
-          backgroundImageId: null,
-        }
-      ],
-    }
+    },
   ],
 }
 
