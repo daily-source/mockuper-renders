@@ -34,9 +34,9 @@
     <section class="section">
         <h2 class='has-text-centered'>Create your own counter page to share</h2>
         <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
-        <!-- <counter-page-creator /> -->
+        <counter-page-creator />
     </section>
-    <SharedFooter></SharedFooter>
+    <shared-footer />
   </div>
 </template>
 

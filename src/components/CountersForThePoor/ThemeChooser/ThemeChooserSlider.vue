@@ -7,17 +7,21 @@
 		>
 			<div 
 				class="featured-image-chooser__slide"
-				v-for='(image, index) in images'
-				@click='selectSlide(index)'
-				:key='index'
+				v-for='(theme, index) in imageOpts'
+				@click='selectSlide(index, theme)'
+				:key='theme.id'
 			>
 				<img 
-					:src="getImageSrc(image)"
+					:src="theme.imageSrc"
 					class='featured-image-chooser__img'
 					alt="Featured Image Chooser"
 				>
 			</div>
-			<div class='featured-image-chooser__slide featured-image-chooser__slide--no-img'>
+			<div 
+				class='featured-image-chooser__slide featured-image-chooser__slide--no-img'
+				v-for='theme in noImageOpts'
+				:key='theme.id'
+			>
 				<p class='featured-image-chooser__no-img-text'>No image</p>
 			</div>
 		</flickity>
@@ -25,50 +29,50 @@
 </template>
 
 <script>
-import imageSrc from '@/util/imageSrc'
+import themeChooser from '@/util/themeChooser'
+
 import Flickity from '@/components/plugins/Flickity'
 
 export default {
-  name: 'FeaturedImageChooser',
+  name: 'ThemeChooserSlider',
+
+	mixins: [themeChooser],
 
   components: {
     Flickity,
   },
 
-  mixins: [imageSrc],
-
-  props: {
-    images: {
-      type: Array,
-      default: () => {
-        return []
-      },
-		},
-  },
-
 	data () {
 		return {
 			flickity: null,
-			selected: 0,
-			imgFolderName: 'widget-imgs/thumbnails/',
 		}
 	},
 
   methods: {
+		/**
+		 * Triggers when Flickity has been successfully initialized/
+		 */
   	flickityInitialized (flickity) {
 			if (flickity) {
 				this.flickity = flickity
-				this.flickity.on('settle', this.sliderChanged)
+				this.flickity.on('settle', )
 			}
 		},
 		
-		sliderChanged (index) {
+		/**
+		 * Triggers when slider has changed/settled
+		 */
+		sliderChanged (index, theme) {
 			this.selected = index
 			this.$emit('change', index, this.flickity)
 		},
 
-		selectSlide (index) {
+		/**
+		 * Select a slide using Flickity's API
+		 */
+		selectSlide (index, theme) {
 			if (this.flickity) {
+				this.setSelectedIndex(theme.id)
 				this.flickity.select(index)
 			}
 		},
@@ -81,7 +85,7 @@ export default {
         cellAlign: 'center',
 				draggable: false,
       }
-    }
+		},
   },
 }
 </script>

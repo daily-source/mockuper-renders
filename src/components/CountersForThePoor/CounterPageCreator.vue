@@ -34,7 +34,7 @@
 				</div>
         <div class="counter-page-creator__ft-img-chooser counter-page-creator__columns">
 					<p class='has-text-weight-bold has-text-centered'>Choose an image to use as a background <br> <small class='has-text-weight-normal'>Select an image by clicking on the next and previous arrows. The image on the center is selected.</small></p>
-					<featured-image-chooser 
+					<theme-chooser
             :counter-id='widget.counterId'
             type='slider'
 						@change='handleSliderChange'
@@ -54,7 +54,7 @@ import { mapState, mapActions } from 'vuex'
 import imageSrc from '@/util/imageSrc'
 import NonprofitAjaxSearch from '@/components/general/NonprofitAjaxSearch'
 
-import FeaturedImageChooser from '@/components/CountersForThePoor/FeaturedImageChooser'
+import ThemeChooser from '@/components/CountersForThePoor/ThemeChooser'
 import Flickity from '@/components/plugins/Flickity'
 
 export default {
@@ -62,7 +62,7 @@ export default {
 
   components: {
     NonprofitAjaxSearch,
-    FeaturedImageChooser,
+    ThemeChooser,
     Flickity,
   },
 
