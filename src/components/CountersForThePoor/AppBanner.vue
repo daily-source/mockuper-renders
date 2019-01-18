@@ -76,7 +76,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 650px;
+    height: 95vh;
     margin-bottom: 2rem;
   }
 
@@ -90,12 +90,12 @@ export default {
     bottom: 30px;
 
     .counter-widget {
-      max-width: 570px;
+			max-width: 600px;
       padding:  1.5rem 2rem;
       // background-color: rgba(#030000, .28);
       // border: 2px solid $primary;
       border-radius: 4px;
-      margin-left: 0;
+			margin-left: 0;
     }
   }
 </style>
