@@ -1,28 +1,29 @@
 <template>
-	<div class='feature-image-chooser--slider'>
+	<div class='theme-chooser--slider'>
 		<flickity
-			class='featured-image-chooser__slider'
+			class='theme-chooser__slider'
 			:options='sliderOptions'
 			@init='flickityInitialized'
 		>
 			<div 
-				class="featured-image-chooser__slide"
+				class="theme-chooser__slide"
 				v-for='(theme, index) in imageOpts'
 				@click='selectSlide(index, theme)'
 				:key='theme.id'
 			>
 				<img 
 					:src="theme.imageSrc"
-					class='featured-image-chooser__img'
+					class='theme-chooser__img'
 					alt="Featured Image Chooser"
 				>
 			</div>
 			<div 
-				class='featured-image-chooser__slide featured-image-chooser__slide--no-img'
-				v-for='theme in noImageOpts'
+				class='theme-chooser__slide theme-chooser__slide--no-img'
+				v-for='(theme, index) in noImageOpts'
+				@click='selectNoImageSlide(index, theme)'
 				:key='theme.id'
 			>
-				<p class='featured-image-chooser__no-img-text'>No image</p>
+				<p class='theme-chooser__no-img-text'>No image</p>
 			</div>
 		</flickity>
 	</div>
@@ -55,7 +56,6 @@ export default {
   	flickityInitialized (flickity) {
 			if (flickity) {
 				this.flickity = flickity
-				this.flickity.on('settle', )
 			}
 		},
 		
@@ -76,6 +76,15 @@ export default {
 				this.flickity.select(index)
 			}
 		},
+
+		/**
+		 * Select a No Image slide using Flickity's API
+		 */
+		selectNoImageSlide (index, theme) {
+			const slideIndex = this.noImageStartIndex + index
+
+			this.selectSlide(slideIndex, theme)
+		},
 	},
 
   computed: {
@@ -86,12 +95,23 @@ export default {
 				draggable: false,
       }
 		},
+
+		/**
+		 * Start index of No Image slides.
+		 * 
+		 * Since we push our No Image Slides after the Image Slides,
+		 * we compute the start index of our No Image slides to the length of 
+		 * our image slides.
+		 */
+		noImageStartIndex () {
+			return this.imageOpts.length
+		},
   },
 }
 </script>
 
 <style lang="scss" scoped>
-  .featured-image-chooser {
+  .theme-chooser {
     margin-left: auto;
     margin-right: auto;
 
@@ -117,12 +137,12 @@ export default {
 
 			&.is-selected {
 				border: 2px solid $primary;
-         .featured-image-chooser__img {
+         .theme-chooser__img {
            filter: brightness(1);
          }
 
 				 &:hover {
-					.featured-image-chooser__slide-overlay {
+					.theme-chooser__slide-overlay {
 						opacity: 1;	
 					} 
 				}
