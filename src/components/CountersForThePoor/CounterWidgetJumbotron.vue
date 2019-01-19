@@ -137,8 +137,11 @@ export default {
 	position: relative;
 
 	&--no-img {
-		min-height: 450px;
-
+		min-height: 505px;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		
 		.counter-widget-jumbotron__widget {
 			background-color: transparent;
 		}
