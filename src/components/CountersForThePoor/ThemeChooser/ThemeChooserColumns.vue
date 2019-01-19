@@ -1,29 +1,32 @@
 <template>
-  <div class='featured-image-chooser--columns columns'>
+  <div class='theme-chooser--columns columns'>
     <div 
-      class='featured-image-chooser__column column'
+      class='theme-chooser__column column'
       v-for='theme in imageOpts'
       @click='setSelectedIndex(theme.id)'
       :key='theme.id'
     >
       <div 
-        :class='["featured-image-chooser__img-container", {"featured-image-chooser__img-container--selected": selectedIndex == theme.id}]'
+        :class='["theme-chooser__img-container", {"theme-chooser__img-container--selected": selectedIndex == theme.id}]'
       >
         <img
           :src='theme.imageSrc' 
-          class='featured-image-chooser__img'
+          class='theme-chooser__img'
           alt='Featured Image'
         >
       </div>
     </div>
     <div 
-      class='featured-image-chooser__column featured-image-chooser__column--no-img column'
+      class='theme-chooser__column theme-chooser__column--no-img column'
       v-for='theme in noImageOpts'
       @click='setSelectedIndex(theme.id)'
       :key='theme.id'
     >
       <div 
-        :class='["featured-image-chooser-no-img__text", {"featured-image-chooser-no-img__text--selected": selected == null}]'
+        :class='[
+          "theme-chooser-no-img__text", 
+          {"theme-chooser-no-img__text--selected": selectedIndex == theme.id}
+        ]'
       >
         No Image
       </div>
@@ -84,7 +87,7 @@ export default {
   }
 }
 
-.featured-image-chooser {
+.theme-chooser {
   &__column {
     cursor: pointer;
     display: flex;
