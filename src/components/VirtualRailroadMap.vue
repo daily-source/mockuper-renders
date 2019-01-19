@@ -64,7 +64,7 @@ import { mapState, mapGetters } from 'vuex'
 import mapStyles from '@/mapStyles'
 import { curvedLineGenerate } from 'LocalComponents/CurvedPolyline'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
-import UserPopupWindow from 'LocalComponents/UserPopUpWindow/UserPopupWindow.vue'
+import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
 
 export default {
 	name: 'VirtualRailroadMap',

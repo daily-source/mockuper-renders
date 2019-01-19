@@ -11,7 +11,7 @@
 import { mapState } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
-import VirtualRailroadMap from 'LocalComponents/Map'
+import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
