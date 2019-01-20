@@ -16,8 +16,8 @@
 				:edit='edit'
 			/>
 		</div>
-		<div class='counter-widget-jumbotron__img-container'>
-			<img :src='bgImage' class='counter-widget-jumbotron__img' alt='Counter Widget Banner Image' v-if='bgImage'>
+		<div class='counter-widget-jumbotron__img-container' v-if='bgImage'>
+			<img :src='bgImage' class='counter-widget-jumbotron__img' alt='Counter Widget Banner Image'>
 		</div>
 	</div>
 </template>
@@ -35,7 +35,7 @@ export default {
 		CounterWidget,
 	},
 
-	props: {
+	props: {		
 		widgetId: {
 			type: Number,
 			required: true,
@@ -137,7 +137,6 @@ export default {
 	position: relative;
 
 	&--no-img {
-		min-height: 505px;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -172,6 +171,8 @@ export default {
 		img {
 			width: 100%;
 			display: block;
+			max-width: initial;
+			object-position: right center;
 		}
 	}
 
@@ -250,6 +251,7 @@ export default {
 
 	.counter-widget-jumbotron__widget {
 		position: static !important;
+		max-width: 100%;
 	}
 
 	.counter-widget {
@@ -261,7 +263,7 @@ export default {
 		margin-right: auto;
 		padding-left: 0 !important;
 		padding-right: 0 !important;
-		padding-top: 0 !important;
+		padding-top: 1em !important;
 		padding-bottom: 0 !important;
 	}
 

@@ -15,42 +15,48 @@
           <form @submit.prevent='() => false'>
             <div class="field">
               <label class='widget-customizer__fields-label' for="size"> Choose the size of your widget: </label>
-              <div class="control">
+              <div class="control field-input">
                 <select-size 
                   v-model='size'
                 />
+              </div>
+            </div>
+            <div class="field">
+              <label class='widget-customizer__fields-label'>Change your title: </label>
+              <div class='field-input'>
+                <counter-select 
+                  :counter-id='widget.counterId'
+                  v-model='counterId'
+                />
+              </div>
+            </div>
+            <div class='field'>
+              <label class='widget-customizer__fields-label' for='message'>Add a custom message (optional):</label>
+              <div class='field-input'>
+                <input 
+                  type='text' 
+                  class='input'
+                  placeholder='Type a message here and it will show in the widget'
+                  id='message'
+                  :maxlength="55"
+                  v-model='message'
+                >
+              </div>
+            </div>
+            <div class="field">
+              <label class='widget-customizer__fields-label'>Pick a nonprofit your widget will raise money for: </label>
+              <div class='field-input'>
+                <nonprofit-ajax-search
+                  :default-value='widget.nonprofit' 
+                  :placeholder='"Type a nonprofit to search..."'
+                  @selected='setNonprofit'
+                />                
               </div>
             </div>
             <div class="widget-customizer__featured-images-wrapper">
               <p class='has-text-weight-bold'>Click on the image you want to use: </p>
               <theme-chooser 
                 @change='setSelectedThemeIndex'
-              />
-            </div>
-            <div class="field">
-              <label class='widget-customizer__fields-label'>Customize your title: </label>
-              <counter-select 
-                :counter-id='widget.counterId'
-                v-model='counterId'
-              />
-            </div>
-            <div class='field'>
-              <label class='widget-customizer__fields-label' for='message'>Add a custom message (optional):</label>
-              <input 
-                type='text' 
-                class='input'
-                placeholder='Type a message here and it will show in the widget'
-                id='message'
-                :maxlength="55"
-                v-model='message'
-              >
-            </div>
-            <div class="field">
-              <label class='widget-customizer__fields-label'>Choose a nonprofit that your widget will generate donations for: </label>
-              <nonprofit-ajax-search
-                :default-value='widget.nonprofit' 
-                :placeholder='"Type a nonprofit to search..."'
-                @selected='setNonprofit'
               />
             </div>
             <div class="button-container has-text-right">
@@ -93,7 +99,11 @@ export default {
   data () {
     return {
       noImage: false,   
-      size: 800,
+      size: {
+        label: 'Large',
+        width: 800,
+				className: 'large',
+      },
       color: 'black-and-white',
       nonprofit: null,
       counterId: null,
@@ -180,14 +190,18 @@ export default {
       margin-top: 1em;
 			display: flex;
 			align-items: center;
-      padding-right: 2em;
-      padding-left: 2em;
     }
 
     &-label {
       display: inline-block;
-			min-width: 530px;
+			min-width: 40%;
       font-weight: 700 !important;
+    }
+
+    .field-input {
+      max-width: 600px;
+      flex-grow: 1;
+      flex-shrink: 1;
     }
 
 		.control,
@@ -212,6 +226,11 @@ export default {
     margin-right: -.75rem;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .widget-customizer__featured-images-wrapper {
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .widget-customizer__images {

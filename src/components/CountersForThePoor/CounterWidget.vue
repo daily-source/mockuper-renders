@@ -36,7 +36,7 @@
       </p>
     </div>
     <div class='counter-widget__additional-details'>
-      <div class='counter-widget__nonprofit-details' v-if='nonprofit.NAME'>
+      <div class='counter-widget__nonprofit-details' v-if='edit || nonprofit.NAME'>
         <p>Donations from this widget go to the nonprofit: <span class='has-text-weight-bold'>{{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</span></p>
       </div>
       <div class='counter-widget__button-container'>
@@ -113,7 +113,7 @@ export default {
     },
 
     getTimeNow () {
-      return moment().format('MMMM D, YYYY h:mm:ss A') 
+      return moment().format('MMMM D, YYYY    h:mm:ss A') 
     },
 
     getTimeDifference (timeA, timeB, unit='seconds') {
@@ -301,9 +301,9 @@ export default {
     text-transform: capitalize;
     max-width: 80%;
 
-    @include fullhd {
-      max-width: 100%;
-    }
+		@include fullhd {
+			max-width: 95%;
+		}
   }
 }
 
@@ -350,18 +350,23 @@ export default {
     }
 
     .counter-widget__counters {
-      flex-basis: 65%;
+      flex-basis: 50%;
       flex-shrink: 0;
       flex-grow: 1;
-      max-width: 65%;
+      max-width: 50%;
       margin-bottom: 0;
+
+      @include fullhd {
+        flex-basis: 60%;
+        max-width: 60%;
+      }
     }
 
     .counter-widget__title {
-      font-size: 1.375rem;
+      font-size: 1.5rem;
 
       @include fullhd {
-        font-size: 1.75rem;
+        font-size: 1.875rem;
       }
     }
   }

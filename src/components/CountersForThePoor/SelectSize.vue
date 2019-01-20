@@ -9,7 +9,7 @@
       <option 
         v-for='(size, index) in sizes' 
         :key='index' 
-        :value="size.width"
+        :value="index"
       >
         {{ size.label + ' (' + size.width + 'px)' }}
       </option>
@@ -25,18 +25,24 @@ export default {
 
   inheritAttrs: false,
 
-  data () {
-    return {
-      size: this.value,
-    }
-  },
+	data () {
+		return {
+			selectedIndex: 'large',
+		}
+	},
 
   computed: {
-    listeners() {
+    selectedSize () {
+      return this.sizes[this.selectedIndex] 
+    },
+
+    listeners () {
       return {
         ...this.$listeners,
-        input: event => {
-          this.$emit('input', event.target.value)
+        change: event => {
+          this.selectedIndex = event.target.value
+					console.log(this.selectedSize)
+          this.$emit('input', this.selectedSize)
         },
       }
     },

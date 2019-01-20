@@ -597,6 +597,13 @@ body {
 .mlk-banner {
   .counter-widget-jumbotron__widget {
     margin-top: 15%;
+    margin-left: 4em !important;
+  }
+
+  .counter-widget__button-container {
+    text-align: center;
+    max-width: 50%;
+    flex-basis: 50%;
   }
 }
 

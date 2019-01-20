@@ -55,14 +55,17 @@ const state = {
     'large': {
       label: 'Large',
       width: 800,
+			className: 'large',
     },
     'medium': {
       label: 'Medium',
       width: 500,
+			className: 'medium',
     },
     'small': {
       label: 'Small',
       width: 300,
+			className: 'small',
     }
   },
 
@@ -84,22 +87,26 @@ const state = {
       id: 1,
       colorId: 0,
       backgroundImageId: 0,
+      name: 'statue-of-liberty',
     },
     {
       id: 2,
       colorId: 0,
       backgroundImageId: 1,
+      name: 'mlk',
     },
     {
       id: 3,
       colorId: 1,
       backgroundImageId: 2,
       logoPosition: 'right',
+      name: 'kid',
     },
     {
       id: 4,
       colorId: 1,
       backgroundImageId: null,
+      name: 'no-image-primary'
     },
   ],
 

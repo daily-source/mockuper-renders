@@ -1,0 +1,41 @@
+.counter-widget-jumbotron--statue-of-liberty {
+  .counter-widget-jumbotron__img {
+    max-width: initial !important;
+    width: 115% !important;
+  }
+}
+
+.mlk-banner {
+  .counter-widget-jumbotron__widget {
+    margin-top: 18%;
+  }
+}
+
+.counter-widget-edit--medium {
+	.counter-widget-jumbotron--no-img {
+		.counter-widget-jumbotron__logo-container {
+			max-width: 150px !important;
+		}
+
+		.counter-widget__title {
+			max-width: 100% !important;
+			font-size: 1rem !important;
+		}
+
+		.counter-widget {
+			&__counters {
+				flex-basis: 75% !important;
+				max-width: 75% !important; 
+				font-size: .75rem !important;
+			}
+
+			&__additional-details {
+				font-size: .75rem;
+
+				p {
+					font-size: 1em;
+				}
+			}
+		}
+	}
+}
