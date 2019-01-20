@@ -1,31 +1,34 @@
 <template>
-  <div class='intro-video'>
-    <youtube 
-      :video-id='videoId'
-      ref='youtube'
-      height='100%'
-      width='100%'
-    />
-    <div class='intro-video__controls'>
-      <button
-        @click='hideVideo' 
-        class="close-video button is-text is-paddingless"
-      >
-        Skip intro &raquo;
-      </button>
-      <div class='intro-video__checkbox'>
-        <form action='#'>
-          <label class="checkbox">
-            <input 
-              v-model='dontShowVideo'
-              type="checkbox" 
-            >
-            <span>Don't show video again. <br /> (Cookies must be active)</span>
-          </label>
-        </form>
-      </div>
-    </div>
-  </div>
+	<transition name='video-fade'>
+		<div 
+			class='intro-video'
+			v-show='isShown'
+		>
+			<youtube 
+				:video-id='videoId'
+				ref='youtube'
+				height='100%'
+				width='100%'
+			/>
+			<div class='intro-video__controls'>
+				<button
+					@click='onSkipClicked' 
+					class="close-video button is-text is-paddingless"
+				>
+					Skip intro &raquo;
+				</button>
+				<div class='intro-video__checkbox'>
+					<label class="checkbox">
+						<input 
+							v-model='dontShowVideo'
+							type="checkbox" 
+						>
+						<span>Don't show video again. <br /> (Cookies must be active)</span>
+					</label>
+				</div>
+			</div>
+		</div>
+	</transition>
 </template>
 
 <script>
@@ -38,20 +41,62 @@ export default {
     return {
       videoId: 'xTWcpE_rdVo',
       dontShowVideo: false,
+		  sessionStorageKey: 'dontShowVideo',
+			example: false,
     }
   },
 
+	created () {
+		this.dontShowVideo = this.getSessionStorageKey()
+
+		if (this.dontShowVideo) {
+			this.hideVideo()
+		}
+	},
+
   methods: {
-    ...mapActions({
-      hideVideo: 'toggleIsPlaying'
-    }),
+		/**
+		 * Handles the Skip button clicked event
+		 */
+		onSkipClicked () {
+			if (this.player) {
+				this.player.stopVideo()
+				this.hideVideo()
+			}
+		},
+
+		/**
+		 * Gets the session 'dontShowVideo' session key
+		 */
+		getSessionStorageKey () {
+			return sessionStorage.getItem(this.sessionStorageKey)
+		},
+		
+		...mapActions({
+			hideVideo: 'video/hideVideo'
+		}),
   },
 
   computed: {
+		player () {
+			return this.$refs.youtube.player
+		},
+
     ...mapState({
-      isPlaying: state => state.video.isPlaying
+      isPlaying: state => state.video.isPlaying,
+			isShown: state => state.video.isShown,
     }),
   },
+
+	watch: {
+		dontShowVideo (value) {
+			if (value) {
+				sessionStorage.setItem(this.sessionStorageKey, value)
+			} else {
+				sessionStorage.removeItem(this.sessionStorageKey)
+			}
+		},
+	},
 }
 </script>
 
@@ -107,5 +152,13 @@ export default {
       }
     }
   }
+}
+
+.video-fade-enter-active, .video-fade-leave-active {
+	transition: opacity .2s ease;
+}
+
+.video-fade-enter, .video-fade-leave-to {
+	opacity: 0;
 }
 </style>

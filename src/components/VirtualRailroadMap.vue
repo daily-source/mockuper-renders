@@ -44,6 +44,12 @@
 				/>
 			</GmapMap>
 		</div>
+		<div 
+			class='call-to-action'
+			v-if='showCallToAction'
+		>
+			<p class='has-text-centered is-marginless'>Join <a href="#">now</a> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
+		</div>
 		<div class='legends'>
 			<div class='container'>
 				<p>
@@ -87,19 +93,21 @@ export default {
 			selectedUser: null,
 			selectedUserNonprofits: null,
 			polylines: [],
+			callOutInterval: 180000,
+			showCallToAction: false,
 		}
 	},
 
 	mounted () {
-		navigator.geolocation.getCurrentPosition(
-			({coords}) => {
-				this.setUserLocation(coords.latitude, coords.longitude)
-			}
-		)
-
 		this.$refs.gmap.$mapPromise.then((map) => {
 			map.mapTypes.set(this.mapTypeId, this.customMapType)
 		})
+
+		setTimeout(() => {
+			this.getCurrentUserPosition()
+			this.showCallToAction = true
+			console.log('something')
+		}, this.callOutInterval)
 	},
 
 	methods: {
@@ -108,6 +116,14 @@ export default {
 				lat,
 				lng,
 			}
+		},
+
+		getCurrentUserPosition () {
+			navigator.geolocation.getCurrentPosition(
+				({coords}) => {
+					this.setUserLocation(coords.latitude, coords.longitude)
+				}
+			)
 		},
 
 		handleMapClicked () {
@@ -238,5 +254,10 @@ export default {
 	img {
 		vertical-align: middle;
 	}
+}
+
+.call-to-action {
+	padding-top: 1.25em;
+	padding-bottom: 0;
 }
 </style>

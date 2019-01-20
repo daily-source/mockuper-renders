@@ -40,7 +40,7 @@
                 </a>
               </li>
               <li class='nav-item'>
-                <a href='sign-up' class='nav__link'>
+                <a @click.stop.prevent='showVideo(true)' href='#' class='nav__link'>
                   View Intro 
                 </a>
               </li>
@@ -53,8 +53,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'AppHeader',
+
+	methods: {
+		...mapActions({
+			showVideo: 'video/showVideo',
+		}),
+	}
 }
 </script>
 
@@ -83,3 +91,4 @@ export default {
     padding-right: .5em;
   }
 </style>
+
