@@ -16,7 +16,6 @@
 				</div>
 			</div>
 		</section>
-		<virtual-railroad-map />
 		<shared-footer />
   </div>
 </template>

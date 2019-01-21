@@ -6,27 +6,23 @@
 				:center='{lat: 32.33888927939217, lng: 6.1015625}'
 				:zoom='2'
 				:mapTypeId='mapTypeId'
-				@click='handleMapClicked'
+				@click='onMapClicked'
 				:options='google && mapOptions'
 				ref='gmap'
 			>
-				<GmapMarker
-					v-if='userPosition'
-					:position='userPosition'
-				/>
-				<GmapMarker
-					v-for='(user, index) in users'
+				<GmapMarker 
+					v-for='(user, index) in validUserMarkers'
 					:key='index'
-					:position='{lat: parseFloat(user.latitude), lng: parseFloat(user.longitude)}'
-					:icon='require("@/assets/img/light_bulb_16.png")'ue
+					:position='generatePosition(user.latitude, user.longitude)'
+					:icon='require("@/assets/img/light_bulb_16.png")'
 					@click='setSelectedUser(user)'
 				/>
 				<GmapMarker
-					v-for='(nonprofit, index) in nonprofits'
+					v-for='(nonprofit, index) in validNonprofitMarkers'
 					:key='`nonprofit-${index}`'
-					:position='{lat: parseFloat(nonprofit.latitude), lng: parseFloat(nonprofit.longitude)}'
+					:position='generatePosition(nonprofit.latitude, nonprofit.longitude)'
 					:icon='require("@/assets/img/star_16.png")'
-				/>
+				/> 
 				<PolylineAnimatedSymbol
 					v-for='(nonprofit, index) in selectedUserNonprofits'
 					:key='`userNonprofit-${index}`'
@@ -37,24 +33,17 @@
 				<UserPopupWindow 
 					v-if='selectedUser'
 					:user='selectedUser'
-					@seeTracksClicked='seeTracks'
+					@seeTracksClicked='onSeeTracksClicked'
 					@previousViewClicked='setSelectedUser(null)'
 					@closeButtonClicked='setSelectedUser(null)'
 				/>
 			</GmapMap>
-		</div>
-		<div 
-			class='call-to-action'
-			v-if='showCallToAction'
-		>
-			<p class='has-text-centered is-marginless'>Join <a href="#">now</a> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
 		</div>
 	</div>
 </template>
 
 <script>
 import { gmapApi } from 'vue2-google-maps'
-import { mapState, mapGetters } from 'vuex'
 
 import mapStyles from '@/mapStyles'
 import { curvedLineGenerate } from 'LocalComponents/CurvedPolyline'
@@ -69,9 +58,43 @@ export default {
 		PolylineAnimatedSymbol,
 	},
 
+	props: {
+		/** 
+		 * The user markers to display on the map.
+		 */
+		users: {
+			type: Array,
+			required: false,
+			default: () => {
+				return []
+			}
+		},
+		
+		/** 
+		 * The nonprofit markers to display on the map.
+		 */
+		nonprofits: {
+			type: Array,
+			required: false,
+			default: () => {
+				return [] 
+			},
+		},
+		
+		/** 
+		 * User-defined markers to display on the map.
+		 */
+		markers: {
+			type: Array,
+			required: false,
+			default: () => {
+				return []
+			}
+		},
+	},
+
 	data () {
 		return {
-			userPosition: null,
 			polylineOptions: {
 				geodesic: false,
 				strokeColor: '#4475b7',
@@ -80,10 +103,7 @@ export default {
 			},
 			mapTypeId: 'virtual-railroad',
 			selectedUser: null,
-			selectedUserNonprofits: null,
 			polylines: [],
-			callOutInterval: 180000,
-			showCallToAction: false,
 		}
 	},
 
@@ -91,46 +111,32 @@ export default {
 		this.$refs.gmap.$mapPromise.then((map) => {
 			map.mapTypes.set(this.mapTypeId, this.customMapType)
 		})
-
-		setTimeout(() => {
-			this.getCurrentUserPosition()
-			this.showCallToAction = true
-			console.log('something')
-		}, this.callOutInterval)
 	},
 
 	methods: {
-		setUserLocation (lat = 0, lng = 0) {
-			this.userPosition = {
-				lat,
-				lng,
-			}
-		},
-
-		getCurrentUserPosition () {
-			navigator.geolocation.getCurrentPosition(
-				({coords}) => {
-					this.setUserLocation(coords.latitude, coords.longitude)
-				}
-			)
-		},
-
-		handleMapClicked () {
-			console.log('clicked')
+		/** 
+		 * Handle on Google Map clicked events
+		 */
+		onMapClicked () {
 			this.setSelectedUser(null)
 		},
 
+    /** 
+		 * Sets the selected user.
+		 *
+		 * @param {Object} user
+		 */
 		setSelectedUser (user) {
 			this.selectedUser = user
-
-			if (user) {
-				this.selectedUserNonprofits = this.getUserNonprofits(user.id)
-			} else {
-				this.selectedUserNonprofits = null
-				this.polylines = []
-			}
 		},
 
+		/** 
+		 * Generates a User to Nonprofit polyline path.
+		 *
+		 * @param {Object} nonprofit
+		 * 
+		 * @returns {Array} Array of points
+		 */
 		setUserNonprofitPath(nonprofit) {
 			return curvedLineGenerate({
 				latStart: this.selectedUser.latitude, 
@@ -140,10 +146,11 @@ export default {
 			})		
 		},
 
-		seeTracks () {
-			console.log('something')
+		/** 
+		 * Handle 'See Tracks' clicked event
+		 */
+		onSeeTracksClicked () {
 			this.polylines.forEach(polyline => {
-				console.log(polyline)
 				polyline.animateCircle()
 			})
 		},
@@ -151,15 +158,57 @@ export default {
 		onPolylineCreate (polyline) {
 			this.polylines.push(polyline)
 		},
+
+		/** 
+		 * Generate a position object.
+		 *
+		 * @param {(string|number)} lat Latitude
+		 * @param {(string|number)} lng Longitude
+		 *
+		 * @returns {Object} Returns a promise object
+		 */
+		generatePosition (lat, lng) {
+			return {
+				lat: parseFloat(lat),
+				lng: parseFloat(lng),
+			}
+		}
 	},
 
 	computed: {
+		/**
+		 * The Google map API instance.
+		 *
+		 * We need this in order to access the google object on our code.
+		 */
 		google: gmapApi,
 
+		/**
+		 * We filter out the `users` prop to make sure to display markes only
+		 * with a position prop.
+		 */
+		validUserMarkers () {
+			return this.users.filter(user => user.latitude && user.longitude)
+		},
+
+		/**
+		 * We filter out the `nonprofits` prop to make sure to display markes only
+		 * with a position prop.
+		 */
+		validNonprofitMarkers () {
+			return this.nonprofits.filter(nonprofit => nonprofit.latitude && nonprofit.longitude)
+		},
+
+		/** 
+	   * The Custom Map Type
+		 */
 		customMapType() {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
 		},
 
+		/** 
+		 * Custom Map Control options
+		 */
 		mapTypeControlOptions() {
 			return {
 				mapTypeIds: [
@@ -169,7 +218,12 @@ export default {
 				]
 			}
 		},
-
+		
+		/** 
+		 * Google Map options.
+	   *
+		 * TODO: Make options as a prop and then compute the mapoptions using default.
+		 */
 		mapOptions () {
 			return {
 				mapTypeControlOptions: this.mapTypeControlOptions,
@@ -181,14 +235,18 @@ export default {
 			}
 		},
 
-		...mapState({
-			users: state => state.users.data,
-			nonprofits: state => state.nonprofits.data,
-		}),
+		/** 
+		 * Nonprofits of the selected user.
+		 */
+		selectedUserNonprofits () {
+			if (this.selectedUser) { 
+				return this.selectedUser.nonprofits.map(userNonprofit => {
+					return this.nonprofits.find(nonprofit => nonprofit.id === userNonprofit)
+				})	
+			}
 
-		...mapGetters({
-			getUserNonprofits: 'users/getUserNonprofits'
-		})
+			return []
+		},
 	},
 }
 </script>
@@ -219,34 +277,5 @@ export default {
 	width: 80px;
 	height: 80px;
 	object-fit: cover;
-}
-
-.virtual-railroad-map-section {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-
-	.virtual-railroad-map__intro {
-		font-size: 16px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
-
-.legends {
-	padding-top: 1.25em;
-	padding-bottom: 1.25em;
-
-	p:not(:last-of-type) {
-		margin-bottom: 1.25em;
-	}
-
-	img {
-		vertical-align: middle;
-	}
-}
-
-.call-to-action {
-	padding-top: 1.25em;
-	padding-bottom: 0;
 }
 </style>
