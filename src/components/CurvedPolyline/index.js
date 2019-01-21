@@ -51,8 +51,6 @@ export const curvedLineGenerate = (Options = {}) => {
 		lines.push(segments[y])
 	}
 
-	console.log(lines)
-
 	return lines
 }
 
