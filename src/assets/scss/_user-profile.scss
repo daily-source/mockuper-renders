@@ -1,0 +1,11 @@
+.user-profile {
+	&__heading {
+		font-weight: 700;
+
+		&--underline {
+			margin-bottom: .5em;
+			padding-bottom: .5em;
+			border-bottom: 1px solid #ddd;
+		}
+	}
+}
