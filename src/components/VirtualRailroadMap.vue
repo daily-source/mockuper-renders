@@ -22,7 +22,13 @@
 					:key='`nonprofit-${index}`'
 					:position='generatePosition(nonprofit.latitude, nonprofit.longitude)'
 					:icon='require("@/assets/img/star_16.png")'
-				/> 
+				/>
+				<GmapMarker
+					v-for='(marker, index) in validMarkers'
+					:key='`custom-marker-${index}`'
+					:position='marker.position'
+					:icon='marker.icon'
+				/>
 				<PolylineAnimatedSymbol
 					v-for='(nonprofit, index) in selectedUserNonprofits'
 					:key='`userNonprofit-${index}`'
@@ -172,7 +178,22 @@ export default {
 				lat: parseFloat(lat),
 				lng: parseFloat(lng),
 			}
-		}
+		},
+
+		/** 
+		 * Generate an icon from a marker object
+		 *
+		 * @param {Object} marker
+		 *
+     * @returns {string}
+		 */
+		generateMarkerIcon (marker) {
+			if (!marker.icon) {
+				return false
+			}
+
+			return marker.icon
+		},
 	},
 
 	computed: {
@@ -184,7 +205,7 @@ export default {
 		google: gmapApi,
 
 		/**
-		 * We filter out the `users` prop to make sure to display markes only
+		 * Filter out the `users` prop to make sure to display markes only
 		 * with a position prop.
 		 */
 		validUserMarkers () {
@@ -192,11 +213,19 @@ export default {
 		},
 
 		/**
-		 * We filter out the `nonprofits` prop to make sure to display markes only
+		 * Filter out the `nonprofits` prop to make sure to display markes only
 		 * with a position prop.
 		 */
 		validNonprofitMarkers () {
 			return this.nonprofits.filter(nonprofit => nonprofit.latitude && nonprofit.longitude)
+		},
+
+		/**
+		 * Filter out markers from the `markers` prop making sure that we display
+		 * markers that has a valid position property/
+		 */
+		validMarkers () {
+			return this.markers.filter(marker => marker.position)
 		},
 
 		/** 
@@ -251,7 +280,7 @@ export default {
 }
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'scoped>
 .map {
 	height: 500px;
 	max-width: 995px;

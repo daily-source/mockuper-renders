@@ -4,6 +4,7 @@
 			<virtual-railroad-map 
 				:users='users'	 
 				:nonprofits='nonprofits'
+				:markers='markers'
 			/>	
 		</div>
 		<div 
@@ -25,26 +26,80 @@ export default {
 
 	data () {
 		return {
-			callToActionTimer: 180000,
+			callToActionTimer: 1000,
 			showCallToAction: false,
+			userLocation: null,
 		}
 	},
 
 	mounted () {
-		setTimeout(() => {
-			this.showCallToAction = true
-		}, this.callToActionTimer)
+		this.startCallToActionTimer()
 	},
 	
 	components: {
 		VirtualRailroadMap,
 	},
 
+	methods: {
+		/** 
+		 * Start the timer to show the call to action
+		 */
+		startCallToActionTimer () {
+			setTimeout(() => {
+				this.showCallToAction = true
+				this.getUserLocation() 
+			}, this.callToActionTimer)
+		},
+
+		/**
+		 * Gets the user location using the HTML5 Geolocation API
+		 */
+		getUserLocation () {
+			navigator.geolocation.getCurrentPosition(this.setUserLocation)
+
+			return this.userLocation
+		},
+
+		/** 
+		 * Sets user location
+		 *
+		 * @param {Object} position
+		 */
+		setUserLocation (position) {
+			this.userLocation = position
+		},
+	},
+
 	computed: {
+		/** 
+		 * Custom markers to display on the map
+		 */
+		markers () {
+			let markers = []
+			if (this.userLocation) {
+				const userMarker = {
+					position: {
+						lat: this.userLocation.latitude,
+						lng: this.userLocation.longitude,
+					}
+				}
+
+				markers.push(userMarker)
+			}
+
+			return markers
+		},
+
 		...mapState({
 			users: state => state.users.data,
 			nonprofits: state => state.nonprofits.data,
 		}),
+	},
+
+	watch: {
+		userLocation () {
+			
+		},
 	},
 }
 </script>
