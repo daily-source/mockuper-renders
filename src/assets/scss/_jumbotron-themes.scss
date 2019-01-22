@@ -19,7 +19,6 @@
 
 		.counter-widget__title {
 			max-width: 100% !important;
-			font-size: 1rem !important;
 		}
 
 		.counter-widget {
@@ -37,5 +36,9 @@
 				}
 			}
 		}
+	}
+
+	.counter-widget {
+		transform: scale(.51) !important;
 	}
 }
