@@ -10,6 +10,7 @@
 						/>
 					</div>
 					<div class='column'>
+						<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
 						<user-supported-nonprofits 
 							:user='user'	
 						/>
@@ -17,11 +18,19 @@
 				</div>
 			</div>
 		</section>
-		<section class='user-about-section section' v-if='user.about'>
+		<section class='user-about-section user-section' v-if='user.about'>
 			<div class='container'>
 				<p class='user-about__about'>{{ user.about }}</p>
 			</div>
 		</section>
+		<section class='user-virtual-railroad-map-section user-section'>
+			<div class='container'>
+				<user-virtual-railroad-map 
+					:user='user'		
+				/>
+			</div>
+		</section>
+		<shared-footer />
 	</div>
 </template>
 
@@ -31,6 +40,8 @@ import { mapState } from 'vuex'
 import AppHeader from 'LocalComponents/AppHeader'
 import UserDetails from 'LocalComponents/User/UserDetails'
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
+import UserVirtualRailroadMap from 'LocalComponents/User/UserVirtualRailroadMap'
+import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
 	name: 'UserProfile',
@@ -39,6 +50,8 @@ export default {
 		AppHeader,
 		UserDetails,
 		UserSupportedNonprofits,
+		UserVirtualRailroadMap,
+		SharedFooter,
 	},
 
 	computed: {
@@ -54,3 +67,11 @@ export default {
 	},
 }
 </script>
+
+<style lang='scss' scoped>
+.user-section {
+	&:not(:last-child) {
+		padding-bottom: 1.5em;
+	}
+} 
+</style>

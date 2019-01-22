@@ -24,7 +24,7 @@
 					</div>
 					<div class='user-bio is-flex'>
 						<p class='user-bio__label has-text-weight-bold'>Location: </p>
-						<p>Sample location.</p>
+						<p>{{ user.location }}</p>
 					</div>
 				</div>
 				<button class='button is-primary'>Edit Profile</button>
