@@ -1,6 +1,5 @@
 <template>
 	<div class='user-nonprofits'>
-		<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits | Support</h4>
 		<div class='user-nonprofits__nonprofits-list-wrapper'>
 			<ul class='user-nonprofits-list'>
 				<li 
