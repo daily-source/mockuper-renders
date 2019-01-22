@@ -37,7 +37,7 @@
 					:options='polylineOptions'			
 				/>	
 				<UserPopupWindow 
-					v-if='selectedUser'
+					v-if='showUserPopupWindows && selectedUser'
 					:user='selectedUser'
 					@seeTracksClicked='onSeeTracksClicked'
 					@previousViewClicked='setSelectedUser(null)'
@@ -97,6 +97,15 @@ export default {
 				return []
 			}
 		},
+
+		/** 
+		 * Show user pop windows.
+		 */
+		showUserPopupWindows: {
+			type: Boolean,
+			required: false,
+			default: true,
+		},
 	},
 
 	data () {
@@ -116,6 +125,7 @@ export default {
 	mounted () {
 		this.$refs.gmap.$mapPromise.then((map) => {
 			map.mapTypes.set(this.mapTypeId, this.customMapType)
+			this.$emit('mapReady', map)
 		})
 	},
 
