@@ -19,7 +19,7 @@ module.exports = {
       // pass options to sass-loader
       sass: {
         // @/ is an alias to src/
-        data: ' @import "@/assets/scss/base.scss"; @import "@/xthon-core/lib/assets/scss/base.scss";',
+        data: '@import "@/assets/scss/base.scss"; @import "@/xthon-core/lib/assets/scss/base.scss";',
       },
     },
   },
