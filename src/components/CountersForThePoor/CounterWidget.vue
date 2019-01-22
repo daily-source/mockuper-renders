@@ -23,7 +23,7 @@
           <span class='counter-widget-counter__value has-text-weight-bold'>{{ getDeaths('year') | numberFormat }}  </span>
         </div>
         <div class="counter-widget__counter counter-widget__date-wrap">
-          <span class='counter-widget-counter__date'>{{ timeNow }}</span>
+					<span class='counter-widget-counter__date'>{{ date }} &nbsp; {{time}}</span>
         </div>
       </div>
     </div>
@@ -93,12 +93,11 @@ export default {
     return {
       imgFolderName: 'widget-imgs/',
       timeNow: '',
-      workingDate: new Date
+      workingDate: new Date,
     }
   },
 
   mounted () {
-    let now = new Date()
     this.timeNow = this.getTimeNow()
 
     this.updateTime()
@@ -112,8 +111,9 @@ export default {
       }, 1000)
     },
 
-    getTimeNow () {
-      return moment().format('MMMM D, YYYY    h:mm:ss A') 
+    getTimeNow (format = null) {
+			const dtFormat = format ? format : 'MMMM D, YYYY h:mm:ss A'
+      return moment().format(dtFormat) 
     },
 
     getTimeDifference (timeA, timeB, unit='seconds') {
@@ -123,7 +123,7 @@ export default {
     },
 
     getDeaths (span) {
-      const diff = this.getTimeDifference(this.timeNow, moment(this.workingDate).startOf(span))
+      const diff = this.getTimeDifference(this.timeNow, moment(this.timeNow).startOf(span))
 			const remainder = diff % this.widget.rate
 
 			let val
@@ -175,6 +175,14 @@ export default {
     counterId () {
       return (this.widgetData && this.widgetData.counterId) || this.widget.counterId
     },
+
+		date () {
+			return moment(this.timeNow).format('MMMM D, YYYY')
+		},
+
+		time () {
+			return moment(this.timeNow).format('h:mm:ss A')
+		},
 
     ...mapState({
       widget (state) {
