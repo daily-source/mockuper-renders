@@ -78,7 +78,7 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 // Override Bulma variables here
-//$success: red;
+$success: $color-emphasis;
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
