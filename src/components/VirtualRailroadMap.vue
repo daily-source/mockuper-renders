@@ -14,14 +14,14 @@
 					v-for='(user, index) in validUserMarkers'
 					:key='index'
 					:position='generatePosition(user.latitude, user.longitude)'
-					:icon='require("@/assets/img/light_bulb_16.png")'
+				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
 					@click='setSelectedUser(user)'
 				/>
 				<GmapMarker
 					v-for='(nonprofit, index) in validNonprofitMarkers'
 					:key='`nonprofit-${index}`'
 					:position='generatePosition(nonprofit.latitude, nonprofit.longitude)'
-					:icon='require("@/assets/img/star_16.png")'
+					:icon='require(`@/assets/img/star_${iconSize}.png`)'
 				/>
 				<GmapMarker
 					v-for='(marker, index) in validMarkers'
@@ -106,6 +106,20 @@ export default {
 			required: false,
 			default: true,
 		},
+
+		/**
+		 * Size of the icons.
+		 */
+		iconSize: {
+			type: Number,
+			required: false,
+			default: 16,
+			validator: (value) => {
+				const sizes = [16, 32, 64, 128, 256]
+
+				return sizes.indexOf(value) !== -1
+			}
+		}
 	},
 
 	data () {
@@ -166,11 +180,24 @@ export default {
 		 * Handle 'See Tracks' clicked event
 		 */
 		onSeeTracksClicked () {
-			this.polylines.forEach(polyline => {
-				polyline.animateCircle()
-			})
+			this.animatePolylines()
 		},
 
+		/** 
+		 * Animate the polylines
+		 */
+		animatePolylines () {
+			if (this.polylines) {
+				console.log(this.polylines)
+				this.polylines.forEach(polyline => {
+					polyline.animateCircle()
+				})
+			}
+		},
+
+		/** 
+		 * Triggers when a polyline is created
+		 */
 		onPolylineCreate (polyline) {
 			this.polylines.push(polyline)
 		},
