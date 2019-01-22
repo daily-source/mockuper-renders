@@ -12,7 +12,7 @@
 			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>{{ tracksActive ? 'Previous View' : 'See my tracks' }} </a>
 			<router-link 
 				class='user-info-window__link button is-primary is-small'
-				:to='{ name: "profile", params: { profileId: user.id } }'
+				:to='{ name: "user-profile", params: { userId: user.id } }'
 			>
 				View Profile
 		</router-link>

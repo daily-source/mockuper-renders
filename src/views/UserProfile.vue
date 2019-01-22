@@ -55,13 +55,13 @@ export default {
 	},
 
 	computed: {
-		profileId () {
-			return this.$route.params.profileId
+		userId () {
+			return this.$route.params.userId
 		},
 
 		...mapState({
 			user (state) {
-				return state.users.data.find(user => user.id == this.profileId)
+				return state.users.data.find(user => user.id == this.userId)
 			},
 		}),
 	},
