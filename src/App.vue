@@ -19,10 +19,6 @@
 </style>
 
 <style lang="scss">
-@import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
-</style>
-
-<style lang="scss">
 .view {
   display: flex;
   flex-direction: column;
