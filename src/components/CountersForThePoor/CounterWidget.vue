@@ -250,10 +250,10 @@ export default {
   }
 
   .counter-widget:not(.counter-widget--edit) & {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
 
     @include fullhd {
-      font-size: 1.375rem;
+      font-size: 1.5rem;
     }
   }
 }
@@ -361,7 +361,7 @@ export default {
       font-size: 1.375rem;
 
       @include fullhd {
-        font-size: 1.75rem;
+        font-size: 2rem;
       }
     }
   }
