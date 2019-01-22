@@ -14,14 +14,17 @@
 					v-for='(user, index) in validUserMarkers'
 					:key='index'
 					:position='generatePosition(user.latitude, user.longitude)'
-				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
+					:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
 					@click='setSelectedUser(user)'
 				/>
 				<GmapMarker
 					v-for='(nonprofit, index) in validNonprofitMarkers'
 					:key='`nonprofit-${index}`'
 					:position='generatePosition(nonprofit.latitude, nonprofit.longitude)'
-					:icon='require(`@/assets/img/star_${iconSize}.png`)'
+					:icon='google && generateMarkerIcon(
+						generatePosition(nonprofit.latitude, nonprofit.longitude),
+						"nonprofit"
+					)'
 				/>
 				<GmapMarker
 					v-for='(marker, index) in validMarkers'
@@ -224,12 +227,23 @@ export default {
 		 *
      * @returns {string}
 		 */
-		generateMarkerIcon (marker) {
-			if (!marker.icon) {
-				return false
+		generateMarkerIcon (position, type='nonprofit') {
+			let iconName
+
+			if (type == 'nonprofit') {
+				iconName = 'star'	
 			}
 
-			return marker.icon
+			if (type =='user') {
+				iconName = 'light_bulb'
+			}
+
+			const pointOffset = this.iconSize / 2
+
+			return {
+				url: require(`@/assets/img/${iconName}_${this.iconSize}.png`),
+				anchor: new this.google.maps.Point(pointOffset, pointOffset),
+			}
 		},
 	},
 
@@ -312,6 +326,18 @@ export default {
 			}
 
 			return []
+		},
+
+		/**
+		 * Marker Default Options 
+		 */
+		markerDefaultOptions () {
+			if (google) {
+				const anchorPoint = this.iconSize / 2
+				return {
+					anchor: new google.maps.Point(anchorPoint, anchorPoint)
+				}
+			}
 		},
 	},
 }
