@@ -55,7 +55,6 @@ export default MapElementFactory({
 			if (this.iconOffset >= 200) {
 				this.animationStarted = false
 				this.iconOffset = null
-				return
 			}
 
 			if(this.animationStarted && !this.iconOffset) {
