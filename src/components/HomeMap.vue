@@ -11,7 +11,7 @@
 			class='call-to-action'
 		  v-if='showCallToAction'
 		>
-			<p class='has-text-centered is-marginless'>Join <a href="#">now</a> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
+			<p class='has-text-centered'>Join <a href="#">now</a> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
 		</div>
 	</div>
 </template>

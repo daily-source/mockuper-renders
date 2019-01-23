@@ -12,7 +12,7 @@ Vue.use(Meta, {
 // route-level code splitting
 const HomePage = () => import('@/views/HomePage')
 const UserProfile = () => import('@/views/UserProfile')
-const UserEdit = () => import('@/views/UserEdit')
+const UserProfileEdit = () => import('@/views/UserProfileEdit')
 
 export default new Router({
   mode: 'history',
@@ -38,7 +38,7 @@ export default new Router({
 		{
 			path: '/user/:userId/edit',
 			name: 'user-edit',
-			component: UserEdit,
+			component: UserProfileEdit,
 		},
   ],
 });

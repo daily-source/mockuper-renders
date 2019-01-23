@@ -27,7 +27,7 @@
 						<p>{{ user.location }}</p>
 					</div>
 				</div>
-				<button class='button is-primary'>Edit Profile</button>
+				<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
 	</div>
 </template>
