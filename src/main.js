@@ -3,6 +3,7 @@ import Datetime from 'vue-datetime';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 import './registerServiceWorker';
 import * as filters from "./xthon-core/lib/util/filters"
 import SmoothScroll from 'Components/plugins/SmoothScroll';
@@ -20,10 +21,6 @@ Object.keys(filters).forEach((key) => {
 });
 
 Vue.use(SmoothScroll);
-
-import {createStore} from './xthon-core/lib/store';
-
-const store = createStore()
 
 new Vue({
   router,
