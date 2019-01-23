@@ -4,9 +4,7 @@
     :style='{width: `${sizes[size].width}px`}'  
   >
     <div class="counter-widget__title-container">
-      <h2 class="counter-widget__title">
-        {{ counter.title }}
-      </h2>
+      <h2 class="counter-widget__title" v-html='counter.title'></h2>
     </div>
     <div class="counter-widget__details is-flex ">
       <div class="counter-widget__counters">
@@ -310,7 +308,8 @@ export default {
     max-width: 80%;
 
 		@include fullhd {
-			max-width: 95%;
+			font-size: 2rem;
+			max-width: 100%;
 		}
   }
 }
@@ -358,24 +357,18 @@ export default {
     }
 
     .counter-widget__counters {
-      flex-basis: 50%;
+      flex-basis: 75%;
       flex-shrink: 0;
       flex-grow: 1;
-      max-width: 50%;
+      max-width: 75%;
       margin-bottom: 0;
-
-      @include fullhd {
-        flex-basis: 75%;
-        max-width: 75%;
-      }
     }
 
     .counter-widget__title {
       font-size: 1.5rem;
-			max-width: 80%;
 
       @include fullhd {
-        font-size: 2rem;
+        font-size: 2.125rem;
       }
     }
   }

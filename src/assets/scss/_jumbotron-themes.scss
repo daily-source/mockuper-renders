@@ -7,7 +7,7 @@
 
 .mlk-banner {
   .counter-widget-jumbotron__widget {
-    margin-top: 18%;
+    margin-top: 14%;
   }
 }
 
@@ -15,16 +15,12 @@
 // Counter Widget Large
 .counter-widget-edit--large {
 	.counter-widget {
-		&__title {
-			max-width: 55% !important;
-		}
-	
 		&__counters {
 			max-width: 60% !important;
 		}
 
 		&__counter {
-			font-size: 1.25rem !important;
+			font-size: 1.375rem !important;
 		}
 
 		&__button-container {
@@ -34,7 +30,7 @@
 		&__additional-details {
 			width: 800px;
 			p {
-				font-size: 1.25rem !important;
+				font-size: 1.375rem !important;
 			}
 		}
 	}
@@ -101,7 +97,7 @@
 		}
 
 		&__title {
-			max-width: 42% !important;
+			// max-width: 42% !important;
 			font-size: 14px !important;
 			margin-bottom: 5px !important;
 			text-shadow: 0 4px 10px rgba(0,0,0,.6);

@@ -114,7 +114,7 @@ const state = {
   counters: [
     {
       id: 1,
-      title: 'Deaths Occuring Now  From Malnutrition and Dirty Water:',
+      title: 'Deaths Occuring <br />Now From Malnutrition <br/> and Dirty Water:',
       rate: 3,
     },
     {

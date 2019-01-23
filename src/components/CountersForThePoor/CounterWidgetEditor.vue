@@ -147,7 +147,7 @@ export default {
 		height: 100%;
     
     &__widget {
-      margin-top: 18%;
+      margin-top: 14%;
     }
 
     &__logo-container {

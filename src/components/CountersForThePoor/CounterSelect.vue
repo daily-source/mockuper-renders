@@ -9,6 +9,7 @@
           v-for='counter in counters'
           :value='counter.id' 
           :key='counter.id'
+				 	v-html='counter.title'
         >
           {{ counter.title }}
         </option>

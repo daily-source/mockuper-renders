@@ -91,7 +91,7 @@ export default {
   .banner__contents {
     position: absolute;
     left: 4em;
-    bottom: 30px;
+    bottom: 80px;
 
     .counter-widget {
 			max-width: 600px;

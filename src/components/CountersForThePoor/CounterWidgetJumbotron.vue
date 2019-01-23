@@ -216,7 +216,7 @@ export default {
 		}
 
 		&.bottom {
-			bottom: 2em;
+			bottom: 5em;
 		}
 	}
 
