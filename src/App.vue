@@ -11,14 +11,8 @@
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900|Poppins:400,500,700");
+@import 'assets/scss/main';
 
-@import './assets/scss/base';
-@import './xthon-core/lib/assets/scss/main';
-
-@import './assets/scss/common';
-</style>
-
-<style lang="scss">
 .view {
   display: flex;
   flex-direction: column;
@@ -52,4 +46,6 @@
   @include widescreen {
     display: block;
   }
-}</style>
+}
+</style>
+
