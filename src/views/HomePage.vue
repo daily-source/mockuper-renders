@@ -19,13 +19,13 @@
     <section class="widget-customize section">
       <div class="container">
         <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
-        <p class='has-text-centered'>Create your customized widget and we'll give you code to simply paste onto your website. It's as easy as that!</p>
+        <p class='has-text-centered'>Create your customized widget and we'll give you code to paste onto your website. It's as easy as that!</p>
         <widget-customizer 
           :widget-id='1'
         />
       </div>
     </section>
-    <section class="section poor-kid-section">
+    <section class="section poor-kid-section widget-jumbotron">
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("../assets/img/images/poor-kid.jpg")'

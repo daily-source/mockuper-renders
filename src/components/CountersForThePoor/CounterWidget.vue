@@ -11,19 +11,19 @@
     <div class="counter-widget__details is-flex ">
       <div class="counter-widget__counters">
         <div class="counter-widget__counter is-flex">
-          <span class='counter-widget-counter__label'>Today: </span>
+          <span class='counter-widget-counter__label counter-widget__counter--day'>Today: </span>
           <span class='counter-widget-counter__value has-text-weight-bold'>{{ getDeaths('day') | numberFormat}} </span>
         </div>
-        <div class="counter-widget__counter is-flex">
+        <!-- <div class="counter-widget__counter is-flex counter-widget__counter--week">
           <span class='counter-widget-counter__label'>This week: </span>
           <span class='counter-widget-counter__value has-text-weight-bold'>{{ getDeaths('week') | numberFormat }} </span>
-        </div>
-        <div class="counter-widget__counter is-flex">
+				</div> -->
+        <div class="counter-widget__counter is-flex counter-widget__counter--year">
           <span class='counter-widget-counter__label'>This year: </span>
           <span class='counter-widget-counter__value has-text-weight-bold'>{{ getDeaths('year') | numberFormat }}  </span>
         </div>
         <div class="counter-widget__counter counter-widget__date-wrap">
-          <span class='counter-widget-counter__date'>{{ timeNow }}</span>
+					<span class='counter-widget-counter__date'>{{ date }} &nbsp; {{time}}</span>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
       </p>
     </div>
     <div class='counter-widget__additional-details'>
-      <div class='counter-widget__nonprofit-details' v-if='nonprofit.NAME'>
+      <div class='counter-widget__nonprofit-details' v-if='edit || nonprofit.NAME'>
         <p>Donations from this widget go to the nonprofit: <span class='has-text-weight-bold'>{{ nonprofit.NAME || "CHOOSE A NONPROFIT BELOW" }}</span></p>
       </div>
       <div class='counter-widget__button-container'>
@@ -93,12 +93,11 @@ export default {
     return {
       imgFolderName: 'widget-imgs/',
       timeNow: '',
-      workingDate: new Date
+      workingDate: new Date,
     }
   },
 
   mounted () {
-    let now = new Date()
     this.timeNow = this.getTimeNow()
 
     this.updateTime()
@@ -112,8 +111,9 @@ export default {
       }, 1000)
     },
 
-    getTimeNow () {
-      return moment().format('MMMM D, YYYY h:mm:ss A') 
+    getTimeNow (format = null) {
+			const dtFormat = format ? format : 'MMMM D, YYYY h:mm:ss A'
+      return moment().format(dtFormat) 
     },
 
     getTimeDifference (timeA, timeB, unit='seconds') {
@@ -123,7 +123,7 @@ export default {
     },
 
     getDeaths (span) {
-      const diff = this.getTimeDifference(this.timeNow, moment(this.workingDate).startOf(span))
+      const diff = this.getTimeDifference(this.timeNow, moment(this.timeNow).startOf(span))
 			const remainder = diff % this.widget.rate
 
 			let val
@@ -175,6 +175,14 @@ export default {
     counterId () {
       return (this.widgetData && this.widgetData.counterId) || this.widget.counterId
     },
+
+		date () {
+			return moment(this.timeNow).format('MMMM D, YYYY')
+		},
+
+		time () {
+			return moment(this.timeNow).format('h:mm:ss A')
+		},
 
     ...mapState({
       widget (state) {
@@ -301,9 +309,9 @@ export default {
     text-transform: capitalize;
     max-width: 80%;
 
-    @include fullhd {
-      max-width: 100%;
-    }
+		@include fullhd {
+			max-width: 95%;
+		}
   }
 }
 
@@ -350,15 +358,21 @@ export default {
     }
 
     .counter-widget__counters {
-      flex-basis: 65%;
+      flex-basis: 50%;
       flex-shrink: 0;
       flex-grow: 1;
-      max-width: 65%;
+      max-width: 50%;
       margin-bottom: 0;
+
+      @include fullhd {
+        flex-basis: 75%;
+        max-width: 75%;
+      }
     }
 
     .counter-widget__title {
-      font-size: 1.375rem;
+      font-size: 1.5rem;
+			max-width: 80%;
 
       @include fullhd {
         font-size: 2rem;
