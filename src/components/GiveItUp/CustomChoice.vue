@@ -8,7 +8,7 @@
       label='Custom Choice'
     />
     <div class="custom-choice__input-container">
-      <label :for="`${index}-input`" class="sr-only">Custom Choice</label>
+      <label :for="`${index}-input`" class="is-sr-only">Custom Choice</label>
       <input
         v-model="label"
         :id="`${index}-input`"
