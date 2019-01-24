@@ -3,11 +3,9 @@
 		<app-header />
 		<section class='section'>
 			<div class='container'>
-				<div class='user-edit-form__wrapper columns'>
-					<div class='column'>
-						<user-edit-form />	
-					</div>
-				</div>
+				<user-edit-form 
+					 :user='user'
+				/>
 			</div>
 		</section>
 		<shared-footer />
