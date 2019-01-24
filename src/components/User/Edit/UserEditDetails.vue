@@ -7,7 +7,7 @@
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<input class='input' type='text' id='username' v-model='user.userName'>
+						<input class='input' type='text' id='username' v-model='form.userName'>
 					</div>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<input class='input' type='text' id='firstname' v-model='user.firstName'>
+						<input class='input' type='text' id='firstname' v-model='form.firstName'>
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<input class='input' type='text' id='lastname' v-model='user.lastName'>
+						<input class='input' type='text' id='lastname' v-model='form.lastName'>
 					</div>
 				</div>
 			</div>
@@ -51,12 +51,11 @@
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<textarea id='about' class='textarea' v-model='user.about'></textarea>
+						<textarea id='about' class='textarea' v-model='form.about'></textarea>
 					</div>
 				</div>
 			</div>
 		</div>
-		<button class='button is-primary'>Save Profile</button>
 	</div>
 </template>
 
@@ -76,7 +75,7 @@ export default {
 			form: {
 				userName: this.user.userName,
 				firstName: this.user.firstName,
-				lastname: this.user.lastName,
+				lastName: this.user.lastName,
 				location: this.user.location,
 				latitude: this.user.latitude,
 				longitude: this.user.longitude,
@@ -85,12 +84,19 @@ export default {
 		}
 	},
 
-	watch: {
+	methods: {
 		/**
-		 * Emits userDetailsChange event when form data is changed
+		 * Event handler for whenever form data changes.
 		 */
-		form () {
-			this.emit('userDetailsChange', this.form)
+		onFormChange () {
+			this.$emit('userDetailsChange', this.form)
+		},
+	},
+
+	watch: {
+		form: {
+			handler: 'onFormChange',
+			deep: true,
 		},
 	},
 }

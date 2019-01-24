@@ -7,7 +7,6 @@
 		>
 			<option
 				value='0'
-				disabled
 			>
 				Please select a nonprofit
 			</option>
@@ -57,7 +56,7 @@ export default {
 		 * The selected nonprofit
 		 */
 		selectedNonProfit () {
-			return this.nonprofits.find(nonprofit => nonprofit.id === this.selected)
+			return this.nonprofits.find(nonprofit => nonprofit.id == this.selected)
 		},
 
 		/** 

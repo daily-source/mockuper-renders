@@ -42,6 +42,24 @@ export default {
 			nonprofits: [],
 		}
 	},
+
+	methods: {
+		/** 
+		 * Handler for whenever nonprofits change
+		 */
+		onNonprofitsChange () {
+			const nonprofits = this.nonprofits.filter(id => id != 0 && id !== undefined && id !== null)
+
+			this.$emit('nonprofitsChange', nonprofits)
+		},
+	},
+
+	watch: {
+		nonprofits: {
+			handler: 'onNonprofitsChange',
+			deep: true,
+		},
+	},
 }
 </script>
 

@@ -9,7 +9,7 @@ const state = {
 			longitude: -115.2973598,
 			picture: 'https://randomuser.me/api/portraits/women/30.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 2, 3, 4, 5,],
+			nonprofits: [1, 4, 5,],
 			location: '3319 N Dapple Gray Rdpark St',
 		},
 		{
@@ -21,7 +21,7 @@ const state = {
 			longitude: 13.114743,
 			picture: 'https://randomuser.me/api/portraits/women/26.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 2, 3, 4, 5,],
+			nonprofits: [1],
 			location: 'Tripoli',
 		},
 		{
@@ -33,7 +33,7 @@ const state = {
 			longitude: -2.0031373,
 			picture: 'https://randomuser.me/api/portraits/men/88.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 2, 3, 4, 5,],
+			nonprofits: [2, 4],
 			location: 'Madrid, Spain',
 		},
 		{
@@ -45,7 +45,7 @@ const state = {
 			longitude: 127.0871966,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 2, 3, 4, 5,],
+			nonprofits: [3, 4, 5],
 			location: 'Seoul, South Korea',
 		},
 		{
@@ -57,25 +57,34 @@ const state = {
 			longitude: 9.922114,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 2, 3, 4, 5,],
+			nonprofits: [2, 3, 4],
 			location: 'SCHWARZGRUB, Austria',
 		},
 	]
 }
 
-const mutations = {}
-
-const getters = {
-	getUserNonprofits: (state, getter, {nonprofits}) => (id = 1) => {
-		const user = state.data.find((user, index) => user.id === id)
-
-		const userNonprofits = nonprofits.data.filter(nonprofit => user.nonprofits.includes(nonprofit.id))
-
-		return userNonprofits
-	}
+const actions = {
+	updateUser ({ commit }, user) {
+		console.log(user)
+		commit('update', user)
+	}, 
 }
 
-const actions = {}
+const mutations = {
+	update (state, user) {
+		const newState = state.data.map(rec => {
+			if (rec.id === user.id) {
+				return user
+			} else {
+				return rec
+			}
+		})
+		
+		state.data = newState
+	},
+}
+
+const getters = {}
 
 export default {
 	namespaced: true,
