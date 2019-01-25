@@ -11,6 +11,39 @@
   }
 }
 
+.counter-widget-jumbotron {
+	&--no-img {
+		.counter-widget {
+			padding-top: .625rem !important;
+			text-shadow: none !important;
+
+			&__counter {
+				text-shadow: none !important;
+				margin-bottom: .25em;
+			}
+
+			&__additional-details p {
+				text-shadow: none !important;
+			}
+
+			&__message {
+				font-size: 21px !important;	
+			}
+
+			&__counters,
+			&__counter,
+			&__additional-details p,
+			&__message {
+				margin-bottom: .25em !important;
+			}
+
+			&__title {
+				margin-bottom: .375rem !important;
+			}
+		}
+	}
+}
+
 
 // Counter Widget Large
 .counter-widget-edit--large {
@@ -29,7 +62,8 @@
 			text-align: center;
 		}
 
-		&__additional-details {
+		&__additional-details,
+		&__message-container {
 			width: 800px;
 			p {
 				font-size: 21px !important;
@@ -41,15 +75,26 @@
 
 .counter-widget-edit--medium {
 	.counter-widget-jumbotron--no-img {
+		padding: .625em;
+
 		.counter-widget-jumbotron__logo-container {
-			max-width: 120px !important;
+			max-width: 150px !important;
+		}
+
+		.counter-widget-jumbotron__widget {
+			margin-top: 0 !important;
+			width: 100% !important;
 		}
 
 		.counter-widget__title {
-			max-width: 100% !important;
+			max-width: 65% !important;
+			text-shadow: none !important;
+			margin-bottom: .5rem !important;
 		}
 
 		.counter-widget {
+			padding-top: .25rem !important;
+
 			&__counters {
 				flex-basis: 75% !important;
 				max-width: 75% !important; 
@@ -60,16 +105,36 @@
 				}
 			}
 
+			&__counter {
+				max-width: 300px !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				text-shadow: none !important;
+				margin-bottom: .5rem !important;
+			}
+
 			&__title {
 				font-size: 1rem !important;
 			}
 
+			&__message-container,
 			&__additional-details {
-				font-size: .75rem;
+				font-size: .625em;
+				max-width: 100% !important;
 
 				p {
-					font-size: 1em;
+					font-size: 11px !important;
+					text-shadow: none !important;
 				}
+			}
+		}
+
+		&__message-container {
+			padding-left: 0 !important;
+
+			p {
+				font-size: 11px !important;
+				margin-bottom: 4px !important;
 			}
 		}
 	}
@@ -123,7 +188,7 @@
 		}
 
 		&__counter:not(:last-child) {
-			margin-bottom: .5em !important;
+			margin-bottom: .25em !important;
 		}
 
 		&__date-wrap {
@@ -131,10 +196,12 @@
 			max-width: 100% !important;
 		}
 
+		&__message-container,
 		&__additional-details {
 			padding-left: 4px !important;
 		}
 
+		&__message-container,
 		&__nonprofit-details {
 			p {
 				margin-bottom: 4px;
