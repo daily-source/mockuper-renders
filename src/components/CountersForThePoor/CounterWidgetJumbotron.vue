@@ -265,13 +265,22 @@ export default {
 		padding-right: 0 !important;
 		padding-top: 1em !important;
 		padding-bottom: 0 !important;
+
+		&__counters {
+			margin-bottom: .625em;
+		} 
+
+		&__counter {
+			margin-bottom: .625em;
+		}
 	}
 
 	.counter-widget__title {
 		text-align: center;
 		margin-left: auto;
 		margin-right: auto;
-		max-width: 85%;
+		max-width: 80% !important;
+		margin-bottom: .625rem;
 	}
 
 	.counter-widget__details {
@@ -281,6 +290,7 @@ export default {
 
 	.counter-widget-jumbotron__logo-container {
 		position: static !important;
+		max-width: 270px !important;
 	}
 	
 	.counter-widget__counters,
@@ -296,6 +306,10 @@ export default {
 		max-width: 95%;
 		margin-left: auto;
 		margin-right: auto;
+
+		p {
+			margin-bottom: .625rem;
+		}
 	}
 
 	.button {

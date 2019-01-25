@@ -13,19 +13,37 @@
 
 .counter-widget-edit--medium {
 	.counter-widget-jumbotron--no-img {
+		padding: .625em;
+
 		.counter-widget-jumbotron__logo-container {
-			max-width: 120px !important;
+			max-width: 150px !important;
+		}
+
+		.counter-widget-jumbotron__widget {
+			margin-top: 0 !important;
 		}
 
 		.counter-widget__title {
-			max-width: 100% !important;
+			max-width: 65% !important;
+			text-shadow: none !important;
+			margin-bottom: .75rem !important;
 		}
 
 		.counter-widget {
+			padding-top: .625rem !important;
+
 			&__counters {
 				flex-basis: 75% !important;
 				max-width: 75% !important; 
 				font-size: .75rem !important;
+			}
+
+			&__counter {
+				max-width: 300px !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				text-shadow: none !important;
+				margin-bottom: .75rem !important;
 			}
 
 			&__title {
@@ -33,10 +51,22 @@
 			}
 
 			&__additional-details {
-				font-size: .75rem;
+				font-size: .625em;
+				max-width: 100% !important;
 
 				p {
-					font-size: 1em;
+					font-size: 11px !important;
+					text-shadow: none !important;
+				}
+			}
+
+			&__message-container {
+				font-size: .625rem;
+				max-width: 100% !important;
+
+				p {
+					font-size: 11px !important;
+					margin-bottom: .625em !important;
 				}
 			}
 		}
