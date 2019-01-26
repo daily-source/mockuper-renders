@@ -22,9 +22,9 @@ export default {
 
   metaInfo() {
     const description = 'Caring for the poorest half!';
-    const title = 'In sight In Mind!';
+    const title = 'In sight In Mind - v2';
     return {
-      title: 'Home',
+      title,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
