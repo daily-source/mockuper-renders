@@ -85,7 +85,7 @@ export default {
     return {
       hovered: false,
       dataShown: false,
-      imageShowDuration: 1000,
+      imageShowDuration: 1400,
       ref: null,
       selectedImageSlide: 1,
     }
