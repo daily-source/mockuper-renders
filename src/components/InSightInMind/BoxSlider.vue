@@ -80,9 +80,8 @@ export default {
     return {
       hovered: false,
       dataShown: false,
-      imageShowDuration: 1400,
-      ref: null,
-      selectedImageSlide: 1,
+      imageShowDuration: 1600,
+      selectedImageIndex: 1,
 			showImage: false,
     }
   },
