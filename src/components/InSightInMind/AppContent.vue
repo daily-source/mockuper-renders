@@ -1,6 +1,6 @@
 <template>
   <main class='site-content'>
-    <section class="section">
+    <section class="section box-section">
       <div class="container">
         <div class="columns is-multiline is-mobile slider-columns">
           <div 
@@ -206,4 +206,8 @@ export default {
       padding: .375rem;
     }
   }
+
+	.box-section {
+		padding-bottom: 0 !important;
+	} 
 </style>

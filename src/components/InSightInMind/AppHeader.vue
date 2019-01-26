@@ -22,8 +22,8 @@ export default {
 
 <style lang='scss'>
   .header__contents {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
     justify-content: center;
     color: $color-dark-gray;
     flex-direction: column;
@@ -31,11 +31,11 @@ export default {
 
     .header__logo {
       width: 100%;
-      max-width: 500px;
+      max-width: 350px;
       margin-left: auto;
       margin-right: auto;
       display: block;
-      margin-bottom: 1.375rem;
+      margin-bottom: .625rem;
 
       &-motto {
         margin-bottom: 0;
