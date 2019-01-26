@@ -23,6 +23,19 @@ $btn-border-radius: 0;
 // Override Bulma variables here
 $success: $color-emphasis;
 
+// Navbar 
+// Navbar item variables
+$navbar-item-color: #fff !important;
+$navbar-item-hover-color: $secondary !important;
+$navbar-item-active-color: $secondary !important;
+$navbar-item-hover-background-color: transparent !important;
+
+// Navbar Burger
+$navbar-burger-color: #000 !important;
+
+// Controls what screen size to hide the navbar
+$navbar-breakpoint: 768px;
+
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
 @import '~bulma/sass/utilities/initial-variables';
