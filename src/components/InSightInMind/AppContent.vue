@@ -65,7 +65,7 @@ export default {
         {
           message: 'Malnutrition and unclean water.',
           cost: 140,
-          deathsPerSecond: 1,
+          deathsPerSecond: 3,
           title: 'MALNUTRITION AND UNCLEAN WATER',
           images: [
             {
@@ -101,7 +101,7 @@ export default {
         {
           message: 'Malnutrition and unclean water killing a child',
           cost: 110,
-          deathsPerSecond: 3,
+          deathsPerSecond: 9,
           title: 'MALNUTRITION AND UNCLEAN WATER KILLING A CHILD.',
           images: [
             {
