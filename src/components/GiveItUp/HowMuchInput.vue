@@ -1,8 +1,8 @@
 <template>
   <div class="how-much__input-wrap">
     <h4 class="how-much__label">{{input.label}}:</h4>
-    <div class="columns is-mobile">
-      <div class="column is-7">
+    <div class="columns is-mobile is-multiline">
+      <div class="column is-7-tablet is-full-mobile">
         <div class="input-data">
           <div class="is-flex input-data__container align-items-center">
             I normally spend
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="column is-5">
+      <div class="column is-5-tablet is-full-mobile">
         <div class="control">
           <radio
             v-model='giveUpOption'
@@ -48,7 +48,7 @@
             />
           </div>
           <div class="form-group percent-input mb-0">
-            <label :for="input.name+'custom-percent'" class="sr-only">Reduce by custom %</label>
+            <label :for="input.name+'custom-percent'" class="is-sr-only">Reduce by custom %</label>
             <input-group
               v-model="giveUpPercent"
               :disabled="giveUpOption === 'all'"
@@ -153,11 +153,29 @@ export default {
       max-width: 20% !important;
       margin-left: 10px;
       margin-right: 10px;
+
+			@include mobile {
+				max-width: 100% !important;
+				width: 100%;
+				display: block;
+				margin-left: 0;
+				margin-right: 0;
+				margin-top: .5em;
+				margin-bottom: .5em;
+			}
+
+			&.select {
+				width: 20% !important;
+			}
     }
 
     .locked {
       font-size: 14px;
     }
+
+		.input-data__container {
+			flex-wrap: wrap;
+		}
   }
 
   .percent-input {
@@ -176,4 +194,8 @@ export default {
   .how-much__label {
     margin-bottom: 1em;
   }
+
+	.total-select-input {
+		width: 20%;
+	}
 </style>

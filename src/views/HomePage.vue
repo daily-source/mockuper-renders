@@ -2,8 +2,8 @@
   <div class="layout-base">
     <app-header />
     <app-banner />
-    <GiveItUpForm />
-    <SharedFooter></SharedFooter>
+    <give-it-up-form />
+    <shared-footer />
   </div>
 </template>
 

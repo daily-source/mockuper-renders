@@ -6,7 +6,7 @@
 
         <div class="choices__input-container">
           <div class="columns is-multiline is-mobile" v-if="choices && choices.length > 0">
-            <div class="column is-one-quarter" v-for="(choice, index) in choices" :key="index" v-if="displayCheckbox(index)">
+            <div class="column is-half-tablet is-one-quarter-desktop is-full-mobile" v-for="(choice, index) in choices" :key="index" v-if="displayCheckbox(index)">
               <choice-checkbox 
                 :choice="choice" 
                 @choiceChanged="inputHandler"
@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="expand-container has-text-right">
+        <div class="expand-container">
           <a href="#" @click.stop.prevent="toggleExpanded"> {{ expand ? 'Show less ideas' : 'Show more ideas' }} </a>
         </div>
         <div class="btn-container has-text-centered">
@@ -48,10 +48,9 @@
               type="number" 
               class="input total-number-input" 
             >
-            <div class="select">
+            <div class="select total-select-input">
               <select 
                 v-model="totalRate"
-                class="total-select-input" 
               >
                 <option value="day">days</option>
                 <option value="week">weeks</option>
@@ -69,7 +68,7 @@
           <div class="nonprofit-select-container is-flex align-items-center">
             The money will go to: 
             <div class="form-group mb-0" v-if="version != 2">
-              <label for="nonprofit" class="sr-only">Nonprofit</label>
+              <label for="nonprofit" class="is-sr-only">Nonprofit</label>
               <nonprofit-ajax-search 
                 :standalone="true"
                 v-if="canRender"
@@ -322,9 +321,20 @@ export default {
 <style lang="scss" scoped>
   .total-number-input,
   .total-select-input {
-    max-width: 120px;
-    margin-right: 5px;
-    margin-left: 10px;
+    max-width: 100%;
+		display: block;
+		width: 100%;
+		margin-top: .5em;
+		margin-bottom: .5em;
+
+		@include tablet {
+			max-width: 130px;
+			display: inline-block;
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-right: 5px;
+			margin-left: 10px;
+		}
   }
 
   .total-container {
@@ -333,6 +343,10 @@ export default {
     font-family: 'Montserrat';
     padding-top: 1.5rem;
     border-top: 1px solid #ddd;
+
+		@include mobile {
+			font-size: 1.25rem;
+		}
   }
 
   .total {
@@ -353,6 +367,10 @@ export default {
     font-size: 2rem;
     margin-left: -2px;
     color: $secondary;
+
+		@include mobile {
+			font-size: 1.5rem;
+		}
 
     span {
       font-size: 0.933em;
@@ -377,6 +395,12 @@ export default {
 
   .expand-container {
     margin-top: 1em;
+		text-align: right;
+
+		@include mobile {
+			text-align: left;
+			margin-bottom: 1em;
+		}
   }
 
   .choices__input-container {
@@ -390,12 +414,29 @@ export default {
   .total-rate-container  {
     margin-bottom: 1rem;
     align-items: center;
+
+		@include mobile {
+			flex-wrap: wrap;
+		}
   }
 
   .total-container {
     .select { 
       height: auto;
+
+			@include mobile {
+				display: block;
+				width: 100%;
+			}
     }
+
+		.select,
+		.input {
+			@include mobile {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 
     select {
       font-size: 1rem;
@@ -406,4 +447,28 @@ export default {
     margin-top: 2em;
     margin-bottom: 2em;
   }
+
+	.nonprofit-select-container {
+		max-width: 100%;
+
+		@include mobile {
+			flex-wrap: wrap;
+		}
+
+		.form-group {
+			@include mobile {
+				width: 100%;
+			}
+		}
+	}
+
+	.nonprofit-search-field-wrapper {
+		@include mobile {
+			margin-top: 0;
+			width: 100%;
+			max-width: 100% !important;
+			padding: 0;
+			margin-left: 0 !important;
+		}
+	}
 </style>
