@@ -4,7 +4,7 @@
       <div class="container">
         <div class="columns is-multiline is-mobile slider-columns">
           <div 
-            class="column is-4 slider-columns__column" 
+            class="column is-4-desktop is-6-tablet is-full-mobile slider-columns__column" 
             v-for='box in boxes' 
             :key='`${$options.filters.slugify(box.title)}-box`'
           >
@@ -22,7 +22,7 @@
           <a href="#" class='more__link'>For links to information in this graphic, click here.</a>
         </p>
         <p class='has-text-centered is-marginless'>
-          <a href="#" class='button is-large is-secondary has-text-weight-bold is-uppercase'>Help Now</a>
+          <a href="#" class='button help-now-button is-large is-secondary has-text-weight-bold is-uppercase'>Help Now</a>
         </p>
       </div>
     </section>
@@ -202,6 +202,8 @@ export default {
   }
 
   .slider-columns {
+		justify-content: center;
+
     &__column {
       padding: .375rem;
     }
@@ -209,5 +211,23 @@ export default {
 
 	.box-section {
 		padding-bottom: 0 !important;
+
+		@include breakpoint($mobile) {
+			padding-left: .5rem;
+			padding-right: .5rem;
+		}
+
+		h4,
+		.more__link{
+			@include breakpoint($mobile) {
+				font-size: 1rem;
+			}
+		}
+
+		.help-now-button {
+			@include breakpoint($mobile) {
+				font-size: 1rem;
+			}
+		}
 	} 
 </style>

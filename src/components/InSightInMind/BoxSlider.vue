@@ -158,6 +158,10 @@ export default {
     text-align: center;
     height: $box-slider-height;
     position: relative;
+
+		@include breakpoint($mobile) {
+			height: 250px;
+		}
   }
 
   .box-slider__slide {
@@ -169,6 +173,10 @@ export default {
     border-radius: $box-slider-border-radius;
     overflow: hidden;
     background-image: linear-gradient(135deg, $primary 0%, $color-primary-tint 90%);
+
+		@include breakpoint($mobile) {
+			height: 250px;	
+		}
 
     img {
       width: 100%;
@@ -183,6 +191,10 @@ export default {
 			left: 0;
 			right: 0;
 			height: 220px;
+	
+			@include breakpoint($mobile) {
+				height: 250px;	
+			}		
 		}
   }
 
@@ -195,6 +207,10 @@ export default {
     font-size: 1.5em;
     font-family: $font-family-base;
     margin-bottom: 0;
+
+		@include breakpoint($mobile) {
+			font-size: 1.25em;
+		}
   }
 
   .box-slider__hover-box {

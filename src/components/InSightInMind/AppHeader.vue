@@ -2,7 +2,7 @@
     <header class="masthead site-header">
       <div class="container">
         <div class="header__contents is-flex">
-          <div class="header__logo has-text-right">
+          <div class="header__logo">
             <router-link to='/'>
               <img src='@/assets/img/in-sight-in-mind-logo.png' class='site-logo' alt="In Sight In Mind Logo">
             </router-link>
@@ -31,15 +31,25 @@ export default {
 
     .header__logo {
       width: 100%;
-      max-width: 350px;
+			max-width: 280px;
       margin-left: auto;
       margin-right: auto;
       display: block;
       margin-bottom: .625rem;
 
+			@include breakpoint($tablet) {
+				max-width: 350px;
+			}
+
       &-motto {
         margin-bottom: 0;
-        font-size: 1.033rem;
+				text-align: center;
+				font-size: .875rem;
+
+				@include breakpoint($tablet) {
+					font-size: 1.033rem;
+					text-align: left;
+				}
       }
     }
   }

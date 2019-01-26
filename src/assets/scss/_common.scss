@@ -46,11 +46,11 @@ blockquote {
 
   @include breakpoint($desktop) {
     margin: auto;
-    width: $max-combo-wrapper-width; //960px
+    max-width: $max-combo-wrapper-width; //960px
   }
 
   @include breakpoint($fullhd) {
-    width: $max-fluid-container-width; //1152px
+    max-width: $max-fluid-container-width; //1152px
   }
 
   &.is-fluid {
@@ -66,7 +66,7 @@ blockquote {
       padding: 0;
     }
     @include breakpoint($widescreen) {
-      width: $max-fluid-container-width; //1152px
+      max-width: $max-fluid-container-width; //1152px
     }
     @include breakpoint($fullhd) {
       max-width: $max-fluid-container-width;
