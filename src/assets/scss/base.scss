@@ -1,8 +1,8 @@
 // Import the xthon-core library variables
 @import '@/xthon-core/lib/assets/scss/vars.scss';
 
-// Override the custom variables here
-$font-primary: "Poppins", sans-serif;
+// Add only non-css vars, not rules, or they will be imported many times.
+$font-primary: "Open Sans", sans-serif;
 $font-secondary: "Montserrat", sans-serif;
 
 // Colors
@@ -41,44 +41,52 @@ $max-container-width: 1344px;
 $max-fluid-container-width: 1162px;
 $max-combo-wrapper-width: 960px;
 
-
-
-// These variable definitions are here for the GiveItUpForGood version
-// Colors
-$secondary: #d22127;
-$primary: #233e84;
-$color-emphasis: $primary;
-$color-emphasis-alt: $secondary;
-$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
-
 // Fonts
-$font-family-base: 'Poppins';
+$font-family-base: 'Open Sans';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
-
-
 
 // These variable definitions are here for the RideForGood version
 // Colors
-$primary: #8EC63F;
-$secondary: #FF9600;
+// $primary: #8EC63F;
+// $secondary: #FF9600;
+// $color-emphasis: $primary;
+// $color-emphasis-alt: $secondary;
+// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// These variable definitions are here for the GiveItUpForGood version
+// Colors
+// $secondary: #d22127 !default;
+// $primary: #233e84 !default;
+// $color-emphasis: $primary;
+// $color-emphasis-alt: $secondary;
+// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
+// Counters for the Poor color
+$primary: #E2AB40;
+$secondary: #0069FF;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
 // Fonts
-$font-family-base: 'Poppins';
+$font-family-base: 'Source Sans Pro';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
+
+// General
+$border-radius: 4px;
+$body-bg: #fefefe;
 
 // Buttons
 $btn-border-radius: 0;
 
-// Override Bulma variables here
-$success: $color-emphasis;
+// Forms
+$checkbox-border-color: $color-medium-light-gray !default;
+$editable-field-container-min-height: 40px;
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
