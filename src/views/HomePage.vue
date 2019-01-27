@@ -1,18 +1,20 @@
 <template>
-  <div class="layout-base">
-		<app-header />
+	<div class='home-page'>
+    <app-header />
     <app-banner 
-			:widget-id='1'
-		/>
+      :widget-id='1'
+    />
     <section class="quote-container section">
       <div class="container">
         <h2 class='quote has-text-centered'>"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness."<br /> <span class='author'>- Declaration of Independence</span></h2> 
       </div>
 			<counter-widget-jumbotron 
 				:widget-id='1'
-				:bg-image='require("../assets/img/images/widget-imgs/mlk.jpg")'
+				:bg-image='require("@/assets/img/images/widget-imgs/mlk.jpg")'
 				:widget-position='["top", "left"]'
-        class='mlk-banner'
+        :show-logo='true'
+        :color-id='0'
+				class='mlk-banner'
 			/>
     </section>
     <section class="widget-customize section">
@@ -28,7 +30,11 @@
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("@/assets/img/images/widget-imgs/poor-kid-v1.jpg")'
-				:widget-position='["center-y", "left"]'
+				:widget-position='["top", "left"]'
+        :color-id='1'
+        :show-logo='true'
+        :logo-position='"right"'
+				class='kid-jumbotron'
 			/>
     </section>
     <section class="section counter-page-creator-section">
@@ -36,7 +42,7 @@
         <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
         <counter-page-creator />
     </section>
-		<shared-footer />
+    <shared-footer />
   </div>
 </template>
 
@@ -64,7 +70,7 @@ export default {
     const description = 'Every lives count.';
     const title = '';
     return {
-      title: 'Counters for the Poor -v2',
+      title: 'Counters for the Poor -v3',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },

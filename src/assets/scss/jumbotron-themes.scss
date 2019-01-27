@@ -11,9 +11,22 @@
 
 .mlk-banner {
   .counter-widget-jumbotron__widget {
-    margin-top: 18%;
-		margin-left: 12%;
+    margin-top: 15%;
+		margin-left: 15%;
   }
+}
+
+.kid-jumbotron {
+	.counter-widget-jumbotron {
+		&__logo-container {
+			top: 1.5em !important;
+			right: 1.5em !important;
+		}
+
+		&__widget {
+			margin-top: 10%;
+		}
+	}
 }
 
 .counter-widget-jumbotron--kid {
@@ -21,6 +34,10 @@
 		&__logo-container {
 			top: 1.5em !important;
 			right: 1.5em !important;
+		}
+
+		&__widget {
+			margin-top: 10%;
 		}
 	}
 }
@@ -116,6 +133,13 @@
 				text-shadow: none !important;
 				margin-bottom: 4px !important;
 				font-size: 18px !important;
+			}
+
+			&__counters {
+				.counter-widget__date-wrap {
+					max-width: 220px !important;
+					flex-basis: 45% !important;
+				}
 			}
 
 			&__title {
