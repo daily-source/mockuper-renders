@@ -7,7 +7,7 @@
 					v-for='nonprofit in nonprofits'
 					:key='nonprofit.id'
 				>
-					{{ nonprofit.name }}
+					<a :href='nonprofit.url'>{{ nonprofit.name }}</a>
 			</li>
 			</ul>
 		</div>
@@ -29,8 +29,25 @@ export default {
 
 	computed: {
 		...mapState({
+			/**
+			 * We only get the nonprofit once.
+			 */
 			nonprofits (state) {
-				return this.user.nonprofits.map(userNonprofit => state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit))
+				let nonprofitIds = []
+				let nonprofits = []
+				this.user.nonprofits.forEach(userNonprofit => {
+					if(nonprofitIds.indexOf(userNonprofit.nonprofitId) === -1) {
+						const nonprofit = state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
+
+						nonprofitIds.push(userNonprofit.nonprofitId)
+						nonprofits.push(nonprofit)
+
+						console.log(nonprofitIds)
+						console.log(nonprofits)
+					}
+				})
+
+				return nonprofits
 			}
 		}),
 	},
