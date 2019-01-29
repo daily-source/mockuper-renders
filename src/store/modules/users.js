@@ -9,8 +9,16 @@ const state = {
 			longitude: -115.2973598,
 			picture: 'https://randomuser.me/api/portraits/women/30.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1, 4, 5,],
-			location: '3319 N Dapple Gray Rdpark St',
+			nonprofits: [
+				{
+					nonprofitId: 1,
+					locationId: 1,
+				},
+				{
+					nonprofitId: 2,
+					locationId: 1,
+				},			
+			],
 		},
 		{
 			id: 2,
@@ -21,7 +29,16 @@ const state = {
 			longitude: 13.114743,
 			picture: 'https://randomuser.me/api/portraits/women/26.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [1],
+			nonprofits: [
+				{
+					nonprofitId: 2,
+					locationId: 1,
+				},
+				{
+					nonprofitId: 2,
+					locationId: 2,
+				},			
+			],
 			location: 'Tripoli',
 		},
 		{
@@ -33,7 +50,16 @@ const state = {
 			longitude: -2.0031373,
 			picture: 'https://randomuser.me/api/portraits/men/88.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [2, 4],
+			nonprofits: [
+				{
+					nonprofitId: 1,
+					locationId: 2,
+				},
+				{
+					nonprofitId: 2,
+					locationId: 1,
+				},			
+			],
 			location: 'Madrid, Spain',
 		},
 		{
@@ -45,7 +71,16 @@ const state = {
 			longitude: 127.0871966,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [3, 4, 5],
+			nonprofits: [
+				{
+					nonprofitId: 3,
+					locationId: 2,
+				},
+				{
+					nonprofitId: 1,
+					locationId: 3,
+				},			
+			],
 			location: 'Seoul, South Korea',
 		},
 		{
@@ -57,7 +92,20 @@ const state = {
 			longitude: 9.922114,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
-			nonprofits: [2, 3, 4],
+			nonprofits: [
+				{
+					nonprofitId: 2,
+					locationId: 1,
+				},
+				{
+					nonprofitId: 3,
+					locationId: 1,
+				},
+				{
+					nonprofitId: 1,
+					locationId: 3,
+				},					
+			],
 			location: 'SCHWARZGRUB, Austria',
 		},
 	]
