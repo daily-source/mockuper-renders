@@ -95,12 +95,6 @@ export default {
 			nonprofits: state => state.nonprofits.data,
 		}),
 	},
-
-	watch: {
-		userLocation () {
-			
-		},
-	},
 }
 </script>
 

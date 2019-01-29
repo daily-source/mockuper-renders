@@ -18,11 +18,11 @@
 					@click='setSelectedUser(user)'
 				/>
 				<GmapMarker
-					v-for='(nonprofit, index) in validNonprofitMarkers'
+					v-for='(location, index) in locationMarkers'
 					:key='`nonprofit-${index}`'
-					:position='generatePosition(nonprofit.latitude, nonprofit.longitude)'
+					:position='generatePosition(location.latitude, location.longitude)'
 					:icon='google && generateMarkerIcon(
-						generatePosition(nonprofit.latitude, nonprofit.longitude),
+						generatePosition(location.latitude, location.longitude),
 						"nonprofit"
 					)'
 				/>
@@ -35,7 +35,7 @@
 				<PolylineAnimatedSymbol
 					v-for='(nonprofit, index) in selectedUserNonprofits'
 					:key='`userNonprofit-${index}`'
-					:path='setUserNonprofitPath(nonprofit)'
+					:path='setUserNonprofitPath(nonprofit.location)'
 					@polylineCreated='onPolylineCreate'
 					:options='polylineOptions'			
 				/>	
@@ -171,6 +171,7 @@ export default {
 		 * @returns {Array} Array of points
 		 */
 		setUserNonprofitPath(nonprofit) {
+			console.log(nonprofit)
 			return curvedLineGenerate({
 				latStart: this.selectedUser.latitude, 
 				lngStart: this.selectedUser.longitude,
@@ -224,7 +225,6 @@ export default {
 		 * Generate an icon from a marker object
 		 *
 		 * @param {Object} marker
-		 *
      * @returns {string}
 		 */
 		generateMarkerIcon (position, type='nonprofit') {
@@ -264,11 +264,40 @@ export default {
 		},
 
 		/**
-		 * Filter out the `nonprofits` prop to make sure to display markes only
-		 * with a position prop.
+		 * Filter out the locations from the `nonprofits` prop 
+		 * to make sure to display markes only with a valid location.
 		 */
-		validNonprofitMarkers () {
-			return this.nonprofits.filter(nonprofit => nonprofit.latitude && nonprofit.longitude)
+		validNonprofitLocationMarkers () {
+			return this.nonprofits.map(nonprofit => {
+				const locations = nonprofit.locations.filter(location => {
+					return location.latitude && location.longitude
+				})
+				return {
+					...nonprofit,
+					locations,
+				}
+			})
+		},
+
+		/**
+		 * Locations to display on the map
+		 */
+		locationMarkers () {
+			let locations = []
+			this.validNonprofitLocationMarkers.forEach(nonprofit => {
+				nonprofit.locations.map(location => {
+					return {
+						...location,
+						nonprofitId: nonprofit.id,
+					}
+				})
+				locations = [
+					...locations,
+					...nonprofit.locations
+				]
+			})
+
+			return locations
 		},
 
 		/**
@@ -321,7 +350,12 @@ export default {
 		selectedUserNonprofits () {
 			if (this.selectedUser) { 
 				return this.selectedUser.nonprofits.map(userNonprofit => {
-					return this.nonprofits.find(nonprofit => nonprofit.id === userNonprofit)
+					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
+					const location = nonprofit.locations.find(nonprofit => nonprofit.id == userNonprofit.locationId)
+					return {
+						...nonprofit,
+						location,
+					}
 				})	
 			}
 
