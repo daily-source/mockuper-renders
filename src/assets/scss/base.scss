@@ -1,4 +1,7 @@
-// Add only non-css vars, not rules, or they will be imported many times.
+// Import the xthon-core library variables
+@import '@/xthon-core/lib/assets/scss/vars.scss';
+
+// Override the custom variables here
 $font-primary: "Poppins", sans-serif;
 $font-secondary: "Montserrat", sans-serif;
 
@@ -73,3 +76,14 @@ $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
+
+// Override Bulma variables here
+$success: $color-emphasis;
+
+// Now initialize the library
+@import '~bulma/sass/utilities/mixins';
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
+@import '~bulma/sass/utilities/derived-variables';
+@import '~bulma/sass/utilities/controls';
+@import '~bulma/sass/utilities/animations';
