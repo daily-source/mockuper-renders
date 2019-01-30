@@ -168,10 +168,9 @@ export default {
 		 *
 		 * @param {Object} nonprofit
 		 * 
-		 * @returns {Array} Array of points
+		 * @return {Array} Array of points
 		 */
-		setUserNonprofitPath(nonprofit) {
-			console.log(nonprofit)
+		setUserNonprofitPath (nonprofit) {
 			return curvedLineGenerate({
 				latStart: this.selectedUser.latitude, 
 				lngStart: this.selectedUser.longitude,
@@ -212,7 +211,7 @@ export default {
 		 * @param {(string|number)} lat Latitude
 		 * @param {(string|number)} lng Longitude
 		 *
-		 * @returns {Object} Returns a promise object
+		 * @return {Object} Returns a promise object
 		 */
 		generatePosition (lat, lng) {
 			return {
@@ -225,7 +224,8 @@ export default {
 		 * Generate an icon from a marker object
 		 *
 		 * @param {Object} marker
-     * @returns {string}
+		 * 
+     * @return {string}
 		 */
 		generateMarkerIcon (position, type='nonprofit') {
 			let iconName
@@ -351,7 +351,9 @@ export default {
 			if (this.selectedUser) { 
 				return this.selectedUser.nonprofits.map(userNonprofit => {
 					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
-					const location = nonprofit.locations.find(nonprofit => nonprofit.id == userNonprofit.locationId)
+					console.log('Nonprofit:', nonprofit)
+					const location = nonprofit.locations.find(location => location.id == userNonprofit.locationId)
+
 					return {
 						...nonprofit,
 						location,

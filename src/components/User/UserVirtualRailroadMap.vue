@@ -55,7 +55,13 @@ export default {
 			 */
 			nonprofits (state) {
 				return this.user.nonprofits.map(userNonprofit => {
-					return state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit)
+					const nonprofit = state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
+					const location = nonprofit.locations.find(location => location.id === userNonprofit.locationId)
+
+					return {
+						...nonprofit,
+						location,
+					}
 				})
 			},
 		})

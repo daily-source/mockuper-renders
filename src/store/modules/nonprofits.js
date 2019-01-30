@@ -90,6 +90,7 @@ const state = {
 					longitude: -0.127758,
 				},
 				{
+					id: 2,
 					country: 'Japan',
 					city: 'Tokyo',
 					latitude: 35.689487,
