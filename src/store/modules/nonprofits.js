@@ -67,6 +67,13 @@ const state = {
 					longitude: -46.326462,
 					latitude: -23.956289,
 				},
+				{
+					id: 3,
+					country: 'Brazil',
+					state: 'Sao Paulo',
+					longitude: -46.326462,
+					latitude: -23.956289,
+				},
 			],
 		},
 		{

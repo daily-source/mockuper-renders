@@ -18,17 +18,19 @@
 
 <script>
 import { mapState } from 'vuex'
+import userGeolocation from '@/util/userGeolocation'
 
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
 
 export default {
 	name: 'HomeMap',
 
+	mixins: [userGeolocation],
+
 	data () {
 		return {
 			callToActionTimer: 1000,
 			showCallToAction: false,
-			userLocation: null,
 		}
 	},
 
@@ -51,23 +53,7 @@ export default {
 			}, this.callToActionTimer)
 		},
 
-		/**
-		 * Gets the user location using the HTML5 Geolocation API
-		 */
-		getUserLocation () {
-			navigator.geolocation.getCurrentPosition(this.setUserLocation)
 
-			return this.userLocation
-		},
-
-		/** 
-		 * Sets user location
-		 *
-		 * @param {Object} position
-		 */
-		setUserLocation (position) {
-			this.userLocation = position
-		},
 	},
 
 	computed: {

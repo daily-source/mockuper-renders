@@ -1,23 +1,43 @@
 <template>
-	<div class='select is-fullwidth'>
-		<select
-			v-bind='attrs'
-			v-on='listeners'
-			v-model='selected'
+	<div class='select-nonprofit'>
+		<div class='select is-fullwidth'>
+			<select
+				v-model='nonprofit'
+				class='select-nonprofit__select'
+			>
+				<option
+					value='0'
+				>
+					Please select a nonprofit
+				</option>
+				<option
+					v-for='nonprofit in nonprofits'
+					:key='nonprofit.id'
+					:value='nonprofit.id'
+				>
+				{{ nonprofit.name }}
+				</option>
+			</select>
+		</div>
+		<div 
+			class='select-nonprofit__locations' 
+			v-if='selectedNonprofit'
 		>
-			<option
-				value='0'
+			<div 
+				class='select-nonprofit__location'
+				v-for='location in selectedNonprofit.locations'
+				:key='location.id'
 			>
-				Please select a nonprofit
-			</option>
-			<option
-				v-for='nonprofit in nonprofits'
-				:key='nonprofit.id'
-				:value='nonprofit.id'
-			>
-			 {{ nonprofit.name }}
-			</option>
-		</select>
+				<label class='checkbox'>
+					<input 
+						type='checkbox'
+						@change='(event) => onLocationChange(event.target.checked, location.id)'
+						:key='`checkbox-${selectedNonprofit.id}-${location.id}`'
+					>
+					{{ generateAddress(location) }}
+				</label>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -26,8 +46,6 @@ import { mapState } from 'vuex'
 
 export default {
 	name: 'SelectNonprofits',
-
-	inheritAttrs: false,
 
 	props: {
 		value: {
@@ -47,7 +65,58 @@ export default {
 
 	data () {
 		return {
-			selected: this.value,
+			nonprofit: this.value,
+			locations: [],
+		}
+	},
+
+	methods: {
+		/**
+		 * Generates an address from a given location.
+		 * 
+		 * @param {Object} location
+		 * @returns String
+		 */
+		generateAddress (location) {
+			const { street, city, state, country } = location
+			
+			return `
+				${street ? street + ', ' : '' }
+				${city ? city + ', ' : '' }
+				${state ? state + ', ' : '' }
+				${country ? country : ''}
+			`
+		},
+
+		/**
+		 * Handles when a location is checked or unchecked
+		 * 
+		 * @param {Boolean} val
+		 * @param {Number} id
+		 */
+		onLocationChange (val, id) {
+			if (val) {
+				this.addLocation(id)
+				return
+			}
+			
+			this.removeLocation(id)
+		},
+
+		/**
+		 * Pushes the ID to our array of locations.
+		 * 
+		 * @param {Number} id
+		 */
+		addLocation (id) {
+			this.locations.push(id)
+		},
+
+		/**
+		 * Removes a location from the array
+		 */
+		removeLocation (id) {
+			this.locations = this.locations.filter(location => location !== id)
 		}
 	},
 
@@ -55,8 +124,19 @@ export default {
 		/** 
 		 * The selected nonprofit
 		 */
-		selectedNonProfit () {
-			return this.nonprofits.find(nonprofit => nonprofit.id == this.selected)
+		selectedNonprofit () {
+			return this.nonprofits.find(nonprofit => nonprofit.id == this.nonprofit)
+		},
+
+		/**
+		 * The selected locations
+		 */
+		selectedLocations () {
+			const filtered = (this.locations.filter(location => location))
+
+			return filtered.map(location => {
+				return this.selectedNonprofit.locations.find(npLocation => npLocation.id === location)
+			})
 		},
 
 		/** 
@@ -70,18 +150,6 @@ export default {
 			}
 		},
 
-		/** 
-		 * The listeners to inherit
-		 */
-		listeners () {
-			return {
-				...this.$listeners,
-				change: event => {
-					this.$emit('input', event.target.value)
-				},
-			}
-		},
-
 		...mapState({
 			nonprofits (state) {
 				const nonprofits =  state.nonprofits.data.filter(nonprofit => {
@@ -92,6 +160,44 @@ export default {
 			},
 		}),
 	},
+
+	watch: {
+		nonprofit (val) {
+			this.locations = []
+
+			this.$emit('nonprofitChange', val)
+		},
+
+		locations (val) {
+			let locationPair = null
+
+			if (val && val.length !== 0) {
+				locationPair = {
+					nonprofitId: this.nonprofit,
+					locationIds: val,
+				}
+			}
+			
+			this.$emit('locationChange', locationPair, this.selectedNonprofit, this.selectedLocations)
+		},
+	},
 }
 </script>
 
+<style lang="scss" scoped>
+.select-nonprofit {
+	&__location {
+		padding: .5em;
+		background-color: $primary;
+		color: #fff;
+		margin-bottom: 2px; 
+		font-size: .875em; 
+
+		.checkbox {
+			&:hover {
+				color: #fff !important;
+			}
+		}
+	}
+}
+</style>

@@ -13,6 +13,7 @@ Vue.use(Meta, {
 const HomePage = () => import('@/views/HomePage')
 const UserProfile = () => import('@/views/UserProfile')
 const UserProfileEdit = () => import('@/views/UserProfileEdit')
+const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 
 export default new Router({
   mode: 'history',
@@ -39,6 +40,11 @@ export default new Router({
 			path: '/user/:userId/edit',
 			name: 'user-edit',
 			component: UserProfileEdit,
-		},
+    },
+    {
+      path: '/nonprofit-directory',
+      name: 'nonprofit-directory',
+      component: NonprofitDirectory,
+    }
   ],
 });

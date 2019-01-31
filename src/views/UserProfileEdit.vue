@@ -1,5 +1,6 @@
 <template>
 	<div class='user-edit'>
+    <intro-video />
 		<app-header />
 		<section class='section'>
 			<div class='container'>

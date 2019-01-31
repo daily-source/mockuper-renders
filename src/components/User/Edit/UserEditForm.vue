@@ -51,7 +51,9 @@ export default {
 
 	data () {
 		return {
-			userData: this.user,
+			userData: {
+				...this.user
+			},
 		}	
 	},
 
@@ -83,10 +85,13 @@ export default {
 		 * @param {Array} nonprofits
 		 */
 		onNonprofitsChange (nonprofits) {
-			this.userData.nonprofits = [
-				...this.userData.nonprofits,
-				...nonprofits
-			]	
+			nonprofits.map(nonprofitLocations => {
+				this.userData.nonprofits = [
+					...this.userData.nonprofits,
+					...nonprofitLocations,
+				]	
+			})
+			
 		},
 		
 		/**
