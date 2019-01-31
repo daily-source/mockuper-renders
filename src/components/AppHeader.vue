@@ -22,7 +22,7 @@
           </ul>
         </div>
         <div class='header__column header__logo-container column'>
-          <router-link to='#'>
+          <router-link to='/'>
             <img src='@/assets/img/logo.png' alt='Virtual Railroad'>
           </router-link>
         </div>
