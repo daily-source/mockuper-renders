@@ -1,14 +1,11 @@
 <template>
-	<div class="virtual-railroad-map">
+	<div class="virtual-railroad-map-wrapper">
 		<div class="container">
-			<GmapMap
-				class='map'
-				:center='{lat: 32.33888927939217, lng: 6.1015625}'
-				:zoom='2'
-				:mapTypeId='mapTypeId'
-				@click='onMapClicked'
-				:options='google && mapOptions'
+			<google-map
 				ref='gmap'
+				class='virtual-railroad-map'
+				@mapClicked='onMapClicked'
+				@mapReady='onMapReady'
 			>
 				<GmapMarker 
 					v-for='(user, index) in validUserMarkers'
@@ -46,16 +43,14 @@
 					@previousViewClicked='setSelectedUser(null)'
 					@closeButtonClicked='setSelectedUser(null)'
 				/>
-			</GmapMap>
+			</google-map>
 		</div>
 	</div>
 </template>
 
 <script>
-import { gmapApi } from 'vue2-google-maps'
-
-import mapStyles from '@/mapStyles'
 import { curvedLineGenerate } from 'LocalComponents/CurvedPolyline'
+import GoogleMap from 'LocalComponents/GoogleMap'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
 import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
 
@@ -63,6 +58,7 @@ export default {
 	name: 'VirtualRailroadMap',
 
 	components: {
+		GoogleMap,
 		UserPopupWindow,
 		PolylineAnimatedSymbol,
 	},
@@ -133,17 +129,10 @@ export default {
 				strokeOpacity: 1.0,
 				strokeWeight: 2,
 			},
-			mapTypeId: 'virtual-railroad',
 			selectedUser: null,
 			polylines: [],
+			google: null,
 		}
-	},
-
-	mounted () {
-		this.$refs.gmap.$mapPromise.then((map) => {
-			map.mapTypes.set(this.mapTypeId, this.customMapType)
-			this.$emit('mapReady', map)
-		})
 	},
 
 	methods: {
@@ -152,6 +141,13 @@ export default {
 		 */
 		onMapClicked () {
 			this.setSelectedUser(null)
+		},
+
+		/**
+		 * Triggers when map is ready
+		 */
+		onMapReady (gmap, google) {
+			this.google = google
 		},
 
     /** 
@@ -191,7 +187,6 @@ export default {
 		 */
 		animatePolylines () {
 			if (this.polylines) {
-				console.log(this.polylines)
 				this.polylines.forEach(polyline => {
 					polyline.animateCircle()
 				})
@@ -248,13 +243,6 @@ export default {
 	},
 
 	computed: {
-		/**
-		 * The Google map API instance.
-		 *
-		 * We need this in order to access the google object on our code.
-		 */
-		google: gmapApi,
-
 		/**
 		 * Filter out the `users` prop to make sure to display markes only
 		 * with a position prop.
@@ -316,42 +304,12 @@ export default {
 		},
 
 		/** 
-		 * Custom Map Control options
-		 */
-		mapTypeControlOptions() {
-			return {
-				mapTypeIds: [
-					this.google.maps.MapTypeId.ROADMAP,
-					this.google.maps.MapTypeId.HYBRID,
-					this.mapTypeId,
-				]
-			}
-		},
-		
-		/** 
-		 * Google Map options.
-	   *
-		 * TODO: Make options as a prop and then compute the mapoptions using default.
-		 */
-		mapOptions () {
-			return {
-				mapTypeControlOptions: this.mapTypeControlOptions,
-				panControl: false,
-				streetViewControl: false,
-				zoomControlOptions: {
-					style: google.maps.ZoomControlStyle.SMALL,
-				}
-			}
-		},
-
-		/** 
 		 * Nonprofits of the selected user.
 		 */
 		selectedUserNonprofits () {
 			if (this.selectedUser) { 
 				return this.selectedUser.nonprofits.map(userNonprofit => {
 					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
-					console.log('Nonprofit:', nonprofit)
 					const location = nonprofit.locations.find(location => location.id == userNonprofit.locationId)
 
 					return {
@@ -380,7 +338,7 @@ export default {
 </script>
 
 <style lang='scss'scoped>
-.map {
+.virtual-railroad-map {
 	height: 500px;
 	max-width: 995px;
 	margin-left: auto;

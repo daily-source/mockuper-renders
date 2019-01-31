@@ -40,8 +40,9 @@
 			<div class='field-label'>
 				Location:
 			</div>
-			<div class='field-body'>
-				{{ user.location }}
+			<div class='field-body user-edit-form__location-field'>
+				<span class='user-edit-form__location'>{{ user.location }}</span>
+				<user-choose-location />
 			</div>
 		</div>
 		<div class='field is-horizontal'>
@@ -60,8 +61,14 @@
 </template>
 
 <script>
+import UserChooseLocation from 'LocalComponents/User/UserChooseLocation'
+
 export default {
 	name: 'UserEditDetails',
+
+	components: {
+		UserChooseLocation,
+	},
 
 	props: {
 		user: {
@@ -73,13 +80,7 @@ export default {
 	data () {
 		return {
 			form: {
-				userName: this.user.userName,
-				firstName: this.user.firstName,
-				lastName: this.user.lastName,
-				location: this.user.location,
-				latitude: this.user.latitude,
-				longitude: this.user.longitude,
-				about: this.user.about,
+				...this.user
 			}
 		}
 	},
@@ -101,3 +102,17 @@ export default {
 	},
 }
 </script>
+
+<style lang='scss' scoped>
+.user-edit-form {
+	&__location {
+		display: inline-block;
+		margin-right: .5em;
+	}
+
+	&__location-field {
+		display: flex;
+		align-items: center;
+	}
+}
+</style>

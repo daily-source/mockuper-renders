@@ -17,6 +17,7 @@
 import { mapState } from 'vuex' 
 
 import AppHeader from 'LocalComponents/AppHeader'
+import IntroVideo from 'LocalComponents/IntroVideo'
 import UserEditForm from 'LocalComponents/User/Edit/UserEditForm'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
@@ -25,6 +26,7 @@ export default {
 
 	components: {
 		AppHeader,
+		IntroVideo,
 		UserEditForm,
 		SharedFooter,
 	},
