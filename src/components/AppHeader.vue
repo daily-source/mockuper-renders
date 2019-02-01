@@ -1,5 +1,6 @@
 <template>
-  <header class='header masthead section is-paddingless'>
+  <header 
+    :class='["header masthead section is-paddingless", { "header--small": isSmall }]'>
     <div class='container'>
       <div class='header__contents is-flex columns'>
         <div class='header__column header__social-nav-container column'>
@@ -58,6 +59,14 @@ import { mapActions } from 'vuex'
 export default {
   name: 'AppHeader',
 
+  props: {
+    isSmall: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
+  },
+
 	methods: {
 		...mapActions({
 			showVideo: 'video/showVideo',
@@ -67,28 +76,36 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  .header__contents {
-    align-items: center;
-    padding-top: .5em;
-    padding-bottom: .5em
+.header__contents {
+  align-items: center;
+  padding-top: .5em;
+  padding-bottom: .5em
+}
+
+.social-nav {
+  align-items: center;
+
+  &__link {
+    font-size: 1.25em;
   }
+}
 
-  .social-nav {
-    align-items: center;
+.header__column {
+  display: flex;
+  justify-content: center;
+}
 
-    &__link {
-      font-size: 1.25em;
+.nav__link {
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+.header--small {
+  .header {
+    &__logo-container {
+      max-width: 300px;
     }
   }
-
-  .header__column {
-    display: flex;
-    justify-content: center;
-  }
-
-  .nav__link {
-    padding-left: .5em;
-    padding-right: .5em;
-  }
+}
 </style>
 

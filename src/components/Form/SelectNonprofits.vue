@@ -23,6 +23,9 @@
 			class='select-nonprofit__locations' 
 			v-if='selectedNonprofit'
 		>
+			<p class='intro-text'>They have multiple locations. Choose the region you support: 
+				<button class='button has-text-weight-bold is-small is-text is-paddingless' @click.stop.prevent='moreInfoButtonClicked'>?</button> 
+			</p>
 			<div 
 				class='select-nonprofit__location'
 				v-for='location in selectedNonprofit.locations'
@@ -117,7 +120,14 @@ export default {
 		 */
 		removeLocation (id) {
 			this.locations = this.locations.filter(location => location !== id)
-		}
+		},
+
+		/**
+		 * Event that triggers when the More info button is clicked
+		 */
+		moreInfoButtonClicked () {
+			this.$emit('moreInfoClicked')
+		},
 	},
 
 	computed: {
@@ -186,6 +196,20 @@ export default {
 
 <style lang="scss" scoped>
 .select-nonprofit {
+	&__locations {
+		.intro-text {
+			margin-top: 1em;
+
+			button {
+				vertical-align: middle;
+				color: $info;
+				text-decoration: none;
+				font-size: 1rem;
+				padding: 0 1em !important;
+			}
+		}
+	}
+
 	&__location {
 		padding: .5em;
 		background-color: $primary;

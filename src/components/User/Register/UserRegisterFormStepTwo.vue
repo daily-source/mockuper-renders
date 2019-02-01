@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       form: {
-        avatar: null,
+        picture: null,
         location: null,
         latitude: null,
         longitude: null,
@@ -58,7 +58,7 @@ export default {
      * @param {Object} file Object that contains the file info and the file URL
      */
     onUserAvatarChange (file) {
-      this.form.avatar = file.url
+      this.form.picture = file.url
     },
 
     /**

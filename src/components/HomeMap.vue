@@ -11,7 +11,7 @@
 			class='call-to-action'
 		  v-if='showCallToAction'
 		>
-			<p class='has-text-centered'>Join <a href="#">now</a> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
+			<p class='has-text-centered'>Join <router-link to="register">now</router-link> to help free slaves, and turn your red marker into a lamp of freedom!</p>	
 		</div>
 	</div>
 </template>
@@ -29,7 +29,7 @@ export default {
 
 	data () {
 		return {
-			callToActionTimer: 1000,
+			callToActionTimer: 180000,
 			showCallToAction: false,
 		}
 	},
@@ -65,8 +65,8 @@ export default {
 			if (this.userLocation) {
 				const userMarker = {
 					position: {
-						lat: this.userLocation.latitude,
-						lng: this.userLocation.longitude,
+						lat: this.userLocation.coordinates.latitude,
+						lng: this.userLocation.coordinates.longitude,
 					}
 				}
 
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.virtual-railroad-map {
-	margin-bottom: 1em;	
+.virtual-railroad-map-container {
+	margin-bottom: 1.125em;	
 }
 </style>

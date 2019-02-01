@@ -10,6 +10,7 @@
       :exclude='exclude'
       class='user-add-supported-nonprofits-select__input'
       @locationChange='onSelectNonprofitLocationChange'
+      @moreInfoClicked='showInfoModal'
     />
     <div 
       class='user-add-supported-nonprofits-select__actions'
@@ -27,12 +28,22 @@
         />
       </button>
     </div>
+    <modal
+      :state='infoModalShown'
+      @modal:close='hideInfoModal'
+    >
+      <div class='modal__content' slot='content'>
+        <p>If a nonprofit you support doesn’t allow donors to specify which region your donations go to, it’s fine to pick the region that has most inspired you to help that nonprofit. For example, if a nonprofit has locations in Kenya, India and Cambodia, and you’re most interested in helping slaves in India, then choose India.</p>
+      </div>
+    </modal>
   </div>
 </template>
 
 <script>
 import SelectNonprofits from 'LocalComponents/Form/SelectNonprofits'
 import Icon from 'Components/general/Icons'
+
+import Modal from 'Components/general/Modal'
 
 export default {
   name: 'UserAddNonprofitsSelect',
@@ -42,6 +53,7 @@ export default {
   components: {
     SelectNonprofits,
     Icon,
+    Modal,
   },
 
   props: {
@@ -69,6 +81,7 @@ export default {
   data () {
     return {
       nonprofit: this.value,
+      infoModalShown: false,
     }
   },
 
@@ -86,6 +99,20 @@ export default {
     onSelectNonprofitLocationChange (locationPair, selectedNonprofit, selectedLocations) {
       this.$emit('locationChange', locationPair, selectedNonprofit, selectedLocations)
     },
+
+    /**
+     * Shows the Info Modal
+     */
+    showInfoModal () {
+      this.infoModalShown = true
+    },
+
+    /**
+     * Hides the info modal
+     */
+    hideInfoModal () {
+      this.infoModalShown = false
+    }
   },
 
   computed: {

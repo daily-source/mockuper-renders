@@ -4,7 +4,7 @@
 		<section class='user-details-section section'>
 			<div class='container'>	
 				<div class='user-profile__details columns'>
-					<div class='column is-7'>
+					<div class='column is-9'>
 						<user-details 
 							:user='user'	
 						/>
@@ -16,11 +16,6 @@
 						/>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section class='user-about-section user-section' v-if='user.about'>
-			<div class='container'>
-				<p class='user-about__about'>{{ user.about }}</p>
 			</div>
 		</section>
 		<section class='user-virtual-railroad-map-section user-section'>

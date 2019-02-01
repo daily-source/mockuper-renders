@@ -1,7 +1,9 @@
 <template>
   <div class="layout-base">
     <intro-video />
-    <app-header />
+    <app-header
+      :is-small='false'
+     />
 		<section class='home-virtual-railroad-map section'>	
 			<div class='container'>
 			<p class='has-text-centered home-virtual-railroad-map__intro'>Click the bulbs to see who's helping free slaves and where they're helping. Click <a href='#'>here </a> to be part of the Virtual Railroad.</p>
