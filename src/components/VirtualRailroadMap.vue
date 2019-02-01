@@ -148,6 +148,8 @@ export default {
 		 */
 		onMapReady (gmap, google) {
 			this.google = google
+
+			this.$emit('mapReady', gmap, google)
 		},
 
     /** 
@@ -294,13 +296,6 @@ export default {
 		 */
 		validMarkers () {
 			return this.markers.filter(marker => marker.position)
-		},
-
-		/** 
-	   * The Custom Map Type
-		 */
-		customMapType() {
-			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
 		},
 
 		/** 
