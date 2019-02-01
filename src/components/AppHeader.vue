@@ -30,9 +30,9 @@
           <nav class='main-nav'>
             <ul class='is-flex nav'>
               <li class='nav-item'>
-                <a href='sign-up' class='nav__link'>
+                <router-link to='register' class='nav__link'>
                   Sign Up
-                </a>
+                </router-link>
               </li>
               <li class='nav-item'>
                 <a href='sign-up' class='nav__link'>

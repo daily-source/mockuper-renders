@@ -1,17 +1,14 @@
 <template>
-	<div class='user-edit-supported-nonprofits'>
-		<user-supported-nonprofits 
-			:user='user'	
-		/>
-		<div class='user-edit-supported-nonprofits-additional'>
-			<ol class='user-edit-supported-nonprofits-list'>
+  <div class='user-add-nonprofits'>
+    <div class='user-add-nonprofits-additional'>
+			<ol class='user-add-nonprofits-list'>
 				<li 
-					class='user-edit-supported-nonprofits-list__item'
+					class='user-add-nonprofits-list__item'
 					v-for='(nonprofit, index) in nonprofits'
 					:key='index'
 				>
-					<div class='user-edit-supported-nonprofits-list__select-wrapper'>
-						<user-edit-supported-nonprofits-select
+					<div class='user-add-nonprofits-list__select-wrapper'>
+						<user-add-nonprofits-select
 							:id='`user-edit-supported-nonprofit-${index}`'
 							:key='nonprofit ? nonprofit.id : Date.now()'
 							@removeButtonClicked='removeNonprofitSelect(index)'
@@ -22,7 +19,7 @@
 				</li>
 			</ol>
 			<div 
-				class='user-edit-supported-nonprofits__actions'
+				class='user-add-nonprofits-list__actions'
 			>
 				<button 
 					class='button is-small is-primary'
@@ -39,30 +36,20 @@
 				</router-link>
 			</div>
 		</div>
-	</div>
+  </div>
 </template>
 
 <script>
-import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
-import UserEditSupportedNonprofitsSelect from 'LocalComponents/User/Edit/UserEditSupportedNonprofitsSelect'
-import SelectNonprofits from 'LocalComponents/Form/SelectNonprofits'
-import VirtualRailroadMapVue from '../../VirtualRailroadMap.vue';
+import UserAddNonprofitsSelect from 'LocalComponents/User/UserAddNonprofitsSelect'
 
 export default {
-	name: 'UserEditSupportedNonprofits',
+  name: 'UserAddNonprofits',
 
-	components: {
-		UserSupportedNonprofits,
-		UserEditSupportedNonprofitsSelect,
-		SelectNonprofits,
-	},
+  components: {
+    UserAddNonprofitsSelect,
+  },
 
-	props: {
-		user: {
-			type: Object,
-			required: false,
-		},
-
+  props: {
 		inputMinimumCount: {
 			type: Number,
 			required: false,
@@ -73,18 +60,24 @@ export default {
 			type: Boolean,
 			required: false,
 			default: true,
-		},
-	},
-
-	data () {
+    },
+    
+    maximumInputCount: {
+      type: Number,
+      required: false,
+      default: 8,
+    },
+  },
+  
+  data () {
 		return {
 			nonprofits: [...Array(this.inputMinimumCount)],
-			validNonprofits: [],
-			counter: 3,
+      counter: 3,
+      validNonprofits: [],
 		}
-	},
-
-	methods: {
+  },
+  
+  methods: {
 		setValidNonprofits () {
 			this.validNonprofits = []
 			this.nonprofits.forEach(nonprofit => {
@@ -100,7 +93,9 @@ export default {
 		 * Adds another Nonprofit Select
 		 */
 		addNonprofitSelect () {
-			this.nonprofits.push(null)
+      if (this.nonprofitsCount < this.maximumInputCount) {
+			  this.nonprofits.push(null)
+      }
 		},
 
 		/**
@@ -143,9 +138,9 @@ export default {
 
 			this.setValidNonprofits()
 		}
-	},
+  },
 
-	computed: {
+  computed: {
 		/**
 		 * Current length of the nonprofits
 		 */
@@ -154,7 +149,8 @@ export default {
 		},
 
 	},
-
+  
+  
 	watch: {
 		nonprofits: {
 			handler: 'onNonprofitsChange',
@@ -164,18 +160,16 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
-.user-edit-supported-nonprofits {
-	&__actions {
+<style lang="scss" scoped>
+.user-add-nonprofits-list {
+	&__item {
+		margin-top: 1em;
+	}
+
+  &__actions {
 		margin-top: 1em;
 		display: flex;
 		justify-content: space-between;
-	}
-}
-
-.user-edit-supported-nonprofits-list {
-	&__item {
-		margin-top: 1em;
 	}
 }
 </style>

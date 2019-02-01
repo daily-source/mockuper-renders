@@ -116,6 +116,10 @@ const actions = {
 		console.log(user)
 		commit('update', user)
 	}, 
+
+	registerUser({commit}, user) {
+		commit('add', user)
+	}
 }
 
 const mutations = {
@@ -130,6 +134,13 @@ const mutations = {
 		
 		state.data = newState
 	},
+
+	add (state, user) {
+		state.data = [
+			...state.data,
+			user,
+		]
+	}
 }
 
 const getters = {}

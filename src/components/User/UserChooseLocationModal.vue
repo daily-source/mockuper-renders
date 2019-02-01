@@ -1,63 +1,99 @@
 <template>
-  <div class='user-choose-location' slot='content'>
-    <div class='user-choose-location-autocomplete'>
-      <gmap-autocomplete
-        @place_changed="setSelectedPlaceTemp"
-        placeholder='Enter zip code or city/state'
-        class='user-choose-location-autocomplete__input input'
-      />
-      <button 
-        class='button is-primary'
-        @click='setSelectedPlace()'
-      >
-        Use
-      </button>
-    </div>
-    <div class='user-choose-location__map-container'>
-      <transition name='loading-fade'>
-        <div 
-          class='user-choose-location__loader'
-          v-show='showMapLoadingOverlay'
-        >
-          <loader 
-            :width='50'
-            :height='50'
-            color='#dedede'
-            message='Geocoding point. Please wait...'
-          />
-        </div>
-      </transition>
-      <google-map
-        class='user-choose-location-map'
-        @mapReady='onMapReady'
-        @mapClicked='onMapClicked'
-      >
-        <gmap-marker 
-          :position='selectedLocation'
+  <modal
+    :state='state'
+    size='small'
+    @modal:close='closeModal'
+    @modal:open='openModal'
+    class='user-choose-location-modal'
+  >
+    <div class='user-choose-location-modal__content' slot='content'>
+      <p class='has-text-centered'>Click on the map to choose a location. <br /> You can also search for a place and use it instead.</p>
+      <div class='user-choose-location-autocomplete'>
+        <gmap-autocomplete
+          @place_changed="setSelectedPlaceTemp"
+          placeholder='Enter zip code or city/state'
+          class='user-choose-location-autocomplete__input input'
         />
-      </google-map>
+        <button 
+          class='button is-primary'
+          @click='setSelectedPlace()'
+        >
+          Use
+        </button>
+      </div>
+      <div class='user-choose-location__map-container'>
+        <transition name='loading-fade'>
+          <div 
+            class='user-choose-location__loader'
+            v-show='showMapLoadingOverlay'
+          >
+            <loader 
+              :width='50'
+              :height='50'
+              color='#dedede'
+              message='Geocoding point. Please wait...'
+            />
+          </div>
+        </transition>
+        <google-map
+          class='user-choose-location-map'
+          @mapReady='onMapReady'
+          @mapClicked='onMapClicked'
+        >
+          <gmap-marker 
+            :position='selectedLocation'
+          />
+        </google-map>
+      </div>
+      <div class='user-choose-location-actions'>
+        <button 
+          class='user-choose-location-actions__button button is-danger'
+          @click='closeModal'
+        >
+          Cancel
+        </button>
+        <button 
+          class='user-choose-location-actions__button button is-primary'
+          @click='saveLocation'
+          :disabled='!selecedPlace && !selectedLocation'
+        >
+          Save
+        </button>
+      </div>
     </div>
-  </div>
+    <button href='#' class='button is-text' slot='trigger'>Edit location</button>
+  </modal>
 </template>
 
 <script>
 import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
 
+import Modal from 'Components/general/Modal'
 import GoogleMap from 'LocalComponents/GoogleMap'
 import Loader from 'Components/Shared/Loader'
 
 export default {
-  name: 'UserChooseLocation',
+  name: 'UserChooseLocationModal',
 
   mixins: [userGeolocation],
   
   components: {
+    Modal,
     GoogleMap,
     Loader,
   },
 
   props: {
+    /**
+     * The initial state of the modal
+     */
+    initialState: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
     /**
      * The initial userPosition
      */
@@ -70,6 +106,7 @@ export default {
 
   data () {
     return {
+      state: this.initialState,
       selectedLocation: this.intialUserPosition && {
         lat: this.intialUserPosition.latitude,
         lng: this.intialUserPosition.longitude,
@@ -88,6 +125,20 @@ export default {
   },
 
   methods: {
+    /**
+     * Closes the modal
+     */
+    closeModal () {
+      this.state = false
+    },
+
+    /**
+     * Opens the modal
+     */
+    openModal () {
+      this.state= true
+    },
+
     /**
      * Triggers when the map is ready
      * 
@@ -159,8 +210,15 @@ export default {
       this.showMapLoadingOverlay = false
 
       this.setSelectedPlace(location)
+    },
 
+    /**
+     * Triggers when the user clicks on save
+     */
+    saveLocation () {
       this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
+
+      this.closeModal()
     },
   },
 
@@ -225,6 +283,12 @@ export default {
   &__input {
     max-width: 250px;
     margin-right: .5em;
+  }
+}
+
+.user-choose-location-modal {
+  .modal-content {
+    margin-top: 0;
   }
 }
 

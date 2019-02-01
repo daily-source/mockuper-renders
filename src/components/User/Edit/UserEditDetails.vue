@@ -42,7 +42,7 @@
 			</div>
 			<div class='field-body user-edit-form__location-field'>
 				<span class='user-edit-form__location'>{{ form.location }}</span>
-				<user-choose-location 
+				<user-choose-location-modal
 					@placeChanged='onPlaceChange'
 				/>
 			</div>
@@ -63,13 +63,13 @@
 </template>
 
 <script>
-import UserChooseLocation from 'LocalComponents/User/UserChooseLocation'
+import UserChooseLocationModal from 'LocalComponents/User/UserChooseLocationModal'
 
 export default {
 	name: 'UserEditDetails',
 
 	components: {
-		UserChooseLocation,
+		UserChooseLocationMOdal,
 	},
 
 	props: {
