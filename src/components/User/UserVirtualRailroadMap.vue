@@ -36,6 +36,7 @@ export default {
 		 */
 		onMapReady () {
 			const map = this.$refs.map
+			console.log(map)
 			map.setSelectedUser(this.user)
 
 			// Calling the function immediately here doesn't seem to work.
