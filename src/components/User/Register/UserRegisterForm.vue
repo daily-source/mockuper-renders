@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    onFormSubmit (formData, finishSubmitting = false) {
+    async onFormSubmit (formData, finishSubmitting = false) {
       this.form = {
         ...this.form,
         ...formData,
@@ -42,7 +42,9 @@ export default {
 
 
       if (finishSubmitting) {
-        this.registerUser(this.form)
+        const user = await this.registerUser(this.form)
+        console.log(user)
+        this.$router.push({name: 'user-profile', params: { userId: user.id }})
       } else {
         this.currentStep += 1
       }

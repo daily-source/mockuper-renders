@@ -108,18 +108,29 @@ const state = {
 			],
 			location: 'SCHWARZGRUB, Austria',
 		},
-	]
+	],
+	user: null,
 }
 
 const actions = {
 	updateUser ({ commit }, user) {
-		console.log(user)
 		commit('update', user)
 	}, 
 
-	registerUser({commit}, user) {
-		commit('add', user)
-	}
+	registerUser({state, commit}, user) {
+		// This is just a mock way to generate an ID.
+		const id = state.data.length + 1
+
+		const newUser = {
+			id,
+			...user
+		}
+
+		commit('add', newUser)
+		commit('setUser', newUser)
+
+		return newUser
+	},
 }
 
 const mutations = {
@@ -135,11 +146,15 @@ const mutations = {
 		state.data = newState
 	},
 
-	add (state, user) {
+	add (state, userData) {
 		state.data = [
 			...state.data,
-			user,
+			userData,
 		]
+	},
+
+	setUser (state, user) {
+		state.user = user
 	}
 }
 
