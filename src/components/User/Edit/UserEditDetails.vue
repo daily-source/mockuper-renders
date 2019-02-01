@@ -41,8 +41,10 @@
 				Location:
 			</div>
 			<div class='field-body user-edit-form__location-field'>
-				<span class='user-edit-form__location'>{{ user.location }}</span>
-				<user-choose-location />
+				<span class='user-edit-form__location'>{{ form.location }}</span>
+				<user-choose-location 
+					@placeChanged='onPlaceChange'
+				/>
 			</div>
 		</div>
 		<div class='field is-horizontal'>
@@ -91,6 +93,18 @@ export default {
 		 */
 		onFormChange () {
 			this.$emit('userDetailsChange', this.form)
+		},
+
+		/**
+		 * Event handler for whenever place changes.
+		 * 
+		 * @param {Object} place Geocode repsponce object from Google Maps
+		 * @parma {Object} location LatLng object from Google Maps
+		 */
+		onPlaceChange (place, location) {
+			this.form.location = place.formatted_address
+			this.form.latitude = location.lat()
+			this.form.longitude = location.lng()
 		},
 	},
 

@@ -16,12 +16,25 @@
         />
         <button 
           class='button is-primary'
-          @click='setSelectedPlace'
+          @click='setSelectedPlace()'
         >
           Use
         </button>
       </div>
-      <div class='user-choose-location__map-container' slot='content'>
+      <div class='user-choose-location__map-container'>
+        <transition name='loading-fade'>
+          <div 
+            class='user-choose-location__loader'
+            v-show='showMapLoadingOverlay'
+          >
+            <loader 
+              :width='50'
+              :height='50'
+              color='#dedede'
+              message='Geocoding point. Please wait...'
+            />
+          </div>
+        </transition>
         <google-map
           class='user-choose-location-map'
           @mapReady='onMapReady'
@@ -32,6 +45,21 @@
           />
         </google-map>
       </div>
+      <div class='user-choose-location-actions'>
+        <button 
+          class='user-choose-location-actions__button button is-danger'
+          @click='closeModal'
+        >
+          Cancel
+        </button>
+        <button 
+          class='user-choose-location-actions__button button is-primary'
+          @click='saveLocation'
+          :disabled='!selecedPlace && !selectedLocation'
+        >
+          Save
+        </button>
+      </div>
     </div>
     <button href='#' class='button is-text' slot='trigger'>Edit location</button>
   </modal>
@@ -39,9 +67,11 @@
 
 <script>
 import userGeolocation from '@/util/userGeolocation'
+import geocoder from '@/util/geocoder'
 
 import Modal from 'Components/general/Modal'
 import GoogleMap from 'LocalComponents/GoogleMap'
+import Loader from 'Components/Shared/Loader'
 
 export default {
   name: 'UserChooseLocation',
@@ -51,6 +81,7 @@ export default {
   components: {
     Modal,
     GoogleMap,
+    Loader,
   },
 
   props: {
@@ -84,6 +115,8 @@ export default {
       selectedPlaceTemp: null,
       google: null,
       geocoder: null,
+      showMapLoadingOverlay: false,
+      map: null,
     }
   },
 
@@ -113,7 +146,8 @@ export default {
      */
     onMapReady (map, google) {
       this.google = google
-      map.setOptions({
+      this.map = map
+      this.map.setOptions({
         draggableCursor: 'pointer',
       })
     },
@@ -151,10 +185,10 @@ export default {
      * 
      * @param {Object} place
      */
-    setSelectedPlace (place = null) {
-      const location = place || this.selectedPlace
+    setSelectedPlace (place = this.selectedPlaceTemp) {
+      this.selectedPlace = place
 
-      this.setSelectedLocation(location.geometry.location)
+      this.setSelectedLocation(place.geometry.location)
     },
 
     /**
@@ -164,24 +198,43 @@ export default {
      * 
      * @returns Object
      */
-    geocodeLocation (latLng) {
-      let location
-
+    async geocodeLocation (latLng) {
       if (!this.geocoder) {
         this.geocoder = new this.google.maps.Geocoder
       }
 
-      this.geocoder.geocode({'location': latLng}, (results, status) => {
-        if (status === 'OK' && results.length > 0) {
-          this.setSelectedPlace(results[0])
-        }
-      })
+      this.showMapLoadingOverlay = true
+
+      const location = await geocoder.geocodeLocation(this.geocoder, latLng)
+
+      this.showMapLoadingOverlay = false
+
+      this.setSelectedPlace(location)
+    },
+
+    /**
+     * Triggers when the user clicks on save
+     */
+    saveLocation () {
+      this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
+
+      this.closeModal()
     },
   },
 
   watch: {
-    selectedPlace (val) {
-      this.$emit('placeChange', val)
+    selectedPlace (place) {
+      // Every time a place is changed, we fit the map's bounds
+      // according to the place.
+      let bounds = new this.google.maps.LatLngBounds()
+
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport)
+      } else {
+        bounds.extend(place.geometry.location)
+      }
+
+      this.map.fitBounds(bounds)
     },
   },
 }
@@ -193,6 +246,26 @@ export default {
     height: 300px;
     width: 100%;
     position: relative;
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(#000, .3);
+    color: #fff;
+
+    p {
+      text-align: center;
+      margin-top: .5em;
+      color: #fff;
+    }
   }
 }
 
@@ -211,5 +284,29 @@ export default {
     max-width: 250px;
     margin-right: .5em;
   }
+}
+
+.user-choose-location-modal {
+  .modal-content {
+    margin-top: 0;
+  }
+}
+
+.user-choose-location-actions {
+  text-align: right;
+  margin-top: 1em;
+  &__button {
+    &:not(:last-child) {
+      margin-right: .5em;
+    }
+  }
+}
+
+// Transitions
+.loading-fade-enter-active, .loading-fade-leave-active {
+  transition: opacity .5s;
+}
+.loading-fade-enter, .loading-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

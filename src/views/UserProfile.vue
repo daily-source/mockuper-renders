@@ -26,7 +26,7 @@
 		<section class='user-virtual-railroad-map-section user-section'>
 			<div class='container'>
 				<user-virtual-railroad-map 
-					:user='user'		
+					:user='user'
 				/>
 			</div>
 		</section>
