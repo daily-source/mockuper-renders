@@ -18,25 +18,19 @@ const state = {
 					country: 'India',
 					city: 'Mumbai',
 					state: 'Maharastra',
-					street: 'Candies, Bandra West',
+					street: 'Candies, Bandra West, Mumbai, Maharastra, India',
 					latitude: 19.075983,
 					longitude: 72.877655,
 				},
 				{
 					id: 2,
-					country: 'India',
-					city: 'Noida',
-					state: 'Uttar Pradesh',
-					street: 'Fr. Agnel Schoolm KJhora Colony, Sector 62A',
+					location: 'Fr. Agnel Schoolm KJhora Colony, Sector 62A, Noida Uttar Pradesh, India',
 					latitude: 28.535517,
 					longitude: 77.391029,
 				},
 				{
 					id: 3,
-					country: 'India',
-					city: 'Poonam Nayar',
-					state: 'Poonam Kirti',
-					street: '29, Poonam Kirti,poonam Nayar, Mahakali Caves Rd, Andheri(e)',
+					location: '29, Poonam Kirti,poonam Nayar, Mahakali Caves Rd, Andheri(e), Poonam Nayar, Poonam Kirti, India',
 					latitude: 21.168190,
 					longitude: 72.814280,
 				},
@@ -53,24 +47,13 @@ const state = {
 			locations: [
 				{
 					id: 1,
-					country: 'USA',
-					city: 'Los Angeles',
-					state: 'California',
+					location: 'Los Angeles, California, USA',
 					latitude: 34.052235,
 					longitude: -118.243683,
 				},
 				{
 					id: 2,
-					country: 'Brazil',
-					city: 'Santis',
-					state: 'Sao Paulo',
-					longitude: -46.326462,
-					latitude: -23.956289,
-				},
-				{
-					id: 3,
-					country: 'Brazil',
-					state: 'Sao Paulo',
+					location: 'Santos, Sao Paulo, Brazil',
 					longitude: -46.326462,
 					latitude: -23.956289,
 				},
@@ -90,16 +73,13 @@ const state = {
 			locations: [
 				{
 					id: 1,
-					country: 'England',
-					city: 'London',
-					state: 'United Kingdom',
+					location: 'London, United Kingdom, England',
 					latitude: 51.507351,
 					longitude: -0.127758,
 				},
 				{
 					id: 2,
-					country: 'Japan',
-					city: 'Tokyo',
+					location: 'Tokyo, Japan',
 					latitude: 35.689487,
 					longitude: 139.691711,
 				},
@@ -110,9 +90,31 @@ const state = {
 
 const getters = {}
 
-const mutations = {}
+const actions = {
+	registerNonprofit({state, commit}, nonprofit) {
+		// This is just a mock way to generate an ID.
+		const id = state.data.length + 1
 
-const actions = {}
+		const newNonprofit = {
+			id,
+			...nonprofit
+		}
+
+		commit('add', newNonprofit)
+
+		return newNonprofit
+	},
+}
+
+const mutations = {
+	add (state, nonprofitData) {
+		state.data = [
+			...state.data,
+			nonprofitData,
+		]
+	},
+}
+
 
 export default {
 	namespaced: true,
