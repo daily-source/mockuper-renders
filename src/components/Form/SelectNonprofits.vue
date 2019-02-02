@@ -37,7 +37,7 @@
 						@change='(event) => onLocationChange(event.target.checked, location.id)'
 						:key='`checkbox-${selectedNonprofit.id}-${location.id}`'
 					>
-					{{ generateAddress(location) }}
+					{{ location.location }}
 				</label>
 			</div>
 		</div>
@@ -74,23 +74,6 @@ export default {
 	},
 
 	methods: {
-		/**
-		 * Generates an address from a given location.
-		 * 
-		 * @param {Object} location
-		 * @returns String
-		 */
-		generateAddress (location) {
-			const { street, city, state, country } = location
-			
-			return `
-				${street ? street + ', ' : '' }
-				${city ? city + ', ' : '' }
-				${state ? state + ', ' : '' }
-				${country ? country : ''}
-			`
-		},
-
 		/**
 		 * Handles when a location is checked or unchecked
 		 * 
