@@ -31,7 +31,7 @@
             </ol>
           </template>
           <template v-else>
-            <p class='is-small nonprofit-register-form__no-offices'>You haven't add any office locations yet. You can add one by clicking anywhere or searching a place from the map below and clicking on 'Add Location'</p>
+            <p class='is-small nonprofit-register-form__no-offices'>You haven't add any office locations yet. You can add one by clicking anywhere or searching a place from the map below and clicking on 'Add Office Location' button.</p>
           </template>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default {
 
       this.form.locations.push(loc)
     },
-    
+
     ...mapActions({
       registerNonprofit: 'nonprofits/registerNonprofit',
     }),

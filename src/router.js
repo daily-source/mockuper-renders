@@ -16,6 +16,7 @@ const UserProfileEdit = () => import('@/views/UserProfileEdit')
 const UserRegister = () => import('@/views/UserRegister')
 const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 const NonprofitRegister = () => import('@/views/NonprofitRegister')
+const NonprofitDetails = () => import('@/views/NonprofitDetails')
 
 export default new Router({
   mode: 'history',
@@ -42,6 +43,11 @@ export default new Router({
 			path: '/user/:userId/edit',
 			name: 'user-edit',
 			component: UserProfileEdit,
+    },
+    {
+      path: '/nonprofit/:nonprofitId',
+      name:' nonprofit-details',
+      component: NonprofitDetails,
     },
     {
       path: '/nonprofit-directory',
