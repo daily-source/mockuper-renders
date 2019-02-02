@@ -21,6 +21,7 @@
         @click.prevent.stop='onRemoveButtonClicked'
       >
         <Icon 
+        
           icon='minus'
           :iconwidth='10'
           :iconheight='10'
