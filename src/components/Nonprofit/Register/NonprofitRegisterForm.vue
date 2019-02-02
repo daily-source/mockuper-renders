@@ -16,6 +16,7 @@
           <nonprofit-register-form-details 
             :form-values='form'
             @addOfficeLocationClicked='onAddOfficeLocationClicked'
+            @detailsChanged='onNonprofitDetailsChanged'
           />
         </div>
         <div class='nonprofit-register-form__office-column column'>
@@ -69,8 +70,10 @@ export default {
     /**
      * Handles for submission
      */
-    onFormSubmit () {
-      this.registerNonprofit(this.form)
+    async onFormSubmit () {
+      const newNonprofit = await this.registerNonprofit(this.form)
+
+      this.$router.push({ name: 'nonprofit-details', params: {nonprofitId: newNonprofit.id} })
     },
 
     /**
@@ -96,6 +99,18 @@ export default {
       }
 
       this.form.locations.push(loc)
+    },
+
+    /**
+     * Event handler for whenever a nonprofit detail has changed
+     * 
+     * @param {Object} formValues
+     */
+    onNonprofitDetailsChanged (formValues) {
+      this.form = {
+        ...this.form,
+        ...formValues,
+      }
     },
 
     ...mapActions({

@@ -46,7 +46,7 @@ export default new Router({
     },
     {
       path: '/nonprofit/:nonprofitId',
-      name:' nonprofit-details',
+      name:'nonprofit-details',
       component: NonprofitDetails,
     },
     {

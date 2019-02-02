@@ -75,7 +75,7 @@ export default {
   &__label {
     flex-basis: 33%;
     max-width: 33%;
-    margin-left: .5em;
+    margin-right: .875em;
   }
 }
 </style>

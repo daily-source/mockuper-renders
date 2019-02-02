@@ -15,7 +15,7 @@
     <div class='field'>
       <label for='link' class='label'>Website Link <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
-        <input class='input' type='text' name='link' id='link' v-model='form.link'>
+        <input class='input' type='text' name='link' id='link' v-model='form.url'>
       </div>
     </div>
     <div class='field'>
@@ -44,7 +44,7 @@
 import LocationChooser from 'LocalComponents/LocationChooser'
 
 export default {
-  name: 'NonprofitRegisterFormdetails',
+  name: 'NonprofitRegisterFormDetails',
 
   components: {
     LocationChooser,
@@ -64,9 +64,13 @@ export default {
   },
 
   data () {
+    const { name, description, url, locations } = this.formValues
     return {
       form: {
-        ...this.formValues,
+        name,
+        description,
+        url,
+        locations,
       },
       selectedLocation: null,
       selectedPlace: null,
@@ -88,6 +92,10 @@ export default {
       this.selectedPlace = null
     },
 
+    onFormValuesChanged () {
+      this.$emit('detailsChanged', this.form)
+    },
+
     onPlaceChanged (place, location) {
       this.selectedPlace = place
       this.selectedLocation = {
@@ -95,6 +103,13 @@ export default {
         longitude: location.lng(), 
       }
     },
+  },
+
+  watch: {
+    form: {
+      deep: true,
+      handler: 'onFormValuesChanged'
+    }
   },
 }
 </script>
