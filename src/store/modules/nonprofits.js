@@ -15,10 +15,7 @@ const state = {
 			locations: [
 				{
 					id: 1,
-					country: 'India',
-					city: 'Mumbai',
-					state: 'Maharastra',
-					street: 'Candies, Bandra West, Mumbai, Maharastra, India',
+					location: 'Candies, Bandra West, Mumbai, Maharastra, India',
 					latitude: 19.075983,
 					longitude: 72.877655,
 				},
