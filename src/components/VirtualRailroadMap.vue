@@ -22,6 +22,7 @@
 						generatePosition(location.latitude, location.longitude),
 						"nonprofit"
 					)'
+					@click='setSelectedNonprofit(location)'
 				/>
 				<GmapMarker
 					v-for='(marker, index) in validMarkers'
@@ -43,6 +44,11 @@
 					@previousViewClicked='setSelectedUser(null)'
 					@closeButtonClicked='setSelectedUser(null)'
 				/>
+				<nonprofit-popup-window 
+					v-if='selectedNonprofit'
+					:nonprofit='selectedNonprofit'
+					@nonprofitCloseButtonClicked='setSelectedNonprofit(null)'
+				/>
 			</google-map>
 		</div>
 	</div>
@@ -53,6 +59,7 @@ import { curvedLineGenerate } from 'LocalComponents/CurvedPolyline'
 import GoogleMap from 'LocalComponents/GoogleMap'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
 import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
+import NonprofitPopupWindow from 'LocalComponents/NonprofitPopupWindow/NonprofitPopupWindow.vue'
 
 export default {
 	name: 'VirtualRailroadMap',
@@ -60,6 +67,7 @@ export default {
 	components: {
 		GoogleMap,
 		UserPopupWindow,
+		NonprofitPopupWindow,
 		PolylineAnimatedSymbol,
 	},
 
@@ -130,6 +138,7 @@ export default {
 				strokeWeight: 2,
 			},
 			selectedUser: null,
+			selectedNonprofit: null,
 			polylines: [],
 			google: null,
 		}
@@ -141,6 +150,7 @@ export default {
 		 */
 		onMapClicked () {
 			this.setSelectedUser(null)
+			this.setSelectedNonprofit(null)
 		},
 
 		/**
@@ -159,6 +169,24 @@ export default {
 		 */
 		setSelectedUser (user) {
 			this.selectedUser = user
+		},
+
+		/**
+		 * Sets the selected nonprofit.
+		 * 
+		 * @param {Object} nonprofit
+		 */
+		setSelectedNonprofit (nonprofit) {
+			if (nonprofit) {
+				const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
+				const selectedNonprofit = {
+					...nonprofit,
+					...locationNonprofit,
+				}
+				this.selectedNonprofit = selectedNonprofit
+			} else {
+				this.selectedNonprofit = null
+			}
 		},
 
 		/** 
@@ -275,7 +303,7 @@ export default {
 		locationMarkers () {
 			let locations = []
 			this.validNonprofitLocationMarkers.forEach(nonprofit => {
-				nonprofit.locations.map(location => {
+				const mappedLocations = nonprofit.locations.map(location => {
 					return {
 						...location,
 						nonprofitId: nonprofit.id,
@@ -283,7 +311,7 @@ export default {
 				})
 				locations = [
 					...locations,
-					...nonprofit.locations
+					...mappedLocations
 				]
 			})
 

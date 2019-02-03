@@ -6,8 +6,8 @@
   </div>
   <div class='nonprofit-list-item-links'>
     <button class='nonprofit-directory-list-item__link is-primary is-small button'>Donate</button>
-    <a class='nonprofit-directory-list-item__link' :href='nonprofit.link'>View Website</a>
-    <a class='nonprofit-directory-list-item__link' href='#'>View Profile</a>
+    <a class='nonprofit-directory-list-item__link' :href='nonprofit.url' target='_blank'>View Website</a>
+    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
     <a class='nonprofit-directory-list-item__link' href='#'>Edit Profile</a>
   </div>
 </div>
