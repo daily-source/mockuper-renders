@@ -4,8 +4,10 @@
 		<section class='user-details-section section'>
 			<div class='container'>	
 				<alert
-					:open='true'
-				>
+          v-if='newUser'
+          :open='open'
+          @closeButtonClicked='open = false'
+        >
 					This is your profile page. To edit it, click the Edit Profile button at the bottom of any page.
 				</alert>
 				<div class='user-profile__details columns'>
@@ -55,6 +57,13 @@ export default {
 		UserVirtualRailroadMap,
 		SharedFooter,
 	},
+
+	
+  data () {
+    return {
+      open: true,
+    }
+  },
 
 	computed: {
 		userId () {
