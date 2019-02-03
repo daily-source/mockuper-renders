@@ -3,7 +3,6 @@
 		<user-avatar 
 			:url='imgUrl'		
 			:img-class='["user-avatar-edit__img"]'
-			 @click='openFileChooser'
 		/>
 		<input
 			ref='input'
@@ -11,6 +10,7 @@
 			class='user-avatar-edit__file-input'
 			@change='onInputChange'
 		>
+		<button class='button is-text is-fullwidth' @click='openFileChooser'>Change Photo</button>
 	</div>
 </template>
 
@@ -126,6 +126,7 @@ export default {
 	&__file-input {
 		display: none;
 	}
+
 }
 </style>
 

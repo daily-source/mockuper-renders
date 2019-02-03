@@ -31,7 +31,7 @@
           <nav class='main-nav'>
             <ul class='is-flex nav'>
               <li class='nav-item'>
-                <router-link to='register' class='nav__link'>
+                <router-link to='/register' class='nav__link'>
                   Sign Up
                 </router-link>
               </li>

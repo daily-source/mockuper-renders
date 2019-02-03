@@ -94,6 +94,14 @@ const state = {
 					latitude: 35.689487,
 					longitude: 139.691711,
 				},
+				{
+					id: 3,
+					country: 'Brazil',
+					state: 'Sao Paulo',
+					location: 'Santos, Sao Paulo, Brazil',
+					longitude: -46.326462,
+					latitude: -23.956289,
+				},
 			],
 		},
 	]

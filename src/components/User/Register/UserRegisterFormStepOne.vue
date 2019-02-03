@@ -5,7 +5,7 @@
       <div class='field'>
         <label for='username' class='label'>Username: </label>
         <div class='control'>
-          <input type='text' class='input' id='username' v-model='form.username'>
+          <input type='text' class='input' id='username' v-model='form.userName'>
         </div>
       </div>
       <div class='field'>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class='field'>
-        <p>To join, you must volunteer for, work for or donate to at least one nonprofit that fights slavery. To find one to support, click <router-link to='nonprofit-directory'>here</router-link>. Select up to 8 nonprofits that will show as places you support on your profile page:</p>
+        <p>To join, you must volunteer for, work for or donate to at least one nonprofit that fights slavery. To find one to support, click <a href='/nonprofit-directory' target='_blank'>here</a>. Select up to 8 nonprofits that will show as places you support on your profile page:</p>
         <user-add-nonprofits 
           @nonprofitsChange='onNonprofitsChange'
         />
@@ -63,7 +63,7 @@ export default {
       form: {
         firstName: '',
         lastName: '',
-        username: '',
+        userName: '',
         nonprofits: [],
         ...this.formValues,
       },

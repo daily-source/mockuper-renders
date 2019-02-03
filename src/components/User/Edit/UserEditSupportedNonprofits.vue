@@ -11,7 +11,7 @@
 					:key='index'
 				>
 					<div class='user-edit-supported-nonprofits-list__select-wrapper'>
-						<user-edit-supported-nonprofits-select
+						<user-add-nonprofits-select
 							:id='`user-edit-supported-nonprofit-${index}`'
 							:key='nonprofit ? nonprofit.id : Date.now()'
 							@removeButtonClicked='removeNonprofitSelect(index)'
@@ -44,7 +44,7 @@
 
 <script>
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
-import UserEditSupportedNonprofitsSelect from 'LocalComponents/User/Edit/UserEditSupportedNonprofitsSelect'
+import UserAddNonprofitsSelect from 'LocalComponents/User/UserAddNonprofitsSelect'
 import SelectNonprofits from 'LocalComponents/Form/SelectNonprofits'
 import VirtualRailroadMapVue from '../../VirtualRailroadMap.vue';
 
@@ -53,7 +53,7 @@ export default {
 
 	components: {
 		UserSupportedNonprofits,
-		UserEditSupportedNonprofitsSelect,
+		UserAddNonprofitsSelect,
 		SelectNonprofits,
 	},
 

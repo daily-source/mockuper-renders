@@ -73,7 +73,7 @@ export default {
     async onFormSubmit () {
       const newNonprofit = await this.registerNonprofit(this.form)
 
-      this.$router.push({ name: 'nonprofit-details', params: {nonprofitId: newNonprofit.id} })
+      this.$router.push({ name: 'nonprofit-details', params: {nonprofitId: newNonprofit.id}, query: {newNonprofit: 1} })
     },
 
     /**

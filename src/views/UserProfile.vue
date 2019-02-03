@@ -3,6 +3,12 @@
 		<app-header />
 		<section class='user-details-section section'>
 			<div class='container'>	
+				<alert
+					:dismissable='true'
+					v-if='newUser'
+				>
+					This is your profile page. To edit it, click the Edit Profile button at the bottom of any page.
+				</alert>
 				<div class='user-profile__details columns'>
 					<div class='column is-9'>
 						<user-details 
@@ -33,6 +39,7 @@
 import { mapState } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
+import Alert from 'LocalComponents/Alert/Alert'
 import UserDetails from 'LocalComponents/User/UserDetails'
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
 import UserVirtualRailroadMap from 'LocalComponents/User/UserVirtualRailroadMap'
@@ -43,6 +50,7 @@ export default {
 
 	components:{
 		AppHeader,
+		Alert,
 		UserDetails,
 		UserSupportedNonprofits,
 		UserVirtualRailroadMap,
@@ -54,12 +62,29 @@ export default {
 			return this.$route.params.userId
 		},
 
+		newUser () {
+			return this.$route.query.new
+		},
+
 		...mapState({
 			user (state) {
 				return state.users.data.find(user => user.id == this.userId)
 			},
 		}),
 	},
+
+	metaInfo() {
+    const description = 'The modern way to help free slaves';
+    const title = 'Virtual Railroad'
+    return {
+      title: `${this.user.firstName} ${this.user.lastName} | Virtual Railroad`,      
+      meta: [
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', name: 'og:description', content: description },
+      ],
+    }
+  },
 }
 </script>
 

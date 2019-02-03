@@ -6,7 +6,7 @@
      />
 		<section class='home-virtual-railroad-map section'>	
 			<div class='container'>
-			<p class='has-text-centered home-virtual-railroad-map__intro'>Click the bulbs to see who's helping free slaves and where they're helping. Click <a href='#'>here </a> to be part of the Virtual Railroad.</p>
+			<p class='has-text-centered home-virtual-railroad-map__intro'>Click the bulbs to see who's helping free slaves and where they're helping. Click <router-link to='/register' class='has-text-underlined'>here</router-link> to be part of the Virtual Railroad.</p>
 				<home-map />
 				<div class='legends'>
 					<p>

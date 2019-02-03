@@ -16,7 +16,7 @@
         />
         <button 
           class='button is-primary'
-          @click='setSelectedPlace()'
+          @click.prevent.stop='setSelectedPlace()'
         >
           Use
         </button>
@@ -48,14 +48,14 @@
       <div class='user-choose-location-actions'>
         <button 
           class='user-choose-location-actions__button button is-danger'
-          @click='closeModal'
+          @click.stop.prevent='closeModal'
         >
           Cancel
         </button>
         <button 
           class='user-choose-location-actions__button button is-primary'
-          @click='saveLocation'
-          :disabled='!selecedPlace && !selectedLocation'
+          @click.stop.prevent='saveLocation'
+          :disabled='!selectedPlace && !selectedLocation'
         >
           Save
         </button>

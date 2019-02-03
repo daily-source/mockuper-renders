@@ -1,5 +1,11 @@
 <template>
 	<form @submit.prevent.stop='onUserEditFormSubmit'>
+		<alert
+			:open='success'
+			@closeButtonClicked='dismissAlert'
+		>
+			Profile updated successfuly.
+		</alert>
 		<div class='user-edit-form__wrapper columns'>
 			<div class='user-edit-avatar__wrapper column is-3'>
 				<user-edit-avatar 
@@ -23,15 +29,26 @@
 				/>
 			</div>
 		</div>
+		<div class='user-edit-form__location'>
+			<google-map
+				class='user-edit-form__map'
+			>
+				<gmap-marker 
+					:position='{lat: userData.latitude, lng: userData.longitude}'
+				/>
+			</google-map>
+		</div>
 	</form>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 
+import Alert from 'LocalComponents/Alert/Alert'
 import UserEditAvatar from 'LocalComponents/User/Edit/UserEditAvatar'
 import UserEditDetails from 'LocalComponents/User/Edit/UserEditDetails'
 import UserEditSupportedNonprofits from 'LocalComponents/User/Edit/UserEditSupportedNonprofits'
+import GoogleMap from 'LocalComponents/GoogleMap'
 
 export default {
   name: 'UserEditForm',
@@ -40,6 +57,8 @@ export default {
 		UserEditAvatar,
 		UserEditDetails,
 		UserEditSupportedNonprofits,
+		GoogleMap,
+		Alert,
 	},
 
 	props: {
@@ -52,8 +71,9 @@ export default {
 	data () {
 		return {
 			userData: {
-				...this.user
+				...this.user,
 			},
+			success: false,
 		}	
 	},
 
@@ -91,14 +111,22 @@ export default {
 					...nonprofitLocations,
 				]	
 			})
-			
 		},
 		
 		/**
 		 * Event handler for when the form is submitted.
 		 */
-		onUserEditFormSubmit () {
-			this.editUser(this.userData)
+		async onUserEditFormSubmit () {
+			await this.editUser(this.userData)
+			this.success = true
+			window.scrollTo(0,0)
+		},
+
+		/**
+		 * Hides the alert
+		 */
+		dismissAlert () {
+			this.success = false;
 		},
 
 		...mapActions({
@@ -113,6 +141,25 @@ export default {
 	&__submit {
 		margin-top: 1em;
 	}
+
+	&__location {
+		height: 350px;
+		position: relative;
+	}
+
+	&__map {
+		left: 0;
+		right: 0;
+		top: 0;
+		position: absolute;
+		width: 100%;
+		max-width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+		height: 100%;
+	}
 }
 </style>
+
+
 

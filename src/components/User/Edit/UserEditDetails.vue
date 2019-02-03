@@ -69,7 +69,7 @@ export default {
 	name: 'UserEditDetails',
 
 	components: {
-		UserChooseLocationMOdal,
+		UserChooseLocationModal,
 	},
 
 	props: {

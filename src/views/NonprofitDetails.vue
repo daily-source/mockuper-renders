@@ -4,6 +4,11 @@
     <intro-video />
     <section class='section'>
       <div class='container'>
+        <alert
+          :dismissable='true'
+        >
+          Nonprofit successfuly registered. Below are the information you registered.
+        </alert>
         <nonprofit-details-comp
           :nonprofit='nonprofit'
         />
@@ -17,6 +22,7 @@
 import { mapState } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
+import Alert from 'LocalComponents/Alert/Alert'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import NonprofitDetailsComp from 'LocalComponents/Nonprofit/NonprofitDetails'
 import SharedFooter from 'Components/Shared/SharedFooter'
@@ -25,6 +31,7 @@ export default {
   name: 'NonprofitDetails',
 
   components: {
+    Alert,
     AppHeader,
     IntroVideo,
     NonprofitDetailsComp,
@@ -39,6 +46,10 @@ export default {
       return this.$route.params.nonprofitId
     },
 
+    newNonprofit () {
+      return this.$route.query.newNonprofit
+    },
+
     ...mapState({
       /**
        * The nonprofit
@@ -47,6 +58,19 @@ export default {
         return state.nonprofits.data.find(nonprofit => nonprofit.id == this.nonprofitId)
       },
     })
+  },
+
+  metaInfo() {
+    const description = 'The modern way to help free slaves';
+    const title = 'Virtual Railroad'
+    return {
+      title: `${this.nonprofit.name} | Virtual Railroad`,
+      meta: [
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', name: 'og:description', content: description },
+      ],
+    }
   },
 }
 </script>

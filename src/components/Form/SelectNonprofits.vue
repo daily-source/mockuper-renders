@@ -24,7 +24,7 @@
 			v-if='selectedNonprofit'
 		>
 			<p class='intro-text'>They have multiple locations. Choose the region you support: 
-				<button class='button has-text-weight-bold is-small is-text is-paddingless' @click.stop.prevent='moreInfoButtonClicked'>?</button> 
+				<button class='button is-small is-text is-paddingless' @click.stop.prevent='moreInfoButtonClicked'>?</button> 
 			</p>
 			<div 
 				class='select-nonprofit__location'
@@ -181,14 +181,22 @@ export default {
 .select-nonprofit {
 	&__locations {
 		.intro-text {
-			margin-top: 1em;
+			margin-top: .5em;
+			margin-bottom: 0.5em;
+			font-size: .875rem;
 
 			button {
 				vertical-align: middle;
-				color: $info;
 				text-decoration: none;
-				font-size: 1rem;
-				padding: 0 1em !important;
+				font-size: .75rem;
+				border-radius: 100%;
+				color: #fff;
+				background-color: $info;
+				width: 20px;
+				height: 20px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
 			}
 		}
 	}

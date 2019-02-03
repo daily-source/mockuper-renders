@@ -4,6 +4,7 @@
     <div class='nonprofit-directory-search'>
       <nonprofit-directory-search 
         v-model='filterValue'
+        class='nonprofit-directory-search__input'
       />
       <button 
         class='button is-primary nonprofit-directory-search__button'
@@ -11,6 +12,7 @@
       >
         Search
       </button>
+      <span class='suggest-nonprofit-text'>To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.</span>
     </div>
     <div 
       class='nonprofit-list' 
@@ -57,6 +59,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { orderBy } from 'lodash'
 
 import NonprofitDirectorySearch from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearch'
 import NonprofitDirectoryListItem from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryListItem'
@@ -85,7 +88,7 @@ export default {
      */
     filterNonprofits () {
       this.filter = this.filterValue
-    }
+    },
   },
 
   computed: {
@@ -106,7 +109,9 @@ export default {
         })
       })
 
-      return countriesArray
+      // Sort countries alphabetically.
+
+      return countriesArray.sort()
     },
 
     /**
@@ -118,11 +123,15 @@ export default {
 
         this.nonprofits.map(({ locations }) => {
           locations.map(({country, city}) => {
-            if (cities.indexOf(cities) === -1 && country === countryRec) {
+            const isCityExisting = cities.find(rec => rec === city)
+
+            if (!isCityExisting && country === countryRec) {
               cities.push(city)
             }
           })
         })
+
+        cities = cities.sort()
 
         return {
           country: countryRec,
@@ -139,7 +148,7 @@ export default {
         // Get nonprofits under the country but without a city defined.
         // For example, a nonprofit may have a location with USA defined as a country
         // but without a state defined.
-        const nonprofits = this.nonprofits.filter(nonprofit => {
+        let nonprofits = this.nonprofits.filter(nonprofit => {
           const location = nonprofit.locations.filter(location => {
             return !location.city && location.country === country
           })
@@ -152,7 +161,11 @@ export default {
         const nonprofitsCities = cities.map(city => {
           const nonprofits = this.nonprofits.filter(nonprofit => {
             const location = nonprofit.locations.filter(location => {
-              return location.city === city
+              if (location.city) {
+                return location.city === city
+              }
+
+              return false
             })
 
             return location.length
@@ -163,6 +176,8 @@ export default {
             nonprofits: nonprofits,
           }
         })
+
+        nonprofits = orderBy(nonprofits, [nonprofit => nonprofit.name.toLowerCase()], 'desc')
 
         return {
           country: country,
@@ -213,13 +228,21 @@ export default {
 }
 
 .nonprofit-directory-search {
-  max-width: 500px;
   margin-bottom: 2em;
   display: flex;
   align-items: center;
 
   &__button {
     margin-left: 1em;
+  }
+
+  &__input {
+    max-width: 350px;
+  }
+
+  .suggest-nonprofit-text {
+    display: inline-block;
+    margin-left: 1.25em;
   }
 }
 </style>
