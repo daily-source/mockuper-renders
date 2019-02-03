@@ -1,8 +1,12 @@
 <template>
 	<div class='user-profile'>
 		<app-header />
-		<section class='user-details-section section'>
-			<div class='container'>	
+		<section class='user-virtual-railroad-map-section user-section'>
+			<div class='container'>
+				<user-virtual-railroad-map 
+					:user='user'
+				/>
+				<div class='container'>	
 				<alert
           v-if='newUser'
           :open='open'
@@ -11,25 +15,20 @@
 					This is your profile page. To edit it, click the Edit Profile button at the bottom of any page.
 				</alert>
 				<div class='user-profile__details columns'>
-					<div class='column is-9'>
+					<div class='column is-8'>
 						<user-details 
 							:user='user'	
 						/>
 					</div>
-					<div class='column'>
-						<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
-						<user-supported-nonprofits 
-							:user='user'	
+					<div class='user-profile__details column'>
+						I Support: 
+						<user-supported-nonprofits
+							class='is-inline'
+							:user='user'
 						/>
 					</div>
 				</div>
 			</div>
-		</section>
-		<section class='user-virtual-railroad-map-section user-section'>
-			<div class='container'>
-				<user-virtual-railroad-map 
-					:user='user'
-				/>
 			</div>
 		</section>
 		<shared-footer />
@@ -101,5 +100,13 @@ export default {
 	&:not(:last-child) {
 		padding-bottom: 1.5em;
 	}
-} 
+}
+
+.user-profile__details {
+	max-width: 995px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
 </style>

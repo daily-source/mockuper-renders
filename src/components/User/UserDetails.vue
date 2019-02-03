@@ -8,31 +8,15 @@
 			>
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
-		<div class='column'>
-				<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>User Details</h4>
+		<div class='user-details__user-info-container column'>
+				<div class='user-bio is-flex user-details__heading'>
+					<h4 class='has-text-weight-bold user-profile__heading'>{{ `${user.firstName} ${user.lastName}`}}</h4>
+				<p class='is-marginless'>{{ user.location }}</p>
+				</div>
 				<div class='user-details__bio-wrapper'>
 					<div class='user-bio is-flex'>
 						<p class='user-bio__label has-text-weight-bold'>Username: </p>
 						<p>{{ user.userName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>First Name: </p>
-						<p>{{ user.firstName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>Last Name: </p>
-						<p>{{ user.lastName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label user-bio__label--location has-text-weight-bold'>
-							<Icon 
-								:iconheight='24'
-								:iconwidth='32'
-								color='#333'
-								icon='map-marker'
-							/>	
-						</p>
-						<p>{{ user.location }}</p>
 					</div>
 					<div class='user-bio'>
 						<p>
@@ -72,6 +56,7 @@ export default {
 		object-fit: cover;
 		display: block;
 		margin-bottom: 1em;
+		margin-top: -160px;
 	}
 
 	&__heading {
@@ -79,6 +64,18 @@ export default {
 			margin-bottom: .5em;
 			padding-bottom: .5em;
 			border-bottom: 1px solid #ddd;
+		}
+	}
+
+	&__heading {
+		border-bottom: 1px solid #ddd;
+		align-items: center;
+		margin-bottom: 1em;
+
+		h4 {
+			margin-right: 1em;
+			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 	}
 }

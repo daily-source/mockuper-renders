@@ -1,16 +1,13 @@
 <template>
 	<div class='user-nonprofits'>
-		<div class='user-nonprofits__nonprofits-list-wrapper'>
-			<ul class='user-nonprofits-list'>
-				<li 
-					class='user-nonprofits-list__item'
-					v-for='nonprofit in nonprofits'
-					:key='nonprofit.id'
-				>
-					<a :href='nonprofit.url'>{{ nonprofit.name }}</a>
-			</li>
-			</ul>
-		</div>
+		<a 
+			class='user-nonprofits-list__item'
+			v-for='(nonprofit, index) in nonprofits'
+			:key='nonprofit.id'
+			:href='nonprofit.url'
+		>
+				{{ nonprofit.name }}{{ index !== nonprofits.length - 1 ? separator : '.' }}
+		</a>
 	</div>
 </template>
 
@@ -24,6 +21,12 @@ export default {
 		user: {
 			type: Object,
 			required: true,
+		},
+
+		seprator: {
+			type: String,
+			required: false,
+			default: ', '
 		},
 	},
 
