@@ -29,12 +29,6 @@ export default {
     NonprofitRegisterForm,
   },
 
-  computed: {
-    newNonprofit: {
-
-    }
-  },
-
   metaInfo() {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'

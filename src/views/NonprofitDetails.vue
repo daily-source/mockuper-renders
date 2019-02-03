@@ -5,7 +5,9 @@
     <section class='section'>
       <div class='container'>
         <alert
-          :dismissable='true'
+          v-if='newNonprofit'
+          :open='open'
+          @closeButtonClicked='open = false'
         >
           Nonprofit successfuly registered. Below are the information you registered.
         </alert>
@@ -36,6 +38,12 @@ export default {
     IntroVideo,
     NonprofitDetailsComp,
     SharedFooter,
+  },
+
+  data () {
+    return {
+      open: true,
+    }
   },
 
   computed: {

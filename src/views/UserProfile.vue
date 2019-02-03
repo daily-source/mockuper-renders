@@ -4,8 +4,7 @@
 		<section class='user-details-section section'>
 			<div class='container'>	
 				<alert
-					:dismissable='true'
-					v-if='newUser'
+					:open='true'
 				>
 					This is your profile page. To edit it, click the Edit Profile button at the bottom of any page.
 				</alert>

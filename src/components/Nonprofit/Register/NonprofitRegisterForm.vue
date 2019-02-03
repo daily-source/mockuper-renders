@@ -15,8 +15,8 @@
           <p class='has-text-weight-bold'>Nonprofit Details</p>
           <nonprofit-register-form-details 
             :form-values='form'
-            @addOfficeLocationClicked='onAddOfficeLocationClicked'
             @detailsChanged='onNonprofitDetailsChanged'
+            @addOfficeLocationClicked='onAddOfficeLocationClicked'
           />
         </div>
         <div class='nonprofit-register-form__office-column column'>
@@ -92,7 +92,14 @@ export default {
      * @param {Object} location latLng object
      */
     onAddOfficeLocationClicked (place, location) {
+      // const state = place.address
+      const state = place.address_components.find(place => place.types.indexOf("administrative_area_level_1") !== -1 )
+
+      const city = place.address_components.find(place => place.types.indexOf("administrative_area_level_2") !== -1 )
+
       const loc = {
+        state: state.long_name,
+        city: city ? city.long_name : state.long_name,
         placeId: place.place_id,
         location: place.formatted_address,
         ...location,
