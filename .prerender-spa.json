@@ -19,6 +19,6 @@
     "/user/5/edit"
   ],
   "useRenderEvent":false,
-  "headless":false,
+  "headless":true,
   "onlyProduction":true
 }
