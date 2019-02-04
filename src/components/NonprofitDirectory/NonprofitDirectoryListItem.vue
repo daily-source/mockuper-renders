@@ -2,7 +2,7 @@
 <div class='nonprofit-directory-list-item'>
   <div class='nonprofit-directory-list-item__nonprofit-details'>
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
-    <a href='#' class='nonprofit-directory-list-item__link'>View this nonprofit's other locations</a>
+    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View this nonprofit's other locations</router-link>
   </div>
   <div class='nonprofit-list-item-links'>
     <button class='nonprofit-directory-list-item__link is-primary is-small button'>Donate</button>
