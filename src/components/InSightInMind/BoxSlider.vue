@@ -6,6 +6,13 @@
   >
 		<div class="box-slider__slide box-slider__slide--title">
 			<h2 class='box-slider-title__heading'>{{ message }}</h2>
+      <transition name='box-fade'>
+        <div class='box-slider-cta' v-if='showCtaButton'>
+          <button class='button box-slider__cta-button is-secondary'>
+            Help Now
+          </button>
+        </div>
+      </transition>
 		</div>
     <transition name='box-fade'>
 			<div 
@@ -80,9 +87,11 @@ export default {
     return {
       hovered: false,
       dataShown: false,
-      imageShowDuration: 1600,
+      imageShowDuration: 1300,
+      ctaButtonDuration: 900,
       selectedImageIndex: 1,
-			showImage: false,
+      showImage: false,
+      showCtaButton: false,
     }
   },
 
@@ -95,7 +104,8 @@ export default {
 			const timeoutDur = this.showImage ? this.imageShowDuration : this.imageSlideDelay
 
 			setTimeout(() => {
-				this.showImage = !this.showImage
+        this.showImage = !this.showImage
+
 				this.setSelectedImageIndex()
 				this.playSlider()
 			}, timeoutDur)
@@ -128,7 +138,7 @@ export default {
     },
 
     imageSlideDelay () {
-      return this.deathsPerSecond * 1000
+      return (this.deathsPerSecond * 1000) - this.imageShowDuration
     },
 
     imagesSrc () {
@@ -149,6 +159,19 @@ export default {
 			return this.imagesSrc[this.selectedImageIndex - 1]
 		},
   },
+
+  watch: {
+    showImage (value) {
+      console.log(value)
+      if (!value) {
+        this.showCtaButton = true
+
+        setTimeout(() => {
+          this.showCtaButton = false
+        }, this.ctaButtonDuration)
+      }
+    }
+  },
 }
 </script>
 
@@ -161,7 +184,7 @@ export default {
 
 		@include breakpoint($mobile) {
 			height: 250px;
-		}
+    }
   }
 
   .box-slider__slide {
@@ -237,6 +260,13 @@ export default {
         margin-bottom: 0;
       }
     }
+  }
+
+  .box-slider-cta {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    right: 0;
   }
 
   .box-slider__hover-box-wrap {
