@@ -1,10 +1,11 @@
 <template>
   <main class='site-content'>
-    <section class="section">
+    <section class="section box-section">
       <div class="container">
-        <div class="columns is-multiline is-mobile">
+        <div class="columns is-multiline is-mobile slider-columns">
           <div 
-            class="column is-4" v-for='box in boxes' 
+            class="column is-4-desktop is-6-tablet is-full-mobile slider-columns__column" 
+            v-for='box in boxes' 
             :key='`${$options.filters.slugify(box.title)}-box`'
           >
             <box-slider 
@@ -21,7 +22,7 @@
           <a href="#" class='more__link'>For links to information in this graphic, click here.</a>
         </p>
         <p class='has-text-centered is-marginless'>
-          <a href="#" class='button is-large is-secondary has-text-weight-bold is-uppercase'>Help Now</a>
+          <a href="#" class='button help-now-button is-large is-secondary has-text-weight-bold is-uppercase'>Help Now</a>
         </p>
       </div>
     </section>
@@ -64,7 +65,7 @@ export default {
         {
           message: 'Malnutrition and unclean water.',
           cost: 140,
-          deathsPerSecond: 1,
+          deathsPerSecond: 3,
           title: 'MALNUTRITION AND UNCLEAN WATER',
           images: [
             {
@@ -100,7 +101,7 @@ export default {
         {
           message: 'Malnutrition and unclean water killing a child',
           cost: 110,
-          deathsPerSecond: 3,
+          deathsPerSecond: 9,
           title: 'MALNUTRITION AND UNCLEAN WATER KILLING A CHILD.',
           images: [
             {
@@ -199,4 +200,34 @@ export default {
       color: $color-gray;
     }
   }
+
+  .slider-columns {
+		justify-content: center;
+
+    &__column {
+      padding: .375rem;
+    }
+  }
+
+	.box-section {
+		padding-bottom: 0 !important;
+
+		@include breakpoint($mobile) {
+			padding-left: .5rem;
+			padding-right: .5rem;
+		}
+
+		h4,
+		.more__link{
+			@include breakpoint($mobile) {
+				font-size: 1rem;
+			}
+		}
+
+		.help-now-button {
+			@include breakpoint($mobile) {
+				font-size: 1rem;
+			}
+		}
+	} 
 </style>

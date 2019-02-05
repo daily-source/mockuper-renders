@@ -4,23 +4,23 @@
     @mouseover='toggleHovered'
     @mouseout='toggleHovered'
   >
-    <flickity
-      :options='sliderOptions'
-      @click='goToImage'
-      ref='slider'
-    >
-      <div class="box-slider__slide box-slider__slide--title">
-        <h2 class='box-slider-title__heading'>{{ message }}</h2>
-      </div>
-      <div 
-        class="box-slider__slide box-slider__slide--image" 
-      >
-        <img 
-          :src='selectedImage.src' 
-          :alt="selectedImage.alt"
-        >
-      </div>
-    </flickity>
+		<div class="box-slider__slide box-slider__slide--title">
+			<h2 class='box-slider-title__heading'>{{ message }}</h2>
+		</div>
+    <transition name='box-fade'>
+			<div 
+				class="box-slider__slide box-slider__slide--image" 
+				v-if='showImage'
+			>
+				<img 
+					:src='selectedImage.src' 
+					:alt="selectedImage.alt"
+				>
+        <div class='box-slider__cta'>
+          <button class='button is-secondary box-slider__cta-button'>Help Now</button>
+        </div>
+			</div>
+		</transition>
     <transition name='box-fade'>
       <div 
       class="box-slider__hover-box-wrap"
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import Flickity from '@/components/plugins/Flickity'
 import { random } from 'lodash'
 
 export default {
@@ -51,13 +50,16 @@ export default {
       type: String,
       required: true,
     },
+
     message: {
       type: String,
       required: true,
     },
+
     cost: {
       type: Number,
     },
+
     deathsPerSecond: {
       type: Number,
     },
@@ -77,87 +79,52 @@ export default {
     }
   },
 
-  components: {
-    Flickity,
-  },
-
   data () {
     return {
       hovered: false,
       dataShown: false,
-      imageShowDuration: 1000,
-      ref: null,
-      selectedImageSlide: 1,
+      imageShowDuration: 1600,
+      selectedImageIndex: 1,
+      showImage: false,
+      showCta: false,
     }
   },
 
-  mounted () {
-    this.ref = this.$refs.slider
-
-    this.playSlide()
-  },
+	mounted () {
+		this.playSlider()
+	},
 
   methods: {
+		playSlider () {
+			setTimeout(() => {
+        this.showImage = !this.showImage
+        this.setSelectedImageIndex()
+				this.playSlider()
+			}, this.timeoutDur)
+		},
+
     toggleHovered () {
       this.hovered = !this.hovered
     },
 
-    playSlide () {
-      if(this.imageSlideDelay) {
-        this.goToImage()
-      }
-    },
+		setSelectedImageIndex () {
+			if (this.selectedImageIndex > this.imagesSrc.length) {
+				this.selectedImageIndex = 1
+
+				return
+			}
+
+			if (!this.showImage) {
+				this.selectedImageIndex += 1
+			}
+		},
 
     getImage (imgName) {
       return require(`@/assets/img/images/in-sight-in-mind/${imgName}`)
     },
-
-    goToImage () {
-      if(this.imagesCount) {
-        setTimeout( () => {
-          this.ref.flickity().select(1)
-          this.setImageSelectedSlide()
-          if(this.images)
-          this.goToMainSlide()
-        }, this.imageSlideDelay)
-      }
-    },
-
-    goToMainSlide () {
-      setTimeout( () => {
-        this.ref.flickity().select(0)
-        this.goToImage()        
-      }, this.imageShowDuration)
-    },
-
-    setImageSelectedSlide () {
-      this.selectedImageSlide += 1
-
-      if(this.imagesCount > 1 ) {
-        if(this.selectedImageSlide > this.imagesCount) {
-          this.selectedImageSlide = 1
-        }
-      } else {
-        this.selectedImageSlide = 1
-      }
-    }
-
   },
 
   computed: {
-    sliderOptions () {
-      const autoplaySpeed = (this.deathsPerSecond || random(5, 20)) * 1000 
-
-      return {
-        draggable: false,
-        prevNextButtons: false,
-        pageDots: false,
-				selectedAttraction: .125,
-				friction: .7,
-        ...this.options,
-      }
-    },
-
     imagesCount () {
       return this.images && this.images.length
     },
@@ -180,98 +147,158 @@ export default {
       return srcArray
     },
 
-    selectedImage () {
-      return this.imagesSrc[this.selectedImageSlide - 1 ]
+		selectedImage () {
+			return this.imagesSrc[this.selectedImageIndex - 1]
+    },
+    
+    timeoutDur () {
+      let timeoutDur = this.imageSlideDelay - this.imageShowDuration
+
+      if (this.showImage) {
+        timeoutDur = this.imageShowDuration
+      }
+
+      return timeoutDur
     }
-  }
+  },
 }
 </script>
 
-<style lang='scss'>
-  .box-slider {
-    border-radius: $box-slider-border-radius;
-    text-align: center;
-    height: $box-slider-height;
-    position: relative;
+<style lang='scss' scoped>
+.box-slider {
+  border-radius: $box-slider-border-radius;
+  text-align: center;
+  height: $box-slider-height;
+  position: relative;
+
+  @include breakpoint($mobile) {
+    height: 250px;
   }
 
-  .box-slider__slide {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: $box-slider-height;
-    border-radius: $box-slider-border-radius;
-    overflow: hidden;
-    background-image: linear-gradient(135deg, $primary 0%, $color-primary-tint 90%);
+  &__cta {
+    position: absolute;
+    bottom: 1.25em;
+    left: 0;
+    right: 0;
+  }
+}
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.box-slider__slide {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $box-slider-height;
+  border-radius: $box-slider-border-radius;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, $primary 0%, $color-primary-tint 90%);
+
+  @include breakpoint($mobile) {
+    height: 250px;	
   }
 
-  .box-slider-title__heading {
-    max-width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.5em;
-    font-family: $font-family-base;
-    margin-bottom: 0;
-  }
-
-  .box-slider__hover-box {
+  img {
     width: 100%;
     height: 100%;
-    background-color: $secondary;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    color: #fff;
-    padding: .875em;
-    border-radius: $box-slider-border-radius;
-
-    h3 {
-      font-family: $font-family-base;
-      color: #fff;
-      font-size: 1.25rem;
-    }
-
-    p {
-      font-size: 1rem;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    object-fit: cover;
+    display: block;
   }
 
-  .box-slider__hover-box-wrap {
+  &--image {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    right: 0;
+    height: 220px;
+
+    @include breakpoint($mobile) {
+      height: 250px;	
+    }		
   }
 
-  // Fade animation
-  .box-fade-enter,
-  .box-fade-leave-to {
-    opacity: 0;
+  &--cta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $danger;
+    background-image: none;
+    height: 220px;
+
+    h2 {
+      color: #fff;
+      margin-bottom: 0;
+      font-size: 1.5em;
+    }
+
+    @include breakpoint($mobile) {
+      height: 250px;	
+    }	
+  }
+}
+
+.box-slider-title__heading {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5em;
+  font-family: $font-family-base;
+  margin-bottom: 0;
+
+  @include breakpoint($mobile) {
+    font-size: 1.25em;
+  }
+}
+
+.box-slider__hover-box {
+  width: 100%;
+  height: 100%;
+  background-color: $secondary;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  color: #fff;
+  padding: .875em;
+  border-radius: $box-slider-border-radius;
+
+  h3 {
+    font-family: $font-family-base;
+    color: #fff;
+    font-size: 1.25rem;
   }
 
-  .box-fade-enter-active,
-  .box-fade-leave-active {
-    transition: opacity .2s ease-out;
+  p {
+    font-size: 1rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
+}
 
-  .box-fade-enter-to,
-  .box-fade-enter-leave {
-    opacity: 1;
-  }
+.box-slider__hover-box-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
 
+// Fade animation
+.box-fade-enter,
+.box-fade-leave-to {
+  opacity: 0;
+}
+
+.box-fade-enter-active,
+.box-fade-leave-active {
+  transition: opacity .2s ease-out;
+}
+
+.box-fade-enter-to,
+.box-fade-enter-leave {
+  opacity: 1;
+}
 </style>

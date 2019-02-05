@@ -2,11 +2,12 @@
     <header class="masthead site-header">
       <div class="container">
         <div class="header__contents is-flex">
-          <div class="header__logo has-text-right">
+          <div class="header__logo">
             <router-link to='/'>
               <img src='@/assets/img/in-sight-in-mind-logo.png' class='site-logo' alt="In Sight In Mind Logo">
             </router-link>
           </div>
+          <p class="header__logo-motto">This site displays how often people are dying of various causes.</p>
           <p class="header__logo-motto">Each time a photo shows, someone is dying of that cause.</p>
         </div>
       </div>
@@ -21,8 +22,8 @@ export default {
 
 <style lang='scss'>
   .header__contents {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
     justify-content: center;
     color: $color-dark-gray;
     flex-direction: column;
@@ -30,18 +31,26 @@ export default {
 
     .header__logo {
       width: 100%;
-      max-width: 500px;
+			max-width: 280px;
       margin-left: auto;
       margin-right: auto;
       display: block;
-      margin-bottom: 1.375rem;
+      margin-bottom: .625rem;
+
+			@include breakpoint($tablet) {
+				max-width: 350px;
+			}
 
       &-motto {
         margin-bottom: 0;
-        font-size: 1.5em;
+				text-align: center;
+				font-size: .875rem;
+
+				@include breakpoint($tablet) {
+					font-size: 1.033rem;
+					text-align: left;
+				}
       }
     }
-
   }
-
 </style>
