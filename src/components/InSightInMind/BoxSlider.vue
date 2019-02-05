@@ -8,7 +8,7 @@
 			<h2 class='box-slider-title__heading'>{{ message }}</h2>
       <transition name='box-fade'>
         <div class='box-slider-cta' v-if='showCtaButton'>
-          <button class='button box-slider__cta-button is-secondary'>
+          <button class='button box-slider__cta-button is-danger'>
             Help Now
           </button>
         </div>
@@ -264,7 +264,7 @@ export default {
 
   .box-slider-cta {
     position: absolute;
-    bottom: 1em;
+    bottom: 1.25em;
     left: 0;
     right: 0;
   }
