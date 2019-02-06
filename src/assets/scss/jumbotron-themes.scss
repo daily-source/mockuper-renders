@@ -46,12 +46,37 @@
 	.counter-widget-jumbotron--kid {
 		.counter-widget-jumbotron {
 			&__logo-container {
+				max-width: 170px !important;
 				right: auto !important;
 				left: 1.5em !important;
 			}
 
+			&__img-container {
+				img {
+					width: 105% !important;
+					object-position: 25px center;
+				}
+			}
+
 			&__widget {
-				margin-top: 11% !important;
+				margin-top: 13% !important;
+			}
+		}
+
+		.counter-widget {
+			&__title,
+			&__counter {
+				font-size: 15px !important;
+			}
+
+			&__date-wrap {
+				font-size: 13px !important;
+			}
+
+			&__nonprofit-details {
+				P {
+					font-size: 13px !important;
+				}
 			}
 		}
 	}
@@ -61,10 +86,11 @@
 	.counter-widget {
 		max-width: 75%;
 		margin-left: 0 !important;
+		padding: 1rem !important;
 
 		&__title {
-			max-width: 80% !important;
-			font-size: 22px !important;
+			max-width: 70% !important;
+			font-size: 20px !important;
 		}
 	
 		&__title,
@@ -174,6 +200,7 @@
 			}
 
 			&__nonprofit-name {
+				margin-top: 4px !important;
 				display: inline-block !important;
 			}
 		}
