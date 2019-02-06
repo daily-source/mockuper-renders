@@ -1,3 +1,29 @@
+.counter-widget-jumbotron {
+	&__button {
+		padding-bottom: calc(0.375em - 1px);
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    padding-top: calc(0.375em - 1px);
+    font-weight: 700;
+    text-transform: uppercase;
+		letter-spacing: .08em;
+		border-color: transparent;
+		color: #fff;
+		font-size: 1.5rem;
+		background-color: $primary;
+	}
+}
+
+.counter-widget-jumbotron {
+	$self: &;
+
+	&--secondary {
+		#{ $self }__button {
+			background-color: $secondary;
+		}
+	}
+}
+
 .counter-widget-jumbotron--statue-of-liberty {
   .counter-widget-jumbotron__img {
     max-width: initial !important;
@@ -7,6 +33,22 @@
 			width: 125% !important;
 		}
   }
+}
+
+.counter-widget-edit.counter-widget-edit--large {
+	.counter-widget-jumbotron {
+		&__button {
+			font-size: 1rem;
+		}
+	}
+}
+
+.counter-widget-edit.counter-widget-edit--medium {
+	.counter-widget-jumbotron {
+		&__button {
+			font-size: 11px !important;
+		}
+	}
 }
 
 .mlk-banner {
