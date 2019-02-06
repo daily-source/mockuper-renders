@@ -66,7 +66,7 @@ export default {
     const description = 'Every lives count.';
     const title = '';
     return {
-      title: 'Counters for the Poor -v2',
+      title: 'Counters for the Poor - v1',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
