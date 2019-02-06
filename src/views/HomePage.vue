@@ -28,13 +28,15 @@
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("@/assets/img/images/widget-imgs/poor-kid-v1.jpg")'
-				:widget-position='["center-y", "left"]'
+				:widget-position='["top", "left"]'
 			/>
     </section>
     <section class="section counter-page-creator-section">
-        <h2 class='has-text-centered'>Create your own counter page to share</h2>
-        <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
-        <counter-page-creator />
+        <div class='container'>
+          <h2 class='has-text-centered'>Create your own counter page to share</h2>
+          <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
+          <counter-page-creator />
+        </div>
     </section>
 		<shared-footer />
   </div>
