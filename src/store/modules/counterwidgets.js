@@ -52,17 +52,20 @@ const state = {
 	],
 
   sizes: {
-    'large': {
+		'large': {
+			name: 'large',
       label: 'Large',
       width: 800,
 			className: 'large',
     },
     'medium': {
+			name: 'medium',
       label: 'Medium',
       width: 500,
 			className: 'medium',
     },
     'small': {
+			name: 'small',
       label: 'Small',
       width: 300,
 			className: 'small',
