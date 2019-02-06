@@ -16,11 +16,18 @@
   }
 }
 
+.poor-kid-section {
+	.counter-widget {
+		margin-top: 50%;
+	}
+}
+
 .counter-widget-jumbotron--kid {
 	.counter-widget-jumbotron {
 		&__logo-container {
 			top: 1.5em !important;
 			right: 1.5em !important;
+			max-width: 170px !important;
 		}
 	}
 }
@@ -34,7 +41,7 @@
 			}
 
 			&__widget {
-				margin-top: 11% !important;
+				margin-top: 13% !important;
 			}
 		}
 	}
@@ -70,13 +77,24 @@
 		&__message-container {
 			p {
 				font-size: 14px !important;
-				margin-bottom: .5em;
+				margin-bottom: .75rem;
 			}
+		}
+
+		&__nonprofit-name {
+			margin-top: .25rem;
+		}
+
+		&__date-wrap {
+			max-width: 45% !important;
+			flex-basis: 45% !important;
+			text-align: center;
 		}
 
 		&-counter {
 			&__date {
 				font-size: 14px !important;
+				text-align: center;
 			}
 		}
 	}	
@@ -122,6 +140,7 @@
 				.counter-widget {
 					&__date-wrap {
 						max-width: 220px !important;
+						text-align: center;
 					}
 				}
 			}
@@ -191,7 +210,7 @@
 		padding-right: 1.25rem !important;
 
 		&-jumbotron__logo-container {
-			max-width: 135px !important;
+			max-width: 135px;
 		}
 
 		&__title {
@@ -208,7 +227,7 @@
 		}
 
 		&__counter {
-			font-size: 12.5px !important;
+			font-size: 13px !important;
 			max-width: 160px !important;
 			text-shadow: 0 4px 4px rgba(0,0,0,.6);
 		}
@@ -219,7 +238,7 @@
 
 		&__date-wrap {
 			margin-bottom: 4px !important;
-			max-width: 100% !important;
+			max-width: 220px !important;
 		}
 
 		&__message-container,
@@ -231,7 +250,7 @@
 		&__nonprofit-details {
 			p {
 				margin-bottom: 4px;
-				font-size: 12px;
+				font-size: 13.5px !important;
 				text-shadow: 0 4px 4px rgba(0,0,0,.6);
 			}
 		}
@@ -246,4 +265,9 @@
 			padding: 3px 12px !important;
 		}
 	}
+}
+
+// Counter widget stand alone styles
+.counter-widget--large {
+	max-width: 800px; 
 }
