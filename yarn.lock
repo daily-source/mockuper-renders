@@ -9325,7 +9325,7 @@ vue-wysiwyg-2@^1.7.92:
     vue "^2.5.13"
     vue2-dropzone "^3.0.4"
 
-vue2-dropzone@^3.0.4, vue2-dropzone@^3.5.2:
+vue2-dropzone@^3.0.4:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/vue2-dropzone/-/vue2-dropzone-3.5.2.tgz#602630b1577d861810555646b72338de69feebe2"
   integrity sha512-cigwZLe2USiIdxHEUKHNuJcbrGDNwuyqSE/FnYXQpG27cxCFtbyo1b8ZxRTa0sTY3czcrFtIZTox67VMahA7cg==
@@ -9791,9 +9791,9 @@ xtend@^4.0.0, xtend@~4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
 
-"xthon-core@github:dailysourceorg/xthon-core#0.0.32":
+"xthon-core@github:dailysourceorg/xthon-core#0.0.33":
   version "0.0.32"
-  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#5bccb884922d9b52bda91503a6f1f78fe4df08f4"
+  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#5995b0d8790fcd60cb5936099bb99115cc4eb5b3"
   dependencies:
     array-to-tree "^3.3.0"
     axios "^0.18.0"
