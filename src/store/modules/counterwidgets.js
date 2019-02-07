@@ -130,7 +130,7 @@ const state = {
 const getters = {}
 
 const actions = {
-  async addWidget ({ commit, state }, widget) {
+  async addWidget ({ commit }, widget) {
     if (!widget) return
     const id = random(1000, 10000, false)
 
@@ -144,15 +144,20 @@ const actions = {
     return widgetData
   },
 
-	async createPage ({ state, commit, dispatch }, widget) {
-		let pageData
+	async createPage ({ commit, dispatch }, payload) {
+    let pageData
+
+    const { widget, themeId } = payload
+    
+    console.log(payload)
 
 		try {
 			const widgetData = await dispatch('addWidget', widget)
 			const id = random(1000, 10000, false)
 
 			pageData = {
-				id,
+        id,
+        themeId,
 				widgetId: widgetData.id
 			}
 
