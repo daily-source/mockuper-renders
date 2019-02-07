@@ -18,6 +18,7 @@ const Fundraiser = () => import('@/views/Fundraiser.vue');
 const Default404 = () => import('@/views/Default404.vue');
 const MyAccount = () => import('@/views/MyAccount.vue');
 const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
+const CounterCustomPage = () => import('@/views/CounterCustomPage.vue');
 
 export default new Router({
   mode: 'history',
@@ -34,6 +35,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/page/:pageId',
+      name: 'counter-custom-page',
+      component: CounterCustomPage,
     },
     {
       path: '/explore',
