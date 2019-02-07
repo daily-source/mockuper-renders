@@ -150,22 +150,24 @@ export default {
     }
 
     .how-much__input {
-      max-width: 20% !important;
-      margin-left: 10px;
-      margin-right: 10px;
-
-			@include mobile {
-				max-width: 100% !important;
-				width: 100%;
-				display: block;
-				margin-left: 0;
-				margin-right: 0;
-				margin-top: .5em;
-				margin-bottom: .5em;
+      max-width: 100% !important;
+      width: 100%;
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: .5em;
+      margin-bottom: .5em;
+      
+			@include tablet {
+        max-width: 20% !important;
+        margin-left: 10px;
+        margin-right: 10px;
 			}
 
 			&.select {
-				width: 20% !important;
+        @include tablet {
+          width: 20% !important;
+        }
 			}
     }
 

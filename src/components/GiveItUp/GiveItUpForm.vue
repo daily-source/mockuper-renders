@@ -70,7 +70,7 @@
             <div class="form-group mb-0" v-if="version != 2">
               <label for="nonprofit" class="is-sr-only">Nonprofit</label>
               <nonprofit-ajax-search 
-                :standalone="true"
+                :standalone="false"
                 v-if="canRender"
               />
             </div>
@@ -338,14 +338,14 @@ export default {
   }
 
   .total-container {
-    font-size: 1.5rem;
+    font-size: 1.25rem;    
     font-weight: 900;
     font-family: 'Montserrat';
     padding-top: 1.5rem;
     border-top: 1px solid #ddd;
 
-		@include mobile {
-			font-size: 1.25rem;
+		@include tablet {
+      font-size: 1.5rem;
 		}
   }
 
@@ -364,12 +364,12 @@ export default {
   #choices h3 {
     font-family: "Poppins";
     font-weight: 700;
-    font-size: 2rem;
     margin-left: -2px;
     color: $secondary;
+    font-size: 1.5rem;
 
-		@include mobile {
-			font-size: 1.5rem;
+		@include tablet {
+      font-size: 2rem;
 		}
 
     span {
@@ -394,12 +394,13 @@ export default {
   }
 
   .expand-container {
-    margin-top: 1em;
-		text-align: right;
+    text-align: left;
+    margin-bottom: 1em;
 
-		@include mobile {
-			text-align: left;
-			margin-bottom: 1em;
+		@include tablet {
+      margin-top: 1em;
+      text-align: right;
+      margin-bottom: 0;
 		}
   }
 
@@ -414,29 +415,23 @@ export default {
   .total-rate-container  {
     margin-bottom: 1rem;
     align-items: center;
+    flex-wrap: wrap;
 
-		@include mobile {
-			flex-wrap: wrap;
+		@include tablet {
+			flex-wrap: nowrap;
 		}
   }
 
   .total-container {
     .select { 
       height: auto;
+      display: block;
+			width: 100%;      
 
-			@include mobile {
-				display: block;
-				width: 100%;
+			@include tablet {
+				display: inline-block;
 			}
     }
-
-		.select,
-		.input {
-			@include mobile {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}
 
     select {
       font-size: 1rem;
@@ -449,26 +444,31 @@ export default {
   }
 
 	.nonprofit-select-container {
-		max-width: 100%;
-
-		@include mobile {
-			flex-wrap: wrap;
-		}
+    max-width: 100%;
+    flex-wrap: wrap;
 
 		.form-group {
-			@include mobile {
-				width: 100%;
-			}
-		}
-	}
+      width: 100%;
+      margin-top: .5em;
 
-	.nonprofit-search-field-wrapper {
-		@include mobile {
-			margin-top: 0;
-			width: 100%;
-			max-width: 100% !important;
-			padding: 0;
-			margin-left: 0 !important;
-		}
+			@include tablet {
+        margin-top: 0;
+        max-width: 400px;
+			}
+    }
+    
+    .nonprofit-search-field-wrapper {
+      padding: 0;
+      margin-left: 0;
+      max-width: 100%;
+      width: 100%;
+
+      @include tablet {
+        margin-left: .25em;
+        display: inline-flex;
+        max-width: 400px;
+        width: 400px;
+      }
+    }
 	}
 </style>
