@@ -5,6 +5,7 @@
 				:users='users'	 
 				:nonprofits='nonprofits'
 				:markers='markers'
+				@mapReady='onMapReady'
 			/>	
 		</div>
 		<div 
@@ -31,11 +32,15 @@ export default {
 		return {
 			callToActionTimer: 180000,
 			showCallToAction: false,
+			google: null,
+			map: null,
 		}
 	},
 
 	mounted () {
 		this.startCallToActionTimer()
+
+		window.addEventListener('resize', this.setZoom)
 	},
 	
 	components: {
@@ -53,7 +58,23 @@ export default {
 			}, this.callToActionTimer)
 		},
 
+		/**
+		 * Triggers when the virtual railroad map is ready.
+		 */
+		onMapReady (map, google) {
+			this.google = google
+			this.map = map
 
+			this.setZoom()
+		},
+
+		setZoom () {
+			const width = window.innerWidth
+
+			const zoom = Math.log2(width) - 7.7
+		
+			this.map.setZoom(zoom)
+		},
 	},
 
 	computed: {
@@ -85,7 +106,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.virtual-railroad-map-container {
-	margin-bottom: 1.125em;	
+.home-map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 </style>
