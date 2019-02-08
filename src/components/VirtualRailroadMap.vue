@@ -1,56 +1,54 @@
 <template>
 	<div class="virtual-railroad-map-wrapper">
-		<div class="container">
-			<google-map
-				ref='gmap'
-				class='virtual-railroad-map'
-				@mapClicked='onMapClicked'
-				@mapReady='onMapReady'
-			>
-				<GmapMarker 
-					v-for='(user, index) in validUserMarkers'
-					:key='index'
-					:position='generatePosition(user.latitude, user.longitude)'
-					:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
-					@click='setSelectedUser(user)'
-				/>
-				<GmapMarker
-					v-for='(location, index) in locationMarkers'
-					:key='`nonprofit-${index}`'
-					:position='generatePosition(location.latitude, location.longitude)'
-					:icon='google && generateMarkerIcon(
-						generatePosition(location.latitude, location.longitude),
-						"nonprofit"
-					)'
-					@click='setSelectedNonprofit(location)'
-				/>
-				<GmapMarker
-					v-for='(marker, index) in validMarkers'
-					:key='`custom-marker-${index}`'
-					:position='marker.position'
-					:icon='marker.icon'
-				/>
-				<PolylineAnimatedSymbol
-					v-for='(nonprofit, index) in selectedUserNonprofits'
-					:key='`userNonprofit-${index}`'
-					:path='setUserNonprofitPath(nonprofit.location)'
-					@polylineCreated='onPolylineCreate'
-					:options='polylineOptions'			
-				/>	
-				<UserPopupWindow 
-					v-if='showUserPopupWindows && selectedUser'
-					:user='selectedUser'
-					@seeTracksClicked='onSeeTracksClicked'
-					@previousViewClicked='setSelectedUser(null)'
-					@closeButtonClicked='setSelectedUser(null)'
-				/>
-				<nonprofit-popup-window 
-					v-if='selectedNonprofit'
-					:nonprofit='selectedNonprofit'
-					@nonprofitCloseButtonClicked='setSelectedNonprofit(null)'
-				/>
-			</google-map>
-		</div>
+		<google-map
+			ref='gmap'
+			class='virtual-railroad-map'
+			@mapClicked='onMapClicked'
+			@mapReady='onMapReady'
+		>
+			<GmapMarker 
+				v-for='(user, index) in validUserMarkers'
+				:key='index'
+				:position='generatePosition(user.latitude, user.longitude)'
+				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
+				@click='setSelectedUser(user)'
+			/>
+			<GmapMarker
+				v-for='(location, index) in locationMarkers'
+				:key='`nonprofit-${index}`'
+				:position='generatePosition(location.latitude, location.longitude)'
+				:icon='google && generateMarkerIcon(
+					generatePosition(location.latitude, location.longitude),
+					"nonprofit"
+				)'
+				@click='setSelectedNonprofit(location)'
+			/>
+			<GmapMarker
+				v-for='(marker, index) in validMarkers'
+				:key='`custom-marker-${index}`'
+				:position='marker.position'
+				:icon='marker.icon'
+			/>
+			<PolylineAnimatedSymbol
+				v-for='(nonprofit, index) in selectedUserNonprofits'
+				:key='`userNonprofit-${index}`'
+				:path='setUserNonprofitPath(nonprofit.location)'
+				@polylineCreated='onPolylineCreate'
+				:options='polylineOptions'			
+			/>	
+			<UserPopupWindow 
+				v-if='showUserPopupWindows && selectedUser'
+				:user='selectedUser'
+				@seeTracksClicked='onSeeTracksClicked'
+				@previousViewClicked='setSelectedUser(null)'
+				@closeButtonClicked='setSelectedUser(null)'
+			/>
+			<nonprofit-popup-window 
+				v-if='selectedNonprofit'
+				:nonprofit='selectedNonprofit'
+				@nonprofitCloseButtonClicked='setSelectedNonprofit(null)'
+			/>
+		</google-map>
 	</div>
 </template>
 
@@ -362,8 +360,11 @@ export default {
 
 <style lang='scss'scoped>
 .virtual-railroad-map {
-	height: 500px;
-	max-width: 995px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
