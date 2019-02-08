@@ -5,6 +5,7 @@
 			class='virtual-railroad-map'
 			@mapClicked='onMapClicked'
 			@mapReady='onMapReady'
+			:zoom='zoom'
 		>
 			<GmapMarker 
 				v-for='(user, index) in validUserMarkers'
@@ -124,7 +125,16 @@ export default {
 
 				return sizes.indexOf(value) !== -1
 			}
-		}
+		},
+
+		/**
+		 * The map zoom value.
+		 */
+		zoom: {
+			type: Number,
+			required: false,
+			default: 1,
+		},
 	},
 
 	data () {
