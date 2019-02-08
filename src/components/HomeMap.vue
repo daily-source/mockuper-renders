@@ -6,6 +6,7 @@
 				:nonprofits='nonprofits'
 				:markers='markers'
 				@mapReady='onMapReady'
+				:zoom='initialZoom'
 			/>	
 		</div>
 		<div 
@@ -65,15 +66,22 @@ export default {
 			this.google = google
 			this.map = map
 
-			this.setZoom()
+			this.setZoom
+			window.addEventListener('resize', this.setZoom)
 		},
 
+		/**
+		 * Fits the whole world into the Google Map,
+		 * which depends on the size of the screen.
+		 */
 		setZoom () {
 			const width = window.innerWidth
 
-			const zoom = Math.log2(width) - 7.7
+			const zoom = Math.ceil(Math.log2(width) - 8)
 		
-			this.map.setZoom(zoom)
+			if (this.map.zoom <= zoom) {
+				this.map.setZoom(zoom)
+			}
 		},
 	},
 
@@ -95,6 +103,12 @@ export default {
 			}
 
 			return markers
+		},
+
+		initialZoom () {
+			const width = window.innerWidth
+
+			return Math.ceil(Math.log2(width) - 8)
 		},
 
 		...mapState({
