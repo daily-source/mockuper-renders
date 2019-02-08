@@ -34,6 +34,15 @@ export default {
       required: false,
       default: 2,
     },
+
+    /**
+     * Specifies if the map controls are to be shown
+     */
+    showMapControls: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
   },
 
   data () {
@@ -78,18 +87,22 @@ export default {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
     },
     
-    /** 
-		 * Custom Map Control options
-		 */
-		mapTypeControlOptions() {
-			return {
-				mapTypeIds: [
-					this.google.maps.MapTypeId.ROADMAP,
-					this.google.maps.MapTypeId.HYBRID,
-					this.mapTypeId,
-				]
-			}
-    },
+    // /** 
+		//  * Custom Map Control options
+		//  */
+		// mapTypeControlOptions() {
+    //   if (this.showMapControls) {
+    //     return {
+    //       mapTypeIds: [
+    //         this.google.maps.MapTypeId.ROADMAP,
+    //         this.google.maps.MapTypeId.HYBRID,
+    //         this.mapTypeId,
+    //       ]
+    //     }
+    //   }
+      
+    //   return null
+    // },
     
     /** 
 		 * Google Map options.
@@ -98,9 +111,10 @@ export default {
 		 */
 		mapOptions () {
 			return {
-				mapTypeControlOptions: this.mapTypeControlOptions,
+				mapTypeControl: false,
 				panControl: false,
-				streetViewControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
 				zoomControlOptions: {
 					style: google.maps.ZoomControlStyle.SMALL,
 				}
