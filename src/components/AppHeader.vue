@@ -3,7 +3,7 @@
     :class='["header masthead section is-paddingless", { "header--small": isSmall }]'>
     <div class='container'>
       <div class='header__contents is-flex columns'>
-        <div class='header__column header__social-nav-container column'>
+        <!-- <div class='header__column header__social-nav-container column'>
           <ul class='social-nav nav is-flex'>
             <li class='social-nav__item nav__item'>
               <a href='#' class='social-nav__link nav__link'>
@@ -21,13 +21,13 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div> -->
         <div class='header__column header__logo-container column'>
           <router-link to='/'>
-            <img src='@/assets/img/logo.png' alt='Virtual Railroad'>
+            <img src='@/assets/img/logo.png' alt='Virtual Railroad' class='header__logo'>
           </router-link>
         </div>
-        <div class='header__column header__nav-container column'>
+        <!-- <div class='header__column header__nav-container column'>
           <nav class='main-nav'>
             <ul class='is-flex nav'>
               <li class='nav-item'>
@@ -47,7 +47,7 @@
               </li>
             </ul>
           </nav>
-        </div>
+        </div> -->
       </div>
     </div>
   </header>
@@ -100,10 +100,16 @@ export default {
   padding-right: .5em;
 }
 
+.header {
+  &__logo {
+    max-width: 300px;
+  }
+}
+
 .header--small {
   .header {
     &__logo-container {
-      max-width: 300px;
+      max-width: 200px;
     }
   }
 }
