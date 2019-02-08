@@ -41,27 +41,17 @@ $max-container-width: 1344px;
 $max-fluid-container-width: 1162px;
 $max-combo-wrapper-width: 960px;
 
-
-
-// These variable definitions are here for the GiveItUpForGood version
-// Colors
-$secondary: #d22127;
-$primary: #233e84;
-$color-emphasis: $primary;
-$color-emphasis-alt: $secondary;
-$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
-
 // Fonts
-$font-family-base: 'Poppins';
-$headings-font-family: 'Montserrat';
+$font-family-base: $font-primary;
+$headings-font-family: $font-secondary;
 $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
 
 // Colors
-$primary: #0000ee;
-$secondary: #cfb35d;
+$primary: #4E5453;
+$secondary: #CAAE54;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
