@@ -1,7 +1,10 @@
 <template>
-  <div class="layout-base">
-    <intro-video />
+  <div class="home-page">
     <app-header
+      :is-small='false'
+     />
+    <!-- <intro-video /> -->
+    <!-- <app-header
       :is-small='false'
      />
 		<section class='home-virtual-railroad-map section'>	
@@ -17,27 +20,24 @@
 					</p>
 				</div>
 			</div>
-		</section>
-		<shared-footer />
+		</section> -->
+		<!-- <shared-footer /> -->
+		<section class='home-virtual-railroad-map'>
+      <home-map />	
+    </section>
   </div>
 </template>
 
 <script>
 import AppHeader from 'LocalComponents/AppHeader'
 import HomeMap from 'LocalComponents/HomeMap'
-import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
-import IntroVideo from 'LocalComponents/IntroVideo'
-import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
   name: 'BaseLayout',
 
   components: {
+    HomeMap,
     AppHeader,
-		VirtualRailroadMap,
-		HomeMap,
-    IntroVideo,
-    SharedFooter,
  	},
 
   metaInfo() {
@@ -56,9 +56,17 @@ export default {
 </script>
 
 <style lang='scss'scoped>
-.legends {
-	img {
-		vertical-align: middle;
-	}
-}	
+.home-virtual-railroad-map {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $primary;
+}
+
+header {
+  position: relative;
+  z-index: 99;
+}
 </style>
