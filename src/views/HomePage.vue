@@ -3,7 +3,8 @@
     <app-header
       :is-small='false'
      />
-    <!-- <intro-video /> -->
+     <home-page-actions />
+    <intro-video />
     <!-- <app-header
       :is-small='false'
      />
@@ -30,14 +31,18 @@
 
 <script>
 import AppHeader from 'LocalComponents/AppHeader'
+import HomePageActions from 'LocalComponents/HomePageActions'
 import HomeMap from 'LocalComponents/HomeMap'
+import IntroVideo from 'LocalComponents/IntroVideo'
 
 export default {
   name: 'BaseLayout',
 
   components: {
     HomeMap,
+    HomePageActions,
     AppHeader,
+    IntroVideo,
  	},
 
   metaInfo() {
@@ -56,6 +61,18 @@ export default {
 </script>
 
 <style lang='scss'scoped>
+header {
+  position: relative;
+  z-index: 99;
+}
+
+.home-page-actions {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  z-index: 999;
+}
+
 .home-virtual-railroad-map {
   height: 100vh;
   width: 100%;
@@ -63,10 +80,5 @@ export default {
   top: 0;
   left: 0;
   background-color: $primary;
-}
-
-header {
-  position: relative;
-  z-index: 99;
 }
 </style>

@@ -10,6 +10,7 @@ const actions = {
   toggleIsPlaying ({state, commit}) {
     commit('setIsPlaying', !state.isPlaying)
   },
+
   toggleIsShown ({state, commit}) {
     commit('setIsShown', !state.isShown)
   },
@@ -27,6 +28,7 @@ const mutations = {
   setIsPlaying (state, playing) {
     state.isPlaying = playing
   },
+  
   setIsShown (state, shown) {
     state.isShown = shown
   },
