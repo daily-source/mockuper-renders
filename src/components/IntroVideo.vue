@@ -1,5 +1,7 @@
 <template>
-	<transition name='video-fade'>
+	<transition 
+		:name='videoTransition'
+	>
 		<div 
 			class='intro-video'
 			v-show='isShown'
@@ -9,6 +11,7 @@
 				ref='youtube'
 				height='100%'
 				width='100%'
+				@ready='onPlayerReady'
 			/>
 			<div class='intro-video__controls'>
 				<button
@@ -43,6 +46,10 @@ export default {
       dontShowVideo: false,
 		  sessionStorageKey: 'dontShowVideo',
 			example: false,
+			fadeAfter: 107,
+			sampleRate: 500,
+			videoTransition: 'video-fade-short', 
+			playerCurrentTime: 0,
     }
   },
 
@@ -58,7 +65,6 @@ export default {
 
 	mounted () {
 		this.player.playVideo()
-		console.log(this.player)
 	},
 
 
@@ -78,6 +84,34 @@ export default {
 		 */
 		getSessionStorageKey () {
 			return sessionStorage.getItem(this.sessionStorageKey)
+		},
+
+		/**
+		 * Triggers when the player is ready 
+		 */
+		onPlayerReady () {
+			this.checkPlayerTimeRecursively()
+		},
+
+		checkPlayerTimeRecursively() {
+			setTimeout(async () => {
+				await this.getPlayerCurrentTime()
+
+				this.checkPlayerTimeRecursively()
+			}, this.sampleRate)
+		},
+
+		/**
+		 * Get player current time
+		 */
+		async getPlayerCurrentTime () {
+			try {
+				const time = await this.player.getCurrentTime()
+				this.playerCurrentTime = time
+				return time
+			} catch (err) {
+				console.log(err)
+			}
 		},
 		
 		...mapActions({
@@ -112,6 +146,16 @@ export default {
 		isShown (value) {
 			if (value) {
 				this.player.playVideo()
+
+				this.videoTransition = 'video-fade-short'
+			}
+		},
+
+		playerCurrentTime (value) {
+			if (value >= this.fadeAfter) {
+				this.videoTransition = 'video-fade-long'
+
+				this.hideVideo()
 			}
 		}
 	},
@@ -172,11 +216,18 @@ export default {
   }
 }
 
-.video-fade-enter-active, .video-fade-leave-active {
+.video-fade-short-enter-active, .video-fade-short-leave-active {
 	transition: opacity .2s ease;
 }
 
-.video-fade-enter, .video-fade-leave-to {
+.video-fade-long-enter-active, .video-fade-long-leave-active {
+	transition: opacity 1.7s ease;
+}
+
+.video-fade-short-enter, 
+.video-fade-short-leave-to,
+.video-fade-long-enter, 
+.video-fade-long-leave-to {
 	opacity: 0;
 }
 </style>
