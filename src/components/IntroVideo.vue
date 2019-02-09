@@ -56,6 +56,12 @@ export default {
 		}
 	},
 
+	mounted () {
+		this.player.playVideo()
+		console.log(this.player)
+	},
+
+
   methods: {
 		/**
 		 * Handles the Skip button clicked event
