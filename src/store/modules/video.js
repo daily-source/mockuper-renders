@@ -1,6 +1,6 @@
 const state = {
   isPlaying: false,
-	isShown: true,
+	isShown: false,
   videoId: null,
 }
 
@@ -10,6 +10,7 @@ const actions = {
   toggleIsPlaying ({state, commit}) {
     commit('setIsPlaying', !state.isPlaying)
   },
+
   toggleIsShown ({state, commit}) {
     commit('setIsShown', !state.isShown)
   },

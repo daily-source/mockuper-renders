@@ -35,7 +35,7 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'IntroVideo',
+	name: 'IntroVideo',
 
   data () {
     return {
@@ -51,6 +51,8 @@ export default {
 
 		if (this.dontShowVideo) {
 			this.hideVideo()
+
+			return
 		}
 	},
 
@@ -73,9 +75,10 @@ export default {
 		},
 		
 		...mapActions({
-			hideVideo: 'video/hideVideo'
+			hideVideo: 'video/hideVideo',
+			showVideo: 'video/showVideo',
 		}),
-  },
+	},
 
   computed: {
 		player () {
@@ -83,8 +86,11 @@ export default {
 		},
 
     ...mapState({
+			isShown (state) {
+				return state.video.isShown
+			},
+
       isPlaying: state => state.video.isPlaying,
-			isShown: state => state.video.isShown,
     }),
   },
 
