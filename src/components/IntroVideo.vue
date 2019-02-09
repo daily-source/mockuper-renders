@@ -108,6 +108,12 @@ export default {
 				sessionStorage.removeItem(this.sessionStorageKey)
 			}
 		},
+
+		isShown (value) {
+			if (value) {
+				this.player.playVideo()
+			}
+		}
 	},
 }
 </script>
