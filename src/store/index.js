@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import users from './modules/users'
 import nonprofits from './modules/nonprofits'
 import video from './modules/video'
+import info from './modules/info'
 
 Vue.use(Vuex)
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
 		users,
 		nonprofits,
 		video,
+		info,
 	},
 })
