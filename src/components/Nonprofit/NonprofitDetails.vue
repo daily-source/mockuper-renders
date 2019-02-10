@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
-      <div class='column is-4'>
+      <div class='column is-3'>
         <Avatar 
           :url='nonprofit.picture'
           :alt='nonprofit.name'
