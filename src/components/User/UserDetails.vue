@@ -54,8 +54,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import { debounce } from 'lodash'
-import { gmapApi } from 'vue2-google-maps'
 
 import Icon from 'Components/general/Icons'
 
@@ -72,26 +70,7 @@ export default {
 			required: true,
 		},
 	},
-
-	methods :{
-		search (event) {
-			this.searchPlace(event.target.value, this.geocoder)
-		},
-
-		searchPlace: debounce((value, geocoder) => {
-			if (geocoder) {
-				const request = {
-					address: value,
-				}
-
-				geocoder.geocode(request, (results) => {
-					console.log(results)
-				})
-			}
-		}, 500)
-	},
 	
-
 	computed: {
 		google: gmapApi,
 

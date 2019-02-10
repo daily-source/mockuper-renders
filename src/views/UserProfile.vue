@@ -39,7 +39,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import { debounce } from 'lodash'
 
 import AppHeader from 'LocalComponents/AppHeader'
 import Alert from 'LocalComponents/Alert/Alert'
