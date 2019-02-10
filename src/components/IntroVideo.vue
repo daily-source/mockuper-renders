@@ -64,7 +64,9 @@ export default {
 	},
 
 	mounted () {
-		this.player.playVideo()
+		if (this.isShown) {
+			this.player.playVideo()
+		}
 	},
 
 
