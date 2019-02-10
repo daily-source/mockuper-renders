@@ -10,7 +10,7 @@
             />
           </div>
           <div class='column'>
-            <user-choose-location 
+            <location-chooser
               @placeChanged='onPlaceChange'
             />
           </div>
@@ -30,14 +30,14 @@
 
 <script>
 import UserAvatarUpload from 'LocalComponents/User/UserAvatarUpload'
-import UserChooseLocation from 'LocalComponents/User/UserChooseLocation'
+import LocationChooser from 'LocalComponents/LocationChooser'
 
 export default {
   name: 'UserRegisterFormStepTwo',
 
   components: {
     UserAvatarUpload,
-    UserChooseLocation,
+    LocationChooser,
   },
 
   data () {
@@ -62,7 +62,7 @@ export default {
     },
 
     /**
-     * Handles when place changes on the UserChooseLocation component.
+     * Handles when place changes on the LocationChooser component.
      * 
      * @param {Object} place Geocoder Response object from Google Maps API
      * @param {Object} location latLng Object from Google Maps API
