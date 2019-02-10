@@ -4,7 +4,7 @@
 			<img
 				class='user-details__profile-img'
 				:src='user.picture' 
-				alt='`${user.firstName} ${user.lastName}`'
+				:alt='`${user.firstName} ${user.lastName}`'
 			>
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
