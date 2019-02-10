@@ -1,10 +1,11 @@
 <template>
-  <div class='location-chooser' slot='content'>
+  <div class='location-chooser'>
     <div class='location-chooser-autocomplete'>
       <gmap-autocomplete
         @place_changed="setSelectedPlaceTemp"
         placeholder='Enter zip code or city/state'
         class='location-chooser-autocomplete__input input'
+        :types='["(regions)"]'
       />
       <button 
         class='button is-primary'
@@ -179,6 +180,8 @@ export default {
       }
 
       this.map.fitBounds(bounds)
+
+      this.$emit('placeSelected', place)
     },
   },
 }

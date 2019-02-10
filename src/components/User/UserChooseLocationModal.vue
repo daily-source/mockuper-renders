@@ -8,11 +8,12 @@
   >
     <div class='user-choose-location-modal__content' slot='content'>
       <p class='has-text-centered'>Click on the map to choose a location. <br /> You can also search for a place and use it instead.</p>
-      <div class='user-choose-location-autocomplete'>
+      <!-- <div class='user-choose-location-autocomplete'>
         <gmap-autocomplete
           @place_changed="setSelectedPlaceTemp"
           placeholder='Enter zip code or city/state'
           class='user-choose-location-autocomplete__input input'
+          :types='["(regions)"]'
         />
         <button 
           class='button is-primary'
@@ -44,7 +45,10 @@
             :position='selectedLocation'
           />
         </google-map>
-      </div>
+      </div> -->
+      <location-chooser 
+        @placeSelected='setSelectedPlace'
+      />
       <div class='user-choose-location-actions'>
         <button 
           class='user-choose-location-actions__button button is-danger'
@@ -70,7 +74,7 @@ import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
 
 import Modal from 'Components/general/Modal'
-import GoogleMap from 'LocalComponents/GoogleMap'
+import LocationChooser from 'LocalComponents/LocationChooser'
 import Loader from 'Components/Shared/Loader'
 
 export default {
@@ -80,7 +84,7 @@ export default {
   
   components: {
     Modal,
-    GoogleMap,
+    LocationChooser,
     Loader,
   },
 
@@ -112,11 +116,6 @@ export default {
         lng: this.intialUserPosition.longitude,
       },
       selectedPlace: null,
-      selectedPlaceTemp: null,
-      google: null,
-      geocoder: null,
-      showMapLoadingOverlay: false,
-      map: null,
     }
   },
 
@@ -153,12 +152,14 @@ export default {
     },
 
     /**
-     * Triggers when the map is clicked
+     * Sets the selectedPlace to the temporarily stored variable.
+     * 
+     * @param {Object} place
      */
-    onMapClicked (event) {
-      const { latLng } = event
+    setSelectedPlace (place) {
+      this.selectedPlace = place
 
-      this.geocodeLocation(latLng)
+      this.setSelectedLocation(place.geometry.location)
     },
 
     /**
@@ -170,47 +171,6 @@ export default {
       this.selectedLocation = latLng
     },
 
-    /**
-     * Sets the selected place to a temporary variable 
-     * from the auto complete
-     * 
-     * @param {Object} place
-     */
-    setSelectedPlaceTemp (place) {
-      this.selectedPlaceTemp = place
-    },
-
-    /**
-     * Sets the selectedPlace to the temporarily stored variable.
-     * 
-     * @param {Object} place
-     */
-    setSelectedPlace (place = this.selectedPlaceTemp) {
-      this.selectedPlace = place
-
-      this.setSelectedLocation(place.geometry.location)
-    },
-
-    /**
-     * Reverse gecodes a point
-     * 
-     * @param {Object} latLng
-     * 
-     * @returns Object
-     */
-    async geocodeLocation (latLng) {
-      if (!this.geocoder) {
-        this.geocoder = new this.google.maps.Geocoder
-      }
-
-      this.showMapLoadingOverlay = true
-
-      const location = await geocoder.geocodeLocation(this.geocoder, latLng)
-
-      this.showMapLoadingOverlay = false
-
-      this.setSelectedPlace(location)
-    },
 
     /**
      * Triggers when the user clicks on save
@@ -219,22 +179,6 @@ export default {
       this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
 
       this.closeModal()
-    },
-  },
-
-  watch: {
-    selectedPlace (place) {
-      // Every time a place is changed, we fit the map's bounds
-      // according to the place.
-      let bounds = new this.google.maps.LatLngBounds()
-
-      if (place.geometry.viewport) {
-        bounds.union(place.geometry.viewport)
-      } else {
-        bounds.extend(place.geometry.location)
-      }
-
-      this.map.fitBounds(bounds)
     },
   },
 }

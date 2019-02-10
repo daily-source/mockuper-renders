@@ -9,6 +9,14 @@
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
 		<div class='column'>
+				<input 
+					type='text' 
+					name='text' 
+					id='text' 
+					class='input' 
+					placeholder='Enter zipcode or city/state'
+					@input='search'
+				>
 				<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>User Details</h4>
 				<div class='user-details__bio-wrapper'>
 					<div class='user-bio is-flex'>
@@ -46,6 +54,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import { debounce } from 'lodash'
+import { gmapApi } from 'vue2-google-maps'
 
 import Icon from 'Components/general/Icons'
 
@@ -61,7 +71,34 @@ export default {
 			type: Object,
 			required: true,
 		},
-	}
+	},
+
+	methods :{
+		search (event) {
+			this.searchPlace(event.target.value, this.geocoder)
+		},
+
+		searchPlace: debounce((value, geocoder) => {
+			if (geocoder) {
+				const request = {
+					address: value,
+				}
+
+				geocoder.geocode(request, (results) => {
+					console.log(results)
+				})
+			}
+		}, 500)
+	},
+	
+
+	computed: {
+		google: gmapApi,
+
+		geocoder () {
+			return new this.google.maps.Geocoder
+		}
+	},
 }
 </script>
 
