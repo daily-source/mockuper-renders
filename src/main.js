@@ -33,6 +33,19 @@ Vue.use(VueGoogleMaps, {
 })
 
 
+/**
+ * Shows the video if user enters the site on the homepage as its first page. We
+ * hide the videos on inner pages.
+ */
+router.beforeEach((to, from, next) => {
+  console.log(from)
+  if (to.name === 'home' && !from.matched.length) {
+    store.dispatch('video/showVideo')
+  }
+
+  next()
+})
+
 new Vue({
   router,
   store,
