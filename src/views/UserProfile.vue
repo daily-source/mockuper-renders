@@ -1,6 +1,7 @@
 <template>
 	<div class='user-profile'>
 		<app-header />
+		<intro-video />
 		<section class='user-details-section section'>
 			<div class='container'>	
 				<alert
@@ -41,6 +42,7 @@ import { mapState } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
 import Alert from 'LocalComponents/Alert/Alert'
+import IntroVideo from 'LocalComponents/IntroVideo'
 import UserDetails from 'LocalComponents/User/UserDetails'
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
 import UserVirtualRailroadMap from 'LocalComponents/User/UserVirtualRailroadMap'
@@ -54,6 +56,7 @@ export default {
 		Alert,
 		UserDetails,
 		UserSupportedNonprofits,
+		IntroVideo,
 		UserVirtualRailroadMap,
 		SharedFooter,
 	},
