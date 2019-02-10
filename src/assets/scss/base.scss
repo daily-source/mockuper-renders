@@ -68,6 +68,9 @@ $btn-border-radius: 0;
 $success: $color-emphasis;
 $section-padding: 1.5rem 1.5rem;
 
+// Notifications
+$notification-radius: 100px;
+
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
