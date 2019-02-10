@@ -1,10 +1,16 @@
 <template>
   <div class='home-page-actions'>
     <button 
-      class='button is-secondary'
+      class='button is-info home-page-actions__button'
       @click="showVideo"
     >
-        Play
+      Play
+    </button>
+    <button 
+      class='button is-info home-page-actions__button'
+      @click='openInfo'
+    >
+      Info
     </button>
   </div>
 </template>
@@ -23,7 +29,8 @@ export default {
 
   methods: {
     ...mapActions({
-      showVideo: 'video/showVideo'
+      showVideo: 'video/showVideo',
+      openInfo: 'info/openInfo',
     }),
   }
 }
@@ -33,5 +40,13 @@ export default {
 .home-page-actions {
   display: flex;
   flex-direction: column;
+
+  &__button {
+    margin-bottom: 1em;
+  }
+}
+
+.more-info-modal >>> .modal-background {
+  background-color: rgba(0,0,0,.7) !important;
 }
 </style>

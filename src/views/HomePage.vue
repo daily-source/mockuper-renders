@@ -1,10 +1,14 @@
 <template>
   <div class="home-page">
+    <intro-video />
     <app-header
       :is-small='false'
      />
-     <home-page-actions />
-    <intro-video />
+     <home-page-actions 
+     />
+		<section class='home-virtual-railroad-map'>
+      <home-map />	
+    </section>
     <!-- <app-header
       :is-small='false'
      />
@@ -22,10 +26,10 @@
 				</div>
 			</div>
 		</section> -->
+    <general-info 
+      :opened='true'
+    />
 		<!-- <shared-footer /> -->
-		<section class='home-virtual-railroad-map'>
-      <home-map />	
-    </section>
   </div>
 </template>
 
@@ -34,6 +38,7 @@ import AppHeader from 'LocalComponents/AppHeader'
 import HomePageActions from 'LocalComponents/HomePageActions'
 import HomeMap from 'LocalComponents/HomeMap'
 import IntroVideo from 'LocalComponents/IntroVideo'
+import GeneralInfo from 'LocalComponents/General/GeneralInfo'
 
 export default {
   name: 'BaseLayout',
@@ -43,6 +48,7 @@ export default {
     HomePageActions,
     AppHeader,
     IntroVideo,
+    GeneralInfo,
  	},
 
   metaInfo() {
@@ -69,8 +75,8 @@ header {
 .home-page-actions {
   position: fixed;
   top: 10%;
-  right: 10%;
-  z-index: 999;
+  right: 2%;
+  z-index: 99;
 }
 
 .home-virtual-railroad-map {
