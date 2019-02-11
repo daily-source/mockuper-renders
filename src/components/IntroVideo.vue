@@ -14,7 +14,7 @@
 					player-width='100%'
 					:player-vars="{ autoplay: 1 }"
 					@playing='playing'
-					@paused='paused'
+					@ready='onReady'
 				/>
 			</div>
 			<div class='intro-video__controls'>
@@ -54,6 +54,7 @@ export default {
 			sampleRate: 500,
 			videoTransition: 'video-fade-short', 
 			playerCurrentTime: 0,
+			player: null,
     }
   },
 
@@ -68,6 +69,10 @@ export default {
 	},
 
   methods: {
+		onReady (event) {
+			this.player = event.target
+		},
+
 		/**
 		 * Handles the Skip button clicked event
 		 */
@@ -89,11 +94,12 @@ export default {
 		 * Checks the player's time recursively.
 		 */
 		checkPlayerTimeRecursively () {
-			setTimeout( async () => {
-				await this.getPlayerCurrentTime()
-				if (this.player.getPlayerState() === 1) {
-					this.checkPlayerTimeRecursively()
-				}
+			setTimeout( () => {
+				this.getPlayerCurrentTime().then(() => {
+					if (this.player.getPlayerState() === 1) {
+						this.checkPlayerTimeRecursively()
+					}
+				})
 			}, this.sampleRate)
 		},
 
@@ -123,10 +129,6 @@ export default {
 	},
 
   computed: {
-		player () {
-			return this.$refs.youtube.player
-		},
-
     ...mapState({
 			isShown (state) {
 				return state.video.isShown
