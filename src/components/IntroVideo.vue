@@ -12,8 +12,9 @@
 					ref='youtube'
 					player-height='100%'
 					player-width='100%'
-					@ready='onPlayerReady'
 					:player-vars="{ autoplay: 1 }"
+					@playing='playing'
+					@paused='paused'
 				/>
 			</div>
 			<div class='intro-video__controls'>
@@ -71,7 +72,6 @@ export default {
 		 * Handles the Skip button clicked event
 		 */
 		onSkipClicked () {
-			console.log(this.player)
 			if (this.player) {
 				this.hideVideo()
 				this.player.stopVideo()
@@ -86,20 +86,22 @@ export default {
 		},
 
 		/**
-		 * 
-		 * Triggers when the player is ready 
+		 * Checks the player's time recursively.
 		 */
-		onPlayerReady () {
-			this.checkPlayerTimeRecursively()
-			console.log(this.player)
+		checkPlayerTimeRecursively () {
+			setTimeout( async () => {
+				await this.getPlayerCurrentTime()
+				if (this.player.getPlayerState() === 1) {
+					this.checkPlayerTimeRecursively()
+				}
+			}, this.sampleRate)
 		},
 
-		checkPlayerTimeRecursively() {
-			setTimeout(async () => {
-				await this.getPlayerCurrentTime()
-
-				this.checkPlayerTimeRecursively()
-			}, this.sampleRate)
+		/**
+		 * Triggers when the video is playing.
+		 */
+		playing (event) {
+			this.checkPlayerTimeRecursively()
 		},
 
 		/**
@@ -109,7 +111,6 @@ export default {
 			try {
 				const time = await this.player.getCurrentTime()
 				this.playerCurrentTime = time
-				return time
 			} catch (err) {
 				console.log(err)
 			}
