@@ -6,13 +6,16 @@
 			class='intro-video'
 			v-show='isShown'
 		>
-			<youtube 
-				:video-id='videoId'
-				ref='youtube'
-				height='100%'
-				width='100%'
-				@ready='onPlayerReady'
-			/>
+			<div class='video-container'>
+				<youtube
+					:video-id='videoId'
+					ref='youtube'
+					player-height='100%'
+					player-width='100%'
+					@ready='onPlayerReady'
+					:player-vars="{ autoplay: 1 }"
+				/>
+			</div>
 			<div class='intro-video__controls'>
 				<button
 					@click='onSkipClicked' 
@@ -56,28 +59,22 @@ export default {
 	created () {
 		this.dontShowVideo = this.getSessionStorageKey()
 
-		if (this.dontShowVideo) {
+		if (this.dontShowVideo && this.player) {
 			this.hideVideo()
 
 			return
 		}
 	},
 
-	mounted () {
-		if (this.isShown) {
-			this.player.playVideo()
-		}
-	},
-
-
   methods: {
 		/**
 		 * Handles the Skip button clicked event
 		 */
 		onSkipClicked () {
+			console.log(this.player)
 			if (this.player) {
-				this.player.stopVideo()
 				this.hideVideo()
+				this.player.stopVideo()
 			}
 		},
 
@@ -89,10 +86,12 @@ export default {
 		},
 
 		/**
+		 * 
 		 * Triggers when the player is ready 
 		 */
 		onPlayerReady () {
 			this.checkPlayerTimeRecursively()
+			console.log(this.player)
 		},
 
 		checkPlayerTimeRecursively() {
@@ -231,5 +230,19 @@ export default {
 .video-fade-long-enter, 
 .video-fade-long-leave-to {
 	opacity: 0;
+}
+</style>
+
+<style lang='scss'>
+.intro-video {
+	.video-container {
+		width: 100%;
+		height: 100%;
+
+		div {
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 </style>
