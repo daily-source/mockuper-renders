@@ -7,6 +7,7 @@
 				:markers='markers'
 				@mapReady='onMapReady'
 				:zoom='initialZoom'
+				:icon-size='32'
 			/>	
 		</div>
 		<div 

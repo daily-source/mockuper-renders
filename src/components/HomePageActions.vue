@@ -4,13 +4,19 @@
       class='button is-info home-page-actions__button'
       @click="showVideo"
     >
-      Play
+      <icon-play 
+        :width='36'
+        :height='36'
+      />
     </button>
     <button 
       class='button is-info home-page-actions__button'
       @click='openInfo'
     >
-      Info
+      <icon-info 
+        :width='36'
+        :height='36'
+      />
     </button>
   </div>
 </template>
@@ -18,13 +24,15 @@
 <script>
 import { mapActions } from 'vuex'
 
-import Icon from 'Components/general/Icons'
+import IconPlay from 'LocalComponents/Icons/IconPlay'
+import IconInfo from 'LocalComponents/Icons/IconInfo'
 
 export default {
   name: 'HomePageActions',
 
   components: {
-    Icon,
+    IconPlay,
+    IconInfo,
   },
 
   methods: {
@@ -40,13 +48,18 @@ export default {
 .home-page-actions {
   display: flex;
   flex-direction: column;
+  padding: 1.375em .5em;
+  background-color: rgba($primary, .9);
+  border-radius: 100px;
 
   &__button {
-    margin-bottom: 1em;
-  }
-}
+    padding: 0;
+    height: auto;
+    background-color: transparent !important;
 
-.more-info-modal >>> .modal-background {
-  background-color: rgba(0,0,0,.7) !important;
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
 }
 </style>
