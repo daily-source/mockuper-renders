@@ -9,45 +9,37 @@
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
 		<div class='column'>
-				<input 
-					type='text' 
-					name='text' 
-					id='text' 
-					class='input' 
-					placeholder='Enter zipcode or city/state'
-					@input='search'
-				>
-				<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>User Details</h4>
-				<div class='user-details__bio-wrapper'>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>Username: </p>
-						<p>{{ user.userName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>First Name: </p>
-						<p>{{ user.firstName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>Last Name: </p>
-						<p>{{ user.lastName }}</p>
-					</div>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label user-bio__label--location has-text-weight-bold'>
-							<Icon 
-								:iconheight='24'
-								:iconwidth='32'
-								color='#333'
-								icon='map-marker'
-							/>	
-						</p>
-						<p>{{ user.location }}</p>
-					</div>
-					<div class='user-bio'>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius egestas tincidunt. Vivamus lacinia, elit quis pulvinar posuere.
-						</p>
-					</div>
+			<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>User Details</h4>
+			<div class='user-details__bio-wrapper'>
+				<div class='user-bio is-flex'>
+					<p class='user-bio__label has-text-weight-bold'>Username: </p>
+					<p>{{ user.userName }}</p>
 				</div>
+				<div class='user-bio is-flex'>
+					<p class='user-bio__label has-text-weight-bold'>First Name: </p>
+					<p>{{ user.firstName }}</p>
+				</div>
+				<div class='user-bio is-flex'>
+					<p class='user-bio__label has-text-weight-bold'>Last Name: </p>
+					<p>{{ user.lastName }}</p>
+				</div>
+				<div class='user-bio is-flex'>
+					<p class='user-bio__label user-bio__label--location has-text-weight-bold'>
+						<Icon 
+							:iconheight='24'
+							:iconwidth='32'
+							color='#333'
+							icon='map-marker'
+						/>	
+					</p>
+					<p>{{ user.location }}</p>
+				</div>
+				<div class='user-bio'>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius egestas tincidunt. Vivamus lacinia, elit quis pulvinar posuere.
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -72,8 +64,6 @@ export default {
 	},
 	
 	computed: {
-		google: gmapApi,
-
 		geocoder () {
 			return new this.google.maps.Geocoder
 		}
