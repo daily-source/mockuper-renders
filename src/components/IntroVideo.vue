@@ -128,8 +128,6 @@ export default {
 	},
 
   computed: {
-		google: gmapApi,
-
     ...mapState({
 			isShown (state) {
 				return state.video.isShown
@@ -145,12 +143,6 @@ export default {
 				sessionStorage.setItem(this.sessionStorageKey, value)
 			} else {
 				sessionStorage.removeItem(this.sessionStorageKey)
-			}
-		},
-
-		google (value) {
-			if (value) {
-				console.log(this.player)
 			}
 		},
 
