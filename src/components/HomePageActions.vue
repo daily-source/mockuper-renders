@@ -3,6 +3,7 @@
     <button 
       class='button is-info home-page-actions__button'
       @click="showVideo"
+      v-tooltip.bottom-start='"View the Intro Video"'
     >
       <icon-play 
         :width='36'
@@ -12,6 +13,7 @@
     <button 
       class='button is-info home-page-actions__button'
       @click='openInfo'
+      v-tooltip.bottom-start='"Click to show info."'
     >
       <icon-info 
         :width='36'

@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .alert-fade-enter-active, .alert-fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .2s;
 }
 .alert-fade-enter, .alert-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

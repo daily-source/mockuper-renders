@@ -3,6 +3,7 @@ import Vue from 'vue';
 import Datetime from 'vue-datetime';
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
+import VTooltip from 'v-tooltip'
 
 import store from './store'
 import App from './App.vue';
@@ -17,6 +18,7 @@ Vue.config.productionTip = false;
 
 Vue.use(Datetime)
 Vue.use(VueYoutube)
+Vue.use(VTooltip)
 
 // register global utility filters.
 Object.keys(filters).forEach((key) => {

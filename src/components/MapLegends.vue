@@ -1,6 +1,6 @@
 <template>
   <div 
-    :class='["legends", {"legends--opened": opened}]'  
+    :class='["legends", {"legends--minimized": !opened}]'  
   >
     <p>
       <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
@@ -12,6 +12,7 @@
       <button 
         :class='["button legends__button", {"legends__button--opened": opened}]'
         @click='onToggleClick'
+        v-tooltip.top-start='tooltipMessage'
       >
         <icon-chevron 
           :width='36'
@@ -44,7 +45,17 @@ export default {
     onToggleClick () {
       this.$emit('toggle')
     },
-  }
+  },
+
+  computed: {
+    tooltipMessage () {
+      if (this.opened) {
+        return 'Click to hide map legend.'
+      }
+
+      return 'Click to open map legend.'
+    },
+  },
 }
 </script>
 
@@ -59,7 +70,7 @@ export default {
   right: 0;
   transition: bottom .2s ease;
 
-  &--opened {
+  &--minimized {
     bottom: -150px;
   }
 
@@ -90,14 +101,14 @@ export default {
     padding: 0;
     background-color: transparent;
     border: 0;
-    transform: rotate(360deg);
+    transform: rotate(180deg);
     border-radius: 100%;
     border: 2px solid #000;
     height: auto;
     transition: transform .2s ease;
 
     &--opened {
-      transform: rotate(180deg)
+      transform: rotate(360deg);      
     }
   }
 }
