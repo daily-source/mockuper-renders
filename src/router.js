@@ -1,8 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Meta from 'vue-meta';
-// import { Store } from "../store"
-// const store = Store()
+import HomePage from '@/views/HomePage'
+import UserProfile from '@/views/UserProfile'
+import UserProfileEdit from '@/views/UserProfileEdit'
+import UserRegister from '@/views/UserRegister'
+import NonprofitDirectory from '@/views/NonprofitDirectory'
+import NonprofitRegister from '@/views/NonprofitRegister'
+import NonprofitDetails from '@/views/NonprofitDetails'
 
 Vue.use(Router);
 Vue.use(Meta, {
@@ -10,13 +15,13 @@ Vue.use(Meta, {
 });
 
 // route-level code splitting
-const HomePage = () => import('@/views/HomePage')
-const UserProfile = () => import('@/views/UserProfile')
-const UserProfileEdit = () => import('@/views/UserProfileEdit')
-const UserRegister = () => import('@/views/UserRegister')
-const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
-const NonprofitRegister = () => import('@/views/NonprofitRegister')
-const NonprofitDetails = () => import('@/views/NonprofitDetails')
+// const HomePage = () => import('@/views/HomePage')
+// const UserProfile = () => import('@/views/UserProfile')
+// const UserProfileEdit = () => import('@/views/UserProfileEdit')
+// const UserRegister = () => import('@/views/UserRegister')
+// const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
+// const NonprofitRegister = () => import('@/views/NonprofitRegister')
+// const NonprofitDetails = () => import('@/views/NonprofitDetails')
 
 export default new Router({
   mode: 'history',

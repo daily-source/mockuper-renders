@@ -6,13 +6,16 @@
 			class='intro-video'
 			v-show='isShown'
 		>
-			<youtube 
-				:video-id='videoId'
-				ref='youtube'
-				height='100%'
-				width='100%'
-				@ready='onPlayerReady'
-			/>
+			<div class='video-container'>
+				<youtube
+					:video-id='videoId'
+					ref='youtube'
+					player-height='100%'
+					player-width='100%'
+					@playing='playing'
+					@ready='onReady'
+				/>
+			</div>
 			<div class='intro-video__controls'>
 				<button
 					@click='onSkipClicked' 
@@ -50,34 +53,32 @@ export default {
 			sampleRate: 500,
 			videoTransition: 'video-fade-short', 
 			playerCurrentTime: 0,
+			player: null,
     }
   },
 
 	created () {
 		this.dontShowVideo = this.getSessionStorageKey()
 
-		if (this.dontShowVideo) {
+		if (this.dontShowVideo && this.player) {
 			this.hideVideo()
 
 			return
 		}
 	},
 
-	mounted () {
-		if (this.isShown) {
-			this.player.playVideo()
-		}
-	},
-
-
   methods: {
+		onReady (event) {
+			this.player = event.target
+		},
+
 		/**
 		 * Handles the Skip button clicked event
 		 */
 		onSkipClicked () {
+			this.hideVideo()
 			if (this.player) {
 				this.player.stopVideo()
-				this.hideVideo()
 			}
 		},
 
@@ -89,18 +90,23 @@ export default {
 		},
 
 		/**
-		 * Triggers when the player is ready 
+		 * Checks the player's time recursively.
 		 */
-		onPlayerReady () {
-			this.checkPlayerTimeRecursively()
+		checkPlayerTimeRecursively () {
+			setTimeout( () => {
+				this.getPlayerCurrentTime().then(() => {
+					if (this.player.getPlayerState() === 1) {
+						this.checkPlayerTimeRecursively()
+					}
+				})
+			}, this.sampleRate)
 		},
 
-		checkPlayerTimeRecursively() {
-			setTimeout(async () => {
-				await this.getPlayerCurrentTime()
-
-				this.checkPlayerTimeRecursively()
-			}, this.sampleRate)
+		/**
+		 * Triggers when the video is playing.
+		 */
+		playing (event) {
+			this.checkPlayerTimeRecursively()
 		},
 
 		/**
@@ -110,7 +116,6 @@ export default {
 			try {
 				const time = await this.player.getCurrentTime()
 				this.playerCurrentTime = time
-				return time
 			} catch (err) {
 				console.log(err)
 			}
@@ -123,10 +128,6 @@ export default {
 	},
 
   computed: {
-		player () {
-			return this.$refs.youtube.player
-		},
-
     ...mapState({
 			isShown (state) {
 				return state.video.isShown
@@ -145,6 +146,16 @@ export default {
 			}
 		},
 
+		google (value) {
+			if (value) {
+				console.log(this.player)
+			}
+		},
+
+		player (value) {
+			this.player.playVideo()
+		},
+
 		isShown (value) {
 			if (value) {
 				this.player.playVideo()
@@ -159,7 +170,7 @@ export default {
 
 				this.hideVideo()
 			}
-		}
+		},
 	},
 }
 </script>
@@ -231,5 +242,19 @@ export default {
 .video-fade-long-enter, 
 .video-fade-long-leave-to {
 	opacity: 0;
+}
+</style>
+
+<style lang='scss'>
+.intro-video {
+	.video-container {
+		width: 100%;
+		height: 100%;
+
+		div {
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 </style>

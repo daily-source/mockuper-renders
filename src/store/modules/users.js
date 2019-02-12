@@ -19,6 +19,7 @@ const state = {
 					locationId: 1,
 				},			
 			],
+			location: 'Test Location',
 		},
 		{
 			id: 2,

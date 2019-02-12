@@ -9,28 +9,27 @@
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
 		<div class='user-details__user-info-container column'>
-				<div class='user-bio is-flex user-details__heading'>
-					<h4 class='has-text-weight-bold user-profile__heading'>{{ `${user.firstName} ${user.lastName}`}}</h4>
-				<p class='is-marginless'>{{ user.location }}</p>
+			<div class='user-bio is-flex user-details__heading'>
+				<h4 class='has-text-weight-bold user-profile__heading'>{{ `${user.firstName} ${user.lastName}`}}</h4>
+			<p class='is-marginless'>{{ user.location }}</p>
+			</div>
+			<div class='user-details__bio-wrapper'>
+				<div class='user-bio is-flex'>
+					<p class='user-bio__label has-text-weight-bold'>Username: </p>
+					<p>{{ user.userName }}</p>
 				</div>
-				<div class='user-details__bio-wrapper'>
-					<div class='user-bio is-flex'>
-						<p class='user-bio__label has-text-weight-bold'>Username: </p>
-						<p>{{ user.userName }}</p>
-					</div>
-					<div class='user-bio'>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius egestas tincidunt. Vivamus lacinia, elit quis pulvinar posuere.
-						</p>
-					</div>
+				<div class='user-bio'>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius egestas tincidunt. Vivamus lacinia, elit quis pulvinar posuere.
+					</p>
 				</div>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { gmapApi } from 'vue2-google-maps'
 
 import Icon from 'Components/general/Icons'
 
@@ -46,14 +45,6 @@ export default {
 			type: Object,
 			required: true,
 		},
-	},
-
-	computed: {
-		google: gmapApi,
-
-		geocoder () {
-			return new this.google.maps.Geocoder
-		}
 	},
 }
 </script>
