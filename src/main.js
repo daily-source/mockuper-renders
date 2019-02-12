@@ -32,7 +32,6 @@ Vue.use(VueGoogleMaps, {
 	}
 })
 
-
 /**
  * Shows the video if user enters the site on the homepage as its first page. We
  * hide the videos on inner pages.
