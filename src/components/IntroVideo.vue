@@ -12,7 +12,6 @@
 					ref='youtube'
 					player-height='100%'
 					player-width='100%'
-					:player-vars="{ autoplay: 1 }"
 					@playing='playing'
 					@ready='onReady'
 				/>
@@ -77,8 +76,8 @@ export default {
 		 * Handles the Skip button clicked event
 		 */
 		onSkipClicked () {
+			this.hideVideo()
 			if (this.player) {
-				this.hideVideo()
 				this.player.stopVideo()
 			}
 		},
@@ -129,6 +128,8 @@ export default {
 	},
 
   computed: {
+		google: gmapApi,
+
     ...mapState({
 			isShown (state) {
 				return state.video.isShown
@@ -147,6 +148,16 @@ export default {
 			}
 		},
 
+		google (value) {
+			if (value) {
+				console.log(this.player)
+			}
+		},
+
+		player (value) {
+			this.player.playVideo()
+		},
+
 		isShown (value) {
 			if (value) {
 				this.player.playVideo()
@@ -161,7 +172,7 @@ export default {
 
 				this.hideVideo()
 			}
-		}
+		},
 	},
 }
 </script>
