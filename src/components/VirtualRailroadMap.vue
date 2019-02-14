@@ -53,6 +53,7 @@
 				v-for='user in selectedUsers'
 				:key='`user-${user.id}`'
 				:user='user'
+				@closeButtonClicked='removeUser'
 			/>
 			<nonprofit-popup-window 
 				v-if='selectedNonprofit'
@@ -196,6 +197,17 @@ export default {
 			if (!isAlreadyAdded) {
 				this.selectedUsers.push(user)
 			}
+		},
+
+		/**
+		 * Removes a user from the `selectedUser` array if it exists.
+		 */
+		removeUser (user) {
+			this.$nextTick(() => {
+				const selectedUsers = this.selectedUsers.filter(userRecord => userRecord.id !== user.id)
+
+				this.selectedUsers = selectedUsers
+			})
 		},
 
 		/**

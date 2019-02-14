@@ -80,11 +80,11 @@ export default MapElementFactory({
 		},
 
 		onRemove () {
-			// this.ref.parentElement.removeChild(this.ref)
+			this.ref.parentElement.removeChild(this.ref)
 		},
 
 		closeButtonClicked () {
-			this.$emit('closeButtonClicked')
+			this.$emit('closeButtonClicked', this.user)
 		}
 	},
 

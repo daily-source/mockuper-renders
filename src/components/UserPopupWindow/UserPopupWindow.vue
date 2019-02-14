@@ -1,27 +1,28 @@
 <template>
-	<div
-		@click.stop='false'
-		class='user-info-wrap' 
-		:ref='refName'
-	>
-		<div class="user-info-window">
-			<h4 class="user-info-window__title">
-				{{ `${user.firstName} ${user.lastName}` }}
-			</h4>
-			<img :src="user.picture" class='user-info-window__photo'>
-			<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>{{ tracksActive ? 'Previous View' : 'See my tracks' }} </a>
-			<router-link 
-				class='user-info-window__link button is-primary is-small'
-				:to='{ name: "user-profile", params: { userId: user.id } }'
-			>
-				View Profile
-		</router-link>
-			<button
-				@click='closeButtonClicked' 
-				class='user-info-window__close-button'
-			>
-				<i class='fas fa-times'></i>
-			</button>
+	<div>
+		<div
+			class='user-info-wrap' 
+			:ref='refName'
+		>
+			<div class="user-info-window">
+				<h4 class="user-info-window__title">
+					{{ `${user.firstName} ${user.lastName}` }}
+				</h4>
+				<img :src="user.picture" class='user-info-window__photo'>
+				<a @click.stop.prevent='trackClicked' href='#' class='user-info-window__link'>{{ tracksActive ? 'Previous View' : 'See my tracks' }} </a>
+				<router-link 
+					class='user-info-window__link button is-primary is-small'
+					:to='{ name: "user-profile", params: { userId: user.id } }'
+				>
+					View Profile
+			</router-link>
+				<button
+					@click='closeButtonClicked' 
+					class='user-info-window__close-button'
+				>
+					<i class='fas fa-times'></i>
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
