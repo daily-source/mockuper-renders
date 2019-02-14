@@ -8,6 +8,7 @@
 				@mapReady='onMapReady'
 				:zoom='initialZoom'
 				:icon-size='32'
+				ref='virtual-railroad-map'
 			/>	
 		</div>
 		<div 
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import userGeolocation from '@/util/userGeolocation'
 
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
@@ -64,6 +65,10 @@ export default {
 		onMapReady (map, google) {
 			this.google = google
 			this.map = map
+
+			this.featuredUsers.forEach( user => {
+				this.$refs['virtual-railroad-map'].addSelectedUser(user)
+			})
 
 			this.setZoom
 			window.addEventListener('resize', this.setZoom)
@@ -117,6 +122,10 @@ export default {
 		...mapState({
 			users: state => state.users.data,
 			nonprofits: state => state.nonprofits.data,
+		}),
+
+		...mapGetters({
+			featuredUsers: 'users/getFeaturedUsers',
 		}),
 	},
 }

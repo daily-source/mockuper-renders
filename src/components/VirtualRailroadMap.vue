@@ -18,14 +18,14 @@
 			@mapReady='onMapReady'
 			:zoom='zoom'
 		>
-			<GmapMarker 
+			<gmap-marker 
 				v-for='(user, index) in validUserMarkers'
 				:key='index'
 				:position='generatePosition(user.latitude, user.longitude)'
 				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
 				@click='addSelectedUser(user)'
 			/>
-			<GmapMarker
+			<gmap-marker
 				v-for='(location, index) in locationMarkers'
 				:key='`nonprofit-${index}`'
 				:position='generatePosition(location.latitude, location.longitude)'
@@ -36,7 +36,7 @@
 				@click='setSelectedNonprofit(location)'
 
 			/>
-			<GmapMarker
+			<gmap-marker
 				v-for='(marker, index) in validMarkers'
 				:key='`custom-marker-${index}`'
 				:position='marker.position'
@@ -172,7 +172,8 @@ export default {
 		/** 
 		 * Handle on Google Map clicked events
 		 */
-		onMapClicked () {
+		onMapClicked (position) {
+			console.log(position)
 			this.setSelectedUsers = []
 			this.setSelectedNonprofit(null)
 		},
@@ -193,7 +194,11 @@ export default {
 		 * @param {Object} user
 		 */
 		addSelectedUser (user) {
-			const isAlreadyAdded = this.selectedUsers.find(userRecord => userRecord.id === user.id)
+			let isAlreadyAdded = false
+
+			if (this.selectedUsers.length > 0) {
+				isAlreadyAdded = this.selectedUsers.find(userRecord => userRecord.id === user.id)
+			}
 
 			if (!isAlreadyAdded) {
 				this.selectedUsers.push(user)
@@ -204,11 +209,9 @@ export default {
 		 * Removes a user from the `selectedUser` array if it exists.
 		 */
 		removeUser (user) {
-			this.$nextTick(() => {
-				const selectedUsers = this.selectedUsers.filter(userRecord => userRecord.id !== user.id)
+			const selectedUsers = this.selectedUsers.filter(userRecord => userRecord.id !== user.id)
 
-				this.selectedUsers = selectedUsers
-			})
+			this.selectedUsers = selectedUsers
 		},
 
 		/**

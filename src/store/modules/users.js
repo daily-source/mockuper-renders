@@ -88,8 +88,8 @@ const state = {
 			firstName: 'Lynn',
 			lastName: 'Hylton',
 			userName: 'lynnhylton231',
-			latitude: 47.0744713,
-			longitude: 9.922114,
+			latitude: 61.874665228839476,
+			longitude: 27.34912109375,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
@@ -99,17 +99,46 @@ const state = {
 				},
 				{
 					nonprofitId: 3,
-					locationId: 1,
+					locationId: 3,
 				},
 				{
 					nonprofitId: 1,
+					locationId: 4,
+				},					
+			],
+			location: 'Kluuvikatu 26, VANTAA, Uusimaa, Finland',
+		},
+		{
+			id: 6,
+			firstName: 'Roberta ',
+			lastName: 'Reyes',
+			userName: 'roberta.reyes88',
+			latitude: 38.69900874944365,
+			longitude: -97.345703125,
+			picture: 'https://randomuser.me/api/portraits/women/10.jpg',
+			about: 'This is a sample about.',
+			nonprofits: [
+				{
+					nonprofitId: 2,
 					locationId: 3,
 				},					
 			],
-			location: 'SCHWARZGRUB, Austria',
+			location: 'Picher, Kansas, Austria',
 		},
 	],
 	user: null,
+	featuredUsers: [5, 6],
+}
+
+const getters = {
+	/**
+	 * Gets the featured users.
+	 */
+	getFeaturedUsers: state => {
+		return state.data.filter(user => {
+			return state.featuredUsers.indexOf(user.id) !== -1
+		})
+	},
 }
 
 const actions = {
@@ -157,8 +186,6 @@ const mutations = {
 		state.user = user
 	}
 }
-
-const getters = {}
 
 export default {
 	namespaced: true,

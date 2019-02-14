@@ -37,6 +37,15 @@ const state = {
 					latitude: 21.168190,
 					longitude: 72.814280,
 				},
+				{
+					id: 4,
+					country: 'Canada',
+					state: 'Saskatchewan',
+					city: 'Cupar',
+					location: '206  St. John Street, Cupar, Saskatchewan, Canada',
+					latitude: 53.130783359941844,
+					longitude: -106.310546875,
+				},
 			],
 		},
 		{	
@@ -66,6 +75,15 @@ const state = {
 					longitude: -46.326462,
 					latitude: -23.956289,
 				},
+				{
+					id: 3,
+					country: 'Bangladesh',
+					state: '199, Tejgaon I/A',
+					city: 'Dhaka',
+					location: '199, Tejgaon I/A, Dhaka, Bangladesh',
+					longitude: 90.916015625,
+					latitude: 24.102377387370506,
+				}
 			],
 		},
 		{
@@ -94,6 +112,16 @@ const state = {
 					latitude: 35.689487,
 					longitude: 139.691711,
 				},
+				{
+					id: 3,
+					country: 'Ethiopia',
+					state: 'Addis Ababa',
+					city: 'Addis Ababa',
+					street: 'P.O.Box 15388',
+					location: 'P.O.Box 15388, Addis Ababa, Ethiopia',
+					longitude: 39.84570701948269,
+					latitude: 8.15030692292331,
+				}
 			],
 		},
 	]

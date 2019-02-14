@@ -1,7 +1,7 @@
 <template>
   <GmapMap
     class='map'
-    :center='{lat: 32.33888927939217, lng: 6.1015625}'
+    :center='{lat: 48.99156672710446, lng: -4.6210937499999805}'
     :zoom='zoom'
     :mapTypeId='mapTypeId'
     @click='onMapClicked'
