@@ -23,7 +23,7 @@
 				:key='index'
 				:position='generatePosition(user.latitude, user.longitude)'
 				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
-				@click='setSelectedUser(user)'
+				@click='addSelectedUser(user)'
 			/>
 			<GmapMarker
 				v-for='(location, index) in locationMarkers'
@@ -42,19 +42,17 @@
 				:position='marker.position'
 				:icon='marker.icon'
 			/>
-			<PolylineAnimatedSymbol
-				v-for='(nonprofit, index) in selectedUserNonprofits'
-				:key='`userNonprofit-${index}`'
-				:path='setUserNonprofitPath(nonprofit.location)'
+			<polyline-animated-symbol
+				v-for='nonprofit in userNonprofitAnimatedPolylines'
+				:key='`polyline-${nonprofit.user.id}-${nonprofit.id}-${nonprofit.location.id}`'
+				:path='setUserNonprofitPath(nonprofit.location, nonprofit.user)'
 				@polylineCreated='onPolylineCreate'
-				:options='polylineOptions'			
-			/>	
-			<UserPopupWindow 
-				v-if='showUserPopupWindows && selectedUser'
-				:user='selectedUser'
-				@seeTracksClicked='onSeeTracksClicked'
-				@previousViewClicked='setSelectedUser(null)'
-				@closeButtonClicked='setSelectedUser(null)'
+				:options='polylineOptions'
+			/>
+			<user-popup-window
+				v-for='user in selectedUsers'
+				:key='`user-${user.id}`'
+				:user='user'
 			/>
 			<nonprofit-popup-window 
 				v-if='selectedNonprofit'
@@ -159,12 +157,12 @@ export default {
 				strokeOpacity: 1.0,
 				strokeWeight: 2,
 			},
-			selectedUser: null,
 			selectedNonprofit: null,
 			polylines: [],
 			google: null,
 			map: null,
 			showLoader: null,
+			selectedUsers: [],
 		}
 	},
 
@@ -173,7 +171,7 @@ export default {
 		 * Handle on Google Map clicked events
 		 */
 		onMapClicked () {
-			this.setSelectedUser(null)
+			this.setSelectedUsers = []
 			this.setSelectedNonprofit(null)
 		},
 
@@ -187,13 +185,17 @@ export default {
 			this.$emit('mapReady', gmap, google)
 		},
 
-    /** 
-		 * Sets the selected user.
-		 *
+		/**
+		 * Adds a user to selectedUsers array.
+		 * 
 		 * @param {Object} user
 		 */
-		setSelectedUser (user) {
-			this.selectedUser = user
+		addSelectedUser (user) {
+			const isAlreadyAdded = this.selectedUsers.find(userRecord => userRecord.id === user.id)
+
+			if (!isAlreadyAdded) {
+				this.selectedUsers.push(user)
+			}
 		},
 
 		/**
@@ -221,13 +223,13 @@ export default {
 		 * 
 		 * @return {Array} Array of points
 		 */
-		setUserNonprofitPath (nonprofit) {
+		setUserNonprofitPath (nonprofit, user) {
 			return curvedLineGenerate({
-				latStart: this.selectedUser.latitude, 
-				lngStart: this.selectedUser.longitude,
+				latStart: user.latitude, 
+				lngStart: user.longitude,
 				latEnd: nonprofit.latitude, 
 				lngEnd: nonprofit.longitude
-			})		
+			})	
 		},
 
 		/** 
@@ -322,7 +324,7 @@ export default {
 		validUserMarkers () {
 			return this.users.filter(user => user.latitude && user.longitude)
 		},
-
+		
 		/**
 		 * Filter out the locations from the `nonprofits` prop 
 		 * to make sure to display markes only with a valid location.
@@ -338,6 +340,7 @@ export default {
 				}
 			})
 		},
+
 
 		/**
 		 * Locations to display on the map
@@ -367,25 +370,33 @@ export default {
 		validMarkers () {
 			return this.markers.filter(marker => marker.position)
 		},
-
-		/** 
-		 * Nonprofits of the selected user.
+		/**
+		 * User nonprofit animated polylines
 		 */
-		selectedUserNonprofits () {
-			if (this.selectedUser) { 
-				return this.selectedUser.nonprofits.map(userNonprofit => {
-					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
-					const location = nonprofit.locations.find(location => location.id == userNonprofit.locationId)
+		userNonprofitAnimatedPolylines () {
+			let userNonprofitAnimatedPolylines = []
+
+			this.selectedUsers.forEach( user => {
+				const userNonprofits = user.nonprofits.map(nonprofitPair => {
+					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
+					const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
 
 					return {
 						...nonprofit,
 						location,
+						user,
 					}
-				})	
-			}
+				})
 
-			return []
+				userNonprofitAnimatedPolylines = [
+					...userNonprofitAnimatedPolylines,
+					...userNonprofits,
+				]
+			})
+
+			return userNonprofitAnimatedPolylines
 		},
+
 
 		/**
 		 * Marker Default Options 
