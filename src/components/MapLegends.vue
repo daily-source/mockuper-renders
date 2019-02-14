@@ -2,23 +2,27 @@
   <div 
     :class='["legends", {"legends--minimized": !opened}]'  
   >
-    <p>
-      <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
-    </p>
-    <p>
-      <img src='@/assets/img/star_32.png' alt='Star'><span class='has-text-weight-bold'> = nonprofit helping to free slaves.</span> In the 1800s, slaves trying to escape north to freedom regularly relied on the North star as a beacon and compass because it's the only star in the sky that doesn't change its location. Today, slaves rely on nonprofits to help them gain their freedom and the nonprofits are steadfast in their commitment to free slaves, so we represent them with stars.
-    </p>
-    <div class='legends__button-container'>
-      <button 
-        :class='["button legends__button", {"legends__button--opened": opened}]'
-        @click='onToggleClick'
-        v-tooltip.top-start='tooltipMessage'
-      >
-        <icon-chevron 
-          :width='36'
-          :height='36'
-        />
-      </button>
+    <div class='legend__container'>
+      <div class='legends__content'>
+        <p>
+          <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
+        </p>
+        <p>
+          <img src='@/assets/img/star_32.png' alt='Star'><span class='has-text-weight-bold'> = nonprofit helping to free slaves.</span> In the 1800s, slaves trying to escape north to freedom regularly relied on the North star as a beacon and compass because it's the only star in the sky that doesn't change its location. Today, slaves rely on nonprofits to help them gain their freedom and the nonprofits are steadfast in their commitment to free slaves, so we represent them with stars.
+        </p>
+        <div class='legends__button-container'>
+          <button 
+            :class='["button legends__button", {"legends__button--opened": opened}]'
+            @click='onToggleClick'
+            v-tooltip.top-start='tooltipMessage'
+          >
+            <icon-chevron 
+              :width='36'
+              :height='36'
+            />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,12 +67,21 @@ export default {
 .legends {
   background-color: rgba($primary, .9);
   padding: 1.5em 1em;
-  display: flex;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   transition: bottom .2s ease;
+
+  &__content {
+    display: flex;
+  }
+
+  &__container {
+    max-width: 1330px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   &--minimized {
     bottom: -150px;
@@ -85,7 +98,7 @@ export default {
     margin-bottom: 0;
 
     &:last-of-type {
-      margin-left: 1em;
+      margin-left: .5em;
     }
   }
 
