@@ -46,7 +46,7 @@
 				v-for='nonprofit in userNonprofitAnimatedPolylines'
 				:key='`polyline-${nonprofit.user.id}-${nonprofit.id}-${nonprofit.location.id}`'
 				:path='setUserNonprofitPath(nonprofit.location, nonprofit.user)'
-				@polylineCreated='onPolylineCreate'
+				@polylineCreated='(polyline) => onPolylineCreate(polyline, nonprofit.user)'
 				:options='polylineOptions'
 			/>
 			<user-popup-window
@@ -54,6 +54,7 @@
 				:key='`user-${user.id}`'
 				:user='user'
 				@closeButtonClicked='removeUser'
+				@seeTracksClicked='onSeeTracksClicked'
 			/>
 			<nonprofit-popup-window 
 				v-if='selectedNonprofit'
@@ -247,17 +248,20 @@ export default {
 		/** 
 		 * Handle 'See Tracks' clicked event
 		 */
-		onSeeTracksClicked () {
-			this.animatePolylines()
+		onSeeTracksClicked (user) {
+			this.animatePolylines(user)
 		},
 
 		/** 
 		 * Animate the polylines
 		 */
-		animatePolylines () {
+		animatePolylines (user) {
 			if (this.polylines) {
-				this.polylines.forEach(polyline => {
-					polyline.animateCircle()
+				this.polylines.forEach(({polyline, userId}) => {
+					console.log(polyline)
+					if (userId === user.id) {
+						polyline.animateCircle()
+					}
 				})
 			}
 		},
@@ -265,8 +269,11 @@ export default {
 		/** 
 		 * Triggers when a polyline is created
 		 */
-		onPolylineCreate (polyline) {
-			this.polylines.push(polyline)
+		onPolylineCreate (polyline, user) {
+			this.polylines.push({
+				polyline,
+				userId: user.id,
+			})
 		},
 
 		/** 
