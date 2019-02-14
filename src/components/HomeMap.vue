@@ -70,8 +70,8 @@ export default {
 		},
 
 		/**
-		 * Fits the whole world into the Google Map,
-		 * which depends on the size of the screen.
+		 * Fits the whole world into the Google Map, which depends on the size of
+		 * the screen.
 		 */
 		setZoom () {
 			const width = window.innerWidth
@@ -105,6 +105,9 @@ export default {
 			return markers
 		},
 
+		/**
+		 * Initial zoom of the map
+		 */
 		initialZoom () {
 			const width = window.innerWidth
 

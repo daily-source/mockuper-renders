@@ -1,5 +1,16 @@
 <template>
 	<div class="virtual-railroad-map-wrapper">
+		<div 
+			class='virtual-railroad-map-loader'
+			v-show='showLoader'
+		>
+			<loader 
+				message='Fitting everything to the map.'
+				color='#fff'
+				:width='48'
+				:height='48'
+			/>
+		</div>
 		<google-map
 			ref='gmap'
 			class='virtual-railroad-map'
@@ -23,6 +34,7 @@
 					"nonprofit"
 				)'
 				@click='setSelectedNonprofit(location)'
+
 			/>
 			<GmapMarker
 				v-for='(marker, index) in validMarkers'
@@ -59,6 +71,7 @@ import GoogleMap from 'LocalComponents/GoogleMap'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
 import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
 import NonprofitPopupWindow from 'LocalComponents/NonprofitPopupWindow/NonprofitPopupWindow.vue'
+import Loader from 'Components/Shared/Loader'
 
 export default {
 	name: 'VirtualRailroadMap',
@@ -68,6 +81,7 @@ export default {
 		UserPopupWindow,
 		NonprofitPopupWindow,
 		PolylineAnimatedSymbol,
+		Loader,
 	},
 
 	props: {
@@ -149,6 +163,8 @@ export default {
 			selectedNonprofit: null,
 			polylines: [],
 			google: null,
+			map: null,
+			showLoader: null,
 		}
 	},
 
@@ -166,6 +182,7 @@ export default {
 		 */
 		onMapReady (gmap, google) {
 			this.google = google
+			this.map = gmap
 
 			this.$emit('mapReady', gmap, google)
 		},
@@ -278,6 +295,23 @@ export default {
 				anchor: new this.google.maps.Point(pointOffset, pointOffset),
 			}
 		},
+
+		fitMarkerToMap (markerPosition, map) {
+			return new Promise((resolve, reject) => {
+				let contained = false
+
+				while (!contained) {
+					if (!map.getBounds().contains(markerPosition)) {
+						const zoom = map.getZoom()
+						map.setZoom(zoom - 1)
+					} else {
+						contained = true
+					}
+				}
+
+				resolve()
+			})
+		},
 	},
 
 	computed: {
@@ -365,6 +399,46 @@ export default {
 			}
 		},
 	},
+
+	watch: {
+		/**
+		 * Fits the bounds of the map according to the selectedUserNonprofits
+		 */
+		selectedUserNonprofits (nonprofits) {
+			if (nonprofits && nonprofits.length > 0) {
+				const bounds = new this.google.maps.LatLngBounds()
+
+				const userPosition = new this.google.maps.LatLng({
+					lat: this.selectedUser.latitude,
+					lng: this.selectedUser.longitude,
+				})
+
+				bounds.extend(userPosition)
+
+				this.map.fitBounds(bounds)
+
+				this.showLoader = true
+
+				nonprofits.forEach( async nonprofit => {
+					const position = new this.google.maps.LatLng({
+						lat: nonprofit.location.latitude, 
+						lng: nonprofit.location.longitude
+					})
+
+					await this.fitMarkerToMap(position, this.map)
+				})
+
+				// The loader is not necessary for user with just small nonprofits, it
+				// doesn't show on this case. The loader just shows when a user has many
+				// nonprofits. Nevertheless, we add a timeout here so the loader shows
+				// no matter how many nonprofits there is. Besides, 300ms is not that
+				// long to hinder any user activity for now.
+				setTimeout( () => {
+					this.showLoader = false
+				}, 300)
+			}
+		}
+	},
 }
 </script>
 
@@ -397,5 +471,19 @@ export default {
 	width: 80px;
 	height: 80px;
 	object-fit: cover;
+}
+
+.virtual-railroad-map-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: flex;
+	align-items: cetner;
+	justify-content: center;
+	color: #fff;
+	background-color: rgba(#000, .5)
 }
 </style>
