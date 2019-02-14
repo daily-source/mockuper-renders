@@ -1,7 +1,8 @@
 <template>
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    :style='{width: width, height: height}'
+    :width='width'
+    :height='height'
     viewBox="0 0 24 24"
   >
     <g id="iconfinder-icon" transform="translate(1 8)">
