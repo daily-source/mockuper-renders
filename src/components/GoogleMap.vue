@@ -1,7 +1,7 @@
 <template>
   <GmapMap
     class='map'
-    :center='{lat: 48.99156672710446, lng: -4.6210937499999805}'
+    :center='center'
     :zoom='zoom'
     :mapTypeId='mapTypeId'
     @click='onMapClicked'
@@ -25,7 +25,7 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        return { lat: 32.33888927939217, lng: 6.1015625 }
+        return { lat: 58.777166478244226, lng: -12.70703124999998 }
       }
     },
 
