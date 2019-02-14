@@ -41,12 +41,12 @@
 	.user-info-window {
 		min-height: 60px;
 		min-width: 60px;
-		max-width: 180px;
+		max-width: 120px;
 		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
 		padding: 1rem;
-		font-size: .875rem;
+		font-size: .75rem;
 		background-color: #fff;
 		border-radius: 5px;
 		font-family: inherit;
@@ -55,15 +55,15 @@
 	}
 
 	.user-info-window__title {
-		font-size: 1rem;
+		font-size: .875rem;
 		font-weight: 700;
 		font-family: $font-primary;
 		margin-bottom: .25rem;
 	}
 
 	.user-info-window__photo {
-		width: 100px;
-		height: 100px;
+		width: 80px;
+		height: 80px;
 		display: inline-block;
 		margin-bottom: .25rem;
 		object-fit: contain;
