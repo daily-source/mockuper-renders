@@ -54,6 +54,7 @@
 				:key='`user-${user.id}`'
 				:user='user'
 				@closeButtonClicked='removeUser'
+				@previousViewClicked='removeUser'
 				@seeTracksClicked='onSeeTracksClicked'
 			/>
 			<nonprofit-popup-window 

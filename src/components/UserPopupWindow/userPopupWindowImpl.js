@@ -68,7 +68,7 @@ export default MapElementFactory({
 
 		trackClicked () {
 			if(this.tracksActive) {
-				this.$emit('previousViewClicked', this)	
+				this.$emit('previousViewClicked', this.user)	
 			} else {
 				this.tracksActive = true	
 				this.$emit('seeTracksClicked', this.user)
