@@ -2,7 +2,7 @@
   <div 
     :class='["legends", {"legends--minimized": !opened}]'  
   >
-    <div class='legend__container'>
+    <div class='legends__container'>
       <div class='legends__content'>
         <p>
           <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
