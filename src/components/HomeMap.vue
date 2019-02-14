@@ -41,8 +41,6 @@ export default {
 
 	mounted () {
 		this.startCallToActionTimer()
-
-		window.addEventListener('resize', this.setZoom)
 	},
 	
 	components: {
@@ -57,7 +55,7 @@ export default {
 			setTimeout(() => {
 				this.showCallToAction = true
 				this.getUserLocation() 
-			}, this.callToActionTimer)
+			}, 1000)
 		},
 
 		/**
@@ -93,10 +91,11 @@ export default {
 		markers () {
 			let markers = []
 			if (this.userLocation) {
+				console.log(this.userLocation)
 				const userMarker = {
 					position: {
-						lat: this.userLocation.coordinates.latitude,
-						lng: this.userLocation.coordinates.longitude,
+						lat: this.userLocation.coords.latitude,
+						lng: this.userLocation.coords.longitude,
 					}
 				}
 
