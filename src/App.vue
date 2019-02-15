@@ -5,9 +5,20 @@
       <router-link to="/fundraiser/254">Fundraiser</router-link> |
       <router-link to="/nonprofit/237069110">Nonprofit</router-link>
     </div>
-    <router-view/>
+    <base-app-container />
   </div>
 </template>
+
+<script>
+import BaseAppContainer from 'LocalComponents/BaseAppContainer'
+
+export default {
+  components: {
+    BaseAppContainer,
+  },
+}
+</script>
+
 
 <style src='./xthon-core/lib/assets/scss/main.scss' lang="scss"></style>
 <style src='./assets/scss/main.scss' lang="scss"></style>
