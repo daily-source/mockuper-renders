@@ -69,9 +69,11 @@ export default {
 
 <style lang='scss'scoped>
 .home-page {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
+  position: relative;
 }
+
 header {
   position: relative;
   z-index: 1;
@@ -85,9 +87,9 @@ header {
 }
 
 .home-virtual-railroad-map {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   background-color: $primary;
@@ -95,17 +97,5 @@ header {
 
 .home-general-info {
   z-index: 1;
-}
-
-.legends-section {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-
-  p {
-    font-size: 14px;
-  }
 }
 </style>

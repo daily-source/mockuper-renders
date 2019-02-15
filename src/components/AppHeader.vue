@@ -2,8 +2,11 @@
   <header 
     :class='["header masthead section is-paddingless", { "header--small": isSmall }]'>
     <div class='container'>
-      <div class='header__contents is-flex columns'>
-        <div class='header__column header__logo-container column'>
+      <div class='header__contents'>
+        <div class='header__navbar'>
+          <the-navbar />
+        </div>
+        <div class='header__column header__logo-container'>
           <router-link to='/'>
             <img src='@/assets/img/logo-1.png' alt='Virtual Railroad' class='header__logo'>
           </router-link>
@@ -16,8 +19,14 @@
 <script>
 import { mapActions } from 'vuex'
 
+import TheNavbar from 'LocalComponents/TheNavbar'
+
 export default {
   name: 'AppHeader',
+
+  components: {
+    TheNavbar,
+  },
 
   props: {
     isSmall: {
@@ -37,9 +46,10 @@ export default {
 
 <style lang='scss' scoped>
 .header__contents {
-  align-items: center;
+  text-align: center;
   padding-top: .5em;
-  padding-bottom: .5em
+  padding-bottom: .5em;
+  position: relative;
 }
 
 .social-nav {
@@ -61,8 +71,16 @@ export default {
 }
 
 .header {
-  &__logo {
+  &__logo-container {
     max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__navbar {
+    position: absolute;
+    top: 35%;
+    left: 0;
   }
 }
 

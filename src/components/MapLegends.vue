@@ -67,7 +67,7 @@ export default {
 .legends {
   background-color: rgba($primary, .9);
   padding: 1.5em 1em;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;

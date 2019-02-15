@@ -1,0 +1,259 @@
+<template>
+  <nav 
+    :class='["navbar", {"navbar--opened": opened}]'  
+  >
+    <div class='navbar-toggle'>
+      <button 
+        class='navbar-toggle__button'
+        @click='toggleNavbar'  
+      >
+        <span class='navbar-toggle__bar'></span>
+        <span class='navbar-toggle__bar'></span>
+        <span class='navbar-toggle__bar'></span>
+      </button>
+      Menu
+    </div>
+    <div class='navbar-contents'>
+      <div class='navbar-contents__actions'>
+        <button 
+          @click='toggleNavbar'
+          class='navbar__button button'
+        >
+          <icon-close 
+            :width='16'
+            :height='16'
+          />
+        </button>
+      </div>
+      <ul class='navbar-contents__nav'>
+        <li class='navbar-contents__nav-item'>
+          <router-link to='/nonprofit-sign-up'>Register a Nonprofit</router-link>
+        </li>
+        <li class='navbar-contents__nav-item'>
+          <router-link to='nonprofit-directory'>Nonprofit Directory</router-link>
+        </li>
+        <li class='navbar-contents__nav-item'>
+          <router-link to='/register'>Sign Up</router-link>
+        </li>
+        <li class='navbar-contents__nav-item'>
+          <router-link to='/login'>Login</router-link>
+        </li>   
+        <li class='navbar-contents__nav-item'>
+          <div class='social-nav'>
+            <a href='#'>
+              <icon 
+                :iconwidth='24'
+                :iconheight='24'
+                color='#000'
+                icon='facebook'
+              />
+            </a>
+            <a href='#'>
+              <icon 
+                :iconwidth='24'
+                :iconheight='24'
+                color='#000'
+                icon='twitter'
+              />
+            </a>
+            <a href='#'>
+              <icon 
+                :iconwidth='24'
+                :iconheight='24'
+                color='#000'
+                icon='instagram'
+              />
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div class='navbar__max-good'>
+        <p> A project of: </p>
+        <router-link to='/'>
+          <img
+          class='navbar__max-good-logo'
+          src="@/assets/img/max-good-logo-428x180.png"
+          alt="Maximum for Good Logo"
+          >
+        </router-link>
+      </div>
+      <div class='navbar__motto'>
+        <p>Helping non-profits and their supporters
+        <br /><span class='has-text-weight-bold'>RAISE MONEY. RAISE AWARENESS.
+        CHANGE THE WORLD</span></p>
+      </div>
+      <div class='navbar__copyright'>
+        <p>
+          Copyright (c) 2006-2019 DailySource. All rights reserved. Terms of Service.
+        </p>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script>
+import { mapActions, mapState } from 'vuex'
+
+import Icon from 'Components/general/Icons'
+import IconClose from 'LocalComponents/Icons/IconClose'
+
+export default {
+  name: 'TheNavbar',
+
+  components: {
+    IconClose,
+    Icon,
+  },
+
+  methods: {
+    ...mapActions({
+      toggleNavbar: 'navbar/toggleNavbar'
+    }),
+  },
+
+  computed: {
+    ...mapState({
+      opened: state => state.navbar.navbarOpened
+    }),
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.navbar {
+  background-color: transparent;
+
+  &--opened {
+    .navbar-contents {
+      left: 0;
+    }
+  }
+  
+  &__button {
+    padding: 0;
+    background-color: transparent;
+    color: #000;
+    height: auto;
+    display: flex;
+    align-items: center;
+    border: 0;
+  }
+
+  &__max-good-logo {
+    max-width: 150px;
+  }
+
+  &__motto {
+    margin-top: 1em;
+  }
+
+  &__copyright {
+    font-size: .75em;
+    margin-top: auto;
+  }
+}
+
+.navbar-toggle {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: .875rem;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+
+  &__button {
+    width: 16px;
+    height: 13px;
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    margin-right: .5em;
+    cursor: pointer;
+  }
+
+  &__bar {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: $secondary;
+    position: absolute;
+    left: 0;
+    border: 0;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 4px;
+    }
+
+    &:nth-child(3) {
+      top: 8px;
+    }
+  }
+}
+
+.navbar-contents {
+  position: fixed;
+  top: 0;
+  left: -$navbar-width;
+  height: 100%;
+  width: $navbar-width;
+  max-width: 100%;
+  background-color: $navbar-background-color;
+  padding: 1.5em 1em;
+  transition: left .2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nav-item {
+    text-align: left;
+    margin-left: -1em;
+    margin-right: -1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-bottom: 1px solid $navbar-border-color;
+    color: $navbar-color;
+
+    &:first-child {
+      border-top: 1px solid $navbar-border-color;
+      margin-top: 1em;
+    }
+
+    &:last-child {
+      border-bottom: transparent;
+    }
+
+    a {
+      display: block;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+  }
+}
+
+.social-nav {
+  display: flex;
+  justify-content: center;
+
+  a {
+    padding-left: .25em;
+    padding-right: .25em;
+  }
+}
+</style>
