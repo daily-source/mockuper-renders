@@ -116,7 +116,7 @@ export default {
     border: 0;
     transform: rotate(180deg);
     border-radius: 100%;
-    border: 2px solid #000;
+    border: 2px solid #323736;
     height: auto;
     transition: transform .2s ease;
 

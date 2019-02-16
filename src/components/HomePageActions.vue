@@ -51,7 +51,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1.375em .5em;
-  background-color: rgba($primary, .9);
+  background-color: rgba($primary, .7);
   border-radius: 100px;
 
   &__button {
