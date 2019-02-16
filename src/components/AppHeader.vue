@@ -1,6 +1,7 @@
 <template>
   <header 
-    :class='["header masthead section is-paddingless", { "header--small": isSmall }]'>
+    :class='headerClasses'
+    >
     <div class='container'>
       <div class='header__contents'>
         <div class='header__navbar'>
@@ -8,7 +9,7 @@
         </div>
         <div class='header__column header__logo-container'>
           <router-link to='/'>
-            <img src='@/assets/img/logo-1.png' alt='Virtual Railroad' class='header__logo'>
+            <img :src='logoSrc' alt='Virtual Railroad' class='header__logo'>
           </router-link>
         </div>
       </div>
@@ -29,22 +30,84 @@ export default {
   },
 
   props: {
+    /**
+     * Specifies whether to add a small modifier to the header
+     */
     isSmall: {
       type: Boolean,
       required: false,
       default: true,
-    }
+    },
+
+    /**
+     * Specifies the color theme of the header
+     */
+    theme: {
+      type: String,
+      requried: false,
+      validator (value) {
+        const themes = [
+          'light',
+          'dark',
+        ]
+
+        return themes.indexOf(value) !== -1
+      },
+      default: 'light',
+    }, 
   },
 
 	methods: {
 		...mapActions({
 			showVideo: 'video/showVideo',
 		}),
-	}
+  },
+  
+  computed: {
+    /**
+     * The classes to be applied to the header     * 
+     */
+    headerClasses () {
+      return [
+        "header masthead section is-paddingless", 
+        { "header--small": this.isSmall },
+        `header--${this.theme}`,
+      ]
+    },
+
+    /**
+     * The logo to use depending on the theme
+     */
+    logoSrc () {
+      let logoName  = 'logo.png'
+
+      if (this.theme === 'dark') {
+        logoName = 'logo-1.png'
+      }
+
+      return require(`@/assets/img/${logoName}`)
+    },
+  },
 }
 </script>
 
 <style lang='scss' scoped>
+.header {
+  $self: &;
+
+  &--light {
+    #{ $self }__navbar {
+      color: #000;
+    }
+  }
+
+  &--dark {
+    #{ $self }__navbar {
+      color: #fff;
+    }
+  }
+}
+
 .header__contents {
   text-align: center;
   padding-top: .5em;
@@ -79,7 +142,7 @@ export default {
 
   &__navbar {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 0;
   }
 }
@@ -91,5 +154,5 @@ export default {
     }
   }
 }
-</style>
 
+</style>

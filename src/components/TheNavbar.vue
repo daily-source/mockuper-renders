@@ -156,7 +156,7 @@ export default {
 .navbar-toggle {
   display: flex;
   align-items: center;
-  color: #fff;
+  color: inherit;
   font-size: .875rem;
   text-transform: uppercase;
   letter-spacing: .2em;

@@ -3,6 +3,7 @@
     <intro-video />
     <app-header
       :is-small='false'
+      theme='dark'
      />
      <home-page-actions 
      />
@@ -69,7 +70,7 @@ export default {
 
 <style lang='scss'scoped>
 .home-page {
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   position: relative;
 }

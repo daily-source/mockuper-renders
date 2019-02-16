@@ -2,8 +2,13 @@
   <div 
     :class='["base-app-container", {"base-app-container--nav-opened": navbarOpened}]'  
   >
-    <!--TODO: Define custom page transitions.  -->
-    <router-view />
+    <transition 
+      name='page-fade'
+    >
+      <router-view 
+        class='page'
+      />
+    </transition>
   </div>
 </template>
 
@@ -25,8 +30,6 @@ export default {
 .base-app-container {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
   transition: margin-left .2s ease;
 
   &--nav-opened {
@@ -43,5 +46,21 @@ export default {
       z-index: 100;
     }
   }
+}
+
+.page {
+  position: relative;
+}
+
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.page-fade-enter,
+.page-fade-leave-active {
+  opacity: 0;
 }
 </style>
