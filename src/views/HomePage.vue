@@ -4,7 +4,7 @@
     <app-banner 
 			:widget-id='1'
 		/>
-    <section class="quote-container section">
+    <section class="quote-container section jumbotron-section">
       <div class="container">
         <h2 class='quote has-text-centered'>"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness."<br /> <span class='author'>- Declaration of Independence</span></h2> 
       </div>
@@ -24,7 +24,7 @@
         />
       </div>
     </section>
-    <section class="section poor-kid-section widget-jumbotron">
+    <section class="section poor-kid-section widget-jumbotron jumbotron-section">
 			<counter-widget-jumbotron 
 				:widget-id='1'
 				:bg-image='require("@/assets/img/images/widget-imgs/poor-kid-v1.jpg")'

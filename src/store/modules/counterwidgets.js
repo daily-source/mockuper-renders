@@ -9,7 +9,7 @@ const state = {
       rate: 3,
       message: '',
       userId: 1,
-      themeId: 0,
+      themeId: 1,
     },
     {
       id: 2,
@@ -55,19 +55,19 @@ const state = {
 		'large': {
 			name: 'large',
       label: 'Large',
-      width: 800,
+      width: '800px',
 			className: 'large',
     },
     'medium': {
 			name: 'medium',
       label: 'Medium',
-      width: 500,
+      width: '500px',
 			className: 'medium',
     },
     'small': {
 			name: 'small',
       label: 'Small',
-      width: 300,
+      width: '300px',
 			className: 'small',
     }
   },
