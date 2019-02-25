@@ -2,8 +2,8 @@
 @import '@/xthon-core/lib/assets/scss/vars.scss';
 
 // Override the custom variables here
-$font-primary: "Poppins", sans-serif;
-$font-secondary: "Montserrat", sans-serif;
+$font-primary: "Work Sans", sans-serif;
+$font-secondary: $font-primary;
 
 // Colors
 $color-text: #000507;
@@ -41,30 +41,18 @@ $max-container-width: 1344px;
 $max-fluid-container-width: 1162px;
 $max-combo-wrapper-width: 960px;
 
-
-
-// These variable definitions are here for the GiveItUpForGood version
-// Colors
-$secondary: #d22127;
-$primary: #233e84;
-$color-emphasis: $primary;
-$color-emphasis-alt: $secondary;
-$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
-
 // Fonts
-$font-family-base: 'Poppins';
-$headings-font-family: 'Montserrat';
+$font-family-base: 'Work Sans';
+$headings-font-family: 'Work Sans';
 $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
-
-
 
 // These variable definitions are here for the RideForGood version
 // Colors
-$primary: #8EC63F;
-$secondary: #FF9600;
+$primary: #004A85;
+$secondary: #FF5F00;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
@@ -75,7 +63,8 @@ $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
 
 // Buttons
-$btn-border-radius: 0;
+$btn-border-radius: 4px;
+$button-padding-vertical: .5em;
 
 // Override Bulma variables here
 $success: $color-emphasis;

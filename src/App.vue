@@ -13,11 +13,7 @@
 <style src='./assets/scss/main.scss' lang="scss"></style>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900|Poppins:400,500,700");
-</style>
-
-<style lang="scss">
-@import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,600,700");
 </style>
 
 <style lang="scss">
