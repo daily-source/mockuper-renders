@@ -72,8 +72,8 @@ const state = {
 					state: 'Sao Paulo',
 					city: 'Santos',
 					location: 'Santos, Sao Paulo, Brazil',
-					longitude: -46.326462,
-					latitude: -23.956289,
+					longitude: -56.0210109172757,
+					latitude: -9.063321460334844,
 				},
 				{
 					id: 3,
@@ -121,6 +121,16 @@ const state = {
 					location: 'P.O.Box 15388, Addis Ababa, Ethiopia',
 					longitude: 39.84570701948269,
 					latitude: 8.15030692292331,
+				},
+				{
+					id: 4,
+					country: 'Nigeria',
+					street: '62, Seriki Aro Avenue',
+					city: 'Ikeja',
+					State: 'Lagos',
+					location: '62, Seriki Aro Avenue, Ikeja, Lagos, Nigeria',
+					latitude: 7.92404181555562,
+					longitude: 8.842270332724297,
 				}
 			],
 		},

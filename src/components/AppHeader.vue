@@ -135,7 +135,7 @@ export default {
 
 .header {
   &__logo-container {
-    max-width: 250px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
   }

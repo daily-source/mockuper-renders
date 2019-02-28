@@ -5,6 +5,7 @@
     :zoom='zoom'
     :mapTypeId='mapTypeId'
     @click='onMapClicked'
+    @dragend='onDragEnd'
     :options='google && mapOptions'
     ref='gmap'
   >
@@ -25,7 +26,7 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        return { lat: 58.777166478244226, lng: -12.70703124999998 }
+        return { lat: 37.10403452276976, lng: -0.627944511025702 }
       }
     },
 
@@ -70,6 +71,11 @@ export default {
     onMapClicked (event) {
       this.$emit('mapClicked', event, this.map, this.$refs.gmap)
     },
+
+    onDragEnd () {
+      const position = this.map.getCenter();
+      // console.log(`Lat: ${position.lat()}, Lng: ${position.lng()}`);
+    }
   },
 
   computed: {

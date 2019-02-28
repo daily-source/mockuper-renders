@@ -4,7 +4,7 @@
     :open='isOpened'
     @closeButtonClicked='onCloseButtonClicked'
   >
-    Click the bulbs to see who's helping free slaves and where they're helping. Click <router-link to='/login'>here</router-link> to be part of the Virtual Railroad.
+    Click the light bulbs to see who's fighting slavery and where they're helping. 
   </alert>
 </template>
 
@@ -65,11 +65,12 @@ export default {
 
 <style lang="scss" scoped>
 .general-info {
-  max-width: 900px;
+  max-width: 820px;
   margin-left: auto;
   margin-right: auto;
-  font-size: .875em;
-  padding: 1em;
+  font-size: 1.125em;
+  padding: .75em;
+  text-align: center;
 }
 </style>
 

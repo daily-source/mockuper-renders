@@ -46,8 +46,8 @@ const state = {
 			firstName: 'Akaath',
 			lastName: 'Bhadare',
 			userName: 'akaath.bhadare1',
-			latitude: 38.9053578,
-			longitude: -2.0031373,
+			latitude: 48.60076434730268,
+			longitude: 30.990707832724297,
 			picture: 'https://randomuser.me/api/portraits/men/88.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
@@ -60,7 +60,7 @@ const state = {
 					locationId: 1,
 				},			
 			],
-			location: 'Madrid, Spain',
+			location: 'Vinnsita, Ukraine',
 		},
 		{
 			id: 4,
@@ -85,34 +85,30 @@ const state = {
 		},
 		{
 			id: 5,
-			firstName: 'Lynn',
-			lastName: 'Hylton',
-			userName: 'lynnhylton231',
-			latitude: 61.874665228839476,
-			longitude: 27.34912109375,
+			firstName: 'David',
+			lastName: 'Alves',
+			userName: 'davidalves321',
+			latitude: 38.71615506024428,
+			longitude: -5.044448417275703,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
 				{
-					nonprofitId: 2,
+					nonprofitId: 1,
 					locationId: 1,
 				},
 				{
 					nonprofitId: 3,
 					locationId: 3,
-				},
-				{
-					nonprofitId: 1,
-					locationId: 4,
-				},					
+				},				
 			],
 			location: 'Kluuvikatu 26, VANTAA, Uusimaa, Finland',
 		},
 		{
 			id: 6,
-			firstName: 'Roberta ',
-			lastName: 'Reyes',
-			userName: 'roberta.reyes88',
+			firstName: 'Karen ',
+			lastName: 'Stevens',
+			userName: 'karent.stevens88',
 			latitude: 38.69900874944365,
 			longitude: -97.345703125,
 			picture: 'https://randomuser.me/api/portraits/women/10.jpg',
@@ -120,8 +116,16 @@ const state = {
 			nonprofits: [
 				{
 					nonprofitId: 2,
-					locationId: 3,
-				},					
+					locationId: 1,
+				},
+				{
+					nonprofitId: 2,
+					locationId: 2,
+				},
+				{
+					nonprofitId: 3,
+					locationId: 4,
+				},
 			],
 			location: 'Picher, Kansas, Austria',
 		},

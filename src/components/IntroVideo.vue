@@ -1,15 +1,21 @@
 <template>
-	<transition name='video-fade'>
+	<transition 
+		:name='videoTransition'
+	>
 		<div 
 			class='intro-video'
 			v-show='isShown'
 		>
-			<youtube 
-				:video-id='videoId'
-				ref='youtube'
-				height='100%'
-				width='100%'
-			/>
+			<div class='video-container'>
+				<youtube
+					:video-id='videoId'
+					ref='youtube'
+					height='100%'
+					width='100%'
+					@playing='playing'
+					@ready='onReady'
+				/>
+			</div>
 			<div class='intro-video__controls'>
 				<button
 					@click='onSkipClicked' 
@@ -35,7 +41,7 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'IntroVideo',
+	name: 'IntroVideo',
 
   data () {
     return {
@@ -43,25 +49,36 @@ export default {
       dontShowVideo: false,
 		  sessionStorageKey: 'dontShowVideo',
 			example: false,
+			fadeAfter: 107,
+			sampleRate: 500,
+			videoTransition: 'video-fade-short', 
+			playerCurrentTime: 0,
+			player: null,
     }
   },
 
 	created () {
 		this.dontShowVideo = this.getSessionStorageKey()
 
-		if (this.dontShowVideo) {
+		if (this.dontShowVideo && this.player) {
 			this.hideVideo()
+
+			return
 		}
 	},
 
   methods: {
+		onReady (event) {
+			this.player = event
+		},
+
 		/**
 		 * Handles the Skip button clicked event
 		 */
 		onSkipClicked () {
+			this.hideVideo()
 			if (this.player) {
 				this.player.stopVideo()
-				this.hideVideo()
 			}
 		},
 
@@ -71,20 +88,52 @@ export default {
 		getSessionStorageKey () {
 			return sessionStorage.getItem(this.sessionStorageKey)
 		},
-		
-		...mapActions({
-			hideVideo: 'video/hideVideo'
-		}),
-  },
 
-  computed: {
-		player () {
-			return this.$refs.youtube.player
+		/**
+		 * Checks the player's time recursively.
+		 */
+		checkPlayerTimeRecursively () {
+			setTimeout( () => {
+				this.getPlayerCurrentTime().then(() => {
+					if (this.player.getPlayerState() === 1) {
+						this.checkPlayerTimeRecursively()
+					}
+				})
+			}, this.sampleRate)
 		},
 
+		/**
+		 * Triggers when the video is playing.
+		 */
+		playing (event) {
+			this.checkPlayerTimeRecursively()
+		},
+
+		/**
+		 * Get player current time
+		 */
+		async getPlayerCurrentTime () {
+			try {
+				const time = await this.player.getCurrentTime()
+				this.playerCurrentTime = time
+			} catch (err) {
+				console.log(err)
+			}
+		},
+		
+		...mapActions({
+			hideVideo: 'video/hideVideo',
+			showVideo: 'video/showVideo',
+		}),
+	},
+
+  computed: {
     ...mapState({
+			isShown (state) {
+				return state.video.isShown
+			},
+
       isPlaying: state => state.video.isPlaying,
-			isShown: state => state.video.isShown,
     }),
   },
 
@@ -94,6 +143,26 @@ export default {
 				sessionStorage.setItem(this.sessionStorageKey, value)
 			} else {
 				sessionStorage.removeItem(this.sessionStorageKey)
+			}
+		},
+
+		player (value) {
+			this.player.playVideo()
+		},
+
+		isShown (value) {
+			if (value) {
+				this.player.playVideo()
+
+				this.videoTransition = 'video-fade-short'
+			}
+		},
+
+		playerCurrentTime (value) {
+			if (value >= this.fadeAfter) {
+				this.videoTransition = 'video-fade-long'
+
+				this.hideVideo()
 			}
 		},
 	},
@@ -154,11 +223,32 @@ export default {
   }
 }
 
-.video-fade-enter-active, .video-fade-leave-active {
+.video-fade-short-enter-active, .video-fade-short-leave-active {
 	transition: opacity .2s ease;
 }
 
-.video-fade-enter, .video-fade-leave-to {
+.video-fade-long-enter-active, .video-fade-long-leave-active {
+	transition: opacity 1.7s ease;
+}
+
+.video-fade-short-enter, 
+.video-fade-short-leave-to,
+.video-fade-long-enter, 
+.video-fade-long-leave-to {
 	opacity: 0;
+}
+</style>
+
+<style lang='scss'>
+.intro-video {
+	.video-container {
+		width: 100%;
+		height: 100%;
+
+		div {
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 </style>

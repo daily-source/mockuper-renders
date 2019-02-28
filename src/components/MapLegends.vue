@@ -4,12 +4,18 @@
   >
     <div class='legends__container'>
       <div class='legends__content'>
-        <p>
-          <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'><span class='has-text-weight-bold'> = person helping to free slaves. </span> Individuals helping the Underground Railroad left lit lamps hanging on their barn doors and sheds overnight to let runaway slaves know they were safe havens where they could sleep or find food and water for their journey. They also used lamps to signal to runaway slaves who were preparing to cross rivers whether there was anyone on the other shore who would report them or try to capture them, or if the coast was clear to swim across.
-        </p>
-        <p>
-          <img src='@/assets/img/star_32.png' alt='Star'><span class='has-text-weight-bold'> = nonprofit helping to free slaves.</span> In the 1800s, slaves trying to escape north to freedom regularly relied on the North star as a beacon and compass because it's the only star in the sky that doesn't change its location. Today, slaves rely on nonprofits to help them gain their freedom and the nonprofits are steadfast in their commitment to free slaves, so we represent them with stars.
-        </p>
+        <div class='legend'>
+          <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'>
+          <p>
+            <span class='has-text-weight-bold'>= person helping to free slaves.</span> &nbsp;In the 1800s, people who helped the Underground Railroad put lamps on their barns and sheds at night to let runaway slaves know they were safe havens where the slaves could sleep or find food and water for their journey. 
+          </p>
+        </div>
+        <div class='legend'>
+          <img src='@/assets/img/star_32.png' alt='Star'>
+          <p>
+            <span class='has-text-weight-bold'>= nonprofit helping to free slaves.</span> &nbsp;Slaves escaping north to freedom relied on the North star as a beacon and compass because it's the only star that doesn't change its location. Today, slaves rely on nonprofits to gain freedom and the nonprofits are unwavering in their efforts to free slaves, so we represent them with stars. 
+          </p>
+        </div>
         <div class='legends__button-container'>
           <button 
             :class='["button legends__button", {"legends__button--opened": opened}]'
@@ -75,10 +81,12 @@ export default {
 
   &__content {
     display: flex;
+    margin-left: -1em;
+    margin-right: -1em;
   }
 
   &__container {
-    max-width: 1330px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -89,17 +97,6 @@ export default {
 
   img {
     vertical-align: middle;
-  }
-
-  p {
-    font-size: 14px;
-    color: #fff;
-    max-width: 50%;
-    margin-bottom: 0;
-
-    &:last-of-type {
-      margin-left: .5em;
-    }
   }
 
   &__button-container {
@@ -122,6 +119,31 @@ export default {
 
     &--opened {
       transform: rotate(360deg);      
+    }
+  }
+}
+
+.legend {
+  max-width: 50%;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1em;
+  padding-left: .1em;
+  padding-right: .1em;
+
+  img {
+    margin-top: -.25em;
+  }
+  
+  p {
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 0;
+    margin-left: 1.25em;
+
+    span {
+      display: inline-block;
+      margin-left: -.875em;
     }
   }
 }
