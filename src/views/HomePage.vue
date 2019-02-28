@@ -22,7 +22,7 @@ export default {
 
   metaInfo() {
     const description = 'Caring for the poorest half!';
-    const title = 'In sight In Mind - v1';
+    const title = 'In sight In Mind - Home';
     return {
       title,
       meta: [
