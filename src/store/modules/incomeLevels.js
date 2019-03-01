@@ -39,8 +39,8 @@ const state = {
         'A little of Eastern Europe',
         'A tiny percentage of other regions',
       ],
-      have: haveDefault,
-      dontHave: dontHaveDefault,
+      have: [...haveDefault, ...dontHaveDefault],
+      dontHave: [],
       photos: [
         'working-class-ranch-house.jpg',
         'southwest-airlines-boeing.jpg',
@@ -91,7 +91,7 @@ const state = {
       ],
     },
     {
-      name: 'Bottom 40%: Over $1,830',
+      name: 'Bottom 40%: Under $1,830',
       descriptionList: [
         'None in the U.S., Western Europe, Canada, Japan, South Korea & Australia ',
         'A small amount of Eastern Europe',
@@ -105,7 +105,7 @@ const state = {
       ],
     },
     {
-      name: 'Bottom 30%: Over $1,350',
+      name: 'Bottom 30%: Under $1,350',
       descriptionList: [
         'None are in the U.S. or other industrialized countries',
         'Some of Asia, Latin America and the Middle East',

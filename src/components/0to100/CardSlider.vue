@@ -66,7 +66,7 @@
               {{ dontHave }}    
             </li>
           </ul>
-          <p class='has-text-centered' v-if='!incomeLevel.dontHave.length'> - </p>
+          <p v-if='!incomeLevel.dontHave.length'> - </p>
         </div>
       </div>
     </div>
