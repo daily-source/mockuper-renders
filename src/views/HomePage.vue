@@ -9,7 +9,7 @@
       :key='`top-half-${index}`' 
     >
       <div class='container'>
-        <h2 class='has-text-weight-bold'>{{ incomeLevel.name }}</h2>
+				<h2 class='has-text-weight-bold'>{{ `Top ${incomeLevel.percent}: Over $${incomeLevel.value}` }}</h2>
         <card-slider 
           :income-level='incomeLevel'
         />
@@ -28,7 +28,7 @@
       :key='`bottom-half-${index}`' 
     >
       <div class='container'>
-        <h2 class='has-text-weight-bold'>{{ incomeLevel.name }}</h2>
+				<h2 class='has-text-weight-bold'>{{ `Bottom ${incomeLevel.percent}: Under $${incomeLevel.value}` }}</h2>
         <card-slider 
           :income-level='incomeLevel'
         />
@@ -53,6 +53,7 @@ export default {
   components: {
     TheHeader,
     TheBanner,
+		IncomeLevelsSlider,
     CardSlider,
     SharedFooter,
   },
@@ -81,7 +82,8 @@ export default {
 
 <style lang='scss' scoped>
 .card-slider-section {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+	margin-top: 2em;
 
   @include tablet {
     margin-bottom: 3em;

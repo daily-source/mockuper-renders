@@ -112,6 +112,7 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   height: auto;
+	border-bottom: 2px solid $primary;
 
   &__logo {
     max-height: none;
