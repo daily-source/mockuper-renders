@@ -43,7 +43,7 @@ import { mapGetters } from 'vuex'
 
 import TheHeader from 'LocalComponents/0to100/TheHeader'
 import TheBanner from 'LocalComponents/0to100/TheBanner'
-import IncomeLevelSlider from 'LocalComponents/0to100/IncomeLevelSlider'
+import IncomeLevelsSlider from 'LocalComponents/0to100/IncomeLevelsSlider'
 import CardSlider from 'LocalComponents/0to100/CardSlider'
 import SharedFooter from 'Components/Shared/SharedFooter.vue'
 

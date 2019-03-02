@@ -9,7 +9,7 @@
 <script>
 import { mapState } from 'vuex'
 
-import Flickity from 'Components/general/Flickity'
+import Flickity from 'Components/plugins/Flickity'
 
 export default {
 	name: 'IncomeLevelSlider',
