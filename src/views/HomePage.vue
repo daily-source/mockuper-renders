@@ -1,7 +1,6 @@
 <template>
   <div class="layout-base">
     <the-header />
-		<income-levels-slider />
     <the-banner />
     <div 
       class='card-slider-section'
@@ -9,7 +8,7 @@
       :key='`top-half-${index}`' 
     >
       <div class='container'>
-        <h2 class='has-text-weight-bold'>{{ incomeLevel.name }}</h2>
+				<h2 class='has-text-weight-bold'>{{ `Top ${incomeLevel.percent}: Over $${incomeLevel.value}` }}</h2>
         <card-slider 
           :income-level='incomeLevel'
         />
@@ -28,7 +27,7 @@
       :key='`bottom-half-${index}`' 
     >
       <div class='container'>
-        <h2 class='has-text-weight-bold'>{{ incomeLevel.name }}</h2>
+				<h2 class='has-text-weight-bold'>{{ `Bottom ${incomeLevel.percent}: Under $${incomeLevel.value}` }}</h2>
         <card-slider 
           :income-level='incomeLevel'
         />
@@ -43,7 +42,6 @@ import { mapGetters } from 'vuex'
 
 import TheHeader from 'LocalComponents/0to100/TheHeader'
 import TheBanner from 'LocalComponents/0to100/TheBanner'
-import IncomeLevelSlider from 'LocalComponents/0to100/IncomeLevelSlider'
 import CardSlider from 'LocalComponents/0to100/CardSlider'
 import SharedFooter from 'Components/Shared/SharedFooter.vue'
 
