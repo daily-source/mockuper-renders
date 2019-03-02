@@ -21,7 +21,7 @@
 					/>
 					<div class='income-levels-slider-level__body'>
 						<h4>{{ level.sliderPercent }}</h4>
-						<p>Below ${{ level.value}}</p>
+						<p>Over ${{ level.value}}</p>
 					</div>
 					<income-levels-slider-list 
 						:have='level.have'	
