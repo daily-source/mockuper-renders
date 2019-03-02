@@ -62,11 +62,11 @@
 	</div>
 	<div class='income-levels-slider__btn-container'>
 		<button 
-			class='button is-secondary'
+			class='button is-secondary is-large'
 			@click='toggleListExpanded'
 		>
-			Click to see what the groups above have
-	</button>
+			Click to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
+		</button>
 	</div>
 </div>
 </template>
@@ -95,8 +95,8 @@ export default {
 		const headings = this.$el.getElementsByClassName('income-levels-slider__heading')
 
 		Array.from(headings).forEach(heading => {
-			tl.to(heading, 1, {opacity: 1})
-				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
+			tl.to(heading, 1, {x: 0, opacity: 1})
+				.to(heading, 1, {x: 200, opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},
 
@@ -172,8 +172,8 @@ export default {
 	}
 
 	&__levels-container {
-		margin-left: -.5em;
-		margin-right: -.5em;
+		margin-left: -.25em;
+		margin-right: -.25em;
 		margin-bottom: 2.25em;
 		display: flex;
 		justify-content: space-between;
@@ -184,8 +184,8 @@ export default {
 	flex-grow: 1;
 	flex-shrink: 1;
 	max-width: calc(16.67% - 33.33px);
-	padding-left: .5em;
-	padding-right: .5em;
+	padding-left: .25em;
+	padding-right: .25em;
 	
 	@include fullhd {
 		max-width: calc(16.67% - 41.67px);
@@ -200,6 +200,7 @@ export default {
 
 		p {
 			font-size: 1em;
+			color: $primary;
 			margin-bottom: .5em;
 			padding-top: 60%;
 		}
@@ -219,7 +220,7 @@ export default {
 		h4 {
 			font-weight: 700;
 			color: $primary;
-			font-size: 1.75em;
+			font-size: 1.375em;
 			line-height: 1em;
 			margin-bottom: 10px;
 		}
@@ -227,7 +228,7 @@ export default {
 		p {
 			margin-bottom: 0;
 			@include widescreen {
-				font-size: 1.125em;
+				font-size: 1.25em;
 			}
 		}
 	}

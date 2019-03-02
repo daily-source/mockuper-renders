@@ -113,6 +113,7 @@ export default {
 	}
 
 	h4 {
+		text-align: center;
 		font-size: 1rem;
 		font-weight: 700;
 		color: $secondary;
@@ -120,9 +121,6 @@ export default {
 	}
 
 	&__list {
-		list-style: disc;
-		margin-left: 1.25em;
-
 		li {
 			margin-bottom: .25rem;
 		}
@@ -134,6 +132,7 @@ export default {
 		}
 
 		&--dont-have {
+			padding-bottom: 1em;
 			li {
 				color: $danger;
 			}

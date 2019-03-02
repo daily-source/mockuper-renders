@@ -5,7 +5,7 @@
         class='card-slider__slider'
         :options='{
           wrapAround: true,
-          autoPlay: true,
+          autoPlay: 2500,
         }'  
       >
         <div 

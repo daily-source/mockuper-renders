@@ -33,7 +33,7 @@ export default {
 		const headings = this.$el.getElementsByClassName('income-levels-slider-level-images__image')
 
 		Array.from(headings).forEach(heading => {
-			tl.to(heading, 1, {opacity: 1})
+			tl.to(heading, 1, {opacity: 1, })
 				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},
