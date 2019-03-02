@@ -2,7 +2,7 @@
   <section class='banner'>
     <div class='container'>
       <h2 class='has-text-weight-bold'>See how people live and what they have at each level of annual income.</h2>
-      <p>Numbers are adjusted for cost of living purchasing power parity, meaning each $1,000 below buys the same amount everywhere in the world.</p>
+			<p>Scroll down to see how people live in all the major groups of annual income.</p>
     </div>
   </section>
 </template>

@@ -30,15 +30,6 @@
 					/>
 				</div>
 			</div>
-			<div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
-				<p class='has-text-centered'>Scroll down to see all of the levels</p>
-				<icon
-					icon='chevron-down'
-					:iconwidth='46'
-					:iconheight='46'
-					color='#ff5f00'
-				/>
-			</div>
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderBottomIncomeLevels'
@@ -61,6 +52,7 @@
 		</div>
 	</div>
 	<div class='income-levels-slider__btn-container'>
+		<p>Numbers are adjusted for cost of living purchasing power parity, meaning each $1,000 below buys the same amount everywhere in the world.</p>
 		<button 
 			class='button is-secondary'
 			@click='toggleListExpanded'
@@ -169,6 +161,15 @@ export default {
 	&__btn-container {
 		text-align: center;
 		margin-top: 1em;
+		
+		p {
+			@include tablet {
+				max-width: 900px;
+				margin-left: auto;
+				margin-right: auto;
+				font-size: 1.5em;
+			}
+		}
 	}
 
 	&__levels-container {
@@ -183,28 +184,8 @@ export default {
 .income-levels-slider-level-wrapper {
 	flex-grow: 1;
 	flex-shrink: 1;
-	max-width: calc(16.67% - 33.33px);
 	padding-left: .5em;
 	padding-right: .5em;
-	
-	@include fullhd {
-		max-width: calc(16.67% - 41.67px);
-	}
-
-	&--middle {
-		max-width: 100px;
-
-		@include fullhd {
-			max-width: 170px;
-		}
-
-		p {
-			font-size: 1em;
-			margin-bottom: .5em;
-			padding-top: 60%;
-		}
-	}
-
 }
 
 .income-levels-slider-level {
