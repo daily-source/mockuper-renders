@@ -153,8 +153,8 @@ const state = {
 				'Much of Africa and India',
 				'None are in the U.S. or other',
       ],
-      have: [],
-      dontHave: [...haveDefault, ...dontHaveDefault],
+      have: haveDefault,
+      dontHave: dontHaveDefault,
       photos: [
 				'makeshift-metal.jpg',
 				'draggable-cart-on-wheels.jpg',
