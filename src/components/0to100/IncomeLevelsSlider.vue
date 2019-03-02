@@ -65,8 +65,8 @@
 			class='button is-secondary'
 			@click='toggleListExpanded'
 		>
-			Click to see what the groups above have
-	</button>
+			Click to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
+		</button>
 	</div>
 </div>
 </template>
