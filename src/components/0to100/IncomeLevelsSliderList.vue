@@ -2,11 +2,11 @@
 <div class='income-levels-slider-list'>
 	<div 
 		class='income-levels-slider-list__list-container'
-		v-if='have && have.length > 0'	
 	>
 		<h4>What they have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
+			v-if='have && have.length > 0'	
 		>
 			<li
 				v-for='(item, index) in have'	
@@ -15,14 +15,15 @@
 				{{ item }}
 			</li>
 		</ul>
+		<p v-if='!have && have.length === 0'>-</p>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
-		v-if='dontHave && dontHave.length > 0'	
 	>
 		<h4>What they don't have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
+			v-if='dontHave && dontHave.length > 0'	
 		>
 			<li
 				v-for='(item, index) in dontHave'	
@@ -31,6 +32,7 @@
 				{{ item }}
 			</li>
 		</ul>
+		<p v-if='!dontHave && dontHave.length === 0'>-</p>
 	</div>
 </div>
 </template>
