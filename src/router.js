@@ -45,15 +45,16 @@ export default new Router({
       name: 'volunteer',
       component: VolunteerPage,
     },
-    {
-      path: '/nonprofit',
-      redirect: '/explore',
-    },
-    {
-      path: '/nonprofit/:ein',
+		{
+			path: '/nonprofit',
       name: 'nonprofit',
       component: Nonprofit,
-    },
+		},
+		//{
+    //  path: '/nonprofit/:ein',
+    //  name: 'nonprofit',
+    //  component: Nonprofit,
+    //},
     {
       path: '/nonprofit/:ein/donate',
       name: 'nonprofit/donate',

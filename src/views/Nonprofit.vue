@@ -19,8 +19,16 @@
     ></NonprofitHero>
 
 
-    <div class="container">
-      <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
+    <div class="container nonprofit-description__container">
+			<p>A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight with these added benefits:</p>
+			<ul class='nonprofit-description__list'>
+				<li>donors wind up with a friend and family member who is healthier and happier.</li>
+				<li>it's usually harder to lose a significant amount of weight than to do a single walkathon so it's a bigger challenge for people to take on</li>
+				<li>people are more likely to succeed at losing weight if they have the support of loved ones. A Loseathon creates a cheering squad to encourage them</li>
+				<li>it easier to lose weight if a person commits to it publicly because it adds accountability</li>
+				<li>it's easier to lose weight if it's about something bigger than just yourself and it's helping others</li>
+				<li>everyone benefits from the health system spending less money spent on diseases related to weight such as heart disease</li>
+			</ul>
     </div>
 
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
@@ -43,9 +51,9 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's doing a Quitathons to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Ride For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Quitathons to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -117,14 +125,14 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
+    AppHeader: () => import('Components/Loseathon/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
+    NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
     AppBanner,
@@ -157,11 +165,10 @@ export default {
   },
   computed: {
     ein() {
-      return this.$route.params.ein;
+      return this.$route.params.ein || 1;
     },
     nonprofit() {
-      const ein = this.$route.params.ein
-      return this.$store.state.nonprofit[ein];
+      return this.$store.state.nonprofit[this.ein];
     },
     fundraisers() {
       return this.$store.state.fundraisers.data;
@@ -201,12 +208,11 @@ export default {
   },
   methods: {
     loadNonprofitData () {
-      const ein = this.$route.params.ein
-      if (this.$store.state.nonprofit.hasOwnProperty(ein)) {
+      if (this.$store.state.nonprofit.hasOwnProperty(this.ein)) {
         return
       } 
       return new Promise((resolve, reject) => {
-        return this.$store.dispatch("FETCH_NONPROFIT", { ein })
+        return this.$store.dispatch("FETCH_NONPROFIT", { ein: this.ein })
           .then(data => {
             resolve(data)
           })
@@ -221,7 +227,7 @@ export default {
      * so that it doesn't display info from other nonprofits.
      */
     loadFundraisers(paginated = true) {
-      return this.$store.dispatch('FETCH_FUNDRAISERS', { ein: this.$route.params.ein })
+      return this.$store.dispatch('FETCH_FUNDRAISERS', { ein: this.ein })
         .then(data => data)
         .catch((err) => {
           this.$store.commit('RESET_FUNDRAISERS');
@@ -308,4 +314,22 @@ export default {
   }
 }
 
+.nonprofit-description {
+	p {
+		line-height: 1.6;
+	}
+
+	&__container {
+		padding: 20px 70px 0;
+	}
+	&__list {
+		list-style: disc;
+		margin-left: 20px;
+		font-size: 19px;
+
+		li {
+			line-height: 1.6;
+		}
+	}
+}
 </style>
