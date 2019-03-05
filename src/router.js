@@ -60,10 +60,7 @@ export default new Router({
       name: 'nonprofit/donate',
       component: Nonprofit,
     },
-    {
-      path: '/fundraiser',
-      redirect: '/explore',
-    },
+    // 
     {
       path: '/fundraiser/create',
       name: 'fundraiser/create',
@@ -71,6 +68,11 @@ export default new Router({
     },
     {
       path: '/fundraiser/:id',
+      name: 'fundraiser',
+      component: Fundraiser,
+    },
+    {
+      path: '/fundraiser/',
       name: 'fundraiser',
       component: Fundraiser,
     },

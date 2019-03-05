@@ -21,7 +21,7 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will volunteer {{fundraiser.fundraiserDetails.hours}} hours {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`">{{fundraiser.Nonprofit.NAME}}</router-link> to raise money for the same nonprofit
+        {{fundraiser.User.firstName}} will lose {{fundraiser.fundraiserDetails.hours}} pounds {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`"> {{ fundraiser.Nonprofit.NAME }}</router-link>. In addition to your donations, she will donate ${{ fundraiser.fundraiserDetails.ownMoneyAmount }} plus the ${{ fundraiser.fundraiserDetails.foodAmount }} in food.
       </p>
       <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Volunteerathon</span>
     </FundraiserHero>
@@ -47,7 +47,7 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from 'Components/RideForGood/AppHeader.vue';
+import AppHeader from 'Components/Loseathon/AppHeader.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);

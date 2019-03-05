@@ -13,7 +13,7 @@ export default new Vuex.Store({
     nonprofit: {
       "1": {
         EIN: 1,
-        NAME: 'OXFAM AMERICA',
+        NAME: 'OXFAM AMERICA FOUNDATION',
         STREET: '360 MAIN ST',
         CITY: 'MELROSE',
         STATE: 'MA',
@@ -26,7 +26,7 @@ export default new Vuex.Store({
         SORT_NAME: '0',
         validated: true,
         data: {
-          name: 'OXFAM AMERICA',
+          name: 'OXFAM AMERICA FOUNDATION',
           hero: {
             src: `${baseUrl}img/5672087be97cb2bb8e59ad897a14ea35.jpg`,
           },
@@ -204,8 +204,8 @@ export default new Vuex.Store({
         ],
       },
       participant: {
-        name: 'Joan',
-        fullname: 'Joan Engelman',
+        name: 'Carol',
+        fullname: 'Carol Engelman',
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
         avatar: {
@@ -215,12 +215,14 @@ export default new Vuex.Store({
         },
       },
       User: {
-        firstName: "Joan",
+        firstName: "Carol",
         lastName: "Engelman"
       },
       fundraiserDetails: {
         goal: 1200000,
         hours: 100,
+        ownMoneyAmount: 100,
+        foodAmount: 60,
         donors: 6,
         donated: 845000,
         timestamp: 1533470481336,
@@ -230,11 +232,12 @@ export default new Vuex.Store({
       counters: {
         donationsCount: 10,
         commentsCount: 10,
-        updatesCount: 10
+        // updatesCount: 10,
+        updatesCount: 0,
       },
       Nonprofit: {
         logo_square: `${baseUrl}img/oxfam-square.png`,
-        NAME: 'OXFAM AMERICA',
+        NAME: 'OXFAM AMERICA FOUNDATION INTERNATIONAL',
         website: 'https://oxfam.org',
         EIN: 237069110,
         STREET: '360 MAIN ST',
@@ -248,7 +251,7 @@ export default new Vuex.Store({
         NTEE_CD: '0',
         SORT_NAME: '0',
         data: {
-          name: "OXFAM AMERICA",
+          name: "OXFAM AMERICA FOUNDATION INTERNATIONAL",
           logo: {
             src: `${baseUrl}img/oxfam-square.png`,
           },
@@ -271,13 +274,13 @@ export default new Vuex.Store({
       ],
       profilePicUrl: 'https://vthon__nonprofit-generic.surge.sh/feed-the-children/profile-pic.jpg',
       currentStats: {
-        hours: 100,
+        pounds: 100,
         donated: 1250,
         donors: 6,
         goal: 12000,
         daysLeft: 131,
       },
-      updates_count: 5,
+      // updates_count: 5,
       comments_count: 6,
       donations_count: 6,
       shared_count: 12,

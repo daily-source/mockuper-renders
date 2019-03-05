@@ -1,17 +1,23 @@
 <template>
   <div class="layout-base">
 		<app-header />
+    <section class='section' style='height: calc(100vh - 105px); display: flex; align-items: center; justify-content: center;'>
+      <h1>Website is currently under construction...</h1>
+    </section>
+    <shared-footer />
   </div>
 </template>
 
 <script>
 import AppHeader from 'Components/Loseathon/AppHeader'
+import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
   name: 'BaseLayout',
 
   components: {
-		AppHeader,
+    AppHeader,
+    SharedFooter,
   },
 
   metaInfo() {

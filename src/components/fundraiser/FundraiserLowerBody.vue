@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div class="tab-section tab-section__updates">
-                  <h2>Updates <span><a class="button is-rounded is-medium is-warning is-pulled-right" @click="addNewUpdate()" v-if="editing">Add a new update</a></span></h2>
+                  <!-- <h2>Updates <span><a class="button is-rounded is-medium is-warning is-pulled-right" @click="addNewUpdate()" v-if="editing">Add a new update</a></span></h2> -->
                   <InlineRichTextEditor
                     class="new-update-wrapper"
                     ref="newUpdate"
@@ -61,7 +61,7 @@
                   ></InlineRichTextEditor>
 
                   <div class="user-optional__updates-wrapper">
-                    <FundraiserUpdates
+                    <!-- <FundraiserUpdates
                       :updates="updates"
                       :count="fundraiser.counters.updatesCount"
                       :fundraiser-id="fundraiser.id"
@@ -70,13 +70,13 @@
                       v-if="updates.length"
                     ></FundraiserUpdates>
                     <p v-else>There are no updates posted yet!</p>
-                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Load more updates</button>
+                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Load more updates</button> -->
                   </div>
                 </div>
                 <p v-if="canEdit">
                   <a class="button is-light is-rounded is-medium" @click="closeEditor()" v-if="editing">Stop editing</a>
                 </p>
-                <h2>Nonprofit Organization</h2>
+                <h2>Nonprofit</h2>
                 <div class="tab-section tab-section__header">
                   <FundraiserNonprofitDetails :fundraiser="fundraiser" />
                 </div>
@@ -224,7 +224,7 @@ export default {
   props: [ "fundraiser", "editing", "canEdit" ],
   components: {
     FundraiserGivingLevel: () => import("Components/fundraiser/FundraiserGivingLevel.vue"),
-    FundraiserNonprofitDetails: () => import("Components/fundraiser/FundraiserNonprofitDetails.vue"),
+    FundraiserNonprofitDetails: () => import("LocalComponents/fundraiser/FundraiserNonprofitDetails.vue"),
     FundraiserUpdates: () => import("Components/fundraiser/FundraiserUpdates.vue"),
     Comments: () => import("Components/general/Comments.vue"),
     DonateAction: () => import("Components/general/DonateAction.vue"),
