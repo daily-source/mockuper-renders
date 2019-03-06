@@ -149,5 +149,9 @@ export default {
 
 .cta {
   margin-bottom: 3em;
+
+  .button {
+    font-size: 1.25em;
+  }
 }
 </style>
