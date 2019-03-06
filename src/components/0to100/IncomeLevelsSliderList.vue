@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4>What they have: </h4>
+		<h4 class='has-text-primary'>What they have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -15,12 +15,12 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!have && have.length === 0'>-</p>
+		<p v-if='!have || have.length === 0'>Can't afford all in the list</p>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4>What they don't have: </h4>
+		<h4 class='has-text-danger'>What they don't have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
 			v-if='dontHave && dontHave.length > 0'	
@@ -32,7 +32,7 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='dontHave && dontHave.length === 0'>-</p>
+		<p v-if='!dontHave || dontHave.length === 0'>Can afford all in the list</p>
 	</div>
 </div>
 </template>
@@ -115,29 +115,42 @@ export default {
 	}
 
 	h4 {
+		text-align: center;
 		font-size: 1rem;
 		font-weight: 700;
 		color: $secondary;
 		margin-bottom: .25rem;
 	}
 
-	&__list {
-		list-style: disc;
-		margin-left: 1.25em;
+	&__list-container {
+		p {
+			line-height: 1em;
+			text-align: center;
+			margin-bottom: .25em;
+		}
+	}
 
+	&__list {
 		li {
 			margin-bottom: .25rem;
 		}
 
 		&--have {
+			h4 {
+				color: $primary;
+			}
+
 			li {
 				color: #23d160;
 			}
 		}
 
 		&--dont-have {
+			padding-bottom: 1em;
+			
+			h4,
 			li {
-				color: $danger;
+				color: #ff0000;
 			}
 		}
 	}
