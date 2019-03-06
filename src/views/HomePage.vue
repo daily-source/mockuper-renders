@@ -48,7 +48,7 @@
     </section>
     <div class='cta'>
       <div class='container has-text-centered'>
-        <button class='button is-large is-primary'>DONATE TO HELP THE PEOPLE IN THE BOTTOM HALF</button>
+        <button class='button is-primary'>DONATE TO HELP THE PEOPLE IN THE BOTTOM HALF</button>
       </div>
     </div>
     <shared-footer />
@@ -175,5 +175,9 @@ export default {
 
 .cta {
   margin-bottom: 3em;
+
+  .button {
+    font-size: 1.25em;
+  }
 }
 </style>
