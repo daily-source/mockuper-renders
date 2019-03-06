@@ -1,8 +1,8 @@
 <template>
   <div class="layout-base">
     <the-header />
-		<income-levels-slider />
     <the-banner />
+		<income-levels-slider />
     <div 
       class='card-slider-section'
       v-for='(incomeLevel, index) in topIncomeLevels'
