@@ -14,6 +14,7 @@
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderTopIncomeLevels'
+				:key='index'
 			>
 				<div class='income-levels-slider-level'>
 					<income-levels-slider-images 
@@ -30,7 +31,7 @@
 					/>
 				</div>
 			</div>
-			<div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
+			<!-- <div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
 				<p class='has-text-centered'>Scroll down to see all of the levels</p>
 				<icon
 					icon='chevron-down'
@@ -38,10 +39,11 @@
 					:iconheight='46'
 					color='#ff5f00'
 				/>
-			</div>
+			</div> -->
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderBottomIncomeLevels'
+				:key='index'
 			>
 				<div class='income-levels-slider-level'>
 					<income-levels-slider-images 
@@ -65,7 +67,7 @@
 			class='button is-secondary'
 			@click='toggleListExpanded'
 		>
-			Click to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
+			Click here to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
 		</button>
 	</div>
 </div>
@@ -96,6 +98,7 @@ export default {
 
 		Array.from(headings).forEach(heading => {
 			tl.to(heading, 1, {opacity: 1})
+				.to(heading, .8, {opacity: 1})
 				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},
@@ -162,13 +165,17 @@ export default {
 		left: 0;
 		right: 0;
 		opacity: 0;
-		color: $primary;
 		font-weight: 700;
 	}
 
 	&__btn-container {
 		text-align: center;
 		margin-top: 1em;
+		font-size: 1.375rem;
+
+		.button {
+			text-transform: none;
+		}
 	}
 
 	&__levels-container {
@@ -183,12 +190,12 @@ export default {
 .income-levels-slider-level-wrapper {
 	flex-grow: 1;
 	flex-shrink: 1;
-	max-width: calc(16.67% - 33.33px);
+	// max-width: calc(16.67% - 33.33px);
 	padding-left: .5em;
 	padding-right: .5em;
 	
 	@include fullhd {
-		max-width: calc(16.67% - 41.67px);
+		// max-width: calc(16.67% - 41.67px);
 	}
 
 	&--middle {
@@ -211,6 +218,7 @@ export default {
 	border-radius: 10px;
 	box-shadow: 0 8px 8px 2px rgba(0,0,0,.2);
 	overflow: hidden;
+	background-color: #fff;
 
 	&__body {
 		padding-top: 1em;

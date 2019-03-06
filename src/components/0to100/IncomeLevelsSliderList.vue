@@ -15,7 +15,7 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!have && have.length === 0'>-</p>
+		<p class='is-marginless' v-if='!have || have.length === 0'>-</p>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
@@ -32,7 +32,7 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!dontHave && dontHave.length === 0'>-</p>
+		<p class='is-marginless' v-if='!dontHave || dontHave.length === 0'>-</p>
 	</div>
 </div>
 </template>
@@ -121,6 +121,13 @@ export default {
 		margin-bottom: .25rem;
 	}
 
+	&__list-container {
+		p {
+			line-height: 1em;
+			font-weight: 700;
+		}
+	}
+
 	&__list {
 		list-style: disc;
 		margin-left: 1.25em;
@@ -137,7 +144,7 @@ export default {
 
 		&--dont-have {
 			li {
-				color: $danger;
+				color: #ff0000;
 			}
 		}
 	}

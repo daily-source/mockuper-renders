@@ -15,11 +15,20 @@
         />
       </div>
     </div>
-    <div class='exact-middle card-slider-section'>
+    <!-- <div class='exact-middle card-slider-section'>
       <div class='container exact-middle__container'>
         <h2 class='has-text-weight-bold'>The middle: $2,350</h2>
         <p>50% of people in the world live on less than $2,350 and 50% live on more than that. This fully takes into account PPP. The temporarily homeless and the chronic homeless in the U.S. live on far more than $2,350 putting them in the top half. </p>
         <p>At present, about 95% of donating by people in wealthy nations like the U.S. goes towards the richest 30% of the world, about 1% goes to people in the 30% to 50% range, and only 5% goes to people in the bottom 50%. Giving that is more fair and more balanced is needed. Please commit to changing this unfairness by joining the <a href='#'>50/50 Pledge</a> to make at least half of your giving go to people in the bottom half. </p>
+      </div>
+    </div> -->
+    <div class='exact-middle card-slider-section'>
+      <div class='container exact-middle__container'>
+        <h2 class='has-text-weight-bold'>The middle: $2,350</h2>
+        <card-slider 
+          :income-level='middle'
+          :is-middle='true'
+        />
       </div>
     </div>
     <div 
@@ -32,6 +41,11 @@
         <card-slider 
           :income-level='incomeLevel'
         />
+      </div>
+    </div>
+    <div class='cta'>
+      <div class='container has-text-centered'>
+        <button class='button is-large is-primary'>Donate now to help the people in the bottom half</button>
       </div>
     </div>
     <shared-footer />
@@ -74,8 +88,9 @@ export default {
   computed: {
     ...mapGetters({
       topIncomeLevels: 'incomeLevels/topHalf', 
-      bottomIncomeLevels: 'incomeLevels/bottomHalf', 
-    })
+      bottomIncomeLevels: 'incomeLevels/bottomHalf',
+      middle: 'incomeLevels/middle',
+    }),
   },
 };
 </script>
@@ -130,5 +145,9 @@ export default {
       font-size: 1em;
     }
   }
+}
+
+.cta {
+  margin-bottom: 3em;
 }
 </style>

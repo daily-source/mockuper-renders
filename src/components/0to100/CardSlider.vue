@@ -1,5 +1,7 @@
 <template>
-  <div class='card-slider card'>
+  <div 
+    :class='["card-slider card", {"card-slider--middle": isMiddle }]'
+  >
     <div class='card-slider__slider-wrapper'>
       <flickity 
         class='card-slider__slider'
@@ -22,7 +24,7 @@
     </div>
     <div class='card-slider__body'>
       <div class='card-slider__details-block'>
-        <h4 class='has-text-weight-bold card-slider__heading'>Who They Are: </h4>
+        <h4 class='has-text-weight-bold card-slider__heading' v-if='!isMiddle'>Who They Are: </h4>
         <ul class='card-slider__list'>
           <li
             v-for='(description, index) in incomeLevel.descriptionList'
@@ -36,7 +38,7 @@
         class='card-slider__button button is-block is-secondary'
         @click='toggleExpandedContent'
       >
-        {{ showExpandedContent ?  'Hide what they have' : 'Click to see what they have' }}
+        {{ showExpandedContent ?  'Click to hide what they have' : 'Click to see what they have' }}
       </button>
     </div>
     <div 
@@ -83,7 +85,13 @@ export default {
     incomeLevel: {
       type: Object,
       required: true,
-    }
+    },
+
+    isMiddle: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   components: {
@@ -110,6 +118,7 @@ export default {
 
 <style scoped lang="scss">
 .card-slider {
+  $self: &;
   display: flex;
   flex-direction: column;
   margin-left: auto;
@@ -272,6 +281,17 @@ export default {
         @include tablet {
           font-size: 1em;
         }
+      }
+    }
+  }
+
+  &--middle {
+    #{ $self }__list {
+      list-style: none;
+      margin-left: 0;
+
+      li:not(:last-child) {
+        margin-bottom: 1rem;
       }
     }
   }
