@@ -45,7 +45,11 @@ const state = {
         'A little of Eastern Europe',
         'A tiny percentage of other regions',
       ],
-      have: [...haveDefault, ...dontHaveDefault],
+      have: [
+        '14 changes of clothing',
+        ...haveDefault, 
+        ...dontHaveDefault
+      ],
       dontHave: [],
       photos: [
         'working-class-ranch-house.jpg',
@@ -62,7 +66,10 @@ const state = {
         'Some of Europe, Canada, Japan, South Korea & Australia ',
         'A small percentage of other regions',
       ],
-      have: haveDefault,
+      have: [
+        '9 changes of clothing',      
+        ...haveDefault
+      ],
       dontHave: dontHaveDefault,
       photos: [
         'top-20-photo-1.jpg',
@@ -100,11 +107,30 @@ const state = {
         'Some of the Middle East and Asia',
         'A small percentage of Africa and India',
       ],
-      have: haveDefault,
+      have: [
+        '5 changes of clothing',        
+        ...haveDefault
+      ],
       dontHave: dontHaveDefault,
       photos: [
 				'DSC06738.jpg',
 				'crowded-motorscooter.jpg',
+      ],
+    },
+    {
+      name: 'The middle: $2,350',
+      percent: '50%',
+      sliderPercent: '50%',
+      value: '2,350',
+      descriptionList: [
+        '50% of people live on less than $2,350 and 50% live on more. This fully takes into account purchasing power parity and costs of living. The homeless in the U.S. live on far more than $2,350, putting them in the top half.',
+        '95% of donations by people in the U.S. go to the richest 30%, about 1% goes to the 30% to 50% range, and only 4% goes to people in the bottom 50%. More fair giving is needed.',
+      ],
+      have: haveDefault,
+      dontHave: dontHaveDefault,
+      photos: [
+        'middle-50-housing.jpg',
+        'rickshaw-man-take-children-to-the-school-in-the-morning-in-new-delhi-d57twc.jpg'
       ],
     },
     {
@@ -118,7 +144,10 @@ const state = {
         'Much of Latin America, Asia and the Middle East',
         'Some of Africa and India',
       ],
-      have: haveDefault,
+      have: [
+        '3 changes of clothing',      
+        ...haveDefault,
+      ],
       dontHave: dontHaveDefault,
       photos: [
 				'ruralindia.jpg',
@@ -135,7 +164,9 @@ const state = {
         'Some of Asia, Latin America and the Middle East',
         'Much of Africa and India',
       ],
-      have: haveDefault,
+      have: [
+        ...haveDefault
+      ],
       dontHave: dontHaveDefault,
       photos: [
 				'sheet-metal-shack.jpg',
@@ -153,7 +184,10 @@ const state = {
 				'Much of Africa and India',
 				'None are in the U.S. or other',
       ],
-      have: haveDefault,
+      have: [
+        '2 changes of clothing',
+        ...haveDefault,  
+      ],
       dontHave: dontHaveDefault,
       photos: [
 				'makeshift-metal.jpg',
@@ -171,7 +205,9 @@ const state = {
 				'They are rarely in Latin America and the Caribbean, except for Haiti.',
 				'None are in the U.S. or other industrialized countries',
       ],
-      have: [],
+      have: [
+        '1 changes of clothing',   
+      ],
       dontHave: [...haveDefault, ...dontHaveDefault],
       photos: [
 				'makeshift-nonmetal.jpg',
@@ -197,7 +233,14 @@ const getters = {
    * Gets the bottom half of the income levels.
    */
   bottomHalf: (state) => {
-    return state.data.slice(4, state.data.length)
+    return state.data.slice(5, state.data.length)
+  },
+
+   /**
+    * The middle
+    */
+  middle: (state) => {
+    return state.data[4]
   },
 }
 

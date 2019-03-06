@@ -14,6 +14,7 @@
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderTopIncomeLevels'
+				:key='index'
 			>
 				<div class='income-levels-slider-level'>
 					<income-levels-slider-images 
@@ -21,7 +22,7 @@
 					/>
 					<div class='income-levels-slider-level__body'>
 						<h4>{{ level.sliderPercent }}</h4>
-						<p>Over ${{ level.value}}</p>
+						<p>Above ${{ level.value}}</p>
 					</div>
 					<income-levels-slider-list 
 						:have='level.have'	
@@ -30,7 +31,7 @@
 					/>
 				</div>
 			</div>
-			<div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
+			<!-- <div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
 				<p class='has-text-centered'>Scroll down to see all of the levels</p>
 				<icon
 					icon='chevron-down'
@@ -38,10 +39,11 @@
 					:iconheight='46'
 					color='#ff5f00'
 				/>
-			</div>
+			</div> -->
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderBottomIncomeLevels'
+				:key='index'
 			>
 				<div class='income-levels-slider-level'>
 					<income-levels-slider-images 
@@ -65,8 +67,17 @@
 			class='button is-secondary is-large'
 			@click='toggleListExpanded'
 		>
-			Click to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
+			Click here to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
 		</button>
+	</div>
+	<div class='income-levels-slider__scroll-down'>
+		<p class='has-text-centered'>Scroll down to see all of the levels</p>
+		<icon
+			icon='chevron-down'
+			:iconwidth='46'
+			:iconheight='46'
+			color='#ff5f00'
+		/>
 	</div>
 </div>
 </template>
@@ -95,8 +106,9 @@ export default {
 		const headings = this.$el.getElementsByClassName('income-levels-slider__heading')
 
 		Array.from(headings).forEach(heading => {
-			tl.to(heading, 1, {x: 0, opacity: 1})
-				.to(heading, 1, {x: 200, opacity: 0, ease: Power2.easeIn}, "+=1")
+			tl.to(heading, 1, {opacity: 1})
+				.to(heading, 1.2, {opacity: 1})
+				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},
 
@@ -169,6 +181,11 @@ export default {
 	&__btn-container {
 		text-align: center;
 		margin-top: 1em;
+		font-size: 1.375rem;
+
+		.button {
+			text-transform: none;
+		}
 	}
 
 	&__levels-container {
@@ -178,17 +195,27 @@ export default {
 		display: flex;
 		justify-content: space-between;
 	}
+
+	&__scroll-down {
+		margin-top: 1em;
+
+		p {
+			font-size: 1.125em;
+			color: $primary;
+			margin-bottom: 0;
+		}
+	}
 }
 
 .income-levels-slider-level-wrapper {
 	flex-grow: 1;
 	flex-shrink: 1;
-	max-width: calc(16.67% - 33.33px);
-	padding-left: .25em;
-	padding-right: .25em;
+	// max-width: calc(16.67% - 33.33px);
+	padding-left: .5em;
+	padding-right: .5em;
 	
 	@include fullhd {
-		max-width: calc(16.67% - 41.67px);
+		// max-width: calc(16.67% - 41.67px);
 	}
 
 	&--middle {
@@ -205,13 +232,13 @@ export default {
 			padding-top: 60%;
 		}
 	}
-
 }
 
 .income-levels-slider-level {
 	border-radius: 10px;
 	box-shadow: 0 8px 8px 2px rgba(0,0,0,.2);
 	overflow: hidden;
+	background-color: #fff;
 
 	&__body {
 		padding-top: 1em;
