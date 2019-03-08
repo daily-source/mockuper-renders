@@ -19,6 +19,7 @@
             :src='require(`@/assets/img/images/${photo}`)'
             class='card-slider__img'
           >
+          <h4 class='card-slider__category-heading'>{{ labels[index] }}</h4>
         </div>
       </flickity>
     </div>
@@ -76,6 +77,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import Flickity from 'Components/plugins/Flickity'
 
 export default {
@@ -110,9 +113,14 @@ export default {
      */
     toggleExpandedContent () {
       this.showExpandedContent = !this.showExpandedContent
-
     },
-  }
+  },
+
+  computed: {
+    ...mapState({
+      labels: state => state.incomeLevels.labels,
+    }),
+  },
 }
 </script>
 
@@ -170,7 +178,7 @@ export default {
   }
 
   &__body {
-    padding: .875em;
+    padding: .875em 1.5em;
     background-color: #F1F9FF;
     display: flex;
     flex-direction: column;
@@ -283,6 +291,21 @@ export default {
         }
       }
     }
+  }
+
+  &__category-heading {
+    position: absolute;
+    bottom: .5em;
+    left: 0;
+    right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 10;
+    text-align: center;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 0;
+    font-size: 1.375em;
   }
 
   &--middle {

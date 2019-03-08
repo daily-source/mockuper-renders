@@ -117,7 +117,7 @@ export default {
 	h4 {
 		font-size: 1rem;
 		font-weight: 700;
-		color: $secondary;
+		color: #000;
 		margin-bottom: .25rem;
 	}
 

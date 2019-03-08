@@ -31,15 +31,6 @@
 					/>
 				</div>
 			</div>
-			<!-- <div class='income-levels-slider-level-wrapper income-levels-slider-level-wrapper--middle'>
-				<p class='has-text-centered'>Scroll down to see all of the levels</p>
-				<icon
-					icon='chevron-down'
-					:iconwidth='46'
-					:iconheight='46'
-					color='#ff5f00'
-				/>
-			</div> -->
 			<div
 				class='income-levels-slider-level-wrapper'
 				v-for='(level, index) in sliderBottomIncomeLevels'
@@ -70,6 +61,15 @@
 			Click here to {{ listExpanded ? 'hide' : 'see' }} what the groups above have
 		</button>
 	</div>
+	<div class='income-levels-slider__scroll-down'>
+		<p class='has-text-centered'>Scroll down to see all of the levels</p>
+		<icon
+			icon='chevron-down'
+			:iconwidth='46'
+			:iconheight='46'
+			color='#ff5f00'
+		/>
+	</div>
 </div>
 </template>
 
@@ -98,7 +98,7 @@ export default {
 
 		Array.from(headings).forEach(heading => {
 			tl.to(heading, 1, {opacity: 1})
-				.to(heading, .8, {opacity: 1})
+				.to(heading, 3.5, {opacity: 1})
 				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},
@@ -171,10 +171,11 @@ export default {
 	&__btn-container {
 		text-align: center;
 		margin-top: 1em;
-		font-size: 1.375rem;
+		font-size: 1.5rem;
 
 		.button {
 			text-transform: none;
+			font-size: 1em;
 		}
 	}
 
@@ -184,6 +185,16 @@ export default {
 		margin-bottom: 2.25em;
 		display: flex;
 		justify-content: space-between;
+	}
+
+	&__scroll-down {
+		margin-top: 1em;
+
+		p {
+			font-size: 1.125em;
+			color: $primary;
+			margin-bottom: 0;
+		}
 	}
 }
 

@@ -151,7 +151,7 @@ export default {
   margin-bottom: 3em;
 
   .button {
-    font-size: 1.25em;
+    font-size: 1.625em;
   }
 }
 </style>
