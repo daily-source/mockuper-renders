@@ -19,7 +19,7 @@
             :src='require(`@/assets/img/images/${photo}`)'
             class='card-slider__img'
           >
-          <h4 class='card-slider__slide-heading'>{{ labels[index] }}</h4>
+          <h4 class='card-slider__category-heading'>{{ labels[index] }}</h4>
         </div>
       </flickity>
     </div>
@@ -294,14 +294,14 @@ export default {
     }
   }
 
-  &__slide-heading {
+  &__category-heading {
     position: absolute;
     left: 0;
     right: 0;
     text-align: center;
     margin-bottom: 0;
     bottom: .5em;
-    font-size: 1.375em;
+    font-size: 1.25em;
     font-weight: 700;
     padding-left: 20px;
     padding-right: 20px;
