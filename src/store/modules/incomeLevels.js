@@ -206,7 +206,7 @@ const state = {
 				'None are in the U.S. or other industrialized countries',
       ],
       have: [
-        '1 changes of clothing',   
+        '1 change of clothing',   
       ],
       dontHave: [...haveDefault, ...dontHaveDefault],
       photos: [

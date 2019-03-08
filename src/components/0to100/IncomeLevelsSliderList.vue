@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4 class='has-text-primary'>What they have: </h4>
+		<h4 class='has-text-succcess'>What they have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -32,7 +32,7 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!dontHave || dontHave.length === 0'>Can afford all in the list</p>
+		<p v-if='!dontHave || dontHave.length === 0' class='has-text-danger'>Can afford all in the list</p>
 	</div>
 </div>
 </template>
@@ -104,9 +104,10 @@ export default {
 <style lang='scss' scoped>
 .income-levels-slider-list {
 	overflow: hidden;
-	padding-top: 1em;
+	padding-top: 0;
 	padding-left: .25em;
 	padding-right: .25em;
+	padding-bottom: 0.5em;
 	border-bottom: 2px solid $primary;
 
 	@include fullhd {
@@ -123,10 +124,14 @@ export default {
 	}
 
 	&__list-container {
+		&:first-of-type {
+			margin-top: .5em;
+		}
+
 		p {
 			line-height: 1em;
 			text-align: center;
-			margin-bottom: .25em;
+			margin-bottom: 0;
 		}
 	}
 
