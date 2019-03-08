@@ -144,7 +144,7 @@ export default {
 .income-levels-slider {
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-bottom: 2.25em;
+	padding-bottom: 1em;
 	padding-top: 2.25em;
 	background-color: #eee;
 	display: none;

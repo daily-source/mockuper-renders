@@ -221,10 +221,12 @@ export default {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    font-size: 0.625em;
+    font-size: 0.875em;
 
     @include tablet {
-      font-size: 1em;
+      font-size: 1.25em;
+      padding-top: .375em;
+      padding-bottom: 0.375em;
     }
   }
 
