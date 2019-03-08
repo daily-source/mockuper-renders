@@ -15,12 +15,12 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!have || have.length === 0'>Can't afford all in the list</p>
+		<p v-if='!have || have.length === 0' class='has-text-success'>Can't afford all in the list</p>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4 class='has-text-danger'>What they don't have: </h4>
+		<h4 class='has-text-primary'>What they don't have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
 			v-if='dontHave && dontHave.length > 0'	
@@ -32,7 +32,7 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!dontHave || dontHave.length === 0'>Can afford all in the list</p>
+		<p v-if='!dontHave || dontHave.length === 0' class='has-text-danger'>Can afford all in the list</p>
 	</div>
 </div>
 </template>

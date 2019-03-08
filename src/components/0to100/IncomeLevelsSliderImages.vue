@@ -34,7 +34,7 @@ export default {
 
 		Array.from(headings).forEach(heading => {
 			tl.to(heading, 1, {opacity: 1})
-				.to(heading, 1.2, {opacity: 1})
+				.to(heading, 5, {opacity: 1})
 				.to(heading, 1, {opacity: 0, ease: Power2.easeIn}, "+=1")
 		});
 	},

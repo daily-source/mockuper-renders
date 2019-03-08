@@ -4,7 +4,7 @@
     <the-banner />
 		<income-levels-slider />
     <section class='card-slider-wrapper'>
-      <h2 class='card-slider-wrapper__heading'>Check Out All of the Levels</h2>
+      <h2 class='card-slider-wrapper__heading'>Details About All The Levels</h2>
       <div 
         class='card-slider-section'
         v-for='(incomeLevel, index) in topIncomeLevels'
@@ -152,7 +152,8 @@ export default {
 }
 
 .card-slider-wrapper {
-  margin-top: 3em;
+  margin-top: 1.5em;
+
   &__heading {
     font-size: 2.375em;
     color: $primary;
