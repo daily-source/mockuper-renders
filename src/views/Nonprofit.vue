@@ -141,7 +141,7 @@ export default {
     const imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src;
     const imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
     return {
-      title: name,
+      title: `${name} - v2`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: name },

@@ -42,10 +42,10 @@ export default {
   },
 
   metaInfo() {
-    const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
-    const title = 'Raise money while riding!';
+    const description = 'A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight';
+    const title = 'Raise money while losing weight!';
     return {
-      title: 'Home',
+      title: 'Home - v3',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
@@ -53,7 +53,6 @@ export default {
       ],
     };
   },
-
   computed: {
     ...mapState({
       nonprofit: state => state.nonprofit[this.ein],
