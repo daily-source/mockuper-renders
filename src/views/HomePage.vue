@@ -45,7 +45,7 @@ export default {
     const description = 'A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight';
     const title = 'Raise money while losing weight!';
     return {
-      title: 'Home - v3',
+      title: 'Home - v2',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
