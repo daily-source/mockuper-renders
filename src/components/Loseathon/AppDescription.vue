@@ -25,7 +25,7 @@ export default {
 	}
 
 	&__container {
-		padding: 20px 100px 0;
+		padding: 20px 140px 0;
 	}
 	&__list {
 		list-style: disc;
