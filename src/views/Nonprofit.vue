@@ -19,17 +19,7 @@
     ></NonprofitHero>
 
 
-    <div class="container nonprofit-description__container">
-			<p>A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight with these added benefits:</p>
-			<ul class='nonprofit-description__list'>
-				<li>donors wind up with a friend and family member who is healthier and happier.</li>
-				<li>it's usually harder to lose a significant amount of weight than to do a single walkathon so it's a bigger challenge for people to take on</li>
-				<li>people are more likely to succeed at losing weight if they have the support of loved ones. A Loseathon creates a cheering squad to encourage them</li>
-				<li>it easier to lose weight if a person commits to it publicly because it adds accountability</li>
-				<li>it's easier to lose weight if it's about something bigger than just yourself and it's helping others</li>
-				<li>everyone benefits from the health system spending less money spent on diseases related to weight such as heart disease</li>
-			</ul>
-    </div>
+    <app-description />
 
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
@@ -51,9 +41,9 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Quitathons to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's doing a Loseathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Quitathons to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Loseathon to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -106,7 +96,7 @@ import Vue from 'vue';
 import VueMeta from 'vue-meta';
 import RegisterOrLoginModal from 'Components/general/RegisterOrLoginModal.vue';
 import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
-import AppBanner from 'Components/GiveItUp/AppBanner.vue';
+import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 
 Vue.use(VueMeta);
 
@@ -135,7 +125,7 @@ export default {
     NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
-    AppBanner,
+    AppDescription,
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
@@ -151,7 +141,7 @@ export default {
     const imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src;
     const imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
     return {
-      title: name,
+      title: `${name} - v2`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: name },
@@ -312,24 +302,5 @@ export default {
       font-size: 1.1rem;
     }
   }
-}
-
-.nonprofit-description {
-	p {
-		line-height: 1.6;
-	}
-
-	&__container {
-		padding: 20px 70px 0;
-	}
-	&__list {
-		list-style: disc;
-		margin-left: 20px;
-		font-size: 19px;
-
-		li {
-			line-height: 1.6;
-		}
-	}
 }
 </style>
