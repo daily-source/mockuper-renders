@@ -56,7 +56,7 @@
             </div>
           </div>
           <div class='field loseathon-nonprofit-form__field'>
-            <p><span class='has-text-weight-bold'>Total Loss:</span> &nbsp; {{ totalLoss }} pound/s</p>
+            <p><span class='has-text-weight-bold'>Total Loss:</span> &nbsp; {{ totalLoss }} pounds</p>
           </div>
         </div>
         <div class='loseathon-nonprofit-form__field-group'>
