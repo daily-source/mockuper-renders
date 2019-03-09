@@ -1,5 +1,5 @@
 <template>
-  <div class="container nonprofit-description__container">
+  <div class="container nonprofit-description nonprofit-description__container">
     <p>A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight with these added benefits:</p>
     <ul class='nonprofit-description__list'>
       <li>donors wind up with a friend and family member who is healthier and happier.</li>
@@ -22,10 +22,11 @@ export default {
 .nonprofit-description {
 	p {
 		line-height: 1.6;
+		font-size: 21px;
 	}
 
 	&__container {
-		padding: 20px 100px 0;
+		padding: 20px 160px 0;
 	}
 	&__list {
 		list-style: disc;
@@ -34,6 +35,7 @@ export default {
 
 		li {
 			line-height: 1.6;
+			font-size: 21px;
 		}
 	}
 }

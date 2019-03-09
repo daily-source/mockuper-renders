@@ -18,28 +18,9 @@
         <div class='loseathon-nonprofit-form__field-group'>
           <div class='field is-horizontal loseathon-nonprofit-form__field'>
             <div class='field-label loseathon-nonprofit-form__field-label'>
-              <label for='current-weight'>Current Weight: </label>
+              <label for='goal-weight'>Total weight you will lose: </label>
             </div>
-            <div class='field-body  loseathon-nonprofit-form__field-body'>
-              <div class='field'>
-                <div class='control is-flex loseathon-nonprofit-form__weight-input-wrapper'>
-                  <input 
-                    type='number' 
-                    class='input' 
-                    id='current-weight'
-                    v-model='form.currentWeight'
-                    placeholder='Enter number'
-                  >
-                  pounds
-                </div>
-              </div> 
-            </div>
-          </div>
-          <div class='field is-horizontal loseathon-nonprofit-form__field'>
-            <div class='field-label loseathon-nonprofit-form__field-label'>
-              <label for='goal-weight'>Goal Weight: </label>
-            </div>
-            <div class='field-body  loseathon-nonprofit-form__field-body'>
+            <div class='field-body  loseathon-nonprofit-form__field-body loseathon-nonprofit-form__field-body--small'>
               <div class='field'>
                 <div class='control is-flex loseathon-nonprofit-form__weight-input-wrapper'>
                   <input 
@@ -54,9 +35,6 @@
                 <small class='has-text-danger' v-if='form.errors.includes(goalErrorKey)'>The Goal Weight must be lower than the Current Weight. Please adjust your entry and submit it again.</small>
               </div> 
             </div>
-          </div>
-          <div class='field loseathon-nonprofit-form__field'>
-            <p><span class='has-text-weight-bold'>Total Loss:</span> &nbsp; {{ totalLoss }} pounds</p>
           </div>
         </div>
         <div class='loseathon-nonprofit-form__field-group'>
@@ -170,7 +148,7 @@ export default {
           foodMoneyAmount: null,
           errors: [],
       },
-      donationBasis: 1,
+      donationBasis: 0,
       goalErrorKey: GOAL_EXCEEDS_CURRENT_WEIGHT,
     }
   },
@@ -249,8 +227,8 @@ export default {
   &__field {
     align-items: center;
     margin-bottom: 1.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
 
     &:last-child {
       margin-bottom: 0;
@@ -266,10 +244,17 @@ export default {
     text-align: left;
     font-weight: 700;
     font-size: 20px;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
 
   &__field-body {
     flex-basis: 58.3333%;
+    flex-shrink: 1;
+
+    &--small {
+      flex-basis: 0;
+    }
   }
 
   &__field-group {
