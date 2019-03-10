@@ -45,7 +45,7 @@
       limit="5"
       section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Run For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Walk For Good to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
