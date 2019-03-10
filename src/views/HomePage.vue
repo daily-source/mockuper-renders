@@ -12,8 +12,7 @@
 /**
  * Replace this to respective components.
  */
-import AppHeader from 'Components/RunForGood/AppHeader.vue';
-import AppBanner from 'Components/RideForGood/AppBanner.vue';
+import AppHeader from 'Components/WalkForGood/AppHeader.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
 
@@ -22,7 +21,6 @@ export default {
 
   components: {
     AppHeader,
-    AppBanner,
     SharedFooter,
     NonprofitForm,
   },
