@@ -8,6 +8,9 @@
 </template>
 
 <script>
+/**
+ * Replace this to respective components.
+ */
 import AppHeader from 'Components/RideForGood/AppHeader.vue';
 import AppBanner from 'Components/RideForGood/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
@@ -23,6 +26,9 @@ export default {
     NonprofitForm,
   },
 
+  /**
+   * Replace this with site's meta info.
+   */
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
