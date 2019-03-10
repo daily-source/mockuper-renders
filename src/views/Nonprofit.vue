@@ -20,10 +20,10 @@
 
 
     <div class="container">
-      <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
+      <p>Normal charity runs are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Run For Good can be done any day of the year anywhere in the world. You also have the flexibility to do your own run or organize a group run. You can also join in a public event that's not charity oriented, yet run individually or as a group to raise money for a nonprofit. With a Run for Good, you can run and raise money your way.</p>
     </div>
 
-    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
+    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
     </NonprofitForm>
 
@@ -45,7 +45,7 @@
       limit="5"
       section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Ride For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Run For Good to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -98,7 +98,6 @@ import Vue from 'vue';
 import VueMeta from 'vue-meta';
 import RegisterOrLoginModal from 'Components/general/RegisterOrLoginModal.vue';
 import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
-import AppBanner from 'Components/GiveItUp/AppBanner.vue';
 
 Vue.use(VueMeta);
 
@@ -117,17 +116,16 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
+    AppHeader: () => import('Components/RunForGood/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
+    NonprofitForm: () => import('Components/RunForGood/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
-    AppBanner,
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
@@ -157,11 +155,10 @@ export default {
   },
   computed: {
     ein() {
-      return this.$route.params.ein;
+      return this.$route.params.ein || 1;
     },
     nonprofit() {
-      const ein = this.$route.params.ein
-      return this.$store.state.nonprofit[ein];
+      return this.$store.state.nonprofit[this.ein];
     },
     fundraisers() {
       return this.$store.state.fundraisers.data;
@@ -201,12 +198,11 @@ export default {
   },
   methods: {
     loadNonprofitData () {
-      const ein = this.$route.params.ein
-      if (this.$store.state.nonprofit.hasOwnProperty(ein)) {
+      if (this.$store.state.nonprofit.hasOwnProperty(this.ein)) {
         return
       } 
       return new Promise((resolve, reject) => {
-        return this.$store.dispatch("FETCH_NONPROFIT", { ein })
+        return this.$store.dispatch("FETCH_NONPROFIT", { ein: this.ein })
           .then(data => {
             resolve(data)
           })
@@ -229,7 +225,7 @@ export default {
         });
     },
     loadMoreDonations(paginated = true) {
-      const nonprofitEIN = this.$route.params.ein;
+      const nonprofitEIN = this.ein;
       return this.$store.dispatch('FETCH_DONATIONS', { nonprofitEIN, paginated })
         .then(data => data)
         .catch(err => err);
