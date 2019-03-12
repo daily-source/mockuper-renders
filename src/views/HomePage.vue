@@ -12,7 +12,7 @@
 /**
  * Replace this to respective components.
  */
-import AppHeader from 'Components/RunForGood/AppHeader.vue';
+import AppHeader from 'Components/general/AppHeader.vue';
 import AppBanner from 'Components/RideForGood/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';

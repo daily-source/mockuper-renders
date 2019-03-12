@@ -19,9 +19,9 @@
     ></NonprofitHero>
 
 
-    <div class="container">
+    <!-- <div class="container">
       <p>Normal charity runs are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Run For Good can be done any day of the year anywhere in the world. You also have the flexibility to do your own run or organize a group run. You can also join in a public event that's not charity oriented, yet run individually or as a group to raise money for a nonprofit. With a Run for Good, you can run and raise money your way.</p>
-    </div>
+    </div> -->
 
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
@@ -43,9 +43,9 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Run For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Volunteerathon to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -116,14 +116,14 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/RunForGood/AppHeader.vue'),
+    AppHeader: () => import('Components/general/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RunForGood/NonprofitForm.vue'),
+    NonprofitForm: () => import('Components/Volunteerathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
   },

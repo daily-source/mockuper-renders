@@ -28,10 +28,10 @@ export default new Vuex.Store({
         data: {
           name: 'OXFAM AMERICA',
           hero: {
-            src: `${baseUrl}img/nonoprofit-base-hero-oxfam.jpg`,
+            src: `${baseUrl}img/5672087be97cb2bb8e59ad897a14ea35.jpg`,
           },
           default_hero: {
-            src: `${baseUrl}img/nonoprofit-base-hero-oxfam.jpg`,
+            src: `${baseUrl}img/nonprofit-base-hero.jpg`,
           },
           about: 'We are an international confederation of 17 like-minded charitable organizations working together to bring about lasting solutions to poverty and injustice. We work with partners around the world to make a difference in the lives of people in need.',
           slogan: '',
@@ -39,7 +39,7 @@ export default new Vuex.Store({
           city: 'MELROSE, MA',
           email: 'info@oxfam.org',
           ein: '20-1059569',
-          background_cover: `${baseUrl}img/nonprofit-base-hero-oxfam.jpg`,
+          background_cover: `${baseUrl}img/nonprofit-base-hero.jpg`,
           logo: {
             src: `${baseUrl}img/nonprofit-base-logo.png`,
           },
