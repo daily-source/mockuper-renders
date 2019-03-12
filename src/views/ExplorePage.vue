@@ -69,7 +69,7 @@
         </div>
       </WaysSupport>
 
-      <AppFooter></AppFooter>
+      <SharedFooter></SharedFooter>
     </div>
     <div  v-if="version === 2">
       <AppHeader layout="page"></AppHeader>
@@ -138,7 +138,7 @@
         </div>
       </WaysSupport>
 
-      <AppFooter></AppFooter>
+      <SharedFooter></SharedFooter>
     </div>
   </div>
 </template>
@@ -156,7 +156,7 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import('Components/general/AppFooter.vue'),
+    SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     AppHeader: () => import('Components/general/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
@@ -171,12 +171,12 @@ export default {
       canRender: false,
       showSocialMedia: false,
       otherSites: [
-        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: '/static/assets/images/other-sites/quitathon.png' },
-        { name: 'Loseathon', url: 'https://loseathon.org', imgsrc: '/static/assets/images/other-sites/loseathon.png' },
-        { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: '/static/assets/images/other-sites/bike-for-good.png' },
-        { name: 'Polar plunge for Good', url: 'https://polar-plunge-for-good.org', imgsrc: '/static/assets/images/other-sites/polar-plunge-for-good.png' },
-        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: '/static/assets/images/other-sites/give-it-up-for-good.png' },
-        { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: '/static/assets/images/other-sites/run-for-good.png' },
+        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: require('Public/img/other-sites/quitathon.png') },
+        { name: 'Loseathon', url: 'https://loseathon.org', imgsrc: require('Public/img/other-sites/loseathon.png') },
+        { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: require('Public/img/other-sites/bike-for-good.png') },
+        { name: 'Polar plunge for Good', url: 'https://polar-plunge-for-good.org', imgsrc: require('Public/img/other-sites/polar-plunge-for-good.png') },
+        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: require('Public/img/other-sites/give-it-up-for-good.png') },
+        { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: require('Public/img/other-sites/run-for-good.png') },
       ],
     };
   },
