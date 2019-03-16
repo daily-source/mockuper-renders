@@ -1,32 +1,29 @@
 <template>
   <div class="view-home-page">
-    <AppHeader layout="page"></AppHeader>
+    <app-header 
+      volunteer-text='Do one now'
+      layout='page'
+    />
     <TopMenu></TopMenu>
-    <!-- <HomeHero
-      :headline="home.hero.headline"
-      :imgsrc="home.hero.imgsrc"
-      :tagline="home.hero.tagline"
-      :cta="home.hero.cta"
-    ></HomeHero>
-    <HomeSection2
-      :headline="home.section2.headline"
-      :tagline="home.section2.tagline"
-      :boxes="home.section2.boxes"
-      :results="home.section2.results"
-    ></HomeSection2>
-    <HomeSection3
-      :headline="home.section3.headline"
-      :tagline="home.section3.tagline"
-      :boxes="home.section3.boxes"
-      :bottomline="home.section3.bottomline"
-      :results="home.section3.results"
-    ></HomeSection3>
-    <HomeSection4
-      :headline="home.section4.headline"
-      :boxes="home.section4.boxes"
-    ></HomeSection4> -->
-    <NonprofitForm submit-button-label="Submit"></NonprofitForm>
+    <dynamic-banner>
+      <h1>Raise money for a cause you support</h1>
+    </dynamic-banner>
+    <div class='instructions'>
+      <div class='container'>
+        <p>
+          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
+        </p>
+        <p>
+          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
+        </p>
+      </div>
+    </div>
+    <sample-form 
+      submit-button-label='Submit' 
+      :show-also-section='false'
+    />
     <SharedFooter></SharedFooter>
+    <banner-switcher />
   </div>
 </template>
 
@@ -50,7 +47,7 @@ export default {
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
     HomeSection3: () => import("Components/Volunteerathon/HomeSection3.vue"),
     HomeSection4: () => import("Components/Volunteerathon/HomeSection4.vue"),
-    NonprofitForm: () => import("Components/Volunteerathon/NonprofitForm.vue")
+    SampleForm: () => import("LocalComponents/SampleForm.vue")
   },
 
   /**
@@ -97,4 +94,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.instructions {
+  padding-top: 3em;
+
+  p {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
 </style>

@@ -21,9 +21,9 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will volunteer {{fundraiser.fundraiserDetails.hours}} hours {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`">{{fundraiser.Nonprofit.NAME}}</router-link> to raise money for the same nonprofit
+        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for CHANGE THIS TO NAME.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Volunteerathon</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"

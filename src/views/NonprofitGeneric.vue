@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <AppHeader layout="app"></AppHeader>
+    <AppHeader 
+      layout="app"
+      :generic='true'
+    />
 
     <transition name="slide-fade">
       <DonateView
@@ -13,6 +16,7 @@
     <NonprofitHero
       :nonprofit="nonprofit"
       :common="common"
+      :generic='true'
       :editing="enableEditionForThisNonprofit"
       v-on:edit:open="enableEdition()"
       v-on:edit:close="closeEdition()"
@@ -20,21 +24,10 @@
 
 
     <div class='nonprofit-info'>
-      <div class='container'>
-        <div class="nonprofit-info__container">
-          <p>
-            In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
-          </p>
-          <ul>
-            <li>Sometimes the bulleted items are used to give a list of benefits of the fundraising activity or approach
-            </li>
-            <li>But they can be used for other lists</li>
-            <li>They are not required, so it’s fine to delete them</li>
-            <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
-            </li>
-            <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
-          </ul>
-        </div>
+      <div class="container nonprofit-info__container">
+        <p>
+          In social fundraisers like bikeathons, you spend about 100 hours training to ride or walk long-distances, and raise about $600. In a volunteerathon, you raise the same, yet use the 100 hours to volunteer, saving a nonprofit $1,200 in expenses. This means you generate $1,800: triple the impact of a normal fundraiser. Your sponsors will be happier, the nonprofits will be happier, the people being helped will be happier, and you’ll be happier. It’s a win-win-win-win of happiness.
+        </p>
       </div>
     </div>
 
@@ -117,7 +110,7 @@ import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
 Vue.use(VueMeta);
 
 export default {
-  name: 'nonprofit',
+  name: 'NonprofitGeneric',
   data() {
     return {
       showLoginModal: false,
@@ -170,16 +163,16 @@ export default {
   },
   computed: {
     ein() {
-      return this.$route.params.ein || 1;
+      return this.nonprofit.ein
     },
     nonprofit() {
-      return this.$store.state.nonprofit[this.ein];
+      return this.$store.state.common.nonprofit;
     },
     fundraisers() {
-      return this.$store.state.fundraisers.data;
+      return [];
     },
     donations() {
-      return this.$store.state.donations.byAmount.data;
+      return [];
     },
     topFundraisers() {
       return this.$store.state.donations.topFundraisers.data;
@@ -207,12 +200,13 @@ export default {
    */
   mounted() {
     //this.loadFundraisers();
-    this.loadMoreDonations();
-    this.loadMoreTopFundraisers();
-    this.loadNonprofitData();
+    // this.loadMoreDonations();
+    // this.loadMoreTopFundraisers();
+    // this.loadNonprofitData();
   },
   methods: {
     loadNonprofitData () {
+      console.log(this.ein);
       if (this.$store.state.nonprofit.hasOwnProperty(this.ein)) {
         return
       } 
@@ -277,9 +271,9 @@ export default {
      */
     ein(ein) {
       //this.loadFundraisers();
-      this.loadMoreDonations();
-      this.loadMoreTopFundraisers();
-      this.loadNonprofitData();
+      // this.loadMoreDonations();
+      // this.loadMoreTopFundraisers();
+      // this.loadNonprofitData();
     },
   },
 };
@@ -321,15 +315,14 @@ export default {
 
 .nonprofit-info {
   &__container {
-    margin-left: auto;
-    margin-right: auto;
-
-    @include desktop {
-      max-width: 86%;
-    }
+    max-width: 960px;
 
     p {
       font-size: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       @include fullhd {
         font-size: 1.125rem;
@@ -346,10 +339,6 @@ export default {
 
     li {
       margin-bottom: .5em;
-
-      @include fullhd {
-        font-size: 1.125rem;
-      }
     }
   }
 }
