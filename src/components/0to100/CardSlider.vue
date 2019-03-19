@@ -134,6 +134,7 @@ export default {
   margin-right: auto;
   border: none;
   align-items: stretch;
+  box-shadow: none;
 
   @media (min-width: 576px) {
     max-width: 80%;
