@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4>What they have: </h4>
+		<h4 class='heading--have'>What they have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -15,7 +15,14 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p class='is-marginless' v-if='!have || have.length === 0'>-</p>
+		<ul
+			class='income-levels-slider-list__list income-levels-slider-list__list--have income-levels-slider-list__list--empty'
+			v-if='have && have.length === 0'	
+		>
+			<li>
+				Can afford all in the list
+			</li>
+		</ul>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
@@ -32,7 +39,14 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p class='is-marginless' v-if='!dontHave || dontHave.length === 0'>-</p>
+		<ul
+			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have income-levels-slider-list__list--empty'
+			v-if='dontHave && dontHave.length === 0'	
+		>
+			<li>
+				Can afford all in the list
+			</li>
+		</ul>
 	</div>
 </div>
 </template>
@@ -117,8 +131,12 @@ export default {
 	h4 {
 		font-size: 1rem;
 		font-weight: 700;
-		color: #000;
+		color: #ff0000;
 		margin-bottom: .25rem;
+
+		&.heading--have {
+			color: #23d160;
+		}
 	}
 
 	&__list-container {
@@ -145,6 +163,12 @@ export default {
 		&--dont-have {
 			li {
 				color: #ff0000;
+			}
+		}
+
+		&--empty {
+			li {
+				color: #000 !important;
 			}
 		}
 	}
