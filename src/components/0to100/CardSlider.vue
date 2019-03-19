@@ -134,6 +134,7 @@ export default {
   margin-right: auto;
   border: none;
   align-items: stretch;
+  box-shadow: none;
 
   @media (min-width: 576px) {
     max-width: 80%;
@@ -143,7 +144,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
-    max-width: 1000px;
+    max-width: 1050px;
   }
 
   &__slide,
@@ -265,7 +266,7 @@ export default {
     z-index: 10;
     text-align: center;
     font-weight: 700;
-    color: $secondary;
+    color: $success;
     margin-bottom: 0;
     margin-top: .25em;
     font-size: 1.375em;

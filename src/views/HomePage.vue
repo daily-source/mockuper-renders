@@ -4,7 +4,7 @@
     <the-banner />
 		<income-levels-slider />
     <section class='card-slider-wrapper'>
-      <h2 class='card-slider-wrapper__heading'>See All of the Income Levels</h2>
+      <h2 class='card-slider-wrapper__heading'>See All The Income Level</h2>
       <div 
         class='card-slider-section'
         v-for='(incomeLevel, index) in topIncomeLevels'
@@ -79,7 +79,7 @@ export default {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
     return {
-      title: '0to100 - v4',
+      title: '0to100 - v5',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },

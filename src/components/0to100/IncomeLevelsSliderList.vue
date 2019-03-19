@@ -1,7 +1,7 @@
 <template>
 <div class='income-levels-slider-list'>
 	<div 
-		class='income-levels-slider-list__list-container'
+		class='income-levels-slider-list__list-container income-levels-slider-list__list-container--have'
 	>
 		<h4 class='has-text-succcess'>What they have: </h4>
 		<ul
@@ -15,10 +15,17 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!have || have.length === 0'>Can't afford all in the list</p>
+		<ul
+			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
+			v-if='have && have.length === 0'	
+		>
+			<li>
+				Can't afford all in the list
+			</li>
+		</ul>
 	</div>
 	<div 
-		class='income-levels-slider-list__list-container'
+		class='income-levels-slider-list__list-container income-levels-slider-list__list-container--dont-have'
 	>
 		<h4 class='has-text-danger'>What they don't have: </h4>
 		<ul
@@ -32,7 +39,14 @@
 				{{ item }}
 			</li>
 		</ul>
-		<p v-if='!dontHave || dontHave.length === 0' class='has-text-danger'>Can afford all in the list</p>
+		<ul
+			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have income-levels-slider-list__list--empty'	
+			v-if='dontHave && dontHave.length === 0'	
+		>
+			<li>
+				Can afford all in the list
+			</li>
+		</ul>
 	</div>
 </div>
 </template>
@@ -116,10 +130,8 @@ export default {
 	}
 
 	h4 {
-		text-align: center;
 		font-size: 1rem;
 		font-weight: 700;
-		color: $secondary;
 		margin-bottom: .25rem;
 	}
 
@@ -133,18 +145,29 @@ export default {
 			text-align: center;
 			margin-bottom: 0;
 		}
+
+		&--have {
+			h4 {
+				color: #23d160;
+			}
+		}
+
+		&--dont-have {
+			h4 {
+				color: #ff0000;
+			}
+		}
 	}
 
 	&__list {
+		list-style: disc;
+		margin-left: 1.5em;
+
 		li {
 			margin-bottom: .25rem;
 		}
 
 		&--have {
-			h4 {
-				color: $primary;
-			}
-
 			li {
 				color: #23d160;
 			}
@@ -153,9 +176,20 @@ export default {
 		&--dont-have {
 			padding-bottom: 1em;
 			
-			h4,
 			li {
 				color: #ff0000;
+			}
+		}
+
+		&--empty {
+			list-style: none;
+			padding-bottom: 0;
+			margin-left: 0;
+
+			li {
+				margin-bottom: 0;
+				line-height: 1;
+				color: #000;
 			}
 		}
 	}

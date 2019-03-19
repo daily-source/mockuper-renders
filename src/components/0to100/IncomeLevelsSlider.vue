@@ -62,6 +62,11 @@
 			</div>
 		</div>
 	</div>
+	<div class='income-levels-slider__info'>
+		<p>
+			All numbers above are annual income levels
+		</p>
+	</div>
 	<div class='income-levels-slider__btn-container'>
 		<button 
 			class='button is-secondary'
@@ -198,6 +203,18 @@ export default {
 			font-size: 1.125em;
 			color: $primary;
 			margin-bottom: 0;
+		}
+	}
+
+	&__info {
+		p {
+			text-align: center;
+			color: $secondary;
+			font-size: 1.125rem;
+
+			@include desktop {
+				font-size: 1.625rem;
+			}
 		}
 	}
 }
