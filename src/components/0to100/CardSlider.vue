@@ -143,7 +143,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
-    max-width: 1000px;
+    max-width: 1100px;
   }
 
   &__slide,
@@ -158,22 +158,34 @@ export default {
     overflow: hidden;
   }
 
+    &__body {
+    @include tablet {
+      height: 380px;
+      max-height: 380px;
+    }
+  }
+
   &__slider-wrapper,
   &__body {
     @include tablet {
+      flex-basis: 50%;
       flex-grow: 0;
       flex-shrink: 0;
       max-width: 50%;
-      height: 380px;
-      max-height: 380px;
-      flex-basis: 50%;
+    }
+  }
+
+  &__slider-wrapper {
+    @include tablet {
+      height: 420px;
+      max-height: 420px;
     }
   }
 
   &__img {
     display: block;
     max-width: 100%;
-    height: 100%;
+    height: 380px;
     width: 100%;
     object-fit: cover;
   }
@@ -230,6 +242,7 @@ export default {
   }
 
   &__expanded-content {
+    margin-top: -2.5em;
     padding-top: 0;
     padding-bottom: 1em;
     background-color: #F1F9FF;
@@ -238,7 +251,7 @@ export default {
     flex-shrink: 1;
 
     @include tablet {
-      padding-top: 1.5em;
+      padding-top: 3.5em;
       padding-bottom: 1.5em;
     }
   }
@@ -295,18 +308,15 @@ export default {
   }
 
   &__category-heading {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin-bottom: 0;
-    bottom: .5em;
-    font-size: 1.25em;
-    font-weight: 700;
     padding-left: 20px;
     padding-right: 20px;
-    color: #000;
     z-index: 10;
+    text-align: center;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0;
+    margin-top: .25em;
+    font-size: 1.375em;
   }
 
   &--middle {
