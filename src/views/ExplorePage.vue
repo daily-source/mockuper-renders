@@ -14,11 +14,12 @@
       <section class="find-nonprofits__section-wrapper">
         <div class="container">
           <h1 class="section-title title">Find a nonprofit</h1>
-          <p class="section-intro">Search our directory of 800,000 IRS-approved nonprofits. Click a nonprofit name to go to its profile page where you can donate or raise money for it:</p>
+          <p class="section-intro">Search our directory of 800,000 nonprofits that are approved by the IRS. Each nonprofit has a profile page where you can donate or raise money for it:</p>
           <NonprofitAjaxSearch
             v-if="canRender"
             v-on:selected="goToNonprofit($event)"
             placeholder="Type a keyword or nonprofit name"
+            dropdown-placeholder='Click on a nonprofit to go to its profile page..'
             :standalone="true"
           ></NonprofitAjaxSearch>
         </div>
@@ -259,6 +260,10 @@ section {
   &:last-child {
     margin-bottom: 0;
   }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
 }
 
 .find-nonprofits__section-wrapper {
@@ -275,7 +280,7 @@ section {
 .version2 {
   .section-title {
     font-weight: 700;
-    font-size: 28px;
+    font-size: 30px;
     color: $color-text;
 
     @include tablet {
@@ -291,6 +296,13 @@ section {
     background: $color-fundraiser-bg;
     padding-top: 50px;
     padding-bottom: 50px;
+
+    p {
+      @include desktop {
+        margin-left: 15%;
+        margin-right: 15%;
+      }
+    }
   }
 }
 
@@ -311,6 +323,13 @@ section {
     background: $color-brownish;
     padding-top: 50px;
     padding-bottom: 50px;
+
+    p {
+      @include desktop {
+        margin-left: 60px;
+        margin-right: 60px;
+      }
+    }
   }
 }
 

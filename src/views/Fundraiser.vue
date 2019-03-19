@@ -1,6 +1,9 @@
 <template>
   <div class="fundraiser">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'  
+    />
     <transition name="slide-fade">
       <DonateView
         v-if="donateActive"
@@ -21,7 +24,7 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for CHANGE THIS TO NAME.
+        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <a :href='fundraiser.Nonprofit.website'>{{ fundraiser.Nonprofit.NAME }}</a>.
       </p>
       <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
     </FundraiserHero>

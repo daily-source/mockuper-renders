@@ -265,7 +265,7 @@ export default new Vuex.Store({
         daysLeft: 1
       },
       counters: {
-        donationsCount: 6,
+        donationsCount: 10,
         commentsCount: 10,
         updatesCount: 10
       },

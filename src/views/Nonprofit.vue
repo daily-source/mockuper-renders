@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'
+    />
 
     <transition name="slide-fade">
       <DonateView
@@ -320,6 +323,8 @@ export default {
 }
 
 .nonprofit-info {
+  margin-top: 20px;
+  
   &__container {
     margin-left: auto;
     margin-right: auto;
