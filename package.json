@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "dotenv": "^5.0.1",
+    "global": "^4.3.2",
     "luxon": "^1.6.2",
     "register-service-worker": "^1.0.0",
+    "surge": "^0.20.3",
     "vue": "^2.5.17",
     "vue-meta": "^1.5.0",
     "vue-no-ssr": "^0.2.2",

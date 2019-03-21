@@ -1,0 +1,12 @@
+.push-left {
+  margin-left: auto;
+}
+
+.header-nav {
+  .navbar-item {
+    &:hover {
+      background-color: $secondary;
+      transition: all .2s ease;
+    }
+  }
+}

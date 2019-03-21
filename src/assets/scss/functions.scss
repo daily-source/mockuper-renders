@@ -1,0 +1,4 @@
+// Enlarge an image
+@function enlarge($size, $multiplier: 1.2) {
+  @return $size * $multiplier;
+}
