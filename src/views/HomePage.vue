@@ -4,7 +4,7 @@
     <the-banner />
 		<income-levels-slider />
     <section class='card-slider-wrapper'>
-      <h2 class='card-slider-wrapper__heading'>See All of the Income Levels</h2>
+      <h2 class='card-slider-wrapper__heading'>See All The Income Levels</h2>
       <div 
         class='card-slider-section'
         v-for='(incomeLevel, index) in topIncomeLevels'

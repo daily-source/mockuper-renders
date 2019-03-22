@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4 class='has-text-succcess'>What they have: </h4>
+		<h4>What they have: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -107,7 +107,7 @@ export default {
 	padding-top: 0;
 	padding-left: .25em;
 	padding-right: .25em;
-	padding-bottom: 0.5em;
+	padding-bottom: 0.875em;
 	border-bottom: 2px solid $primary;
 
 	@include fullhd {
@@ -119,13 +119,13 @@ export default {
 		text-align: center;
 		font-size: 1rem;
 		font-weight: 700;
-		color: $secondary;
+		color: #23d160;
 		margin-bottom: .25rem;
 	}
 
 	&__list-container {
 		&:first-of-type {
-			margin-top: .5em;
+			margin-top: .875em;
 		}
 
 		p {
