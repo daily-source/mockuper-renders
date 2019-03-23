@@ -24,7 +24,7 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <a :href='fundraiser.Nonprofit.website'>{{ fundraiser.Nonprofit.NAME }}</a>.
+        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
       <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
     </FundraiserHero>

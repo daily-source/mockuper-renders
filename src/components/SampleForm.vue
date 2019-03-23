@@ -385,3 +385,15 @@ h1 {
 }
 
 </style>
+
+<style lang="scss">
+.explore__wrapper {
+  .box-wrapper {
+    max-width: 33% !important;
+    min-width: 0 !important;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+</style>
+

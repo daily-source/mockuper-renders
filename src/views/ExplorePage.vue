@@ -6,7 +6,7 @@
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of ADD FUNDRAISER NAME done to raise money</h1>
+          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -181,11 +181,11 @@ export default {
       canRender: false,
       showSocialMedia: false,
       otherSites: [
-        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: require('Public/img/other-sites/quitathon.png') },
-        { name: 'Loseathon', url: 'https://loseathon.org', imgsrc: require('Public/img/other-sites/loseathon.png') },
+        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: require('Public/img/other-sites/give-it-up-for-good.png') },
+        { name: 'Volunteerathon', url: 'https://volunteerathon.org', imgsrc: require('Public/img/other-sites/volunteerathon.png') },
         { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: require('Public/img/other-sites/bike-for-good.png') },
         { name: 'Options for Good', url: 'https://optionsforgood.org', imgsrc: require('Public/img/other-sites/optionsforgood.png') },
-        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: require('Public/img/other-sites/give-it-up-for-good.png') },
+        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: require('Public/img/other-sites/quitathon.png') },
         { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: require('Public/img/other-sites/run-for-good.png') },
       ],
     };
@@ -326,8 +326,9 @@ section {
 
     p {
       @include desktop {
-        margin-left: 60px;
-        margin-right: 60px;
+        max-width: 1010px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }
@@ -396,19 +397,20 @@ section {
   padding-bottom: 50%;
   display: block;
   &.other-sites-0 {
-    transform: scale(1.1) translateY(12px) translateX(-12px);
+    transform: scale(.9) translateY(15px) translateX(-12px);
   }
   &.other-sites-1 {
-    transform: scale(0.75);
+    // transform: scale(0.75);
+    transform: scale(1.12) translateY(15px) translateX(20px);
   }
   &.other-sites-2 {
     transform: scale(0.7);
   }
   &.other-sites-3 {
-    transform: scale(0.85);
+    transform: scale(0.83);
   }
   &.other-sites-4 {
-    transform: scale(.90);
+    transform: scale(1.12) translateX(15px);
   }
   &.other-sites-5 {
     transform: scale(0.65);
