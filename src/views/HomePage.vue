@@ -3,6 +3,7 @@
 		<app-header />
     <app-banner />
     <section class='section'>
+      <h1 class='has-text-centered has-text-weight-bold'>Lose Weight for a Good Cause</h1>
       <app-description />
     </section>
     <section class='site-content'>
