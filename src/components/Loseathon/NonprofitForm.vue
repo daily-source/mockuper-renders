@@ -222,13 +222,13 @@ export default {
   &__form-wrapper {
     max-width: 800px;
     margin: 1em auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 
   &__field {
     align-items: center;
     margin-bottom: 1.5em;
-    padding-left: 1em;
-    padding-right: 1em;
 
     &:last-child {
       margin-bottom: 0;
@@ -262,6 +262,10 @@ export default {
     padding-bottom: 1.25em;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    margin-left: -.5em;
+    margin-right: -.5em;
+    padding-left: .5em;
+    padding-right: .5em;
 
     &:last-of-type {
       border-bottom: 0;

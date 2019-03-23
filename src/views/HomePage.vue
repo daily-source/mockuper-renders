@@ -2,7 +2,8 @@
   <div class="layout-base">
 		<app-header />
     <app-banner />
-    <section class='section'>
+    <section class='section description'>
+      <h2>Lose Weight for a Good Cause</h2>
       <app-description />
     </section>
     <section class='site-content'>
@@ -63,3 +64,15 @@ export default {
 
 };
 </script>
+
+<style lang='scss' scoped>
+.description {
+  padding-bottom: .5em;
+
+  h2 {
+    color: $primary;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+</style>
