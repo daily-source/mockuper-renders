@@ -36,6 +36,7 @@ export default {
 		li {
 			line-height: 1.6;
 			font-size: 21px;
+			margin-bottom: .25em;
 		}
 	}
 }

@@ -83,6 +83,7 @@
             </div>
           </div>
         </div>
+        <p class='is-marginless has-text-weight-bold'>In addition to the donations from my supporters:</p>
         <div class='loseathon-nonprofit-form__field-group'>
           <div class='field loseathon-nonprofit-form__field loseathon-nonprofit-form__field--amount is-flex'>
             <div class='control'>
@@ -112,6 +113,7 @@
               <input :disabled='!form.donateFoodMoney' type='number' placeholder='Enter number' class='input loseathon-nonprofit-form__amount-input'>
             </div>
           </div>
+          <small>*You can change all of your selections later.</small>
         </div>
         <button type='submit' class='button is-primary'>Submit</button>
       </form>
@@ -196,6 +198,7 @@ export default {
 .loseathon-nonprofit-form {
   padding-top: 2em;
   padding-bottom: 2em;
+
   &__steps {
     display: flex;
     align-items: flex-start;
@@ -240,16 +243,17 @@ export default {
   }
 
   &__field-label {
-    flex-basis: 25%;
+    flex-basis: 35%;
     text-align: left;
     font-weight: 700;
     font-size: 20px;
-    flex-grow: 1;
+    flex-grow: 0;
     flex-shrink: 0;
   }
 
   &__field-body {
-    flex-basis: 58.3333%;
+    flex-basis: 50%;
+    max-width: 50%;
     flex-shrink: 1;
 
     &--small {
@@ -260,12 +264,14 @@ export default {
   &__field-group {
     padding-top: 1.25em;
     padding-bottom: 1.25em;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
     margin-left: -.5em;
     margin-right: -.5em;
     padding-left: .5em;
     padding-right: .5em;
+
+    &:first-of-type {
+      border-top: 1px solid #ddd;
+    }
 
     &:last-of-type {
       border-bottom: 0;
