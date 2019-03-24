@@ -2,8 +2,8 @@
 @import '@/xthon-core/lib/assets/scss/vars.scss';
 
 // Override the custom variables here
-$font-primary: "Poppins", sans-serif;
-$font-secondary: "Montserrat", sans-serif;
+// $font-primary: "Poppins", sans-serif;
+// $font-secondary: "Montserrat", sans-serif;
 
 // Colors
 $color-text: #000507;
@@ -63,16 +63,22 @@ $btn-border-radius: 0;
 
 // These variable definitions are here for the RideForGood version
 // Colors
-$primary: #8EC63F;
-$secondary: #FF9600;
+$primary: #233a72;
+$yellow: #efcf15;
+$gradient-primary: linear-gradient( to bottom, lighten($primary, 25%), $primary);
+$gradient-primary-inverted: linear-gradient( to top, lighten($primary, 25%), $primary);
+$gradient-secondary: linear-gradient( to bottom, $yellow, #fff);
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
+// Sections
+$section-padding: 1.5rem;
+
 // Fonts
-$font-family-base: 'Poppins';
-$headings-font-family: 'Montserrat';
-$headings-font-weight: 900;
+// $font-family-base: 'Poppins';
+// $headings-font-family: 'Montserrat';
+// $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;

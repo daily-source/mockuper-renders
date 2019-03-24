@@ -1,0 +1,32 @@
+html {
+  font-size: 16px;
+  body {
+    font-size: 16px;
+  }
+}
+
+.nav {
+  display: flex;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+
+
+  .nav-item {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    border-left: 1px solid #777;
+
+    &:last-child {
+      border-right: 1px solid #777
+    }
+  }
+
+  a { color: #fff; }
+}
+
+.header-nav {
+  background-image: $gradient-primary;
+}
