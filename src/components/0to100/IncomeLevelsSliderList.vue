@@ -116,7 +116,7 @@ export default {
 
 	h4 {
 		text-align: center;
-		font-size: 1rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		color: $secondary;
 		margin-bottom: .25rem;
