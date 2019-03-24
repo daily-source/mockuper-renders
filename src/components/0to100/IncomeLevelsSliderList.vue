@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4>What they have: </h4>
+		<h4>What they can afford: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -18,9 +18,9 @@
 		<p v-if='!have || have.length === 0'>Can't afford all in the list</p>
 	</div>
 	<div 
-		class='income-levels-slider-list__list-container'
+		class='income-levels-slider-list__list-container income-levels-slider-list__list-container--dont-have'
 	>
-		<h4 class='has-text-danger'>What they don't have: </h4>
+		<h4 class='has-text-danger'>What they can't afford: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
 			v-if='dontHave && dontHave.length > 0'	
@@ -87,7 +87,7 @@ export default {
 
 	methods: {
 		toggleList () {
-			const targetHeight = this.expanded ? this.targetHeight : 0
+			const targetHeight = this.expanded ? this.targetHeight + 3 : 0
 
 			TweenMax.to(this.$el, .3, {height: targetHeight})
 		}
@@ -133,6 +133,10 @@ export default {
 			text-align: center;
 			margin-bottom: 0;
 		}
+
+    &--dont-have {
+      margin-top: .75rem;
+    }
 	}
 
 	&__list {
