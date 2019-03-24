@@ -146,6 +146,7 @@ export default {
 		}
 
 		&--dont-have {
+      margin-top: .25rem;
 			padding-bottom: 1em;
 			
 			h4,
