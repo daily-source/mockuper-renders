@@ -43,7 +43,7 @@
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have income-levels-slider-list__list--empty'	
 			v-if='dontHave && dontHave.length === 0'	
 		>
-			<li>
+			<li class='has-text-success'>
 				Can afford all in the list
 			</li>
 		</ul>
@@ -101,7 +101,7 @@ export default {
 
 	methods: {
 		toggleList () {
-			const targetHeight = this.expanded ? this.targetHeight : 0
+			const targetHeight = this.expanded ? this.targetHeight + 3 : 0
 
 			TweenMax.to(this.$el, .3, {height: targetHeight})
 		}
@@ -153,6 +153,8 @@ export default {
 		}
 
 		&--dont-have {
+      margin-top: .375rem;
+
 			h4 {
 				color: #ff0000;
 			}
@@ -189,7 +191,7 @@ export default {
 			li {
 				margin-bottom: 0;
 				line-height: 1;
-				color: #000;
+				color: $success;
 			}
 		}
 	}
