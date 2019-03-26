@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4 class='heading--have'>What they have: </h4>
+		<h4 class='heading--have'>What they can afford: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -19,15 +19,13 @@
 			class='income-levels-slider-list__list income-levels-slider-list__list--have income-levels-slider-list__list--empty'
 			v-if='have && have.length === 0'	
 		>
-			<li>
-				Can afford all in the list
-			</li>
+			<li>Can afford all in the list</li>
 		</ul>
 	</div>
 	<div 
 		class='income-levels-slider-list__list-container'
 	>
-		<h4>What they don't have: </h4>
+		<h4 class='heading--dont-have'>What they can't afford: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
 			v-if='dontHave && dontHave.length > 0'	
@@ -43,9 +41,7 @@
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have income-levels-slider-list__list--empty'
 			v-if='dontHave && dontHave.length === 0'	
 		>
-			<li>
-				Can afford all in the list
-			</li>
+			<li>Can afford all in the list</li>
 		</ul>
 	</div>
 </div>
@@ -129,14 +125,19 @@ export default {
 	}
 
 	h4 {
-		font-size: 1rem;
+		font-size: 1.125rem;
 		font-weight: 700;
 		color: #ff0000;
 		margin-bottom: .25rem;
 
 		&.heading--have {
 			color: #23d160;
+      padding-top: .375em;
 		}
+
+    &.heading--dont-have {
+      margin-bottom: .25em;
+    }
 	}
 
 	&__list-container {
