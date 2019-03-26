@@ -3,7 +3,7 @@
 	<div 
 		class='income-levels-slider-list__list-container income-levels-slider-list__list-container--have'
 	>
-		<h4 class='has-text-succcess'>What they have: </h4>
+		<h4 class='has-text-succcess'>What they can afford:</h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--have'	
 			v-if='have && have.length > 0'	
@@ -27,7 +27,7 @@
 	<div 
 		class='income-levels-slider-list__list-container income-levels-slider-list__list-container--dont-have'
 	>
-		<h4 class='has-text-danger'>What they don't have: </h4>
+		<h4 class='has-text-danger'>What they can't afford: </h4>
 		<ul
 			class='income-levels-slider-list__list income-levels-slider-list__list--dont-have'	
 			v-if='dontHave && dontHave.length > 0'	
@@ -149,6 +149,7 @@ export default {
 		&--have {
 			h4 {
 				color: #23d160;
+        padding-top: .375em;
 			}
 		}
 
@@ -157,6 +158,7 @@ export default {
 
 			h4 {
 				color: #ff0000;
+        margin-bottom: .25em;
 			}
 		}
 	}
