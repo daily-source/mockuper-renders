@@ -114,7 +114,7 @@ export default {
 <style lang='scss' scoped>
 .income-levels-slider-list {
 	overflow: hidden;
-	padding-top: 1em;
+	padding-top: .25em;
 	padding-left: .25em;
 	padding-right: .25em;
 	border-bottom: 2px solid $primary;
@@ -132,7 +132,7 @@ export default {
 
 		&.heading--have {
 			color: #23d160;
-      padding-top: .375em;
+      padding-top: .125em;
 		}
 
     &.heading--dont-have {
