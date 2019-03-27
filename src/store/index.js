@@ -46,7 +46,6 @@ export default new Vuex.Store({
         `${baseUrl}img/generic-banner/banner-photo-33.jpg`,
         `${baseUrl}img/generic-banner/banner-photo-34.jpg`,
         `${baseUrl}img/generic-banner/banner-photo-35.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-35-1.jpg`,
         `${baseUrl}img/generic-banner/banner-photo-36.jpg`,
         `${baseUrl}img/generic-banner/banner-photo-37.jpg`,
         `${baseUrl}img/generic-banner/banner-photo-38.jpg`,
