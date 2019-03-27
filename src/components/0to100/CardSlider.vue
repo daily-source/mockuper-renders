@@ -48,7 +48,7 @@
     >
       <div class='card-slider__lists'>
         <div class='card-slider__list-contents'>
-          <h4>What they have:</h4>
+          <h4>What they can afford:</h4>
           <ul v-if='incomeLevel.have.length'>
             <li
               v-for='(have, index) in incomeLevel.have'
@@ -60,7 +60,7 @@
           <p class='has-text-centered' v-if='!incomeLevel.have.length'> - </p>
         </div>
         <div class='card-slider__list-contents'>
-          <h4>What they don't have:</h4>
+          <h4>What they can't afford:</h4>
           <ul v-if='incomeLevel.dontHave.length'>
             <li
               v-for='(dontHave, index) in incomeLevel.dontHave'
@@ -192,7 +192,7 @@ export default {
   }
 
   &__body {
-    padding: .875em;
+    padding: 1.125em;
     background-color: #F1F9FF;
     display: flex;
     flex-direction: column;
@@ -232,6 +232,7 @@ export default {
   }
 
   &__button {
+    max-width: 375px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -315,6 +316,7 @@ export default {
 
       li {
         font-size: 0.875em;
+        margin-right: .375em;
 
         @include tablet {
           font-size: 1em;
@@ -332,6 +334,25 @@ export default {
         &:not(:last-child) {
           margin-bottom: 1rem;
         }
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.card-slider {
+  &__slider {
+    .flickity-button {
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      .flickity-button {
+        opacity: 1;
       }
     }
   }

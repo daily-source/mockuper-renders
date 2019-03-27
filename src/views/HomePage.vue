@@ -4,7 +4,7 @@
     <the-banner />
 		<income-levels-slider />
     <section class='card-slider-wrapper'>
-      <h2 class='card-slider-wrapper__heading'>See All The Income Level</h2>
+      <h2 class='card-slider-wrapper__heading'>See All The Income Levels</h2>
       <div 
         class='card-slider-section'
         v-for='(incomeLevel, index) in topIncomeLevels'
@@ -48,7 +48,7 @@
     </section>
     <div class='cta'>
       <div class='container has-text-centered'>
-        <button class='button is-large is-primary'>DONATE TO HELP THE PEOPLE IN THE BOTTOM HALF</button>
+        <button class='button is-large is-primary'>Help the people in the bottom 50% now</button>
       </div>
     </div>
     <shared-footer />
@@ -176,5 +176,9 @@ export default {
 
 .cta {
   margin-bottom: 3em;
+
+  .button {
+    font-size: 1.375rem !important;
+  }
 }
 </style>

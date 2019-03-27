@@ -154,7 +154,7 @@ export default {
 		}
 
 		&--dont-have {
-      margin-top: .375rem;
+      margin-top: .5rem;
 
 			h4 {
 				color: #ff0000;
