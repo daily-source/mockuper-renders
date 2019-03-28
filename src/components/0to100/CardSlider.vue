@@ -7,7 +7,7 @@
         class='card-slider__slider'
         :options='{
           wrapAround: true,
-          autoPlay: 2500,
+          autoPlay: 4500,
         }'  
       >
         <div 
@@ -208,6 +208,7 @@ export default {
     text-align: center;
     font-size: 1.125em;
     margin-bottom: .5em;
+    margin-left: .25em;
 
     @include tablet {
       text-align: left;

@@ -132,7 +132,7 @@ export default {
 	h4 {
 		font-size: 1rem;
 		font-weight: 700;
-		margin-bottom: .25rem;
+		margin-bottom: .375rem;
 	}
 
 	&__list-container {
