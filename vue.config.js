@@ -12,6 +12,11 @@ module.exports = {
     }
   },
   chainWebpack: config => {
+    const csvRule = config.module.rule('csv')
+    csvRule
+      .test( /\.csv$/)
+      .use('csv-loader')
+      .loader('csv-loader')
     config.module.rules.delete('eslint');
   },
   css: {

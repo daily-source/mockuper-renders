@@ -3,15 +3,15 @@
     <app-header />
     <app-banner />
     <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
-    <SharedFooter></SharedFooter>
+    <shared-footer />
   </div>
 </template>
 
 <script>
-import AppHeader from 'Components/RideForGood/AppHeader.vue';
-import AppBanner from 'Components/RideForGood/AppBanner.vue';
-import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
+import AppHeader from 'Components/RuleYourWorld/AppHeader'
+import AppBanner from 'Components/RuleYourWorld/AppBanner'
+import NonprofitForm from 'Components/RuleYourWorld/NonprofitForm'
+import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
   name: 'BaseLayout',
@@ -19,8 +19,8 @@ export default {
   components: {
     AppHeader,
     AppBanner,
-    SharedFooter,
     NonprofitForm,
+    SharedFooter,
   },
 
   metaInfo() {

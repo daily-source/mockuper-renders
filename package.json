@@ -9,15 +9,17 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "csv-loader": "^3.0.2",
     "dotenv": "^5.0.1",
     "luxon": "^1.6.2",
+    "papaparse": "^4.6.3",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-meta": "^1.5.0",
     "vue-no-ssr": "^0.2.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "xthon-core": "github:dailysourceorg/xthon-core#0.0.26"
+    "xthon-core": "github:dailysourceorg/xthon-core#0.0.37"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
