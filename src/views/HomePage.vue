@@ -27,7 +27,7 @@ export default {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
     return {
-      title: 'Home - v2',
+      title: 'Home - v3',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },

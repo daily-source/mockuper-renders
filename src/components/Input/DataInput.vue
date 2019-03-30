@@ -26,12 +26,13 @@ export default {
 
   computed: {
     attrs () {
-      const { name, id, value } = this.$attrs
+      const { name, id, value, placeholder } = this.$attrs
 
       return {
         name,
         id,
         value,
+        placeholder,
       }
     },
 
