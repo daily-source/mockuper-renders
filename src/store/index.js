@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
+import featuredFundraisers from './modules/featuredFundraisers'
+import siteFundraisers from './modules/fundraisers'
 
 Vue.use(Vuex);
 
@@ -674,4 +676,8 @@ export default new Vuex.Store({
   },
   actions,
   mutations,
+  modules: {
+    featuredFundraisers,
+    siteFundraisers,
+  },
 });

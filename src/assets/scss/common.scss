@@ -2,6 +2,11 @@ html {
   font-size: 16px;
   body {
     font-size: 16px;
+
+    h2 {
+      color: #4a4a4a;
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -29,4 +34,15 @@ html {
 
 .header-nav {
   background-image: $gradient-primary;
+}
+
+.button {
+  > svg {
+    margin-right: .5em;
+    font-size: 0.875em;
+  }
+}
+
+.button-gradient-secondary {
+  background-image: $gradient-secondary;
 }
