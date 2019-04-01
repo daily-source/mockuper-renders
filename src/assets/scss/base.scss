@@ -59,12 +59,9 @@ $headings-font-weight: 900;
 // Buttons
 $btn-border-radius: 0;
 
-
-
-// These variable definitions are here for the RideForGood version
 // Colors
-$primary: #8EC63F;
-$secondary: #FF9600;
+$primary: #00BF00;
+$secondary: #019CDF;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
@@ -73,12 +70,12 @@ $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 $font-family-base: 'Poppins';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
+$h2-font-size: 1.75em;
 
 // Buttons
 $btn-border-radius: 0;
 
 // Override Bulma variables here
-$success: $color-emphasis;
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
