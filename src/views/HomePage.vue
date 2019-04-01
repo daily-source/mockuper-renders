@@ -129,8 +129,10 @@ export default {
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
+    const version = 'v1'
+    const siteTitle = `Maximum Good - ${process.env.NODE_ENV === 'development' &&  version ?  version : 'Home'}`
     return {
-      title: 'Home',
+      title: siteTitle,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
