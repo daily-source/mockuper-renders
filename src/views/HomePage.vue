@@ -1,33 +1,40 @@
 <template>
   <div class="layout-base">
-    <app-header />
+    <shared-header 
+      :logo='require("@/assets/img/logo.png")'
+    />
     <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
-    <SharedFooter></SharedFooter>
+    <main id="content">
+      <div class="container">
+        <h2 class='has-text-centered home__main-heading has-text-weight-bold'>Use our websites to raise awareness of modern-day slaves and raise money to free them.</h2>
+        <logo-grid />
+      </div>
+    </main>
+    <shared-footer />
   </div>
 </template>
 
 <script>
-import AppHeader from 'Components/RideForGood/AppHeader.vue';
-import AppBanner from 'Components/RideForGood/AppBanner.vue';
-import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
+import SharedHeader from 'Components/Shared/SharedHeader';
+import AppBanner from 'Components/ForTheSlaves/AppBanner';
+import LogoGrid from 'Components/ForTheSlaves/LogoGrid';
+import SharedFooter from 'Components/Shared/SharedFooter';
 
 export default {
   name: 'BaseLayout',
 
   components: {
-    AppHeader,
+    SharedHeader,
     AppBanner,
     SharedFooter,
-    NonprofitForm,
+    LogoGrid,
   },
 
   metaInfo() {
-    const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
-    const title = 'Raise money while riding!';
+    const description = 'Use our websites to raise awareness of modern-day slaves and raise money to free them.';
+    const title = 'For the Slaves';
     return {
-      title: 'Home',
+      title: 'For The Slaves - Home',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
@@ -38,3 +45,12 @@ export default {
 
 };
 </script>
+
+<style lang='scss' scoped>
+  .home__main-heading {
+    max-width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 3rem;
+  }
+</style>
