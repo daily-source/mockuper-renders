@@ -60,11 +60,9 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 
-
-// These variable definitions are here for the RideForGood version
 // Colors
-$primary: #8EC63F;
-$secondary: #FF9600;
+$primary: #3faee3;
+$secondary: #8ec029;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
@@ -73,6 +71,11 @@ $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 $font-family-base: 'Poppins';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
+
+// Typography
+$family-sans-serif: 'Poppins';
+
+$h2-font-size: 1.5em;
 
 // Buttons
 $btn-border-radius: 0;
