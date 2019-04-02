@@ -31,6 +31,31 @@ export default {
           id: 'waterathon',
           name: "Waterathon",
           imgName: "waterathon.png",
+        },
+        {
+          id: 'charitable-contests',
+          name: 'Chartiable Contests',
+          imgName: 'charitable-contests.png',
+        },
+        {
+          id: 'donateathon',
+          name: 'Donate-athon',
+          imgName: 'donateathon.png',
+        },
+        {
+          id: 'daily-indulgence-drop',
+          name: 'Daily Indulgence Drop',
+          imgName: 'daily-indulgence-drop.png',
+        },
+        {
+          id: 'bibleathon',
+          name: "Bibleathon",
+          imgName: "bibleathon.png",
+        },
+        {
+          id: 'records-for-good',
+          name: "Records For Good",
+          imgName: "records-for-good.png",
         }
       ]
     },
@@ -65,7 +90,7 @@ export default {
         {
           id: 'resolutions-for-good',
           name: "Resolutions for Good",
-          imgName: "resolutionsforgood.png",
+          imgName: "righteous-resolutions.png",
         },
         {
           id: 'fools-for-gold',
@@ -96,7 +121,7 @@ export default {
           id: 'mothers-for-good',
           name: "Mothers for Good",
           imgName: "mothers-for-good.png",
-        }
+        },
       ]
     },
     "fundraising-classics": {
