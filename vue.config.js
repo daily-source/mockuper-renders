@@ -1,15 +1,7 @@
 const path = require('path');
-const webpack = require('webpack')
 
 module.exports = {
   configureWebpack: {
-    plugins:[
-      new  webpack.ProvidePlugin({
-        'window.jQuery': 'jquery',
-        jQuery: 'jquery',
-        $: 'jquery',
-      })
-    ],
     resolve: {
       alias: {
         "Public": path.resolve(__dirname, 'public'),
