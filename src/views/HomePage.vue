@@ -5,7 +5,8 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
+    <dynamic-banner 
+    >
       <h1>Raise money for a cause you support</h1>
     </dynamic-banner>
     <div class='instructions'>
@@ -41,7 +42,7 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/general/AppHeader.vue"),
+    AppHeader: () => import("Components/BakeForGood/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
