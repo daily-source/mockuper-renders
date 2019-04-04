@@ -1,74 +1,100 @@
+// Enlarge an image
+@function enlarge($size, $multiplier: 1.75) {
+  @return $size * $multiplier;
+}
+
 .fundraiser-grid__col img {
-    width: enlarge(180px);
-  }
-  
-  
-  #bake-for-good-img,
-  #polar-plunge-img {
-    max-width: enlarge(130px);
-  }
-  
-  #resolutions-for-good-img,
-  #loseathon-img {
-    width: enlarge(145px);
-  }
-  
-  #conscience-or-cotton-img {  
-    width: enlarge(150px);
-  }
-  
-  #virtuous-valentines-img {
-    width: enlarge(155px);
-  }
-  
-  #run-for-good-img,
-  #ride-for-good-img {
-    width: enlarge(128px);
-  }
-  
-  #give-it-for-good-img,
-  #big-hearted-halloween-img,
-  #benevolent-birthdays-img,
-  #waterathon-img,
-  #stpatricks-img {
-    width: enlarge(170px);
-  }
-  
-  #vacation-for-good-img {
-    width: enlarge(185px);
-  }
-  
-  #leagues-for-good-img,
-  #counters-for-the-poor-img {
-    width: enlarge(235px);
-  }
-  
-  #benevolent-birthdays-img {
-    margin-top: -10px;
-  }
-  
-  #counters-for-the-poor-img {
-    margin-top: 25px;
-  }
-  
-  #families-for-good-img{
-    width: enlarge(350px);
-    margin-top: 15px;
-  }
-  
-  
-  #walk-for-good-img {
-    margin-top: 20px;
-  }
-  
-  #walk-for-good {
-    width: enlarge(360px);
-  }
-  
-  #walk-for-good,
-  #waste-less-food-img,
-  #families-for-good-img,
-  #environmental-debt-img,
-  #freeathon-img {
-    margin-top: 10px;
-  }
+  width: enlarge(180px);
+}
+
+#bake-for-good-img,
+#polar-plunge-img,
+#mothers-for-good-img {
+  max-width: enlarge(130px);
+}
+
+#resolutions-for-good-img,
+#loseathon-img,
+#christmas-for-good-img {
+  width: enlarge(145px);
+}
+
+#conscience-or-cotton-img {  
+  width: enlarge(150px);
+}
+
+#virtuous-valentines-img,
+#memorial-day-donating-img,
+#fools-for-gold-img {
+  width: enlarge(155px);
+}
+
+#run-for-good-img,
+#ride-for-good-img {
+  width: enlarge(128px);
+}
+
+#give-it-for-good-img,
+#big-hearted-halloween-img,
+#benevolent-birthdays-img,
+#waterathon-img,
+#stpatricks-img {
+  width: enlarge(170px);
+}
+
+#vacation-for-good-img {
+  width: enlarge(185px);
+}
+
+#leagues-for-good-img,
+#counters-for-the-poor-img {
+  width: enlarge(235px);
+}
+
+#benevolent-birthdays-img {
+  margin-top: -10px;
+}
+
+#counters-for-the-poor-img {
+  margin-top: 25px;
+}
+
+#families-for-good-img{
+  width: enlarge(350px);
+  margin-top: 15px;
+}
+
+
+#walk-for-good-img {
+  margin-top: 20px;
+}
+
+#walk-for-good {
+  width: enlarge(360px);
+}
+
+#walk-for-good,
+#waste-less-food-img,
+#families-for-good-img,
+#environmental-debt-img,
+#freeathon-img {
+  margin-top: 10px;
+}
+
+#virtuous-veterans-day-img {
+  transform: translateY(10px);
+}
+
+#fools-for-gold-img,
+#chartibale-columbus-img {
+  transform: translateY(20px)
+}
+
+#christmas-for-good-img {
+  transform: translateX(10px);
+  max-width: 250px;
+} 
+
+#mothers-for-good-img {
+  max-width: 220px;
+}
