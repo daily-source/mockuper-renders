@@ -1,7 +1,7 @@
 <template>
   <section 
     id='banner'
-    class="dynamic-banner"
+    :class="['dynamic-banner', `dynamic-banner-${selected}`]"
     :style="{'background-image': `url('${getBgImage()}')`}"
   >
     <div class="dynamic-banner__content">
@@ -39,10 +39,10 @@ export default {
 
 <style lang="scss" scoped>
   #banner {
-    min-height: 400px;
+    min-height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top;
     position: relative;
     display: flex;
     align-items: stretch;
@@ -59,6 +59,14 @@ export default {
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,.15);
+    }
+
+    @media (min-width: 1600px) {
+      min-height: 650px;
+    }
+
+    .dynamic-banner-2 {
+      background-position: top -80px center;
     }
   }
 
