@@ -24,12 +24,12 @@ Object.keys(filters).forEach((key) => {
 Vue.use(SmoothScroll);
 
 const bgImages = [
-  'banner-img-1.jpg',
-  'banner-img-2.jpg',
-  'banner-img-3.jpg',
-  'banner-img-4.jpg',
-  'banner-img-5.jpg',
-  'banner-img-6.jpg',
+  'banner-photo-1.jpg',
+  'banner-photo-2.jpg',
+  'banner-photo-3.jpg',
+  'banner-photo-4.jpg',
+  'banner-photo-5.jpg',
+  'banner-photo-6.jpg',
 ]
 
 Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
@@ -42,7 +42,7 @@ new Vue({
     console.log('Created')
     window.fbAsyncInit = () => {
       FB.init({
-        appId      : process.env.VUE_APP_FB_APP_ID,
+      appId      : process.env.VUE_APP_FB_APP_ID,
         xfbml      : true,
         version    : 'v3.2'
       });
