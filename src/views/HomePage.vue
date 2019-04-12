@@ -21,7 +21,6 @@
       :show-also-section='false'
     />
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
