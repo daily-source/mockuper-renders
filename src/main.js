@@ -26,13 +26,9 @@ Vue.use(SmoothScroll);
 const bgImages = [
   'banner-photo-1.jpg',
   'banner-photo-2.jpg',
-  'banner-photo-3.jpg',
-  'banner-photo-4.jpg',
-  'banner-photo-5.jpg',
-  'banner-photo-6.jpg',
 ]
 
-Vue.use(BannerSwitcher, store, {bgImages, selected: 3})
+Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
 
 new Vue({
   router,

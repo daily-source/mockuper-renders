@@ -41,7 +41,7 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/CharitableContests/AppHeader.vue"),
+    AppHeader: () => import("Components/CharitableChallenges/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
