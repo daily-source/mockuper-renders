@@ -39,7 +39,7 @@ export default {
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
-  components: {
+components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
     AppHeader: () => import("Components/DailyIndulgenceDrop/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
