@@ -6,7 +6,11 @@
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
-      <h1>Get closer to divine love, <br/> peace and goodness</h1>
+      <h1>
+        Tools and steps for more <br />
+        peace, love and goodness<br />
+        for you and the world
+      </h1>
     </dynamic-banner>
     <section class="logo-grid-wrapper">
       <logo-grid 
@@ -72,7 +76,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Bridges to God - v1",
+      title: "Bridges to God - v2",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },

@@ -33,12 +33,12 @@ const state = {
         {
           name: 'Christian Song',
           slug: kebabCase('Christian Song'),
-          url: logoUrl('christian-song-1.jpg'),
+          url: logoUrl('christian-song-2.jpg'),
         },
       ],
     },
     {
-      title: 'Connecting with God',
+      title: 'Connecting with God', 
       slug: kebabCase('Connecting With God'),
       logos: [
         {
@@ -54,17 +54,17 @@ const state = {
         {
           name: 'Divine Music',
           slug: kebabCase('Divine Music'),
-          url: logoUrl('divine-music-v1.png'),
+          url: logoUrl('divine-music-v2.png'),
         },
         {
           name: 'Christian Mythics',
           slug: kebabCase('Christian Mythics'),
-          url: logoUrl('christian-mythics-v1.png'),
+          url: logoUrl('christian-mythics-v2.png'),
         },
         {
           name: 'Adoration Guide',
           slug: kebabCase('Adoration Guide'),
-          url: logoUrl('adoration-guide-v1.png'),
+          url: logoUrl('adoration-guide-v2.png'),
         },
       ]
     },
@@ -90,12 +90,12 @@ const state = {
         {
           name: 'Colleges for Good',
           slug: kebabCase('Colleges for Good'),
-          url: logoUrl('colleges-for-good-v1.png'),
+          url: logoUrl('colleges-for-good-v2.png'),
         },
         {
           name: 'Temples for Good',
           slug: kebabCase('Temples for Good'),
-          url: logoUrl('temples-for-good-v1.png'),
+          url: logoUrl('temples-for-good-v2.jpg'),
         },
         {
           name: 'Churches for Good',
@@ -105,7 +105,7 @@ const state = {
         {
           name: 'Franciscans for Good',
           slug: kebabCase('Franciscans for Good'),
-          url: logoUrl('franciscans-for-good-v1.png'),
+          url: logoUrl('franciscans-for-good-v2.png'),
         },
         {
           name: 'Leagues for Good',
@@ -131,7 +131,7 @@ const state = {
         {
           name: 'Easter Giving',
           slug: kebabCase('Easter Giving'),
-          url: logoUrl('easter-giving-v1.png'),
+          url: logoUrl('easter-giving-v2.png'),
         }, 
         {
           name: 'Lent for Love',
