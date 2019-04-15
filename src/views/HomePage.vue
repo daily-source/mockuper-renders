@@ -6,28 +6,25 @@
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
+      <h1>Get closer to divine love, <br/> peace and goodness</h1>
     </dynamic-banner>
-    <div class='instructions'>
-      <div class='container'>
-        <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
-        </p>
-        <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
-        </p>
-      </div>
-    </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
-    />
+    <section class="logo-grid-wrapper">
+      <logo-grid 
+        v-for='site in sites'
+        :key='site.slug'
+        :logos='site.logos'
+        :title='site.title'
+        :slug='site.slug'
+      />
+    </section>
     <SharedFooter></SharedFooter>
     <banner-switcher />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import Vue from "vue"
 import VueMeta from "vue-meta"
 
@@ -41,13 +38,14 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/general/AppHeader.vue"),
+    AppHeader: () => import("Components/BridgesToGod/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
     HomeSection3: () => import("Components/Volunteerathon/HomeSection3.vue"),
     HomeSection4: () => import("Components/Volunteerathon/HomeSection4.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
+    SampleForm: () => import("LocalComponents/SampleForm.vue"),
+    LogoGrid: () => import('Components/BridgesToGod/LogoGrid'),
   },
 
   /**
@@ -74,7 +72,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Home",
+      title: "Bridges to God - v1",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -88,7 +86,11 @@ export default {
   computed: {
     home () {
       return this.$store.state.home
-    }
+    },
+
+    ...mapState({
+      sites: state => state.sites.data,
+    })
   }
 }
 </script>
