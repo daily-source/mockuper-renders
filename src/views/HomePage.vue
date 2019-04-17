@@ -1,7 +1,7 @@
 <template>
   <div class="view-home-page">
     <app-header 
-      volunteer-text='Do one now'
+      volunteer-text='Support us'
       layout='page'
     />
     <TopMenu></TopMenu>
