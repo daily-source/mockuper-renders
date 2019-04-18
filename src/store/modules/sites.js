@@ -11,6 +11,11 @@ const state = {
       slug: kebabCase('Practical tools for spiritual living'),
       logos: [
         {
+          name: 'Forgiveness Class',
+          slug: kebabCase('Forgiveness Class'),
+          url: logoUrl('forgiveness-class.png'),
+        },
+        {
           name: 'Christian Evaluation',
           slug: kebabCase('Christian Evaluation'),
           url: logoUrl('christian-evaluation.jpg'),
@@ -137,6 +142,10 @@ const state = {
           name: 'Lent for Love',
           slug: kebabCase('Lent for Love'),
           url: logoUrl('lent-for-love.png'),
+        }, {
+          name: 'Bibleathon',
+          slug: kebabCase('Bibleathon'),
+          url: logoUrl('bibleathon.png'),
         }, 
         {
           name: 'Helpful Hannakuh',
