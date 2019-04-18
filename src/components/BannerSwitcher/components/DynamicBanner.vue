@@ -49,6 +49,7 @@ export default {
     // justify-content: center;
     padding-bottom: 1em;
     position: relative;
+    justify-content: center;
 
     &:before {
       content: '';
@@ -64,16 +65,15 @@ export default {
 
   .dynamic-banner__content {
     color: #fff;
-    align-self: center;
     max-width: 600px;
-    text-align: left;
-    margin-left: 10%;
+    text-align: center;
     position: relative;
     z-index: 10;
 
     h1 {
-      text-align: left;
+      text-align: center;
       color: $primary;
+      margin-top: 1.5em;
     }
 
     h2 {
