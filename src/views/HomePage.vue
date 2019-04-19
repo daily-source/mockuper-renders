@@ -7,9 +7,8 @@
     <TopMenu></TopMenu>
     <dynamic-banner>
       <h1>
-        Tools and steps for more <br />
-        peace, love and goodness<br />
-        for you and the world
+        Get closer to divine love, <br />
+        peace and goodness
       </h1>
     </dynamic-banner>
     <section class="logo-grid-wrapper">
