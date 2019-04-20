@@ -68,8 +68,8 @@ export default {
 	},
 
   methods: {
-		onReady (event) {
-			this.player = event.target
+		onReady (player) {
+			this.player = player
 		},
 
 		/**
