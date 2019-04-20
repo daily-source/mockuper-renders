@@ -68,8 +68,8 @@ export default {
 	},
 
   methods: {
-		onReady (event) {
-			this.player = event.target
+		onReady (player) {
+			this.player = player
 		},
 
 		/**
@@ -153,7 +153,10 @@ export default {
 		},
 
 		player (value) {
-			this.player.playVideo()
+			console.log('changed')
+			if (this.player) {
+				this.player.playVideo()
+			}
 		},
 
 		isShown (value) {

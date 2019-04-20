@@ -2,7 +2,7 @@ import '@babel/polyfill'
 import Vue from 'vue';
 import Datetime from 'vue-datetime';
 import * as VueGoogleMaps from 'vue2-google-maps'
-import VueYouTubeEmbed from 'vue-youtube-embed'
+import VueYouTube from 'vue-youtube'
 
 import store from './store'
 import App from './App.vue';
@@ -16,7 +16,7 @@ import SmoothScroll from 'Components/plugins/SmoothScroll';
 Vue.config.productionTip = false;
 
 Vue.use(Datetime)
-Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube" })
+Vue.use(VueYouTube)
 
 // register global utility filters.
 Object.keys(filters).forEach((key) => {
