@@ -45,7 +45,7 @@ export default {
 
   data () {
     return {
-      videoId: 'xTWcpE_rdVo',
+      videoId: 'PazcMTddZik',
       dontShowVideo: false,
 		  sessionStorageKey: 'dontShowVideo',
 			example: false,
@@ -246,6 +246,11 @@ export default {
 		height: 100%;
 
 		div {
+			height: 100%;
+			width: 100%;
+		}
+
+		iframe {
 			height: 100%;
 			width: 100%;
 		}
