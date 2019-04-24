@@ -68,8 +68,8 @@ export default {
   max-width: 820px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.125em;
-  padding: .75em;
+  font-size: 19px;
+  padding: 14px;
   text-align: center;
 }
 </style>
