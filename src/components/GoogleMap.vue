@@ -26,7 +26,7 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        return { lat: 37.10403452276976, lng: -0.627944511025702 }
+        return { lat: 37.38390077975928, lng: 2.008774238974298 }
       }
     },
 
@@ -75,7 +75,7 @@ export default {
     onDragEnd () {
       const position = this.map.getCenter();
       // console.log(`Lat: ${position.lat()}, Lng: ${position.lng()}`);
-    }
+    },
   },
 
   computed: {
@@ -91,6 +91,13 @@ export default {
 		 */
 		customMapType() {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
+    },
+
+    /**
+     * Default Map Type
+     */
+    defaultMapType () {
+			return new this.google.maps.StyledMapType({}, {name: 'DEFAULT'})      
     },
     
     // /** 

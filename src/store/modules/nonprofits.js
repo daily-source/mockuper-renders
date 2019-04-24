@@ -1,3 +1,5 @@
+const baseURL = process.env.VUE_APP_BASE_URL
+
 const state = {
 	data: [
 		{
@@ -5,8 +7,8 @@ const state = {
 			country:"Heard Island and McDonald Islands",
 			description:"Rerum velit officia.",
 			loction:"461 Hermann Greens Apt. 847",
-			name:"Wisozk, Gutkowski and Lind",
-			picture:"http://lorempixel.com/640/480/business",
+			name:"Oxfam International",
+			picture: `${baseURL}img/oxfam.png`,
 			state:"Kansas",
 			url:"https://titus.net",
 			locations: [
@@ -53,8 +55,8 @@ const state = {
 			description:"Repellat quia provident eius est aut.",
 			id: 2,
 			loction:"37537 Jennifer Pass Suite 365",
-			name:"Hagenes LLC",
-			picture:"http://lorempixel.com/640/480/business",
+			name:"International Justice Mission",
+			picture: `${baseURL}img/ijm.png`,			
 			url:"http://miracle.info",
 			locations: [
 				{
@@ -90,8 +92,8 @@ const state = {
 			country:"Kiribati",
 			description:"Voluptatibus blanditiis quae.",
 			id:3,
-			name:"Pfannerstill and Sons",
-			picture:"http://lorempixel.com/640/480/business",
+			name:"KIVA",
+			picture: `${baseURL}img/kiva.jpg`,						
 			state:"New Hampshire",
 			url:"http://eileen.com",
 			locations: [
