@@ -184,8 +184,8 @@ export default {
 		 */
 		onMapReady (gmap, google) {
 			this.google = google
-			this.map = gmap
-
+      this.map = gmap
+      
 			this.$emit('mapReady', gmap, google)
 		},
 
@@ -221,16 +221,22 @@ export default {
 		 * @param {Object} nonprofit
 		 */
 		setSelectedNonprofit (nonprofit) {
+      this.selectedNonprofit = null
+
 			if (nonprofit) {
-				const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
+        console.log(this.selectedNonprofit)
+        const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
 				const selectedNonprofit = {
 					...nonprofit,
 					...locationNonprofit,
 				}
-				this.selectedNonprofit = selectedNonprofit
+        this.selectedNonprofit = selectedNonprofit
+        
 			} else {
 				this.selectedNonprofit = null
-			}
+      }
+      
+      this.google.maps.event.trigger(this.map, 'resize')
 		},
 
 		/** 

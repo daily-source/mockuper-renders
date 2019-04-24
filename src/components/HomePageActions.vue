@@ -20,11 +20,17 @@
         :height='36'
       />
     </button>
+    <button
+      class='button is-info home-page-actions__button'
+      @click='onSwitchThemeClicked'
+    >
+      Switch Theme
+    </button>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 import IconPlay from 'LocalComponents/Icons/IconPlay'
 import IconInfo from 'LocalComponents/Icons/IconInfo'
@@ -38,10 +44,25 @@ export default {
   },
 
   methods: {
+    onSwitchThemeClicked () {
+      const style = this.mapStyle === 'default' ? 'dark' : 'default'
+
+      console.log(style)
+      
+      this.changeMapStyle(style)
+    },
+
     ...mapActions({
       showVideo: 'video/showVideo',
       openInfo: 'info/openInfo',
+      changeMapStyle: 'map/changeMapStyle',
     }),
+  },
+
+  computed: {
+    ...mapState({
+      mapStyle: state => state.map.mapStyle
+    })
   }
 }
 </script>

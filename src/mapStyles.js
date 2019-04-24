@@ -66,23 +66,11 @@ export default [
       },
       { 
         "color": 
-        "#808080" 
+        "#ffffff" 
       },
       { 
         "weight": 0.1 
       },
-      { 
-        "lightness": 27 
-      },
-      { 
-        "saturation": 1 
-      },
-      { 
-        "hue": "#ff0000" 
-      },
-      { 
-        "gamma": 1 
-      }
     ]
   },
   {

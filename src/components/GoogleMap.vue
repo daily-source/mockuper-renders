@@ -17,6 +17,7 @@
 import { gmapApi } from 'vue2-google-maps'
 
 import mapStyles from '@/mapStyles'
+import { mapState } from 'vuex';
 
 export default {
   name: 'GoogleMap',
@@ -49,6 +50,7 @@ export default {
   data () {
     return {
       mapTypeId: 'virtual-railroad',
+      defaultMapTypeId: 'virtual-railroad-light',
       map: null,
     }
   },
@@ -60,6 +62,7 @@ export default {
       // instantiating this component.
       this.map = map
 			this.map.mapTypes.set(this.mapTypeId, this.customMapType)
+			this.map.mapTypes.set(this.defaultMapTypeId, this.defaultMapType)
 			this.$emit('mapReady', this.map, this.google)
 		})
   },
@@ -93,12 +96,10 @@ export default {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
     },
 
-    /**
-     * Default Map Type
-     */
-    defaultMapType () {
-			return new this.google.maps.StyledMapType({}, {name: 'DEFAULT'})      
+    defaultMapType() {
+			return new this.google.maps.StyledMapType({}, {name: 'DEFAULT'})
     },
+
     
     // /** 
 		//  * Custom Map Control options
@@ -116,6 +117,10 @@ export default {
       
     //   return null
     // },
+
+    ...mapState({
+      mapStyle: state => state.map.mapStyle,
+    }),
     
     /** 
 		 * Google Map options.
@@ -134,5 +139,15 @@ export default {
 			}
 		},
   },
+
+  watch: {
+    mapStyle () {
+      if (this.mapStyle === 'default') {
+        this.map.setMapTypeId(this.defaultMapTypeId)
+      } else {
+        this.map.setMapTypeId(this.mapTypeId)			       
+      }
+    }
+  }
 }
 </script>
