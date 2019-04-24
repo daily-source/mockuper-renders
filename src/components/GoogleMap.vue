@@ -49,8 +49,8 @@ export default {
 
   data () {
     return {
-      mapTypeId: 'virtual-railroad',
-      defaultMapTypeId: 'virtual-railroad-light',
+      darkMapTypeId: 'virtual-railroad-dark',
+      lightMapTypeId: 'virtual-railroad-light',
       map: null,
     }
   },
@@ -61,8 +61,8 @@ export default {
       // the whole component and probably other components
       // instantiating this component.
       this.map = map
-			this.map.mapTypes.set(this.mapTypeId, this.customMapType)
-			this.map.mapTypes.set(this.defaultMapTypeId, this.defaultMapType)
+			this.map.mapTypes.set(this.lightMapTypeId, this.lightMapType)
+			this.map.mapTypes.set(this.darkMapTypeId, this.darkMapType)
 			this.$emit('mapReady', this.map, this.google)
 		})
   },
@@ -92,31 +92,13 @@ export default {
     /** 
 	   * The Custom Map Type
 		 */
-		customMapType() {
+		darkMapType() {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
     },
 
-    defaultMapType() {
-			return new this.google.maps.StyledMapType({}, {name: 'DEFAULT'})
+    lightMapType() {
+			return new this.google.maps.StyledMapType({}, {name: 'LIGHT'})
     },
-
-    
-    // /** 
-		//  * Custom Map Control options
-		//  */
-		// mapTypeControlOptions() {
-    //   if (this.showMapControls) {
-    //     return {
-    //       mapTypeIds: [
-    //         this.google.maps.MapTypeId.ROADMAP,
-    //         this.google.maps.MapTypeId.HYBRID,
-    //         this.mapTypeId,
-    //       ]
-    //     }
-    //   }
-      
-    //   return null
-    // },
 
     ...mapState({
       mapStyle: state => state.map.mapStyle,
@@ -137,17 +119,12 @@ export default {
 					style: google.maps.ZoomControlStyle.SMALL,
 				}
 			}
-		},
+    },
+    
+    mapTypeId () {
+      return this.mapStyle === 'light' ? this.lightMapTypeId : this.darkMapTypeId
+    },
   },
 
-  watch: {
-    mapStyle () {
-      if (this.mapStyle === 'default') {
-        this.map.setMapTypeId(this.defaultMapTypeId)
-      } else {
-        this.map.setMapTypeId(this.mapTypeId)			       
-      }
-    }
-  }
 }
 </script>

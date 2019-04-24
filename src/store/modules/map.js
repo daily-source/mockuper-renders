@@ -1,13 +1,12 @@
-const validMapStyles = ['default', 'dark']
+const validMapStyles = ['light', 'dark']
 
 const state = {
-  mapStyle: 'default',
+  mapStyle: 'dark',
 }
 
 const actions = {
   changeMapStyle ({commit, state}, mapStyle) {
-    console.log('changeMapStyle')
-    let style = 'default'
+    let style = 'light'
 
     if (validMapStyles.indexOf(mapStyle)) {
       style = mapStyle
