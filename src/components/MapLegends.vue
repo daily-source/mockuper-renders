@@ -102,7 +102,7 @@ export default {
   }
 
   &--minimized {
-    bottom: -150px;
+    bottom: -160px;
   }
 
   img {
