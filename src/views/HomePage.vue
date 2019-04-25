@@ -1,6 +1,8 @@
 <template>
   <div class="home-page">
-    <intro-video />
+    <intro-video 
+      :autoplay='true'
+    />
     <app-header
       :is-small='false'
       theme='dark'

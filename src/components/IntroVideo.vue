@@ -43,6 +43,14 @@ import { mapState, mapActions } from 'vuex'
 export default {
 	name: 'IntroVideo',
 
+	props: {
+		autoplay: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+	},
+
   data () {
     return {
       videoId: 'PazcMTddZik',
@@ -147,7 +155,9 @@ export default {
 		},
 
 		player (value) {
-			this.player.playVideo()
+			if (this.autoplay) {
+				this.player.playVideo()
+			}
 		},
 
 		isShown (value) {

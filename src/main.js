@@ -25,6 +25,15 @@ Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'home') {
+    console.log('something')
+    store.dispatch('video/hideVideo')
+  }
+
+  next()
+})
+
 Vue.use(SmoothScroll);
 
 Vue.use(VueGoogleMaps, {
