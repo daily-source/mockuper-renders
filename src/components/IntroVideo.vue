@@ -132,6 +132,8 @@ export default {
 		...mapActions({
 			hideVideo: 'video/hideVideo',
 			showVideo: 'video/showVideo',
+			playVideo: 'video/playVideo',
+			stopVideo: 'video/stopVideo',
 		}),
 	},
 
@@ -155,9 +157,14 @@ export default {
 		},
 
 		player (value) {
-			if (this.autoplay) {
+			if (this.autoplay === false) {
+				this.player.stopVideo()
+			}
+
+			if (this.autoplay || this.isPlaying) {
 				this.player.playVideo()
 			}
+
 		},
 
 		isShown (value) {
@@ -165,6 +172,17 @@ export default {
 				this.player.playVideo()
 
 				this.videoTransition = 'video-fade-short'
+			} else {
+				this.hideVideo()
+				this.stopVideo()
+			}
+		},
+
+		isPlaying () {
+			if (this.isPlaying) {
+				this.player.playVideo()
+			} else {
+				this.player.stopVideo()
 			}
 		},
 

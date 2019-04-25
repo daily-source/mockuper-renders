@@ -21,7 +21,15 @@ const actions = {
 
 	hideVideo ({commit}) {
 		commit('setIsShown', false)
-	},
+  },
+  
+  playVideo ({commit}) {
+		commit('setIsPlaying', true)
+  },
+
+  stopVideo ({commit}) {
+		commit('setIsPlaying', false)
+  },
 }
 
 const mutations = {

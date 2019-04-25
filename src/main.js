@@ -27,8 +27,19 @@ Object.keys(filters).forEach((key) => {
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'home') {
-    console.log('something')
+    store.dispatch('video/stopVideo')
     store.dispatch('video/hideVideo')
+
+    next()
+    return
+  }
+
+  /**
+   * If from.name is `null` and from.path is `/`, this means that we visited the
+   * site on the home page, therefore we should play the video.
+   */
+  if (!from.name && from.path === '/') {
+    store.dispatch('video/playVideo')
   }
 
   next()
