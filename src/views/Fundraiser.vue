@@ -34,7 +34,7 @@
       :fundraiser="fundraiser"
       :editing="enableEditionForThisFundraiser"
       :can-edit="canManageThisFundraiser"
-    ></FundraiserParticipant>
+  ></FundraiserParticipant>
     <FundraiserLowerBody
       id="FundraiserLowerBody"
       :fundraiser="fundraiser"
