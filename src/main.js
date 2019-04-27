@@ -24,15 +24,13 @@ Object.keys(filters).forEach((key) => {
 Vue.use(SmoothScroll);
 
 const bgImages = [
-  'banner-img-1.jpg',
-  'banner-img-2.jpg',
-  'banner-img-3.jpg',
-  'banner-img-4.jpg',
-  'banner-img-5.jpg',
-  'banner-img-6.jpg',
+  'banner-photo-1.jpg',
+  'banner-photo-2.jpg',
+  'banner-photo-3.jpg',
+  'banner-photo-4.jpg',
 ]
 
-Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
+Vue.use(BannerSwitcher, store, {bgImages, selected: 2})
 
 new Vue({
   router,

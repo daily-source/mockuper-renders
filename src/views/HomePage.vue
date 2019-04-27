@@ -3,6 +3,7 @@
     <app-header 
       volunteer-text='Do one now'
       layout='page'
+      :generic='true'
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
@@ -74,7 +75,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Home",
+      title: "Puerto Rico Public Paintings - v1",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
