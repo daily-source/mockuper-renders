@@ -3,6 +3,7 @@
     <intro-video />
     <app-header
       :is-small='false'
+      :show-extra-contents='false'
       theme='dark'
      />
      <home-page-actions 

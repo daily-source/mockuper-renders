@@ -1,6 +1,7 @@
 <template>
 	<div class='user-profile'>
 		<app-header />
+		<intro-video />
 		<section class='user-details-section section'>
 			<div class='container'>	
 				<alert
@@ -13,7 +14,7 @@
 				<div class='user-profile__details columns'>
 					<div class='column is-9'>
 						<user-details 
-							:user='user'	
+							:user='user'		
 						/>
 					</div>
 					<div class='column'>
@@ -42,6 +43,7 @@ import { mapState } from 'vuex'
 import AppHeader from 'LocalComponents/AppHeader'
 import Alert from 'LocalComponents/Alert/Alert'
 import UserDetails from 'LocalComponents/User/UserDetails'
+import IntroVideo from 'LocalComponents/IntroVideo'
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
 import UserVirtualRailroadMap from 'LocalComponents/User/UserVirtualRailroadMap'
 import SharedFooter from 'Components/Shared/SharedFooter'
@@ -52,6 +54,7 @@ export default {
 	components:{
 		AppHeader,
 		Alert,
+		IntroVideo,
 		UserDetails,
 		UserSupportedNonprofits,
 		UserVirtualRailroadMap,
