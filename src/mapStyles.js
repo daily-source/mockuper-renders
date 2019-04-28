@@ -66,7 +66,7 @@ export default [
       },
       { 
         "color": 
-        "#ffffff" 
+        "#D1D0D0" 
       },
       { 
         "weight": 0.1 

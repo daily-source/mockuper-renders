@@ -11,7 +11,7 @@
               =
             </p>
             <p class="legends__text">
-              <span class="has-text-weight-bold">people who help to free slaves.</span> &nbsp;In the 1800s, supporters of the Underground Railroad put lights on their barns and sheds at night to let runaway slaves know they were safe havens to sleep or find food and water for their journey. So we represent people who help to free slaves with light bulbs.
+              <span class="has-text-weight-bold">people who help to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water for their journey. So we represent people who help to free slaves with light bulbs.
             </p>
           </div>
         </div>
@@ -22,7 +22,7 @@
               =
             </p>
             <p class='legends__text'>
-              <span class='has-text-weight-bold'>nonprofits freeing slaves.</span> &nbsp;Slaves escaping north to freedom relied on the North star as a beacon and compass because it doesn't change its location. Today, slaves rely on nonprofits to gain freedom and the nonprofits are unwavering in their help, so we represent them with stars.
+              <span class='has-text-weight-bold'>nonprofits freeing slaves.</span> &nbsp;Slaves escaping north to freedom relied on the North star as a beacon and compass because it doesn't change its location. Today, slaves rely on nonprofits to gain freedom, and the nonprofits are unwavering in their help, so we represent them with stars.
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default {
   }
 
   &--minimized {
-    bottom: -160px;
+    bottom: -128px;
   }
 
   img {
@@ -113,8 +113,9 @@ export default {
     position: absolute;
     top: -16px;
     left: 0;
-    right: 0;
-    text-align: center;
+    right: 2%;
+    padding-right: .5em;
+    text-align: right;
   }
 
   &__button {
@@ -151,6 +152,7 @@ export default {
   &__text-equals {
     color: #fff;
     font-size: 18px;
+    margin-bottom: 0;
   }
 }
 
@@ -158,7 +160,7 @@ export default {
   max-width: 50%;
   display: flex;
   align-items: flex-start;
-  margin-top: 1em;
+  margin-top: .5em;
   padding-left: .1em;
   padding-right: .1em;
 
