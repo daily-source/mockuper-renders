@@ -10,12 +10,15 @@
 				{{ nonprofit.name }}
 			</h4>
 			<img :src="nonprofit.picture" class='nonprofit-info-window__photo'>
+      <p class='is-marginless'>
+        {{ nonprofit.country }}
+      </p>
 			<router-link 
 				class='nonprofit-info-window__link button is-primary is-small'
 				:to='{ name: "nonprofit-details", params: { nonprofitId: nonprofit.id } }'
 			>
 				View Profile
-		</router-link>
+  		</router-link>
 			<button
 				@click='closeButtonClicked' 
 				class='nonprofit-info-window__close-button'
@@ -74,6 +77,7 @@
 
 .nonprofit-info-window__link {
 	display: inline-block;
+	margin-top: .25rem;
 	margin-bottom: .25rem;
 }
 

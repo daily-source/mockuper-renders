@@ -7,13 +7,13 @@
         <div class='legend'>
           <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'>
           <p>
-            <span class='has-text-weight-bold'>= person helping to free slaves.</span> &nbsp;In the 1800s, people who helped the Underground Railroad put lamps on their barns and sheds at night to let runaway slaves know they were safe havens where the slaves could sleep or find food and water for their journey. 
+            <span class='has-text-weight-bold'>= person helping to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water. So we use light bulb icons for people who help to free slaves. 
           </p>
         </div>
         <div class='legend'>
           <img src='@/assets/img/star_32.png' alt='Star'>
           <p>
-            <span class='has-text-weight-bold'>= nonprofit helping to free slaves.</span> &nbsp;Slaves escaping north to freedom relied on the North star as a beacon and compass because it's the only star that doesn't change its location. Today, slaves rely on nonprofits to gain freedom and the nonprofits are unwavering in their efforts to free slaves, so we represent them with stars. 
+            <span class='has-text-weight-bold'>= nonprofit helping to free slaves.</span> &nbsp;Slaves escaping north to freedom relied on the North Star as a beacon and compass because it doesn't change its location. Today, slaves gaining freedom rely on nonprofits that are unwavering in their help, so we represent them with stars.
           </p>
         </div>
         <div class='legends__button-container'>
@@ -72,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 .legends {
   background-color: rgba($primary, .9);
-  padding: 1.5em 1em;
+  padding: 1.25em 1em;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -92,7 +92,7 @@ export default {
   }
 
   &--minimized {
-    bottom: -150px;
+    bottom: -128px;
   }
 
   img {
@@ -136,8 +136,8 @@ export default {
   }
   
   p {
-    font-size: 17px;
-    color: #fff;
+    font-size: 18px;
+    color: #fbfbfb;
     margin-bottom: 0;
     margin-left: 1.25em;
 

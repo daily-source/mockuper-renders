@@ -162,36 +162,39 @@ export default {
   letter-spacing: .2em;
 
   &__button {
-    width: 16px;
-    height: 13px;
+    width: 26px;
+    height: 26px;
     position: relative;
     background-color: transparent;
     border: 0;
+    border-radius: 100%;
+    background-color: rgba(78, 84, 83, 0.7);
     margin-right: .5em;
     cursor: pointer;
+    padding: 0;
   }
 
   &__bar {
     content: '';
     display: block;
     height: 2px;
-    width: 100%;
+    width: 16px;
     border-radius: 2px;
     background-color: $secondary;
     position: absolute;
-    left: 0;
+    left: 5px;
     border: 0;
 
     &:nth-child(1) {
-      top: 0;
+      top: 8px;
     }
 
     &:nth-child(2) {
-      top: 4px;
+      top: 12px;
     }
 
     &:nth-child(3) {
-      top: 8px;
+      top: 16px;
     }
   }
 }
