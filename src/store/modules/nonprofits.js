@@ -89,7 +89,7 @@ const state = {
 			],
 		},
 		{
-			country:"Kiribati",
+			country:"Nigeria",
 			description:"Voluptatibus blanditiis quae.",
 			id:3,
 			name:"KIVA",

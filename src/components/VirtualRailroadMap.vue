@@ -226,6 +226,7 @@ export default {
 			if (nonprofit) {
         console.log(this.selectedNonprofit)
         const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
+        console.log(locationNonprofit)
 				const selectedNonprofit = {
 					...nonprofit,
 					...locationNonprofit,
