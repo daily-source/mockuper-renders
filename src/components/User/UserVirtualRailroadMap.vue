@@ -54,15 +54,34 @@ export default {
 			 * Get the nonprofits supported by the user
 			 */
 			nonprofits (state) {
-				return this.user.nonprofits.map(userNonprofit => {
-					const nonprofit = state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
-					const location = nonprofit.locations.find(location => location.id === userNonprofit.locationId)
+        let nonprofits = []
+        let isAlreadyAdded = []
 
-					return {
-						...nonprofit,
-						location,
-					}
-				})
+				this.user.nonprofits.forEach(userNonprofitPair => {
+          if (isAlreadyAdded.indexOf(userNonprofitPair.nonprofitId) === -1) {
+            isAlreadyAdded.push(userNonprofitPair.nonprofitId)
+            nonprofits.push(state.nonprofits.data.find(np => np.id === userNonprofitPair.nonprofitId))
+          }
+        })
+
+
+        const nps = nonprofits.map(nonprofit => {
+          const nonprofitLocations = this.user.nonprofits.filter(userNonprofitPair => userNonprofitPair.nonprofitId === nonprofit.id)
+          const locationIDs = nonprofitLocations.map(npLoc => npLoc.locationId)
+
+          const locations = nonprofit.locations.filter(loc => {
+            return locationIDs.indexOf(loc.id) !== -1
+          })
+
+          console.log(locations)
+
+          nonprofit.locations = locations
+
+          return nonprofit
+        })
+
+                
+        return nps
 			},
 		})
 	},
