@@ -186,7 +186,7 @@ export default {
 			this.google = google
       this.map = gmap
       
-			this.$emit('mapReady', gmap, google)
+			this.$emit('mapReady', gmap, google, this)
 		},
 
 		/**
@@ -406,21 +406,23 @@ export default {
 			let userNonprofitAnimatedPolylines = []
 
 			this.selectedUsers.forEach( user => {
-				const userNonprofits = user.nonprofits.map(nonprofitPair => {
-					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
-					const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
-
-					return {
-						...nonprofit,
-						location,
-						user,
-					}
-				})
-
-				userNonprofitAnimatedPolylines = [
-					...userNonprofitAnimatedPolylines,
-					...userNonprofits,
-				]
+        if (user.nonprofits) {
+          const userNonprofits = user.nonprofits.map(nonprofitPair => {
+            const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
+            const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
+  
+            return {
+              ...nonprofit,
+              location,
+              user,
+            }
+          })
+  
+          userNonprofitAnimatedPolylines = [
+            ...userNonprofitAnimatedPolylines,
+            ...userNonprofits,
+          ]
+        }
 			})
 
 			return userNonprofitAnimatedPolylines

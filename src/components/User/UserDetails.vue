@@ -1,6 +1,6 @@
 <template>
 	<div class='user-details columns'>
-		<div class='user-details__column user-details__profile-img-container column is-4'>
+		<div class='user-details__column user-details__profile-img-container column is-3'>
 			<img
 				class='user-details__profile-img'
 				:src='user.picture' 

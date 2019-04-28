@@ -57,7 +57,11 @@ export default {
 	&__item {
 		&:not(:last-child) {
 			margin-bottom: .5em;
-		}
+    }
+    
+    a {
+      text-decoration: underline;
+    }
 	}
 }
 </style>
