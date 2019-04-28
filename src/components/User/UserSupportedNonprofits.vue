@@ -39,7 +39,6 @@ export default {
 				let nonprofitIds = []
 				let nonprofits = []
 				this.user.nonprofits.forEach(userNonprofit => {
-				
 					if(nonprofitIds.indexOf(userNonprofit.nonprofitId) === -1) {
 						const nonprofit = state.nonprofits.data.find(nonprofit => nonprofit.id == userNonprofit.nonprofitId)
 

@@ -10,8 +10,8 @@
 				<youtube
 					:video-id='videoId'
 					ref='youtube'
-					player-height='100%'
-					player-width='100%'
+					height='100%'
+					width='100%'
 					@playing='playing'
 					@ready='onReady'
 				/>
@@ -43,6 +43,14 @@ import { mapState, mapActions } from 'vuex'
 export default {
 	name: 'IntroVideo',
 
+	props: {
+		autoplay: {
+			type: Boolean,
+			required: false,
+			default: false,
+		},
+	},
+
   data () {
     return {
       videoId: 'PazcMTddZik',
@@ -68,8 +76,8 @@ export default {
 	},
 
   methods: {
-		onReady (player) {
-			this.player = player
+		onReady (event) {
+			this.player = event
 		},
 
 		/**
@@ -124,6 +132,8 @@ export default {
 		...mapActions({
 			hideVideo: 'video/hideVideo',
 			showVideo: 'video/showVideo',
+			playVideo: 'video/playVideo',
+			stopVideo: 'video/stopVideo',
 		}),
 	},
 
@@ -146,17 +156,15 @@ export default {
 			}
 		},
 
-		google (value) {
-			if (value) {
-				console.log(this.player)
-			}
-		},
-
 		player (value) {
-			console.log('changed')
-			if (this.player) {
+			if (this.autoplay === false) {
+				this.player.stopVideo()
+			}
+
+			if (this.autoplay || this.isPlaying) {
 				this.player.playVideo()
 			}
+
 		},
 
 		isShown (value) {
@@ -164,6 +172,17 @@ export default {
 				this.player.playVideo()
 
 				this.videoTransition = 'video-fade-short'
+			} else {
+				this.hideVideo()
+				this.stopVideo()
+			}
+		},
+
+		isPlaying () {
+			if (this.isPlaying) {
+				this.player.playVideo()
+			} else {
+				this.player.stopVideo()
 			}
 		},
 

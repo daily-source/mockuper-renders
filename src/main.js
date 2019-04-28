@@ -37,9 +37,20 @@ Vue.use(VueGoogleMaps, {
  * hide the videos on inner pages.
  */
 router.beforeEach((to, from, next) => {
-  console.log(from)
-  if (to.name === 'home' && !from.matched.length) {
-    store.dispatch('video/showVideo')
+  if (to.name !== 'home') {
+    store.dispatch('video/stopVideo')
+    store.dispatch('video/hideVideo')
+
+    next()
+    return
+  }
+
+  /**
+   * If from.name is `null` and from.path is `/`, this means that we visited the
+   * site on the home page, therefore we should play the video.
+   */
+  if (!from.name && from.path === '/') {
+    store.dispatch('video/playVideo')
   }
 
   next()
