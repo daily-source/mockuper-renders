@@ -1,6 +1,6 @@
 const state = {
   isPlaying: false,
-	isShown: false,
+	isShown: true,
   videoId: null,
 }
 
@@ -21,13 +21,22 @@ const actions = {
 
 	hideVideo ({commit}) {
 		commit('setIsShown', false)
-	},
+  },
+  
+  playVideo ({commit}) {
+		commit('setIsPlaying', true)
+  },
+
+  stopVideo ({commit}) {
+		commit('setIsPlaying', false)
+  },
 }
 
 const mutations = {
   setIsPlaying (state, playing) {
     state.isPlaying = playing
   },
+  
   setIsShown (state, shown) {
     state.isShown = shown
   },
