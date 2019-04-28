@@ -27,6 +27,14 @@
       </div>
       <ul class='navbar-contents__nav'>
         <li class='navbar-contents__nav-item'>
+          <a 
+            href='#'
+            @click.prevent.stop='onViewIntroClicked'
+          >
+            View Intro
+          </a>
+        </li>
+        <li class='navbar-contents__nav-item'>
           <router-link to='/nonprofit-sign-up'>Register a Nonprofit</router-link>
         </li>
         <li class='navbar-contents__nav-item'>
@@ -106,8 +114,14 @@ export default {
   },
 
   methods: {
+    onViewIntroClicked () {
+      this.showVideo()
+      this.toggleNavbar()
+    },
+
     ...mapActions({
-      toggleNavbar: 'navbar/toggleNavbar'
+      toggleNavbar: 'navbar/toggleNavbar',
+			showVideo: 'video/showVideo',
     }),
   },
 

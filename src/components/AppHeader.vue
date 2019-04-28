@@ -14,14 +14,14 @@
         </div>
         <div 
           class="header__column header__inner-contents"
-          v-if='this.showExtraContents'
         >
-          <button 
+          <!-- <button 
             class='is-paddingless button header__button'
             @click='showVideo'
+            v-if='this.showExtraContents'
           >
             View Intro
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
