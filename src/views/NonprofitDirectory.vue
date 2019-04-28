@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-directory'>
-    <intro-video />
     <app-header />
+    <intro-video />
     <modal
       :state='showInfoModal'
       @modal:close='showInfoModal = false'

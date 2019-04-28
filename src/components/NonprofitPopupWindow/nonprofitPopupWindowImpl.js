@@ -45,9 +45,9 @@ export default MapElementFactory({
 		},
 
 		draw () {
-			const position = new google.maps.LatLng(this.nonprofit.latitude, this.nonprofit.longitude)
-			
-			const divPosition = this.$nonprofitPopupWindowObject.getProjection().fromLatLngToDivPixel(position)
+      const position = new google.maps.LatLng(this.nonprofit.latitude, this.nonprofit.longitude)
+      			
+      const divPosition = this.$nonprofitPopupWindowObject.getProjection().fromLatLngToDivPixel(position)
 
 			const display = Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ? 'block' : 'none';
 
@@ -58,12 +58,12 @@ export default MapElementFactory({
 			}
 
 			if(this.ref.style.display !== display) {
-				this.ref.style.display = display
+        this.ref.style.display = display
 			}
-
-		},
+    }, 
+    
 		onRemove () {
-			// this.ref.parentElement.removeChild(this.ref)
+			this.ref.parentElement.removeChild(this.ref)
 		},
 
 		closeButtonClicked () {
@@ -74,7 +74,7 @@ export default MapElementFactory({
 	afterCreate () {
 		this.definePopupClass()
 		this.$nonprofitPopupWindowObject.setMap(this.$map)
-		this.$watch('user', () => {
+		this.$watch('nonprofit', () => {
 			this.$nonprofitPopupWindowObject.draw()
 		})
 	}

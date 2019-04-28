@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-register'>
-    <intro-video />
     <app-header />
+    <intro-video />
     <section class='section'>
       <div class='container'>
         <h2 class='has-text-weight-bold'>Add your nonprofit</h2>

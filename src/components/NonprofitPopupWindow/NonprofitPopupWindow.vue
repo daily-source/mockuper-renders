@@ -1,4 +1,5 @@
 <template>
+<div>
 	<div
 		@click.stop='false'
 		class='nonprofit-info-window-wrap' 
@@ -23,6 +24,7 @@
 			</button>
 		</div>
 	</div>
+</div>
 </template>
 
 <script>
@@ -40,7 +42,7 @@
 .nonprofit-info-window {
 	min-height: 60px;
 	min-width: 60px;
-	max-width: 200px;
+	max-width: 120px;
 	display: inline-flex;
 	flex-direction: column;
 	justify-content: center;
@@ -61,8 +63,10 @@
 }
 
 .nonprofit-info-window__photo {
-	width: 150px;
-	height: 150px;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  min-height: 80px;
 	display: inline-block;
 	margin-bottom: .25rem;
 	object-fit: contain;

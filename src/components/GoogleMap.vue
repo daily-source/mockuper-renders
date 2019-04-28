@@ -17,6 +17,7 @@
 import { gmapApi } from 'vue2-google-maps'
 
 import mapStyles from '@/mapStyles'
+import { mapState } from 'vuex';
 
 export default {
   name: 'GoogleMap',
@@ -26,7 +27,7 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        return { lat: 37.10403452276976, lng: -0.627944511025702 }
+        return { lat: 37.38390077975928, lng: 2.008774238974298 }
       }
     },
 
@@ -48,7 +49,8 @@ export default {
 
   data () {
     return {
-      mapTypeId: 'virtual-railroad',
+      darkMapTypeId: 'virtual-railroad-dark',
+      lightMapTypeId: 'virtual-railroad-light',
       map: null,
     }
   },
@@ -59,7 +61,8 @@ export default {
       // the whole component and probably other components
       // instantiating this component.
       this.map = map
-			this.map.mapTypes.set(this.mapTypeId, this.customMapType)
+			this.map.mapTypes.set(this.lightMapTypeId, this.lightMapType)
+			this.map.mapTypes.set(this.darkMapTypeId, this.darkMapType)
 			this.$emit('mapReady', this.map, this.google)
 		})
   },
@@ -75,7 +78,7 @@ export default {
     onDragEnd () {
       const position = this.map.getCenter();
       // console.log(`Lat: ${position.lat()}, Lng: ${position.lng()}`);
-    }
+    },
   },
 
   computed: {
@@ -89,26 +92,17 @@ export default {
     /** 
 	   * The Custom Map Type
 		 */
-		customMapType() {
+		darkMapType() {
 			return new this.google.maps.StyledMapType(mapStyles, {name: 'DARK'})
     },
-    
-    // /** 
-		//  * Custom Map Control options
-		//  */
-		// mapTypeControlOptions() {
-    //   if (this.showMapControls) {
-    //     return {
-    //       mapTypeIds: [
-    //         this.google.maps.MapTypeId.ROADMAP,
-    //         this.google.maps.MapTypeId.HYBRID,
-    //         this.mapTypeId,
-    //       ]
-    //     }
-    //   }
-      
-    //   return null
-    // },
+
+    lightMapType() {
+			return new this.google.maps.StyledMapType({}, {name: 'LIGHT'})
+    },
+
+    ...mapState({
+      mapStyle: state => state.map.mapStyle,
+    }),
     
     /** 
 		 * Google Map options.
@@ -125,7 +119,12 @@ export default {
 					style: google.maps.ZoomControlStyle.SMALL,
 				}
 			}
-		},
+    },
+    
+    mapTypeId () {
+      return this.mapStyle === 'light' ? this.lightMapTypeId : this.darkMapTypeId
+    },
   },
+
 }
 </script>

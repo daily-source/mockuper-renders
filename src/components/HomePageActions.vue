@@ -20,14 +20,31 @@
         :height='36'
       />
     </button>
+    <button
+      class='button is-info home-page-actions__button'
+      @click='onSwitchThemeClicked'
+    >
+      <icon-night-mode 
+        :width='33.42'
+        :height='33.42'
+        v-if='mapStyle === "light"'
+      />
+      <icon-light-mode 
+        :width='33.42'
+        :height='33.42'
+        v-if='mapStyle === "dark"'
+      />
+    </button>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 import IconPlay from 'LocalComponents/Icons/IconPlay'
 import IconInfo from 'LocalComponents/Icons/IconInfo'
+import IconNightMode from 'LocalComponents/Icons/IconNightMode'
+import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 
 export default {
   name: 'HomePageActions',
@@ -35,13 +52,28 @@ export default {
   components: {
     IconPlay,
     IconInfo,
+    IconNightMode,
+    IconLightMode,
   },
 
   methods: {
+    onSwitchThemeClicked () {
+      const style = this.mapStyle === 'light' ? 'dark' : 'light'
+      
+      this.changeMapStyle(style)
+    },
+
     ...mapActions({
       showVideo: 'video/showVideo',
       openInfo: 'info/openInfo',
+      changeMapStyle: 'map/changeMapStyle',
     }),
+  },
+
+  computed: {
+    ...mapState({
+      mapStyle: state => state.map.mapStyle
+    })
   }
 }
 </script>

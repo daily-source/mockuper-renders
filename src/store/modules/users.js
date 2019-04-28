@@ -85,11 +85,11 @@ const state = {
 		},
 		{
 			id: 5,
-			firstName: 'David',
-			lastName: 'Alves',
-			userName: 'davidalves321',
-			latitude: 38.71615506024428,
-			longitude: -5.044448417275703,
+			firstName: 'George',
+			lastName: 'Angelos',
+			userName: 'georgeangelos321',
+			latitude: 36.36362956455485,
+			longitude: 21.65094082270548,
 			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
@@ -99,10 +99,10 @@ const state = {
 				},
 				{
 					nonprofitId: 3,
-					locationId: 3,
+					locationId: 4,
 				},				
 			],
-			location: 'Kluuvikatu 26, VANTAA, Uusimaa, Finland',
+			location: '24300 Τριφυλία (Χριστιανούπολη), Χριστιανούπολη, Φιλιατρά Τριφυλία Ελλάδα',
 		},
 		{
 			id: 6,
@@ -124,7 +124,7 @@ const state = {
 				},
 				{
 					nonprofitId: 3,
-					locationId: 4,
+					locationId: 3,
 				},
 			],
 			location: 'Picher, Kansas, Austria',

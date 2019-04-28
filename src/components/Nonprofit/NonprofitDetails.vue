@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
-      <div class='column is-4'>
+      <div class='column is-3'>
         <Avatar 
           :url='nonprofit.picture'
           :alt='nonprofit.name'
@@ -28,8 +28,9 @@
           </p>
         </template>
         <template v-else>
-          <ol>
+          <ol class='nonprofit-details__locations'>
             <li 
+              class='nonprofit-details__locations-item'
               v-for='(location, index) in nonprofit.locations'
               :key='location.placeId || index'
             >
@@ -39,11 +40,12 @@
         </template>
       </div>
     </div>
-    <div class='nonprofit-map'>
+    <div class='nonprofit-details__map'>
       <virtual-railroad-map 
         :users='[]'
         :nonprofits='[nonprofit]'
         :icon-size='32'
+        :zoom='2'
       />
     </div>
   </div>
@@ -76,6 +78,18 @@ export default {
     flex-basis: 33%;
     max-width: 33%;
     margin-right: .875em;
+  }
+
+  &__map {
+    position: relative;
+    height: 500px;
+    max-width: 990px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__locations-item {
+    margin-bottom: .5em;
   }
 }
 </style>

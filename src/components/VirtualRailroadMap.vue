@@ -184,9 +184,9 @@ export default {
 		 */
 		onMapReady (gmap, google) {
 			this.google = google
-			this.map = gmap
-
-			this.$emit('mapReady', gmap, google)
+      this.map = gmap
+      
+			this.$emit('mapReady', gmap, google, this)
 		},
 
 		/**
@@ -221,16 +221,22 @@ export default {
 		 * @param {Object} nonprofit
 		 */
 		setSelectedNonprofit (nonprofit) {
+      this.selectedNonprofit = null
+
 			if (nonprofit) {
-				const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
+        console.log(this.selectedNonprofit)
+        const locationNonprofit = this.nonprofits.find(np => np.id === nonprofit.nonprofitId)
 				const selectedNonprofit = {
 					...nonprofit,
 					...locationNonprofit,
 				}
-				this.selectedNonprofit = selectedNonprofit
+        this.selectedNonprofit = selectedNonprofit
+        
 			} else {
 				this.selectedNonprofit = null
-			}
+      }
+      
+      this.google.maps.event.trigger(this.map, 'resize')
 		},
 
 		/** 
@@ -400,21 +406,23 @@ export default {
 			let userNonprofitAnimatedPolylines = []
 
 			this.selectedUsers.forEach( user => {
-				const userNonprofits = user.nonprofits.map(nonprofitPair => {
-					const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
-					const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
-
-					return {
-						...nonprofit,
-						location,
-						user,
-					}
-				})
-
-				userNonprofitAnimatedPolylines = [
-					...userNonprofitAnimatedPolylines,
-					...userNonprofits,
-				]
+        if (user.nonprofits) {
+          const userNonprofits = user.nonprofits.map(nonprofitPair => {
+            const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
+            const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
+  
+            return {
+              ...nonprofit,
+              location,
+              user,
+            }
+          })
+  
+          userNonprofitAnimatedPolylines = [
+            ...userNonprofitAnimatedPolylines,
+            ...userNonprofits,
+          ]
+        }
 			})
 
 			return userNonprofitAnimatedPolylines

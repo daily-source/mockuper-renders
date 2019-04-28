@@ -12,6 +12,17 @@
             <img :src='logoSrc' alt='Virtual Railroad' class='header__logo'>
           </router-link>
         </div>
+        <div 
+          class="header__column header__inner-contents"
+          v-if='this.showExtraContents'
+        >
+          <button 
+            class='is-paddingless button header__button'
+            @click='showVideo'
+          >
+            View Intro
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -34,6 +45,15 @@ export default {
      * Specifies whether to add a small modifier to the header
      */
     isSmall: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    /**
+     * Specifies whether to show the extra navigation contents on the header
+     */
+    showExtraContents: {
       type: Boolean,
       required: false,
       default: true,
@@ -99,12 +119,31 @@ export default {
     #{ $self }__navbar {
       color: #000;
     }
+
+    #{ $self }__button {
+      color: $primary;
+    }
   }
 
   &--dark {
     #{ $self }__navbar {
       color: #fff;
     }
+
+    #{ $self }__button {
+      color: #fff;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    border-color: transparent;
+    outline-style: none !important;
+    box-shadow: none !important;
+  }
+
+  &__inner-contents {
+    justify-content: flex-end !important;
   }
 }
 
@@ -113,6 +152,9 @@ export default {
   padding-top: .5em;
   padding-bottom: .5em;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-nav {
@@ -149,10 +191,20 @@ export default {
 
 .header--small {
   .header {
-    &__logo-container {
-      max-width: 150px;
+    &__logo {
+      max-width: 200px;
+    }
+
+    &__navbar {
+      position: static;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    &__column {
+      flex-grow: 1;
+      flex-shrink: 1;
     }
   }
 }
-
 </style>

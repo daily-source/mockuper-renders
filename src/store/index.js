@@ -5,6 +5,7 @@ import nonprofits from './modules/nonprofits'
 import video from './modules/video'
 import info from './modules/info'
 import navbar from './modules/navbar'
+import map from './modules/map'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
 		nonprofits,
 		video,
 		info,
-		navbar,
+    navbar,
+    map,
 	},
 })
