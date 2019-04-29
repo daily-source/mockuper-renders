@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
   #banner {
-    min-height: 460px;
+    min-height: 500px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
