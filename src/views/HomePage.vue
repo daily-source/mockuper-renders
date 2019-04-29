@@ -6,7 +6,7 @@
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
-      <h1>Go on a donating spree<br /> to help the world</h1>
+      <h1>Go on a donating spree to do<br /> good and raise awareness</h1>
     </dynamic-banner>
     <div class='instructions'>
       <div class='container'>
@@ -74,7 +74,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Donatethon - v1",
+      title: "Donatethon - v2",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },

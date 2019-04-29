@@ -72,6 +72,7 @@ export default {
     z-index: 10;
 
     h1 {
+      margin-top: -20px;
       text-align: left;
       color: #00B0EA;
     }
