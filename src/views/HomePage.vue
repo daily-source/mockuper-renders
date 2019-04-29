@@ -8,6 +8,11 @@
     <dynamic-banner>
       <h1>Get closer to divine love, <br/> peace and goodness</h1>
     </dynamic-banner>
+    <section class="section intro">
+      <div class="container">
+        <p class='has-text-centered'>Clicking on most of the logos below will lead to both a website and a class or activity on that topic. Any church can offer the class or activity to its members using our materials that are free to download and use. Most classes will offer useful information followed by silent interior exercises to help participants learn how to put the information to use. Often participants will be given the opportunity to open up to God’s presence and will, and engage in prayer with God about what the new learning means for their life.</p>
+      </div>
+    </section>
     <section class="logo-grid-wrapper">
       <logo-grid 
         v-for='site in sites'
@@ -102,6 +107,15 @@ export default {
   p {
     padding-left: 60px;
     padding-right: 60px;
+  }
+}
+
+.intro {
+  padding-bottom: 0;
+  padding-top: 3em;
+  
+  p {
+    margin-bottom: 0;
   }
 }
 </style>
