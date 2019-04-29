@@ -5,10 +5,9 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <app-banner />
     <div class='instructions'>
+      <h1 class='has-text-centered'>Break a Record for a Good Cause</h1>
       <div class='container'>
         <p>
           <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -23,7 +22,6 @@
       :show-also-section='false'
     />
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
@@ -42,6 +40,7 @@ export default {
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
     AppHeader: () => import("Components/RecordsForGood/AppHeader.vue"),
+    AppBanner: () => import("Components/RecordsForGood/AppBanner.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
@@ -96,6 +95,10 @@ export default {
 <style scoped lang="scss">
 .instructions {
   padding-top: 3em;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
 
   p {
     padding-left: 60px;
