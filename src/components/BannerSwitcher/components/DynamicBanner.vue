@@ -65,9 +65,9 @@ export default {
   .dynamic-banner__content {
     color: #fff;
     align-self: center;
-    max-width: 400px;
+    max-width: 600px;
     text-align: left;
-    margin-left: 10%;
+    margin-left: calc(10% + 20px);
     position: relative;
     z-index: 10;
 

@@ -6,7 +6,7 @@
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
+      <h1>Go on a donating spree<br /> to help the world</h1>
     </dynamic-banner>
     <div class='instructions'>
       <div class='container'>
