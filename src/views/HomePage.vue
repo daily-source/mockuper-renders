@@ -5,10 +5,9 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <dynamic-banner />
     <div class='instructions'>
+      <h1 class="has-text-centered">Go On A Thankfulness Spree For Good</h1>
       <div class='container'>
         <p>
           <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -95,7 +94,11 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 3em;
+  padding-top: 4em;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
 
   p {
     padding-left: 60px;
