@@ -72,8 +72,8 @@ export default {
 
     h1 {
       text-align: center;
-      color: $secondary;
-      margin-top: 1.5em;
+      color: $primary;
+      margin-top: 13px;
     }
 
     h2 {

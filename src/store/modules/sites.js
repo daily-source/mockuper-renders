@@ -26,19 +26,29 @@ const state = {
           url: logoUrl('handling-losses.jpg'),
         },
         {
-          name: 'Righteous Resolutions',
-          slug: kebabCase('Righteous Resolutions'),
-          url: logoUrl('righteous-resolutions.png'),
+          name: 'Learning Discrement',
+          slug: kebabCase('Learning Discrement'),
+          url: logoUrl('learning-discrement.png'),
         },
         {
-          name: 'The Lent Site',
-          slug: kebabCase('The Lent Site'),
-          url: logoUrl('the-lent-site.png'),
+          name: 'Practice of Letting Go',
+          slug: kebabCase('Practice of Letting Go'),
+          url: logoUrl('practice-of-letting-go.png'),
+        },
+        {
+          name: 'Practicing Gratitude',
+          slug: kebabCase('Praciticing Gratitude'),
+          url: logoUrl('practicing-gratitude.jpg'),
         },
         {
           name: 'Christian Song',
           slug: kebabCase('Christian Song'),
           url: logoUrl('christian-song-2.jpg'),
+        },
+        {
+          name: 'The Lent Site',
+          slug: kebabCase('The Lent Site'),
+          url: logoUrl('the-lent-site.png'),
         },
       ],
     },
@@ -70,6 +80,11 @@ const state = {
           name: 'Adoration Guide',
           slug: kebabCase('Adoration Guide'),
           url: logoUrl('adoration-guide-v2.png'),
+        },
+        {
+          name: 'Righteous Resolutions',
+          slug: kebabCase('Righteous Resolutions'),
+          url: logoUrl('righteous-resolutions.png'),
         },
       ]
     },
