@@ -7,13 +7,13 @@
     <TopMenu></TopMenu>
     <dynamic-banner />
     <div class='instructions'>
-      <h1 class=' has-text-centered'>Grow a beard to amuse your friends and raise money for good</h1>
+      <h1 class=' has-text-centered'>Grow a beard to entertain your friends <br /> and raise money for good</h1>
       <div class='container'>
         <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
+          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
         <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
+          ALSO: often a short piece of text in put inside of the banner photo.
         </p>
       </div>
     </div>
@@ -73,7 +73,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Grow One For Good - v1",
+      title: "Grow One For Good - v2",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -94,10 +94,10 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 3em;
+  padding-top: 2.5em;
 
   h1 {
-    padding-bottom: 3rem;
+    padding-bottom: 2.5rem;
     margin-bottom: 0;
     color: $primary;
   }
