@@ -16,9 +16,9 @@ const state = {
           url: logoUrl('forgiveness-class.png'),
         },
         {
-          name: 'Christian Evaluation',
-          slug: kebabCase('Christian Evaluation'),
-          url: logoUrl('christian-evaluation.jpg'),
+          name: 'Practicing Gratitude',
+          slug: kebabCase('Praciticing Gratitude'),
+          url: logoUrl('practicing-gratitude.jpg'),
         },
         {
           name: 'Handling Losses',
@@ -31,14 +31,14 @@ const state = {
           url: logoUrl('learning-discrement.png'),
         },
         {
+          name: 'Christian Evaluation',
+          slug: kebabCase('Christian Evaluation'),
+          url: logoUrl('christian-evaluation.jpg'),
+        },
+        {
           name: 'Practice of Letting Go',
           slug: kebabCase('Practice of Letting Go'),
           url: logoUrl('practice-of-letting-go.png'),
-        },
-        {
-          name: 'Practicing Gratitude',
-          slug: kebabCase('Praciticing Gratitude'),
-          url: logoUrl('practicing-gratitude.jpg'),
         },
         {
           name: 'Christian Song',
