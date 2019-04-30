@@ -90,7 +90,6 @@
       </div>
     </section>
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
