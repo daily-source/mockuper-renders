@@ -57,14 +57,14 @@ const state = {
       slug: kebabCase('Connecting With God'),
       logos: [
         {
-          name: 'Walks With God',
-          slug: kebabCase('Walks With God'),
-          url: logoUrl('walks-with-god.png'),
-        },
-        {
           name: 'Prayer Approaches',
           slug: kebabCase('Prayer Approaches'),
           url: logoUrl('prayer-approaches.png'),
+        },
+        {
+          name: 'Adoration Guide',
+          slug: kebabCase('Adoration Guide'),
+          url: logoUrl('adoration-guide-v2.png'),
         },
         {
           name: 'Divine Music',
@@ -77,9 +77,9 @@ const state = {
           url: logoUrl('christian-mythics-v2.png'),
         },
         {
-          name: 'Adoration Guide',
-          slug: kebabCase('Adoration Guide'),
-          url: logoUrl('adoration-guide-v2.png'),
+          name: 'Walks With God',
+          slug: kebabCase('Walks With God'),
+          url: logoUrl('walks-with-god.png'),
         },
         {
           name: 'Righteous Resolutions',

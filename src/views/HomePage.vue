@@ -11,9 +11,7 @@
       </h1>
     </dynamic-banner>
     <section class="section intro">
-      <div class="container">
-        <p class='has-text-centered'>We offer churches free activities and classes to reach casual churchgoers who lack a full spiritual life and non-churchgoers who think that churches have little to offer. We give them useful tools to become better people, connect with God and develop spiritual skills that bring more love and goodness to themselves and the world. Clicking a logo below will lead to a website and a class or activity on the topic that churches can use for free. Classes provide useful information plus silent exercises to help people put the learning into practice. Scroll to the bottom of this page for more information.</p>
-      </div>
+        <p class='has-text-centered'>We offer churches activities and classes to reach casual churchgoers who lack a full spiritual life, and non-churchgoers who think churches have little to offer. We give them useful tools to become better people, connect with God and develop spiritual skills that bring more love and goodness to themselves and the world. Each logo below goes to a website and a class or activity that churches can use for free. Classes provide useful information plus exercises to help people put the learning into practice. Scroll to the end of this page for more information.</p>
     </section>
     <section class="logo-grid-wrapper">
       <logo-grid 
@@ -118,6 +116,9 @@ export default {
 
   p {
     margin-bottom: 0;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
