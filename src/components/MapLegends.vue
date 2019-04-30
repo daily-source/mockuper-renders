@@ -7,7 +7,7 @@
         <div class='legend'>
           <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'>
           <p>
-            <span class='has-text-weight-bold'>= person helping to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water. So we use light bulb icons for people who help to free slaves. 
+            <span class='has-text-weight-bold'>= people who help to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water. So we use light bulb icons for people who help to free slaves. 
           </p>
         </div>
         <div class='legend'>
@@ -103,8 +103,9 @@ export default {
     position: absolute;
     top: -16px;
     left: 0;
-    right: 0;
-    text-align: center;
+    right: 2%;
+    padding-right: 1.5rem;
+    text-align: right;
   }
 
   &__button {

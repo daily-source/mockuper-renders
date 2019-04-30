@@ -4,7 +4,6 @@ const state = {
 	data: [
 		{
 			id: 1,
-			country:"Heard Island and McDonald Islands",
 			description:"Rerum velit officia.",
 			loction:"461 Hermann Greens Apt. 847",
 			name:"Oxfam International",
@@ -51,7 +50,6 @@ const state = {
 			],
 		},
 		{	
-			country:"Grenada",
 			description:"Repellat quia provident eius est aut.",
 			id: 2,
 			loction:"37537 Jennifer Pass Suite 365",
@@ -89,7 +87,6 @@ const state = {
 			],
 		},
 		{
-			country:"Nigeria",
 			description:"Voluptatibus blanditiis quae.",
 			id:3,
 			name:"KIVA",
@@ -135,7 +132,140 @@ const state = {
 					longitude: 8.842270332724297,
 				}
 			],
-		},
+    },
+    {
+      name: 'Streetlight',
+      picture: `${baseURL}img/streetlight.png`,
+      id: 4,
+      url: 'gttps://streetlight.com',
+      description: 'Streetlight’s Mission is to Eradicate Child Sex Slavery through a 3-tier strategy of Awareness, Prevention, and Aftercare.',
+      locations: [
+        {
+					id: 1,
+					country: 'USA',
+					street: '4004 Cambridge Court',
+					city: 'Phoenix',
+					State: 'Arizona',
+					location: '4004 Cambridge Court, Phoenix, Arizona',
+					latitude: 33.4783303,
+					longitude: -112.1479503,
+				}
+      ],
+    },
+    {
+      name: 'Girls Against Slavery',
+      picture: `${baseURL}img/gems.jpg`,
+      id: 5,
+      url: 'https://gems.com',
+      description: 'GEMS provides a spectrum of continuous and comprehensive services to address the needs of commercially and sexually exploited girls and young women. Commercial sexual exploitation is intrinsically linked to racism, poverty, gender-based violence, and the criminalization of youth. All these factors are an integral part of any discussion, advocacy work or direct service programming that involves sexual exploitation. All of GEMS programs are based on our philosophy and values that each girl and young woman is.',
+      locations: [
+        {
+					id: 1,
+					country: 'Bhutan',
+					street: '',
+					city: 'Thimpu',
+					State: '',
+					location: 'Thimpu, Bhutan',
+					latitude: 27.4793977,
+					longitude: 89.6033759,
+				}
+      ],
+    },
+    {
+      name: 'ZOE Children\'s Homes',
+      picture: `${baseURL}img/zoes.jpg`,
+      id: 6,
+      url: 'https://gems.com',
+      description: 'ZOE Children’s Homes is an international Christian organization that rescues children who are at high risk of being sold into slavery, have already been victimized as slaves, have been orphaned, or have suffered other heinous forms of abuse.',
+      locations: [
+        {
+					id: 1,
+					country: 'Bolivia',
+					street: 'c. Federico Zuazo # 1913',
+					city: '',
+					State: 'La Paz',
+					location: 'c. Federico Zuazo # 1913, La Paz, Bolivia',
+					latitude: -16.5207007,
+					longitude: -68.1941175,
+				}
+      ],
+    },
+    {
+      name: 'Living Water for Girls',
+      picture: `${baseURL}img/livingwater.png`,
+      id: 7,
+      url: '3',
+      description: 'The mission of Living Waters for Girls is to rescue, rehabilitate and restore commercially sexually exploited girls by providing safe refuge and holistic therapeutic services.',
+      locations: [
+        {
+					id: 1,
+					country: 'Indonesia',
+					street: 'Jl Panjang 7-9 Kedoya Elok Plaza Bl DE/11,Kedoya Selatan',
+					city: 'Kebon Jeruk',
+					State: 'Jakarta',
+					location: 'Jl Panjang 7-9 Kedoya Elok Plaza Bl DE/11,Kedoya Selatan, Kebon Jeruk, Jakarta, Bolivia',
+					latitude: -6.1856285,
+					longitude: 106.7661928,
+				}
+      ],
+    },
+    {
+      name: 'Raphahouse',
+      picture: `${baseURL}img/raphahouse.jpg`,
+      id: 8,
+      url: '#',
+      description: 'Rapha House programs exist to extend unconditional love to girls who have been rescued out of slavery and sexual exploitation.  Every member of the Rapha House staff has dedicated his or herself to seeing each child at Rapha House restored to sustainable freedom.',
+      locations: [
+        {
+					id: 1,
+					country: 'Paraguay',
+					street: 'Av. José A. Flores 3614 c/ Bartolomé de las Casas',
+					city: '',
+					State: 'Asunción',
+					location: 'Av. José A. Flores 3614 c/ Bartolomé de las Casas, Asunción, Paraguay',
+					latitude: -25.3122219,
+					longitude: -57.6073105,
+				}
+      ],
+    },
+    {
+      name: 'Tresures Ministry',
+      picture: `${baseURL}img/treasures-ministry.png`,
+      id: 9,
+      url: 'http://www.iamatreasure.com/',
+      description: 'Treasures is a unique, faith-based outreach and support group for women in the sex industry, including victims of commercialized sexual exploitation and trafficking. As the only organization of its kind based in the adult industry capital of the world (San Fernando Valley in Los Angeles County), our mission is to reach, restore and equip women in order to help them live healthy, flourishing lives.',
+      locations: [
+        {
+					id: 1,
+					country: 'Zimbabwe',
+					street: 'Suite 1309 13th Floor Robinson House Cnr Angwa And And Kwame Nkrumah',
+					city: 'Harare',
+					State: 'Asunción',
+					location: 'Suite 1309 13th Floor Robinson House Cnr Angwa And And Kwame Nkrumah, Harare, Zimbabwe',
+					latitude: -17.8282433,
+					longitude: 31.0455279,
+				}
+      ],
+    },
+    {
+      name: 'Missey',
+      picture: `${baseURL}img/missey.jpg`,
+      id: 10,
+      url: 'http://misssey.org/index.html',
+      description: 'Motivating, Inspiring, Supporting, and Serving Sexually Exploited Youth (MISSSEY) advocates and facilitates the empowerment and inner transformation of sexually exploited youth by holistically addressing their specific needs. MISSSEY collaborates to bring about systemic and community change to prevent the sexual exploitation of children and youth through raising awareness, education and policy development.',
+      locations: [
+        {
+					id: 1,
+					country: 'Kenya',
+					street: '479-20117 Naivasha',
+					city: 'Naivasha',
+					State: 'Naivasha',
+					location: '479-20117, Naivasha, Kenya',
+					latitude: -0.713515,
+					longitude: 36.4235122,
+				}
+      ],
+    },
 	]
 }
 

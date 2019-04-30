@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
-      <div class='column is-3'>
+      <div class='column is-2 nonprofit-details__picture-column'>
         <Avatar 
           :url='nonprofit.picture'
           :alt='nonprofit.name'
@@ -90,6 +90,10 @@ export default {
 
   &__locations-item {
     margin-bottom: .5em;
+  }
+
+  &__picture-column {
+    margin-top: 20px;
   }
 }
 </style>
