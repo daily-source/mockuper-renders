@@ -49,41 +49,36 @@ export default {
 	},
 
 	computed: {
-		...mapState({
-			/**
-			 * Get the nonprofits supported by the user
-			 */
-			nonprofits (state) {
-        let nonprofits = []
-        let isAlreadyAdded = []
+		nonprofits () {
+			const stateNonprofits = this.$store.state.nonprofits.data
 
-				this.user.nonprofits.forEach(userNonprofitPair => {
-          if (isAlreadyAdded.indexOf(userNonprofitPair.nonprofitId) === -1) {
-            isAlreadyAdded.push(userNonprofitPair.nonprofitId)
-            nonprofits.push(state.nonprofits.data.find(np => np.id === userNonprofitPair.nonprofitId))
-          }
-        })
+			let foundNonprofits = []
+			let isAlreadyAdded = []
 
+			this.user.nonprofits.forEach(userNonprofitPair => {
+				if (isAlreadyAdded.indexOf(userNonprofitPair.nonprofitId) === -1) {
+					isAlreadyAdded.push(userNonprofitPair.nonprofitId)
+					foundNonprofits.push(stateNonprofits.find(np => np.id === userNonprofitPair.nonprofitId))
+				}
+			})
+			
+			const nps = foundNonprofits.map(nonprofit => {
+				const userNonprofits = this.user.nonprofits
+				const nonprofitLocations = userNonprofits.filter(userNonprofitPair => userNonprofitPair.nonprofitId === nonprofit.id)
+				const locationIDs = nonprofitLocations.map(npLoc => npLoc.locationId)
 
-        const nps = nonprofits.map(nonprofit => {
-          const nonprofitLocations = this.user.nonprofits.filter(userNonprofitPair => userNonprofitPair.nonprofitId === nonprofit.id)
-          const locationIDs = nonprofitLocations.map(npLoc => npLoc.locationId)
+				const locations = nonprofit.locations.filter(loc => {
+					return locationIDs.indexOf(loc.id) !== -1
+				})
 
-          const locations = nonprofit.locations.filter(loc => {
-            return locationIDs.indexOf(loc.id) !== -1
-          })
+				return {
+					...nonprofit,
+					locations,
+				}
+			})
 
-          console.log(locations)
-
-          nonprofit.locations = locations
-
-          return nonprofit
-        })
-
-                
-        return nps
-			},
-		})
+			return nps
+		},
 	},
 }
 </script>
