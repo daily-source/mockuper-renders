@@ -10,7 +10,7 @@
     </dynamic-banner>
     <section class="section intro">
       <div class="container">
-        <p class='has-text-centered'>Clicking on most of the logos below will lead to both a website and a class or activity on that topic. Any church can offer the class or activity to its members using our materials that are free to download and use. Most classes will offer useful information followed by silent interior exercises to help participants learn how to put the information to use. Often participants will be given the opportunity to open up to God’s presence and will, and engage in prayer with God about what the new learning means for their life.</p>
+        <p class='has-text-centered'>We offer churches free activities and classes to reach casual churchgoers who lack a full spiritual life and non-churchgoers who think that churches have little to offer. We give them useful tools to become better people, connect with God and develop spiritual skills that bring more love and goodness to themselves and the world. Clicking a logo below will lead to a website and a class or activity on the topic that churches can use for free. Classes provide useful information plus silent exercises to help people put the learning into practice. Scroll to the bottom of this page for more information.</p>
       </div>
     </section>
     <section class="logo-grid-wrapper">
