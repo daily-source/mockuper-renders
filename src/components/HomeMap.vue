@@ -56,7 +56,7 @@ export default {
 			setTimeout(() => {
 				this.showCallToAction = true
 				this.getUserLocation() 
-			}, 1000)
+			}, 3000)
 		},
 
 		/**

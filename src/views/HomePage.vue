@@ -6,8 +6,7 @@
       :show-extra-contents='false'
       theme='dark'
      />
-     <home-page-actions 
-     />
+     <home-page-actions />
     <general-info 
       :opened='true'
       class='home-general-info'

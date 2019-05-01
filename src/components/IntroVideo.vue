@@ -47,7 +47,7 @@ export default {
 		autoplay: {
 			type: Boolean,
 			required: false,
-			default: false,
+			default: true,
 		},
 	},
 
@@ -62,6 +62,7 @@ export default {
 			videoTransition: 'video-fade-short', 
 			playerCurrentTime: 0,
 			player: null,
+			playingFlag: false,
     }
   },
 
@@ -110,10 +111,21 @@ export default {
 			}, this.sampleRate)
 		},
 
+		playVideoRecursively () {
+			setTimeout ( () => {
+				if (!this.playingFlag && this.isPlaying) {
+					this.player.playVideo()
+				}
+
+				this.playVideoRecursively()
+			}, 300)
+		},
+
 		/**
 		 * Triggers when the video is playing.
 		 */
 		playing (event) {
+			this.playingFlag = true
 			this.checkPlayerTimeRecursively()
 		},
 
@@ -162,7 +174,7 @@ export default {
 			}
 
 			if (this.autoplay || this.isPlaying) {
-				this.player.playVideo()
+				this.playVideoRecursively()
 			}
 
 		},
@@ -178,13 +190,13 @@ export default {
 			}
 		},
 
-		isPlaying () {
-			if (this.isPlaying) {
-				this.player.playVideo()
-			} else {
-				this.player.stopVideo()
-			}
-		},
+		// isPlaying () {
+		// 	if (this.isPlaying) {
+		// 		this.player.playVideo()
+		// 	} else {
+		// 		this.player.stopVideo()
+		// 	}
+		// },
 
 		playerCurrentTime (value) {
 			if (value >= this.fadeAfter) {

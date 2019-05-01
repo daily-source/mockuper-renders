@@ -1,8 +1,8 @@
 import '@babel/polyfill'
 import Vue from 'vue';
 import Datetime from 'vue-datetime';
-import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
+import * as VueGoogleMaps from 'vue2-google-maps'
 import VTooltip from 'v-tooltip'
 
 import store from './store'
@@ -17,13 +17,21 @@ import SmoothScroll from 'Components/plugins/SmoothScroll';
 Vue.config.productionTip = false;
 
 Vue.use(Datetime)
-Vue.use(VueYoutube)
 Vue.use(VTooltip)
+
 
 // register global utility filters.
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 });
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GMAPS_API_KEY,
+    libraries: 'places'
+  }
+})
+Vue.use(VueYoutube)
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'home') {
@@ -46,14 +54,6 @@ router.beforeEach((to, from, next) => {
 })
 
 Vue.use(SmoothScroll);
-
-Vue.use(VueGoogleMaps, {
-	load: {
-    key: process.env.VUE_APP_GMAPS_API_KEY,
-    libraries: 'places'
-	}
-})
-
 
 new Vue({
   router,
