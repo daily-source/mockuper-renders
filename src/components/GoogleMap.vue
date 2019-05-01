@@ -110,13 +110,15 @@ export default {
 		 * TODO: Make options as a prop and then compute the mapoptions using default.
 		 */
 		mapOptions () {
+      console.log(google.maps.ControlPosition.RIGHT_CENTER)
 			return {
 				mapTypeControl: false,
 				panControl: false,
         streetViewControl: false,
         fullscreenControl: false,
 				zoomControlOptions: {
-					style: google.maps.ZoomControlStyle.SMALL,
+          style: google.maps.ZoomControlStyle.SMALL,
+          position: google.maps.ControlPosition.RIGHT_CENTER
 				}
 			}
     },

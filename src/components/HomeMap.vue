@@ -7,7 +7,7 @@
 				:markers='markers'
 				@mapReady='onMapReady'
 				:zoom='initialZoom'
-				:icon-size='31'
+				:icon-size='27'
 				ref='virtual-railroad-map'
 			/>	
 		</div>
@@ -56,7 +56,7 @@ export default {
 			setTimeout(() => {
 				this.showCallToAction = true
 				this.getUserLocation() 
-			}, 1000)
+			}, 3000)
 		},
 
 		/**

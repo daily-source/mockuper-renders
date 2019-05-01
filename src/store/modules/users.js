@@ -46,13 +46,13 @@ const state = {
 			firstName: 'Akaath',
 			lastName: 'Bhadare',
 			userName: 'akaath.bhadare1',
-			latitude: 48.60076434730268,
-			longitude: 30.990707832724297,
+			latitude: 55.5807482,
+			longitude: 36.8251476,
 			picture: 'https://randomuser.me/api/portraits/men/88.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
 				{
-					nonprofitId: 1,
+					nonprofitId: 4,
 					locationId: 2,
 				},
 				{
@@ -60,7 +60,7 @@ const state = {
 					locationId: 1,
 				},			
 			],
-			location: 'Vinnsita, Ukraine',
+			location: 'Moscow, Russia',
 		},
 		{
 			id: 4,
@@ -69,7 +69,7 @@ const state = {
 			userName: 'jihae.mok98',
 			latitude: 37.6522776,
 			longitude: 127.0871966,
-			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
+			picture: 'https://randomuser.me/api/portraits/men/24.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
 				{
@@ -77,8 +77,8 @@ const state = {
 					locationId: 2,
 				},
 				{
-					nonprofitId: 1,
-					locationId: 3,
+					nonprofitId: 8,
+					locationId: 2,
 				},			
 			],
 			location: 'Seoul, South Korea',
@@ -90,7 +90,7 @@ const state = {
 			userName: 'georgeangelos321',
 			latitude: 36.36362956455485,
 			longitude: 21.65094082270548,
-			picture: 'https://randomuser.me/api/portraits/men/10.jpg',
+			picture: 'https://randomuser.me/api/portraits/men/82.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [
 				{
@@ -98,9 +98,9 @@ const state = {
 					locationId: 1,
 				},
 				{
-					nonprofitId: 3,
-					locationId: 4,
-				},				
+					nonprofitId: 6,
+					locationId: 2,
+				},		
 			],
 			location: '24300 Τριφυλία (Χριστιανούπολη), Χριστιανούπολη, Φιλιατρά Τριφυλία Ελλάδα',
 		},
@@ -153,7 +153,7 @@ const state = {
 			userName: 'elvira.askew',
 			latitude: 39.4514466,
 			longitude: -0.4947195,
-			picture: 'https://randomuser.me/api/portraits/men/12.jpg',
+			picture: 'https://randomuser.me/api/portraits/men/76.jpg',
 			about: 'This is a sample about.',
       location: 'Escuadro 15, Valencia, Alaquàs, Spain',
       nonprofits: [
@@ -168,15 +168,15 @@ const state = {
 			firstName: 'Alana',
 			lastName: 'Monds',
 			userName: 'alana.monds@example.com',
-			latitude: -27.4840208,
-			longitude: 152.9930502,
+			latitude: 14.6115571,
+			longitude: 121.0523945,
 			picture: 'https://randomuser.me/api/portraits/women/12.jpg',
 			about: 'This is a sample about.',
-      location: '35 Martens Place, LOTA, Queensland, Australia',
+      location: '537 Edsa Cubao, Quezon City, Manila, Philippines',
       nonprofits: [
         {
 					nonprofitId: 3,
-					locationId: 4,
+					locationId: 2,
 				},
       ],
     },
@@ -255,7 +255,7 @@ const state = {
 			userName: 'doris.lucero@example.com',
 			latitude: 36.1865589,
 			longitude: -86.9253285,
-			picture: 'https://randomuser.me/api/portraits/men/20.jpg',
+			picture: 'https://randomuser.me/api/portraits/men/29.jpg',
 			about: 'This is a sample about.',
       location: '3440 Frum Street, Nashville, Tennessee, USA',
       nonprofits: [
@@ -263,6 +263,78 @@ const state = {
 					nonprofitId: 6,
 					locationId: 1,
 				},
+      ],
+    },
+    {
+			id: 15,
+			firstName: 'Kathleen',
+			lastName: 'Embree',
+			userName: 'kathleen.embree@example.com',
+			latitude: 43.7917181,
+			longitude: -70.1908688,
+			picture: 'https://randomuser.me/api/portraits/women/22.jpg',
+			about: 'This is a sample about.',
+      location: '2824 Upton Avenue, Yarmouth, Maine, USA',
+      nonprofits: [
+        {
+					nonprofitId: 7,
+					locationId: 1,
+				},
+      ],
+    },
+    {
+			id: 16,
+			firstName: 'Charles',
+			lastName: 'Fernandez',
+			userName: 'charles.fernandez@example.com',
+			latitude: 42.5739097,
+			longitude: -121.8781663,
+			picture: 'https://randomuser.me/api/portraits/men/21.jpg',
+			about: 'This is a sample about.',
+      location: '2685 Skinner Hollow Road, Chiloquin, Oregon, USA',
+      nonprofits: [
+        {
+					nonprofitId: 10,
+					locationId: 1,
+        },
+        {
+					nonprofitId: 1,
+					locationId: 1,
+				},
+      ],
+    },
+    {
+			id: 17,
+			firstName: 'Gabriella',
+			lastName: 'Antonsen',
+			userName: 'gabriella.antonsen@example.com',
+			latitude: 63.4187191,
+			longitude: 10.3687233,
+			picture: 'https://randomuser.me/api/portraits/women/27.jpg',
+			about: 'This is a sample about.',
+      location: 'Trondheim, Norway',
+      nonprofits: [
+        {
+					nonprofitId: 12,
+					locationId: 2,
+        },
+      ],
+    },
+    {
+			id: 18,
+			firstName: 'Neeheeoee',
+			lastName: 'Cheyenne',
+			userName: 'cheyenne@example.com',
+			latitude: -3.9371729,
+			longitude:-75.1610383,
+			picture: 'https://randomuser.me/api/portraits/women/28.jpg',
+			about: 'This is a sample about.',
+      location: 'Avenida Víctor Andrés Belaúnde., 147, San Isidro, Lima, Peru',
+      nonprofits: [
+        {
+					nonprofitId: 12,
+					locationId: 2,
+        },
       ],
 		},
 	],

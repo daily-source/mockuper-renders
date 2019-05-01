@@ -1,8 +1,9 @@
 import '@babel/polyfill'
 import Vue from 'vue';
 import Datetime from 'vue-datetime';
-import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+import * as VueGoogleMaps from 'vue2-google-maps'
 import VTooltip from 'v-tooltip'
 
 import store from './store'
@@ -18,7 +19,9 @@ Vue.config.productionTip = false;
 
 Vue.use(Datetime)
 Vue.use(VueYoutube)
+Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube-media" })
 Vue.use(VTooltip)
+
 
 // register global utility filters.
 Object.keys(filters).forEach((key) => {
@@ -39,6 +42,7 @@ router.beforeEach((to, from, next) => {
    * site on the home page, therefore we should play the video.
    */
   if (!from.name && from.path === '/') {
+    console.log('something')
     store.dispatch('video/playVideo')
   }
 
@@ -46,14 +50,12 @@ router.beforeEach((to, from, next) => {
 })
 
 Vue.use(SmoothScroll);
-
 Vue.use(VueGoogleMaps, {
-	load: {
+  load: {
     key: process.env.VUE_APP_GMAPS_API_KEY,
     libraries: 'places'
-	}
+  }
 })
-
 
 new Vue({
   router,

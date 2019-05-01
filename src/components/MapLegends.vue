@@ -86,7 +86,7 @@ export default {
   }
 
   &__container {
-    max-width: 1400px;
+    max-width: 1420px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -146,6 +146,10 @@ export default {
       display: inline-block;
       margin-left: -.875em;
     }
+  }
+
+  &:first-of-type {
+    padding-right: 1rem;
   }
 }
 </style>

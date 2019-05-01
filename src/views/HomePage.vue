@@ -6,14 +6,13 @@
       :show-extra-contents='false'
       theme='dark'
      />
-     <home-page-actions 
-     />
+     <home-page-actions />
     <general-info 
       :opened='true'
       class='home-general-info'
     />
 		<section class='home-virtual-railroad-map'>
-      <home-map />	
+      <!-- <home-map />	 -->
     </section>
     <map-legends 
       :opened='opened'

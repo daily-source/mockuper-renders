@@ -14,6 +14,10 @@
 					width='100%'
 					@playing='playing'
 					@ready='onReady'
+					:player-vars="{
+						autoplay: 1,
+						muted: 1,
+					}"
 				/>
 			</div>
 			<div class='intro-video__controls'>
@@ -62,6 +66,7 @@ export default {
 			videoTransition: 'video-fade-short', 
 			playerCurrentTime: 0,
 			player: null,
+			playerShouldPlay: false,
     }
   },
 
@@ -100,15 +105,15 @@ export default {
 		/**
 		 * Checks the player's time recursively.
 		 */
-		checkPlayerTimeRecursively () {
-			setTimeout( () => {
-				this.getPlayerCurrentTime().then(() => {
-					if (this.player.getPlayerState() === 1) {
-						this.checkPlayerTimeRecursively()
-					}
-				})
-			}, this.sampleRate)
-		},
+		// checkPlayerTimeRecursively () {
+		// 	setTimeout( () => {
+		// 		this.getPlayerCurrentTime().then(() => {
+		// 			if (this.player.getPlayerState() === 1) {
+		// 				this.checkPlayerTimeRecursively()
+		// 			}
+		// 		})
+		// 	}, this.sampleRate)
+		// },
 
 		/**
 		 * Triggers when the video is playing.
@@ -156,21 +161,18 @@ export default {
 			}
 		},
 
-		player (value) {
-			if (this.autoplay === false) {
-				this.player.stopVideo()
+		async player (value) {
+			if (this.isPlaying) {
+				setTimeout( async () => {
+					console.log(this.player)
+					await this.player.playVideo()
+				}, 1000)
 			}
-
-			if (this.autoplay || this.isPlaying) {
-				this.player.playVideo()
-			}
-
 		},
 
 		isShown (value) {
 			if (value) {
-				this.player.playVideo()
-
+				this.playVideo()
 				this.videoTransition = 'video-fade-short'
 			} else {
 				this.hideVideo()
@@ -178,12 +180,8 @@ export default {
 			}
 		},
 
-		isPlaying () {
-			if (this.isPlaying) {
-				this.player.playVideo()
-			} else {
-				this.player.stopVideo()
-			}
+		isPlaying (val) {
+			console.log('changed')
 		},
 
 		playerCurrentTime (value) {
