@@ -12,7 +12,7 @@
       class='home-general-info'
     />
 		<section class='home-virtual-railroad-map'>
-      <!-- <home-map />	 -->
+      <home-map />	
     </section>
     <map-legends 
       :opened='opened'

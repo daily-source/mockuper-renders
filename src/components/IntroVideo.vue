@@ -14,10 +14,6 @@
 					width='100%'
 					@playing='playing'
 					@ready='onReady'
-					:player-vars="{
-						autoplay: 1,
-						muted: 1,
-					}"
 				/>
 			</div>
 			<div class='intro-video__controls'>
@@ -51,7 +47,7 @@ export default {
 		autoplay: {
 			type: Boolean,
 			required: false,
-			default: false,
+			default: true,
 		},
 	},
 
@@ -66,7 +62,7 @@ export default {
 			videoTransition: 'video-fade-short', 
 			playerCurrentTime: 0,
 			player: null,
-			playerShouldPlay: false,
+			playingFlag: false,
     }
   },
 
@@ -105,20 +101,31 @@ export default {
 		/**
 		 * Checks the player's time recursively.
 		 */
-		// checkPlayerTimeRecursively () {
-		// 	setTimeout( () => {
-		// 		this.getPlayerCurrentTime().then(() => {
-		// 			if (this.player.getPlayerState() === 1) {
-		// 				this.checkPlayerTimeRecursively()
-		// 			}
-		// 		})
-		// 	}, this.sampleRate)
-		// },
+		checkPlayerTimeRecursively () {
+			setTimeout( () => {
+				this.getPlayerCurrentTime().then(() => {
+					if (this.player.getPlayerState() === 1) {
+						this.checkPlayerTimeRecursively()
+					}
+				})
+			}, this.sampleRate)
+		},
+
+		playVideoRecursively () {
+			setTimeout ( () => {
+				if (!this.playingFlag && this.isPlaying) {
+					this.player.playVideo()
+				}
+
+				this.playVideoRecursively()
+			}, 300)
+		},
 
 		/**
 		 * Triggers when the video is playing.
 		 */
 		playing (event) {
+			this.playingFlag = true
 			this.checkPlayerTimeRecursively()
 		},
 
@@ -161,18 +168,21 @@ export default {
 			}
 		},
 
-		async player (value) {
-			if (this.isPlaying) {
-				setTimeout( async () => {
-					console.log(this.player)
-					await this.player.playVideo()
-				}, 1000)
+		player (value) {
+			if (this.autoplay === false) {
+				this.player.stopVideo()
 			}
+
+			if (this.autoplay || this.isPlaying) {
+				this.playVideoRecursively()
+			}
+
 		},
 
 		isShown (value) {
 			if (value) {
-				this.playVideo()
+				this.player.playVideo()
+
 				this.videoTransition = 'video-fade-short'
 			} else {
 				this.hideVideo()
@@ -180,9 +190,13 @@ export default {
 			}
 		},
 
-		isPlaying (val) {
-			console.log('changed')
-		},
+		// isPlaying () {
+		// 	if (this.isPlaying) {
+		// 		this.player.playVideo()
+		// 	} else {
+		// 		this.player.stopVideo()
+		// 	}
+		// },
 
 		playerCurrentTime (value) {
 			if (value >= this.fadeAfter) {
