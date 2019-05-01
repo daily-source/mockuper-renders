@@ -24,20 +24,21 @@
     </section>
     <section class='section more-info'>
       <div class="container">
+        <h2 class='has-text-centered has-text-weight-bold'>More Information</h2>
         <p>
           Most people who are outside of the church are either agnostic or have only a vague theoretical notion that God probably exists, but not a strong belief. They don't think it's really possible to have a connection with God. As a result, they don’t think the church has anything useful to offer their lives. They’ve already tried going to a few services and didn’t get anything out of it.
         </p> 
 
         <p>
-          Putting a person who is agnostic or who has never had an experience of God in a Mass is similar to putting a second-grader in a college physics class. It will usually go over their head and they won't connect with it. Most non-churchgoers have tried it, and it didn’t land for them.
+          The Mass is a great thing if people have a firm belief in God and connection with Christ. Putting a person who is agnostic or who has never had an experience of God in a Mass is similar to putting a second-grader in a college physics class. It will usually go over their head and they won't connect with it. Most non-churchgoers have tried it, and it didn’t land for them.
         </p>
 
         <p>
-          Fortunately, the Catholic church has many other resources that offer practical benefits to people who are in the early stages of spiritual development, and can act as bridges to God and bridges to the church. For example, the Catholic tradition is rich with teachings, tips and practices related to forgiveness. Many non-churchgoers are curious about forgiveness, and have never received advice on how to actually do it. 
+          Fortunately, the Catholic tradition has plenty of additional things that offer practical benefits to people who are in the early stages of spiritual development, and can act as bridges to God and bridges to the church. For example, the Catholic tradition is rich with teachings, tips and practices related to forgiveness. Many non-churchgoers are curious about forgiveness, and have never received advice on how to actually do it. 
         </p>
 
         <p>
-          Our class will explain what forgiveness is and is not and describe why we should forgive including how it helps us and the world. It will walk people through experiential exercises to help them learn how to forgive and how to involve God in the process. We will encourage them to learn it as a skill and develop it as an ongoing spiritual practice.
+          The class on that will explain what forgiveness is and is not and describe why we should forgive including how it helps us and the world. It will walk people through experiential exercises to help them learn how to forgive and how to involve God in the process. We will encourage them to learn it as a skill and develop it as an ongoing spiritual practice.
         </p>
 
         <p>
@@ -144,7 +145,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Bridges to God - v5",
+      title: "Bridges to God - v1",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -190,8 +191,17 @@ export default {
 }
 
 .more-info {
+  h2 {
+    font-size: 2.5rem;
+    color: $primary;
+    padding-bottom: 2rem;
+    margin-bottom: 0;
+  }
+
   p {
-    text-align: center;
+    max-width: 1176px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
