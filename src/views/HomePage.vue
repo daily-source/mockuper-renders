@@ -8,7 +8,7 @@
     <TopMenu></TopMenu>
     <dynamic-banner />
     <div class='instructions'>
-      <h1 class="has-text-centered">Come See Great Street Art in Puerto Rico</h1>
+      <h1 class="has-text-centered">Come Visit Our Beautiful Street Art</h1>
       <div class='container'>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -74,7 +74,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Puerto Rico Public Paintings - v1",
+      title: "Puerto Rico Public Paintings - v2",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
