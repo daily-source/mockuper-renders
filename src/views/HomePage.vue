@@ -6,16 +6,15 @@
       :generic='true'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <dynamic-banner />
     <div class='instructions'>
+      <h1 class="has-text-centered">Come See Great Street Art in Puerto Rico</h1>
       <div class='container'>
         <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
+          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
         <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
+          ALSO: often a short piece of text in put inside of the banner photo.
         </p>
       </div>
     </div>
@@ -42,7 +41,7 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/general/AppHeader.vue"),
+    AppHeader: () => import("Components/PaintingsForPuertoRico/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
@@ -96,7 +95,11 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 3em;
+  padding-top: 2.5em;
+
+  h1 {
+    font-size: 38px;
+  }
 
   p {
     padding-left: 60px;

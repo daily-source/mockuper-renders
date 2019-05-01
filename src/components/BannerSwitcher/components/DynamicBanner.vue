@@ -50,6 +50,10 @@ export default {
     padding-bottom: 1em;
     position: relative;
 
+    @media (min-width: 1600px) {
+      min-height: 600px;
+    }
+
     &:before {
       content: '';
       position: absolute;
