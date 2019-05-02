@@ -23,7 +23,8 @@
     "vue-youtube-embed": "^2.2.1",
     "vue2-google-maps": "^0.10.5",
     "vuex": "^3.0.1",
-    "xthon-core": "github:dailysourceorg/xthon-core#0.0.38"
+    "xthon-core": "github:dailysourceorg/xthon-core#0.0.38",
+    "youtube-player": "^5.5.2"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",

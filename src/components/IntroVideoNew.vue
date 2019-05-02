@@ -5,18 +5,8 @@
 		<div 
 			class='intro-video'
 			v-show='isShown'
-			ref='introVideo'
 		>
-			<div class='video-container'>
-				<youtube
-					:video-id='videoId'
-					ref='youtube'
-					height='100%'
-					width='100%'
-					@playing='playing'
-					@ready='onReady'
-				/>
-			</div>
+			<youtube-video />
 			<div class='intro-video__controls'>
 				<button
 					@click='onSkipClicked' 
@@ -24,13 +14,6 @@
 				>
 					Skip intro &raquo;
 				</button>
-        <button
-          class='intro-video__play'
-          @click='testClick'
-          ref='testClick'
-        >
-          Play
-        </button>
 				<div class='intro-video__checkbox'>
 					<label class="checkbox">
 						<input 
@@ -47,6 +30,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import YoutubeVideo from 'LocalComponents/YoutubeVideo'
 
 export default {
 	name: 'IntroVideo',
@@ -57,7 +41,11 @@ export default {
 			required: false,
 			default: false,
 		},
-	},
+  },
+  
+  components: {
+    YoutubeVideo,
+  },
 
   data () {
     return {
@@ -83,7 +71,13 @@ export default {
 
 			return
 		}
-	},
+  },
+  
+  mounted () {
+    window.YTConfig = {
+      host: 'https://www.youtube.com'
+    }
+  },
 
   methods: {
 		onReady (event) {
@@ -110,12 +104,7 @@ export default {
 		 */
 		getSessionStorageKey () {
 			return sessionStorage.getItem(this.sessionStorageKey)
-    },
-    
-    testClick () {
-      console.log('clicked')
-      this.player.playVideo();
-    },
+		},
 
 		/**
 		 * Checks the player's time recursively.
@@ -184,9 +173,14 @@ export default {
 		},
 
 		player (value) {
-			setTimeout( () => {
-        this.$refs.testClick.click();
-      }, 5000)
+			if (this.autoplay === false) {
+				this.player.stopVideo()
+			}
+
+			if (this.autoplay || this.isPlaying) {
+				this.playVideoAsync()
+			}
+
 		},
 
 		isShown (value) {
@@ -291,19 +285,14 @@ export default {
 
 <style lang='scss'>
 .intro-video {
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+
 	.video-container {
 		width: 100%;
 		height: 100%;
-
-		div {
-			height: 100%;
-			width: 100%;
-		}
-
-		iframe {
-			height: 100%;
-			width: 100%;
-		}
 	}
 }
 </style>
