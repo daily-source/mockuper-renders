@@ -29,7 +29,8 @@ export default {
       height: 450,
       videoId: 'PazcMTddZik',
       playerVars: {
-        'origin':'http:\/\/localhost:8080'
+        mute: 1,
+        autoplay: 1,
       }
     })
 
