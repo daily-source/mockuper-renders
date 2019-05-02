@@ -96,13 +96,16 @@ export default {
 		markers () {
 			let markers = []
 			if (this.userLocation) {
-				console.log(this.userLocation)
-				const userMarker = {
-					position: {
-						lat: this.userLocation.coords.latitude,
-						lng: this.userLocation.coords.longitude,
-					}
-				}
+        console.log(this.userLocation)
+        
+        if (this.userLocation.coords && this.userLocation.coords.latitude &&  this.userLocation.coords.longitude) {
+          const userMarker = {
+            position: {
+              lat: this.userLocation.coords.latitude,
+              lng: this.userLocation.coords.longitude,
+            }
+          }
+        }
 
 				markers.push(userMarker)
 			}

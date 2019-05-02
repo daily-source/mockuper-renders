@@ -297,8 +297,8 @@ export default {
 		 */
 		generatePosition (lat, lng) {
 			return {
-				lat: parseFloat(lat),
-				lng: parseFloat(lng),
+				lat: parseFloat(lat || 0),
+				lng: parseFloat(lng || 0),
 			}
 		},
 

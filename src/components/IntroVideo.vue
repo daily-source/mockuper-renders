@@ -71,8 +71,9 @@ export default {
 	created () {
 		this.dontShowVideo = this.getSessionStorageKey()
 
-		if (this.dontShowVideo && this.player) {
-			this.hideVideo()
+		if (this.dontShowVideo) {
+      this.hideVideo()
+      this.stopVideo()
 
 			return
 		}
@@ -105,11 +106,6 @@ export default {
 			return sessionStorage.getItem(this.sessionStorageKey)
     },
     
-    testClick () {
-      console.log('clicked')
-      this.player.playVideo();
-    },
-
 		/**
 		 * Checks the player's time recursively.
 		 */
@@ -196,11 +192,13 @@ export default {
 		},
 
 		isPlaying () {
-			if (this.isPlaying) {
-				this.player.playVideo()		
-			} else {
-				this.player.stopVideo()
-			}
+      if (this.player) {
+        if (this.isPlaying) {
+          this.player.playVideo()		
+        } else {
+          this.player.stopVideo()
+        }
+      }
 		},
 
 		playerCurrentTime (value) {

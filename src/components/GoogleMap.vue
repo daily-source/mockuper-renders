@@ -118,6 +118,7 @@ export default {
         fullscreenControl: false,
 				zoomControlOptions: {
           style: google.maps.ZoomControlStyle.SMALL,
+          position: google.maps.ControlPosition.RIGHT_CENTER,
 				}
 			}
     },
