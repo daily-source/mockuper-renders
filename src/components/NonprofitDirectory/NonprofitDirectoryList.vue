@@ -309,12 +309,12 @@ export default {
   }
 
   &__country {
-    font-size: 25px;
+    font-size: 28px;
     margin-bottom: 12px;
   }
 
   &__city {
-    font-size: 19px;
+    font-size: 21px;
   }
 }
 
