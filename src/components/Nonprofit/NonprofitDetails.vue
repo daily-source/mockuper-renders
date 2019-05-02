@@ -7,7 +7,7 @@
           :alt='nonprofit.name'
         />
       </div>
-      <div class='column is-4'>
+      <div class='column is-5 nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex'>
           <h4 class='has-text-weight-bold'>{{ nonprofit.name }}</h4>
         </div>
@@ -27,7 +27,7 @@
           </p>
         </template>
         <template v-else>
-          <ul class='nonprofit-details__locations'>
+          <ol class='nonprofit-details__locations'>
             <li 
               class='nonprofit-details__locations-item'
               v-for='(location, index) in nonprofit.locations'
@@ -35,7 +35,7 @@
             >
               {{ location.location }}
             </li>
-          </ul>
+          </ol>
         </template>
       </div>
     </div>
@@ -74,8 +74,6 @@ export default {
 <style lang="scss" scoped>
 .nonprofit-details {
   &__label {
-    flex-basis: 33%;
-    max-width: 33%;
     margin-right: .875em;
   }
 
@@ -88,28 +86,29 @@ export default {
   }
 
   &__picture-column {
-    margin-top: 20px;
+    margin-right: 20px;
+  }
+
+  &__details-column {
+    margin-right: 20px;
   }
 
   a {
     text-decoration: underline;
   }
 
-  ul {
-    margin-left: 0;
-    counter-reset: counter;
+  ol {
+  counter-reset: list;
   }
 
-  &__locations-item {
-    margin-bottom: .5em;
-    counter-increment: counter;
-
-    &:before {
-      content: counter(counter) ". ";
-      color: #0000ee;
-      font-weight: bold;
-    }
+  ol > li {
+    list-style: none;
+    margin-bottom: 0.875em;
   }
 
+  ol > li:before {
+    content: counter(list, lower-alpha) " ) ";
+    counter-increment: list;
+  }
 }
 </style>
