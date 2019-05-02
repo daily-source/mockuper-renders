@@ -78,7 +78,7 @@ export default {
 	created () {
 		this.dontShowVideo = this.getSessionStorageKey()
 
-		if (this.dontShowVideo && this.player) {
+		if (this.dontShowVideo) {
 			this.hideVideo()
 
 			return
@@ -203,11 +203,13 @@ export default {
 		},
 
 		isPlaying () {
-			if (this.isPlaying) {
-				this.player.playVideo()		
-			} else {
-				this.player.stopVideo()
-			}
+      if (this.player) {
+        if (this.isPlaying) {
+          this.player.playVideo()		
+        } else {
+          this.player.stopVideo()
+        }
+      }
 		},
 
 		playerCurrentTime (value) {
