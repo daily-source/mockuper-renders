@@ -6,6 +6,19 @@
       <div class='header__contents'>
         <div class='header__navbar'>
           <the-navbar />
+          <div 
+            class="header__left-inner-contents"
+            v-if='showExtraContents'  
+          >
+            <router-link to='#'>Volunteer</router-link>
+          </div>
+          <div class="user-space__search">
+            <div class="user-space__search-wrapper">
+              <div class="user-space__search-trigger" @click="showSearchBar = !showSearchBar">
+                <Icons iconwidth="24px" iconheight="24px" icon="search" color="#999999" class=""/>
+              </div>
+            </div>
+          </div>
         </div>
         <div class='header__column header__logo-container'>
           <router-link to='/'>
@@ -14,14 +27,33 @@
         </div>
         <div 
           class="header__column header__inner-contents"
+          v-if='showExtraContents'  
         >
-          <!-- <button 
-            class='is-paddingless button header__button'
-            @click='showVideo'
-            v-if='this.showExtraContents'
-          >
-            View Intro
-          </button> -->
+          <div class="header__login-register-links">
+            <router-link to='#'>
+              Login
+            </router-link>
+            |
+            <router-link to='#'>
+              Register
+            </router-link>
+          </div>
+          <div class="max-good" @click="toggleOtherMaxGoodSites()" :class="{ 'active': showingMaxGoodSites }">
+            <span class="small">Powered by </span>
+            <div class="max-good__submenu-wrapper">
+              <img :src="require('Public/max-good-logo-150x18.png')" width="150" height="18" alt="">
+              <ul class="other-max-good-sites">
+                <li>
+                  <span class="other-sites-arrow" :class="{ 'turn': showingMaxGoodSites }">
+                    <Icons iconwidth="24px" iconheight="24px" icon="chevron-down" color="#999999" />
+                  </span>
+                  <ul class="sub" :class="{ 'active': showingMaxGoodSites }">
+                    <li v-for="site in maxGoodSites"><a :href="site.href" target="_blank">{{ site.name }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +62,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import Icons from 'Components/general/Icons'
 
 import TheNavbar from 'LocalComponents/TheNavbar'
 
@@ -38,6 +71,7 @@ export default {
 
   components: {
     TheNavbar,
+    Icons,
   },
 
   props: {
@@ -77,6 +111,32 @@ export default {
     }, 
   },
 
+  data () {
+    return {
+      showingMaxGoodSites: false,
+      maxGoodSites: [
+        { name: "Volunteerathon", href: "#" },
+        { name: "Quitathon", href: "#" },
+        { name: "Loseathon", href: "#" },
+        { name: "Give it up for Good", href: "#" },
+        { name: "Vacation for Good", href: "#" },
+        { name: "Waterathon", href: "#" },
+        { name: "Christmas for Good", href: "#" },
+        { name: "MLK Day for Good", href: "#" },
+        { name: "The Lent Site", href: "#" },
+        { name: "Valentines for Good", href: "#" },
+        { name: "Fools for Good", href: "#" },
+        { name: "Resolutions for Good", href: "#" },
+        { name: "Run for good", href: "#" },
+        { name: "Bike for Good", href: "#" },
+        { name: "Walk for Good", href: "#" },
+        { name: "Birthdays for Good", href: "#" },
+        { name: "Polar Plunge for Good", href: "#" },
+        { name: "Bake for Good", href: "#" }
+      ]
+    }
+  },
+
 	methods: {
 		...mapActions({
 			showVideo: 'video/showVideo',
@@ -113,7 +173,12 @@ export default {
 
 <style lang='scss' scoped>
 .header {
+  height: 136px;
   $self: &;
+
+  > .container {
+    position: relative;
+  }
 
   &--light {
     #{ $self }__navbar {
@@ -143,6 +208,7 @@ export default {
   }
 
   &__inner-contents {
+    align-items: center;
     justify-content: flex-end !important;
   }
 }
@@ -190,20 +256,181 @@ export default {
 }
 
 .header--small {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $secondary;
+  height: 116px;
+  margin-bottom: 2em;
+
   .header {
-    &__logo {
+    &__logo-container {
       max-width: 230px;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     &__navbar {
       position: static;
       flex-grow: 1;
       flex-shrink: 1;
+      display: flex;
+      align-items: center;
     }
 
     &__column {
       flex-grow: 1;
       flex-shrink: 1;
+    }
+
+    &__left-inner-contents {
+      margin-left: 3em;
+    }
+  }
+
+  .user-space__search {
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: .25em;
+  }
+}
+
+.max-good {
+  margin-left: 3em;
+  width: 150px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px 0;
+  width: 100%;
+  max-height: 50px;
+  overflow: hidden;
+  z-index: 30;
+
+  &.active {
+    max-height: auto;
+    overflow: visible;    
+  }
+
+  @include tablet {
+    width: auto;
+  }
+  .small {
+    padding-right: 10px;
+    font-size: 13px;
+    align-self: flex-end;
+  }
+
+  &__submenu-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @include desktop {
+    flex-direction: column;
+    &:hover {
+      max-height: auto;
+      overflow: visible;
+
+      .other-sites-arrow {
+        color: $color-light-gray;
+        svg {
+          transition: transform 0.2s ease-in-out;
+          transform: rotate(180deg);
+        }
+      }
+
+      ul.sub {
+        opacity: 1;
+        z-index: 24;
+
+        &.active {
+          opacity: 1;
+          z-index: 24;
+        }
+      }
+    }
+  }
+}
+
+.other-max-good-sites {
+  padding-left: 10px;
+  margin-top: -5px;
+
+  li {
+    position: relative;
+
+    .other-sites-arrow {
+      font-size: 36px;
+      line-height: 18px;
+      color: $color-medium-gray;
+      svg {
+        transition: transform 0.2s ease-in-out;
+        transform: rotate(0deg);
+      }
+
+      &.turn {
+        svg {
+          @include mobile {
+            transition: transform 0.2s ease-in-out;
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    ul.sub {
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.2s ease-in-out;
+      position: absolute;
+      top: 35px;
+      right: 0;
+      margin-top: -10px;
+      background: rgba($white, 0.9);
+      text-align: right;
+      border: 1px solid $color-light-gray;
+
+      @include widescreen {
+        top: 30px;
+      }
+
+      &.active {
+        opacity: 1;
+        z-index: 24;
+
+        @include widescreen {
+          opacity: 0;
+          z-index: -1;
+        }
+      }
+
+      li {
+        border-bottom: 1px solid $color-light-gray;
+        min-width: 65vw;
+        transition: background-color 0.2s ease-in-out;
+
+        @include desktop {
+          min-width: 40vw;
+        }
+
+        @include widescreen {
+          min-width: 300px;
+        }
+
+        a {
+          display: block;
+          padding: 10px 30px;
+          transform: translateX(20px);
+        }
+
+        &:hover {
+          background: rgba($color-light-gray, 0.8);
+        }
+      }
     }
   }
 }

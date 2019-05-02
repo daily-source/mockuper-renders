@@ -67,8 +67,8 @@ export default {
 .general-info {
   max-width: 820px;
   margin-left: auto;
-  margin-right: auto;
   font-size: 19px;
+  margin-right: auto;
   padding: 14px;
   text-align: center;
 }

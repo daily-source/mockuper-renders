@@ -24,13 +24,6 @@
 				>
 					Skip intro &raquo;
 				</button>
-        <button
-          class='intro-video__play'
-          @click='testClick'
-          ref='testClick'
-        >
-          Play
-        </button>
 				<div class='intro-video__checkbox'>
 					<label class="checkbox">
 						<input 

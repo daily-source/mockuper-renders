@@ -8,7 +8,7 @@
       />
       <button 
         class='button is-primary'
-        @click='setSelectedPlace()'
+        @click.prevent.stop='setSelectedPlace()'
       >
         Use
       </button>
@@ -36,15 +36,36 @@
           :position='selectedLocation'
         />
       </google-map>
+      <div class="actions">
+        <button
+          class='button is-info actions__button'
+          @click.prevent.stop='onSwitchThemeClicked()'
+        >
+          <icon-night-mode 
+            :width='33.42'
+            :height='33.42'
+            v-if='mapStyle === "light"'
+          />
+          <icon-light-mode 
+            :width='33.42'
+            :height='33.42'
+            v-if='mapStyle === "dark"'
+          />
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
 
 import GoogleMap from 'LocalComponents/GoogleMap'
+import IconNightMode from 'LocalComponents/Icons/IconNightMode'
+import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 import Loader from 'Components/Shared/Loader'
 
 export default {
@@ -55,6 +76,8 @@ export default {
   components: {
     GoogleMap,
     Loader,
+    IconNightMode,
+    IconLightMode,
   },
 
   props: {
@@ -135,6 +158,7 @@ export default {
      * @param {Object} place
      */
     setSelectedPlace (place = this.selectedPlaceTemp) {
+      console.log(place)
       this.selectedPlace = place
 
       this.setSelectedLocation(place.geometry.location)
@@ -158,10 +182,22 @@ export default {
 
       this.showMapLoadingOverlay = false
 
+      console.log(location)
+
       this.setSelectedPlace(location)
 
       this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
     },
+
+    onSwitchThemeClicked () {
+      const style = this.mapStyle === 'light' ? 'dark' : 'light'
+      
+      this.changeMapStyle(style)
+    },
+
+    ...mapActions({
+      changeMapStyle: 'map/changeMapStyle',
+    }),
   },
 
   watch: {
@@ -181,6 +217,12 @@ export default {
       this.map.fitBounds(bounds)
     },
   },
+
+  computed: {
+    ...mapState({
+      mapStyle: state => state.map.mapStyle
+    })
+  }
 }
 </script>
 
@@ -237,6 +279,18 @@ export default {
     &:not(:last-child) {
       margin-right: .5em;
     }
+  }
+}
+
+.actions {
+  margin-top: 1em;
+  padding-top: .5em;
+  padding-left: .5em;
+  &__button {
+    background-color: transparent !important;
+    padding: 0;
+    outline: none !important;
+    box-shadow: none !important;
   }
 }
 
