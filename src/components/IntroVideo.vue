@@ -5,6 +5,7 @@
 		<div 
 			class='intro-video'
 			v-show='isShown'
+			ref='introVideo'
 		>
 			<div class='video-container'>
 				<youtube
@@ -47,7 +48,7 @@ export default {
 		autoplay: {
 			type: Boolean,
 			required: false,
-			default: true,
+			default: false,
 		},
 	},
 
@@ -63,6 +64,7 @@ export default {
 			playerCurrentTime: 0,
 			player: null,
 			playingFlag: false,
+			counter: 0,
     }
   },
 
@@ -91,6 +93,11 @@ export default {
 			}
 		},
 
+		onIntroVideoClicked () {
+			console.log('clicked')
+			this.counter += 1;
+		},
+
 		/**
 		 * Gets the session 'dontShowVideo' session key
 		 */
@@ -111,21 +118,10 @@ export default {
 			}, this.sampleRate)
 		},
 
-		playVideoRecursively () {
-			setTimeout ( () => {
-				if (!this.playingFlag && this.isPlaying) {
-					this.player.playVideo()
-				}
-
-				this.playVideoRecursively()
-			}, 300)
-		},
-
 		/**
 		 * Triggers when the video is playing.
 		 */
 		playing (event) {
-			this.playingFlag = true
 			this.checkPlayerTimeRecursively()
 		},
 
@@ -174,7 +170,7 @@ export default {
 			}
 
 			if (this.autoplay || this.isPlaying) {
-				this.playVideoRecursively()
+				this.player.playVideo()
 			}
 
 		},
@@ -190,13 +186,13 @@ export default {
 			}
 		},
 
-		// isPlaying () {
-		// 	if (this.isPlaying) {
-		// 		this.player.playVideo()
-		// 	} else {
-		// 		this.player.stopVideo()
-		// 	}
-		// },
+		isPlaying () {
+			if (this.isPlaying) {
+				this.player.playVideo()
+			} else {
+				this.player.stopVideo()
+			}
+		},
 
 		playerCurrentTime (value) {
 			if (value >= this.fadeAfter) {

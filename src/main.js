@@ -34,6 +34,8 @@ Vue.use(VueGoogleMaps, {
 Vue.use(VueYoutube)
 
 router.beforeEach((to, from, next) => {
+  store.dispatch('navbar/closeNavbar')
+
   if (to.name !== 'home') {
     store.dispatch('video/stopVideo')
     store.dispatch('video/hideVideo')
