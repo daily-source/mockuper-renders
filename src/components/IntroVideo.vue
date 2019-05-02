@@ -24,13 +24,6 @@
 				>
 					Skip intro &raquo;
 				</button>
-        <button
-          class='intro-video__play'
-          @click='testClick'
-          ref='testClick'
-        >
-          Play
-        </button>
 				<div class='intro-video__checkbox'>
 					<label class="checkbox">
 						<input 
@@ -112,11 +105,6 @@ export default {
 			return sessionStorage.getItem(this.sessionStorageKey)
     },
     
-    testClick () {
-      console.log('clicked')
-      this.player.playVideo();
-    },
-
 		/**
 		 * Checks the player's time recursively.
 		 */
@@ -149,12 +137,6 @@ export default {
 			}
     },
     
-    /**
-     * Plays the video asynchronously
-     */
-    async playVideoAsync () {
-      await this.player.playVideo()
-    },
 		
 		...mapActions({
 			hideVideo: 'video/hideVideo',
@@ -184,9 +166,13 @@ export default {
 		},
 
 		player (value) {
-			setTimeout( () => {
-        this.$refs.testClick.click();
-      }, 5000)
+			if (this.autoplay || this.isPlaying) {
+        console.log('something')
+        this.player.seekTo(1)
+        this.player.playVideo()
+      } else {
+        this.player.stopVideo()
+      }
 		},
 
 		isShown (value) {
@@ -202,7 +188,7 @@ export default {
 
 		isPlaying () {
 			if (this.isPlaying) {
-				this.playVideoAsync()				
+				this.player.seekTo(0)		
 			} else {
 				this.player.stopVideo()
 			}
