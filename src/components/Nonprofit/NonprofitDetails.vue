@@ -12,23 +12,22 @@
           <h4 class='has-text-weight-bold'>{{ nonprofit.name }}</h4>
         </div>
         <div class='nonprofit-details__block is-flex'>
-          <p class='nonprofit-details__label has-text-weight-bold'>Description: </p>
-          <p>{{ nonprofit.description || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales, purus at varius interdum, est sem mollis nulla amet.' }}</p>
+          <p class='nonprofit-details__label has-text-weight-bold'>Website Link: </p>
+          <a :href='nonprofit.url' target='_blank'>View Website</a>
         </div>
         <div class='nonprofit-details__block is-flex'>
-          <p class='nonprofit-details__label has-text-weight-bold'>Website Link: </p>
-          <a :href='nonprofit.url' target='_blank'>{{ nonprofit.url }}</a>
+          <p>{{ nonprofit.description || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales, purus at varius interdum, est sem mollis nulla amet.' }}</p>
         </div>
       </div>
       <div class='nonprofit-details__office-locations column'>
-        <p class='has-text-weight-bold'>Office Locations: </p>
+        <p class='has-text-weight-bold'>Locations: </p>
         <template v-if='nonprofit.locations.length === 0'>
           <p>
             There are no registered locations for this nonprofits yet.
           </p>
         </template>
         <template v-else>
-          <ol class='nonprofit-details__locations'>
+          <ul class='nonprofit-details__locations'>
             <li 
               class='nonprofit-details__locations-item'
               v-for='(location, index) in nonprofit.locations'
@@ -36,7 +35,7 @@
             >
               {{ location.location }}
             </li>
-          </ol>
+          </ul>
         </template>
       </div>
     </div>
@@ -88,12 +87,29 @@ export default {
     margin-right: auto;
   }
 
-  &__locations-item {
-    margin-bottom: .5em;
-  }
-
   &__picture-column {
     margin-top: 20px;
   }
+
+  a {
+    text-decoration: underline;
+  }
+
+  ul {
+    margin-left: 0;
+    counter-reset: counter;
+  }
+
+  &__locations-item {
+    margin-bottom: .5em;
+    counter-increment: counter;
+
+    &:before {
+      content: counter(counter) ". ";
+      color: #0000ee;
+      font-weight: bold;
+    }
+  }
+
 }
 </style>

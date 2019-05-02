@@ -6,7 +6,7 @@ const state = {
 			id: 1,
 			description:"Rerum velit officia.",
 			loction:"461 Hermann Greens Apt. 847",
-			name:"Oxfam International",
+			name:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
 			picture: `${baseURL}img/oxfam.png`,
 			state:"Kansas",
 			url:"https://titus.net",
@@ -41,7 +41,7 @@ const state = {
 			],
 		},
 		{	
-			description:"Repellat quia provident eius est aut.",
+			description:"International Justice Mission is a human rights agency that secures justice for victims of slavery, sexual exploitation and other forms of violent oppression.",
 			id: 2,
 			name:"International Justice Mission",
 			picture: `${baseURL}img/ijm.png`,			
@@ -77,7 +77,7 @@ const state = {
 			],
 		},
 		{
-			description:"Voluptatibus blanditiis quae.",
+			description: "Every day, Kiva connects thousands of people to borrowers and partner institutions around the world, working together to create opportunity and alleviate poverty.",
 			id:3,
 			name:"KIVA",
 			picture: `${baseURL}img/kiva.jpg`,						
