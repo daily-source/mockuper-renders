@@ -2,7 +2,7 @@ import '@babel/polyfill'
 import Vue from 'vue';
 import Datetime from 'vue-datetime';
 import VueYoutube from 'vue-youtube'
-import * as VueGoogleMaps from 'vue2-google-maps'
+// import * as VueGoogleMaps from 'vue2-google-maps'
 import VTooltip from 'v-tooltip'
 
 import store from './store'
@@ -25,12 +25,12 @@ Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 });
 
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: process.env.VUE_APP_GMAPS_API_KEY,
-    libraries: 'places'
-  }
-})
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: process.env.VUE_APP_GMAPS_API_KEY,
+//     libraries: 'places'
+//   }
+// })
 Vue.use(VueYoutube)
 
 router.beforeEach((to, from, next) => {

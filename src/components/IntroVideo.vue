@@ -5,6 +5,8 @@
 		<div 
 			class='intro-video'
 			v-show='isShown'
+			ref='introVideo'
+			@click='onIntroVideoClicked'
 		>
 			<div class='video-container'>
 				<youtube
@@ -29,7 +31,7 @@
 							v-model='dontShowVideo'
 							type="checkbox" 
 						>
-						<span>Don't show video again. <br /> (Cookies must be active)</span>
+						<span>Don't show video again. <br /> (Cookies must be active) {{ counter }}</span>
 					</label>
 				</div>
 			</div>
@@ -63,6 +65,7 @@ export default {
 			playerCurrentTime: 0,
 			player: null,
 			playingFlag: false,
+			counter: 0,
     }
   },
 
@@ -89,6 +92,11 @@ export default {
 			if (this.player) {
 				this.player.stopVideo()
 			}
+		},
+
+		onIntroVideoClicked () {
+			console.log('clicked')
+			this.counter += 1;
 		},
 
 		/**
@@ -118,7 +126,7 @@ export default {
 				}
 
 				this.playVideoRecursively()
-			}, 300)
+			}, 1000)
 		},
 
 		/**
@@ -174,7 +182,7 @@ export default {
 			}
 
 			if (this.autoplay || this.isPlaying) {
-				this.playVideoRecursively()
+				this.player.playVideo()
 			}
 
 		},
@@ -190,13 +198,13 @@ export default {
 			}
 		},
 
-		// isPlaying () {
-		// 	if (this.isPlaying) {
-		// 		this.player.playVideo()
-		// 	} else {
-		// 		this.player.stopVideo()
-		// 	}
-		// },
+		isPlaying () {
+			if (this.isPlaying) {
+				this.player.playVideo()
+			} else {
+				this.player.stopVideo()
+			}
+		},
 
 		playerCurrentTime (value) {
 			if (value >= this.fadeAfter) {
