@@ -184,9 +184,11 @@ export default {
 		},
 
 		player (value) {
-			setTimeout( () => {
-        this.$refs.testClick.click();
-      }, 5000)
+			if (this.autoplay || this.isPlaying) {
+        this.player.playVideo()
+      } else {
+        this.player.stopVideo()
+      }
 		},
 
 		isShown (value) {
@@ -202,7 +204,7 @@ export default {
 
 		isPlaying () {
 			if (this.isPlaying) {
-				this.playVideoAsync()				
+				this.player.playVideo()		
 			} else {
 				this.player.stopVideo()
 			}
