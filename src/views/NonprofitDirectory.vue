@@ -45,9 +45,11 @@ export default {
   },
 
   mounted () {
-    setTimeout(() => {
-      this.showInfoModal = true
-    }, 800)
+    if (this.$route.params.showInfoModal) {
+      setTimeout(() => {
+        this.showInfoModal = true
+      }, 800)
+    }
   },
 
   metaInfo() {

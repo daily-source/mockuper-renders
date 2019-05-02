@@ -11,6 +11,13 @@ const actions = {
   toggleNavbar ({ state, commit }) {
     commit('setNavbarState', !state.navbarOpened)
   },
+
+  /**
+   * Closes the navbar
+   */
+  closeNavbar ({state, commit}) {
+    commit('setNavbarState', false)
+  },
 }
 
 const mutations = {

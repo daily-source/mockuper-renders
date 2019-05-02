@@ -6,7 +6,6 @@
 			class='intro-video'
 			v-show='isShown'
 			ref='introVideo'
-			@click='onIntroVideoClicked'
 		>
 			<div class='video-container'>
 				<youtube
@@ -31,7 +30,7 @@
 							v-model='dontShowVideo'
 							type="checkbox" 
 						>
-						<span>Don't show video again. <br /> (Cookies must be active) {{ counter }}</span>
+						<span>Don't show video again. <br /> (Cookies must be active)</span>
 					</label>
 				</div>
 			</div>
@@ -49,7 +48,7 @@ export default {
 		autoplay: {
 			type: Boolean,
 			required: false,
-			default: true,
+			default: false,
 		},
 	},
 
@@ -119,21 +118,10 @@ export default {
 			}, this.sampleRate)
 		},
 
-		playVideoRecursively () {
-			setTimeout ( () => {
-				if (!this.playingFlag && this.isPlaying) {
-					this.player.playVideo()
-				}
-
-				this.playVideoRecursively()
-			}, 1000)
-		},
-
 		/**
 		 * Triggers when the video is playing.
 		 */
 		playing (event) {
-			this.playingFlag = true
 			this.checkPlayerTimeRecursively()
 		},
 

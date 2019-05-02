@@ -16,14 +16,13 @@
     </div>
     <div 
       class='nonprofit-list' 
-      v-for='(np, index) in nonprofitsSorted'
+      v-for='(np, index) in nonprofitsPerCountry'
       :key='index'
     >
       <h4 class='has-text-weight-bold nonprofit-list__country'>{{np.country}}</h4>
-
       <div 
         class='nonprofit-list__countries nonprofit-list__block--indented'
-        v-if='np.nonprofits'
+        v-if='np.nonprofits && np.country !== "USA"'
       >
         <nonprofit-directory-list-item 
           v-for='nonprofit in np.nonprofits'
@@ -33,20 +32,20 @@
       </div>
       <div 
         class='nonprofit-list__cities'
-        v-if='np.cities && np.cities.length > 0'
+        v-if='np.country === "USA" && np.nonprofits.length > 0'
       >
         <div 
           class='nonprofit-list__block--indented nonprofist-list-city'
-          v-for='(city, index) in np.cities'
+          v-for='(nonprofit, index) in np.nonprofits'
           :key='index'
         >
-          <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ city.city }}</h4>
+          <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
           <div 
             class='nonprofit-list__cities-list nonprofit-list__block--indented'
-            v-if='city.nonprofits'
+            v-if='nonprofit.nonprofits'
           >
             <nonprofit-directory-list-item 
-              v-for='nonprofit in city.nonprofits'
+              v-for='nonprofit in nonprofit.nonprofits'
               :key='nonprofit.id'
               :nonprofit='nonprofit'
             />
@@ -115,6 +114,79 @@ export default {
     },
 
     /**
+     * Nonprofits per country
+     */
+    nonprofitsPerCountry () {
+      return this.countries.map(country => {
+        if (country !== 'USA') {
+          const nonprofits = this.nonprofits.filter(nonprofit => {
+            const location = nonprofit.locations.filter(location => {
+              return location.country === country
+            })
+  
+            return location.length
+          })
+  
+          return {
+            country,
+            nonprofits,
+          }
+        } else {
+          let states = []
+
+          const nonprofits = this.nonprofits.filter(nonprofit => {
+            const location = nonprofit.locations.filter(location => {
+              return location.country === 'USA'
+            })
+  
+            return location.length
+          }).map(nonprofit => {
+            const locations = nonprofit.locations.filter(({ country }) => country === 'USA')
+
+            return {
+              ...nonprofit,
+              locations
+            }
+          })
+
+          nonprofits.map(({ locations }) => {
+            locations.map(({country, state}) => {
+              const isCityExisting = states.find(rec => rec === state)
+
+              if (!isCityExisting) {
+                states.push(state)
+              }
+            })
+          })
+
+          const nonprofitsPerState = states.map(state  => {
+            const nps = nonprofits.filter(nonprofit => {
+              const location = nonprofit.locations.filter(location => {
+                if (location.state) {
+                  return location.state === state
+                }
+
+                return false
+              })
+
+              return location.length
+            })
+
+            return {
+              state: state,
+              nonprofits: nps,
+            }
+          })
+
+          return {
+            country,
+            nonprofits: nonprofitsPerState,
+          }
+        }
+      })
+    },
+
+    /**
      * Unique cities per country based on the nonprofit locations
      */
     citiesPerCountry () {
@@ -122,13 +194,24 @@ export default {
         let cities = []
 
         this.nonprofits.map(({ locations }) => {
-          locations.map(({country, city}) => {
-            const isCityExisting = cities.find(rec => rec === city)
+          
+          if (countryRec === 'USA') {
+            locations.map(({country, state}) => {
+              const isCityExisting = cities.find(rec => rec === state)
 
-            if (!isCityExisting && country === countryRec) {
-              cities.push(city)
-            }
-          })
+              if (!isCityExisting && country === countryRec) {
+                cities.push(state)
+              }
+            })
+          } else {
+            locations.map(({country, city}) => {
+              const isCityExisting = cities.find(rec => rec === city)
+
+              if (!isCityExisting && country === countryRec) {
+                cities.push(city)
+              }
+            })
+          }
         })
 
         cities = cities.sort()
@@ -161,8 +244,14 @@ export default {
         const nonprofitsCities = cities.map(city => {
           const nonprofits = this.nonprofits.filter(nonprofit => {
             const location = nonprofit.locations.filter(location => {
-              if (location.city) {
-                return location.city === city
+              if (country === 'USA') {
+                if (location.state) {
+                  return location.state === city
+                }
+              } else {
+                if (location.city) {
+                  return location.city === city
+                }
               }
 
               return false
@@ -212,16 +301,26 @@ export default {
 }
 
 .nonprofit-list {
+  margin-bottom: 2em;
   &__block {
     &--indented {
       margin-left: 1.5em;
     }
   }
+
+  &__country {
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+
+  &__city {
+    font-size: 19px;
+  }
 }
 
 .nonprofit-list-city {
   &__label {
-    font-size: 17px;
+    font-size: 19px;
     color: #555;
     margin-bottom: 10px;
   }
