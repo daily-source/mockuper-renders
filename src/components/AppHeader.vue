@@ -11,11 +11,11 @@
             v-if='showExtraContents'  
           >
             <router-link to='#'>Volunteer</router-link>
-          </div>
-          <div class="user-space__search">
-            <div class="user-space__search-wrapper">
-              <div class="user-space__search-trigger" @click="showSearchBar = !showSearchBar">
-                <Icons iconwidth="24px" iconheight="24px" icon="search" color="#999999" class=""/>
+            <div class="user-space__search">
+              <div class="user-space__search-wrapper">
+                <div class="user-space__search-trigger" @click="showSearchBar = !showSearchBar">
+                  <Icons iconwidth="24px" iconheight="24px" icon="search" color="#999999" class=""/>
+                </div>
               </div>
             </div>
           </div>
@@ -173,7 +173,6 @@ export default {
 
 <style lang='scss' scoped>
 .header {
-  height: 136px;
   $self: &;
 
   > .container {
@@ -243,6 +242,8 @@ export default {
 
 .header {
   &__logo-container {
+    position: absolute;
+    top: .5em;
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -250,7 +251,7 @@ export default {
 
   &__navbar {
     position: absolute;
-    top: 25%;
+    top: 40px;
     left: 0;
   }
 }

@@ -7,7 +7,7 @@
 				:markers='markers'
 				@mapReady='onMapReady'
 				:zoom='initialZoom'
-				:icon-size='29'
+				:icon-size='27'
 				ref='virtual-railroad-map'
 			/>	
 		</div>

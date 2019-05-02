@@ -7,7 +7,7 @@
           :alt='nonprofit.name'
         />
       </div>
-      <div class='column is-5 nonprofit-details__details-column'>
+      <div class='column is-3 nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
           <button class="button is-secondary is-small">Donate</button>
@@ -136,11 +136,6 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
-
-  &__picture-column {
-    margin-right: 20px;
-  }
-
   &__details-column {
     margin-right: 20px;
   }
@@ -159,8 +154,9 @@ export default {
   }
 
   ol > li:before {
-    content: counter(list, lower-alpha) " ) ";
+    content: counter(list) ". ";
     counter-increment: list;
+    color: blue;
   }
 
   .button.is-small {

@@ -4,9 +4,9 @@ const state = {
 	data: [
 		{
 			id: 1,
-			description:"Rerum velit officia.",
+			description:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
 			loction:"461 Hermann Greens Apt. 847",
-			name:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
+			name:"OXFAM International",
 			picture: `${baseURL}img/oxfam.png`,
 			state:"Kansas",
 			url:"https://titus.net",

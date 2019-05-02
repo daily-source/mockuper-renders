@@ -10,12 +10,9 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-
 import Alert from 'LocalComponents/Alert/Alert'
-
 export default {
   name: 'GeneralInfo',
-
   props: {
     /**
      * Specifies if the info is opened.
@@ -26,7 +23,6 @@ export default {
       default: false,
     },
   },
-
   created () {
     if (this.opened) {
       this.openInfo()
@@ -34,11 +30,9 @@ export default {
       this.closeInfo()
     }
   },
-
   components: {
     Alert,
   },
-
   methods: {
     /**
      * Handles closing of the alert.
@@ -46,13 +40,11 @@ export default {
     onCloseButtonClicked () {
       this.closeInfo()
     },
-
     ...mapActions({
       closeInfo: 'info/closeInfo',
       openInfo: 'info/openInfo',
     }),
   },
-
   computed: {
     ...mapState({
       isOpened (state) {
@@ -65,12 +57,13 @@ export default {
 
 <style lang="scss" scoped>
 .general-info {
-  max-width: 820px;
+  max-width: 760px;
   margin-left: auto;
-  font-size: 19px;
   margin-right: auto;
-  padding: 14px;
+  font-size: 1.125em;
+  padding: .625rem .75em;
   text-align: center;
+  margin-top: 140px;
 }
 </style>
 
@@ -82,4 +75,3 @@ export default {
   }
 }
 </style>
-

@@ -33,7 +33,7 @@ export default {
   &__name {
     display: inline-block;
     margin-right: 1em;
-    font-size: 20px;
+    font-size: 18px;
     min-width: 300px;
     max-width: 300px;
   }
