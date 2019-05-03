@@ -1,5 +1,6 @@
 <template>
   <div class="home-page">
+    <splash-loader />
     <intro-video />
     <app-header
       :is-small='false'
@@ -23,6 +24,7 @@
 
 <script>
 import AppHeader from 'LocalComponents/AppHeader'
+import SplashLoader from 'LocalComponents/SplashLoader'
 import HomePageActions from 'LocalComponents/HomePageActions'
 import HomeMap from 'LocalComponents/HomeMap'
 import IntroVideo from 'LocalComponents/IntroVideo'
@@ -39,6 +41,7 @@ export default {
     IntroVideo,
     GeneralInfo,
     MapLegends,
+    SplashLoader,
    },
    
    data () {

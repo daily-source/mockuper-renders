@@ -94,7 +94,7 @@ export default {
 		 * Custom markers to display on the map
 		 */
 		markers () {
-			let markers = []
+      let markers = []
 			if (this.userLocation) {
         console.log(this.userLocation)
         
@@ -105,10 +105,10 @@ export default {
               lng: this.userLocation.coords.longitude,
             }
           }
+          markers.push(userMarker)
         }
-
-				markers.push(userMarker)
 			}
+
 
 			return markers
 		},

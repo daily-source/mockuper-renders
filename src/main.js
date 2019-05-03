@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) => {
    * site on the home page, therefore we should play the video.
    */
   if (!from.name && from.path === '/') {
-    store.dispatch('video/playVideo')
+    // store.dispatch('video/playVideo')
   }
 
   next()

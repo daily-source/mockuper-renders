@@ -6,6 +6,7 @@ import video from './modules/video'
 import info from './modules/info'
 import navbar from './modules/navbar'
 import map from './modules/map'
+import splash from './modules/splash'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
 		video,
 		info,
     navbar,
-    map,
+		map,
+		splash,
 	},
 })
