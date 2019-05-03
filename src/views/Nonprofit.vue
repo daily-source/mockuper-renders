@@ -137,7 +137,7 @@ export default {
       ? `NTEE Classification: ${this.nonprofit.NTEE_CD}`
       : `Activity: ${this.nonprofit.ACTIVITY}`;
     const description = `Tax exempt organization. ${activity}`;
-    const name = this.nonprofit.NAME;
+    const name = `${this.nonprofit.NAME} - Run for Good`;
     const imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src;
     const imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
     return {

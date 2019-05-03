@@ -33,7 +33,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: HomePage,
+      component: Nonprofit,
     },
     {
       path: '/explore',
