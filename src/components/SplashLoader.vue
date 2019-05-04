@@ -6,15 +6,15 @@
       class="splash"
       v-if='isShown'
     >
-      <img 
-        :src="require('@/assets/img/logo-1.png')"
-        class='splash__logo'
-        alt="Virtual Railroad Logo"
-      >
       <button 
         class='splash__button button is-text'
         @click='onEnterClick'
       >
+        <img 
+          :src="require('@/assets/img/logo-1.png')"
+          class='splash__logo'
+          alt="Virtual Railroad Logo"
+        >
         Click here to enter the Virtual Railroad
       </button>
     </div>
