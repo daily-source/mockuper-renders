@@ -121,8 +121,8 @@ export default {
 
   &__map {
     position: relative;
-    height: 500px;
-    max-width: 990px;
+    height: 580px;
+    max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -135,11 +135,6 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
-
-  &__picture-column {
-    margin-right: 20px;
-  }
-
   &__details-column {
     margin-right: 20px;
   }
@@ -158,8 +153,28 @@ export default {
   }
 
   ol > li:before {
-    content: counter(list, lower-alpha) " ) ";
+    content: counter(list) ". ";
     counter-increment: list;
+    color: blue;
+  }
+
+  .button.is-small {
+    font-size: 0.875rem;
+  }
+
+  .actions {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    margin-top: 1em;
+    padding-top: .5em;
+    padding-left: .5em;
+    &__button {
+      background-color: transparent !important;
+      padding: 0;
+      outline: none !important;
+      box-shadow: none !important;
+    }
   }
 
   .button.is-small {

@@ -72,7 +72,8 @@ export default {
 		this.dontShowVideo = this.getSessionStorageKey()
 
 		if (this.dontShowVideo) {
-			this.hideVideo()
+      this.hideVideo()
+      this.stopVideo()
 
 			return
 		}
@@ -105,11 +106,6 @@ export default {
 			return sessionStorage.getItem(this.sessionStorageKey)
     },
     
-    testClick () {
-      console.log('clicked')
-      this.player.playVideo();
-    },
-
 		/**
 		 * Checks the player's time recursively.
 		 */
