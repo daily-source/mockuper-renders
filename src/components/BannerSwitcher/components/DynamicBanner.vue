@@ -73,7 +73,7 @@ export default {
 
     h1 {
       text-align: left;
-      color: #00B0EA;
+      color: $secondary;
     }
 
     h2 {
