@@ -1,5 +1,5 @@
 const state = {
-	isShown: true,
+	isShown: false,
 }
 
 const getters = {}

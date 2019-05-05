@@ -263,12 +263,17 @@ export default {
   height: 116px;
   margin-bottom: 2em;
 
+  > .container {
+    position: static;
+  }
+
   .header {
     &__logo-container {
       max-width: 230px;
       position: absolute;
       margin-left: auto;
       margin-right: auto;
+      top: -14px;
     }
 
     &__navbar {
@@ -286,6 +291,13 @@ export default {
 
     &__left-inner-contents {
       margin-left: 3em;
+      display: flex;
+      align-items: center;
+    }
+
+    &__login-register-links {
+      margin-right: 1em;
+      margin-top: 4px;
     }
   }
 
@@ -301,7 +313,7 @@ export default {
   width: 150px;
   height: auto;
   display: flex;
-  flex-direction: row;
+flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 5px 0;

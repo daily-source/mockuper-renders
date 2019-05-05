@@ -7,7 +7,7 @@
           :alt='nonprofit.name'
         />
       </div>
-      <div class='column is-3 nonprofit-details__details-column'>
+      <div class='column is-5 nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
           <button class="button is-secondary is-small">Donate</button>

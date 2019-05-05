@@ -50,6 +50,7 @@ router.beforeEach((to, from, next) => {
    */
   if (!from.name && from.path === '/') {
     // store.dispatch('video/playVideo')
+    store.dispatch('splash/showSplash')    
   }
 
   next()

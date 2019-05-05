@@ -16,7 +16,7 @@ export default new Vuex.Store({
 		nonprofits,
 		video,
 		info,
-    navbar,
+		navbar,
 		map,
 		splash,
 	},
