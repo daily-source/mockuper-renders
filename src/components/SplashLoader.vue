@@ -80,6 +80,7 @@ export default {
     font-size: 24px;
     display: flex;
     flex-direction: column;
+    height: auto;
   }
 }
 
