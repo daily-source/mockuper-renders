@@ -102,7 +102,7 @@ const state = {
 					locationId: 2,
 				},		
 			],
-			location: '24300 Τριφυλία (Χριστιανούπολη), Χριστιανούπολη, Φιλιατρά Τριφυλία Ελλάδα',
+			location: '24300 Trifilia (Chrisanoupolis), Chrisanoupolis, Filiatra Trifilia Greece',
 		},
 		{
 			id: 6,

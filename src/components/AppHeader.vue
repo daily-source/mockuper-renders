@@ -209,6 +209,7 @@ export default {
   &__inner-contents {
     align-items: center;
     justify-content: flex-end !important;
+    flex-basis: calc(50% - 115px);
   }
 }
 
@@ -270,7 +271,7 @@ export default {
   .header {
     &__logo-container {
       max-width: 230px;
-      position: absolute;
+      position: static;
       margin-left: auto;
       margin-right: auto;
       top: -14px;
@@ -279,9 +280,10 @@ export default {
     &__navbar {
       position: static;
       flex-grow: 1;
-      flex-shrink: 1;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
+      flex-basis: calc(50% - 115px);
     }
 
     &__column {
@@ -290,9 +292,9 @@ export default {
     }
 
     &__left-inner-contents {
-      margin-left: 3em;
       display: flex;
       align-items: center;
+      margin-left: 102px;
     }
 
     &__login-register-links {
@@ -302,18 +304,17 @@ export default {
   }
 
   .user-space__search {
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-left: 102px;
     margin-top: .25em;
   }
 }
 
 .max-good {
-  margin-left: 3em;
+  margin-left: 76px;
   width: 150px;
   height: auto;
   display: flex;
-flex-direction: row;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 5px 0;

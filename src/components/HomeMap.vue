@@ -62,7 +62,7 @@ export default {
 		/**
 		 * Triggers when the virtual railroad map is ready.
 		 */
-		onMapReady (map, google) {
+		onMapReady (map, google, vmap) {
 			this.google = google
 			this.map = map
 
@@ -71,7 +71,15 @@ export default {
 			})
 
 			this.setZoom
-			window.addEventListener('resize', this.setZoom)
+      window.addEventListener('resize', this.setZoom)
+
+      setTimeout(() => {
+				this.featuredUsers.forEach(async user => {
+          vmap.animatePolylines(user)
+        })
+			}, 100)
+      
+      
 		},
 
 		/**
