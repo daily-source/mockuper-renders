@@ -1,6 +1,9 @@
 <template>
   <div class="fundraiser">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'  
+    />
     <transition name="slide-fade">
       <DonateView
         v-if="donateActive"
@@ -21,9 +24,9 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will volunteer {{fundraiser.fundraiserDetails.hours}} hours {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`">{{fundraiser.Nonprofit.NAME}}</router-link> to raise money for the same nonprofit
+        {{fundraiser.User.firstName}} will Run 300 miles to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Volunteerathon</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
@@ -47,7 +50,7 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from 'Components/RideForGood/AppHeader.vue';
+import AppHeader from 'Components/RunForGood/AppHeader.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);

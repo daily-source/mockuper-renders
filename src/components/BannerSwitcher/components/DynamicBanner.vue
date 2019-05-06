@@ -39,14 +39,14 @@ export default {
 
 <style lang="scss" scoped>
   #banner {
-    min-height: 600px;
+    min-height: 400px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    // justify-content: center;
     padding-bottom: 1em;
     position: relative;
 
@@ -58,13 +58,23 @@ export default {
       right: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.45);
+      background-color: rgba(0,0,0,.15);
     }
   }
 
   .dynamic-banner__content {
     color: #fff;
     align-self: center;
+    max-width: 400px;
+    text-align: left;
+    margin-left: 10%;
+    position: relative;
+    z-index: 10;
+
+    h1 {
+      text-align: left;
+      color: #00B0EA;
+    }
 
     h2 {
       font-weight: 700;
