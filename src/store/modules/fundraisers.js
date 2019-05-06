@@ -7,21 +7,42 @@ const state = {
           id: "volunteerathon",
           name: "Volunteerathon",
           imgName: "volunteerathon.png",
+          url: 'https://vthon-vue-ssr.herokuapp.com',
         },
         {
-          id: "quitathon",
-          name: "Quitathon",
-          imgName: "quitathon.png",
+          id: 'charitable-contests',
+          name: 'Charitable Contests',
+          imgName: 'charitable-contests.png',
+          url: 'http://charitablecontests.org/',
         },
+        // {
+        //   id: "quitathon",
+        //   name: "Quitathon",
+        //   imgName: "quitathon.png",
+        // },
         {
           id: 'loseathon',
           name: "Loseathon",
           imgName: "loseathon.png",
+          url: 'http://loseathon.org/',
         },
         {
           id: 'give-it-for-good',
           name: "Give It Up for Good",
           imgName: "giveitupforgood.png",
+          url: 'http://giveitup.net/',
+        },
+        {
+          id: "quitathon",
+          name: "Quitathon",
+          imgName: "quitathon.png",
+          url: 'http://quitathon.surge.sh/',
+        },
+        {
+          id: "records-for-good",
+          name: "Records For Good",
+          imgName: "records-for-good.png",
+          url: 'http://recordsforgood.org/',
         },
         {
           id: 'vacation-for-good',
@@ -32,7 +53,22 @@ const state = {
           id: 'waterathon',
           name: "Waterathon",
           imgName: "waterathon.png",
-        }
+        },
+        {
+          id: 'donateathon',
+          name: "Donateathon",
+          imgName: "donateathon.png",
+        },
+        {
+          id: 'daily-indulgence-drop',
+          name: "Daily Indulgence Drop",
+          imgName: "daily-indulgence-drop.png",
+        },
+        {
+          id: 'bibleathon',
+          name: "Bibleathon",
+          imgName: "bibleathon.png",
+        },
       ]
     },
     "year-round-holiday-options": {
