@@ -31,7 +31,7 @@
             href='#'
             @click.prevent.stop='onViewIntroClicked'
           >
-            View Intro
+            View Intro Video
           </a>
         </li>
         <li class='navbar-contents__nav-item'>
@@ -174,6 +174,11 @@ export default {
   font-size: .875rem;
   text-transform: uppercase;
   letter-spacing: .2em;
+  padding: .25rem .75rem;
+  background-color: rgba(78, 84, 83, 0.7);
+  border-radius: 100px;
+  align-self: flex-start;
+
 
   &__button {
     width: 26px;
@@ -181,8 +186,6 @@ export default {
     position: relative;
     background-color: transparent;
     border: 0;
-    border-radius: 100%;
-    background-color: rgba(78, 84, 83, 0.7);
     margin-right: .5em;
     cursor: pointer;
     padding: 0;

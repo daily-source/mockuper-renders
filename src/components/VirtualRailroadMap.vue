@@ -175,8 +175,8 @@ export default {
 		 */
 		onMapClicked (position) {
 			console.log(position)
-			this.setSelectedUsers = []
-			this.setSelectedNonprofit(null)
+			// this.setSelectedUsers = []
+			// this.setSelectedNonprofit(null)
 		},
 
 		/**

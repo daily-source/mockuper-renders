@@ -12,12 +12,12 @@
 					This is your profile page. To edit it, click the Edit Profile button at the bottom of any page.
 				</alert>
 				<div class='user-profile__details columns'>
-					<div class='column is-9'>
+					<div class='column is-7'>
 						<user-details 
 							:user='user'		
 						/>
 					</div>
-					<div class='column'>
+					<div class='column is-3'>
 						<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
 						<user-supported-nonprofits 
 							:user='user'	

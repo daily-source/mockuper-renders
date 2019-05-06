@@ -166,6 +166,8 @@ export default {
     content: counter(list) ". ";
     counter-increment: list;
     color: blue;
+    width: 20px;
+    display: inline-block;
   }
 
   .button.is-small {

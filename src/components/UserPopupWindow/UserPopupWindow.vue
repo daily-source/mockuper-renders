@@ -42,11 +42,11 @@
 	.user-info-window {
 		min-height: 60px;
 		min-width: 60px;
-		max-width: 120px;
+		max-width: 100px;
 		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: 1rem;
+		padding: .25rem;
 		font-size: .75rem;
 		background-color: #fff;
 		border-radius: 5px;
@@ -59,7 +59,8 @@
 		font-size: .875rem;
 		font-weight: 700;
 		font-family: $font-primary;
-		margin-bottom: .25rem;
+    margin-bottom: .25rem;
+    padding: 0 .25rem;
 	}
 
 	.user-info-window__photo {

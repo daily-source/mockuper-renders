@@ -1,7 +1,6 @@
 <template>
 <div>
 	<div
-		@click.stop='false'
 		class='nonprofit-info-window-wrap' 
 		:ref='refName'
 	>
@@ -9,10 +8,10 @@
 			<h4 class="nonprofit-info-window__title">
 				{{ nonprofit.name }}
 			</h4>
-			<img :src="nonprofit.picture" class='nonprofit-info-window__photo'>
-      <p class='is-marginless'>
-        {{ nonprofit.country }}
+      <p class='nonprofit-info-window__country'>
+        ({{ nonprofit.country }})
       </p>
+			<img :src="nonprofit.picture" class='nonprofit-info-window__photo'>
 			<router-link 
 				class='nonprofit-info-window__link button is-primary is-small'
 				:to='{ name: "nonprofit-details", params: { nonprofitId: nonprofit.id } }'
@@ -55,7 +54,12 @@
 	border-radius: 5px;
 	font-family: inherit;
 	align-items: center;
-	text-align: center;
+  text-align: center;
+  
+  &__country {
+    margin-top: .25em;
+    margin-bottom: 0.25em;
+  }
 }
 
 .nonprofit-info-window__title {

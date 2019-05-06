@@ -102,7 +102,7 @@ const state = {
 					locationId: 2,
 				},		
 			],
-			location: '24300 Trifilia (Chrisanoupolis), Chrisanoupolis, Filiatra Trifilia Greece',
+			location: 'Chrisanoupolis, Filiatra Trifilia Greece',
 		},
 		{
 			id: 6,
@@ -127,7 +127,7 @@ const state = {
 					locationId: 3,
 				},
 			],
-			location: 'Picher, Kansas, Austria',
+			location: 'Kansas, Austria',
     },
     {
 			id: 7,
@@ -138,7 +138,7 @@ const state = {
 			longitude: -97.4569703,
 			picture: 'https://randomuser.me/api/portraits/women/11.jpg',
 			about: 'This is a sample about.',
-      location: '1904  Beeghley Street, Temple, Texas, USA',
+      location: 'Temple, Texas, USA',
       nonprofits: [
         {
 					nonprofitId: 7,
@@ -155,7 +155,7 @@ const state = {
 			longitude: -0.4947195,
 			picture: 'https://randomuser.me/api/portraits/men/76.jpg',
 			about: 'This is a sample about.',
-      location: 'Escuadro 15, Valencia, Alaquàs, Spain',
+      location: 'Alaquàs, Spain',
       nonprofits: [
         {
 					nonprofitId: 9,
@@ -172,7 +172,7 @@ const state = {
 			longitude: 121.0523945,
 			picture: 'https://randomuser.me/api/portraits/women/12.jpg',
 			about: 'This is a sample about.',
-      location: '537 Edsa Cubao, Quezon City, Manila, Philippines',
+      location: 'Manila, Philippines',
       nonprofits: [
         {
 					nonprofitId: 3,
@@ -189,7 +189,7 @@ const state = {
 			longitude: -114.2142368,
 			picture: 'https://randomuser.me/api/portraits/women/16.jpg',
 			about: 'This is a sample about.',
-      location: '414th Ave, Calgary, Alberta, Canada',
+      location: 'Alberta, Canada',
       nonprofits: [
         {
 					nonprofitId: 1,
@@ -206,7 +206,7 @@ const state = {
 			longitude: -2.3740353,
 			picture: 'https://randomuser.me/api/portraits/men/32.jpg',
 			about: 'This is a sample about.',
-      location: '105 rue Cazade, DUNKERQUE, Nord-Pas-de-Calais, France',
+      location: 'Nord-Pas-de-Calais, France',
       nonprofits: [
         {
 					nonprofitId: 2,
@@ -223,7 +223,7 @@ const state = {
 			longitude: -81.3245852,
 			picture: 'https://randomuser.me/api/portraits/men/16.jpg',
 			about: 'This is a sample about.',
-      location: '2306 Rosemont Avenue, Orlando, Florida, USA',
+      location: 'Orlando, Florida, USA',
       nonprofits: [
         {
 					nonprofitId: 3,
@@ -240,7 +240,7 @@ const state = {
 			longitude: 129.0070231,
 			picture: 'https://randomuser.me/api/portraits/men/20.jpg',
 			about: 'This is a sample about.',
-      location: '1154th Street, Yellowknife, Northwest Territories, Australia',
+      location: 'Northwest Territories, Australia',
       nonprofits: [
         {
 					nonprofitId: 8,
@@ -257,7 +257,7 @@ const state = {
 			longitude: -86.9253285,
 			picture: 'https://randomuser.me/api/portraits/men/29.jpg',
 			about: 'This is a sample about.',
-      location: '3440 Frum Street, Nashville, Tennessee, USA',
+      location: 'Nashville, Tennessee, USA',
       nonprofits: [
         {
 					nonprofitId: 6,
@@ -274,7 +274,7 @@ const state = {
 			longitude: -70.1908688,
 			picture: 'https://randomuser.me/api/portraits/women/22.jpg',
 			about: 'This is a sample about.',
-      location: '2824 Upton Avenue, Yarmouth, Maine, USA',
+      location: 'Yarmouth, Maine, USA',
       nonprofits: [
         {
 					nonprofitId: 7,
@@ -291,7 +291,7 @@ const state = {
 			longitude: -121.8781663,
 			picture: 'https://randomuser.me/api/portraits/men/21.jpg',
 			about: 'This is a sample about.',
-      location: '2685 Skinner Hollow Road, Chiloquin, Oregon, USA',
+      location: 'Chiloquin, Oregon, USA',
       nonprofits: [
         {
 					nonprofitId: 10,
@@ -329,7 +329,7 @@ const state = {
 			longitude:-75.1610383,
 			picture: 'https://randomuser.me/api/portraits/women/28.jpg',
 			about: 'This is a sample about.',
-      location: 'Avenida Víctor Andrés Belaúnde., 147, San Isidro, Lima, Peru',
+      location: 'San Isidro, Lima, Peru',
       nonprofits: [
         {
 					nonprofitId: 12,

@@ -8,7 +8,7 @@
 			>
 			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
 		</div>
-		<div class='column'>
+		<div class='column user-details__details-column'>
 				<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>{{ user.firstName }} {{user.lastName }} </h4>
 				<div class='user-details__bio-wrapper'>
 					<div class='user-bio is-flex'>
@@ -54,6 +54,8 @@ export default {
 
 <style lang='scss' scoped>
 .user-details {
+  justify-content: flex-start;
+  
   &__profile-img-container {
     max-width: 195px;
   }
@@ -71,7 +73,11 @@ export default {
 			padding-bottom: .5em;
 			border-bottom: 1px solid #ddd;
 		}
-	}
+  }
+  
+  &__details-column {
+    max-width: 720px;
+  }
 }
 
 .user-bio {

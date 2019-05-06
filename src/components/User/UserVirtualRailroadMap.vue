@@ -1,5 +1,22 @@
 <template>
 	<div class='user-virtual-railroad-map'>
+    <div class="actions">
+      <button
+        class='button is-info actions__button'
+        @click.prevent.stop='onSwitchThemeClicked()'
+      >
+        <icon-night-mode 
+          :width='33.42'
+          :height='33.42'
+          v-if='mapStyle === "light"'
+        />
+        <icon-light-mode 
+          :width='33.42'
+          :height='33.42'
+          v-if='mapStyle === "dark"'
+        />
+      </button>
+    </div>
 		<virtual-railroad-map
 			ref='map'
 			:users='[user]'
@@ -13,9 +30,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
+import IconNightMode from 'LocalComponents/Icons/IconNightMode'
+import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 
 export default {
 	name: 'UserVirtualRailroadMap',
@@ -28,7 +47,9 @@ export default {
 	},
 
 	components: {
-		VirtualRailroadMap,
+    VirtualRailroadMap,
+    IconNightMode,
+    IconLightMode,
 	},
 
 	methods: {
@@ -45,7 +66,17 @@ export default {
 			setTimeout(() => {
 				vmap.animatePolylines(this.user)
 			}, 100)
-		},
+    },
+    
+    onSwitchThemeClicked () {
+      const style = this.mapStyle === 'light' ? 'dark' : 'light'
+      
+      this.changeMapStyle(style)
+    },
+
+    ...mapActions({
+      changeMapStyle: 'map/changeMapStyle',
+    }),
 	},
 
 	computed: {
@@ -78,17 +109,38 @@ export default {
 			})
 
 			return nps
-		},
-	},
+    },
+    
+    ...mapState({
+      mapStyle: state => state.map.mapStyle
+    })
+  },
+  
 }
 </script>
 
 <style lang="scss" scoped>
 .user-virtual-railroad-map {
   position: relative;
-  max-width: 960px;
+  height: 580px;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
-  height: 500px;
+
+  .actions {
+    position: absolute;
+    z-index: 10;
+    top: 10%;
+    right: 2%;
+    margin-top: 1em;
+    padding-top: .5em;
+    padding-left: .5em;
+    &__button {
+      background-color: transparent !important;
+      padding: 0;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
 }
 </style>
