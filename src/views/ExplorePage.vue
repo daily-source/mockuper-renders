@@ -1,10 +1,12 @@
 <template>
   <div class="explore__wrapper" :class="`version${version}`">
     <div  v-if="!version || version === 1">
-      <AppHeader layout="home"></AppHeader>
+      <app-header 
+        volunteer-text='Do one now'
+      />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of Volunteerathons done to raise money</h1>
+          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -12,19 +14,23 @@
       <section class="find-nonprofits__section-wrapper">
         <div class="container">
           <h1 class="section-title title">Find a nonprofit</h1>
-          <p class="section-intro">Search our directory of over 800,000 IRS nonprofits that you can make tax-deductible donations to or raise money for. The search will take you to their profiles on our site where you can donate to them:</p>
+          <p class="section-intro">Search our directory of 800,000 nonprofits that are approved by the IRS. Each nonprofit has a profile page where you can donate or raise money for it:</p>
           <NonprofitAjaxSearch
             v-if="canRender"
             v-on:selected="goToNonprofit($event)"
-            placeholder="Enter a nonprofit name"
+            placeholder="Type a keyword or nonprofit name"
+            dropdown-placeholder='Click on a nonprofit to go to its profile page..'
             :standalone="true"
           ></NonprofitAjaxSearch>
         </div>
       </section>
 
-      <NonprofitForm submit-button-label="Submit">
-        <div slot="heading"><h1 class="section-title title title-blue">Start Your Own Volunteerathon</h1></div>
-      </NonprofitForm>
+      <SampleForm 
+        submit-button-label="Submit"
+        nonprofit-search-placeholder='Enter text to find nonprofits'
+      >
+        <div slot="heading"><h1 class="section-title title title-blue">Start Your Own Fundraiser</h1></div>
+      </SampleForm>
 
       <section class="other-sites__section-wrapper">
         <div class="container">
@@ -69,7 +75,7 @@
         </div>
       </WaysSupport>
 
-      <AppFooter></AppFooter>
+      <SharedFooter></SharedFooter>
     </div>
     <div  v-if="version === 2">
       <AppHeader layout="page"></AppHeader>
@@ -91,11 +97,15 @@
         </div>
       </section>
 
-      <NonprofitForm submit-button-label="Submit" class="start-your-own__section-wrapper">
+      <sample-form 
+        submit-button-label="Submit" 
+        :show-also-section='true' 
+        class="start-your-own__section-wrapper"
+      >
         <div slot="heading"><h1>Start Your Own Volunteerathon</h1></div>
-      </NonprofitForm>
+      </sample-form>
 
-      <section class="other-sites__section-wrapper">
+      <section>
         <div class="container">
           <h1 class="section-title title">Explore our other websites</h1>
           <p>We have many websites to help nonprofits and their supporters raise awareness and raise money for their causes. Click the images below to visit them.</p>
@@ -138,7 +148,7 @@
         </div>
       </WaysSupport>
 
-      <AppFooter></AppFooter>
+      <SharedFooter></SharedFooter>
     </div>
   </div>
 </template>
@@ -156,13 +166,13 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppFooter: () => import('Components/general/AppFooter.vue'),
+    SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     AppHeader: () => import('Components/general/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('Components/general/NonprofitAjaxSearch.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/Volunteerathon/NonprofitForm.vue'),
+    SampleForm: () => import('LocalComponents/SampleForm.vue'),
     WaysSupport: () => import('Components/explore/WaysSupport.vue'),
   },
   data() {
@@ -171,12 +181,12 @@ export default {
       canRender: false,
       showSocialMedia: false,
       otherSites: [
-        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: '/static/assets/images/other-sites/quitathon.png' },
-        { name: 'Loseathon', url: 'https://loseathon.org', imgsrc: '/static/assets/images/other-sites/loseathon.png' },
-        { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: '/static/assets/images/other-sites/bike-for-good.png' },
-        { name: 'Polar plunge for Good', url: 'https://polar-plunge-for-good.org', imgsrc: '/static/assets/images/other-sites/polar-plunge-for-good.png' },
-        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: '/static/assets/images/other-sites/give-it-up-for-good.png' },
-        { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: '/static/assets/images/other-sites/run-for-good.png' },
+        { name: 'Give it up for Good', url: 'https://give-it-up.org', imgsrc: require('Public/img/other-sites/give-it-up-for-good.png') },
+        { name: 'Volunteerathon', url: 'https://volunteerathon.org', imgsrc: require('Public/img/other-sites/volunteerathon.png') },
+        { name: 'Bike for Good', url: 'https://bike-for-good.org', imgsrc: require('Public/img/other-sites/bike-for-good.png') },
+        { name: 'Options for Good', url: 'https://optionsforgood.org', imgsrc: require('Public/img/other-sites/optionsforgood.png') },
+        { name: 'Quitathon', url: 'https://quitathon.org', imgsrc: require('Public/img/other-sites/quitathon.png') },
+        { name: 'Run for Good', url: 'https://run-for-good.org', imgsrc: require('Public/img/other-sites/run-for-good.png') },
       ],
     };
   },
@@ -250,6 +260,10 @@ section {
   &:last-child {
     margin-bottom: 0;
   }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
 }
 
 .find-nonprofits__section-wrapper {
@@ -259,13 +273,14 @@ section {
     max-width: 850px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 45px;
   }
 }
 
 .version2 {
   .section-title {
     font-weight: 700;
-    font-size: 28px;
+    font-size: 30px;
     color: $color-text;
 
     @include tablet {
@@ -281,6 +296,13 @@ section {
     background: $color-fundraiser-bg;
     padding-top: 50px;
     padding-bottom: 50px;
+
+    p {
+      @include desktop {
+        margin-left: 15%;
+        margin-right: 15%;
+      }
+    }
   }
 }
 
@@ -293,14 +315,22 @@ section {
     padding-top: 40px;
   }
   .find-nonprofits__section-wrapper {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 80px;
+    padding-bottom: 50px;
     background: $color-blueish;
   }
   .other-sites__section-wrapper {
     background: $color-brownish;
     padding-top: 50px;
     padding-bottom: 50px;
+
+    p {
+      @include desktop {
+        max-width: 1010px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 }
 
@@ -320,6 +350,9 @@ section {
       transform: scale(0.7);
     }
     &.other-sites-3 {
+      transform: scale(0.65);
+    }
+    &.other-sites-4 {
       transform: scale(0.65);
     }
     &.other-sites-5 {
@@ -363,17 +396,24 @@ section {
   height: 0;
   padding-bottom: 50%;
   display: block;
+  &.other-sites-0 {
+    transform: scale(.9) translateY(15px) translateX(-12px);
+  }
   &.other-sites-1 {
-    transform: scale(0.75);
+    // transform: scale(0.75);
+    transform: scale(1.12) translateY(15px) translateX(20px);
   }
   &.other-sites-2 {
     transform: scale(0.7);
   }
   &.other-sites-3 {
-    transform: scale(0.7);
+    transform: scale(0.83);
+  }
+  &.other-sites-4 {
+    transform: scale(1.12) translateX(15px);
   }
   &.other-sites-5 {
-    transform: scale(0.75);
+    transform: scale(0.65);
   }
 }
 .align-center {
@@ -405,3 +445,19 @@ section {
   transform: translateX(400px)
 }
 </style>
+
+<style lang='scss'>
+.find-nonprofits {
+  &__section-wrapper {
+    .nonprofit-search-field-wrapper.standalone {
+      max-width: 750px;
+      font-size: 20px;
+
+      .dropdown-toggle {
+        height: 50px;
+      }
+    }
+  }
+}
+</style>
+

@@ -8,8 +8,8 @@
     </button>
     <div id="banner-overlay" :class="['fade', {'d-none': overlayHideTrigger, 'show': overlayShowTrigger }]">
       <div class="container">
-        <div class="columns mb-3">
-          <div class="column is-one-fourth mb-3" v-for="(img,index) in bgImages" :key="index">
+        <div class="columns mb-3 is-multiline">
+          <div class="column is-one-third mb-3" v-for="(img,index) in bgImages" :key="index">
             <img
               class="img-fluid" 
               :src="require(`@/assets/img/images/${img}`)" 

@@ -70,7 +70,7 @@
                       v-if="updates.length"
                     ></FundraiserUpdates>
                     <p v-else>There are no updates posted yet!</p>
-                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Load more updates</button>
+                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Show more updates</button>
                   </div>
                 </div>
                 <p v-if="canEdit">

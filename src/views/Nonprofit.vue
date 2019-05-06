@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'
+    />
 
     <transition name="slide-fade">
       <DonateView
@@ -19,13 +22,28 @@
     ></NonprofitHero>
 
 
-    <div class="container">
-      <p>Normal charity runs are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Run For Good can be done any day of the year anywhere in the world. You also have the flexibility to do your own run or organize a group run. You can also join in a public event that's not charity oriented, yet run individually or as a group to raise money for a nonprofit. With a Run for Good, you can run and raise money your way.</p>
+    <div class='nonprofit-info'>
+      <div class='container'>
+        <div class="nonprofit-info__container">
+          <p>
+            In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
+          </p>
+          <ul>
+            <li>Sometimes the bulleted items are used to give a list of benefits of the fundraising activity or approach
+            </li>
+            <li>But they can be used for other lists</li>
+            <li>They are not required, so it’s fine to delete them</li>
+            <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
+            </li>
+            <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true">
+    <nonprofit-form submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </NonprofitForm>
+    </nonprofit-form>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -43,7 +61,7 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
       <div slot="heading"><h2>Who's doing a Walk For Good to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
@@ -123,7 +141,7 @@ export default {
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RunForGood/NonprofitForm.vue'),
+    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
   },
@@ -304,4 +322,40 @@ export default {
   }
 }
 
+.nonprofit-info {
+  margin-top: 20px;
+  
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include desktop {
+      max-width: 86%;
+    }
+
+    p {
+      font-size: 1rem;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+
+    ul {
+      margin-left: 2em;
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    li {
+      margin-bottom: .5em;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
 </style>

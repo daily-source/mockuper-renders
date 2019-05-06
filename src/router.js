@@ -15,9 +15,10 @@ const HomePage = () => import('@/views/HomePage.vue');
 const ExplorePage = () => import('@/views/ExplorePage.vue');
 const VolunteerPage = () => import('@/views/VolunteerPage.vue');
 const Fundraiser = () => import('@/views/Fundraiser.vue');
-const Default404 = () => import('@/views/Default404.vue');
 const MyAccount = () => import('@/views/MyAccount.vue');
+const Default404 = () => import('@/views/Default404.vue');
 const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
+const NonprofitGeneric = () => import('@/views/NonprofitGeneric.vue');
 
 export default new Router({
   mode: 'history',
@@ -60,6 +61,21 @@ export default new Router({
       path: '/nonprofit/:ein/donate',
       name: 'nonprofit/donate',
       component: Nonprofit,
+    },
+    {
+      path: '/nonprofit/generic',
+      name: 'nonprofit-generic',
+      component: NonprofitGeneric,
+    },
+    {
+      path: '/nonprofit/1',
+      name: 'nonprofit-main',
+      redirect: '/nonprofit',
+    },
+    {
+      path: '/fundraiser/1',
+      name: 'fundraiser-main',
+      redirect: '/fundraiser',
     },
     {
       path: '/fundraiser',
