@@ -136,7 +136,7 @@ export default {
 			required: false,
 			default: 16,
 			validator: (value) => {
-				const sizes = [16, 27, 29, 31, 32,  64, 128, 256]
+				const sizes = [16, 26, 29, 31, 32,  64, 128, 256]
 
 				return sizes.indexOf(value) !== -1
 			}

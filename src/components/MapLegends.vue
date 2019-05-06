@@ -11,7 +11,7 @@
               =
             </p>
             <p class="legends__text">
-              <span class="has-text-weight-bold">people who help to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water. So we use light bulb icons for people who help to free slaves.
+              <span class="has-text-weight-bold">people who help to free slaves.</span> &nbsp;Supporters of the Underground Railroad put lights on their barns at night to let runaway slaves know they were safe havens to sleep or find food and water. So we represent people who help to free slaves with light bulbs.
             </p>
           </div>
         </div>

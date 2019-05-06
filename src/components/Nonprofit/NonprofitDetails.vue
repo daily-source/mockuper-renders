@@ -10,11 +10,12 @@
       <div class='column is-5 nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
-          <button class="button is-secondary is-small">Donate</button>
         </div>
         <div class='nonprofit-details__block is-flex'>
-          <p class='nonprofit-details__label has-text-weight-bold'>Website Link: </p>
-          <a :href='nonprofit.url' target='_blank'>View Website</a>
+          <p class='is-flex nonprofit-details__website-block'>
+            <a :href='nonprofit.url' target='_blank'>View Website</a>
+            <button class="button is-secondary is-small">Donate</button>
+          </p>
         </div>
         <div class='nonprofit-details__block is-flex'>
           <p>{{ nonprofit.description || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales, purus at varius interdum, est sem mollis nulla amet.' }}</p>
@@ -138,6 +139,14 @@ export default {
   }
   &__details-column {
     margin-right: 20px;
+  }
+
+  &__website-block {
+    align-items: center;
+
+    a {
+      margin-right: .875em;
+    }
   }
 
   a {
