@@ -5,11 +5,10 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <dynamic-banner />
     <div class='instructions'>
       <div class='container'>
+        <h1 class='has-text-centered'>Put Something Purposeful Behind Your Commitment.</h1>
         <p>
           <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
@@ -74,7 +73,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Commit for Good - Home",
+      title: "Commit for Good - v1",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -96,6 +95,11 @@ export default {
 <style scoped lang="scss">
 .instructions {
   padding-top: 3em;
+
+  h1 {
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+  }
 
   p {
     padding-left: 60px;
