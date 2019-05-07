@@ -5,16 +5,15 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <dynamic-banner />
     <div class='instructions'>
       <div class='container'>
+        <h1>Hold A Fun Contest To Raise Money For Charity</h1>
         <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
+          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
         <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
+          ALSO: often a short piece of text in put inside of the banner photo.
         </p>
       </div>
     </div>
@@ -74,7 +73,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Charitable Contests - Home",
+      title: "Charitable Contests - v1",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -96,6 +95,12 @@ export default {
 <style scoped lang="scss">
 .instructions {
   padding-top: 3em;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+  }
 
   p {
     padding-left: 60px;
