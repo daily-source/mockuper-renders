@@ -36,7 +36,7 @@ const state = {
           id: "quitathon",
           name: "Quitathon",
           imgName: "quitathon.png",
-          url: 'http://quitathon.surge.sh/',
+          url: 'http://quitathon1.surge.sh/',
         },
         {
           id: "dollars-for-dares",
