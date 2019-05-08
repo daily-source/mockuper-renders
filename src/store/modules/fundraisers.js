@@ -39,20 +39,31 @@ const state = {
           url: 'http://quitathon.surge.sh/',
         },
         {
-          id: "records-for-good",
-          name: "Records For Good",
-          imgName: "records-for-good.png",
-          url: 'http://recordsforgood.org/',
+          id: "dollars-for-dares",
+          name: "Dollars for Dares",
+          imgName: "dollars-for-dares.png",
+          url: 'http://dollarsfordares.org//',
         },
+        {
+          id: "altruistic-anniversaries",
+          name: "Altruistic Anniversaries",
+          imgName: "altruistic-anniversaries.png",
+        },
+        {
+          id: "thankathon",
+          name: "Thankathon",
+          imgName: "thankathon.png",
+        },
+        // {
+        //   id: "records-for-good",
+        //   name: "Records For Good",
+        //   imgName: "records-for-good.png",
+        //   url: 'http://recordsforgood.org/',
+        // },
         {
           id: 'vacation-for-good',
           name: "Vacation for Good",
           imgName: "vacationforgood.png",
-        },
-        {
-          id: 'waterathon',
-          name: "Waterathon",
-          imgName: "waterathon.png",
         },
         {
           id: 'donateathon',
@@ -68,6 +79,17 @@ const state = {
           id: 'bibleathon',
           name: "Bibleathon",
           imgName: "bibleathon.png",
+        },
+        {
+          id: 'waterathon',
+          name: "Waterathon",
+          imgName: "waterathon.png",
+        },
+        {
+          id: 'commit-for-good',
+          name: "Commit for Good",
+          imgName: "commit-for-good.png",
+          url: 'http://commitforgood.net/',
         },
       ]
     },
@@ -193,27 +215,58 @@ const state = {
           id: 'benevolent-birthdays',
           name: "Benevolent Birthdays",
           imgName: "benevolent-birthdays.png",
+          url: 'http://benevolentbirthdays.org/',
         },
         {
-          id: 'polar-plunge',
-          name: "Polar Plunge",
-          imgName: "polar-plunge.png",
+          id: "grow-one-for-good",
+          name: 'Grow One For Good',
+          imgName: "grow-one-for-good.png",
+          url: 'http://growoneforgood.org',
+        },
+        {
+          id: "charitable-challenges",
+          name: 'Charitable Challenges',
+          imgName: "charitable-challenges.png",
+          url: 'http://charitablechallenges.org/',
+        },
+        {
+          id: "stairathon",
+          name: 'Stirathon',
+          imgName: "stairathon.png",
+          url: 'http://charitablechallenges.org/',
+        },
+        {
+          id: 'bowling-for-bucks',
+          name: "Bowling for Bucks",
+          imgName: "bowling-for-bucks.png",
         },
         {
           id: 'bake-for-good',
           name: "Bake for Good",
           imgName: "bake-for-good.png",
+          url: 'http://bakeforgood.org/',
+        },
+        {
+          id: 'polar-plunge',
+          name: "Polar Plunge",
+          imgName: "polar-plunge.png",
+          url: 'http://polarplungeforgood.org/',
+        },
+        {
+          id: 'jailathon',
+          name: "Jailathon",
+          imgName: "jailathon.png",
+        },
+        {
+          id: 'raffle-5050',
+          name: "50/50 Raffle",
+          imgName: "5050raffle.png",
         },
         {
           id: 'best-seat-in-the-house',
           name: "best-seat-in-the-house",
           imgName: "best-seat-in-the-house.png",
         },
-        {
-          id: 'bowling-for-bucks',
-          name: "Bowling for Bucks",
-          imgName: "bowling-for-bucks.png",
-        }
       ]
     },
   }

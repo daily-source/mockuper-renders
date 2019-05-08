@@ -64,34 +64,34 @@
         <div class="columns is-multiline  innovative-sites__columns">
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-the-earth'>
-              <router-link to='for-the-earth'>
+              <a href='http://fortheearth.org/' target='_blank'>
                 <img src="@/assets/img/site-logos/for-the-earth.png" alt="For the Earth">
-              </router-link>
-              <h3 class='is-marginless'>Fight climate change and help the earth. <router-link to='for-the-earth' class=' innovative-site__view-link has-text-secondary'> View </router-link></h3>
+              </a>
+              <h3 class='is-marginless'>Fight climate change and help the earth. <a href='http://fortheearth.org/' target='_blank' class=' innovative-site__view-link has-text-secondary'> View </a></h3>
             </div>
           </div>
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-the-slaves'>
-              <router-link to='for-the-slaves'>
+              <a href='http://fortheslaves.org/' target='_blank'>              
                 <img src="@/assets/img/site-logos/for-the-slaves.png" alt="For the Slaves">
-              </router-link>
-              <h3 class='is-marginles'>Free some of the world’s 25 million slaves. <router-link to='for-the-slaves' class=' innovative-site__view-link has-text-secondary'> View </router-link></h3>
+              </a>
+              <h3 class='is-marginles'>Free some of the world’s 25 million slaves. <a href='http://fortheslaves.org/' target='_blank' class=' innovative-site__view-link has-text-secondary'> View </a></h3>
               
             </div>
           </div>
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-learning'>
-              <router-link :to="{ name: 'for-learning' }">
+              <a href='http://forlearning.org/' target='_blank'>                            
                 <img src="@/assets/img/site-logos/for-learning.png" alt="For Learning">
-              </router-link>
-              <h3 class='is-marginles'>Resources to help you and the world. <router-link to='for-learning' class=' innovative-site__view-link has-text-secondary'> View </router-link></h3>
+              </a>
+              <h3 class='is-marginles'>Resources to help you and the world. <a href='http://forlearning.org/' target='_blank' class='innovative-site__view-link has-text-secondary'> View </a></h3>
             </div>
           </div>
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-the-poor'>
-              <router-link to='for-the-poor'>
+              <a href='http://forthepoor.org/' target='_blank'>                                          
                 <img src="@/assets/img/site-logos/for-the-poor.png" alt="For the Poor">
-              </router-link>
+              </a>
               <h3 class='is-marginles'>Help the poorest get the basics of life. <router-link to='for-the-poor' class=' innovative-site__view-link has-text-secondary'> View </router-link></h3>
             </div>
           </div>
@@ -129,8 +129,7 @@ export default {
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
-    const version = 'v1'
-    const siteTitle = `Maximum Good - ${process.env.NODE_ENV === 'development' &&  version ?  version : 'Home'}`
+    const siteTitle = 'Maximum Good - v1'
     return {
       title: siteTitle,
       meta: [
