@@ -1,7 +1,7 @@
 const state = {
   data: {
     "innovative-fundraising": {
-      label: "Innovative Fundraising",
+      label: "Cutting-edge Fundraising",
       sites: [
         {
           id: "volunteerathon",
