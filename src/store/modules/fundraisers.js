@@ -102,7 +102,7 @@ const state = {
         {
           id: 'resolutions-for-good',
           name: "Resolutions for Good",
-          imgName: "resolutionsforgood.png",
+          imgName: "righteous-resolutions.png",
         },
         {
           id: 'fools-for-gold',
@@ -127,13 +127,48 @@ const state = {
         {
           id: 'christmas-for-good',
           name: "Christmas for Good",
-          imgName: "Christmasforgood.png",
+          imgName: "christmas-compassion.png",
+        },
+        {
+          id: 'noble-new-year',
+          name: "Noble New Year",
+          imgName: "noble-new-year.png",
+        },
+        {
+          id: 'mlk-day-kindness',
+          name: "MLK Day Kindness",
+          imgName: "mlk-day-kindness.png",
         },
         {
           id: 'mothers-for-good',
           name: "Mothers for Good",
           imgName: "mothers-for-good.png",
-        }
+        },
+        {
+          id: 'helpful-hannukah',
+          name: "Helpful Hannukah",
+          imgName: "helpful-hanukkah.png",
+        },
+        {
+          id: 'lent-for-love',
+          name: "Lent For Love",
+          imgName: "lent-for-love.png",
+        },
+        {
+          id: 'easter-giving',
+          name: "Easter Giving",
+          imgName: "easter-giving.png",
+        },
+        {
+          id: 'feel-good-fourth',
+          name: "Feel Good Fourth",
+          imgName: "feel-good-fourth.png",
+        },
+        {
+          id: 'labor-day-love',
+          name: "Labor Day Love",
+          imgName: "labor-day-love.png",
+        },
       ]
     },
     "fundraising-classics": {
