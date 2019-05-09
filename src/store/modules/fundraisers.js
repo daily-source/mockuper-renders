@@ -66,9 +66,19 @@ const state = {
           imgName: "vacationforgood.png",
         },
         {
+          id: 'parties-for-good',
+          name: "Parties for Good",
+          imgName: "parties-for-good.png",
+        },
+        {
           id: 'donateathon',
           name: "Donateathon",
           imgName: "donateathon.png",
+        },
+        {
+          id: 'contracts-for-good',
+          name: "Contracts for Good",
+          imgName: "contracts-for-good.png",
         },
         {
           id: 'daily-indulgence-drop',
@@ -90,6 +100,11 @@ const state = {
           name: "Commit for Good",
           imgName: "commit-for-good.png",
           url: 'http://commitforgood.net/',
+        },
+        {
+          id: 'flash-mobs-for-good',
+          name: "Flash Mobs for Good",
+          imgName: "flash-mobs-for-good.png",
         },
       ]
     },
@@ -258,9 +273,19 @@ const state = {
           imgName: "jailathon.png",
         },
         {
+          id: 'giving-with-golf',
+          name: "Giving with Golf",
+          imgName: "giving-with-golf.png",
+        },
+        {
           id: 'raffle-5050',
           name: "50/50 Raffle",
           imgName: "5050raffle.png",
+        },
+        {
+          id: 'date-night-auction',
+          name: "Date Night Auction",
+          imgName: "date-night-auction.png",
         },
         {
           id: 'best-seat-in-the-house',

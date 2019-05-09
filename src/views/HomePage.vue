@@ -129,7 +129,7 @@ export default {
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
-    const siteTitle = 'Maximum Good - Home'
+    const siteTitle = 'Maximum Good - v1'
     return {
       title: siteTitle,
       meta: [
