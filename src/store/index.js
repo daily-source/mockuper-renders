@@ -250,7 +250,7 @@ export default new Vuex.Store({
       email: 'john@email.com',
       nonprofit_ein: 237069110,
       name: 'Raising money for children in need',
-      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know,doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
+      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know, doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
       intro_text: '',
       picture: `${baseUrl}img/fundraiser-hero-3x2.jpg`,
       data: {
