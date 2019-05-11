@@ -26,7 +26,7 @@
       <p slot="copytext">
         {{fundraiser.User.firstName}} will lose {{fundraiser.fundraiserDetails.hours}} pounds {{fundraiser.communityWork}} for <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`"> {{ fundraiser.Nonprofit.NAME }}</router-link>. In addition to your donations, she will donate ${{ fundraiser.fundraiserDetails.ownMoneyAmount }} plus the ${{ fundraiser.fundraiserDetails.foodAmount }} in food.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Lose for Good</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
