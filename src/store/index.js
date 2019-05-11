@@ -528,9 +528,8 @@ export default new Vuex.Store({
           id: 12,
           author_id: 24,
           fundraiser_id: 254,
-          content: `This Sunday I took a box of trash bags to Payson Park and arrived at 9am and worked til 1pm. By 11am I had cleaned up the trash near a group of picnic tables where high school students had been drinking and left many empty bottles and trash near. Just after I cleaned, two families arrived and set up at the tables with kids who began playing ball. I was quite pleased that they could play in a nice area without seeing trash and tripping on bottles.
-          The kids were rolling around in the grass just like kids love to do, and I was glad they were coming into contact with any trash. It brought back many fond memories of my childhood playing in the park at the end of our street with my brother and sister. We used to play hide and go seek, and hide behind trees,, in bushes and sometimes behind adults or baby carriages.
-          Many of my best memories growing up are of playing outdoors. I'm sure some of the adults at that time picked up trash that wasn't their own in order to keep the park nice, so I was happy to have the chance to repay the favor, or as they say ... to pay it forward. I look forward to doing some more in the coming days.`,
+          content: `This Sunday I have reached the 3/4 mark of my fundraiser, and I'm starting to head into the home stretch of it. I look forward to doing some more in the coming days. Several days ago my good friend Elizabeth who I went to college with gave me an excellent pep talk. 
+          She reminded me of the people who this fundraiser is going to help, and that gave me a nice boost to keep pushing through to complete it. Sometimes a little reminder of the bigger purpose of what we're doing is a help. I've got some good steam going now and confident I'll complete it.`,
           createdAt: 1517415125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
