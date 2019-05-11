@@ -31,8 +31,11 @@ import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
-  name: 'BaseLayout',
-
+  name: "nonprofit",
+  /**
+   * Uses dynamic import to speed up page performance.
+   * See https://webpack.js.org/guides/code-splitting/ for reference.
+   */
   components: {
     AppHeader,
     AppBanner,
@@ -48,11 +51,11 @@ export default {
     return {
       title: 'Home - v1',
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: title },
-        { vmid: 'og:description', name: 'og:description', content: description },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: title },
+        { vmid: "og:description", name: "og:description", content: description }
+      ]
+    }
   },
   computed: {
     ...mapState({
@@ -63,3 +66,14 @@ export default {
 
 };
 </script>
+
+<style scoped lang="scss">
+.instructions {
+  padding-top: 3em;
+
+  p {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+</style>
