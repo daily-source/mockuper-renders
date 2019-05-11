@@ -1,0 +1,14 @@
+.button {
+  height: auto;
+  font-size: 1.125em;
+  padding-top: .375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+
+  &.is-secondary {
+    color: #fff;
+    border-color: $secondary;
+    background-color: $secondary;
+  }
+}

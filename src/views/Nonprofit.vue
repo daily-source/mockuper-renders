@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'
+    />
 
     <transition name="slide-fade">
       <DonateView
@@ -21,9 +24,9 @@
 
     <app-description />
 
-    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
+    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </NonprofitForm>
+    </Nonprofitform>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -141,7 +144,7 @@ export default {
     const imgSrc = this.nonprofit.data.hero ? this.nonprofit.data.hero.src : this.nonprofit.data.default_hero.src;
     const imgUrl = `${this.$store.state.extra.request.protocol}://${this.$store.state.extra.request.host}${imgSrc}`;
     return {
-      title: `${name} - v3`,
+      title: `${name} - v4`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: name },
@@ -225,7 +228,7 @@ export default {
         });
     },
     loadMoreDonations(paginated = true) {
-      const nonprofitEIN = this.$route.params.ein;
+      const nonprofitEIN = this.ein;
       return this.$store.dispatch('FETCH_DONATIONS', { nonprofitEIN, paginated })
         .then(data => data)
         .catch(err => err);
@@ -300,6 +303,43 @@ export default {
     align-items: flex-end;
     button {
       font-size: 1.1rem;
+    }
+  }
+}
+
+.nonprofit-info {
+  margin-top: 20px;
+  
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include desktop {
+      max-width: 86%;
+    }
+
+    p {
+      font-size: 1rem;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+
+    ul {
+      margin-left: 2em;
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    li {
+      margin-bottom: .5em;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
     }
   }
 }
