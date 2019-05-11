@@ -3,6 +3,7 @@
 		<app-header />
     <app-banner />
     <section class='section'>
+      <!-- <h1 class='has-text-centered has-text-weight-bold'>Lose Weight for a Good Cause</h1> -->
       <app-description />
     </section>
     <section class='site-content'>
@@ -30,8 +31,11 @@ import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
-  name: 'BaseLayout',
-
+  name: "nonprofit",
+  /**
+   * Uses dynamic import to speed up page performance.
+   * See https://webpack.js.org/guides/code-splitting/ for reference.
+   */
   components: {
     AppHeader,
     AppBanner,
@@ -45,13 +49,13 @@ export default {
     const description = 'A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight';
     const title = 'Raise money while losing weight!';
     return {
-      title: 'Home - v2',
+      title: 'Home - v1',
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: title },
-        { vmid: 'og:description', name: 'og:description', content: description },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: title },
+        { vmid: "og:description", name: "og:description", content: description }
+      ]
+    }
   },
   computed: {
     ...mapState({
@@ -62,3 +66,14 @@ export default {
 
 };
 </script>
+
+<style scoped lang="scss">
+.instructions {
+  padding-top: 3em;
+
+  p {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+</style>

@@ -1,6 +1,5 @@
 <template>
   <div class="container nonprofit-description__container">
-    <p>A Loseathon is like a Walkathon, but instead of walking a certain distance to raise money, the person loses a certain amount of weight, which has many added benefits:</p>
     <ul class='nonprofit-description__list'>
       <li>Donors wind up with a friend and family member who is healthier and happier.</li>
       <li>It's usually harder to lose a significant amount of weight than to do a single walkathon so it's a bigger challenge for people to take on</li>
