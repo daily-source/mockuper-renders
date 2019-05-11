@@ -14,7 +14,7 @@
  */
 import AppHeader from 'Components/WalkForGood/AppHeader.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import NonprofitForm from 'Components/RideForGood/NonprofitForm.vue';
+import NonprofitForm from 'Components/WalkForGood/NonprofitForm.vue';
 
 export default {
   name: 'BaseLayout',

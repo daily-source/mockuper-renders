@@ -127,7 +127,7 @@ export default {
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
+    NonprofitForm: () => import('Components/WalkForGood/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
   },
