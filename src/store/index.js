@@ -250,7 +250,7 @@ export default new Vuex.Store({
       email: 'john@email.com',
       nonprofit_ein: 237069110,
       name: 'Raising money for children in need',
-      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know,doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
+      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know, doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
       intro_text: '',
       picture: `${baseUrl}img/fundraiser-hero-3x2.jpg`,
       data: {
@@ -486,9 +486,10 @@ export default new Vuex.Store({
           id: 18,
           author_id: 24,
           fundraiser_id: 254,
-          content: `<p>I have completed my Walk for Good chellenge and am happy to say that I filled up 49 trash bags with trash on my various trips to Payson Park, and thousands of people were able to enjoy a far cleaner park.</p>
-          <p>Also, I surpassed my goal of raising $1,200 for Oxfam with a total of $1,320, and I'm super thankful to everyone who helped. I appreciate the donations, and the encouragement from everyone, including my friend Elizabeth who joined me in the effort and did her own Walk for Good chellenge cleaning the park. Some days we did together and other days we make our own trips there.</p>
-          <p>I hope people will consider possibly becoming long-term supporters of helping people who are in need of the most basic necessities like the people Oxfam America helps. There are lots of other great nonprofits out there.</p>`,
+          content: `
+          <p>Hi everyone, I have now officially completed my fundraiser and am happy to say that it was a success. And it was also a wonderful and delightful experience for me. I'm so glad that I decided to do it.</p>
+          </p>Fortunately, I surpassed my goal of raising $1,200 for Oxfam International with a total of $1,320 for that nonprofit, and I'm super thankful to everyone who helped. I appreciate the donations from everyone who donated, and the encouragement from everyone. I couldn't have done it without all of you.</p>
+          <p>I hope people will consider possibly becoming long-term supporters of helping people who are in need of the most basic necessities like the people Oxfam International helps. There are lots of other great nonprofits out there helping the very poor, so there are plenty to choose from to support people who are in downtrodden.</p>`,
           createdAt: 1517915925000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -499,9 +500,8 @@ export default new Vuex.Store({
           author_id: 24,
           fundraiser_id: 254,
           content: `
-          <p>This Sunday I took a box of trash bags to Payson Park and arrived at 9am and worked til 1pm. By 11am I had cleaned up the trash near a group of picnic tables where high school students had been drinking and left many empty bottles and trash near. Just after I cleaned, two families arrived and set up at the tables with kids who began playing ball. I was quite pleased that they could play in a nice area without seeing trash and tripping on bottles.</p>
-          <p>The kids were rolling around in the grass just like kids love to do, and I was glad they were coming into contact with any trash. It brought back many fond memories of my childhood playing in the park at the end of our street with my brother and sister. We used to play hide and go seek, and hide behind trees,, in bushes and sometimes behind adults or baby carriages.</p>
-          <p>Many of my best memories growing up are of playing outdoors. I'm sure some of the adults at that time picked up trash that wasn't their own in order to keep the park nice, so I was happy to have the chance to repay the favor, or as they say ... to pay it forward. I look forward to doing some more in the coming days.</p>
+          <p>This Sunday I have reached the 3/4 mark of my fundraiser, and I'm starting to head into the home stretch of it. I look forward to doing some more in the coming days. Several days ago my good friend Elizabeth who I went to college with gave me an excellent pep talk. </p>
+          <p>She reminded me of the people who this fundraiser is going to help, and that gave me a nice boost to keep pushing through to complete it. Sometimes a little reminder of the bigger purpose of what we're doing is a help. I've got some good steam going now and confident I'll complete it.</p>
           `,
           createdAt: 1517415125000,
           fullname: 'Alison Baxley',

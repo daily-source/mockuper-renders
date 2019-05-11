@@ -22,7 +22,7 @@
     <div class="nonprofit-info">
       <div class="container">
         <div class="nonprofit-info__container">
-          <p>Normal charity runs are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Run For Good can be done any day of the year anywhere in the world. You also have the flexibility to do your own run or organize a group run. You can also join in a public event that's not charity oriented, yet run individually or as a group to raise money for a nonprofit. With a Run for Good, you can run and raise money your way.</p>
+          <p>Normal charity walks are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Walk For Good can be done any day of the year anywhere in the world. You also have the flexibility to do your own walk or organize a group walk. You can also join in a public event that's not charity oriented, yet walk individually or as a group to raise money for a nonprofit. With a Walk For Good, you can walk and raise money your way.</p>
         </div>
       </div>
     </div>

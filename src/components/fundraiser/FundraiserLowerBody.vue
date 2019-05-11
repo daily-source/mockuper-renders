@@ -66,7 +66,7 @@
                       :count="fundraiser.counters.updatesCount"
                       :fundraiser-id="fundraiser.id"
                       :key="'updates_' + fundraiser.id"
-                      maxchar="700"
+                      maxchar="650"
                       v-if="updates.length"
                     ></FundraiserUpdates>
                     <p v-else>There are no updates posted yet!</p>
