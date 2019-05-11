@@ -306,7 +306,7 @@ export default new Vuex.Store({
       email: 'john@email.com',
       nonprofit_ein: 237069110,
       name: 'Raising money for children in need',
-      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know,doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
+      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know, doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
       intro_text: '',
       picture: `${baseUrl}img/fundraiser-hero-3x2.jpg`,
       data: {
@@ -419,6 +419,12 @@ export default new Vuex.Store({
             "lastName": "Engelman",
             "email": "joan.engelman@mail.com",
           },
+          "User": {
+            "fullname": "Joan Engelman",
+            "email": "joan.engelman@mail.com",
+            "firstName": "Joan",
+            lastName: "Engelman",
+          },
           "fundraiserDetails": {
             "goal": 80000,
             "donated": 55000,
@@ -444,6 +450,12 @@ export default new Vuex.Store({
             "firstName": "Martina",
             "lastName": "Martins",
             "email": "joan.engelman@mail.com",
+          },
+          "User": {
+            "fullname": "Martina Martins",
+            "email": "martina.martins@mail.com",
+            "firstName": "Martina",
+            lastName: "Martins",
           },
           "fundraiserDetails": {
             "goal": 60000,
@@ -471,9 +483,9 @@ export default new Vuex.Store({
           },
           "User": {
             "fullname": "Carol Canter",
+            "email": "carol.canter@mail.com",
             "firstName": "Carol",
-            "lastName": "Canter",
-            "email": "joan.engelman@mail.com",
+            lastName: "Canter",
           },
           "fundraiserDetails": {
             "goal": 100000,
@@ -500,10 +512,10 @@ export default new Vuex.Store({
             "email": "joan.engelman@mail.com",
           },
           "User": {
-            "fullname": "Carol Canter",
-            "firstName": "Carol",
-            "lastName": "Canter",
-            "email": "joan.engelman@mail.com",
+            "fullname": "Patricia Martins",
+            "email": "partricia.mourraile@Mourraile.com",
+            "firstName": "Patricia",
+            lastName: "Mourraile",
           },
           "fundraiserDetails": {
             "goal": 200000,
@@ -531,9 +543,9 @@ export default new Vuex.Store({
           },
           "User": {
             "fullname": "Chester Thompson",
+            "email": "chester.thompson@Mourraile.com",
             "firstName": "Chester",
-            "lastName": "Thompson",
-            "email": "joan.engelman@mail.com",
+            lastName: "Thompson",
           },
           "fundraiserDetails": {
             "goal": 70000,
@@ -560,9 +572,9 @@ export default new Vuex.Store({
           id: 18,
           author_id: 24,
           fundraiser_id: 254,
-          content: `<p>I have completed my Volunteerathon and am happy to say that I filled up 49 trash bags with trash on my various trips to Payson Park, and thousands of people were able to enjoy a far cleaner park.</p>
-          <p>Also, I surpassed my goal of raising $1,200 for Oxfam with a total of $1,320, and I'm super thankful to everyone who helped. I appreciate the donations, and the encouragement from everyone, including my friend Elizabeth who joined me in the effort and did her own Volunteerathon cleaning the park. Some days we did together and other days we make our own trips there.</p>
-          <p>I hope people will consider possibly becoming long-term supporters of helping people who are in need of the most basic necessities like the people Oxfam America helps. There are lots of other great nonprofits out there.</p>`,
+          content: `Hi everyone, I have now officially completed my fundraiser and am happy to say that it was a success. And it was also a wonderful and delightful experience for me. I'm so glad that I decided to do it.
+          Fortunately, I surpassed my goal of raising $1,200 for Oxfam International with a total of $1,320 for that nonprofit, and I'm super thankful to everyone who helped. I appreciate the donations from everyone who donated, and the encouragement from everyone. I couldn't have done it without all of you.
+          I hope people will consider possibly becoming long-term supporters of helping people who are in need of the most basic necessities like the people Oxfam International helps. There are lots of other great nonprofits out there helping the very poor, so there are plenty to choose from to support people who are in downtrodden.`,
           createdAt: 1517915925000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -572,11 +584,9 @@ export default new Vuex.Store({
           id: 12,
           author_id: 24,
           fundraiser_id: 254,
-          content: `
-          <p>This Sunday I took a box of trash bags to Payson Park and arrived at 9am and worked til 1pm. By 11am I had cleaned up the trash near a group of picnic tables where high school students had been drinking and left many empty bottles and trash near. Just after I cleaned, two families arrived and set up at the tables with kids who began playing ball. I was quite pleased that they could play in a nice area without seeing trash and tripping on bottles.</p>
-          <p>The kids were rolling around in the grass just like kids love to do, and I was glad they were coming into contact with any trash. It brought back many fond memories of my childhood playing in the park at the end of our street with my brother and sister. We used to play hide and go seek, and hide behind trees,, in bushes and sometimes behind adults or baby carriages.</p>
-          <p>Many of my best memories growing up are of playing outdoors. I'm sure some of the adults at that time picked up trash that wasn't their own in order to keep the park nice, so I was happy to have the chance to repay the favor, or as they say ... to pay it forward. I look forward to doing some more in the coming days.</p>
-          `,
+          content: `This Sunday I took a box of trash bags to Payson Park and arrived at 9am and worked til 1pm. By 11am I had cleaned up the trash near a group of picnic tables where high school students had been drinking and left many empty bottles and trash near. Just after I cleaned, two families arrived and set up at the tables with kids who began playing ball. I was quite pleased that they could play in a nice area without seeing trash and tripping on bottles.
+          The kids were rolling around in the grass just like kids love to do, and I was glad they were coming into contact with any trash. It brought back many fond memories of my childhood playing in the park at the end of our street with my brother and sister. We used to play hide and go seek, and hide behind trees,, in bushes and sometimes behind adults or baby carriages.
+          Many of my best memories growing up are of playing outdoors. I'm sure some of the adults at that time picked up trash that wasn't their own in order to keep the park nice, so I was happy to have the chance to repay the favor, or as they say ... to pay it forward. I look forward to doing some more in the coming days.`,
           createdAt: 1517415125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -586,7 +596,7 @@ export default new Vuex.Store({
           id: 13,
           author_id: 24,
           fundraiser_id: 254,
-          content: '<p>Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
+          content: `Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.`,
           createdAt: 1517395125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -596,7 +606,9 @@ export default new Vuex.Store({
           id: 15,
           author_id: 24,
           fundraiser_id: 254,
-          content: '<p>Y Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
+          content: `Y Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.
+          Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.
+          Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.`,
           createdAt: 1517415125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -606,7 +618,7 @@ export default new Vuex.Store({
           id: 16,
           author_id: 24,
           fundraiser_id: 254,
-          content: '<p>X Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p>',
+          content: 'X Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.',
           createdAt: 1517395125000,
           fullname: 'Alison Baxley',
           name: 'Alison',
@@ -904,8 +916,9 @@ export default new Vuex.Store({
             },
             "User": {
               "firstName": "Joan",
-              "lastName": "Engelman",
-              "email": " Joan.Engelman@gmail.com",
+              lastName: "Engelman",
+              "fullName": "Joan Engelman",
+              "email": " joan.Engelman@gmail.com",
             },
             "fundraiserDetails": {
               "donated": 845000,
@@ -931,10 +944,11 @@ export default new Vuex.Store({
               "fullname": "Carol Engleman",
               "email": "joan.engelman@mail.com",
             },
-            "User": {
-              "firstName": "Carol",
-              "lastName": "Engelman",
-              "email": " Carol.Engelman@gmail.com",
+            User: {
+              firstName: "Carol",
+              lastName: "Engleman",
+              "fullname": "Carol Engleman",
+              "email": "joan.engelman@mail.com",
             },
             "fundraiserDetails": {
               "goal": 45000,
@@ -957,13 +971,14 @@ export default new Vuex.Store({
             "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
-              "fullname": "martina",
+              "fullname": "Martina Martins",
               "email": "martina@mail.com",
             },
-            "User": {
-              "firstName": "Martina",
-              "lastName": "",
-              "email": " martina@gmail.com",
+            User: {
+              firstName: "Martina",
+              lastName: "Martins",
+              "fullname": "Martina Martins",
+              "email": "martina.martins@mail.com",
             },
             "fundraiserDetails": {
               "donated": 35000,
@@ -987,7 +1002,12 @@ export default new Vuex.Store({
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
               "fullname": "Ingrid Kertzman",
-              "email": "Ingrid.Kertzman@mail.com",
+            },
+            User: {
+              firstName: "Ingrid",
+              lastName: "Kertzman",
+              "fullname": "Ingrid Kertzman",
+              "email": "Ingrid.Kertzman@mail.com",              
             },
             "User": {
               "firstName": "Ingrid",
@@ -1016,7 +1036,12 @@ export default new Vuex.Store({
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
               "fullname": "Sabina Rückbauer",
-              "email": " Sabina.Rückbauer@gmail.com",
+            },
+            User: {
+              firstName: "Sabina",
+              lastName: "Rückbauer",
+              "fullname": "Ingrid Kertzman",
+              "email": " Sabina.Rückbauer@gmail.com",                           
             },
             "User": {
               "firstName": "Sabina",
