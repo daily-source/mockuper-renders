@@ -26,7 +26,7 @@
       <p slot="copytext">
         {{fundraiser.User.firstName}} will walk 100 miles to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Walk For Good</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
