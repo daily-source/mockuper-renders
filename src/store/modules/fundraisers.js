@@ -27,10 +27,10 @@ const state = {
           url: 'http://loseathon.org/',
         },
         {
-          id: 'give-it-for-good',
-          name: "Give It Up for Good",
-          imgName: "giveitupforgood.png",
-          url: 'http://giveitup.net/',
+          id: "grow-one-for-good",
+          name: 'Grow One For Good',
+          imgName: "grow-one-for-good.png",
+          url: 'http://growoneforgood.org',
         },
         {
           id: "quitathon",
@@ -50,9 +50,10 @@ const state = {
           imgName: "altruistic-anniversaries.png",
         },
         {
-          id: "thankathon",
-          name: "Thankathon",
-          imgName: "thankathon.png",
+          id: "records-for-good",
+          name: "Records For Good",
+          imgName: "records-for-good.png",
+          url: 'http://recordsforgood.org/',
         },
         // {
         //   id: "records-for-good",
@@ -81,10 +82,15 @@ const state = {
           imgName: "contracts-for-good.png",
         },
         {
-          id: 'daily-indulgence-drop',
-          name: "Daily Indulgence Drop",
-          imgName: "daily-indulgence-drop.png",
+          id: "thankathon",
+          name: "Thankathon",
+          imgName: "thankathon.png",
         },
+        // {
+        //   id: 'daily-indulgence-drop',
+        //   name: "Daily Indulgence Drop",
+        //   imgName: "daily-indulgence-drop.png",
+        // },
         {
           id: 'bibleathon',
           name: "Bibleathon",
@@ -144,7 +150,7 @@ const state = {
         {
           id: 'fools-for-gold',
           name: "Fools for Gold",
-          imgName: "fools-for-gold.png",
+          imgName: "april-fools-altruisim.png",
         },
         {
           id: 'chartibale-columbus',
@@ -194,7 +200,7 @@ const state = {
         {
           id: 'easter-giving',
           name: "Easter Giving",
-          imgName: "easter-giving.png",
+          imgName: "easter-giving-v2.png",
         },
         {
           id: 'feel-good-fourth',
@@ -215,28 +221,25 @@ const state = {
           id: 'run-for-good',
           name: "Run for Good",
           imgName: "run-for-good.png",
+          url: 'http://runforgood.net',
         },
         {
           id: 'ride-for-good',
           name: "Ride for Good",
           imgName: "ride-for-good.png",
+          url: 'http://rideforgood.org/',
         },
         {
           id: 'walk-for-good',
           name: "Walk for Good",
           imgName: "walk-for-good.png",
+          url: 'http://walkforgood.us/',
         },
         {
-          id: 'benevolent-birthdays',
-          name: "Benevolent Birthdays",
-          imgName: "benevolent-birthdays.png",
-          url: 'http://benevolentbirthdays.org/',
-        },
-        {
-          id: "grow-one-for-good",
-          name: 'Grow One For Good',
-          imgName: "grow-one-for-good.png",
-          url: 'http://growoneforgood.org',
+          id: 'give-it-for-good',
+          name: "Give It Up for Good",
+          imgName: "giveitupforgood.png",
+          url: 'http://giveitup.net/',
         },
         {
           id: "charitable-challenges",
@@ -245,10 +248,22 @@ const state = {
           url: 'http://charitablechallenges.org/',
         },
         {
+          id: 'benevolent-birthdays',
+          name: "Benevolent Birthdays",
+          imgName: "benevolent-birthdays.png",
+          url: 'http://benevolentbirthdays.org/',
+        },
+        // {
+        //   id: "grow-one-for-good",
+        //   name: 'Grow One For Good',
+        //   imgName: "grow-one-for-good.png",
+        //   url: 'http://growoneforgood.org',
+        // },
+        {
           id: "stairathon",
           name: 'Stirathon',
           imgName: "stairathon.png",
-          url: 'http://charitablechallenges.org/',
+          // url: 'http://charitablechallenges.org/',
         },
         {
           id: 'bowling-for-bucks',
@@ -291,6 +306,11 @@ const state = {
           id: 'best-seat-in-the-house',
           name: "best-seat-in-the-house",
           imgName: "best-seat-in-the-house.png",
+        },
+        {
+          id: 'daily-indulgence-drop',
+          name: "Daily Indulgence Drop",
+          imgName: "daily-indulgence-drop.png",
         },
       ]
     },
