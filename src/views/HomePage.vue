@@ -6,6 +6,13 @@
     />
     <top-menu />
     <app-banner />
+    <div class='nonprofit-info'>
+      <div class='container'>
+        <div class="nonprofit-info__container">
+          <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
+        </div>
+      </div>
+    </div>
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
     </NonprofitForm>
@@ -84,6 +91,43 @@ export default {
   p {
     padding-left: 60px;
     padding-right: 60px;
+  }
+}
+
+.nonprofit-info {
+  padding-top: 3em;
+  
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include desktop {
+      max-width: 86%;
+    }
+
+    p {
+      font-size: 1rem;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+
+    ul {
+      margin-left: 2em;
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    li {
+      margin-bottom: .5em;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
   }
 }
 </style>
