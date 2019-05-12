@@ -249,8 +249,9 @@ export default new Vuex.Store({
       user_id: 721,
       email: 'john@email.com',
       nonprofit_ein: 237069110,
-      name: 'Raising money for children in need',
-      description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know, doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
+      name: 'Riding from Stockbridge to Boston so people can have the basics',
+      // description: `I think that children have the right to live and eat food, which is why the nonprofit that I'm raising money for is Oxfam America. They are an excellent nonprofit organization that does lots of great work helping people who are poor. Click the link on this page for more information about them. I'm very excited to start my fundraiser on November 10th. As most of you know, doing this is going to be kind of a challenge for me. I hope you will support my efforts with either a donation or an encouraging comment on my page here.`,
+      description: `The ride will take me 14 hours, so it will take two days. I'm going to be mighty sore for days after it, but it's fine because my heart will be full. I picked the route because I love the James Taylor song "Sweet Baby James" with the lyric "and so was the turnpike from Stockbridge to Boston." Don't worry, I won't be riding my bike on the turnpike. There are plenty of regular roads the whole way. I am raising money for Oxfam America. I hope you will support my efforts in whatever way big or small.`,
       intro_text: '',
       picture: `${baseUrl}img/fundraiser-hero-3x2.jpg`,
       data: {
@@ -283,6 +284,11 @@ export default new Vuex.Store({
         lastName: "Engelman",
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
+        avatar: {
+          id: '1',
+          type: 'image',
+          src: `${baseUrl}img/donor-8.jpg`,
+        },
       },
       fundraiserDetails: {
         goal: 60000,

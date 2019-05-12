@@ -4,26 +4,12 @@
       volunteer-text='Do one now'
       layout='page'
     />
-    <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
-    <div class='instructions'>
-      <div class='container'>
-        <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
-        </p>
-        <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
-        </p>
-      </div>
-    </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
+    <top-menu />
+    <app-banner />
+    <nonprofit-form 
+      :enable-nonprofit-search="true"
     />
-    <SharedFooter></SharedFooter>
-    <banner-switcher />
+    <shared-footer />
   </div>
 </template>
 
@@ -41,13 +27,11 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/general/AppHeader.vue"),
+    NonprofitForm: () => import("Components/RideForGood/NonprofitForm"),
+    AppHeader: () => import("Components/RideForGood/AppHeader.vue"),
+    AppBanner: () => import('Components/RideForGood/AppBanner'),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
-    HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
-    HomeSection3: () => import("Components/Volunteerathon/HomeSection3.vue"),
-    HomeSection4: () => import("Components/Volunteerathon/HomeSection4.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
   },
 
   /**

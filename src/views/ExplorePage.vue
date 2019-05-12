@@ -167,7 +167,7 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/general/AppHeader.vue'),
+    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('Components/general/NonprofitAjaxSearch.vue'),

@@ -25,25 +25,14 @@
     <div class='nonprofit-info'>
       <div class='container'>
         <div class="nonprofit-info__container">
-          <p>
-            In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
-          </p>
-          <ul>
-            <li>Sometimes the bulleted items are used to give a list of benefits of the fundraising activity or approach
-            </li>
-            <li>But they can be used for other lists</li>
-            <li>They are not required, so it’s fine to delete them</li>
-            <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
-            </li>
-            <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
-          </ul>
+          <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
         </div>
       </div>
     </div>
 
-    <GenericForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
+    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </GenericForm>
+    </NonprofitForm>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -63,7 +52,7 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Ride For Good to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -134,14 +123,14 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/general/AppHeader.vue'),
+    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
+    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
   },
