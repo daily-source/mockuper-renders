@@ -20,7 +20,7 @@ import VueMeta from "vue-meta"
 Vue.use(VueMeta)
 
 export default {
-  name: "nonprofit",
+  name: "HomePage",
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
@@ -58,7 +58,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Home",
+      title: "Ride for Good - Home",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
