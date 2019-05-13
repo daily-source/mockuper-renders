@@ -29,7 +29,6 @@ const bgImages = [
   'banner-img-3.jpg',
   'banner-img-4.jpg',
   'banner-img-5.jpg',
-  'banner-img-6.jpg',
 ]
 
 Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
