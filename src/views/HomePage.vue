@@ -8,12 +8,12 @@
     <dynamic-banner />
     <div class='instructions'>
       <div class='container'>
-        <h1 class='has-text-centered'>Put Something Purposeful Behind Your Commitment.</h1>
+        <h1 class='has-text-centered'>Put something purposeful behind tour commitment</h1>
         <p>
-          <span class='has-text-weight-bold'>WEB DEVELOPER:</span> when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
+          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
         <p>
-          <span class='has-text-weight-bold'>ALSO:</span> often a short piece of text in put inside of the banner photo.
+          ALSO: often a short piece of text in put inside of the banner photo.
         </p>
       </div>
     </div>
