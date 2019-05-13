@@ -39,10 +39,10 @@ export default {
 
 <style lang="scss" scoped>
   #banner {
-    min-height: 400px;
+    min-height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top -25px center;
     position: relative;
     display: flex;
     align-items: stretch;
@@ -73,7 +73,7 @@ export default {
 
     h1 {
       text-align: left;
-      color: #00B0EA;
+      color: $primary;
     }
 
     h2 {
