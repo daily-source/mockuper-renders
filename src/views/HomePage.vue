@@ -1,10 +1,9 @@
 <template>
   <div class="layout-base">
     <app-header />
-    <dynamic-banner />
+    <app-banner />
     <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
     <shared-footer />
-    <banner-switcher />
   </div>
 </template>
 
@@ -13,7 +12,7 @@
  * Replace this to respective components.
  */
 import AppHeader from 'Components/RunForGood/AppHeader.vue';
-import AppBanner from 'Components/RideForGood/AppBanner.vue';
+import AppBanner from 'Components/RunForGood/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 import NonprofitForm from 'Components/RunForGood/NonprofitForm.vue';
 
@@ -34,7 +33,7 @@ export default {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';
     return {
-      title: 'Ride for Good - v1',
+      title: 'Run for Good - v1',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
