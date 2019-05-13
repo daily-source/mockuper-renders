@@ -2,7 +2,7 @@
   <div class="layout-base">
     <app-header />
     <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
+    <NonprofitForm :enable-nonprofit-search="true" :bubbles='false'></NonprofitForm>
     <shared-footer />
   </div>
 </template>
