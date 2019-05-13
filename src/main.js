@@ -32,7 +32,7 @@ const bgImages = [
   'banner-img-6.jpg',
 ]
 
-Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
+Vue.use(BannerSwitcher, store, {bgImages, selected: 4})
 
 new Vue({
   router,
