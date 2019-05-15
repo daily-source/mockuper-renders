@@ -7,7 +7,7 @@
     <TopMenu></TopMenu>
     <dynamic-banner />
     <div class='instructions'>
-      <h1 class=' has-text-centered'>Grow a beard to amuse your friends and raise money for good</h1>
+      <h1 class=' has-text-centered'>Amuse your friends and raise money for good.</h1>
       <div class='container'>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
