@@ -39,7 +39,7 @@ export default {
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
     AppHeader: () => import("Components/PartiesForGood/AppHeader.vue"),
-    AppBanner: () => import("Components/PartiesForGood/AppBanner.vue"),
+    AppBanner: () => import("Components/PartiesForGood/AppBanner.2.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
@@ -93,7 +93,7 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 2em;
+  padding-top: 3em;
 
   p {
     padding-left: 60px;
