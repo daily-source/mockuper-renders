@@ -27,14 +27,6 @@
       </div>
       <ul class='navbar-contents__nav'>
         <li class='navbar-contents__nav-item'>
-          <a 
-            href='#'
-            @click.prevent.stop='onViewIntroClicked'
-          >
-            View Intro Video
-          </a>
-        </li>
-        <li class='navbar-contents__nav-item'>
           <router-link to='/nonprofit-sign-up'>Register a Nonprofit</router-link>
         </li>
         <li class='navbar-contents__nav-item'>
@@ -46,6 +38,23 @@
         <li class='navbar-contents__nav-item'>
           <router-link to='/login'>Login</router-link>
         </li>   
+        <li class='navbar-contents__nav-item'>
+          <router-link to='#'>Donate</router-link>
+        </li>   
+        <li class='navbar-contents__nav-item'>
+          <router-link to='#'>About Us</router-link>
+        </li>   
+        <li class='navbar-contents__nav-item'>
+          <router-link to='#'>Contact</router-link>
+        </li>   
+        <li class='navbar-contents__nav-item'>
+          <a 
+            href='#'
+            @click.prevent.stop='onViewIntroClicked'
+          >
+            View Intro Video
+          </a>
+        </li>
         <li class='navbar-contents__nav-item'>
           <div class='social-nav'>
             <a href='#'>
@@ -76,7 +85,7 @@
         </li>
       </ul>
       <div class='navbar__max-good'>
-        <p> A project of: </p>
+        <p> Virtual Railroad is a project of: </p>
         <router-link to='/'>
           <img
           class='navbar__max-good-logo'
@@ -151,6 +160,12 @@ export default {
     display: flex;
     align-items: center;
     border: 0;
+  }
+
+  &__max-good {
+    p {
+      color: #4e5453;
+    }
   }
 
   &__max-good-logo {
