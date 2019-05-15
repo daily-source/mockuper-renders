@@ -93,7 +93,7 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 3em;
+  padding-top: 2em;
 
   p {
     padding-left: 60px;
