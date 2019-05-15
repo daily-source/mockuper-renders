@@ -73,7 +73,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Grow One For Good - v2",
+      title: "Grow One For Good - v3",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -99,7 +99,7 @@ export default {
   h1 {
     padding-bottom: 2.5rem;
     margin-bottom: 0;
-    color: $primary;
+    color: $secondary;
   }
 
   p {
