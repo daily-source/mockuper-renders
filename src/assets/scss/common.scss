@@ -15,6 +15,20 @@
   }
 }
 
+.header__inner {
+  a {
+    color: $secondary !important;
+  }
+}
+
+.header__wrapper {
+  border-bottom-color: $primary !important;
+}
+
+.navbar {
+  background-color: $primary !important;
+}
+
 
 html,
 body {
