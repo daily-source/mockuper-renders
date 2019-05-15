@@ -5,11 +5,10 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
+    <dynamic-banner />
     <div class='instructions'>
       <div class='container'>
+        <h1 class="has-text-centered">Play Golf Help The World</h1>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
@@ -100,6 +99,10 @@ export default {
   p {
     padding-left: 60px;
     padding-right: 60px;
+  }
+
+  h1 {
+    color: $primary;
   }
 }
 </style>
