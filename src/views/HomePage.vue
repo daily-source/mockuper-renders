@@ -5,7 +5,7 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner />
+    <app-banner />
     <div class='instructions'>
       <div class='container'>
         <h1 class='has-text-centered'>Donate Money As Part of Your Vacation</h1>
@@ -22,7 +22,6 @@
       :show-also-section='false'
     />
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
@@ -41,6 +40,7 @@ export default {
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
     AppHeader: () => import("Components/VirtuousVacations/AppHeader.vue"),
+    AppBanner: () => import("Components/VirtuousVacations/AppBanner.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     SampleForm: () => import("LocalComponents/SampleForm.vue")
