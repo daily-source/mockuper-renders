@@ -8,7 +8,7 @@
     <app-banner />
     <div class='instructions'>
       <div class='container'>
-        <h1 class="has-text-centered">Have a party to support a good cause</h1>
+        <h1 class="has-text-centered">Throw a party to help a good cause.</h1>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
@@ -73,7 +73,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Parties for Good - v1",
+      title: "Parties for Good - v2",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
