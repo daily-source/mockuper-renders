@@ -8,6 +8,7 @@
     <app-banner />
     <div class='instructions'>
       <div class='container'>
+        <h1 class="has-text-centered">Have a party to support a good cause</h1>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
@@ -93,7 +94,12 @@ export default {
 
 <style scoped lang="scss">
 .instructions {
-  padding-top: 3em;
+  padding-top: 2em;
+
+  h1 {
+    margin-bottom: 1.5rem;
+    color: $primary;
+  }
 
   p {
     padding-left: 60px;
