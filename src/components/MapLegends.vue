@@ -26,18 +26,18 @@
             </p>
           </div>
         </div>
-        <div class='legends__button-container'>
-          <button 
-            :class='["button legends__button", {"legends__button--opened": opened}]'
-            @click='onToggleClick'
-            v-tooltip.top-start='tooltipMessage'
-          >
-            <icon-chevron 
-              :width='36'
-              :height='36'
-            />
-          </button>
-        </div>
+      </div>
+      <div class='legends__button-container'>
+        <button 
+          :class='["button legends__button", {"legends__button--opened": opened}]'
+          @click='onToggleClick'
+          v-tooltip.top-start='tooltipMessage'
+        >
+          <icon-chevron 
+            :width='36'
+            :height='36'
+          />
+        </button>
       </div>
     </div>
   </div>
@@ -91,8 +91,8 @@ export default {
 
   &__content {
     display: flex;
-    margin-left: -1em;
-    margin-right: -1em;
+    margin-left: -1.375em;
+    margin-right: -1.375em;
   }
 
   &__container {
@@ -187,6 +187,10 @@ export default {
 
   &:first-of-type {
     padding-right: 1rem;
+  }
+
+  &:last-of-type {
+    padding-left: .375rem;
   }
 }
 </style>

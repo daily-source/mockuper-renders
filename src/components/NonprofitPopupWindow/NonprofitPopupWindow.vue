@@ -44,11 +44,11 @@
 	.nonprofit-info-window {
 		min-height: 60px;
 		min-width: 60px;
-		max-width: 120px;
+		max-width: 110px;
 		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: .25rem;
+		padding: .625rem;
 		font-size: .75rem;
 		background-color: #fff;
 		border-radius: 5px;

@@ -145,7 +145,8 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   background-color: transparent;
-
+  min-height: auto;
+  
   &--opened {
     .navbar-contents {
       left: 0;

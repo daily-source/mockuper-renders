@@ -47,6 +47,10 @@
         :nonprofits='[nonprofit]'
         :icon-size='32'
         :zoom='2'
+        :center='{
+          lat: 22.852884267366456,
+          lng: 18.883774238974297,
+        }'
       />
       <div class="actions">
         <button
@@ -123,8 +127,8 @@ export default {
 
   &__map {
     position: relative;
-    height: 580px;
-    max-width: 1024px;
+    height: 500px;
+    max-width: 990px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -166,7 +170,7 @@ export default {
     content: counter(list) ". ";
     counter-increment: list;
     color: blue;
-    width: 20px;
+    width: 14px;
     display: inline-block;
   }
 
