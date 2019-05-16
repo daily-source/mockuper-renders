@@ -98,7 +98,7 @@ export default {
 
   h1 {
     margin-bottom: 1.5rem;
-    color: $primary;
+    color: $secondary;
   }
 
   p {
