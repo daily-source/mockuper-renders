@@ -134,6 +134,9 @@ export default {
 
   img {
     margin-top: -.25em;
+    flex: 1;
+    max-width: 32px;
+    flex-basis: 32px;
   }
   
   p {
@@ -141,6 +144,8 @@ export default {
     color: #fbfbfb;
     margin-bottom: 0;
     margin-left: 1.25em;
+    flex: 1;
+    max-width: 100%;
 
     span {
       display: inline-block;
