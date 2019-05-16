@@ -136,6 +136,8 @@ export default {
   &__text-wrapper {
     display: flex;
     padding-left: .5em;
+    flex: 1;
+    max-width: 100%;
   }
 
   &__text-equals {
@@ -166,6 +168,9 @@ export default {
 
   img {
     margin-top: -.25em;
+    flex: 1;
+    max-width: 32px;
+    flex-basis: 32px;
   }
   
   // p {
