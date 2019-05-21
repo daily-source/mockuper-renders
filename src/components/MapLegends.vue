@@ -5,7 +5,7 @@
     <div class='legends__container'>
       <div class='legends__content'>
         <div class='legend'>
-          <img src='@/assets/img/light_bulb_32.png' alt='Light Bulb'>
+          <img src='@/assets/img/light_bulb_29.png' alt='Light Bulb'>
           <div class="legends__text-wrapper">
             <p class="legends__text-equals has-text-weight-bold">
               =
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class='legend'>
-          <img src='@/assets/img/star_32.png' alt='Star'>
+          <img src='@/assets/img/star_29.png' alt='Star'>
           <div class="legends__text-wrapper">
             <p class="legends__text-equals has-text-weight-bold">
               =
@@ -169,8 +169,8 @@ export default {
   img {
     margin-top: -.25em;
     flex: 1;
-    max-width: 32px;
-    flex-basis: 32px;
+    max-width: 29px;
+    flex-basis: 29px;
   }
   
   // p {
