@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
   #banner {
-    min-height: 400px;
+    min-height: 650px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -49,6 +49,7 @@ export default {
     // justify-content: center;
     padding-bottom: 1em;
     position: relative;
+    background-color: #eee;
 
     &:before {
       content: '';
@@ -58,7 +59,6 @@ export default {
       right: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.15);
     }
   }
 
@@ -67,13 +67,13 @@ export default {
     align-self: center;
     max-width: 400px;
     text-align: left;
-    margin-left: 10%;
+    margin-left: 14%;
     position: relative;
     z-index: 10;
 
     h1 {
       text-align: left;
-      color: #00B0EA;
+      color: $primary;
     }
 
     h2 {

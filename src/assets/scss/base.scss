@@ -62,11 +62,11 @@ $btn-border-radius: 0;
 
 // These variable definitions are here for the RunForGood version
 // Colors
-// $primary: #2e3094;
-// $secondary: #85c53a;
-// $color-emphasis: $primary;
-// $color-emphasis-alt: $secondary;
-// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+$primary: #D50210;
+$secondary: #FFA100;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
 // Fonts
 $font-family-base: 'Poppins';
@@ -77,7 +77,7 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 // Override Bulma variables here
-$success: $color-emphasis;
+// $success: $color-emphasis;
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
