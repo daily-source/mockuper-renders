@@ -7,11 +7,13 @@
         class='navbar-toggle__button'
         @click='toggleNavbar'  
       >
-        <span class='navbar-toggle__bar'></span>
-        <span class='navbar-toggle__bar'></span>
-        <span class='navbar-toggle__bar'></span>
+        <div class="navbar-toggle__bar-wrapper">
+          <span class='navbar-toggle__bar'></span>
+          <span class='navbar-toggle__bar'></span>
+          <span class='navbar-toggle__bar'></span>
+        </div>
+        Menu
       </button>
-      Menu
     </div>
     <div class='navbar-contents'>
       <div class='navbar-contents__actions'>
@@ -189,8 +191,6 @@ export default {
   align-items: center;
   color: inherit;
   font-size: .875rem;
-  text-transform: uppercase;
-  letter-spacing: .2em;
   padding: .25rem .75rem;
   background-color: rgba(78, 84, 83, 0.7);
   border-radius: 100px;
@@ -198,14 +198,26 @@ export default {
 
 
   &__button {
+    // width: 26px;
+    // height: 26px;
+    // position: relative;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 0.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &__bar-wrapper {
+    margin-right: .5em;
     width: 26px;
     height: 26px;
     position: relative;
-    background-color: transparent;
-    border: 0;
-    margin-right: .5em;
-    cursor: pointer;
-    padding: 0;
   }
 
   &__bar {
