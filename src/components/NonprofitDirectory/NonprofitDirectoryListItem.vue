@@ -4,7 +4,7 @@
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
   </div>
   <div class='nonprofit-list-item-links'>
-    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View it's other locations</router-link>
+    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View its other locations</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
   </div>
@@ -50,8 +50,8 @@ export default {
     font-size: .875em;
   }
 
-  &__nonprofit-details{ 
-    margin-right: 15px;
+  &__nonprofit-details { 
+    margin-right: 175px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
