@@ -51,11 +51,7 @@ export default {
   }
 
   &__nonprofit-details { 
-<<<<<<< HEAD
     margin-right: 240px;
-=======
-    margin-right: 175px;
->>>>>>> library-virtual-railroad-v7
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
