@@ -35,13 +35,13 @@
         v-if='np.country === "USA" && np.nonprofits.length > 0'
       >
         <div 
-          class='nonprofit-list__block--indented nonprofist-list-city'
+          class='nonprofit-list__block--indented nonprofit-list-city'
           v-for='(nonprofit, index) in np.nonprofits'
           :key='index'
         >
           <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
           <div 
-            class='nonprofit-list__cities-list nonprofit-list__block--indented'
+            class='nonprofit-list__cities-list nonprofit-list__block--indented nonprofit-list__block--indented-level-2'
             v-if='nonprofit.nonprofits'
           >
             <nonprofit-directory-list-item 
@@ -306,6 +306,13 @@ export default {
     &--indented {
       margin-left: 1.5em;
     }
+
+    &--indented-level-2 {
+      .nonprofit-directory-list-item__name {
+        max-width: calc(300px - 1.5em);
+        min-width: calc(300px - 1.5em);
+      }
+    }
   }
 
   &__country {
@@ -319,6 +326,8 @@ export default {
 }
 
 .nonprofit-list-city {
+  margin-bottom: 1em;
+
   &__label {
     font-size: 19px;
     color: #555;
@@ -345,4 +354,16 @@ export default {
   }
 }
 </style>
- 
+
+<style lang='scss'>
+.nonprofit-list {
+  &__block {
+    &--indented-level-2 {
+      .nonprofit-directory-list-item__name {
+        max-width: calc(300px - 1.5em);
+        min-width: calc(300px - 1.5em);
+      }
+    }
+  }
+}
+</style>
