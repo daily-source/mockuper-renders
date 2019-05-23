@@ -16,6 +16,7 @@ const actions = {
    * Closes the navbar
    */
   closeNavbar ({state, commit}) {
+    console.log('close navbar')
     commit('setNavbarState', false)
   },
 }

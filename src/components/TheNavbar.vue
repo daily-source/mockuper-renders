@@ -125,11 +125,12 @@ export default {
   methods: {
     onViewIntroClicked () {
       this.showVideo()
-      this.toggleNavbar()
+      this.closeNavbar()
     },
 
     ...mapActions({
       toggleNavbar: 'navbar/toggleNavbar',
+      closeNavbar: 'navbar/closeNavbar',
 			showVideo: 'video/showVideo',
     }),
   },

@@ -1,3 +1,5 @@
+import router from '../../router'
+
 const state = {
   isPlaying: false,
 	isShown: true,
@@ -15,7 +17,12 @@ const actions = {
     commit('setIsShown', !state.isShown)
   },
 
-	showVideo ({commit}) {
+	showVideo ({commit, dispatch}) {
+    if (router.currentRoute.name !== 'home') {
+      dispatch('navbar/closeNavbar')
+      dispatch('playVideo')
+      router.push('/')
+    }
 		commit('setIsShown', true)
 	},
 
