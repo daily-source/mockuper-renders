@@ -262,7 +262,7 @@ export default {
   align-items: center;
   border-bottom: 2px solid $secondary;
   height: 116px;
-  margin-bottom: 2em;
+  // margin-bottom: 2em;
 
   > .container {
     position: static;
