@@ -19,7 +19,6 @@ Vue.config.productionTip = false;
 Vue.use(Datetime)
 Vue.use(VTooltip)
 
-
 // register global utility filters.
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
