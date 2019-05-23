@@ -2,16 +2,25 @@
   <div class='nonprofit-directory-list'>
     <!-- TODO: Maybe make this is a separate component -->
     <div class='nonprofit-directory-search'>
-      <nonprofit-directory-search 
-        v-model='filterValue'
-        class='nonprofit-directory-search__input'
-      />
-      <button 
-        class='button is-primary nonprofit-directory-search__button'
-        @click='filterNonprofits'
-      >
-        Search
-      </button>
+      <form @submit.prevent="filterNonprofits">
+        <nonprofit-directory-search 
+          v-model='filterValue'
+          class='nonprofit-directory-search__input'
+        />
+        <button 
+          class='button is-primary nonprofit-directory-search__button'
+          type='submit'
+          @click='filterNonprofits'
+        >
+          Search
+        </button>
+        <button 
+          class='button is-danger nonprofit-directory-search__button'
+          @click.prevent.stop='resetFilter'
+        >
+          Reset
+        </button>
+      </form>
       <span class='suggest-nonprofit-text'>To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.</span>
     </div>
     <div 
@@ -87,6 +96,14 @@ export default {
      */
     filterNonprofits () {
       this.filter = this.filterValue
+    },
+
+    /**
+     * Resets the filter value
+     */
+    resetFilter () {
+      this.filterValue = ''
+      this.filter = ''
     },
   },
 
@@ -340,11 +357,19 @@ export default {
   display: flex;
   align-items: center;
 
+  > form {
+    display: flex;
+    align-items: center;
+  }
+
   &__button {
     margin-left: 1em;
   }
 
   &__input {
+    flex-basis: 350px;
+    width: 350px;
+    flex-grow: 1;
     max-width: 350px;
   }
 
