@@ -28,7 +28,10 @@ export default {
 .nonprofit-directory-list-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 2em;
+
+  &:not(:last-child) {
+    margin-bottom: 2em;
+  }
 
   &__name {
     display: inline-block;
