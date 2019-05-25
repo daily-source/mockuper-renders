@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import AppHeader from 'Components/RuleYourWorld/AppHeader'
-import AppBanner from 'Components/RuleYourWorld/AppBanner'
-import NonprofitForm from 'Components/RuleYourWorld/NonprofitForm'
+import AppHeader from 'Components/RuleYourWorld/AppHeader.3'
+import AppBanner from 'Components/RuleYourWorld/AppBanner.3'
+import NonprofitForm from 'Components/RuleYourWorld/NonprofitForm.3'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
