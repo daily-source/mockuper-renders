@@ -111,14 +111,14 @@ export default {
    */
   components: {
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/BridgesToGod/AppHeader.vue"),
+    AppHeader: () => import("Components/BridgesToGod/AppHeader.5.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     HomeSection2: () => import("Components/Volunteerathon/HomeSection2.vue"),
     HomeSection3: () => import("Components/Volunteerathon/HomeSection3.vue"),
     HomeSection4: () => import("Components/Volunteerathon/HomeSection4.vue"),
     SampleForm: () => import("LocalComponents/SampleForm.vue"),
-    LogoGrid: () => import('Components/BridgesToGod/LogoGrid'),
+    LogoGrid: () => import('Components/BridgesToGod/LogoGrid.5'),
   },
 
   /**
