@@ -167,13 +167,13 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/general/AppHeader.vue'),
+    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
-    NonprofitAjaxSearch: () => import('Components/general/NonprofitAjaxSearch.vue'),
-    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitAjaxSearch: () => import('Components/XthonFresh/NonprofitAjaxSearch.vue'),
+    NonprofitFundraisers: () => import('Components/XthonFresh/NonprofitFundraisers.vue'),
     SampleForm: () => import('LocalComponents/SampleForm.vue'),
-    WaysSupport: () => import('Components/explore/WaysSupport.vue'),
+    WaysSupport: () => import('Components/XthonFresh/WaysSupport.vue'),
   },
   data() {
     return {

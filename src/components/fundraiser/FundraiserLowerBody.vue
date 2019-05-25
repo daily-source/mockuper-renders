@@ -219,13 +219,14 @@
 </template>
 
 <script>
-import DonorsList from "Components/general/DonorsList.vue"
+import DonorsList from "Components/XthonFresh/DonorsList.vue"
+
 export default {
   props: [ "fundraiser", "editing", "canEdit" ],
   components: {
     FundraiserGivingLevel: () => import("Components/fundraiser/FundraiserGivingLevel.vue"),
-    FundraiserNonprofitDetails: () => import("Components/fundraiser/FundraiserNonprofitDetails.vue"),
-    FundraiserUpdates: () => import("Components/fundraiser/FundraiserUpdates.vue"),
+    FundraiserNonprofitDetails: () => import("Components/XthonFresh/FundraiserNonprofitDetails.vue"),
+    FundraiserUpdates: () => import("Components/XthonFresh/FundraiserUpdates.vue"),
     Comments: () => import("Components/general/Comments.vue"),
     DonateAction: () => import("Components/general/DonateAction.vue"),
     DonorsList,
