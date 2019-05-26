@@ -170,10 +170,10 @@ export default {
     AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
-    NonprofitAjaxSearch: () => import('Components/XthonFresh/NonprofitAjaxSearch.vue'),
-    NonprofitFundraisers: () => import('Components/XthonFresh/NonprofitFundraisers.vue'),
+    NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     SampleForm: () => import('LocalComponents/SampleForm.vue'),
-    WaysSupport: () => import('Components/XthonFresh/WaysSupport.vue'),
+    WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {
     return {
