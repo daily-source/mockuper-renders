@@ -170,10 +170,10 @@ export default {
     AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
-    NonprofitAjaxSearch: () => import('Components/general/NonprofitAjaxSearch.vue'),
-    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     SampleForm: () => import('LocalComponents/SampleForm.vue'),
-    WaysSupport: () => import('Components/explore/WaysSupport.vue'),
+    WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {
     return {
