@@ -124,7 +124,7 @@ export default {
     DonorsList: () => import('LocalComponents/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,

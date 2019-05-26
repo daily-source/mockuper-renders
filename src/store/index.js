@@ -335,7 +335,7 @@ export default new Vuex.Store({
         },
       },
       User: {
-        firstName: "Joan",
+        firstName: "Carol",
         lastName: "Engelman",
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',

@@ -26,12 +26,12 @@ import { mapState } from 'vuex'
 import AppHeader from 'Components/Loseathon/AppHeader'
 import AppBanner from 'Components/Loseathon/AppBanner'
 import NonprofitForm from 'LocalComponents/Loseathon/NonprofitForm'
-import NonprofitFundraisers from 'Components/nonprofit/NonprofitFundraisers'
+import NonprofitFundraisers from 'LocalComponents/nonprofit/NonprofitFundraisers'
 import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
-  name: "nonprofit",
+  name: "HomePage",
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
@@ -49,7 +49,7 @@ export default {
     const description = 'A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight';
     const title = 'Raise money while losing weight!';
     return {
-      title: 'Home - v1',
+      title: 'Loseathon - v1',
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
