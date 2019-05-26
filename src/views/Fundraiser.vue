@@ -50,7 +50,7 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from 'Components/Loseathon/AppHeader.vue';
+import AppHeader from 'Components/Loseathon/AppHeader.2.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);

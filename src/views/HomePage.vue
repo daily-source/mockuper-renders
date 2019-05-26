@@ -23,10 +23,10 @@
 <script>
 import { mapState } from 'vuex'
 
-import AppHeader from 'Components/Loseathon/AppHeader'
+import AppHeader from 'Components/Loseathon/AppHeader.2'
 import AppBanner from 'Components/Loseathon/AppBanner'
 import NonprofitForm from 'LocalComponents/Loseathon/NonprofitForm'
-import NonprofitFundraisers from 'Components/nonprofit/NonprofitFundraisers'
+import NonprofitFundraisers from 'LocalComponents/nonprofit/NonprofitFundraisers'
 import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
