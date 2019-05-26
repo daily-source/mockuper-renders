@@ -24,14 +24,14 @@
 import { mapState } from 'vuex'
 
 import AppHeader from 'Components/Loseathon/AppHeader.2'
-import AppBanner from 'Components/Loseathon/AppBanner'
+import AppBanner from 'Components/Loseathon/AppBanner.2'
 import NonprofitForm from 'LocalComponents/Loseathon/NonprofitForm'
 import NonprofitFundraisers from 'LocalComponents/nonprofit/NonprofitFundraisers'
 import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
-  name: "nonprofit",
+  name: "HomePage",
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
