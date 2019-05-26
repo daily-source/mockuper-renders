@@ -283,6 +283,11 @@ export default new Vuex.Store({
         lastName: "Engelman",
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
+        avatar: {
+          id: '1',
+          type: 'image',
+          src: `${baseUrl}img/donor-8.jpg`,
+        },
       },
       fundraiserDetails: {
         goal: 60000,
