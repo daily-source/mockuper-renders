@@ -118,13 +118,13 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/Loseathon/AppHeader.vue'),
-    NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
+    AppHeader: () => import('Components/Loseathon/AppHeader.4.vue'),
+    NonprofitHero: () => import('LocalComponents/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('Components/general/DonorsList.vue'),
+    DonorsList: () => import('LocalComponents/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
