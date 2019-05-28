@@ -1,30 +1,29 @@
 <template>
   <div class='nonprofit-directory-list'>
     <!-- TODO: Maybe make this is a separate component -->
-    <div class='nonprofit-directory-search'>
-      <form @submit.prevent="filterNonprofits">
-        <nonprofit-directory-search 
-          v-model='filterValue'
-          class='nonprofit-directory-search__input'
-        />
-        <button 
-          class='button is-primary nonprofit-directory-search__button'
-          type='submit'
-          @click='filterNonprofits'
-        >
-          Search
-        </button>
-        <button 
-          class='button is-danger nonprofit-directory-search__button'
-          @click.prevent.stop='resetFilter'
-        >
-          Reset
-        </button>
-      </form>
-      <span class='suggest-nonprofit-text'>To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.</span>
+    <div 
+      class="nonprofit-directory-search"
+      v-if='showSearch'
+    >
+      <nonprofit-directory-search-form 
+        @formSubmit='filterNonprofits'
+        @formReset='resetFilter'
+      />
+      <span 
+        class='suggest-nonprofit-text'
+        v-if='enableNonprofitSuggest'
+      >
+        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.
+      </span>
     </div>
     <div 
-      class='nonprofit-list' 
+      class="nonprofit-directory-list__title"
+      v-if='$slots.title'
+    >
+      <slot name='title'></slot>
+    </div>
+    <div 
+      class='nonprofit-list'
       v-for='(np, index) in nonprofitsPerCountry'
       :key='index'
     >
@@ -37,6 +36,7 @@
           v-for='nonprofit in np.nonprofits'
           :key='nonprofit.id'
           :nonprofit='nonprofit'
+          :show-claim-nonprofit-button='showClaimNonprofitButton'
         />
       </div>
       <div 
@@ -57,10 +57,18 @@
               v-for='nonprofit in nonprofit.nonprofits'
               :key='nonprofit.id'
               :nonprofit='nonprofit'
+              :show-claim-nonprofit-button='showClaimNonprofitButton'
             />
           </div>
         </div>
       </div>
+    </div>
+    <div 
+      class='nonprofit-directory-list--empty'
+      v-if='nonprofitsPerCountry.length === 0'
+    >
+      <img src="@/assets/img/no-results.png" alt="No Results">
+      <p>No nonprofits found. Try another search.</p>
     </div>
   </div>
 </template>
@@ -70,20 +78,48 @@ import { mapState } from 'vuex'
 import { orderBy } from 'lodash'
 
 import NonprofitDirectorySearch from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearch'
+import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearchForm'
 import NonprofitDirectoryListItem from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryListItem'
 
 export default {
   name: 'NonprofitList',
 
+  props: {
+    enableNonprofitSuggest: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showClaimNonprofitButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
+    showSearch: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    initialFilter: {
+      type: String,
+      required: 'false',
+      default: '',
+    },
+  },
+
   components: {
-    NonprofitDirectoryListItem,
+    NonprofitDirectorySearchForm,
     NonprofitDirectorySearch,
+    NonprofitDirectoryListItem,
   },
 
   data () {
     return {
       filterValue: '',
-      filter: '',
+      filter: this.initialFilter,
     }
   },
 
@@ -94,15 +130,15 @@ export default {
      * We only filter when the search button is clicked so we store 
      * the filter value temporarily first.
      */
-    filterNonprofits () {
-      this.filter = this.filterValue
+    filterNonprofits (filterValue) {
+      console.log('something')
+      this.filter = filterValue
     },
 
     /**
      * Resets the filter value
      */
     resetFilter () {
-      this.filterValue = ''
       this.filter = ''
     },
   },
@@ -315,6 +351,14 @@ export default {
 <style lang='scss' scoped>
 .nonprofit-directory-list {
   margin-top: 2em;
+
+  &--empty {
+    text-align: center;
+
+    p {
+      font-size: 1.25em;
+    }
+  }
 }
 
 .nonprofit-list {
