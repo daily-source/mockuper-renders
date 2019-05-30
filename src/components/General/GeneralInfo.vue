@@ -58,12 +58,12 @@ export default {
 
 <style lang="scss" scoped>
 .general-info {
-  max-width: 760px;
+  max-width: 730px;
   margin-left: auto;
   margin-right: auto;
   font-size: 1.125em;
-  padding: .625rem .75em;
-  text-align: center;
+  padding: .625rem .875em;
+  text-align: left;
   margin-top: 30px;
 }
 </style>
