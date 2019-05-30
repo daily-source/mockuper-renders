@@ -1,7 +1,6 @@
 <template>
   <alert 
     class='general-info'
-    :type='"primary"'
     :open='isOpened'
     @closeButtonClicked='onCloseButtonClicked'
   >
