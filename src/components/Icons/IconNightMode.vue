@@ -12,7 +12,7 @@
           <circle cx="12" cy="12" r="11.5" fill="none"/>
         </g>
         <g id="Group_1" data-name="Group 1" transform="translate(758.555 1163)">
-          <path id="Path_6" data-name="Path 6" d="M19.428,17.339a8.4,8.4,0,0,1-7.6-11.969A8.4,8.4,0,1,0,23,16.543,8.363,8.363,0,0,1,19.428,17.339Z" transform="translate(-6.999 -5.371)" fill="#9f3333"/>
+          <path id="Path_6" data-name="Path 6" d="M19.428,17.339a8.4,8.4,0,0,1-7.6-11.969A8.4,8.4,0,1,0,23,16.543,8.363,8.363,0,0,1,19.428,17.339Z" transform="translate(-6.999 -5.371)" fill="#2a2f8a"/>
         </g>
       </g>
     </g>

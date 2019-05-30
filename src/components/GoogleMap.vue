@@ -27,7 +27,7 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        return { lat: 37.38390077975928, lng: 2.008774238974298 }
+        return { lat:39.04115302042768, lng: 2.008774238974298 }
       }
     },
 

@@ -57,6 +57,9 @@
         </div>
       </div>
     </div>
+    <div class="header__subheading container">
+      <p class='has-text-centered is-marginless'>Georgetown students, alumni, fans and staff freeing modern-day slaves</p>
+    </div>
   </header>
 </template>
 
@@ -83,6 +86,16 @@ export default {
       required: false,
       default: true,
     },
+
+    /**
+     * Specifies whether to add a home modifier to the header
+     */
+    isHome: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    
 
     /**
      * Specifies whether to show the extra navigation contents on the header
@@ -151,6 +164,7 @@ export default {
       return [
         "header masthead section is-paddingless", 
         { "header--small": this.isSmall },
+        { "header--home": this.isHome },
         `header--${this.theme}`,
       ]
     },
@@ -159,10 +173,10 @@ export default {
      * The logo to use depending on the theme
      */
     logoSrc () {
-      let logoName  = 'logo.png'
+      let logoName  = 'hoya.png'
 
       if (this.theme === 'dark') {
-        logoName = 'logo-1.png'
+        logoName = 'hoya.png'
       }
 
       return require(`@/assets/img/${logoName}`)
@@ -174,6 +188,7 @@ export default {
 <style lang='scss' scoped>
 .header {
   $self: &;
+  height: $header-height;
 
   > .container {
     position: relative;
@@ -243,6 +258,7 @@ export default {
 
 .header {
   &__logo-container {
+    flex-shrink: 0;
     position: absolute;
     top: .5em;
     max-width: 300px;
@@ -255,10 +271,18 @@ export default {
     top: 40px;
     left: 0;
   }
+
+  &__subheading {
+    p {
+      margin-top: 10px !important;
+    }
+  }
 }
 
 .header--small {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
   border-bottom: 2px solid $secondary;
   height: 116px;
@@ -266,21 +290,30 @@ export default {
 
   > .container {
     position: static;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
   }
 
   .header {
     &__logo-container {
       max-width: 230px;
+      flex-basis: 230px;
       position: static;
       margin-left: auto;
       margin-right: auto;
       top: -14px;
     }
 
+    &__subheading {
+    p {
+      margin-top: 2px !important;
+    }
+  }
+
     &__navbar {
       position: static;
       flex-grow: 1;
-      flex-shrink: 0;
+      flex-shrink: 1;
       display: flex;
       align-items: center;
       flex-basis: calc(50% - 115px);
@@ -294,7 +327,13 @@ export default {
     &__left-inner-contents {
       display: flex;
       align-items: center;
+      flex-grow: 1;
+      flex-shrink: 1;
       margin-left: 102px;
+    }
+
+    &__inner-contents {
+      flex-basis: calc(50% - 115px);      
     }
 
     &__login-register-links {
@@ -306,6 +345,36 @@ export default {
   .user-space__search {
     margin-left: 102px;
     margin-top: .25em;
+  }
+}
+
+.header--home {
+  background-color: #fff;
+  height: $home-header-height;
+  flex-direction: column;
+  justify-content: center;
+
+  > .container {
+    margin: 0 auto;
+  }
+
+  .header {
+    &__left-inner-contents {
+      margin-left: 89px !important;
+    }
+
+    &__logo-container {
+      max-width: 300px;
+      flex-basis: 300px;
+    }
+
+    &__navbar {
+      flex-basis: calc(50% - 150px);
+    }
+
+    &__inner-contents {
+      flex-basis: calc(50% - 150px);      
+    }
   }
 }
 
@@ -448,4 +517,5 @@ export default {
     }
   }
 }
+
 </style>

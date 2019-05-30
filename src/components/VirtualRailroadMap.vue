@@ -19,6 +19,11 @@
 			:zoom='zoom'
       :center='center'
 		>
+      <gmap-marker
+        v-if='nonprofitMarker'
+        :position='nonprofitMarker.position'
+        :icon='nonprofitMarker.icon'
+      />
 			<gmap-marker 
 				v-for='(user, index) in validUserMarkers'
 				:key='index'
@@ -156,6 +161,14 @@ export default {
      * The map's center
      */
     center: {
+      type: Object,
+      required: false,
+    },
+
+    /**
+     * Nonprofit Marker
+     */
+    nonprofitMarker: {
       type: Object,
       required: false,
     },

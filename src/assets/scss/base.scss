@@ -50,8 +50,8 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 // Colors
-$primary: #4e5453;
-$secondary: #ECDF96;
+$primary: #2a2f8a;
+$secondary: #2a2f8a;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
@@ -76,6 +76,9 @@ $navbar-width: 320px;
 $navbar-color: #000;
 $navbar-background-color: #fff;
 $navbar-border-color: #ddd;
+
+$header-height: 116px;
+$home-header-height: 140px;
 
 
 // Now initialize the library

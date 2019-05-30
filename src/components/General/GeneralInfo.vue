@@ -1,6 +1,7 @@
 <template>
   <alert 
     class='general-info'
+    :type='"primary"'
     :open='isOpened'
     @closeButtonClicked='onCloseButtonClicked'
   >
@@ -63,7 +64,7 @@ export default {
   font-size: 1.125em;
   padding: .625rem .75em;
   text-align: center;
-  margin-top: 140px;
+  margin-top: 30px;
 }
 </style>
 

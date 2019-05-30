@@ -1,10 +1,11 @@
 <template>
   <div class="home-page">
-    <splash-loader />
-    <intro-video />
+    <!-- <splash-loader /> -->
+    <!-- <intro-video /> -->
     <app-header
-      :is-small='false'
-      :show-extra-contents='false'
+      :is-small='true'
+      :is-home='true'
+      :show-extra-contents='true'
       theme='dark'
      />
      <home-page-actions />
@@ -60,7 +61,7 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad';
     return {
-      title: 'Home - v8 | Virtual Railroad',
+      title: 'Home - v8 | Hoya Virtual Railroad',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
@@ -71,7 +72,7 @@ export default {
 };
 </script>
 
-<style lang='scss'scoped>
+<style lang='scss' scoped>
 .home-page {
   height: 100vh;
   overflow: hidden;
@@ -85,7 +86,7 @@ header {
 
 .home-page-actions {
   position: fixed;
-  top: 10%;
+  top: calc(10% + #{$home-header-height}); 
   right: 2%;
   z-index: 2;
 }
@@ -94,8 +95,8 @@ header {
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 0;
   left: 0;
+  bottom: 0;
   background-color: $primary;
 }
 

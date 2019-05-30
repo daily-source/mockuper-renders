@@ -8,6 +8,7 @@
 				@mapReady='onMapReady'
 				:zoom='initialZoom'
 				:icon-size='26'
+        :nonprofit-marker='hoyaMarker'
 				ref='virtual-railroad-map'
 			/>	
 		</div>
@@ -36,7 +37,14 @@ export default {
 			callToActionTimer: 180000,
 			showCallToAction: false,
 			google: null,
-			map: null,
+      map: null,
+      hoyaMarker: {
+        position: {
+          lat: 38.907689,
+          lng: -77.0737924,
+        },
+        icon: require('@/assets/img/hoyas_railroad_66_58.png')
+      },
 		}
 	},
 
