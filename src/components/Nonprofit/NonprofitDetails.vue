@@ -123,8 +123,8 @@ export default {
 
   &__map {
     position: relative;
-    height: 580px;
-    max-width: 1024px;
+    height: 500px;
+    max-width: 990px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -137,6 +137,7 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
+  
   &__details-column {
     margin-right: 20px;
   }
