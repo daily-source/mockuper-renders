@@ -23,6 +23,7 @@
         v-if='nonprofitMarker'
         :position='nonprofitMarker.position'
         :icon='nonprofitMarker.icon'
+        @click='toggleNonprofitOrgPopup'
       />
 			<gmap-marker 
 				v-for='(user, index) in validUserMarkers'
@@ -68,6 +69,16 @@
 				:nonprofit='selectedNonprofit'
 				@nonprofitCloseButtonClicked='setSelectedNonprofit(null)'
 			/>
+      <organization-popup-window
+        v-if='showNonprofitOrg'
+        :organization='{
+          name: nonprofitMarker.name,
+          latitude: nonprofitMarker.position.lat,
+          longitude: nonprofitMarker.position.lng,
+          mainImage: nonprofitMarker.mainImage,
+        }'
+        @closeButtonClicked='toggleNonprofitOrgPopup'
+      />
 		</google-map>
 	</div>
 </template>
@@ -78,6 +89,7 @@ import GoogleMap from 'LocalComponents/GoogleMap'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
 import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
 import NonprofitPopupWindow from 'LocalComponents/NonprofitPopupWindow/NonprofitPopupWindow.vue'
+import OrganizationPopupWindow from 'LocalComponents/OrganizationPopupWindow/OrganizationPopupWindow.vue'
 import Loader from 'Components/Shared/Loader'
 
 export default {
@@ -87,7 +99,8 @@ export default {
 		GoogleMap,
 		UserPopupWindow,
 		NonprofitPopupWindow,
-		PolylineAnimatedSymbol,
+    PolylineAnimatedSymbol,
+    OrganizationPopupWindow,
 		Loader,
 	},
 
@@ -186,7 +199,8 @@ export default {
 			polylines: [],
 			google: null,
 			map: null,
-			showLoader: null,
+      showLoader: null,
+      showNonprofitOrg: false,
 			selectedUsers: [],
 		}
 	},
@@ -283,7 +297,14 @@ export default {
 		 */
 		onSeeTracksClicked (user) {
 			this.animatePolylines(user)
-		},
+    },
+
+    /**
+     * Toggles the NonprofitOrgPopUp
+     */
+    toggleNonprofitOrgPopup () {
+      this.showNonprofitOrg = !this.showNonprofitOrg
+    },
 
 		/** 
 		 * Animate the polylines

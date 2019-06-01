@@ -43,7 +43,9 @@ export default {
           lat: 38.907689,
           lng: -77.0737924,
         },
-        icon: require('@/assets/img/hoyas_railroad_66_58.png')
+        name: 'Georgetown University',
+        icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
+        mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
 		}
 	},

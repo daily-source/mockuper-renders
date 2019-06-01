@@ -364,16 +364,16 @@ export default {
     }
 
     &__logo-container {
-      max-width: 300px;
-      flex-basis: 300px;
+      max-width: 340px;
+      flex-basis: 340px;
     }
 
     &__navbar {
-      flex-basis: calc(50% - 150px);
+      flex-basis: calc(50% - 170px);
     }
 
     &__inner-contents {
-      flex-basis: calc(50% - 150px);      
+      flex-basis: calc(50% - 170px);      
     }
   }
 }

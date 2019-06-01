@@ -64,6 +64,7 @@ export default {
   padding: .625rem .75em;
   text-align: center;
   margin-top: 30px;
+  background-color: $bg-primary-transparent !important;
 }
 </style>
 
