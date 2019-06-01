@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="header__subheading container">
-      <p class='has-text-centered is-marginless'>Georgetown students, alumni, fans and staff freeing modern-day slaves</p>
+      <p class='has-text-centered is-marginless'>Georgetown alumni, fans and students who are freeing today’s slaves</p>
     </div>
   </header>
 </template>
@@ -365,16 +365,16 @@ export default {
     }
 
     &__logo-container {
-      max-width: 340px;
-      flex-basis: 340px;
+      max-width: 370px;
+      flex-basis: 370px;
     }
 
     &__navbar {
-      flex-basis: calc(50% - 170px);
+      flex-basis: calc(50% - 185px);
     }
 
     &__inner-contents {
-      flex-basis: calc(50% - 170px);      
+      flex-basis: calc(50% - 185px);      
     }
   }
 }

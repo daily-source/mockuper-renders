@@ -1,7 +1,7 @@
 const validMapStyles = ['light', 'dark']
 
 const state = {
-  mapStyle: 'dark',
+  mapStyle: 'light',
 }
 
 const actions = {

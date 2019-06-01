@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss" scoped>
 .legends {
-  background-color: rgba($primary, .9);
+  background-color: $bg-primary-transparent;
   padding: 1.25em 1em;
   position: absolute;
   bottom: 0;

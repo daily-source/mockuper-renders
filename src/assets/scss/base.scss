@@ -80,6 +80,8 @@ $navbar-border-color: #ddd;
 $header-height: 116px;
 $home-header-height: 160px;
 
+$bg-primary-transparent: rgba($primary, .9);
+
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
