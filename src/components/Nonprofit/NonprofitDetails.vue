@@ -171,7 +171,7 @@ export default {
     content: counter(list) ". ";
     counter-increment: list;
     color: blue;
-    width: 20px;
+    width: 14px;
     display: inline-block;
   }
 
