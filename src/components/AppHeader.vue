@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="header__subheading container">
-      <p class='has-text-centered is-marginless'>Georgetown students, alumni, fans and staff freeing modern-day slaves</p>
+      <p class='has-text-centered is-marginless'>Georgetown alumni, students and fans freeing today’s slaves</p>
     </div>
   </header>
 </template>
