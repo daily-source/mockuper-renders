@@ -87,12 +87,23 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  transition: bottom .2s ease;
+  top: auto;
+  transition: top .2s ease;
 
   &__content {
     display: flex;
-    margin-left: -1.375em;
-    margin-right: -1.375em;
+    margin-left: 0;
+    margin-right: 0;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include desktop {
+      margin-left: -1.375em;
+      margin-right: -1.375em;
+    }
   }
 
   &__container {
@@ -102,7 +113,28 @@ export default {
   }
 
   &--minimized {
-    bottom: -128px;
+    // bottom: -195px;
+
+    // @media (min-width: 576px) {
+    //   bottom: -158px;
+    // }
+
+    // @media (min-width: 730px) {
+    //   bottom: -150px;
+    // }
+
+    // @include tablet {
+    //   bottom: -138px;
+    // }
+
+    // @include desktop {
+    //   bottom: -156px;
+    // }
+
+    // @include fullhd {
+    //   bottom: -128px;
+    // }
+    top: calc(100% - 20px);
   }
 
   img {
@@ -146,25 +178,36 @@ export default {
   }
 
   &__text {
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
   }
 
   &__text,
   &__text-equals {
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 0;
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include fullhd {
+      font-size: 18px;
+    }
   }
 }
 
 .legend {
-  max-width: 50%;
   display: flex;
   align-items: flex-start;
   margin-top: .5em;
   padding-left: .1em;
   padding-right: .1em;
+
+  @include tablet {
+    max-width: 50%;
+  }
 
   img {
     margin-top: -.25em;

@@ -72,14 +72,27 @@ export default {
   &__logo {
     margin-bottom: 1em;
     display: inline-block;
+    max-width: 300px;
+
+    @media (min-width: 576px) {
+      max-width: 270px;
+    }
+
+    @include tablet {
+      max-width: 100%;
+    }
   }
 
   &__button {
     background-color: transparent !important;
     color: $secondary !important;
-    font-size: 24px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      font-size: 24px;
+    }
   }
 }
 

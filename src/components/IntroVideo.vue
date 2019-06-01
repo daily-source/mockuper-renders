@@ -225,14 +225,19 @@ export default {
 
   &__controls {
     position: absolute;
-    bottom: 2em;
-    right: 1em;
+    bottom: 3em;
+    right: 0;
     z-index: 11;
     padding: 1em;
     background-color: rgba(0,0,0,.5);
     color: #fff;
     width: 200px;
     border-radius: 5px;
+
+    @media (min-width: 576px) {
+      right: 1em;
+      bottom: 2em;
+    }
 
     .close-video {
       cursor: pointer;
