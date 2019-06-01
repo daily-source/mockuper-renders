@@ -47,6 +47,10 @@
         :nonprofits='[nonprofit]'
         :icon-size='32'
         :zoom='2'
+        :center='{
+          lat: 22.852884267366456,
+          lng: 18.883774238974297,
+        }'
       />
       <div class="actions">
         <button
