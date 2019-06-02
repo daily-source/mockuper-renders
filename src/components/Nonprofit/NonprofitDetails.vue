@@ -141,6 +141,7 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
+  
   &__details-column {
     margin-right: 20px;
   }

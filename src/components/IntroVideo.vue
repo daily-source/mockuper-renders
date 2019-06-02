@@ -187,7 +187,7 @@ export default {
 				this.videoTransition = 'video-fade-short'
 			} else {
 				this.hideVideo()
-				this.stopVideo()
+				// this.stopVideo()
 			}
 		},
 

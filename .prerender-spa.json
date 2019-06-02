@@ -18,6 +18,7 @@
     "/user/4/edit",
     "/user/5/edit"
   ],
+  "maxConcurrentRoutes": 1,
   "useRenderEvent":false,
   "headless":true,
   "onlyProduction":true

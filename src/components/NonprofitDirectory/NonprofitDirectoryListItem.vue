@@ -58,7 +58,7 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 240px;
+    margin-right: 170px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
