@@ -73,7 +73,7 @@
             <h4 class='has-text-primary has-text-weight-bold'>Current students:</h4>
             <ul>
               <li>
-                Class of 2020
+                Class <span class="has-text-weight-bold">of</span> 2020
                 <ul>
                   <li>
                     Jill Smith
@@ -93,7 +93,7 @@
                 </ul>
               </li>
               <li>
-                Class of 2021
+                <span class="has-text-weight-bold">Class of 2021</span>
                 <ul>
                   <li>
                     Ira Rosen 
@@ -113,7 +113,7 @@
                 </ul>
               </li>
               <li>
-                Class of 2022
+                <span class="has-text-weight-bold">Class of 2022</span>
                 <ul>
                   <li>
                     Mackensie Stevens
@@ -127,7 +127,7 @@
                 </ul>
               </li>
               <li>
-                Class of 2023
+                <span class="has-text-weight-bold">Class of 2023</span>
                 <ul>
                   <li>
                     Yousef Kabran
@@ -161,12 +161,12 @@
               <li></li>
             </ul>
             <ul class='marginless-list'>
-              <li>Class of 2019</li>
-              <li>Class of 2018</li>
-              <li>Class of 2017</li>
-              <li>Class of 2016</li>
-              <li>Class of 2015</li>
-              <li>Class of 2014</li>
+              <li><span class="has-text-weight-bold">Class of 2019</span></li>
+              <li><span class="has-text-weight-bold">Class of 2018</span></li>
+              <li><span class="has-text-weight-bold">Class of 2017</span></li>
+              <li><span class="has-text-weight-bold">Class of 2016</span></li>
+              <li><span class="has-text-weight-bold">Class of 2015</span></li>
+              <li><span class="has-text-weight-bold">Class of 2014</span></li>
             </ul>
           </div>
         </div>
