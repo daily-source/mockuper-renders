@@ -333,9 +333,11 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
+  
   &__details-column {
     margin-right: 24px;
-    max-width: 700px;
+    max-width: 698px;
+    padding-right: 0;
   }
 
   &__website-block {
