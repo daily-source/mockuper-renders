@@ -11,7 +11,7 @@
 				<img :src="organization.mainImage" class='organization-info-window__photo'>
 				<router-link 
 					class='organization-info-window__link button is-primary is-small'
-					to='#'
+					to='/profile'
 				>
 					View Profile
 			</router-link>
