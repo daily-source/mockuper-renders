@@ -169,8 +169,8 @@ export default {
   img {
     margin-top: -.25em;
     flex: 1;
-    max-width: 32px;
-    flex-basis: 32px;
+    max-width: 29px;
+    flex-basis: 29px;
   }
   
   // p {
