@@ -176,7 +176,7 @@ export default {
 
   p {
     a {
-      text-decoration: underline;
+      text-decoration: underline;`
     }
   }
 
