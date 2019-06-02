@@ -155,9 +155,15 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
+
   &__details-column {
     margin-right: 20px;
-    max-width: 700px;
+    max-width: 720px;
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+    }
   }
 
   &__website-block {
