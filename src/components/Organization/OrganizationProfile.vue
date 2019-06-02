@@ -13,7 +13,7 @@
           <a href='#' target='_blank'>View Website</a>
         </div>
         <div class='organization-details__block is-flex'>
-          <p v-html='organization.description'></p>
+          <div v-html='organization.description'></div>
         </div>
       </div>
       <!-- <div class='organization-details__office-locations column'>
@@ -43,8 +43,8 @@
         :icon-size='32'
         :zoom='2'
         :center='{
-          lat: 22.852884267366456,
-          lng: 18.883774238974297,
+          lat: 21.877549073219285,
+          lng: 19.235336738974297,
         }'
         :nonprofit-marker='hoyaMarker'
       />
@@ -64,6 +64,184 @@
             v-if='mapStyle === "dark"'
           />
         </button>
+      </div>
+    </div>
+    <div class="organization-details__alumni-section">
+      <div class="columns">
+        <div class="column is-4">
+          <div class="list-section">
+            <h4 class='has-text-primary has-text-weight-bold'>Current students:</h4>
+            <ul>
+              <li>
+                <span class="has-text-weight-bold">Class of 2020</span>
+                <ul>
+                  <li>
+                    Jill Smith
+                  </li>
+                  <li>
+                    Kevin Guitierrez
+                  </li>
+                  <li>
+                    Susan Lundgren
+                  </li>
+                  <li>
+                    Mel Hollis
+                  </li>
+                  <li>
+                    Karen Nguyen
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2021</span>
+                <ul>
+                  <li>
+                    Ira Rosen 
+                  </li>
+                  <li>
+                    Jason Claiborne  
+                  </li>
+                  <li>
+                    Nick Palexis
+                  </li>
+                  <li>
+                    Mel Hollis
+                  </li>
+                  <li>
+                    Linda Joubert
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2022</span>
+                <ul>
+                  <li>
+                    Mackensie Stevens
+                  </li>
+                  <li>
+                    Mike Andrews  
+                  </li>
+                  <li>
+                    Nate Birbiglia 
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2023</span>
+                <ul>
+                  <li>
+                    Yousef Kabran
+                  </li>
+                  <li>
+                    David Tosi
+                  </li>
+                  <li>
+                    Amet Guzdar
+                  </li>
+                  <li>
+                    Justin Pearl
+                  </li>
+                  <li>
+                    Ted Roppel 
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="list-section">
+            <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4>
+            <ul class=''>
+              <li>
+                <ul>
+                  <li>Michelle Lindbloom</li>
+                  <li>Theresa Sampson </li>
+                  <li></li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+            <ul class='marginless-list'>
+              <li><span class="has-text-weight-bold">Class of 2019</span></li>
+              <li><span class="has-text-weight-bold">Class of 2018</span></li>
+              <li><span class="has-text-weight-bold">Class of 2017</span></li>
+              <li><span class="has-text-weight-bold">Class of 2016</span></li>
+              <li><span class="has-text-weight-bold">Class of 2015</span></li>
+              <li><span class="has-text-weight-bold">Class of 2014</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="list-section">
+            <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
+            <ul class='marginless-list'>
+              <li>
+                Jay Ansin
+              </li>
+              <li>
+                Roy Amberger                                                                   
+              </li>
+              <li>
+                Lily Hilgrow
+              </li>
+              <li>
+                Rob Cohen
+              </li>
+              <li>
+                Daniel Kim
+              </li>
+              <li>
+                Anthony LarelliTina Kavowski
+              </li>
+              <li>
+                Tom Newfield
+              </li>
+              <li>
+                Linda Moore
+              </li>
+              <li>
+                Laphonso Deon
+              </li>
+              <li>
+                Pablo Ruiz David Lobell
+              </li>
+              <li>
+                Jill Hagandanz
+              </li>
+              <li>
+                David Chen
+              </li>
+              <li>
+                Walter Thoreau
+              </li>
+            </ul>
+          </div>
+          <div class="list-section">
+            <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
+            <ul class='marginless-list'>
+              <li>
+                Alex Curran
+              </li>
+              <li>
+                Andrew Enoch
+              </li>
+              <li>
+                Laurence Falvey
+              </li>
+              <li>
+                Peter Ferguson
+              </li>
+              <li>
+                Hunter Aron
+              </li>
+              <li>
+                Maggie Olerud
+              </li>
+              <li>
+                Sumi Lee
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -140,7 +318,7 @@ export default {
 
   &__map {
     position: relative;
-    height: 500px;
+    height: 340px;
     max-width: 990px;
     margin-left: auto;
     margin-right: auto;
@@ -156,7 +334,7 @@ export default {
     margin-bottom: 0;
   }
   &__details-column {
-    margin-right: 20px;
+    margin-right: 24px;
     max-width: 700px;
   }
 
@@ -214,5 +392,46 @@ export default {
     }
   }
 
+  &__alumni-section {
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    ul {
+      > li {
+        margin-bottom: 1em;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        ul {
+          padding-left: 1em;
+
+          > li {
+            margin-bottom: 0;
+          }
+
+        }
+      }
+    }
+
+    h4 {
+      margin-bottom: .5rem;
+    }
+
+    .marginless-list {
+      li {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .list-section {
+    margin-top: 1.5em;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
 }
 </style>
