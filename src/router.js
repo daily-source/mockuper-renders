@@ -17,6 +17,7 @@ const UserRegister = () => import('@/views/UserRegister')
 const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 const NonprofitRegister = () => import('@/views/NonprofitRegister')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
+const OrganizationProfile = () => import('@/views/OrganizationProfile')
 
 export default new Router({
   mode: 'history',
@@ -33,6 +34,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: OrganizationProfile,
     },
 		{
 			path: '/user/:userId',

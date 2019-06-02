@@ -7,15 +7,18 @@
       v-if='isShown'
     >
       <img 
-        :src="require('@/assets/img/logo-1.png')"
+        :src="require('@/assets/img/hoya.png')"
         class='splash__logo'
         alt="Virtual Railroad Logo"
       >
+      <p>
+        Georgetown alumni, students and fans freeing slaves
+      </p>
       <button 
         class='splash__button button is-text'
         @click='onEnterClick'
       >
-        Click here to enter the Virtual Railroad
+        Click here to enter the Hoya Railroad
       </button>
     </div>
   </transition>
@@ -63,7 +66,7 @@ export default {
   width: 100%;
   height: 100vh;
   z-index: 100;
-  background-color: $primary;
+  background-color: #cecece;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +75,7 @@ export default {
   &__logo {
     margin-bottom: 1em;
     display: inline-block;
+    max-width: 425px;
   }
 
   &__button {
@@ -80,6 +84,11 @@ export default {
     font-size: 24px;
     display: flex;
     flex-direction: column;
+  }
+
+  p {
+    font-size: 20px;
+    color: $primary;
   }
 }
 

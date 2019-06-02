@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
-    <!-- <splash-loader /> -->
-    <!-- <intro-video /> -->
+    <splash-loader />
+    <intro-video />
     <app-header
       :is-small='true'
       :is-home='true'
@@ -37,7 +37,7 @@ export default {
 
   components: {
     HomeMap,
-    HomePageActions,
+  HomePageActions,
     AppHeader,
     IntroVideo,
     GeneralInfo,

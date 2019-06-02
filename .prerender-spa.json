@@ -1,6 +1,7 @@
 {"renderRoutes":
   [
     "/",
+    "/profile",
     "/nonprofit-directory",
     "/nonprofit-sign-up",
     "/nonprofit/1",

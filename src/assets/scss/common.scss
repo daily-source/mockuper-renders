@@ -11,3 +11,9 @@ html body {
 .label {
   justify-content: flex-start !important;
 }
+
+.organization-details {
+  a {
+    text-decoration: underline !important;
+  }
+}
