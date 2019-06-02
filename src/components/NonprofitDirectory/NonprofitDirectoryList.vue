@@ -351,7 +351,7 @@ export default {
 <style lang='scss' scoped>
 .nonprofit-directory-list {
   margin-top: 2em;
-  max-width: 920px;
+  max-width: 950px;
   margin-left: auto;
   margin-right: auto;
 
