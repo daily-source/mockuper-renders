@@ -8,7 +8,8 @@ const state = {
 			loction:"461 Hermann Greens Apt. 847",
 			name:"OXFAM International",
 			picture: `${baseURL}img/oxfam.png`,
-			state:"Kansas",
+      state:"Kansas",
+      claimed: true,
 			url:"https://titus.net",
 			locations: [
 				{

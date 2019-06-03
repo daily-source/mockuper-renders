@@ -68,7 +68,8 @@
       v-if='nonprofitsPerCountry.length === 0'
     >
       <img src="@/assets/img/no-results.png" alt="No Results">
-      <p>No nonprofits found. Try another search.</p>
+      <p class='results-text'>0 results found.</p>
+      <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
   </div>
 </template>
@@ -105,7 +106,7 @@ export default {
 
     initialFilter: {
       type: String,
-      required: 'false',
+      required: false,
       default: '',
     },
   },
@@ -131,7 +132,6 @@ export default {
      * the filter value temporarily first.
      */
     filterNonprofits (filterValue) {
-      console.log('something')
       this.filter = filterValue
     },
 
@@ -331,18 +331,20 @@ export default {
 
     ...mapState({
       nonprofits (state) {
-        if (this.filter) {
+        const filterBasis = this.showState ? this.filter : this.initialFilter
+
+        if (filterBasis) {
           return state.nonprofits.data.filter(nonprofit => {
             // Remove special characters for better filtering.
             const name = nonprofit.name.toLowerCase().replace(/[^\w\s]/gi, '')
-            const filter = this.filter.toLowerCase().replace(/[^\w\s]/gi, '')
+            const filter = filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
 
             return name.includes(filter)
           })
         }
 
         return state.nonprofits.data
-      }
+      },
     })
   }
 }
@@ -359,7 +361,16 @@ export default {
     max-width: 100%;
     text-align: center;
 
+    img {
+      margin-bottom: 1em;
+    }
+
     p {
+      margin-bottom: 10px;
+      max-width: 730px;
+    }
+
+    .results-text {
       font-size: 1.25em;
     }
   }

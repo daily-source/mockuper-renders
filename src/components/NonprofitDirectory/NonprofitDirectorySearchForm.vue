@@ -6,7 +6,7 @@
     <input 
       type='text'
       class='nonprofit-directory-search-form__input input'
-      placeholder='Enter your keyword/s to search...'
+      :placeholder='inputPlaceholder'
       v-model='filterValue'
     >
     <button 
@@ -36,6 +36,12 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+
+    inputPlaceholder: {
+      type: String,
+      required: false,
+      default: 'Enter your keyword/s to search...'
     },
   },
 
@@ -77,10 +83,10 @@ export default {
   }
 
   &__input {
-    flex-basis: 350px;
-    width: 350px;
+    flex-basis: 400px;
+    width: 400px;
     flex-grow: 1;
-    max-width: 350px;
+    max-width: 400px;
   }
 }
 </style>
