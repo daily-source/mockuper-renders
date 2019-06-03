@@ -73,7 +73,7 @@
             <h4 class='has-text-primary has-text-weight-bold'>Current students:</h4>
             <ul>
               <li>
-                Class <span class="has-text-weight-bold">of</span> 2020
+                <span class="has-text-weight-bold">Class of 2020</span>
                 <ul>
                   <li>
                     Jill Smith
@@ -418,7 +418,7 @@ export default {
     }
 
     h4 {
-      margin-bottom: .5rem;
+      margin-bottom: .75rem;
     }
 
     .marginless-list {
@@ -429,7 +429,7 @@ export default {
   }
 
   .list-section {
-    margin-top: 1.5em;
+    margin-top: 1em;
 
     &:first-of-type {
       margin-top: 0;
