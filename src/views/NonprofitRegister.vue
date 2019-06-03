@@ -158,7 +158,7 @@ export default {
 
   &__directory {
     max-width: 100% !important;
-    margin-top: 1.25em;
+    margin-top: .875em !important;
   }
 
   &__container {
@@ -170,7 +170,7 @@ export default {
   }
 
   .nonprofit-directory-list-item__nonprofit-details {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 
   .nonprofit-directory-list--empty {

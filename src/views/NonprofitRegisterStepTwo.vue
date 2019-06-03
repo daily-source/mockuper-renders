@@ -18,6 +18,7 @@
       <nonprofit-directory-search-form 
         @formSubmit='onFormSubmit'
         :show-reset-button='false'
+        :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
       />
       <div class="nonprofit-register-step-two__btn-container">
         <button 

@@ -3,31 +3,44 @@
     class="nonprofit-register-results"
   >
     <div 
-      class="nonprofit-register-results__item"
-      v-for='(nonprofit, index) in nonprofitsSorted'
-      :key='index'
+      class="nonprofit-register-results__wrapper"
+      v-if='nonprofitsSorted.length > 0'
     >
-      <div class="nonprofit-register-results__heading-row">
-        <div class="nonprofit-register-results__name-wrapper">
-          <p class='nonprofit-register-results__name'>{{ nonprofit.name }}</p>
+      <div 
+        class="nonprofit-register-results__item"
+        v-for='(nonprofit, index) in nonprofitsSorted'
+        :key='index'
+      >
+        <div class="nonprofit-register-results__heading-row">
+          <div class="nonprofit-register-results__name-wrapper">
+            <p class='nonprofit-register-results__name'>{{ nonprofit.name }}</p>
+          </div>
+          <div class="nonprofit-register-results__actions">
+            <button
+              class='button is-secondary nonprofit-register-results__action'
+              :disabled='nonprofit.claimed'        
+            >
+              Claim this nonprofit
+            </button>
+            <button
+              class='button is-primary nonprofit-register-results__action'
+            >
+              View Profile
+            </button>
+          </div>
         </div>
-        <div class="nonprofit-register-results__actions">
-          <button
-            class='button is-secondary nonprofit-register-results__action'
-            :disabled='nonprofit.claimed'        
-          >
-            Claim this nonprofit
-          </button>
-          <button
-            class='button is-primary nonprofit-register-results__action'
-          >
-            View Profile
-          </button>
+        <div class="nonprofit-register-results__countries-row">
+            <p>Countries include: {{ splitCountries(nonprofit.locations) }}</p>
         </div>
       </div>
-      <div class="nonprofit-register-results__countries-row">
-          <p>Countries include: {{ splitCountries(nonprofit.locations) }}</p>
-      </div>
+    </div>
+    <div
+      class='nonprofit-register-results__wrapper nonprofit-register-results__wrapper--empty'
+      v-else
+    >
+      <img src="@/assets/img/no-results.png" alt="No Results">
+      <p class='results-text'>0 results found.</p>
+      <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
   </div>
 </template>
@@ -47,14 +60,14 @@ export default {
 
   computed: {
     ...mapState({
-      filter: 'nonprofitRegistration/filter',
+      filterBasis: state => state.nonprofitRegistration.filter,
 
       nonprofits (state) {
-        if (this.filter) {
+        if (this.filterBasis) {
           return state.nonprofits.data.filter(nonprofit => {
             // Remove special characters for better filtering.
             const name = nonprofit.name.toLowerCase().replace(/[^\w\s]/gi, '')
-            const filter = filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
+            const filter = this.filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
 
             return name.includes(filter)
           })
@@ -88,8 +101,37 @@ export default {
 
 <style lang="scss" scoped>
 .nonprofit-register-results {
+  $self: &;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
+
+  &__wrapper {
+    max-width: 100%;
+    text-align: center;
+
+    &--empty {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      > img {
+        max-width: 170px;
+        width: 100%;
+        margin-bottom: 1em;
+      }
+
+      p {
+        margin-bottom: 10px;
+        max-width: 730px;
+      }
+
+      .results-text {
+        font-size: 1.25em;
+      }
+    }
+  }
 
   &__item {
     margin-bottom: 1em;
