@@ -18,7 +18,7 @@
         class='splash__button button is-text'
         @click='onEnterClick'
       >
-        Click here to enter the Hoya Railroad
+        Click here to enter
       </button>
     </div>
   </transition>
@@ -75,7 +75,7 @@ export default {
   &__logo {
     margin-bottom: 1em;
     display: inline-block;
-    max-width: 425px;
+    max-width: 475px;
   }
 
   &__button {
@@ -87,7 +87,7 @@ export default {
   }
 
   p {
-    font-size: 20px;
+    font-size: 22px;
     color: $primary;
   }
 }

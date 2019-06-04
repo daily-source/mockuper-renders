@@ -9,11 +9,10 @@
       </div>
       <div class='column organization-details__details-column'>
         <div class='organization-details__block is-flex organization-details__name-block'>
-          <h4 class='has-text-weight-bold organization-details__name'>{{ organization.name }}</h4>
-          <a href='#' target='_blank'>View Website</a>
+          <h4 class='has-text-weight-bold organization-details__name'>{{ hoyaMarker.name }}</h4>
         </div>
         <div class='organization-details__block is-flex'>
-          <p v-html='organization.description'></p>
+          <div v-html='organization.description'></div>
         </div>
       </div>
       <!-- <div class='organization-details__office-locations column'>
@@ -102,7 +101,7 @@ export default {
           lat: 38.907689,
           lng: -77.0737924,
         },
-        name: 'Georgetown University',
+        name: 'Hoya Railroad',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
@@ -158,7 +157,7 @@ export default {
 
   &__details-column {
     margin-right: 20px;
-    max-width: 720px;
+    max-width: 737px;
 
     &:last-child {
       margin-right: 0;
@@ -175,8 +174,13 @@ export default {
   }
 
   p {
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     a {
-      text-decoration: underline;`
+      text-decoration: underline;
     }
   }
 
@@ -221,4 +225,20 @@ export default {
   }
 
 }
+</style>
+
+<style lang='scss'>
+.organization-details {
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+
 </style>

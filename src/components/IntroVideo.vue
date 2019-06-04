@@ -81,7 +81,9 @@ export default {
 
   methods: {
 		onReady (event) {
-			this.player = event
+      this.player = event
+      
+      console.log(this.player.getDuration())
 		},
 
 		/**
@@ -112,8 +114,8 @@ export default {
 		checkPlayerTimeRecursively () {
 			setTimeout( () => {
 				this.getPlayerCurrentTime().then(() => {
-					if (this.player.getPlayerState() === 1) {
-						this.checkPlayerTimeRecursively()
+					if (this.player.getPlayerState() === 1 || this.player.getState() === 0) {
+            this.checkPlayerTimeRecursively()
 					}
 				})
 			}, this.sampleRate)
@@ -202,7 +204,7 @@ export default {
 		},
 
 		playerCurrentTime (value) {
-			if (value >= this.fadeAfter) {
+			if (value >= this.player.getDuration() - 1) {
 				this.videoTransition = 'video-fade-long'
 
 				this.hideVideo()
