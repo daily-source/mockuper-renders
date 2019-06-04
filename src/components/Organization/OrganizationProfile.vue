@@ -1,7 +1,7 @@
 <template>
   <div class='organization-details'>
     <div class='organization-details__columns columns'>
-      <div class='column is-3 organization-details__picture-column'>
+      <div class='column organization-details__picture-column'>
         <Avatar 
           :url='organization.picture'
           :alt='organization.name'
@@ -35,7 +35,7 @@
         </template>
       </div> -->
     </div>
-    <div class='organization-details__map'>
+    <!-- <div class='organization-details__map'>
       <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
@@ -64,11 +64,11 @@
           />
         </button>
       </div>
-    </div>
+    </div> -->
     <div class="organization-details__alumni-section">
-      <h3 class='has-text-weight-bold'>People who support the Hoya Railroad</h3>
+      <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
       <div class="columns">
-        <div class="column is-6">
+        <div class="column is-6 alumni-section__list-col">
           <div class="list-section">
             <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
             <ul>
@@ -170,7 +170,7 @@
             </ul>
           </div>
         </div>
-        <div class="column is-4">
+        <div class="column is-4 alumni-section__list-col">
           <div class="list-section">
             <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
             <ul class='marginless-list'>
@@ -334,9 +334,15 @@ export default {
     margin-bottom: 0;
   }
 
+  &__picture-column {
+    width: 260px;
+    flex-basis: 260px;
+    flex-grow: 0;
+  }
+
   &__details-column {
     margin-right: 20px;
-    max-width: 737px;
+    max-width: 810px;
 
     &:last-child {
       margin-right: 0;
@@ -349,6 +355,12 @@ export default {
 
     a {
       margin-right: .875em;
+    }
+  }
+
+  &__list-col {
+    &:last-of-type {
+      margin-right: 112px;
     }
   }
 
@@ -404,10 +416,9 @@ export default {
   }
 
   &__alumni-section {
-    max-width: 990px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 2em;
     padding-bottom: 2em;
 
     h3 {

@@ -12,7 +12,7 @@
         alt="Virtual Railroad Logo"
       >
       <p>
-        Georgetown alumni, students and fans freeing slaves
+        Georgetown alumni, students and <br /> fans helping to free current slaves
       </p>
       <button 
         class='splash__button button is-text'
@@ -75,20 +75,22 @@ export default {
   &__logo {
     margin-bottom: 1em;
     display: inline-block;
-    max-width: 475px;
+    max-width: 530px;
   }
 
   &__button {
     background-color: transparent !important;
     color: $secondary !important;
-    font-size: 24px;
+    font-size: 26px;
     display: flex;
     flex-direction: column;
   }
 
   p {
-    font-size: 22px;
+    font-size: 23px;
     color: $primary;
+    text-align: center;
+    margin-bottom: 0;
   }
 }
 
