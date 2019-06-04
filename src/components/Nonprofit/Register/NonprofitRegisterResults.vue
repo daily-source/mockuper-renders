@@ -20,7 +20,7 @@
               class='button is-secondary nonprofit-register-results__action'
               :disabled='nonprofit.claimed'        
             >
-              Claim this nonprofit
+              {{ nonprofit.claimed ? 'Nonprofit already claimed' : 'Claim this nonprofit' }}
             </button>
             <button
               class='button is-primary nonprofit-register-results__action'
@@ -107,7 +107,6 @@ export default {
 
   &__wrapper {
     max-width: 100%;
-    text-align: center;
 
     &--empty {
       min-height: 400px;
@@ -153,6 +152,7 @@ export default {
   &__countries-row {
     margin-top: .5em;
     margin-left: 2em;
+    text-align: left;
   }
 
   &__name-wrapper {
@@ -162,6 +162,7 @@ export default {
   &__name {
     font-size: 1.375em;
     min-width: 310px;
+    font-weight: 700;
   }
 
   &__action {
