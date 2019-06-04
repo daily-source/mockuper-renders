@@ -66,7 +66,7 @@ export default {
   width: 100%;
   height: 100vh;
   z-index: 100;
-  background-color: #FFF;
+  background-color: #cecece;
   display: flex;
   align-items: center;
   justify-content: center;

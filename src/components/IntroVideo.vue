@@ -202,7 +202,7 @@ export default {
 		},
 
 		playerCurrentTime (value) {
-			if (value >= this.fadeAfter) {
+			if (value >= this.player.getDuration() - 1) {
 				this.videoTransition = 'video-fade-long'
 
 				this.hideVideo()
