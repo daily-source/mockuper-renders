@@ -1,17 +1,14 @@
 <template>
   <div class='organization-details'>
     <div class='organization-details__columns columns'>
-      <div class='column is-3 organization-details__picture-column'>
+      <div class='column organization-details__picture-column'>
+        <h4 class='has-text-weight-bold organization-details__name'>{{ hoyaMarker.name }}</h4>
         <Avatar 
           :url='organization.picture'
           :alt='organization.name'
         />
       </div>
       <div class='column organization-details__details-column'>
-        <div class='organization-details__block is-flex organization-details__name-block'>
-          <h4 class='has-text-weight-bold organization-details__name'>{{ organization.name }}</h4>
-          <a href='#' target='_blank'>View Website</a>
-        </div>
         <div class='organization-details__block is-flex'>
           <div v-html='organization.description'></div>
         </div>
@@ -41,7 +38,7 @@
         :users='[]'
         :nonprofits='[]'
         :icon-size='32'
-        :zoom='2'
+        :zoom='4'
         :center='{
           lat: 21.877549073219285,
           lng: 19.235336738974297,
@@ -190,7 +187,10 @@
                 Daniel Kim
               </li>
               <li>
-                Anthony LarelliTina Kavowski
+                Anthony Larelli
+              </li>
+              <li>
+                Tina Kavowski
               </li>
               <li>
                 Tom Newfield
@@ -280,11 +280,15 @@ export default {
           lat: 38.907689,
           lng: -77.0737924,
         },
-        name: 'Georgetown University',
+        name: 'Hoya Railroad',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
     }
+  },
+
+  mounted () {
+    this.changeMapStyle('light')
   },
 
    methods: {
@@ -316,6 +320,10 @@ export default {
     margin-right: .875em;
   }
 
+  &__picture-column {
+    max-width: 260px;
+  }
+
   &__map {
     position: relative;
     height: 340px;
@@ -331,7 +339,7 @@ export default {
 
   &__name {
     margin-right: 1em;
-    margin-bottom: 0;
+    margin-bottom: .5rem;
   }
   
   &__details-column {
@@ -349,6 +357,11 @@ export default {
   }
 
   p {
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     a {
       text-decoration: underline;
     }

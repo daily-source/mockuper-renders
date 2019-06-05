@@ -8,6 +8,7 @@ import navbar from './modules/navbar'
 import map from './modules/map'
 import splash from './modules/splash'
 import nonprofitRegistration from './modules/nonprofitRegistration'
+import stations from './modules/stations'
 
 Vue.use(Vuex)
 
@@ -30,5 +31,6 @@ export default new Vuex.Store({
 		map,
     splash,
     nonprofitRegistration,
+    stations,
 	},
 })
