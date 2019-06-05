@@ -68,7 +68,7 @@
     <div class="organization-details__alumni-section">
       <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
       <div class="columns">
-        <div class="column is-6 alumni-section__list-col">
+        <div class="column is-7 alumni-section__list-col">
           <div class="list-section">
             <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
             <ul>
@@ -173,7 +173,7 @@
         <div class="column is-4 alumni-section__list-col">
           <div class="list-section">
             <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
-            <ul class='marginless-list'>
+            <ul class='marginless-list indented-list'>
               <li>
                 Jay Ansin
               </li>
@@ -217,7 +217,7 @@
           </div>
           <div class="list-section">
             <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
-            <ul class='marginless-list'>
+            <ul class='marginless-list indented-list'>
               <li>
                 Alex Curran
               </li>
@@ -422,14 +422,14 @@ export default {
     padding-bottom: 2em;
 
     h3 {
-      font-size: 34px;
+      font-size: 36px;
       margin-bottom: 1.5rem;
     }
 
     ul {
       > li {
         margin-bottom: 1em;
-        font-size: 18px;
+        font-size: 20px;
 
         &:last-child {
           margin-bottom: 0;
@@ -437,9 +437,10 @@ export default {
 
         ul {
           padding-left: 1em;
+          margin-top: .25em;
 
           > li {
-            margin-bottom: 0;
+            margin-bottom: .25em;
           }
 
         }
@@ -447,7 +448,7 @@ export default {
     }
 
     h4 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: .75rem;
     }
 
@@ -464,6 +465,14 @@ export default {
     &:first-of-type {
       margin-top: 0;
     }
+  }
+}
+
+.indented-list {
+  padding-left: 1em;
+
+  li {
+    margin-bottom: .25em !important;
   }
 }
 </style>
