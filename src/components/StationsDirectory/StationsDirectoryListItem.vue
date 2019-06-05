@@ -2,23 +2,23 @@
 <div class='stations-directory-list-item'>
   <div class="columns stations-directory-list-item__columns">
     <div class="column is-3 stations-directory-list-item__img-column">
-      <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
       <div class="stations-directory-list-item__img">
         <img :src="station.picture" :alt="station.name">
       </div>
     </div>
     <div class="column stations-directory-list-item__details-column">
       <div class="columns stations-directory-list-item__details-block">
+        <div class="column stations-directory-list-item__name-block">
+          <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
+          <p class="is-marginless">{{ station.location }}</p>
+        </div>
+      </div>
+      <div class="columns stations-directory-list-item__details-block">
         <div class="column is-3">
           <p class='is-marginless'><span class="has-text-weight-bold">Participants:</span> {{ station.participants }}</p>
         </div>
         <div class="column">
           <p class='is-marginless'><span class="has-text-weight-bold">Amount Donated:</span> {{ station.amountDonated | usd }}</p>
-        </div>
-      </div>
-      <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
-        <div class="column">
-          <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.location }}</p>
         </div>
       </div>
       <p>{{ station.tagline }}</p>
@@ -53,12 +53,21 @@ export default {
     font-size: 18px;
   }
 
-  h4 {
-    margin-bottom: .75rem;
+  &__name-block {
+    display: flex;
+    align-items: flex-end;
   }
 
-  &__details-column {
-    margin-top: 40px;
+  h4 {
+    margin-bottom: 0;
+    font-size: 28px;
+    margin-right: 30px;
+    color: $primary;
+    line-height: 1;
+  }
+
+  &__img {
+    height: 100%;
   }
 
   img {
