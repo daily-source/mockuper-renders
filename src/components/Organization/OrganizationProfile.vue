@@ -35,15 +35,15 @@
         </template>
       </div> -->
     </div>
-    <!-- <div class='organization-details__map'>
-      <virtual-railroad-map 
+    <div class='organization-details__map'>
+     <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
         :icon-size='32'
-        :zoom='2'
+        :zoom='4'
         :center='{
-          lat: 22.852884267366456,
-          lng: 18.883774238974297,
+          lat: 39.66193026673745,
+          lng: -90.13614734411594,
         }'
         :nonprofit-marker='hoyaMarker'
       />
@@ -64,182 +64,230 @@
           />
         </button>
       </div>
-    </div> -->
+    </div>
     <div class="organization-details__alumni-section">
       <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
-      <div class="columns">
-        <div class="column is-7 alumni-section__list-col">
-          <div class="list-section">
-            <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
-            <ul>
-              <li>
-                <span class="has-text-weight-bold">Class of 2020</span>
-                <ul>
-                  <li>
-                    Jill Smith
-                  </li>
-                  <li>
-                    Kevin Guitierrez
-                  </li>
-                  <li>
-                    Susan Lundgren
-                  </li>
-                  <li>
-                    Mel Hollis
-                  </li>
-                  <li>
-                    Karen Nguyen
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="has-text-weight-bold">Class of 2021</span>
-                <ul>
-                  <li>
-                    Ira Rosen 
-                  </li>
-                  <li>
-                    Jason Claiborne  
-                  </li>
-                  <li>
-                    Nick Palexis
-                  </li>
-                  <li>
-                    Mel Hollis
-                  </li>
-                  <li>
-                    Linda Joubert
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="has-text-weight-bold">Class of 2022</span>
-                <ul>
-                  <li>
-                    Mackensie Stevens
-                  </li>
-                  <li>
-                    Mike Andrews  
-                  </li>
-                  <li>
-                    Nate Birbiglia 
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="has-text-weight-bold">Class of 2023</span>
-                <ul>
-                  <li>
-                    Yousef Kabran
-                  </li>
-                  <li>
-                    David Tosi
-                  </li>
-                  <li>
-                    Amet Guzdar
-                  </li>
-                  <li>
-                    Justin Pearl
-                  </li>
-                  <li>
-                    Ted Roppel 
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="list-section">
+      <div class="organization-details__alumni-section-columns">
+        <div class="columns">
+          <div class="column alumni-section__list-col">
             <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4>
             <ul class=''>
-              <li>
+              <!-- <li>
                 <ul>
                   <li>Michelle Lindbloom</li>
                   <li>Theresa Sampson </li>
                   <li></li>
                 </ul>
-              </li>
-              <li></li>
-            </ul>
-            <ul class='marginless-list'>
-              <li><span class="has-text-weight-bold">Class of 2019</span></li>
-              <li><span class="has-text-weight-bold">Class of 2018</span></li>
-              <li><span class="has-text-weight-bold">Class of 2017</span></li>
-              <li><span class="has-text-weight-bold">Class of 2016</span></li>
-              <li><span class="has-text-weight-bold">Class of 2015</span></li>
-              <li><span class="has-text-weight-bold">Class of 2014</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="column is-4 alumni-section__list-col">
-          <div class="list-section">
-            <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
-            <ul class='marginless-list indented-list'>
+              </li> -->
               <li>
-                Jay Ansin
+                <span class="has-text-weight-bold">Class of 2019</span>
+                <ul>
+                  <li>David Lynn</li>
+                  <li>Rafael Mason</li>
+                  <li>Carrie Nardelli</li>
+                  <li>Narayan Achi</li>
+                </ul>
               </li>
               <li>
-                Roy Amberger                                                                   
+                <span class="has-text-weight-bold">Class of 2018</span>
+                <ul>
+                  <li>Adi Vichova</li>
+                  <li>Seth Aronson</li>
+                  <li>Angela Nunez</li>
+                </ul>
               </li>
               <li>
-                Lily Hilgrow
+                <span class="has-text-weight-bold">Class of 2017</span>
+                <ul>
+                  <li>Sharon Wooding</li>
+                  <li>Miles Ackerman</li>
+                  <li>David Chung</li>
+                  <li>Steve Meenan</li>
+                  <li>Kristin Bresnahan</li>
+                </ul>
               </li>
               <li>
-                Rob Cohen
+                <span class="has-text-weight-bold">Class of 2016</span>
+                <ul>
+                  <li>Scott Lindbloom</li>
+                  <li>Teresa Sampson</li>
+                  <li>Sebastian Quinn</li>
+                </ul>
               </li>
               <li>
-                Daniel Kim
+                <span class="has-text-weight-bold">Class of 2015</span>
+                <ul>
+                  <li>Don Rhee</li>
+                  <li>Jimmy Cranston</li>
+                  <li>Marissa Wilson</li>
+                  <li>Cindy Pugoli</li>
+                </ul>
               </li>
               <li>
-                Anthony LarelliTina Kavowski
-              </li>
-              <li>
-                Tom Newfield
-              </li>
-              <li>
-                Linda Moore
-              </li>
-              <li>
-                Laphonso Deon
-              </li>
-              <li>
-                Pablo Ruiz David Lobell
-              </li>
-              <li>
-                Jill Hagandanz
-              </li>
-              <li>
-                David Chen
-              </li>
-              <li>
-                Walter Thoreau
+                <span class="has-text-weight-bold">Class of 2014</span>
+                <ul>
+                  <li>Marcus Steinman</li>
+                  <li>Ann Marie Petri</li>
+                  <li>Lynnette Cavanaugh</li>
+                </ul>
               </li>
             </ul>
           </div>
-          <div class="list-section">
-            <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
-            <ul class='marginless-list indented-list'>
-              <li>
-                Alex Curran
-              </li>
-              <li>
-                Andrew Enoch
-              </li>
-              <li>
-                Laurence Falvey
-              </li>
-              <li>
-                Peter Ferguson
-              </li>
-              <li>
-                Hunter Aron
-              </li>
-              <li>
-                Maggie Olerud
-              </li>
-              <li>
-                Sumi Lee
-              </li>
-            </ul>
+          <div class="column alumni-section__list-col">
+            <div class="list-section">
+              <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
+              <ul>
+                <li>
+                  <span class="has-text-weight-bold">Class of 2020</span>
+                  <ul>
+                    <li>
+                      Jill Smith
+                    </li>
+                    <li>
+                      Kevin Guitierrez
+                    </li>
+                    <li>
+                      Susan Lundgren
+                    </li>
+                    <li>
+                      Mel Hollis
+                    </li>
+                    <li>
+                      Karen Nguyen
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="has-text-weight-bold">Class of 2021</span>
+                  <ul>
+                    <li>
+                      Ira Rosen 
+                    </li>
+                    <li>
+                      Jason Claiborne  
+                    </li>
+                    <li>
+                      Nick Palexis
+                    </li>
+                    <li>
+                      Mel Hollis
+                    </li>
+                    <li>
+                      Linda Joubert
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="has-text-weight-bold">Class of 2022</span>
+                  <ul>
+                    <li>
+                      Mackensie Stevens
+                    </li>
+                    <li>
+                      Mike Andrews  
+                    </li>
+                    <li>
+                      Nate Birbiglia 
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="has-text-weight-bold">Class of 2023</span>
+                  <ul>
+                    <li>
+                      Yousef Kabran
+                    </li>
+                    <li>
+                      David Tosi
+                    </li>
+                    <li>
+                      Amet Guzdar
+                    </li>
+                    <li>
+                      Justin Pearl
+                    </li>
+                    <li>
+                      Ted Roppel 
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="column alumni-section__list-col">
+            <div class="list-section">
+              <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
+              <ul class='marginless-list indented-list'>
+                <li>
+                  Jay Ansin
+                </li>
+                <li>
+                  Roy Amberger                                                                   
+                </li>
+                <li>
+                  Lily Hilgrow
+                </li>
+                <li>
+                  Rob Cohen
+                </li>
+                <li>
+                  Daniel Kim
+                </li>
+                <li>
+                  Anthony Larelli
+                </li>
+                <li>
+                  Tina Kavowski
+                </li>
+                <li>
+                  Tom Newfield
+                </li>
+                <li>
+                  Linda Moore
+                </li>
+                <li>
+                  Laphonso Deon
+                </li>
+                <li>
+                  Pablo Ruiz David Lobell
+                </li>
+                <li>
+                  Jill Hagandanz
+                </li>
+                <li>
+                  David Chen
+                </li>
+                <li>
+                  Walter Thoreau
+                </li>
+              </ul>
+            </div>
+            <div class="list-section">
+              <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
+              <ul class='marginless-list indented-list'>
+                <li>
+                  Alex Curran
+                </li>
+                <li>
+                  Andrew Enoch
+                </li>
+                <li>
+                  Laurence Falvey
+                </li>
+                <li>
+                  Peter Ferguson
+                </li>
+                <li>
+                  Hunter Aron
+                </li>
+                <li>
+                  Maggie Olerud
+                </li>
+                <li>
+                  Sumi Lee
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -287,6 +335,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.changeMapStyle('light')
+  },
+
    methods: {
     onSwitchThemeClicked () {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
@@ -318,10 +370,11 @@ export default {
 
   &__map {
     position: relative;
-    height: 500px;
+    height: 340px;
     max-width: 990px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2em;
   }
 
   &__name-block {
@@ -416,7 +469,6 @@ export default {
   }
 
   &__alumni-section {
-    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2em;
