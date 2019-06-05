@@ -1,16 +1,14 @@
 <template>
   <div class='organization-details'>
     <div class='organization-details__columns columns'>
-      <div class='column is-3 organization-details__picture-column'>
+      <div class='column organization-details__picture-column'>
+        <h4 class='has-text-weight-bold organization-details__name'>{{ hoyaMarker.name }}</h4>
         <Avatar 
           :url='organization.picture'
           :alt='organization.name'
         />
       </div>
       <div class='column organization-details__details-column'>
-        <div class='organization-details__block is-flex organization-details__name-block'>
-          <h4 class='has-text-weight-bold organization-details__name'>{{ hoyaMarker.name }}</h4>
-        </div>
         <div class='organization-details__block is-flex'>
           <div v-html='organization.description'></div>
         </div>
@@ -40,10 +38,10 @@
         :users='[]'
         :nonprofits='[]'
         :icon-size='32'
-        :zoom='2'
+        :zoom='4'
         :center='{
-          lat: 22.852884267366456,
-          lng: 18.883774238974297,
+          lat: 39.66193026673745,
+          lng: -90.13614734411594,
         }'
         :nonprofit-marker='hoyaMarker'
       />
@@ -190,7 +188,10 @@
                 Daniel Kim
               </li>
               <li>
-                Anthony LarelliTina Kavowski
+                Anthony Larelli
+              </li>
+              <li>
+                Tina Kavowski
               </li>
               <li>
                 Tom Newfield
@@ -287,6 +288,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.changeMapStyle('light')
+  },
+
    methods: {
     onSwitchThemeClicked () {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
@@ -316,9 +321,13 @@ export default {
     margin-right: .875em;
   }
 
+  &__picture-column {
+    max-width: 260px;
+  }
+
   &__map {
     position: relative;
-    height: 500px;
+    height: 340px;
     max-width: 990px;
     margin-left: auto;
     margin-right: auto;
@@ -331,12 +340,13 @@ export default {
 
   &__name {
     margin-right: 1em;
-    margin-bottom: 0;
+    margin-bottom: .5rem;
   }
 
   &__details-column {
     margin-right: 20px;
     max-width: 737px;
+    margin-top: .5em;
 
     &:last-child {
       margin-right: 0;
