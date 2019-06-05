@@ -42,8 +42,12 @@ export default {
 
 <style lang="scss" scoped>
 .stations-directory-list-item {
-  padding-top: 3em;
-  padding-bottom: 3em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  &:first-child {
+    padding-top: 2em;
+  }
 
   p {
     font-size: 18px;
@@ -55,6 +59,12 @@ export default {
 
   &__details-column {
     margin-top: 40px;
+  }
+
+  img {
+    min-height: 166px;
+    width: 100%;
+    object-fit: cover;
   }
 
   &__details-block { 
