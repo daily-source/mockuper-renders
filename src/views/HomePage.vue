@@ -37,7 +37,7 @@ export default {
 
   components: {
     HomeMap,
-  HomePageActions,
+    HomePageActions,
     AppHeader,
     IntroVideo,
     GeneralInfo,

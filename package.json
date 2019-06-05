@@ -1,0 +1,52 @@
+{
+  "name": "mockupper",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "luxon": "^1.6.2",
+    "numeral": "^2.0.6",
+    "register-service-worker": "^1.0.0",
+    "usa-states": "^0.0.5",
+    "v-tooltip": "^2.0.0-rc.33",
+    "vue": "^2.5.17",
+    "vue-meta": "^1.5.0",
+    "vue-no-ssr": "^0.2.2",
+    "vue-router": "^3.0.1",
+    "vue-youtube": "github:johnveeuminga/vue-youtube",
+    "vue-youtube-embed": "^2.2.1",
+    "vue2-google-maps": "^0.10.5",
+    "vuex": "^3.0.1",
+    "xthon-core": "github:dailysourceorg/xthon-core#0.0.38",
+    "youtube-player": "^5.5.2"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.5",
+    "@vue/cli-plugin-pwa": "^3.1.2",
+    "@vue/cli-plugin-unit-mocha": "^3.1.1",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-eslint": "^10.0.1",
+    "bulma": "^0.7.2",
+    "chai": "^4.1.2",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "faker": "^4.1.0",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "node-sass": "^4.9.0",
+    "path": "^0.12.7",
+    "prerender-spa-plugin": "^3.2.1",
+    "sass-loader": "^7.0.1",
+    "vue-cli-plugin-prerender-spa": "^1.0.3",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
