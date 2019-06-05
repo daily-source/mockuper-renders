@@ -32,7 +32,10 @@
           <router-link to='/nonprofit-sign-up'>Register a Nonprofit</router-link>
         </li>
         <li class='navbar-contents__nav-item'>
-          <router-link to='nonprofit-directory'>Nonprofit Directory</router-link>
+          <router-link to='/nonprofit-directory'>Nonprofit Directory</router-link>
+        </li>
+        <li class='navbar-contents__nav-item'>
+          <router-link to='/stations-directory'>Stations Directory</router-link>
         </li>
         <li class='navbar-contents__nav-item'>
           <router-link to='/register'>Sign Up</router-link>
