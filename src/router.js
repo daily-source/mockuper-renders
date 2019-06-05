@@ -73,7 +73,7 @@ export default new Router({
     },
     {
       path: '/stations-directory',
-      name: 'register',
+      name: 'stations-directory',
       component: StationsDirectory,
     },
   ],
