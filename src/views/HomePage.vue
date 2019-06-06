@@ -51,8 +51,6 @@ import AppBanner from 'Components/OptionsForGood/AppBanner.vue';
 import FundraiserGrid from 'Components/OptionsForGood/FundraiserGrid.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 
-Vue.use(VueMeta)
-
 export default {
   name: "nonprofit",
   /**
