@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <AppHeader layout="app"></AppHeader>
+    <app-header 
+      layout="app"
+      volunteer-text='Do one now'
+    />
 
     <transition name="slide-fade">
       <DonateView
@@ -19,13 +22,28 @@
     ></NonprofitHero>
 
 
-    <div class="container">
-      <p>Normal charity rides are held only one day of the year in one city. If you can’t be in that city on that day, you can’t raise money. A Ride For Good can be done any day of the year anywhere in the world. You also have flexibility to do your own ride, organize a group ride or join an existing ride. With a Ride for Good, you can ride and raise money your way.</p>
+    <div class='nonprofit-info'>
+      <div class='container'>
+        <div class="nonprofit-info__container">
+          <p>
+            In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
+          </p>
+          <ul>
+            <li>Sometimes the bulleted items are used to give a list of benefits of the fundraising activity or approach
+            </li>
+            <li>But they can be used for other lists</li>
+            <li>They are not required, so it’s fine to delete them</li>
+            <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
+            </li>
+            <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
+    <GenericForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </NonprofitForm>
+    </GenericForm>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -43,9 +61,9 @@
       :fundraisers="fundraisers"
       :key="nonprofit.EIN"
       limit="5"
-      section-title="Who's doing a Ride For Good to raise money for this nonprofit?s nonprofit?"
+      section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a Ride For Good to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -98,7 +116,6 @@ import Vue from 'vue';
 import VueMeta from 'vue-meta';
 import RegisterOrLoginModal from 'Components/general/RegisterOrLoginModal.vue';
 import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
-import AppBanner from 'Components/GiveItUp/AppBanner.vue';
 
 Vue.use(VueMeta);
 
@@ -117,17 +134,16 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/RideForGood/AppHeader.vue'),
-    NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
+    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    NonprofitHero: () => import('LocalComponents/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('Components/general/DonorsList.vue'),
+    DonorsList: () => import('LocalComponents/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
+    NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    NonprofitForm: () => import('Components/RideForGood/NonprofitForm.vue'),
+    GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
-    AppBanner,
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
@@ -157,11 +173,10 @@ export default {
   },
   computed: {
     ein() {
-      return this.$route.params.ein;
+      return this.$route.params.ein || 1;
     },
     nonprofit() {
-      const ein = this.$route.params.ein
-      return this.$store.state.nonprofit[ein];
+      return this.$store.state.nonprofit[this.ein];
     },
     fundraisers() {
       return this.$store.state.fundraisers.data;
@@ -201,12 +216,11 @@ export default {
   },
   methods: {
     loadNonprofitData () {
-      const ein = this.$route.params.ein
-      if (this.$store.state.nonprofit.hasOwnProperty(ein)) {
+      if (this.$store.state.nonprofit.hasOwnProperty(this.ein)) {
         return
       } 
       return new Promise((resolve, reject) => {
-        return this.$store.dispatch("FETCH_NONPROFIT", { ein })
+        return this.$store.dispatch("FETCH_NONPROFIT", { ein: this.ein })
           .then(data => {
             resolve(data)
           })
@@ -229,7 +243,7 @@ export default {
         });
     },
     loadMoreDonations(paginated = true) {
-      const nonprofitEIN = this.$route.params.ein;
+      const nonprofitEIN = this.ein;
       return this.$store.dispatch('FETCH_DONATIONS', { nonprofitEIN, paginated })
         .then(data => data)
         .catch(err => err);
@@ -308,4 +322,40 @@ export default {
   }
 }
 
+.nonprofit-info {
+  margin-top: 20px;
+  
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include desktop {
+      max-width: 86%;
+    }
+
+    p {
+      font-size: 1rem;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+
+    ul {
+      margin-left: 2em;
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    li {
+      margin-bottom: .5em;
+
+      @include fullhd {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
 </style>

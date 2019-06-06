@@ -39,6 +39,7 @@
       />
     </div>
     <SharedFooter></SharedFooter>
+    <banner-switcher />
   </div>
 </template>
 
@@ -50,9 +51,14 @@ import AppBanner from 'Components/OptionsForGood/AppBanner.vue';
 import FundraiserGrid from 'Components/OptionsForGood/FundraiserGrid.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 
-export default {
-  name: 'BaseLayout',
+Vue.use(VueMeta)
 
+export default {
+  name: "nonprofit",
+  /**
+   * Uses dynamic import to speed up page performance.
+   * See https://webpack.js.org/guides/code-splitting/ for reference.
+   */
   components: {
     SharedHeader,
     AppBanner,
@@ -60,17 +66,22 @@ export default {
     SharedFooter,
   },
 
-  metaInfo() {
-    const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
-    const title = 'Raise money while riding!';
+  /**
+   * This uses vue-meta in order to render the tags in the page. For the home page, it uses
+   * the default values plus a custom description and title. The og:image property is defined
+   * in the template, ./src/App.vue
+   */
+  metaInfo () {
+    var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
+    var title = "Create a volunteerathon and do good!"
     return {
       title: 'Options for Good - Home',
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: title },
-        { vmid: 'og:description', name: 'og:description', content: description },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: title },
+        { vmid: "og:description", name: "og:description", content: description }
+      ]
+    }
   },
 
   computed: {

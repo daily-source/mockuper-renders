@@ -1,12 +1,16 @@
-.push-left {
-  margin-left: auto;
+.comment-item {
+  &__avatar {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.header-nav {
-  .navbar-item {
-    &:hover {
-      background-color: $secondary;
-      transition: all .2s ease;
-    }
+.update__content {
+  br {
+    content: '';
+    display: block;
+    margin-bottom: 15px;
   }
 }
