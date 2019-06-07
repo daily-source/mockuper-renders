@@ -21,7 +21,6 @@
       v-on:edit:close="closeEdition()"
     ></NonprofitHero>
 
-
     <app-description />
 
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
@@ -119,13 +118,13 @@ export default {
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     AppHeader: () => import('Components/Loseathon/AppHeader.vue'),
-    NonprofitHero: () => import('LocalComponents/nonprofit/NonprofitHero.vue'),
+    NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('LocalComponents/general/DonorsList.vue'),
+    DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
+    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
     AppDescription,
