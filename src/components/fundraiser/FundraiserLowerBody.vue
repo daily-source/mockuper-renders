@@ -219,7 +219,7 @@
 </template>
 
 <script>
-import DonorsList from "LocalComponents/general/DonorsList.vue"
+import DonorsList from "Components/general/DonorsList.vue"
 
 export default {
   props: [ "fundraiser", "editing", "canEdit" ],
