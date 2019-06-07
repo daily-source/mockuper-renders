@@ -124,7 +124,7 @@ export default {
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     AppHeader: () => import('Components/RunForGood/AppHeader.vue'),
-    NonprofitHero: () => import('LocalComponents/nonprofit/NonprofitHero.vue'),
+    NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
