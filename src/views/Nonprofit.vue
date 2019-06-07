@@ -139,7 +139,7 @@ export default {
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
+    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
