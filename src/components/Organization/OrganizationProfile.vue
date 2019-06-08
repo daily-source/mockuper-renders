@@ -328,7 +328,7 @@ export default {
           lat: 38.907689,
           lng: -77.0737924,
         },
-        name: 'Hoya Railroad',
+        name: 'Georgetown Station',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
