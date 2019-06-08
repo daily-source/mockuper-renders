@@ -6,7 +6,12 @@
   <div class='nonprofit-list-item-links'>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
-    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>See all its locations.</router-link>
+    <router-link 
+      :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'
+      v-if='nonprofit.locations.length > 1'
+    >
+      See all its locations.
+    </router-link>
     <button v-if='showClaimNonprofitButton' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-primary is-small button'>Claim this nonprofit</button>
   </div>
 </div>
