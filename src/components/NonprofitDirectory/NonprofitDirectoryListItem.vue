@@ -4,9 +4,15 @@
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
   </div>
   <div class='nonprofit-list-item-links'>
-    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View its other locations</router-link>
-    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
+    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button is-secondary is-small button'>Donate</button>
+    <router-link 
+      :to='`/nonprofit/${nonprofit.id}`' 
+      class='nonprofit-directory-list-item__link'
+      v-if='nonprofit.locations.length > 1'
+    >
+      See more locations
+    </router-link>
   </div>
 </div>
 </template>
@@ -36,9 +42,9 @@ export default {
   &__name {
     display: inline-block;
     margin-right: 1em;
-    font-size: 18px;
-    min-width: 300px;
-    max-width: 300px;
+    font-size: 22px;
+    min-width: 355px;
+    max-width: 355px;
   }
 
   a {
@@ -51,7 +57,7 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 175px;
+    margin-right: 100px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
@@ -60,7 +66,7 @@ export default {
   &__button {
     padding: .125em .5em !important;
     height: auto;
-    margin-right: 32px;
+    margin-right: 28px;
   }
 }
 
@@ -71,7 +77,11 @@ export default {
   align-items: center;
 
   a {
-    margin-right: 32px;
+    margin-right: 28px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 </style>
