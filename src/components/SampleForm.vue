@@ -99,7 +99,7 @@ export default {
    */
   components: {
     ComboBox: () => import("Components/general/ComboBox.vue"),
-    NonprofitAjaxSearch: () => import("Components/general/NonprofitAjaxSearch.vue"),
+    NonprofitAjaxSearch: () => import("LocalComponents/general/NonprofitAjaxSearch.vue"),
     UserDialog: () => import("Components/general/UserDialog.vue"),
     DonatePasswordModal: () => import("Components/donate/DonatePasswordModal.vue")
   },
