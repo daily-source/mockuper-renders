@@ -16,7 +16,7 @@
       Search
     </button>
     <button 
-      class='button is-danger nonprofit-directory-search-form__button'
+      class='button is-secondary nonprofit-directory-search-form__button'
       @click.prevent.stop='resetFilter'
       v-if='showResetButton'
     >

@@ -7,7 +7,7 @@
           :alt='nonprofit.name'
         />
       </div>
-      <div class='column is-5 nonprofit-details__details-column'>
+      <div class='column nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
         </div>
@@ -144,6 +144,9 @@ export default {
   
   &__details-column {
     margin-right: 20px;
+    width: 575px;
+    flex-basis: 575px;
+    max-width: 575px;
   }
 
   &__website-block {

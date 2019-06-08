@@ -22,47 +22,51 @@
     >
       <slot name='title'></slot>
     </div>
-    <div 
-      class='nonprofit-list'
-      v-for='(np, index) in nonprofitsPerCountry'
-      :key='index'
-    >
-      <h4 class='has-text-weight-bold nonprofit-list__country'>{{np.country}}</h4>
+    
+    <div class="nonprofit-list__wrapper">
       <div 
-        class='nonprofit-list__countries nonprofit-list__block--indented'
-        v-if='np.nonprofits && np.country !== "USA"'
+        class='nonprofit-list'
+        v-for='(np, index) in nonprofitsPerCountry'
+        :key='index'
       >
-        <nonprofit-directory-list-item 
-          v-for='nonprofit in np.nonprofits'
-          :key='nonprofit.id'
-          :nonprofit='nonprofit'
-          :show-claim-nonprofit-button='showClaimNonprofitButton'
-        />
-      </div>
-      <div 
-        class='nonprofit-list__cities'
-        v-if='np.country === "USA" && np.nonprofits.length > 0'
-      >
+        <h4 class='has-text-weight-bold nonprofit-list__country'>{{np.country}}</h4>
         <div 
-          class='nonprofit-list__block--indented nonprofit-list-city'
-          v-for='(nonprofit, index) in np.nonprofits'
-          :key='index'
+          class='nonprofit-list__countries nonprofit-list__block--indented'
+          v-if='np.nonprofits && np.country !== "USA"'
         >
-          <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
+          <nonprofit-directory-list-item 
+            v-for='nonprofit in np.nonprofits'
+            :key='nonprofit.id'
+            :nonprofit='nonprofit'
+            :show-claim-nonprofit-button='showClaimNonprofitButton'
+          />
+        </div>
+        <div 
+          class='nonprofit-list__cities'
+          v-if='np.country === "USA" && np.nonprofits.length > 0'
+        >
           <div 
-            class='nonprofit-list__cities-list nonprofit-list__block--indented nonprofit-list__block--indented-level-2'
-            v-if='nonprofit.nonprofits'
+            class='nonprofit-list__block--indented nonprofit-list-city'
+            v-for='(nonprofit, index) in np.nonprofits'
+            :key='index'
           >
-            <nonprofit-directory-list-item 
-              v-for='nonprofit in nonprofit.nonprofits'
-              :key='nonprofit.id'
-              :nonprofit='nonprofit'
-              :show-claim-nonprofit-button='showClaimNonprofitButton'
-            />
+            <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
+            <div 
+              class='nonprofit-list__cities-list nonprofit-list__block--indented nonprofit-list__block--indented-level-2'
+              v-if='nonprofit.nonprofits'
+            >
+              <nonprofit-directory-list-item 
+                v-for='nonprofit in nonprofit.nonprofits'
+                :key='nonprofit.id'
+                :nonprofit='nonprofit'
+                :show-claim-nonprofit-button='showClaimNonprofitButton'
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div 
       class='nonprofit-directory-list--empty'
       v-if='nonprofitsPerCountry.length === 0'
@@ -353,7 +357,7 @@ export default {
 <style lang='scss' scoped>
 .nonprofit-directory-list {
   margin-top: 2em;
-  max-width: 950px;
+  max-width: 850px;
   margin-left: auto;
   margin-right: auto;
 
@@ -380,10 +384,12 @@ export default {
   margin-bottom: 2em;
   &__block {
     &--indented {
-      margin-left: 1.5em;
+      margin-left: 3em;
     }
 
     &--indented-level-2 {
+      margin-left: 1.5em;
+      
       .nonprofit-directory-list-item__name {
         max-width: calc(300px - 1.5em);
         min-width: calc(300px - 1.5em);
@@ -403,6 +409,7 @@ export default {
 
 .nonprofit-list-city {
   margin-bottom: 1em;
+  margin-left: 1.5em;
 
   &__label {
     font-size: 19px;
@@ -444,8 +451,8 @@ export default {
   &__block {
     &--indented-level-2 {
       .nonprofit-directory-list-item__name {
-        max-width: calc(300px - 1.5em);
-        min-width: calc(300px - 1.5em);
+        max-width: 300px;
+        min-width: 300px;
       }
     }
   }

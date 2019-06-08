@@ -4,10 +4,10 @@
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
   </div>
   <div class='nonprofit-list-item-links'>
-    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View all its locations</router-link>
-    <button v-if='showClaimNonprofitButton' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-primary is-small button'>Claim this nonprofit</button>
-    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
+    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
+    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>See all its locations.</router-link>
+    <button v-if='showClaimNonprofitButton' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-primary is-small button'>Claim this nonprofit</button>
   </div>
 </div>
 </template>
@@ -43,7 +43,7 @@ export default {
   &__name {
     display: inline-block;
     margin-right: 1em;
-    font-size: 18px;
+    font-size: 20px;
     min-width: 300px;
     max-width: 300px;
   }
@@ -58,7 +58,7 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 170px;
+    margin-right: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
