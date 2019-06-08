@@ -35,7 +35,7 @@
         </template>
       </div> -->
     </div>
-    <div class='organization-details__map'>
+    <!-- <div class='organization-details__map'>
      <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
@@ -64,7 +64,7 @@
           />
         </button>
       </div>
-    </div>
+    </div> -->
     <div class="organization-details__alumni-section">
       <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
       <div class="organization-details__alumni-section-columns">
@@ -133,7 +133,7 @@
               </li>
             </ul>
           </div>
-          <div class="column alumni-section__list-col">
+          <div class="column is-4 alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
               <ul>
@@ -214,7 +214,7 @@
               </ul>
             </div>
           </div>
-          <div class="column alumni-section__list-col">
+          <div class="column is-4 alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
               <ul class='marginless-list indented-list'>
@@ -388,8 +388,8 @@ export default {
   }
 
   &__picture-column {
-    width: 260px;
-    flex-basis: 260px;
+    width: 312px;
+    flex-basis: 312px;
     flex-grow: 0;
   }
 
@@ -465,6 +465,14 @@ export default {
       padding: 0;
       outline: none !important;
       box-shadow: none !important;
+    }
+  }
+
+  &__alumni-section-columns {
+    margin-left: 100px;
+
+    > .columns {
+      justify-content: center;
     }
   }
 
