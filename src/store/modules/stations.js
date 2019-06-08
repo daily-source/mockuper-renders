@@ -7,7 +7,7 @@ const state = {
       location: 'Washington D.C',
       participants: 913,
       amountDonated: 48343,
-      picture: require('@/assets/img/georgetown_school_photo.png'),
+      picture: require('@/assets/img/georgetown-university-1.jpg'),
     },
     {
       id: 2,

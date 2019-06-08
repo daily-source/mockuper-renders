@@ -22,6 +22,9 @@
         </div>
       </div>
       <p>{{ station.tagline }}</p>
+      <div class="stations-directory-list-item__actions">
+        <a href="#">Visit This Station</a>
+      </div>
     </div>
   </div>
 </div>
@@ -58,11 +61,25 @@ export default {
   }
 
   &__details-column {
-    margin-top: 40px;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__columns {
+    align-items: stretch;
+  }
+
+  &__actions {
+    a {
+      color: $blue;
+      text-decoration: underline;
+    }
+    margin-top: auto;
   }
 
   img {
-    min-height: 166px;
+    min-height: 188px;
     width: 100%;
     object-fit: cover;
   }
