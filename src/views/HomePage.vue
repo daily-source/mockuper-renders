@@ -21,8 +21,11 @@ import LogoGrid from 'Components/ForTheSlaves/LogoGrid';
 import SharedFooter from 'Components/Shared/SharedFooter';
 
 export default {
-  name: 'BaseLayout',
-
+  name: "nonprofit",
+  /**
+   * Uses dynamic import to speed up page performance.
+   * See https://webpack.js.org/guides/code-splitting/ for reference.
+   */
   components: {
     SharedHeader,
     AppBanner,
@@ -36,14 +39,21 @@ export default {
     return {
       title: 'For The Slaves - Home',
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: title },
-        { vmid: 'og:description', name: 'og:description', content: description },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: title },
+        { vmid: "og:description", name: "og:description", content: description }
+      ]
+    }
   },
-
-};
+  /**
+   * Return stored data for this view.
+   */
+  computed: {
+    home () {
+      return this.$store.state.home
+    }
+  }
+}
 </script>
 
 <style lang='scss' scoped>
