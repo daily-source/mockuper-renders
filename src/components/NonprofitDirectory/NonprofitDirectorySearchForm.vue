@@ -43,11 +43,17 @@ export default {
       required: false,
       default: 'Enter your keyword/s to search...'
     },
+
+    initialValue: {
+      type: String,
+      required: false,
+      default: ''
+    },
   },
 
   data () {
     return {
-      filterValue: '',
+      filterValue: this.initialValue,
     }
   },  
 

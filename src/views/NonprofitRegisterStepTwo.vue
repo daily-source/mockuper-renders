@@ -10,6 +10,7 @@
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
         <nonprofit-directory-search-form 
           @formSubmit='onFormSubmit'
+          :initial-value='filterValue'
           :show-reset-button='false'
           :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
         />
