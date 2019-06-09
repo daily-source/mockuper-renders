@@ -32,8 +32,11 @@ import RaiseAwarenessGrid from 'Components/ForTheEarth/RaiseAwarenessGrid'
 import RaiseMoneyGrid from 'Components/ForTheEarth/RaiseMoneyGrid';
 
 export default {
-  name: 'BaseLayout',
-
+  name: "nonprofit",
+  /**
+   * Uses dynamic import to speed up page performance.
+   * See https://webpack.js.org/guides/code-splitting/ for reference.
+   */
   components: {
     SharedHeader,
     AppBanner,
@@ -48,14 +51,21 @@ export default {
     return {
       title: 'For the Earth - v1',
       meta: [
-        { vmid: 'description', name: 'description', content: description },
-        { vmid: 'og:title', property: 'og:title', content: title },
-        { vmid: 'og:description', name: 'og:description', content: description },
-      ],
-    };
+        { vmid: "description", name: "description", content: description },
+        { vmid: "og:title", property: "og:title", content: title },
+        { vmid: "og:description", name: "og:description", content: description }
+      ]
+    }
   },
-
-};
+  /**
+   * Return stored data for this view.
+   */
+  computed: {
+    home () {
+      return this.$store.state.home
+    }
+  }
+}
 </script>
 
 <style lang='scss' scoped>
