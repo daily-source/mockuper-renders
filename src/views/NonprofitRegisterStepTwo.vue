@@ -4,9 +4,9 @@
     id='nonprofit-register-step-two'
   >
     <div class="container nonprofit-register__container nonprofit-register__container--small">
-      <h2 class='has-text-weight-bold nonprofit-register__heading'>Results</h2>    
+      <h2 class='has-text-weight-bold nonprofit-register__heading'>Results for: {{ filterValue }}</h2>    
       <nonprofit-register-results />
-      <div class="nonprofit-register-form-step-two__search">
+      <div class="nonprofit-register-step-two__search">
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
         <nonprofit-directory-search-form 
           @formSubmit='onFormSubmit'
@@ -56,8 +56,6 @@ export default {
 
     onFormSubmit (filterValue) {
       this.setFilter(filterValue)
-
-      // this.smoothScroll('nonprofit-register-step-two')
     },
 
     ...mapMutations({
@@ -82,7 +80,11 @@ export default {
   }
 
   &__search {
-
+    margin-top: 2em;
+    .nonprofit-register__heading {
+      color: $primary;
+      font-size: 22px;
+    }
   }
 
   .subheading {

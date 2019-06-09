@@ -18,10 +18,10 @@
           </div>
           <div class="nonprofit-register-results__actions">
             <button
-              class='button is-secondary nonprofit-register-results__action'
+              class='button is-secondary nonprofit-register-results__action nonprofit-register-results__action--claim'
               :disabled='nonprofit.claimed'        
             >
-              {{ nonprofit.claimed ? 'Nonprofit already claimed' : 'Claim this nonprofit' }}
+              {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
             <button
               class='button is-primary nonprofit-register-results__action'
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="nonprofit-register-results__countries-row">
-            <p>Countries include: {{ splitCountries(nonprofit.locations) }}</p>
+            <p>Locations: {{ splitCountries(nonprofit.locations) }}</p>
         </div>
       </div>
     </div>
@@ -39,7 +39,6 @@
       class='nonprofit-register-results__wrapper nonprofit-register-results__wrapper--empty'
       v-else
     >
-      <img src="@/assets/img/no-results.png" alt="No Results">
       <p class='results-text'>0 results found.</p>
       <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
@@ -114,7 +113,7 @@ export default {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
 
       > img {
         max-width: 170px;
@@ -172,6 +171,10 @@ export default {
     height: auto;
     padding: .125em .5em!important;
     margin-right: .5em;
+
+    &--claim {
+      min-width: 153px;
+    }
   }
 }
 </style>

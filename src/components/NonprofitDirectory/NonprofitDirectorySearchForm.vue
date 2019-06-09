@@ -54,6 +54,7 @@ export default {
   methods: {
     onFormSubmit () {
       this.$emit('formSubmit', this.filterValue)
+      this.filterValue = ''
     },
 
     /**
