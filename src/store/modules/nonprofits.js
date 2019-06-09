@@ -287,6 +287,7 @@ const state = {
 		},
 		{
       name: 'Life Impact International',
+      name: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Massa',
       picture: `${baseURL}img/life-impact-international-logo-retina.png`,
       id: 11,
       url: 'https://lifeimpactintl.org/',
@@ -316,6 +317,7 @@ const state = {
 		},
 		{
       name: 'HAGAR',
+      name: 'Lorem Ipsum Dolor Sit Amet Consectetur Massa Nun',
       picture: `${baseURL}img/hagar.jpg`,
       id: 12,
       url: 'https://hagarinternational.org/',
@@ -345,6 +347,7 @@ const state = {
 		},
 		{
       name: 'Hope for Justice',
+      name: 'Lorem Ipsum Dolor Sit Amet Viverra Fusce',
       picture: `${baseURL}img/hopeforjustice.jpg`,
       id: 13,
       url: 'https://hopeforjustice.org/',

@@ -6,6 +6,7 @@
       class="nonprofit-register-results__wrapper"
       v-if='nonprofitsSorted.length > 0'
     >
+      <p class='subheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If not, contact us here. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
       <div 
         class="nonprofit-register-results__item"
         v-for='(nonprofit, index) in nonprofitsSorted'
@@ -157,11 +158,12 @@ export default {
 
   &__name-wrapper {
     margin-right: 170px;
+    min-width: 350px;
+    max-width: 350px;
   }
 
   &__name {
     font-size: 1.375em;
-    min-width: 310px;
     font-weight: 700;
   }
 

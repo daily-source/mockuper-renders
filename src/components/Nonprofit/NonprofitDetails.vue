@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
-      <div class='column is-2 nonprofit-details__picture-column'>
+      <div class='column is-3 nonprofit-details__picture-column'>
         <Avatar 
           :url='nonprofit.picture'
           :alt='nonprofit.name'
@@ -162,7 +162,7 @@ export default {
   }
 
   ol {
-  counter-reset: list;
+    counter-reset: list;
   }
 
   ol > li {

@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import AppHeader from 'LocalComponents/AppHeader'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearchForm'
@@ -88,6 +90,10 @@ export default {
     return {
       filterValue: '',
     }
+  },
+
+  mounted () {
+    this.setMapStyle('light')
   },
 
   methods :{
@@ -127,6 +133,10 @@ export default {
     afterEnter(element) {
       element.style.height = 'auto';
     },
+
+    ...mapActions({
+      setMapStyle: 'map/changeMapStyle'
+    })
   },
 
   metaInfo() {
@@ -149,7 +159,8 @@ export default {
   $self: &;
 
   &__heading {
-    font-size: 32px;
+    font-size: 24px;
+    margin-bottom: 1.5rem;
   }
 
   &__register-form {

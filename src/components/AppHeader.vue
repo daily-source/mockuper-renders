@@ -270,7 +270,7 @@ export default {
 
   .header {
     &__logo-container {
-      max-width: 250px;
+      max-width: 270px;
       position: static;
       margin-left: auto;
       margin-right: auto;
@@ -283,7 +283,7 @@ export default {
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      flex-basis: calc(50% - 125px);
+      flex-basis: calc(50% - 135px);
     }
 
     &__column {

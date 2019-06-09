@@ -39,6 +39,8 @@
             :key='nonprofit.id'
             :nonprofit='nonprofit'
             :show-claim-nonprofit-button='showClaimNonprofitButton'
+            :show-donate-button='listItemOptions.showDonateButton'
+            :show-locations-button='listItemOptions.showLocationsButton'
           />
         </div>
         <div 
@@ -60,6 +62,8 @@
                 :key='nonprofit.id'
                 :nonprofit='nonprofit'
                 :show-claim-nonprofit-button='showClaimNonprofitButton'
+                :show-donate-button='listItemOptions.showDonateButton'
+                :show-locations-button='listItemOptions.showLocationsButton'
               />
             </div>
           </div>
@@ -106,6 +110,17 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+
+    listItemOptions: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          showDonateButton: true,
+          showLocationsButton: true,
+        }
+      }
     },
 
     initialFilter: {

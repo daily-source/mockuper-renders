@@ -4,11 +4,22 @@
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
   </div>
   <div class='nonprofit-list-item-links'>
-    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
-    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
+    <router-link 
+      :to="{ name: 'nonprofit-details', 
+      params: {nonprofitId: nonprofit.id} }" 
+      class='nonprofit-directory-list-item__link'
+    >
+      View Profile
+    </router-link>
+    <button 
+      class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'
+      v-if='showDonateButton'
+    >
+      Donate
+    </button>
     <router-link 
       :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'
-      v-if='nonprofit.locations.length > 1'
+      v-if='nonprofit.locations.length > 1 && showLocationsButton'
     >
       See all its locations.
     </router-link>
@@ -31,6 +42,18 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+
+    showDonateButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showLocationsButton: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   }
 }

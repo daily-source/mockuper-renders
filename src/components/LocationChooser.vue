@@ -3,14 +3,21 @@
     <div class='location-chooser-autocomplete'>
       <gmap-autocomplete
         @place_changed="setSelectedPlaceTemp"
-        placeholder='Enter zip code or city/state'
+        placeholder='Enter zip code, city/state or city/country'
         class='location-chooser-autocomplete__input input'
       />
       <button 
         class='button is-primary'
         @click.prevent.stop='setSelectedPlace()'
       >
-        Use
+        Search
+      </button>
+      <button 
+        class='button is-primary'
+        :disabled='!selectedLocation || !selectedPlace'
+        @click.prevent.stop='submitLocation'
+      >
+        Add This Location
       </button>
     </div>
     <div class='location-chooser__map-container'>
@@ -186,13 +193,19 @@ export default {
 
       this.setSelectedPlace(location)
 
-      this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
     },
 
     onSwitchThemeClicked () {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
       
       this.changeMapStyle(style)
+    },
+
+    /**
+     * Submits the location
+     */
+    submitLocation () {
+      this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
     },
 
     ...mapActions({
@@ -229,7 +242,7 @@ export default {
 <style lang="scss" scoped>
 .location-chooser {
   &__map-container {
-    height: 300px;
+    height: 500px;
     width: 100%;
     position: relative;
   }
@@ -264,10 +277,13 @@ export default {
 .location-chooser-autocomplete {
   margin-bottom: 1em;
   display: flex;
-  justify-content: flex-end;
 
   &__input {
-    max-width: 250px;
+    max-width: 400px;
+    margin-right: .5em;
+  }
+
+  .button {
     margin-right: .5em;
   }
 }

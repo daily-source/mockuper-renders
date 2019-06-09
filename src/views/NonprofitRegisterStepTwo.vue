@@ -5,24 +5,19 @@
   >
     <div class="container nonprofit-register__container nonprofit-register__container--small">
       <h2 class='has-text-weight-bold nonprofit-register__heading'>Results</h2>    
-      <p class='is-marginless'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check with others to see if someone has claimed it. If not, contact us here. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit at the bottom.</p>
-      <!-- <nonprofit-directory-list 
-        :enable-nonprofit-suggest='false'
-        :show-claim-nonprofit-button='true'
-        :show-search='false'
-        :initial-filter='filterValue'
-        class='nonprofit-register__directory'
-      /> -->
       <nonprofit-register-results />
-      <p v-if='filterValue'><span class="has-text-weight-bold">You searched for: </span>{{ filterValue }}</p>
-      <nonprofit-directory-search-form 
-        @formSubmit='onFormSubmit'
-        :show-reset-button='false'
-        :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
-      />
+      <div class="nonprofit-register-form-step-two__search">
+        <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
+        <nonprofit-directory-search-form 
+          @formSubmit='onFormSubmit'
+          :show-reset-button='false'
+          :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
+        />
+      </div>
       <div class="nonprofit-register-step-two__btn-container">
         <button 
           class='button is-primary'
+          @click='goToStepThree'
         >
           Add A New Nonprofit
         </button>
@@ -55,6 +50,10 @@ export default {
       this.setFilter('')
     },
 
+    goToStepThree() {
+      this.$router.push({name: 'nonprofit-sign-up-step-three'})      
+    },
+
     onFormSubmit (filterValue) {
       this.setFilter(filterValue)
 
@@ -68,14 +67,33 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .nonprofit-register-step-two {
+  .nonprofit-register__heading {
+    margin-bottom: 1rem;
+  }
+
   &__btn-container {
     margin-top: 1.5em;
 
     .button {
       font-size: 1.25em;
     }
+  }
+
+  &__search {
+
+  }
+
+  .subheading {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-subheading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
   }
 }
 </style>

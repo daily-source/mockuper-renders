@@ -23,7 +23,7 @@
 					</div>
 					<div class='user-bio'>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius egestas tincidunt. Vivamus lacinia, elit quis pulvinar posuere.
+							{{ user.about }}
 						</p>
 					</div>
 				</div>
