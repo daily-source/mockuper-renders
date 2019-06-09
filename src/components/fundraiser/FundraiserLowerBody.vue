@@ -70,7 +70,7 @@
                       v-if="updates.length"
                     ></FundraiserUpdates>
                     <p v-else>There are no updates posted yet!</p>
-                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Load more updates</button>
+                    <button class="button is-warning is-load-more" @click="loadMoreUpdates(true)" v-if="moreUpdates">Show more updates</button>
                   </div>
                 </div>
                 <p v-if="canEdit">
@@ -220,12 +220,13 @@
 
 <script>
 import DonorsList from "Components/general/DonorsList.vue"
+
 export default {
   props: [ "fundraiser", "editing", "canEdit" ],
   components: {
     FundraiserGivingLevel: () => import("Components/fundraiser/FundraiserGivingLevel.vue"),
     FundraiserNonprofitDetails: () => import("Components/fundraiser/FundraiserNonprofitDetails.vue"),
-    FundraiserUpdates: () => import("Components/fundraiser/FundraiserUpdates.vue"),
+    FundraiserUpdates: () => import("LocalComponents/fundraiser/FundraiserUpdates.vue"),
     Comments: () => import("Components/general/Comments.vue"),
     DonateAction: () => import("Components/general/DonateAction.vue"),
     DonorsList,
