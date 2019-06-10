@@ -45,6 +45,10 @@ router.beforeEach((to, from, next) => {
     return
   }
 
+  if (to.name === 'home') {
+    store.dispatch('map/changeMapStyle', 'dark')
+  }
+
   /**
    * If from.name is `null` and from.path is `/`, this means that we visited the
    * site on the home page, therefore we should play the video.
