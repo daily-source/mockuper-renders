@@ -5,7 +5,7 @@
     <section class="section">
       <div class="container stations-directory__container">
         <h3 class='has-text-weight-bold'>Stations On The Virtual Railroad</h3>
-        <p>A station is a group of people such as a school, business, church, synagogue or community that is helping to fight slavery through donations or volunteering. To create a new station, click <a href="#">here</a>. To find a station, use the search field or scroll.</p>
+        <p class='subheading'>A station is a group of people such as a school, business, church, synagogue or community that is helping to fight slavery through donations or volunteering. To create a new station, click <a href="#">here</a>. To find a station, use the search field or scroll.</p>
         <stations-directory-list />
       </div>
     </section>
@@ -49,6 +49,15 @@ export default {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  h3 {
+    font-size: 27px;
+    margin-bottom: 1.5rem;
+  }
+
+  .subheading {
+    font-size: 17px;
   }
 }
 </style>
