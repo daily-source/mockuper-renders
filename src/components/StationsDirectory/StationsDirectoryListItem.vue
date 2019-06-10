@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .stations-directory-list-item {
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 1.25em;
 
   &:first-child {
     padding-top: 2em;
@@ -72,7 +72,7 @@ export default {
 
   h4 {
     margin-bottom: 0;
-    font-size: 28px;
+    font-size: 2rem;
     margin-right: 30px;
     color: $primary;
     line-height: 1;
