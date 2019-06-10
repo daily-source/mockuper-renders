@@ -388,8 +388,8 @@ export default {
   }
 
   &__picture-column {
-    width: 312px;
-    flex-basis: 312px;
+    width: 340px;
+    flex-basis: 340px;
     flex-grow: 0;
   }
 
@@ -418,6 +418,7 @@ export default {
   }
 
   p {
+    line-height: 1.7;
 
     &:last-child {
       margin-bottom: 0;
@@ -540,6 +541,8 @@ export default {
 <style lang='scss'>
 .organization-details {
   p {
+    line-height: 1.5;
+
     &:last-child {
       margin-bottom: 0;
     }
