@@ -19,7 +19,7 @@
     </button>
     <router-link 
       :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'
-      v-if='nonprofit.locations.length > 1 && showLocationsButton'
+      v-if='shouldShowLocationsButton'
     >
       See all its locations.
     </router-link>
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'NonprofitDirectoryListItem',
 
@@ -55,7 +57,17 @@ export default {
       required: false,
       default: true,
     },
-  }
+  },
+
+  computed: {
+    ...mapState({
+      shouldShowLocationsButton (state) {
+        const nonprofit = state.nonprofits.data.find(np => this.nonprofit.id === np.id)
+
+        return nonprofit && nonprofit.locations.length > 1 && this.showLocationsButton
+      }
+    })
+  },
 }
 </script>
 
