@@ -8,15 +8,22 @@
             @avatarChange='onAvatarChange'
             class='nonprofit-register-form__avatar-upload'
           /> -->
-          <inline-image-editor 
-            type='avatar'
-            layout='overlay'
-            :edition-is-enabled='true'
-            :is-background='true'
-            :is-standalone='true'
-            :field-is-open='true'
+          <croppa
+            v-model='croppaObject'
+            :width='310'
+            :height='310'
+            :placeholder-font-size='18'
+            :placeholder-color='"#000"'
+            class='nonprofit-register-form__photo-upload'
           />
-          <button type='submit' class='button is-primary'> Save Profile </button>
+          <button 
+            type='submit' 
+            class='button is-primary'
+            :disabled='!isFormValid'
+            @click='onFormSubmit'
+          > 
+            Save Profile 
+          </button>
         </div>
         <div class='nonprofit-register-form__details-column column'>
           <form @submit.prevent='onFormSubmit'>
@@ -104,7 +111,8 @@ export default {
         locations: [],
         selectedLocation: '',
         selectedPlace: '',
-      }
+      },
+      croppaObject: {},
     }
   },
 
@@ -113,6 +121,12 @@ export default {
      * Handles for submission
      */
     async onFormSubmit () {
+      if (this.croppaObject.imageSet) {
+        const avatar = this.croppaObject.generateDataUrl("image/jpeg", 0.8)
+
+        this.form.picture = avatar
+      }
+
       const newNonprofit = await this.registerNonprofit(this.form)
 
       this.$router.push({ name: 'nonprofit-details', params: {nonprofitId: newNonprofit.id}, query: {newNonprofit: 1} })
@@ -178,6 +192,15 @@ export default {
       registerNonprofit: 'nonprofits/registerNonprofit',
     }),
   },
+
+  computed: {
+    /**
+     * Checks if the form is valid
+     */
+    isFormValid () {
+      return this.croppaObject.imageSet && this.form.name && this.form.description && this.form.url
+    },
+  },
 }
 </script>
 
@@ -208,11 +231,7 @@ export default {
     font-size: 24px;
   }
 
-  &__avatar-column {
 
-  }
-
-  
   ol > li {
     list-style: none;
     margin-bottom: 0.875em;
@@ -243,6 +262,27 @@ export default {
 
   &__details-column {
     max-width: 600px;
+  }
+}
+</style>
+
+<style lang="scss">
+.nonprofit-register-form {
+  &__photo-upload {
+    margin-bottom: 1em;
+    margin-top: 1.75em;
+    position: relative;
+
+    > canvas {
+      border: 2px dashed $primary;
+      cursor: pointer;
+      background-color: #e6e6e6;
+    }
+
+    > svg {
+      position: absolute;
+      cursor: pointer;
+    }
   }
 }
 </style>
