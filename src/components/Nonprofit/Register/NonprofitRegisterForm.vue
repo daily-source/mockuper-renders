@@ -124,7 +124,7 @@ export default {
       if (this.croppaObject.imageSet) {
         const avatar = this.croppaObject.generateDataUrl("image/jpeg", 0.8)
 
-        avatar = this.form.picture
+        this.form.picture = avatar
       }
 
       const newNonprofit = await this.registerNonprofit(this.form)
