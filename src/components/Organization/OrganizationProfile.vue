@@ -615,8 +615,8 @@ export default {
   }
 
   &__picture-column {
-    width: 260px;
-    flex-basis: 260px;
+    width: 312px;
+    flex-basis: 312px;
     flex-grow: 0;
   }
 
