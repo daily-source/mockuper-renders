@@ -156,9 +156,9 @@ export default {
   }
 
   &__name-wrapper {
-    margin-right: 170px;
-    min-width: 350px;
-    max-width: 350px;
+    margin-right: 20px;
+    min-width: 500px;
+    max-width: 500px;
   }
 
   &__name {
