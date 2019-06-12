@@ -6,7 +6,7 @@
       class="nonprofit-register-results__wrapper"
       v-if='nonprofitsSorted.length > 0'
     >
-      <p class='subheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If they didn’t, contact us <a href="#">here</a>. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
+      <p class='subheading' v-if='showSubheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If they didn’t, contact us <a href="#">here</a>. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
       <div 
         class="nonprofit-register-results__item"
         v-for='(nonprofit, index) in nonprofitsSorted'
@@ -52,6 +52,14 @@ import { orderBy } from 'lodash'
 
 export default {
   name: 'NonprofitRegisterResults',
+
+  props: {
+    showSubheading: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
+  },
 
   methods: {
     splitCountries (countries = []) {
