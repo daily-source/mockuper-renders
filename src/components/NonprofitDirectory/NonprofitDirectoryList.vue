@@ -89,6 +89,7 @@ import { orderBy } from 'lodash'
 import NonprofitDirectorySearch from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearch'
 import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearchForm'
 import NonprofitDirectoryListItem from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryListItem'
+import NonprofitDirectoryFilters from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryFilters'
 
 export default {
   name: 'NonprofitList',
@@ -111,7 +112,7 @@ export default {
       required: false,
       default: true,
     },
-
+    
     listItemOptions: {
       type: Object,
       required: false,
@@ -134,6 +135,7 @@ export default {
     NonprofitDirectorySearchForm,
     NonprofitDirectorySearch,
     NonprofitDirectoryListItem,
+    NonprofitDirectoryFilters,
   },
 
   data () {
@@ -419,6 +421,10 @@ export default {
 
   &__city {
     font-size: 20px;
+  }
+
+  &__filters {
+    margin-bottom: 1.875em;
   }
 }
 

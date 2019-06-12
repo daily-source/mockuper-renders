@@ -73,8 +73,10 @@ export default {
   }
 
   a {
-    text-decoration: underline;
-    font-size: 17px;
+    &:not(.button) {
+      font-size: 17px;
+      text-decoration: underline;
+    }
   }
 
   &__link {
@@ -111,4 +113,3 @@ export default {
   }
 }
 </style>
-
