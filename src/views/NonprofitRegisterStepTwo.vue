@@ -90,6 +90,10 @@ export default {
   .subheading {
     font-size: 1.125rem;
     margin-bottom: 1.5rem;
+
+    a {
+      color: $blue;
+    }
   }
 
   .search-subheading {

@@ -6,7 +6,7 @@
       class="nonprofit-register-results__wrapper"
       v-if='nonprofitsSorted.length > 0'
     >
-      <p class='subheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If not, contact us here. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
+      <p class='subheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If they didn’t, contact us <a href="#">here</a>. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
       <div 
         class="nonprofit-register-results__item"
         v-for='(nonprofit, index) in nonprofitsSorted'
@@ -23,11 +23,7 @@
             >
               {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
-            <button
-              class='button is-primary nonprofit-register-results__action'
-            >
-              View Profile
-            </button>
+            <router-link to='#' class='nonprofit-register-results__action nonprofit-register-results__action--link'>View Profile</router-link>
           </div>
         </div>
         <div class="nonprofit-register-results__countries-row">
@@ -39,6 +35,7 @@
       class='nonprofit-register-results__wrapper nonprofit-register-results__wrapper--empty'
       v-else
     >
+      <img :src="require('@/assets/img/no-results.png')" alt="">
       <p class='results-text'>0 results found.</p>
       <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
@@ -123,11 +120,12 @@ export default {
 
       p {
         margin-bottom: 10px;
-        max-width: 730px;
+        max-width: 750px;
+        font-size: 1.125em;
       }
 
       .results-text {
-        font-size: 1.25em;
+        font-size: 1.375em;
       }
     }
   }
@@ -157,8 +155,7 @@ export default {
 
   &__name-wrapper {
     margin-right: 20px;
-    min-width: 500px;
-    max-width: 500px;
+    max-width: 590px;
   }
 
   &__name {
@@ -166,14 +163,24 @@ export default {
     font-weight: 700;
   }
 
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
   &__action {
     font-size: .875em;
     height: auto;
     padding: .125em .5em!important;
-    margin-right: .5em;
+    margin-right: .625em;
 
     &--claim {
       min-width: 153px;
+    }
+
+    &--link {
+      font-size: 1rem;
+      text-decoration: underline;
     }
   }
 }
