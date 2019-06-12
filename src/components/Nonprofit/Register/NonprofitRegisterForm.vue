@@ -16,14 +16,6 @@
             :placeholder-color='"#000"'
             class='nonprofit-register-form__photo-upload'
           />
-          <button 
-            type='submit' 
-            class='button is-primary'
-            :disabled='!isFormValid'
-            @click='onFormSubmit'
-          > 
-            Save Profile 
-          </button>
         </div>
         <div class='nonprofit-register-form__details-column column'>
           <form @submit.prevent='onFormSubmit'>
@@ -37,12 +29,12 @@
         </div>
       </div>
       <div class="nonprofit-register-form__choose-location">
-        <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location/s</p>
+        <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location(s) <span class="has-text-danger">*</span></p>
         <p>At least one location is required. The maximum is 12 locations. Each location you add will appear on your profile page and also as  a star on the Google map of anti-slavery nonprofits.</p>
         <div class="nonprofit-register-form__columns columns">
           <div class="column is-8">
             <div class='field'>
-              <div class='location-chooser-wrapper'>
+              <div class='nonprofit-register-form__location-chooser-wrapper'>
                 <location-chooser
                   ref='locationChooser'
                   @placeChanged='onAddOfficeLocationClicked'
@@ -51,6 +43,14 @@
             </div>
             <div class='field is-grouped'>
               <div class='control'>
+                <button 
+                  type='submit' 
+                  class='button is-primary'
+                  :disabled='!isFormValid'
+                  @click='onFormSubmit'
+                > 
+                  Save Profile 
+                </button>
               </div>
             </div>
           </div>
@@ -231,6 +231,9 @@ export default {
     font-size: 24px;
   }
 
+  ol {
+    counter-reset: list;
+  }
 
   ol > li {
     list-style: none;
@@ -263,7 +266,12 @@ export default {
   &__details-column {
     max-width: 600px;
   }
+
+  &__location-chooser-wrapper {
+    margin-bottom: 1.5rem;
+  }
 }
+
 </style>
 
 <style lang="scss">

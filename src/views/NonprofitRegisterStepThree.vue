@@ -18,3 +18,11 @@ export default {
   },
 }
 </script>
+
+<style lang='scss' scoped>
+.nonprofit-register-step-three {
+  h3 {
+    font-size: 29px;
+  }
+}
+</style>
