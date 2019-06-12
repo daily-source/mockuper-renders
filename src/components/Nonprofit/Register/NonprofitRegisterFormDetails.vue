@@ -25,7 +25,7 @@
       <label for='description' class='label'>Description <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
         <textarea-with-warning
-          class='nonprofit-register-form__textarea'
+          class='nonprofit-register-form-details__textarea'
           name='description'
           :max-length='descriptionMaxLength'
           id='description' 
@@ -150,16 +150,24 @@ export default {
 }
 </script>
 
+
 <style lang="scss" scoped>
-.nonprofit-register-form {
+.nonprofit-register-form-details {
   .location-chooser-wrapper {
     width: 100%;
     position: relative;
   }
 
+  label {
+    font-size: 20px;
+    font-weight: 700 !important;
+    color: #4a4a4a;
+    line-height: 1.4;
+    margin-bottom: .75em;
+  }
 
   &__textarea {
-    min-height: 145px;
+    min-height: 168px;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class='nonprofit-register-form'>
       <div class='nonprofit-register-form__columns columns'>
-        <div class='nonprofit-register-form__avatar-column column is-3'>
-          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit logo or photo</p>
+        <div class='nonprofit-register-form__avatar-column column'>
+          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Your logo or photo</p>
           <!-- <avatar-upload 
             no-image-message='Profile Photo'
             @avatarChange='onAvatarChange'
@@ -19,7 +19,7 @@
         </div>
         <div class='nonprofit-register-form__details-column column'>
           <form @submit.prevent='onFormSubmit'>
-            <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit Details</p>
+            <!-- <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit Details</p> -->
             <nonprofit-register-form-details 
               :form-values='form'
               @detailsChanged='onNonprofitDetailsChanged'
@@ -32,7 +32,7 @@
         <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location(s) <span class="has-text-danger">*</span></p>
         <p>At least one location is required. The maximum is 12 locations. Each location you add will appear on your profile page and also as  a star on the Google map of anti-slavery nonprofits.</p>
         <div class="nonprofit-register-form__columns columns">
-          <div class="column is-8">
+          <div class="column nonprofit-register-form__location-chooser-column">
             <div class='field'>
               <div class='nonprofit-register-form__location-chooser-wrapper'>
                 <location-chooser
@@ -212,6 +212,10 @@ export default {
     font-size: .875rem;
   }
 
+  &__avatar-column {
+    max-width: 340px;
+  }
+
   &__avatar-upload {
     margin-bottom: 1em;
   }
@@ -228,7 +232,7 @@ export default {
   }
 
   &__subheading {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   ol {
@@ -264,7 +268,14 @@ export default {
   }
 
   &__details-column {
-    max-width: 600px;
+    max-width: 620px;
+  }
+
+  &__location-chooser-column {
+    max-width: 720px;
+    flex-basis: 720px;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
 
   &__location-chooser-wrapper {

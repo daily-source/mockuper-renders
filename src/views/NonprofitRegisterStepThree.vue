@@ -21,8 +21,14 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-register-step-three {
+
+  > .container {
+    max-width: 1140px;
+  }
+
   h3 {
     font-size: 29px;
+    text-align: center;
   }
 }
 </style>
