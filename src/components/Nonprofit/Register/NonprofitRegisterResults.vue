@@ -185,7 +185,7 @@ export default {
     font-size: .875em;
     height: auto;
     padding: .125em .5em!important;
-    margin-right: .875em;
+    margin-right: 1.25rem;
 
     &--claim {
       min-width: 153px;
