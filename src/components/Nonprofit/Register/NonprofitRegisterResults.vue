@@ -18,10 +18,10 @@
           </div>
           <div class="nonprofit-register-results__actions">
             <button
-              class='button is-secondary nonprofit-register-results__action'
+              class='button is-secondary nonprofit-register-results__action nonprofit-register-results__action--claim'
               :disabled='nonprofit.claimed'        
             >
-              {{ nonprofit.claimed ? 'Nonprofit already claimed' : 'Claim this nonprofit' }}
+              {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
             <button
               class='button is-primary nonprofit-register-results__action'
@@ -178,6 +178,10 @@ export default {
     height: auto;
     padding: .125em .5em!important;
     margin-right: .875em;
+
+    &--claim {
+      min-width: 153px;
+    }
   }
 }
 </style>
