@@ -4,10 +4,10 @@
     <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
   </div>
   <div class='nonprofit-list-item-links'>
+    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button' v-if='showDonateButton'>Donate</button>
     <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link' v-if='shouldShowLocationsButton'>See all its locations.</router-link>
-    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>
   </div>
 </div>
 </template>
