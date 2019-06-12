@@ -67,3 +67,12 @@ export default {
 }
 </script>
 
+<style lang='scss' scoped>
+.nonprofit-directory {
+  h3 {
+    font-size: 29px;
+    margin-bottom: 1.25rem;
+  }
+}
+</style>
+

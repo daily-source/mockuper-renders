@@ -13,7 +13,7 @@
         class='suggest-nonprofit-text'
         v-if='enableNonprofitSuggest'
       >
-        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.
+        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up'>here</router-link>.
       </span>
     </div>
     <div 
@@ -463,6 +463,10 @@ export default {
   .suggest-nonprofit-text {
     display: inline-block;
     margin-left: 1.25em;
+
+    a {
+      color: $blue;
+    }
   }
 }
 </style>
