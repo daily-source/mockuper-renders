@@ -1,7 +1,7 @@
 <template>
 <div class='nonprofit-directory-list-item'>
   <div class='nonprofit-directory-list-item__nonprofit-details'>
-    <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
+    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"><span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span></router-link>
   </div>
   <div class='nonprofit-list-item-links'>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>

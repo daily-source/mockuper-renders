@@ -382,6 +382,10 @@ export default {
   .suggest-nonprofit-text {
     display: inline-block;
     margin-left: 1.25em;
+
+    a {
+      color: $blue;
+    }
   }
 }
 </style>
