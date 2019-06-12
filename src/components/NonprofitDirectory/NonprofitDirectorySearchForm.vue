@@ -41,7 +41,7 @@ export default {
     inputPlaceholder: {
       type: String,
       required: false,
-      default: 'Enter your keyword/s to search...'
+      default: 'Enter your keyword(s) to search...'
     },
 
     initialValue: {

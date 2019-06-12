@@ -215,8 +215,8 @@ export default {
 
 .header__contents {
   text-align: center;
-  padding-top: .5em;
-  padding-bottom: .5em;
+  padding-top: .25em;
+  padding-bottom: .25em;
   position: relative;
   display: flex;
   align-items: center;
