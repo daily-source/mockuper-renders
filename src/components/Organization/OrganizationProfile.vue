@@ -418,8 +418,6 @@ export default {
   }
 
   p {
-    line-height: 1.7;
-
     &:last-child {
       margin-bottom: 0;
     }
@@ -541,7 +539,7 @@ export default {
 <style lang='scss'>
 .organization-details {
   p {
-    line-height: 1.5;
+    line-height: 1.6;
 
     &:last-child {
       margin-bottom: 0;
