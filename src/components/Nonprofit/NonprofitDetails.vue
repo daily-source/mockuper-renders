@@ -1,13 +1,13 @@
 <template>
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
-      <div class='column is-2 nonprofit-details__picture-column'>
+      <div class='column is-3 nonprofit-details__picture-column'>
         <Avatar 
           :url='nonprofit.picture'
           :alt='nonprofit.name'
         />
       </div>
-      <div class='column is-5 nonprofit-details__details-column'>
+      <div class='column nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
         </div>
@@ -141,8 +141,12 @@ export default {
     margin-right: 1em;
     margin-bottom: 0;
   }
+  
   &__details-column {
     margin-right: 20px;
+    width: 575px;
+    flex-basis: 575px;
+    max-width: 575px;
   }
 
   &__website-block {
@@ -158,7 +162,7 @@ export default {
   }
 
   ol {
-  counter-reset: list;
+    counter-reset: list;
   }
 
   ol > li {

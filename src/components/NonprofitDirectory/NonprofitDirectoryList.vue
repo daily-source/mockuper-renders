@@ -13,7 +13,7 @@
         class='suggest-nonprofit-text'
         v-if='enableNonprofitSuggest'
       >
-        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.
+        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up'>here</router-link>.
       </span>
     </div>
     <div 
@@ -22,53 +22,62 @@
     >
       <slot name='title'></slot>
     </div>
-    <div 
-      class='nonprofit-list'
-      v-for='(np, index) in nonprofitsPerCountry'
-      :key='index'
-    >
-      <h4 class='has-text-weight-bold nonprofit-list__country'>{{np.country}}</h4>
+    
+    <div class="nonprofit-list__wrapper">
       <div 
-        class='nonprofit-list__countries nonprofit-list__block--indented'
-        v-if='np.nonprofits && np.country !== "USA"'
+        class='nonprofit-list'
+        v-for='(np, index) in nonprofitsPerCountry'
+        :key='index'
       >
-        <nonprofit-directory-list-item 
-          v-for='nonprofit in np.nonprofits'
-          :key='nonprofit.id'
-          :nonprofit='nonprofit'
-          :show-claim-nonprofit-button='showClaimNonprofitButton'
-        />
-      </div>
-      <div 
-        class='nonprofit-list__cities'
-        v-if='np.country === "USA" && np.nonprofits.length > 0'
-      >
+        <h4 class='has-text-weight-bold nonprofit-list__country'>{{np.country}}</h4>
         <div 
-          class='nonprofit-list__block--indented nonprofit-list-city'
-          v-for='(nonprofit, index) in np.nonprofits'
-          :key='index'
+          class='nonprofit-list__countries nonprofit-list__block--indented'
+          v-if='np.nonprofits && np.country !== "USA"'
         >
-          <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
+          <nonprofit-directory-list-item 
+            v-for='nonprofit in np.nonprofits'
+            :key='nonprofit.id'
+            :nonprofit='nonprofit'
+            :show-claim-nonprofit-button='showClaimNonprofitButton'
+            :show-donate-button='listItemOptions.showDonateButton'
+            :show-locations-button='listItemOptions.showLocationsButton'
+          />
+        </div>
+        <div 
+          class='nonprofit-list__cities'
+          v-if='np.country === "USA" && np.nonprofits.length > 0'
+        >
           <div 
-            class='nonprofit-list__cities-list nonprofit-list__block--indented nonprofit-list__block--indented-level-2'
-            v-if='nonprofit.nonprofits'
+            class='nonprofit-list__block--indented nonprofit-list-city'
+            v-for='(nonprofit, index) in np.nonprofits'
+            :key='index'
           >
-            <nonprofit-directory-list-item 
-              v-for='nonprofit in nonprofit.nonprofits'
-              :key='nonprofit.id'
-              :nonprofit='nonprofit'
-              :show-claim-nonprofit-button='showClaimNonprofitButton'
-            />
+            <h4 class='has-text-weight-bold nonprofit-list-city__label'>{{ nonprofit.state }}</h4>
+            <div 
+              class='nonprofit-list__cities-list nonprofit-list__block--indented nonprofit-list__block--indented-level-2'
+              v-if='nonprofit.nonprofits'
+            >
+              <nonprofit-directory-list-item 
+                v-for='nonprofit in nonprofit.nonprofits'
+                :key='nonprofit.id'
+                :nonprofit='nonprofit'
+                :show-claim-nonprofit-button='showClaimNonprofitButton'
+                :show-donate-button='listItemOptions.showDonateButton'
+                :show-locations-button='listItemOptions.showLocationsButton'
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div 
       class='nonprofit-directory-list--empty'
       v-if='nonprofitsPerCountry.length === 0'
     >
       <img src="@/assets/img/no-results.png" alt="No Results">
-      <p>No nonprofits found. Try another search.</p>
+      <p class='results-text'>0 results found.</p>
+      <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
   </div>
 </template>
@@ -80,6 +89,7 @@ import { orderBy } from 'lodash'
 import NonprofitDirectorySearch from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearch'
 import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearchForm'
 import NonprofitDirectoryListItem from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryListItem'
+import NonprofitDirectoryFilters from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryFilters'
 
 export default {
   name: 'NonprofitList',
@@ -102,10 +112,21 @@ export default {
       required: false,
       default: true,
     },
+    
+    listItemOptions: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          showDonateButton: true,
+          showLocationsButton: true,
+        }
+      }
+    },
 
     initialFilter: {
       type: String,
-      required: 'false',
+      required: false,
       default: '',
     },
   },
@@ -114,6 +135,7 @@ export default {
     NonprofitDirectorySearchForm,
     NonprofitDirectorySearch,
     NonprofitDirectoryListItem,
+    NonprofitDirectoryFilters,
   },
 
   data () {
@@ -131,7 +153,6 @@ export default {
      * the filter value temporarily first.
      */
     filterNonprofits (filterValue) {
-      console.log('something')
       this.filter = filterValue
     },
 
@@ -331,18 +352,20 @@ export default {
 
     ...mapState({
       nonprofits (state) {
-        if (this.filter) {
+        const filterBasis = this.showState ? this.filter : this.initialFilter
+
+        if (filterBasis) {
           return state.nonprofits.data.filter(nonprofit => {
             // Remove special characters for better filtering.
             const name = nonprofit.name.toLowerCase().replace(/[^\w\s]/gi, '')
-            const filter = this.filter.toLowerCase().replace(/[^\w\s]/gi, '')
+            const filter = filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
 
             return name.includes(filter)
           })
         }
 
         return state.nonprofits.data
-      }
+      },
     })
   }
 }
@@ -351,11 +374,24 @@ export default {
 <style lang='scss' scoped>
 .nonprofit-directory-list {
   margin-top: 2em;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
 
   &--empty {
+    max-width: 100%;
     text-align: center;
 
+    img {
+      margin-bottom: 1em;
+    }
+
     p {
+      margin-bottom: 10px;
+      max-width: 730px;
+    }
+
+    .results-text {
       font-size: 1.25em;
     }
   }
@@ -365,10 +401,12 @@ export default {
   margin-bottom: 2em;
   &__block {
     &--indented {
-      margin-left: 1.5em;
+      margin-left: 3em;
     }
 
     &--indented-level-2 {
+      margin-left: 1.5em;
+      
       .nonprofit-directory-list-item__name {
         max-width: calc(300px - 1.5em);
         min-width: calc(300px - 1.5em);
@@ -384,10 +422,15 @@ export default {
   &__city {
     font-size: 20px;
   }
+
+  &__filters {
+    margin-bottom: 1.875em;
+  }
 }
 
 .nonprofit-list-city {
   margin-bottom: 1em;
+  margin-left: 1.5em;
 
   &__label {
     font-size: 19px;
@@ -420,6 +463,10 @@ export default {
   .suggest-nonprofit-text {
     display: inline-block;
     margin-left: 1.25em;
+
+    a {
+      color: $blue;
+    }
   }
 }
 </style>
@@ -429,8 +476,8 @@ export default {
   &__block {
     &--indented-level-2 {
       .nonprofit-directory-list-item__name {
-        max-width: calc(300px - 1.5em);
-        min-width: calc(300px - 1.5em);
+        max-width: 300px;
+        min-width: 300px;
       }
     }
   }

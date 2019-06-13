@@ -1,18 +1,20 @@
 <template>
 <div class='nonprofit-directory-list-item'>
   <div class='nonprofit-directory-list-item__nonprofit-details'>
-    <span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span>
+    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"><span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span></router-link>
   </div>
   <div class='nonprofit-list-item-links'>
-    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link'>View all its locations</router-link>
-    <button v-if='showClaimNonprofitButton' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-primary is-small button'>Claim this nonprofit</button>
-    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-primary is-small button'>Donate</button>
-    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='nonprofit-directory-list-item__link'>View Profile</router-link>
+    <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='button nonprofit-directory-list-item__button is-primary nonprofit-directory-list-item__link'>View Profile</router-link>
+    <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-secondary is-small button' v-if='showDonateButton'>Donate</button>
+    <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link' v-if='shouldShowLocationsButton'>See all locations</router-link>
+    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>    
   </div>
 </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'NonprofitDirectoryListItem',
 
@@ -27,7 +29,29 @@ export default {
       required: false,
       default: false,
     },
-  }
+
+    showDonateButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showLocationsButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+  },
+
+  computed: {
+    ...mapState({
+      shouldShowLocationsButton (state) {
+        const nonprofit = state.nonprofits.data.find(np => this.nonprofit.id === np.id)
+
+        return nonprofit && nonprofit.locations.length > 1 && this.showLocationsButton
+      }
+    })
+  },
 }
 </script>
 
@@ -43,14 +67,16 @@ export default {
   &__name {
     display: inline-block;
     margin-right: 1em;
-    font-size: 18px;
+    font-size: 20px;
     min-width: 300px;
     max-width: 300px;
   }
 
   a {
-    text-decoration: underline;
-    font-size: 17px;
+    &:not(.button) {
+      font-size: 17px;
+      text-decoration: underline;
+    }
   }
 
   &__link {
@@ -58,7 +84,7 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 240px;
+    margin-right: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;

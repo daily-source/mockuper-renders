@@ -215,8 +215,8 @@ export default {
 
 .header__contents {
   text-align: center;
-  padding-top: .5em;
-  padding-bottom: .5em;
+  padding-top: .25em;
+  padding-bottom: .25em;
   position: relative;
   display: flex;
   align-items: center;
@@ -270,7 +270,7 @@ export default {
 
   .header {
     &__logo-container {
-      max-width: 230px;
+      max-width: 270px;
       position: static;
       margin-left: auto;
       margin-right: auto;
@@ -283,7 +283,7 @@ export default {
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      flex-basis: calc(50% - 115px);
+      flex-basis: calc(50% - 135px);
     }
 
     &__column {

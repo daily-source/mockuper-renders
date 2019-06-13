@@ -28,6 +28,7 @@ export default {
         lastName: '',
         userName: '',
         location: '',
+        description: '',
         latitude: null,
         longitude: null,
         nonprofits: []
