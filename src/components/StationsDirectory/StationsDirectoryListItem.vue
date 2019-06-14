@@ -68,7 +68,7 @@ export default {
   }
 
   &__details-column {
-    margin-top: 46px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
   }
@@ -78,7 +78,7 @@ export default {
   }
 
   &__actions {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 
     a {
       color: $blue;
