@@ -23,7 +23,8 @@
     "/user/2/edit",
     "/user/3/edit",
     "/user/4/edit",
-    "/user/5/edit"
+    "/user/5/edit",
+    "/user/6/edit"
   ],
   "maxConcurrentRoutes": 1,
   "useRenderEvent":false,
