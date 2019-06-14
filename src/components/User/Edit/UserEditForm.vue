@@ -13,13 +13,13 @@
 					@avatarChange='onAvatarChange'
 				/>
 			</div>
-			<div class='column'>
+			<div class='user-edit-form__details-column column'>
 				<h4 class='user-profile__heading user-profile__heading--underline'>User Details</h4>
 	      <form @submit.prevent.stop='onUserEditFormSubmit'>
-            <user-edit-details 
-              :user='user'	
-              @userDetailsChange='onUserDetailsChange'
-            />	
+          <user-edit-details 
+            :user='user'	
+            @userDetailsChange='onUserDetailsChange'
+          />	
           <div class="user-edit-form__submit-block has-text-right">
             <button type='submit' class='user-edit-form__submit button is-primary'>Save Profile</button>
           </div>
@@ -160,6 +160,10 @@ export default {
 
   &__avatar-wrapper {
     max-width: 195px;
+  }
+
+  &__details-column {
+    max-width: 585px;
   }
 
 	&__location {

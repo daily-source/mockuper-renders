@@ -42,7 +42,22 @@
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea>
+						<!-- <textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea> -->
+            <textarea-with-warning
+              id='about' 
+              class='user-edit-form__textarea' 
+              v-model='form.about'
+              :max-length='descriptionMaxLength'
+              @invalid='(errors) => onFieldError("about", errors)'
+            />
+            <div class="field-errors">
+              <p 
+                class='help has-text-danger has-text-weight-bold'
+                v-if='errors.about && errors.about.maxLength'
+              >
+                * Description cannot exceed {{ descriptionMaxLength }} characters. Description currently exceeds {{ form.about.length - descriptionMaxLength }} character(s).
+              </p>
+            </div>
 					</div>
 				</div>
 			</div>
@@ -64,12 +79,14 @@
 
 <script>
 import UserChooseLocationModal from 'LocalComponents/User/UserChooseLocationModal'
+import TextareaWithWarning from 'Components/input/TextareaWithWarning'
 
 export default {
 	name: 'UserEditDetails',
 
 	components: {
-		UserChooseLocationModal,
+    UserChooseLocationModal,
+    TextareaWithWarning,
 	},
 
 	props: {
@@ -83,7 +100,9 @@ export default {
 		return {
 			form: {
 				...this.user
-			}
+      },
+      descriptionMaxLength: 350,
+      errors: {}
 		}
 	},
 
@@ -93,7 +112,11 @@ export default {
 		 */
 		onFormChange () {
 			this.$emit('userDetailsChange', this.form)
-		},
+    },
+    
+    onFieldError (field, errors) {
+      this.errors[field] = errors
+    },
 
 		/**
 		 * Event handler for whenever place changes.
@@ -105,7 +128,9 @@ export default {
 			this.form.location = place.formatted_address
 			this.form.latitude = location.lat()
 			this.form.longitude = location.lng()
-		},
+    },
+    
+
 	},
 
 	watch: {
@@ -130,7 +155,7 @@ export default {
 	}
 
   &__textarea {
-    height: 168px;
+    height: 192px;
   }
 }
 </style>
