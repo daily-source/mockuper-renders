@@ -4,10 +4,17 @@
 			<ul class='user-nonprofits-list'>
 				<li 
 					class='user-nonprofits-list__item'
-					v-for='nonprofit in nonprofits'
+					v-for='(nonprofit) in nonprofits'
 					:key='nonprofit.id'
 				>
 					<a :href='nonprofit.url'>{{ nonprofit.name }}</a>
+          <button 
+            class='button is-small is-danger'
+            v-if='editMode'
+            @click='onDeleteClicked(nonprofit.id)'
+          >
+            Delete
+          </button>
 			</li>
 			</ul>
 		</div>
@@ -24,8 +31,28 @@ export default {
 		user: {
 			type: Object,
 			required: true,
-		},
-	},
+    },
+    
+    /**
+     * Enable edit mode
+     */
+    editMode: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
+  },
+  
+  methods: {
+    /**
+     * Handles delete clicked for every item
+     * 
+     * @param {Integer} id
+     */
+    onDeleteClicked (id) {
+      this.$emit('delete', id)
+    },
+  },
 
 	computed: {
 		...mapState({
@@ -55,6 +82,10 @@ export default {
 <style lang='scss' scoped>
 .user-nonprofits-list {
 	&__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 		&:not(:last-child) {
 			margin-bottom: .5em;
     }

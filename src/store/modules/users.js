@@ -106,7 +106,7 @@ const state = {
 		},
 		{
 			id: 6,
-			firstName: 'Karen ',
+			firstName: 'Karen',
 			lastName: 'Stevens',
 			userName: 'karent.stevens88',
 			latitude: 38.69900874944365,
