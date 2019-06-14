@@ -167,7 +167,7 @@ export default {
   }
 
 	&__location {
-		height: 500px;
+		height: 580px;
 		position: relative;
 	}
 
@@ -177,7 +177,7 @@ export default {
 		top: 0;
 		position: absolute;
 		width: 100%;
-		max-width: 960px;
+		max-width: 1024px;
 		margin-left: auto;
 		margin-right: auto;
 		height: 100%;
