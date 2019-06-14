@@ -2,7 +2,7 @@
 	<div class='user-edit-form'>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='firstname'>First name</label>
+				<label for='firstname'>First name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -14,7 +14,7 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='lastname'>Last name</label>
+				<label for='lastname'>Last name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
