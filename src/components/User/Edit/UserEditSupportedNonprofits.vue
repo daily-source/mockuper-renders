@@ -2,47 +2,36 @@
 	<div class='user-edit-supported-nonprofits'>
 		<user-supported-nonprofits 
 			:user='user'	
+      :edit-mode='true'
+      @delete='onDeleteClicked'
 		/>
-		<div class='user-edit-supported-nonprofits-additional'>
-			<ol class='user-edit-supported-nonprofits-list'>
-				<li 
-					class='user-edit-supported-nonprofits-list__item'
-					v-for='(nonprofit, index) in nonprofits'
-					:key='index'
-				>
-					<div class='user-edit-supported-nonprofits-list__select-wrapper'>
-						<user-add-nonprofits-select
-							:id='`user-edit-supported-nonprofit-${index}`'
-							:key='nonprofit ? nonprofit.id : Date.now()'
-							@removeButtonClicked='removeNonprofitSelect(index)'
-							@locationChange='(locationPair) => onLocationChange(locationPair, index)'
-							:show-action-buttons='nonprofitsCount > inputMinimumCount'
-						/>
-					</div>
-				</li>
-			</ol>
-			<div 
-				class='user-edit-supported-nonprofits__actions'
-			>
-				<button 
-					class='button is-small is-primary'
-					@click.prevent.stop='addNonprofitSelect'
-				>
-					Add another
-				</button>
-				<router-link 
-					class='button is-small is-primary'
-					to='/nonprofit-directory'
-					v-if='addSearchLink'
-				>
-					Search
-				</router-link>
-			</div>
+		<div class='user-edit-supported-nonprofits__additional'>
+      <h4 data-v-387cfaac="" class="user-profile__heading">Add Another Nonprofit</h4>
+      <div class='user-edit-supported-nonprofits__select-wrapper'>
+        <user-add-nonprofits-select
+          @removeButtonClicked='removeNonprofitSelect(index)'
+          @locationChange='(locationPair) => onLocationChange(locationPair)'
+          @nonprofitChange='onNonprofitChange'
+          :show-action-buttons='false'
+          ref='userAddNonprofitsSelect'
+        />
+        <div class="user-edit-supported-nonprofits__actions has-text-right">
+          <button 
+            class='button is-primary'
+            @click='submitAdditionalNonprofits'
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+      <p>To explore nonprofits to support, view our <router-link to='/nonprofit-directory' target='_blank' class='user-edit-supported-nonprofits__link'>directory</router-link>. It will open in a new window so changes you’ve made here will remain. When you find a nonprofit you like, close the directory to return here and enter the nonprofit in the menu above.</p>
 		</div>
 	</div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
 import UserAddNonprofitsSelect from 'LocalComponents/User/UserAddNonprofitsSelect'
 import SelectNonprofits from 'LocalComponents/Form/SelectNonprofits'
@@ -66,7 +55,7 @@ export default {
 		inputMinimumCount: {
 			type: Number,
 			required: false,
-			default: 3,
+			default: 1,
 		},
 
 		addSearchLink: {
@@ -80,7 +69,7 @@ export default {
 		return {
 			nonprofits: [...Array(this.inputMinimumCount)],
 			validNonprofits: [],
-			counter: 3,
+			counter: 1,
 		}
 	},
 
@@ -125,7 +114,7 @@ export default {
 		 * @param {Object} locationPair A pair of the nonprofit ID with the locations selected
 		 * @param {Number} index Index of the Nonprofit Select
 		 */
-		onLocationChange (locationPair, index) {
+		onLocationChange (locationPair) {
 			if (locationPair) {
 				const { nonprofitId, locationIds } = locationPair
 
@@ -134,15 +123,41 @@ export default {
 						nonprofitId,
 						locationId: location,
 					}
-				})
+        })
 
-				this.nonprofits[index] = [
-					...nonprofitObjectArrs
-				]
-			}
+        this.nonprofits = nonprofitObjectArrs
+      } else {
+        this.nonprofits = []
+      }
+			// this.setValidNonprofits()
+    },
+    
+    /**
+     * Handles when a user selects a nonprofit
+     * 
+     * @param {Object} nonprofit 
+     */
+    onNonprofitChange (nonprofit) {
+      this.nonprofits = [{
+        nonprofitId: nonprofit,
+        locationId: 0,
+      }]
+    },
 
-			this.setValidNonprofits()
-		}
+    /**
+     * Submits the additional nonprofits
+     */
+    submitAdditionalNonprofits () {
+      this.$emit('submit', this.nonprofits)
+      this.$refs.userAddNonprofitsSelect.resetSelectValue()
+    },
+
+    /**
+     * Emits delete event whenever a `delete` button is clicked
+     */
+    onDeleteClicked (id) {
+      this.$emit('onDeleteClicked', id)
+    },
 	},
 
 	computed: {
@@ -154,13 +169,6 @@ export default {
 		},
 
 	},
-
-	watch: {
-		nonprofits: {
-			handler: 'onNonprofitsChange',
-			deep: true,
-		},
-	},
 }
 </script>
 
@@ -169,8 +177,21 @@ export default {
 	&__actions {
 		margin-top: 1em;
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 	}
+
+  &__select-wrapper {
+    margin-bottom: 1em;
+  }
+
+  &__additional {
+    margin-top: 2.5em;
+  }
+
+  &__link {
+    color: $blue;
+    text-decoration: underline;
+  }
 }
 
 .user-edit-supported-nonprofits-list {

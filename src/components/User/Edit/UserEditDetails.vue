@@ -2,19 +2,7 @@
 	<div class='user-edit-form'>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='username'>Username</label>
-			</div>
-			<div class='field-body'>
-				<div class='field'>
-					<div class='control'>
-						<input class='input' type='text' id='username' v-model='form.userName'>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class='field is-horizontal'>
-			<div class='field-label'>
-				<label for='firstname'>Firstname</label>
+				<label for='firstname'>First name</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -26,7 +14,7 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='lastname'>Lastname</label>
+				<label for='lastname'>Last name</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -49,12 +37,24 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label class='label' for='about'>About:</label>
+				<label for='about'>About:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<textarea id='about' class='textarea' v-model='form.about'></textarea>
+						<textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+    <div class='field is-horizontal'>
+			<div class='field-label'>
+				<label for='username'>Username:</label>
+			</div>
+			<div class='field-body'>
+				<div class='field'>
+					<div class='control'>
+						<input class='input' type='text' id='username' v-model='form.userName'>
 					</div>
 				</div>
 			</div>
@@ -128,5 +128,9 @@ export default {
 		display: flex;
 		align-items: center;
 	}
+
+  &__textarea {
+    height: 168px;
+  }
 }
 </style>
