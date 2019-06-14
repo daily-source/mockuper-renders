@@ -6,7 +6,7 @@
     <input 
       type='text'
       class='stations-directory-search-form__input input'
-      placeholder='Enter your keyword(s) to search...'
+      placeholder='Enter your keyword(s) to search'
       v-model='filterValue'
     >
     <button 
