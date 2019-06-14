@@ -23,7 +23,7 @@
       </div>
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
-        <a href="#">Visit This Station</a>
+        <a href="#">See this station</a>
         <a href="#">Join</a>
       </div>
     </div>
