@@ -1,8 +1,20 @@
 const state = {
-  sortBy: 'country'
+  sortBy: 'country',
+  filter: '',
 }
 
 const actions = {
+  /**
+   * Sets the filter value
+   */
+  setFilterValue ({ commit }, filter) {
+    commit('setFilter', filter)
+  },
+
+  resetFilter ({ commit }, filter) {
+    commit('setFilter', '')
+  },
+
   setSortToByName({ commit }) {
     /**
      * TODO: Make an error dispatch when it is not a valid sort name
@@ -21,6 +33,10 @@ const actions = {
 const mutations = {
   setSortBy(state, sortBy) {
     state.sortBy = sortBy
+  },
+
+  setFilter(state, filter) {
+    state.filter = filter
   }
 }
 

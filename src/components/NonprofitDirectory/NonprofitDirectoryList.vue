@@ -1,21 +1,5 @@
 <template>
   <div class='nonprofit-directory-list'>
-    <!-- TODO: Maybe make this is a separate component -->
-    <div 
-      class="nonprofit-directory-search"
-      v-if='showSearch'
-    >
-      <nonprofit-directory-search-form 
-        @formSubmit='filterNonprofits'
-        @formReset='resetFilter'
-      />
-      <span 
-        class='suggest-nonprofit-text'
-        v-if='enableNonprofitSuggest'
-      >
-        To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up'>here</router-link>.
-      </span>
-    </div>
     <div 
       class="nonprofit-directory-list__title"
       v-if='$slots.title'
@@ -77,13 +61,16 @@
     >
       <img src="@/assets/img/no-results.png" alt="No Results">
       <p class='results-text'>0 results found.</p>
-      <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
+      <p class='' v-if='!$slots.errorMessage'>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
+      <div class="nonprofit-directory-list__empty-message">
+        <slot name='errorMessage'></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { orderBy } from 'lodash'
 
 import NonprofitDirectorySearch from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearch'
@@ -124,7 +111,7 @@ export default {
       }
     },
 
-    initialFilter: {
+    filter: {
       type: String,
       required: false,
       default: '',
@@ -141,27 +128,17 @@ export default {
   data () {
     return {
       filterValue: '',
-      filter: this.initialFilter,
     }
   },
 
-  methods: {
-    /**
-     * Filter out the nonprofit according `filterValue` value.
-     * 
-     * We only filter when the search button is clicked so we store 
-     * the filter value temporarily first.
-     */
-    filterNonprofits (filterValue) {
-      this.filter = filterValue
-    },
+  mounted () {
 
-    /**
-     * Resets the filter value
-     */
-    resetFilter () {
-      this.filter = ''
-    },
+  },  
+
+  methods: {
+    ...mapActions({
+      resetFilter: 'nonprofitDirectory/resetFilter'
+    })
   },
 
   computed: {
@@ -352,13 +329,11 @@ export default {
 
     ...mapState({
       nonprofits (state) {
-        const filterBasis = this.showState ? this.filter : this.initialFilter
-
-        if (filterBasis) {
+        if (this.filter) {
           return state.nonprofits.data.filter(nonprofit => {
             // Remove special characters for better filtering.
             const name = nonprofit.name.toLowerCase().replace(/[^\w\s]/gi, '')
-            const filter = filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
+            const filter = this.filter.toLowerCase().replace(/[^\w\s]/gi, '')
 
             return name.includes(filter)
           })
@@ -366,6 +341,7 @@ export default {
 
         return state.nonprofits.data
       },
+
     })
   }
 }
@@ -373,32 +349,43 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-directory-list {
-  margin-top: 2em;
-  max-width: 850px;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
   margin-left: auto;
   margin-right: auto;
 
   &--empty {
     max-width: 100%;
-    text-align: center;
+    text-align: left;
+    min-height: 386px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
     img {
+      max-width: 170px;
+      width: 100%;
       margin-bottom: 1em;
     }
 
     p {
       margin-bottom: 10px;
       max-width: 730px;
+      font-size: 1.125em;
     }
 
     .results-text {
-      font-size: 1.25em;
+      font-size: 1.375em;
     }
   }
 }
 
 .nonprofit-list {
   margin-bottom: 2em;
+  &:first-of-type {
+    padding-top: .5em;
+  }
   &__block {
     &--indented {
       margin-left: 3em;
@@ -476,8 +463,15 @@ export default {
   &__block {
     &--indented-level-2 {
       .nonprofit-directory-list-item__name {
-        max-width: 300px;
-        min-width: 300px;
+        max-width: calc(500px - 3rem);
+        min-width: calc(500px - 3rem);
+      }
+    }
+
+    &--indented {
+      .nonprofit-directory-list-item__name {
+        max-width: calc(500px - 3rem);
+        min-width: calc(500px - 3rem);
       }
     }
   }

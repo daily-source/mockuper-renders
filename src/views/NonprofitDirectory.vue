@@ -11,9 +11,9 @@
       </div>
     </modal>
     <section class='section'>
-      <div class='container'>
+      <div class='nonprofit-directory__container container'>
         <h3 class='has-text-weight-bold has-text-centered'>Nonprofits helping the virtual railroad</h3>
-        <nonprofit-directory-list />
+        <nonprofit-directory-with-filter />
       </div>
     </section>
     <shared-footer />
@@ -25,6 +25,7 @@ import AppHeader from 'LocalComponents/AppHeader'
 import Modal from 'Components/general/Modal'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import NonprofitDirectoryList from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryList'
+import NonprofitDirectoryWithFilter from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryWithFilter'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
@@ -34,6 +35,7 @@ export default {
     AppHeader,
     IntroVideo,
     NonprofitDirectoryList,
+    NonprofitDirectoryWithFilter,
     SharedFooter,
     Modal,
   },
@@ -73,6 +75,9 @@ export default {
     font-size: 29px;
     margin-bottom: 1.25rem;
   }
+
+  &__container {
+    max-width: 900px;
+  }
 }
 </style>
-

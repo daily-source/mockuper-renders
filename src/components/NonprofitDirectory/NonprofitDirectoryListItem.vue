@@ -66,10 +66,10 @@ export default {
 
   &__name {
     display: inline-block;
-    margin-right: 1em;
     font-size: 20px;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 500px;
+    max-width: 500px;
+    margin-right: 1.375em;
   }
 
   a {
@@ -84,7 +84,6 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
@@ -110,7 +109,11 @@ export default {
   align-items: center;
 
   a {
-    margin-right: 32px;
+    margin-right: 1.25rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 </style>
