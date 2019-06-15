@@ -20,6 +20,7 @@ const NonprofitRegisterStepOne = () => import('@/views/NonprofitRegisterStepOne'
 const NonprofitRegisterStepTwo = () => import('@/views/NonprofitRegisterStepTwo')
 const NonprofitRegisterStepThree = () => import('@/views/NonprofitRegisterStepThree')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
+const StationsDirectory = () => import('@/views/StationsDirectory')
 
 export default new Router({
   mode: 'history',
@@ -88,6 +89,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: UserRegister,
+    },
+    {
+      path: '/stations-directory',
+      name: 'stations-directory',
+      component: StationsDirectory,
     },
   ],
 });
