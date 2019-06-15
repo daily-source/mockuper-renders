@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="nonprofit-register-results__countries-row">
-            <p>Countries include: {{ splitCountries(nonprofit.locations) }}</p>
+            <p>Locations: {{ splitCountries(nonprofit.locations) }}</p>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
       class='nonprofit-register-results__wrapper nonprofit-register-results__wrapper--empty'
       v-else
     >
-      <img src="@/assets/img/no-results.png" alt="No Results">
+      <img :src="require('@/assets/img/no-results.png')" alt="">
       <p class='results-text'>0 results found.</p>
       <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
     </div>
@@ -178,8 +178,7 @@ export default {
 
   &__name-wrapper {
     margin-right: 20px;
-    min-width: 500px;
-    max-width: 500px;
+    max-width: 590px;
   }
 
   &__name {
@@ -187,14 +186,24 @@ export default {
     font-weight: 700;
   }
 
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
   &__action {
     font-size: .875em;
     height: auto;
     padding: .125em .5em!important;
-    margin-right: 1.25rem;
+    margin-right: .625em;
 
     &--claim {
       width: 153px;
+    }
+
+    &--link {
+      font-size: 1rem;
+      text-decoration: underline;
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class='nonprofit-register-form'>
       <div class='nonprofit-register-form__columns columns'>
         <div class='nonprofit-register-form__avatar-column column'>
-          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit logo or photo</p>
+          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Your logo or photo</p>
           <!-- <avatar-upload 
             no-image-message='Profile Photo'
             @avatarChange='onAvatarChange'

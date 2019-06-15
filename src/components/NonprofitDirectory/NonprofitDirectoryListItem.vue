@@ -98,6 +98,7 @@ export default {
       width: 153px;
       background-color: $secondary;
       color: #000;
+      min-width: 153px;
     }
   }
 }
@@ -117,4 +118,3 @@ export default {
   }
 }
 </style>
-
