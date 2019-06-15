@@ -17,6 +17,7 @@
 			@mapClicked='onMapClicked'
 			@mapReady='onMapReady'
 			:zoom='zoom'
+      :center='center'
 		>
 			<gmap-marker 
 				v-for='(user, index) in validUserMarkers'
@@ -149,7 +150,15 @@ export default {
 			type: Number,
 			required: false,
 			default: 1,
-		},
+    },
+    
+    /**
+     * The map's center
+     */
+    center: {
+      type: Object,
+      required: false,
+    },
 	},
 
 	data () {

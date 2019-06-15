@@ -18,6 +18,7 @@ const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 const NonprofitRegister = () => import('@/views/NonprofitRegister')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
 const StationsDirectory = () => import('@/views/StationsDirectory')
+const StationProfile = () => import('@/views/StationProfile')
 
 export default new Router({
   mode: 'history',
@@ -70,5 +71,10 @@ export default new Router({
       name: 'stations-directory',
       component: StationsDirectory,
     },
+    {
+      path: '/station/:id',
+      name: 'stations-profile',
+      component: StationProfile,
+    }
   ],
 });
