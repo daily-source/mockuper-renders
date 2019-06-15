@@ -16,6 +16,9 @@ const UserProfileEdit = () => import('@/views/UserProfileEdit')
 const UserRegister = () => import('@/views/UserRegister')
 const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 const NonprofitRegister = () => import('@/views/NonprofitRegister')
+const NonprofitRegisterStepOne = () => import('@/views/NonprofitRegisterStepOne')
+const NonprofitRegisterStepTwo = () => import('@/views/NonprofitRegisterStepTwo')
+const NonprofitRegisterStepThree = () => import('@/views/NonprofitRegisterStepThree')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
 
 export default new Router({
@@ -56,8 +59,30 @@ export default new Router({
     },
     {
       path: '/nonprofit-sign-up',
-      name: 'nonprofit-sign-up',
       component: NonprofitRegister,
+      children: [
+        {
+          path: '/nonprofit-sign-up/step/1',
+          name: 'nonprofit-sign-up-step-one',
+          component: NonprofitRegisterStepOne,
+        },
+        {
+          path: '/nonprofit-sign-up/step/2',
+          name: 'nonprofit-sign-up-step-two',
+          component: NonprofitRegisterStepTwo,
+        },
+        {
+          path: '/nonprofit-sign-up/step/3',
+          name: 'nonprofit-sign-up-step-three',
+          component: NonprofitRegisterStepThree,
+        },
+        {
+          path: '',
+          redirect: {
+            name: 'nonprofit-sign-up-step-one'
+          }
+        },
+      ],
     },
     {
       path: '/register',

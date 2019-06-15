@@ -3,51 +3,80 @@
     <div class='field'>
       <label for='name' class='label'>Name <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
-        <input class='input' type='text' name='name' id='name' v-model='form.name'>
+        <input-field-with-warning 
+          type='text' 
+          name='name' 
+          id='name' 
+          v-model='form.name' 
+          :max-length='nonprofitNameMaxLength'
+          @invalid='(errors) => onFieldError("name", errors)'
+        />
+        <div class="field-errors">
+          <p 
+            class='help has-text-danger has-text-weight-bold'
+            v-if='errors.name && errors.name.maxLength'
+          >
+            * Name cannot exceed {{ nonprofitNameMaxLength }} characters. Name currently exceeds {{ form.name.length - nonprofitNameMaxLength }} character(s).
+          </p>
+        </div>
       </div>
     </div>
     <div class='field'>
       <label for='description' class='label'>Description <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
-        <input class='input' type='text' name='description' id='description' v-model='form.description'>
+        <textarea-with-warning
+          class='nonprofit-register-form__textarea'
+          name='description'
+          :max-length='descriptionMaxLength'
+          id='description' 
+          v-model='form.description'
+          @invalid='(errors) => onFieldError("description", errors)'
+        />
+        <div class="field-errors">
+          <p 
+            class='help has-text-danger has-text-weight-bold'
+            v-if='errors.description && errors.description.maxLength'
+          >
+            * Description cannot exceed {{ descriptionMaxLength }} characters. Description currently exceeds {{ form.description.length - descriptionMaxLength }} character(s).
+          </p>
+        </div>
       </div>
     </div>
     <div class='field'>
       <label for='link' class='label'>Website Link <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
-        <input class='input' type='text' name='link' id='link' v-model='form.url'>
-      </div>
-    </div>
-    <div class='field'>
-      <div class='location-chooser-wrapper'>
-        <location-chooser
-          ref='locationChooser'
-          @placeChanged='onPlaceChanged'
+        <!-- <input class='input' type='text' name='link' id='link' v-model='form.url'> -->
+        <input-field-with-warning 
+          type='text' 
+          name='link' 
+          id='link' 
+          v-model='form.url' 
+          :max-length='50'
+          @invalid='(errors) => onFieldError("url", errors)'
         />
-      </div>
-    </div>
-    <div class='field is-grouped'>
-      <div class='control'>
-        <button 
-          @click.prevent.stop='onAddOfficeLocationClicked' 
-          class='button is-primary'
-          :disabled='!selectedLocation || !selectedPlace'
-        >
-          Add Office Location
-        </button>
+        <div class="field-errors">
+          <p 
+            class='help has-text-danger has-text-weight-bold'
+            v-if='errors.url && errors.url.maxLength'
+          >
+            * URL cannot exceed {{ 50 }} characters. Name currently exceeds {{ form.name.length - 50 }} character(s).
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LocationChooser from 'LocalComponents/LocationChooser'
+import InputFieldWithWarning from 'Components/input/InputFieldWithWarning'
+import TextareaWithWarning from 'Components/input/TextareaWithWarning'
 
 export default {
   name: 'NonprofitRegisterFormDetails',
 
   components: {
-    LocationChooser,
+    InputFieldWithWarning,
+    TextareaWithWarning,
   },
 
   props: {
@@ -72,6 +101,9 @@ export default {
         url,
         locations,
       },
+      descriptionMaxLength: 500,
+      nonprofitNameMaxLength: 50,
+      errors: {},
       selectedLocation: null,
       selectedPlace: null,
     }
@@ -103,6 +135,10 @@ export default {
         longitude: location.lng(), 
       }
     },
+
+    onFieldError (field, errors) {
+      this.errors[field] = errors
+    }
   },
 
   watch: {
@@ -115,8 +151,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.location-chooser-wrapper {
-  width: 100%;
-  position: relative;
+.nonprofit-register-form {
+  .location-chooser-wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+
+  &__textarea {
+    min-height: 145px;
+  }
 }
 </style>

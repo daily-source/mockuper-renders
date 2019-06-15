@@ -91,7 +91,7 @@ const state = {
 			latitude: 36.36362956455485,
 			longitude: 21.65094082270548,
 			picture: 'https://randomuser.me/api/portraits/men/82.jpg',
-			about: 'This is a sample about.',
+			about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu massa ac magna maximus vehicula eu eu sem. Nunc lacinia massa nunc, in vestibulum felis hendrerit in. Phasellus nec sollicitudin purus. Vestibulum porttitor tortor id blandit massa nunc.',
 			nonprofits: [
 				{
 					nonprofitId: 1,
@@ -106,13 +106,13 @@ const state = {
 		},
 		{
 			id: 6,
-			firstName: 'Karen ',
+			firstName: 'Karen',
 			lastName: 'Stevens',
 			userName: 'karent.stevens88',
 			latitude: 38.69900874944365,
 			longitude: -97.345703125,
 			picture: 'https://randomuser.me/api/portraits/women/10.jpg',
-			about: 'This is a sample about.',
+			about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel tortor ante. Praesent eu vestibulum erat. Etiam eleifend pulvinar luctus. Aliquam aliquet risus non sodales blandit. Nulla sollicitudin, mauris in cursus condimentum, odio est mattis lacus, eget maximus ligula lorem quis purus nullam.',
 			nonprofits: [
 				{
 					nonprofitId: 2,

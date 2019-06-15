@@ -28,6 +28,24 @@ export default {
       type: Object,
       required: true,
     },
+
+    showClaimNonprofitButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
+    showDonateButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showLocationsButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
 
   computed: {
@@ -35,7 +53,7 @@ export default {
       shouldShowLocationsButton (state) {
         const nonprofit = state.nonprofits.data.find(np => this.nonprofit.id === np.id)
 
-        return nonprofit && nonprofit.locations.length > 1
+        return nonprofit && nonprofit.locations.length > 1 && this.showLocationsButton
       }
     })
   },
@@ -53,15 +71,17 @@ export default {
 
   &__name {
     display: inline-block;
-    margin-right: 1em;
-    font-size: 22px;
-    min-width: 355px;
-    max-width: 355px;
+    font-size: 20px;
+    min-width: 500px;
+    max-width: 500px;
+    margin-right: 1.375em;
   }
 
   a {
-    text-decoration: underline;
-    font-size: 17px;
+    &:not(.button) {
+      font-size: 17px;
+      text-decoration: underline;
+    }
   }
 
   &__link {
@@ -89,7 +109,7 @@ export default {
   align-items: center;
 
   a {
-    margin-right: 28px;
+    margin-right: 1.25rem;
 
     &:last-child {
       margin-right: 0;

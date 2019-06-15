@@ -4,6 +4,7 @@ import Datetime from 'vue-datetime';
 import VueYoutube from 'vue-youtube'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VTooltip from 'v-tooltip'
+import Croppa from 'vue-croppa'
 
 import store from './store'
 import App from './App.vue';
@@ -19,7 +20,6 @@ Vue.config.productionTip = false;
 Vue.use(Datetime)
 Vue.use(VTooltip)
 
-
 // register global utility filters.
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
@@ -32,6 +32,7 @@ Vue.use(VueGoogleMaps, {
   }
 })
 Vue.use(VueYoutube)
+Vue.use(Croppa)
 
 router.beforeEach((to, from, next) => {
   store.dispatch('navbar/closeNavbar')
@@ -42,6 +43,10 @@ router.beforeEach((to, from, next) => {
 
     next()
     return
+  }
+
+  if (to.name === 'home') {
+    store.dispatch('map/changeMapStyle', 'dark')
   }
 
   /**

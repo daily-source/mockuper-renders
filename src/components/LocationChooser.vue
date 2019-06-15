@@ -1,17 +1,33 @@
 <template>
   <div class='location-chooser' slot='content'>
     <div class='location-chooser-autocomplete'>
-      <gmap-autocomplete
-        @place_changed="setSelectedPlaceTemp"
-        placeholder='Enter zip code or city/state'
-        class='location-chooser-autocomplete__input input'
-      />
-      <button 
-        class='button is-primary'
-        @click.prevent.stop='setSelectedPlace()'
+      <div class="location-chooser-autocomplete__fields">
+        <gmap-autocomplete
+          @place_changed="setSelectedPlaceTemp"
+          ref='autocomplete'
+          placeholder='Enter zip code, city/state or city/country'
+          class='location-chooser-autocomplete__input input'
+        />
+        <button 
+          class='button is-primary'
+          @click.prevent.stop='setSelectedPlace()'
+        >
+          Search
+        </button>
+        <button 
+          class='button is-primary'
+          :disabled='!selectedLocation || !selectedPlace'
+          @click.prevent.stop='submitLocation'
+        >
+          Add This Location
+        </button>
+      </div>
+      <div 
+        class="location-chooser-autocomplete__errors"
+        v-if='locationChooserError'
       >
-        Use
-      </button>
+        <p class='has-text-danger has-text-weight-bold help'>* {{ locationChooserError }} Please try another search.</p>
+      </div>
     </div>
     <div class='location-chooser__map-container'>
       <transition name='loading-fade'>
@@ -103,6 +119,7 @@ export default {
       geocoder: null,
       showMapLoadingOverlay: false,
       map: null,
+      locationChooserError: null,
     }
   },
 
@@ -158,10 +175,18 @@ export default {
      * @param {Object} place
      */
     setSelectedPlace (place = this.selectedPlaceTemp) {
-      console.log(place)
-      this.selectedPlace = place
+      if (place) {
+        this.selectedPlace = place
+        this.setSelectedLocation(place.geometry.location)
+      } else {
+        this.$emit('placeError', { message: 'Place not found.' })
+        this.locationChooserError = 'No place found/selected.'
+        this.selectedPlace = null
+        this.selectedLocation = null
+        this.resetMap()
+      }
 
-      this.setSelectedLocation(place.geometry.location)
+      this.selectedPlaceTemp = null
     },
 
     /**
@@ -186,13 +211,31 @@ export default {
 
       this.setSelectedPlace(location)
 
-      this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
     },
 
     onSwitchThemeClicked () {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
       
       this.changeMapStyle(style)
+    },
+
+    resetMap () {
+      this.map.setCenter({ lat: 37.38390077975928, lng: 2.008774238974298 })
+      this.map.setZoom(2)
+    },
+
+    /**
+     * Submits the location
+     */
+    submitLocation () {
+      if (this.selectedPlace && this.selectedLocation) {
+        this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
+      }
+
+      this.selectedPlace = null
+      this.selectedLocation = null
+      this.$refs.autocomplete.$refs.input.value = ''
+      this.locationChooserError = null
     },
 
     ...mapActions({
@@ -204,17 +247,18 @@ export default {
     selectedPlace (place) {
       // Every time a place is changed, we fit the map's bounds
       // according to the place.
-      let bounds = new this.google.maps.LatLngBounds()
 
       if (place) {
+        let bounds = new this.google.maps.LatLngBounds()  
         if (place.geometry.viewport) {
           bounds.union(place.geometry.viewport)
         } else {
           bounds.extend(place.geometry.location)
         }
+        this.map.fitBounds(bounds)
+      } else {
+        this.resetMap()
       }
-
-      this.map.fitBounds(bounds)
     },
   },
 
@@ -229,7 +273,7 @@ export default {
 <style lang="scss" scoped>
 .location-chooser {
   &__map-container {
-    height: 300px;
+    height: 500px;
     width: 100%;
     position: relative;
   }
@@ -262,12 +306,17 @@ export default {
 }
 
 .location-chooser-autocomplete {
-  margin-bottom: 1em;
-  display: flex;
-  justify-content: flex-end;
+  &__fields {
+    margin-bottom: 1em;
+    display: flex;
+  }
 
   &__input {
-    max-width: 250px;
+    max-width: 400px;
+    margin-right: .5em;
+  }
+
+  .button {
     margin-right: .5em;
   }
 }
