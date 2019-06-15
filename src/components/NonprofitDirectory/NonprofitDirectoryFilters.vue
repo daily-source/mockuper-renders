@@ -10,7 +10,7 @@
           aria-controls="dropdown-menu"
           @click='dropdownShow = !dropdownShow'
         >
-          <span>{{ sortBy === 'name' ? 'nonprofit names' : 'country'}}</span>
+          <span>{{ sortBy === 'name' ? 'Nonprofit names' : 'Country'}}</span>
           <span class="icon is-small">
             <icon 
               :iconwidth='24'

@@ -23,11 +23,12 @@
             >
               {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
-            <button
+            <router-link
+              :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"
               class='button is-primary nonprofit-register-results__action'
             >
               View Profile
-            </button>
+            </router-link>
           </div>
         </div>
         <div class="nonprofit-register-results__countries-row">
@@ -124,11 +125,11 @@ export default {
     max-width: 100%;
 
     &--empty {
-      min-height: 400px;
+      min-height: 386px;
       display: flex;
       justify-content: center;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
 
       > img {
         max-width: 170px;
@@ -139,10 +140,11 @@ export default {
       p {
         margin-bottom: 10px;
         max-width: 730px;
+        font-size: 1.125em;
       }
 
       .results-text {
-        font-size: 1.25em;
+        font-size: 1.375rem;
       }
     }
   }
@@ -153,6 +155,10 @@ export default {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  &__actions {
+    margin-left: .375rem;
   }
 
   &__heading-row {
@@ -188,7 +194,7 @@ export default {
     margin-right: 1.25rem;
 
     &--claim {
-      min-width: 153px;
+      width: 153px;
     }
   }
 }

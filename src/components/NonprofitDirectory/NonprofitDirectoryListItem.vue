@@ -4,10 +4,10 @@
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"><span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span></router-link>
   </div>
   <div class='nonprofit-list-item-links'>
+    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>    
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='button nonprofit-directory-list-item__button is-primary nonprofit-directory-list-item__link'>View Profile</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-secondary is-small button' v-if='showDonateButton'>Donate</button>
     <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link' v-if='shouldShowLocationsButton'>See all locations</router-link>
-    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>    
   </div>
 </div>
 </template>
@@ -93,9 +93,10 @@ export default {
   &__button {
     padding: .125em .5em !important;
     height: auto;
-    margin-right: 32px;
+    margin-right: 1.25rem;
 
     &--claim {
+      width: 153px;
       background-color: $secondary;
       color: #000;
     }

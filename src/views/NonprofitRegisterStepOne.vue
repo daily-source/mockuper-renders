@@ -9,6 +9,7 @@
         @formSubmit='onFormSubmit'
         :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
         id='nonprofit-directory-search-form'
+        class='nonprofit-register-form-step-one__search-form'
       />
       <div class="nonprofit-register-form-step-one__nonprofit-list">
         <h3 class='has-text-weight-bold nonprofit-register__heading'>Nonprofit Directory</h3>
@@ -95,14 +96,19 @@ export default {
   &__nonprofit-filters {
     margin-bottom: 1.875em;
   }
+
+  &__search-form {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+  }
 }
 </style>
 
 <style lang='scss'>
 .nonprofit-register-form-step-one {
   .nonprofit-directory-list-item__name {
-    max-width: 315px;
-    min-width: 315px;
+    max-width: 457px;
+    min-width: 457px;
   }
 
   .subheading {

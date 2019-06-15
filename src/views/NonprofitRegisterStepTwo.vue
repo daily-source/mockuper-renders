@@ -5,7 +5,9 @@
   >
     <div class="container nonprofit-register__container nonprofit-register__container--small">
       <h2 class='has-text-weight-bold nonprofit-register__heading'>Results</h2>    
-      <nonprofit-register-results />
+      <nonprofit-register-results 
+        class='nonprofit-register-step-two__results'
+      />
       <div class="nonprofit-register-form-step-two__search">
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
         <nonprofit-directory-search-form 
@@ -75,16 +77,22 @@ export default {
   }
 
   &__btn-container {
-    margin-top: 1.5em;
+    margin-top: 2em;
 
     .button {
       font-size: 1.25em;
     }
   }
 
-  &__search {
+  .nonprofit-register-results__item {
+    &:first-of-type {
+      padding-top: .5em;
+    }
 
-  }
+    &:last-of-type {
+      padding-bottom: 0.5em;
+    }
+  } 
 
   .subheading {
     font-size: 1.125rem;
