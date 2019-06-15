@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-register-form'>
       <div class='nonprofit-register-form__columns columns'>
-        <div class='nonprofit-register-form__avatar-column column is-3'>
+        <div class='nonprofit-register-form__avatar-column column'>
           <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit logo or photo</p>
           <!-- <avatar-upload 
             no-image-message='Profile Photo'
@@ -10,8 +10,8 @@
           /> -->
           <croppa
             v-model='croppaObject'
-            :width='310'
-            :height='310'
+            :width='250 '
+            :height='250  '
             :placeholder-font-size='18'
             :placeholder-color='"#000"'
             class='nonprofit-register-form__photo-upload'
@@ -269,6 +269,11 @@ export default {
 
   &__location-chooser-wrapper {
     margin-bottom: 1.5rem;
+  }
+
+  &__avatar-column {
+    max-width: 280px;
+    width: 280px;
   }
 }
 
