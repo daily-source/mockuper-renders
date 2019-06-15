@@ -23,8 +23,8 @@
       </div>
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
-        <a href="#">Visit</a>
-        <a href="#">Join</a>
+        <router-link to="#" class='button is-secondary'>Visit</router-link>
+        <router-link to="#" class='button is-primary'>Join</router-link>
       </div>
     </div>
   </div>
@@ -79,13 +79,15 @@ export default {
 
   &__actions {
     margin-bottom: 1rem;
+    margin-top: auto;
 
     a {
-      color: $blue;
-      text-decoration: underline;
-      margin-right: 1.25em;
+      margin-right: 1em;
+      font-size: 0.875em;
+      padding: 0.125em 0.5em !important;
+      height: auto;
     }
-    margin-top: auto;
+
   }
 
   img {
