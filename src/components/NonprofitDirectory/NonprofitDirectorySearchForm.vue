@@ -16,7 +16,7 @@
       Search
     </button>
     <button 
-      class='button is-secondary nonprofit-directory-search-form__button'
+      class='button is-danger nonprofit-directory-search-form__button'
       @click.prevent.stop='resetFilter'
       v-if='showResetButton'
     >
@@ -92,7 +92,7 @@ export default {
     flex-basis: 400px;
     width: 400px;
     flex-grow: 1;
-    max-width: 400px;
+    max-width: 350px;
   }
 }
 </style>

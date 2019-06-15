@@ -74,7 +74,6 @@ export default {
     font-size: 20px;
     min-width: 500px;
     max-width: 500px;
-    margin-right: 1.375em;
   }
 
   a {
@@ -89,7 +88,6 @@ export default {
   }
 
   &__nonprofit-details { 
-    margin-right: 100px;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
@@ -98,7 +96,7 @@ export default {
   &__button {
     padding: .125em .5em !important;
     height: auto;
-    margin-right: 28px;
+    margin-right: 1.25rem;
   }
 }
 

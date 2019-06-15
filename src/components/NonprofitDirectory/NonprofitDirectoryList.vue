@@ -1,28 +1,5 @@
 <template>
   <div class='nonprofit-directory-list'>
-    <!-- TODO: Maybe make this is a separate component -->
-    <div class='nonprofit-directory-search'>
-      <form @submit.prevent="filterNonprofits">
-        <nonprofit-directory-search 
-          v-model='filterValue'
-          class='nonprofit-directory-search__input'
-        />
-        <button 
-          class='button is-primary nonprofit-directory-search__button'
-          type='submit'
-          @click='filterNonprofits'
-        >
-          Search
-        </button>
-        <button 
-          class='button is-danger nonprofit-directory-search__button'
-          @click.prevent.stop='resetFilter'
-        >
-          Reset
-        </button>
-      </form>
-      <span class='suggest-nonprofit-text'>To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up' target='_blank'>here</router-link>.</span>
-    </div>
     <div 
       class='nonprofit-list' 
       v-for='(np, index) in nonprofitsPerCountry'
@@ -393,6 +370,13 @@ export default {
 <style lang='scss'>
 .nonprofit-list {
   &__block {
+    &--indented {
+      .nonprofit-directory-list-item__name {
+        max-width: calc(528px - 4.125rem);
+        min-width: calc(528px - 4.125rem);
+      }
+    }
+
     &--indented-level-2 {
       .nonprofit-directory-list-item__name {
         max-width: calc(355px - 1.5em);

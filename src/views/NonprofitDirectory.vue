@@ -75,6 +75,10 @@ export default {
     font-size: 26px;
     margin-bottom: 1.25rem;
   }
+
+  &__container {
+    max-width: 1020px;
+  }
 }
 </style>
 
