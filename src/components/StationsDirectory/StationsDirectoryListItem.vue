@@ -59,6 +59,7 @@ export default {
   h4 {
     font-size: 22px;
     margin-bottom: .75rem;
+    color: $primary;
   }
 
   &__details-column {
