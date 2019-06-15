@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="station-details__alumni-section">
-      <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
+      <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
       <div class="station-details__alumni-section-columns">
         <div class="columns">
           <div class="column is-6 alumni-section__list-col">
