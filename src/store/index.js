@@ -7,6 +7,7 @@ import info from './modules/info'
 import navbar from './modules/navbar'
 import map from './modules/map'
 import splash from './modules/splash'
+import stations from './modules/stations'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
 		info,
 		navbar,
 		map,
-		splash,
+    splash,
+    stations,
 	},
 })
