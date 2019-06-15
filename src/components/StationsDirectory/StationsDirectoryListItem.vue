@@ -72,7 +72,7 @@ export default {
 
   h4 {
     margin-bottom: 0;
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-right: 30px;
     color: $primary;
     line-height: 1;
