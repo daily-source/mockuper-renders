@@ -316,7 +316,7 @@
       </div>
     </div> 
     <div class="station-profile__alumni-section" v-else>
-    <div class="container">
+      <div class="container">
         <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
