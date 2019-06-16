@@ -85,9 +85,13 @@ header {
 
 .home-page-actions {
   position: fixed;
-  top: 10%;
+  top: 28%;
   right: 2%;
   z-index: 2;
+
+  @include tablet {
+    top: 10%;
+  }
 }
 
 .home-virtual-railroad-map {

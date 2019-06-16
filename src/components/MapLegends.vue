@@ -84,23 +84,29 @@ export default {
   background-color: rgba($primary, .9);
   padding: 1.25em 1em;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  top: auto;
   transition: top .2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include tablet {
+    display: block;
+    height: auto;
+    top: initial;
+    transition: bottom .2s ease;
+    bottom: 0;
+  }
 
   &__content {
     display: flex;
-    margin-left: 0;
-    margin-right: 0;
     flex-direction: column;
 
     @include tablet {
       flex-direction: row;
-    }
-
-    @include desktop {
       margin-left: -1.375em;
       margin-right: -1.375em;
     }
@@ -113,28 +119,24 @@ export default {
   }
 
   &--minimized {
-    // bottom: -195px;
+    top: calc(100% - 55px);
 
-    // @media (min-width: 576px) {
-    //   bottom: -158px;
-    // }
+    @include tablet {
+      top: initial;
+      bottom: -225px;
+    }
 
-    // @media (min-width: 730px) {
-    //   bottom: -150px;
-    // }
+    @include desktop {
+      bottom: -170px;
+    }
 
-    // @include tablet {
-    //   bottom: -138px;
-    // }
+    @media (min-width: 1142px) {
+      bottom: -144px;
+    }
 
-    // @include desktop {
-    //   bottom: -156px;
-    // }
-
-    // @include fullhd {
-    //   bottom: -128px;
-    // }
-    top: calc(100% - 20px);
+    @media (min-width: 1346px) {
+      bottom: -122px;
+    }
   }
 
   img {
@@ -143,11 +145,15 @@ export default {
 
   &__button-container {
     position: absolute;
-    top: -16px;
+    top: 10px;
     left: 0;
     right: 2%;
     padding-right: .5em;
     text-align: right;
+
+    @include tablet {
+      top: -16px;
+    }
   }
 
   &__button {
@@ -178,27 +184,20 @@ export default {
   }
 
   &__text {
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
   }
 
   &__text,
   &__text-equals {
     color: #fff;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 0;
-
-    @include desktop {
-      font-size: 16px;
-    }
-
-    @include fullhd {
-      font-size: 18px;
-    }
   }
 }
 
 .legend {
+  max-width: 100%;
   display: flex;
   align-items: flex-start;
   margin-top: .5em;

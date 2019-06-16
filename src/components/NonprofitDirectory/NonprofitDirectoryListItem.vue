@@ -59,6 +59,11 @@ export default {
 .nonprofit-directory-list-item {
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+  }
 
   &:not(:last-child) {
     margin-bottom: 2em;
@@ -66,10 +71,15 @@ export default {
 
   &__name {
     display: inline-block;
-    font-size: 20px;
-    min-width: 500px;
-    max-width: 500px;
-    margin-right: 1.375em;
+    margin-bottom: 0.25em;
+
+    @include tablet {
+      font-size: 20px;
+      min-width: 500px;
+      max-width: 500px;
+      margin-right: 1.375em;
+      margin-bottom: 0;
+    }
   }
 
   a {
@@ -111,6 +121,15 @@ export default {
 
   a {
     margin-right: 1.25rem;
+
+
+    &:not(.button) {
+      font-size: 14px;
+      text-decoration: underline;
+      @include tablet {
+        font-size: 17px;
+      }
+    }
 
     &:last-child {
       margin-right: 0;

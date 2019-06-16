@@ -72,22 +72,33 @@ export default {
 <style lang="scss" scoped>
 .nonprofit-directory-search-form {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
-  > form {
-    display: flex;
+  @include desktop {
+    flex-direction: row;
     align-items: center;
   }
 
   &__button {
-    margin-left: 1em;
+    margin-top: .25em;
+    margin-right: 0.25em;
+
+    @include tablet {
+      margin-top: 0;
+      margin-left: 1em;
+      margin-right: 0;
+    }
   }
 
   &__input {
-    flex-basis: 400px;
     width: 400px;
     flex-grow: 1;
-    max-width: 400px;
+    max-width: 100%;
+
+    @include tablet {
+      flex-basis: 400px;
+    }
   }
 }
 </style>

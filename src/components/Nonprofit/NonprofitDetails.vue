@@ -143,10 +143,21 @@ export default {
   }
   
   &__details-column {
-    margin-right: 20px;
-    width: 575px;
-    flex-basis: 575px;
-    max-width: 575px;
+    max-width: 100%;
+    
+    @include tablet {
+      max-width: 50%;
+    }
+
+    @include desktop {
+      max-width: 60%;
+    }
+    
+    @include widescreen {
+      margin-right: 20px;
+      flex-basis: 575px;
+      max-width: 575px;
+    }
   }
 
   &__website-block {

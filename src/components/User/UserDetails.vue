@@ -58,6 +58,17 @@ export default {
   
   &__profile-img-container {
     max-width: 195px;
+    flex-basis: 195px;
+    flex-shrink: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    @include desktop {
+      margin-left: 0;
+      margin-right: 0;
+      text-align: left;
+    }
   }
 
 	&__profile-img {
@@ -76,7 +87,12 @@ export default {
   }
   
   &__details-column {
-    max-width: 720px;
+    flex-basis: 75%;
+
+    @include desktop {
+      max-width: 720px;
+      flex-basis: 0;
+    }
   }
 }
 
@@ -84,9 +100,12 @@ export default {
 	margin-left: .25em;
 
 	&__label {
-		flex-basis: 18%;
-		max-width: 18%;
-		margin-left: .25em;
+    margin-left: .25em;
+    
+    @include fullhd {
+      flex-basis: 18%;
+      max-width: 18%;
+    }
 
 		&--location {
 			flex-basis: 0;

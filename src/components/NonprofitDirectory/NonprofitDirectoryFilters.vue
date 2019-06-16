@@ -91,11 +91,15 @@ export default {
 
 <style lang="scss" scoped>
 .nonprofit-directory-filters {
+  flex-wrap: wrap;
   &__sort {
+    flex-wrap: wrap;
     align-items: center;
 
     .dropdown {
-      margin-left: .5em;
+      @include tablet {
+        margin-left: .5em;
+      }
 
       .button {
         min-width: 180px;   

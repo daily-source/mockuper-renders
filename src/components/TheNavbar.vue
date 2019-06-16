@@ -12,7 +12,9 @@
           <span class='navbar-toggle__bar'></span>
           <span class='navbar-toggle__bar'></span>
         </div>
-        Menu
+        <span class='navbar-toggle__menu-text'>
+          Menu
+        </span>
       </button>
     </div>
     <div class='navbar-contents'>
@@ -199,6 +201,14 @@ export default {
   border-radius: 100px;
   align-self: flex-start;
 
+  &__menu-text {
+    display: none;
+
+    @include tablet {
+      display: inline-block;
+    }
+  }
+
 
   &__button {
     // width: 26px;
@@ -217,10 +227,13 @@ export default {
   }
 
   &__bar-wrapper {
-    margin-right: .5em;
     width: 26px;
     height: 26px;
     position: relative;
+
+    @include tablet {
+      margin-right: .5em;
+    }
   }
 
   &__bar {

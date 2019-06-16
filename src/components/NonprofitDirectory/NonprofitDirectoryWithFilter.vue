@@ -85,11 +85,20 @@ export default {
     margin-bottom: 2em;
     margin-top: 2em;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+    }
 
     .suggest-nonprofit-text {
       display: inline-block;
-      margin-left: 1.25em;
+      margin-top: .25em;
+
+      @include desktop {
+        margin-left: 1.25em;
+      }
 
       a {
         color: $blue;

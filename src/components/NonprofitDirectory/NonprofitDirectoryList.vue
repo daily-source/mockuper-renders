@@ -388,11 +388,19 @@ export default {
   }
   &__block {
     &--indented {
-      margin-left: 3em;
+      @include tablet {
+        margin-left: 1.5em;
+      }
+
+      @include desktop {
+        margin-left: 3em;
+      }
     }
 
     &--indented-level-2 {
-      margin-left: 1.5em;
+      @include tablet {
+        margin-left: 1.5em;
+      }
       
       .nonprofit-directory-list-item__name {
         max-width: calc(300px - 1.5em);
@@ -417,7 +425,10 @@ export default {
 
 .nonprofit-list-city {
   margin-bottom: 1em;
-  margin-left: 1.5em;
+
+  @include tablet {
+    margin-left: 1.5em;
+  }
 
   &__label {
     font-size: 19px;
@@ -463,15 +474,27 @@ export default {
   &__block {
     &--indented-level-2 {
       .nonprofit-directory-list-item__name {
-        max-width: calc(500px - 3rem);
-        min-width: calc(500px - 3rem);
+
+        @include tablet {
+
+          max-width: calc(500px - 3rem);
+          min-width: calc(500px - 3rem);
+        }
       }
     }
 
     &--indented {
       .nonprofit-directory-list-item__name {
-        max-width: calc(500px - 3rem);
-        min-width: calc(500px - 3rem);
+
+        @include tablet {
+          max-width: calc(300px - 1.5rem);
+          min-width: calc(300px - 1.5rem);
+        }
+
+        @include desktop {
+          max-width: calc(500px - 3rem);
+          min-width: calc(500px - 3rem);
+        }
       }
     }
   }

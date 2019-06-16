@@ -177,6 +177,11 @@ export default {
 
   > .container {
     position: relative;
+    width: 100%;
+
+    @include desktop {
+      width: 100%;
+    }
   }
 
   &--light {
@@ -207,9 +212,13 @@ export default {
   }
 
   &__inner-contents {
-    align-items: center;
-    justify-content: flex-end !important;
-    flex-basis: calc(50% - 115px);
+    display: none;
+
+    @include desktop {
+      align-items: center;
+      justify-content: flex-end !important;
+      flex-basis: calc(50% - 115px);
+    }
   }
 }
 
@@ -278,12 +287,17 @@ export default {
     }
 
     &__navbar {
-      position: static;
-      flex-grow: 1;
+      position: absolute;
+      flex-grow: 0;
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      flex-basis: calc(50% - 135px);
+
+      @include desktop {
+        position: static;
+        flex-grow: 1;
+        flex-basis: calc(50% - 135px);
+      }
     }
 
     &__column {
@@ -291,26 +305,50 @@ export default {
       flex-shrink: 1;
     }
 
+    &__inner-contents {
+      display: none !important;
+
+      @include desktop {
+        display: flex !important;
+      }
+    }
+
     &__left-inner-contents {
-      display: flex;
-      align-items: center;
-      margin-left: 102px;
+      display: none;
+
+      @include desktop {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+      }
+
+      @include widescreen {
+        margin-left: 102px;
+      }
     }
 
     &__login-register-links {
-      margin-right: 1em;
+      margin-right: 0;
       margin-top: 4px;
+
+      @include widescreen {
+        margin-right: 1em;
+      }
     }
   }
 
   .user-space__search {
-    margin-left: 102px;
+    margin-left: 20px;
     margin-top: .25em;
+
+    @include widescreen {
+      margin-left: 102px;
+    }
   }
 }
 
 .max-good {
-  margin-left: 76px;
+  margin-left: 20px;
   width: 150px;
   height: auto;
   display: flex;
@@ -331,6 +369,11 @@ export default {
   @include tablet {
     width: auto;
   }
+
+  @include widescreen {
+    margin-left: 76px;    
+  }
+
   .small {
     padding-right: 10px;
     font-size: 13px;

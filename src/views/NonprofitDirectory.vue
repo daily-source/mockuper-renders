@@ -72,8 +72,13 @@ export default {
 <style lang='scss' scoped>
 .nonprofit-directory {
   h3 {
-    font-size: 29px;
-    margin-bottom: 1.25rem;
+    font-size: 22px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 29px;
+      margin-bottom: 1.25rem;
+    }
   }
 
   &__container {
