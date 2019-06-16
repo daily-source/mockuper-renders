@@ -2,19 +2,17 @@
   <div class="profile">
     <app-header />
     <intro-video />
-    <section class='section'>
-      <div class='container'>
-        <station-profile
-          :station='station'
-        />
-      </div>
+    <section class='section profile__section'>
+      <station-profile
+        :station='station'
+      />
     </section>
     <shared-footer />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
 import Alert from 'LocalComponents/Alert/Alert'
@@ -35,9 +33,22 @@ export default {
 
   data () {
     return {
-      open: false,
+      opened: true,
     }
   },
+
+  mounted () {
+  },
+
+  methods: {
+    toggleLegends () {
+      this.opened = !this.opened
+    },
+
+    ...mapActions({
+      changeMapStyle: 'map/changeMapStyle',
+    }),
+   },
 
   computed: {
     id () {
@@ -68,3 +79,28 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.profile {
+
+  &__section {
+    padding-top: 2em;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  // &__map {
+  //   width: 100%;
+  //   position: relative;
+  //   height: 600px;
+  //   overflow: hidden;
+  // }
+
+  // .home-page-actions {
+  //   position: absolute;
+  //   top: 10%;
+  //   right: 2%;
+  //   z-index: 2;
+  // }
+}
+</style>
