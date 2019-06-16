@@ -24,7 +24,11 @@
     "/user/3/edit",
     "/user/4/edit",
     "/user/5/edit",
-    "/user/6/edit"
+    "/user/6/edit",
+    "/stations-directory",
+    "/station/1",
+    "/station/2",
+    "/station/3"
   ],
   "maxConcurrentRoutes": 1,
   "useRenderEvent":false,
