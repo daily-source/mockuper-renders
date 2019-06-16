@@ -12,7 +12,7 @@
           <h4 class='has-text-weight-bold'>
             <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
           </h4>
-          <p class="is-marginless">{{ station.location.name }}</p>
+          <p class="is-marginless">{{ station.position.name }}</p>
         </div>
       </div>
       <div class="columns stations-directory-list-item__details-block">
