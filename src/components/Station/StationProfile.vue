@@ -45,7 +45,7 @@
           lat: 39.66193026673745,
           lng: -90.13614734411594,
         }'
-        :marker='[marker]'
+        :markers='[marker]'
       />
       <div class="actions">
         <button
