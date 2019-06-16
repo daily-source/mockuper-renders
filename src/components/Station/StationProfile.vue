@@ -35,7 +35,7 @@
         </template>
       </div> -->
     </div>
-    <div class='station-profile__map'>
+    <!-- <div class='station-profile__map'>
      <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
@@ -45,7 +45,7 @@
           lat: 39.66193026673745,
           lng: -90.13614734411594,
         }'
-        :markers='[marker]'
+        :nonprofit-marker='marker'
       />
       <div class="actions">
         <button
@@ -64,7 +64,7 @@
           />
         </button>
       </div>
-    </div>
+    </div> -->
     <div class="station-profile__alumni-section">
       <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
       <div class="station-profile__alumni-section-columns">
@@ -133,7 +133,7 @@
               </li>
             </ul>
           </div>
-          <div class="column alumni-section__list-col">
+          <div class="column is-4 alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
               <ul>
@@ -214,7 +214,7 @@
               </ul>
             </div>
           </div>
-          <div class="column alumni-section__list-col">
+          <div class="column is-4 alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
               <ul class='marginless-list indented-list'>
@@ -291,7 +291,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -305,7 +305,7 @@ import IconNightMode from 'LocalComponents/Icons/IconNightMode'
 import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 
 export default {
-  name: 'stationDetails',
+  name: 'StationProfile',
 
   props: {
     station: {
@@ -325,9 +325,10 @@ export default {
     return {
       marker: {
         position: {
-          ...this.station.position,
+          lat: 38.907689,
+          lng: -77.0737924,
         },
-        name: 'Hoya Railroad',
+        name: 'Georgetown Station',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
@@ -387,8 +388,8 @@ export default {
   }
 
   &__picture-column {
-    width: 312px;
-    flex-basis: 312px;
+    width: 340px;
+    flex-basis: 340px;
     flex-grow: 0;
   }
 
@@ -417,7 +418,6 @@ export default {
   }
 
   p {
-
     &:last-child {
       margin-bottom: 0;
     }
@@ -464,6 +464,14 @@ export default {
       padding: 0;
       outline: none !important;
       box-shadow: none !important;
+    }
+  }
+
+  &__alumni-section-columns {
+    margin-left: 100px;
+
+    > .columns {
+      justify-content: center;
     }
   }
 
@@ -531,6 +539,8 @@ export default {
 <style lang='scss'>
 .station-profile {
   p {
+    line-height: 1.6;
+
     &:last-child {
       margin-bottom: 0;
     }
