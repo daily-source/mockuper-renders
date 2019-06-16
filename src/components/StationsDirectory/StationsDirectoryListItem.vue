@@ -2,7 +2,9 @@
 <div class='stations-directory-list-item'>
   <div class="columns stations-directory-list-item__columns">
     <div class="column is-3 stations-directory-list-item__img-column">
-      <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
+      <h4 class='has-text-weight-bold'>
+        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
+      </h4>
       <div class="stations-directory-list-item__img">
         <img :src="station.picture" :alt="station.name">
       </div>
@@ -23,7 +25,7 @@
       </div>
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
-        <router-link to="#" class='button is-secondary'>Visit</router-link>
+        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" class='button is-secondary'>Visit</router-link>
         <router-link to="#" class='button is-primary'>Join</router-link>
       </div>
     </div>
