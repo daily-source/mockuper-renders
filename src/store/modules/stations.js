@@ -17,6 +17,7 @@ const state = {
         lng: -77.0737924,
         name: 'Washington D.C',
       },
+      establishmentType: 'school'
     },
     {
       id: 2,
@@ -24,6 +25,9 @@ const state = {
       tagline: 'We started our station in 2019 and our members have responded very positively to it, with more than 15% of our congregation helping out so far and continuing to grow. ',
       participants: 128,
       amountDonated: 6921,
+      description: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet mauris id nunc mollis vulputate. Aliquam quis quam vitae tellus sollicitudin semper. Donec in enim volutpat, rhoncus erat sit amet, porta sem. Phasellus mollis quis tortor quis venenatis. Nullam semper faucibus ante, quis auctor velit. Mauris vitae urna in purus sodales condimentum eu vel purus. Nunc ac mattis erat, ac tempor velit. Phasellus accumsan, est vel fringilla ornare, nisl nunc cursus urna, nec fermentum metus risus sed ante. Cras ut arcu sit amet libero mollis pulvinar. Suspendisse molestie, ligula vitae feugiat ornare, ligula mi iaculis lacus, id hendrerit orci dolor ut felis. Mauris sed mi sollicitudin, tincidunt quam volutpat metus.</p>
+      `,
       picture: require('@/assets/img/church-1.jpg'),
       position: {
         lat: 38.907689,
@@ -35,6 +39,9 @@ const state = {
       id: 3,
       name: 'Sun Glow Apparel',
       tagline: 'Sun Glow Apparel is an online general clothing store. Our products of over 10,000 products covers every aspect of fashion, from shirts to dresses, sneakers to slip-ons, sportswear to watches, and so much more.',
+      description: `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet mauris id nunc mollis vulputate. Aliquam quis quam vitae tellus sollicitudin semper. Donec in enim volutpat, rhoncus erat sit amet, porta sem. Phasellus mollis quis tortor quis venenatis. Nullam semper faucibus ante, quis auctor velit. Mauris vitae urna in purus sodales condimentum eu vel purus. Nunc ac mattis erat, ac tempor velit. Phasellus accumsan, est vel fringilla ornare, nisl nunc cursus urna, nec fermentum metus risus sed ante. Cras ut arcu sit amet libero mollis pulvinar. Suspendisse molestie, ligula vitae feugiat ornare, ligula mi iaculis lacus, id hendrerit orci dolor ut felis. Mauris sed mi sollicitudin, tincidunt quam volutpat metus.</p>
+      `,
       position: {
         lat: 38.907689,
         lng: -77.0737924,
