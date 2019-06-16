@@ -11,32 +11,40 @@ const state = {
       
       <p>With the sacrifices of those people in mind, Georgetown alumni, students, staff and fans are joining together to help the people who are involuntarily sacrificing and suffering the most now: modern-day slaves. Please join in our efforts by clicking here.</p>
       `,
-      location: 'Washington D.C',
       participants: 913,
       amountDonated: 48343,
       picture: require('@/assets/img/georgetown-university-2.jpg'),
-      location: {
+      position: {
         lat: 38.907689,
         lng: -77.0737924,
+        name: 'Washington D.C',
       },
     },
     {
       id: 2,
       name: 'St. Michael\'s Church',
       tagline: 'We started our station in 2019 and our members have responded very positively to it, with more than 15% of our congregation helping out so far and continuing to grow. ',
-      location: 'Hartford, CT',
       participants: 128,
       amountDonated: 6921,
       picture: require('@/assets/img/church-1.jpg'),
+      position: {
+        lat: 38.907689,
+        lng: -77.0737924,
+        name: 'Hartford, CT',        
+      },
     },
     {
       id: 3,
       name: 'Sun Glow Apparel',
       tagline: 'Sun Glow Apparel is an online general clothing store. Our products of over 10,000 products covers every aspect of fashion, from shirts to dresses, sneakers to slip-ons, sportswear to watches, and so much more.',
-      location: 'Sarasota, FL',
       participants: 11,
       amountDonated: 2159,
       picture: require('@/assets/img/business-1.jpg'),
+      position: {
+        lat: 38.907689,
+        lng: -77.0737924,
+        name: 'Sarasota, FL',              
+      },
     },
   ]
 }

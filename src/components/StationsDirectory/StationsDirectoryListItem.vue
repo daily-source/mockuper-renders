@@ -2,7 +2,9 @@
 <div class='stations-directory-list-item'>
   <div class="columns stations-directory-list-item__columns">
     <div class="column is-3 stations-directory-list-item__img-column">
-      <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
+      <h4 class='has-text-weight-bold'>
+        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
+      </h4>
       <div class="stations-directory-list-item__img">
         <img :src="station.picture" :alt="station.name">
       </div>
@@ -18,12 +20,12 @@
       </div>
       <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
         <div class="column">
-          <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.location }}</p>
+          <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.position.name }}</p>
         </div>
       </div>
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
-        <a href="#">Visit This Station</a>
+        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">Visit this station</router-link>
       </div>
     </div>
   </div>

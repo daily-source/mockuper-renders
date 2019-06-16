@@ -323,7 +323,7 @@ export default {
     return {
       marker: {
         position: {
-          ...this.station.location
+          ...this.station.position
         },
         name: 'Hoya Railroad',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
