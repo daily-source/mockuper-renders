@@ -20,7 +20,7 @@
       </div>
       <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
         <div class="column">
-          <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.location }}</p>
+          <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.position.name }}</p>
         </div>
       </div>
       <p>{{ station.tagline }}</p>
