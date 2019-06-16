@@ -9,8 +9,11 @@
       v-bind='attrs'
       :exclude='exclude'
       class='user-add-supported-nonprofits-select__input'
+      @nonprofitChange='onNonprofitChange'
       @locationChange='onSelectNonprofitLocationChange'
       @moreInfoClicked='showInfoModal'
+      :value='value'
+      ref='nonprofitsSelect'
     />
     <div 
       class='user-add-supported-nonprofits-select__actions'
@@ -102,6 +105,13 @@ export default {
     },
 
     /**
+     * Hanles nonprofit changes
+     */
+    onNonprofitChange (nonprofit) {
+      this.$emit('nonprofitChange', nonprofit)
+    },
+
+    /**
      * Shows the Info Modal
      */
     showInfoModal () {
@@ -113,7 +123,14 @@ export default {
      */
     hideInfoModal () {
       this.infoModalShown = false
-    }
+    },
+
+    /**
+     * Resets the select value
+     */
+    resetSelectValue () {
+      this.$refs.nonprofitsSelect.nonprofit = 0
+    },
   },
 
   computed: {

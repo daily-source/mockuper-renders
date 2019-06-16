@@ -51,9 +51,9 @@ export default {
    },
 
    methods :{
-     toggleLegends () {
-       this.opened = !this.opened
-     }
+    toggleLegends () {
+      this.opened = !this.opened
+    }
    },
 
   metaInfo() {

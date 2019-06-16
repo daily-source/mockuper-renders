@@ -1,8 +1,8 @@
 <template>
   <div class='nonprofit-register-form'>
       <div class='nonprofit-register-form__columns columns'>
-        <div class='nonprofit-register-form__avatar-column column is-3'>
-          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit logo or photo</p>
+        <div class='nonprofit-register-form__avatar-column column'>
+          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Your logo or photo</p>
           <!-- <avatar-upload 
             no-image-message='Profile Photo'
             @avatarChange='onAvatarChange'
@@ -10,8 +10,8 @@
           /> -->
           <croppa
             v-model='croppaObject'
-            :width='310'
-            :height='310'
+            :width='250 '
+            :height='250  '
             :placeholder-font-size='18'
             :placeholder-color='"#000"'
             class='nonprofit-register-form__photo-upload'
@@ -19,7 +19,6 @@
         </div>
         <div class='nonprofit-register-form__details-column column'>
           <form @submit.prevent='onFormSubmit'>
-            <p class='has-text-weight-bold nonprofit-register-form__subheading'>Nonprofit Details</p>
             <nonprofit-register-form-details 
               :form-values='form'
               @detailsChanged='onNonprofitDetailsChanged'
@@ -30,9 +29,9 @@
       </div>
       <div class="nonprofit-register-form__choose-location">
         <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location(s) <span class="has-text-danger">*</span></p>
-        <p>At least one location is required. The maximum is 12 locations. Each location you add will appear on your profile page and also as  a star on the Google map of anti-slavery nonprofits.</p>
         <div class="nonprofit-register-form__columns columns">
-          <div class="column is-8">
+          <div class="column nonprofit-register-form__location-column">
+          <p>At least one location is required. The maximum is 12. Only add ones where you have a physical presence such as an office. Each location will appear on your profile page and also as a star on our Google map of anti-slavery nonprofits. After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the “Add” button will become clickable.</p>            
             <div class='field'>
               <div class='nonprofit-register-form__location-chooser-wrapper'>
                 <location-chooser
@@ -212,6 +211,11 @@ export default {
     font-size: .875rem;
   }
 
+  &__office-column {
+    padding-top: 118px;
+    padding-right: 1.75rem;
+  }
+
   &__avatar-upload {
     margin-bottom: 1em;
   }
@@ -228,7 +232,7 @@ export default {
   }
 
   &__subheading {
-    font-size: 24px;
+    font-size: 19px;
   }
 
   ol {
@@ -264,11 +268,24 @@ export default {
   }
 
   &__details-column {
-    max-width: 600px;
+    max-width: 620px;
+  }
+
+  &__location-column {
+    flex-basis: 905px;
+    max-width: 905px;
+    width: 905px;
+    flex-grow: 1;
+    padding-right: 1rem;
   }
 
   &__location-chooser-wrapper {
     margin-bottom: 1.5rem;
+  }
+
+  &__avatar-column {
+    max-width: 280px;
+    width: 280px;
   }
 }
 

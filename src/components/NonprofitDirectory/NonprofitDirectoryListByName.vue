@@ -1,48 +1,51 @@
 <template>
   <div 
-    class="nonprofit-register-results"
+    class="nonprofit-directory-list-by-name"
   >
     <div 
-      class="nonprofit-register-results__wrapper"
+      class="nonprofit-directory-list-by-name__wrapper"
       v-if='nonprofitsSorted.length > 0'
     >
       <p class='subheading' v-if='showSubheading'>If your nonprofit is below, click "Claim this nonprofit." If it's already claimed, check to see if others in your group claimed it. If they didn’t, contact us <a href="#">here</a>. If it's not in the results, the current profile on our site may have a typo, so please do a 2nd search using other words. If you've already done that, click “Add A New Nonprofit” at the bottom.</p>
       <div 
-        class="nonprofit-register-results__item"
+        class="nonprofit-directory-list-by-name__item"
         v-for='(nonprofit, index) in nonprofitsSorted'
         :key='index'
       >
-        <div class="nonprofit-register-results__heading-row">
-          <div class="nonprofit-register-results__name-wrapper">
-            <p class='nonprofit-register-results__name'>{{ nonprofit.name }}</p>
+        <div class="nonprofit-directory-list-by-name__heading-row">
+          <div class="nonprofit-directory-list-by-name__name-wrapper">
+            <p class='nonprofit-directory-list-by-name__name'>{{ nonprofit.name }}</p>
           </div>
-          <div class="nonprofit-register-results__actions">
+          <div class="nonprofit-directory-list-by-name__actions">
             <button
-              class='button is-secondary nonprofit-register-results__action nonprofit-register-results__action--claim'
+              class='button is-secondary nonprofit-directory-list-by-name__action nonprofit-directory-list-by-name__action--claim'
               :disabled='nonprofit.claimed'        
             >
               {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
             <router-link
               :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"
-              class='button is-primary nonprofit-register-results__action'
+              class='button is-primary nonprofit-directory-list-by-name__action'
             >
               View Profile
             </router-link>
           </div>
         </div>
-        <div class="nonprofit-register-results__countries-row">
-            <p>Locations: {{ splitCountries(nonprofit.locations) }}</p>
+        <div class="nonprofit-directory-list-by-name__countries-row">
+            <p>Countries include: {{ splitCountries(nonprofit.locations) }}</p>
         </div>
       </div>
     </div>
     <div
-      class='nonprofit-register-results__wrapper nonprofit-register-results__wrapper--empty'
+      class='nonprofit-directory-list-by-name__wrapper nonprofit-directory-list-by-name__wrapper--empty'
       v-else
     >
-      <img :src="require('@/assets/img/no-results.png')" alt="">
+      <img src="@/assets/img/no-results.png" alt="No Results">
       <p class='results-text'>0 results found.</p>
-      <p class=''>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
+      <p class='' v-if='!$slots.errorMessage'>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
+      <div class="nonprofit-directory-list__empty-message">
+        <slot name='errorMessage'></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -52,13 +55,19 @@ import { mapState } from 'vuex'
 import { orderBy } from 'lodash'
 
 export default {
-  name: 'NonprofitRegisterResults',
+  name: 'NonprofitDirectoryListByNa,e',
 
   props: {
     showSubheading: {
       type: Boolean,
       required: false,
       default: true,
+    },
+
+    filter: {
+      type: String,
+      required: false,
+      default: '',
     }
   },
 
@@ -70,14 +79,12 @@ export default {
 
   computed: {
     ...mapState({
-      filterBasis: state => state.nonprofitRegistration.filter,
-
       nonprofits (state) {
-        if (this.filterBasis) {
+        if (this.filter) {
           return state.nonprofits.data.filter(nonprofit => {
             // Remove special characters for better filtering.
             const name = nonprofit.name.toLowerCase().replace(/[^\w\s]/gi, '')
-            const filter = this.filterBasis.toLowerCase().replace(/[^\w\s]/gi, '')
+            const filter = this.filter.toLowerCase().replace(/[^\w\s]/gi, '')
 
             return name.includes(filter)
           })
@@ -110,7 +117,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nonprofit-register-results {
+.nonprofit-directory-list-by-name {
   $self: &;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
@@ -151,9 +158,14 @@ export default {
 
   &__item {
     margin-bottom: 1em;
+
+    &:first-of-type {
+      padding-top: .5em;
+    }
     
     &:last-child {
       margin-bottom: 0;
+      padding-bottom: .5em;
     }
   }
 
@@ -178,7 +190,8 @@ export default {
 
   &__name-wrapper {
     margin-right: 20px;
-    max-width: 590px;
+    min-width: 500px;
+    max-width: 500px;
   }
 
   &__name {
@@ -186,24 +199,14 @@ export default {
     font-weight: 700;
   }
 
-  &__actions {
-    display: flex;
-    align-items: center;
-  }
-
   &__action {
     font-size: .875em;
     height: auto;
     padding: .125em .5em!important;
-    margin-right: .625em;
+    margin-right: 1.25rem;
 
     &--claim {
       width: 153px;
-    }
-
-    &--link {
-      font-size: 1rem;
-      text-decoration: underline;
     }
   }
 }

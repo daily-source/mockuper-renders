@@ -47,6 +47,10 @@
         class='location-chooser-map'
         @mapReady='onMapReady'
         @mapClicked='onMapClicked'
+        :center='{
+          lat: 22.85288426736647,
+          lng: 0.954086738974298,
+        }'
       >
         <gmap-marker 
           :position='selectedLocation'

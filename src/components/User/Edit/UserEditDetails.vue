@@ -2,19 +2,7 @@
 	<div class='user-edit-form'>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='username'>Username</label>
-			</div>
-			<div class='field-body'>
-				<div class='field'>
-					<div class='control'>
-						<input class='input' type='text' id='username' v-model='form.userName'>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class='field is-horizontal'>
-			<div class='field-label'>
-				<label for='firstname'>Firstname</label>
+				<label for='firstname'>First name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -26,7 +14,7 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='lastname'>Lastname</label>
+				<label for='lastname'>Last name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -49,12 +37,39 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label class='label' for='about'>About:</label>
+				<label for='about'>About:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
-						<textarea id='about' class='textarea' v-model='form.about'></textarea>
+						<!-- <textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea> -->
+            <textarea-with-warning
+              id='about' 
+              class='user-edit-form__textarea' 
+              v-model='form.about'
+              :max-length='descriptionMaxLength'
+              @invalid='(errors) => onFieldError("about", errors)'
+            />
+            <div class="field-errors">
+              <p 
+                class='help has-text-danger has-text-weight-bold'
+                v-if='errors.about && errors.about.maxLength'
+              >
+                * Description cannot exceed {{ descriptionMaxLength }} characters. Description currently exceeds {{ form.about.length - descriptionMaxLength }} character(s).
+              </p>
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <div class='field is-horizontal'>
+			<div class='field-label'>
+				<label for='username'>Username:</label>
+			</div>
+			<div class='field-body'>
+				<div class='field'>
+					<div class='control'>
+						<input class='input' type='text' id='username' v-model='form.userName'>
 					</div>
 				</div>
 			</div>
@@ -64,12 +79,14 @@
 
 <script>
 import UserChooseLocationModal from 'LocalComponents/User/UserChooseLocationModal'
+import TextareaWithWarning from 'Components/input/TextareaWithWarning'
 
 export default {
 	name: 'UserEditDetails',
 
 	components: {
-		UserChooseLocationModal,
+    UserChooseLocationModal,
+    TextareaWithWarning,
 	},
 
 	props: {
@@ -83,7 +100,9 @@ export default {
 		return {
 			form: {
 				...this.user
-			}
+      },
+      descriptionMaxLength: 350,
+      errors: {}
 		}
 	},
 
@@ -93,7 +112,11 @@ export default {
 		 */
 		onFormChange () {
 			this.$emit('userDetailsChange', this.form)
-		},
+    },
+    
+    onFieldError (field, errors) {
+      this.errors[field] = errors
+    },
 
 		/**
 		 * Event handler for whenever place changes.
@@ -105,7 +128,9 @@ export default {
 			this.form.location = place.formatted_address
 			this.form.latitude = location.lat()
 			this.form.longitude = location.lng()
-		},
+    },
+    
+
 	},
 
 	watch: {
@@ -128,5 +153,9 @@ export default {
 		display: flex;
 		align-items: center;
 	}
+
+  &__textarea {
+    height: 215px;
+  }
 }
 </style>

@@ -1,22 +1,22 @@
 <template>
   <form 
     @submit.prevent="onFormSubmit"
-    class='nonprofit-directory-search-form'  
+    class='stations-directory-search-form'  
   >
     <input 
       type='text'
-      class='nonprofit-directory-search-form__input input'
-      :placeholder='inputPlaceholder'
+      class='stations-directory-search-form__input input'
+      placeholder='Enter your keyword(s) to search'
       v-model='filterValue'
     >
     <button 
-      class='button is-primary nonprofit-directory-search-form__button'
+      class='button is-primary stations-directory-search-form__button'
       type='submit'
     >
       Search
     </button>
     <button 
-      class='button is-secondary nonprofit-directory-search-form__button'
+      class='button is-secondary stations-directory-search-form__button'
       @click.prevent.stop='resetFilter'
       v-if='showResetButton'
     >
@@ -29,19 +29,13 @@
 import Vue from 'vue'
 
 export default {
-  name: 'NonprofitDirectorySearchForm',
+  name: 'StationsDirectorySearchForm',
 
   props: {
     showResetButton: {
       type: Boolean,
       required: false,
       default: true,
-    },
-
-    inputPlaceholder: {
-      type: String,
-      required: false,
-      default: 'Enter your keyword(s) to search'
     },
   },
 
@@ -54,7 +48,6 @@ export default {
   methods: {
     onFormSubmit () {
       this.$emit('formSubmit', this.filterValue)
-      this.filterValue = ''
     },
 
     /**
@@ -70,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nonprofit-directory-search-form {
+.stations-directory-search-form {
   display: flex;
   align-items: center;
 
@@ -84,10 +77,10 @@ export default {
   }
 
   &__input {
-    flex-basis: 400px;
-    width: 400px;
+    flex-basis: 350px;
+    width: 350px;
     flex-grow: 1;
-    max-width: 400px;
+    max-width: 350px;
   }
 }
 </style>

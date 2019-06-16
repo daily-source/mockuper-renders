@@ -3,5 +3,9 @@
     background-color: $secondary;
     color: #4e5453;
     border-color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
   }
 }
