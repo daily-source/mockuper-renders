@@ -58,7 +58,7 @@ export default {
   }
 
   .subheading {
-    font-size: 17px;
+    font-size: 1.125em;
   }
 }
 </style>
