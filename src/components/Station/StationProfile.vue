@@ -760,6 +760,11 @@ export default {
 
 <style lang='scss'>
 .station-profile {
+  .avatar__img {
+    min-height: 237px;
+    object-fit: cover;
+  }
+
   p {
     line-height: 1.6;
 
