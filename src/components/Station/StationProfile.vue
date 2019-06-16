@@ -10,7 +10,7 @@
         </div>
         <div class='column station-profile__details-column'>
           <div class='station-profile__block is-flex station-profile__name-block'>
-            <h4 class='has-text-weight-bold station-profile__name'>{{ marker.name }}</h4>
+            <h4 class='has-text-weight-bold station-profile__name'>{{ station.stationName || station.name }}</h4>
             <button class='button is-paddingless is-text station-profile__join-button'>
               Join
             </button>
@@ -771,6 +771,11 @@ export default {
 
 <style lang='scss'>
 .station-profile {
+  .avatar__img {
+    min-height: 216px;
+    object-fit: cover;
+  }
+
   p {
     line-height: 1.6;
 
