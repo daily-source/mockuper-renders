@@ -86,7 +86,7 @@
         @toggle='toggleLegends'
       />
     </div>
-    <div class="station-profile__alumni-section">
+    <div class="station-profile__alumni-section" v-if='station.establishmentType === "school"'>
       <div class="container">
         <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
         <div class="station-profile__alumni-section-columns">
@@ -315,6 +315,171 @@
         </div>
       </div>
     </div> 
+    <div class="station-profile__alumni-section" v-else>
+    <div class="container">
+        <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
+        <div class="station-profile__alumni-section-columns">
+          <div class="columns">
+            <div class="column alumni-section__list-col">
+              <ul class='marginless-list'>
+                <li>David Lynn</li>
+                <li>Rafael Mason</li>
+                <li>Carrie Nardelli</li>
+                <li>Narayan Achi</li>
+                <li>Adi Vichova</li>
+                <li>Seth Aronson</li>
+                <li>Angela Nunez</li>
+                <li>Sharon Wooding</li>
+                <li>Miles Ackerman</li>
+                <li>David Chung</li>
+                <li>Steve Meenan</li>
+                <li>Kristin Bresnahan</li>
+                <li>Scott Lindbloom</li>
+                <li>Teresa Sampson</li>
+                <li>Sebastian Quinn</li>
+                <li>Don Rhee</li>
+                <li>Jimmy Cranston</li>
+                <li>Marissa Wilson</li>
+                <li>Cindy Pugoli</li>
+                <li>Marcus Steinman</li>
+                <li>Ann Marie Petri</li>
+                <li>Lynnette Cavanaugh</li>
+              </ul>
+            </div>
+            <div class="column alumni-section__list-col">
+              <div class="list-section">
+                <ul class='marginless-list'>
+                  <li>
+                    Jill Smith
+                  </li>
+                  <li>
+                    Kevin Guitierrez
+                  </li>
+                  <li>
+                    Susan Lundgren
+                  </li>
+                  <li>
+                    Mel Hollis
+                  </li>
+                  <li>
+                    Karen Nguyen
+                  </li>
+                  <li>
+                    Ira Rosen 
+                  </li>
+                  <li>
+                    Jason Claiborne  
+                  </li>
+                  <li>
+                    Nick Palexis
+                  </li>
+                  <li>
+                    Mel Hollis
+                  </li>
+                  <li>
+                    Linda Joubert
+                  </li>
+                  <li>
+                    Mackensie Stevens
+                  </li>
+                  <li>
+                    Mike Andrews  
+                  </li>
+                  <li>
+                    Nate Birbiglia 
+                  </li>
+                  <li>
+                    Yousef Kabran
+                  </li>
+                  <li>
+                    David Tosi
+                  </li>
+                  <li>
+                    Amet Guzdar
+                  </li>
+                  <li>
+                    Justin Pearl
+                  </li>
+                  <li>
+                    Ted Roppel 
+                  </li>
+              
+                </ul>
+              </div>
+            </div>
+            <div class="column alumni-section__list-col">
+              <div class="list-section">
+                <ul class='marginless-list'>
+                  <li>
+                  Jay Ansin
+                </li>
+                <li>
+                  Roy Amberger                                                                   
+                </li>
+                <li>
+                  Lily Hilgrow
+                </li>
+                <li>
+                  Rob Cohen
+                </li>
+                <li>
+                  Daniel Kim
+                </li>
+                <li>
+                  Anthony Larelli
+                </li>
+                <li>
+                  Tina Kavowski
+                </li>
+                <li>
+                  Tom Newfield
+                </li>
+                <li>
+                  Linda Moore
+                </li>
+                <li>
+                  Laphonso Deon
+                </li>
+                <li>
+                  Pablo Ruiz David Lobell
+                </li>
+                <li>
+                  Jill Hagandanz
+                </li>
+                <li>
+                  David Chen
+                </li>
+                <li>
+                  Walter Thoreau
+                </li>
+                <li>
+                    Alex Curran
+                  </li>
+                  <li>
+                    Andrew Enoch
+                  </li>
+                  <li>
+                    Laurence Falvey
+                  </li>
+                  <li>
+                    Peter Ferguson
+                  </li>
+                  <li>
+                    Hunter Aron
+                  </li>
+                  <li>
+                    Maggie Olerud
+                  </li>
+                  <li>
+                    Sumi Lee
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
   </div>
 </template>
 
@@ -377,6 +542,10 @@ export default {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
       
       this.changeMapStyle(style)
+    },
+
+    toggleLegends () {
+      this.opened = !this.opened
     },
 
     ...mapActions({

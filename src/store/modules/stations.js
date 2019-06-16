@@ -17,6 +17,7 @@ const state = {
         lng: -77.0737924,
         name: 'Washington D.C',
       },
+      establishmentType: 'school'
     },
     {
       id: 2,
