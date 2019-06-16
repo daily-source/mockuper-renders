@@ -1,19 +1,21 @@
 <template>
-  <div class='station-details'>
-    <div class='station-details__columns columns'>
-      <div class='column station-details__picture-column'>
-        <h4 class='has-text-weight-bold station-details__name'>{{ station.name }}</h4>
+  <div class='station-profile'>
+    <div class='station-profile__columns columns'>
+      <div class='column station-profile__picture-column'>
         <Avatar 
           :url='station.picture'
           :alt='station.name'
         />
       </div>
-      <div class='column station-details__details-column'>
-        <div class='station-details__block is-flex'>
+      <div class='column station-profile__details-column'>
+        <div class='station-profile__block is-flex station-profile__name-block'>
+          <h4 class='has-text-weight-bold station-profile__name'>{{ marker.name }}</h4>
+        </div>
+        <div class='station-profile__block is-flex'>
           <div v-html='station.description'></div>
         </div>
       </div>
-      <!-- <div class='station-details__office-locations column'>
+      <!-- <div class='station-profile__office-locations column'>
         <p class='has-text-weight-bold'>Locations: </p>
         <template v-if='station.locations.length === 0'>
           <p>
@@ -21,9 +23,9 @@
           </p>
         </template>
         <template v-else>
-          <ol class='station-details__locations'>
+          <ol class='station-profile__locations'>
             <li 
-              class='station-details__locations-item'
+              class='station-profile__locations-item'
               v-for='(location, index) in station.locations'
               :key='location.placeId || index'
             >
@@ -33,8 +35,8 @@
         </template>
       </div> -->
     </div>
-    <div class='station-details__map'>
-      <virtual-railroad-map 
+    <div class='station-profile__map'>
+     <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
         :icon-size='32'
@@ -63,11 +65,75 @@
         </button>
       </div>
     </div>
-    <div class="station-details__alumni-section">
-      <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
-      <div class="station-details__alumni-section-columns">
+    <div class="station-profile__alumni-section">
+      <h3 class='has-text-weight-bold has-text-centered'>People who support the Hoya Railroad</h3>
+      <div class="station-profile__alumni-section-columns">
         <div class="columns">
-          <div class="column is-6 alumni-section__list-col">
+          <div class="column alumni-section__list-col">
+            <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4>
+            <ul class=''>
+              <!-- <li>
+                <ul>
+                  <li>Michelle Lindbloom</li>
+                  <li>Theresa Sampson </li>
+                  <li></li>
+                </ul>
+              </li> -->
+              <li>
+                <span class="has-text-weight-bold">Class of 2019</span>
+                <ul>
+                  <li>David Lynn</li>
+                  <li>Rafael Mason</li>
+                  <li>Carrie Nardelli</li>
+                  <li>Narayan Achi</li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2018</span>
+                <ul>
+                  <li>Adi Vichova</li>
+                  <li>Seth Aronson</li>
+                  <li>Angela Nunez</li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2017</span>
+                <ul>
+                  <li>Sharon Wooding</li>
+                  <li>Miles Ackerman</li>
+                  <li>David Chung</li>
+                  <li>Steve Meenan</li>
+                  <li>Kristin Bresnahan</li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2016</span>
+                <ul>
+                  <li>Scott Lindbloom</li>
+                  <li>Teresa Sampson</li>
+                  <li>Sebastian Quinn</li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2015</span>
+                <ul>
+                  <li>Don Rhee</li>
+                  <li>Jimmy Cranston</li>
+                  <li>Marissa Wilson</li>
+                  <li>Cindy Pugoli</li>
+                </ul>
+              </li>
+              <li>
+                <span class="has-text-weight-bold">Class of 2014</span>
+                <ul>
+                  <li>Marcus Steinman</li>
+                  <li>Ann Marie Petri</li>
+                  <li>Lynnette Cavanaugh</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="column alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
               <ul>
@@ -147,98 +213,8 @@
                 </li>
               </ul>
             </div>
-            <div class="list-section">
-              <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
-              <ul class='marginless-list indented-list'>
-                <li>
-                  Alex Curran
-                </li>
-                <li>
-                  Andrew Enoch
-                </li>
-                <li>
-                  Laurence Falvey
-                </li>
-                <li>
-                  Peter Ferguson
-                </li>
-                <li>
-                  Hunter Aron
-                </li>
-                <li>
-                  Maggie Olerud
-                </li>
-                <li>
-                  Sumi Lee
-                </li>
-              </ul>
-            </div>
           </div>
-          <div class="column is-4 alumni-section__list-col">
-            <div class="list-section">
-              <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4>
-              <ul class=''>
-                <!-- <li>
-                  <ul>
-                    <li>Michelle Lindbloom</li>
-                    <li>Theresa Sampson </li>
-                    <li></li>
-                  </ul>
-                </li> -->
-                <li>
-                  <span class="has-text-weight-bold">Class of 2019</span>
-                  <ul>
-                    <li>David Lynn</li>
-                    <li>Rafael Mason</li>
-                    <li>Carrie Nardelli</li>
-                    <li>Narayan Achi</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2018</span>
-                  <ul>
-                    <li>Adi Vichova</li>
-                    <li>Seth Aronson</li>
-                    <li>Angela Nunez</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2017</span>
-                  <ul>
-                    <li>Sharon Wooding</li>
-                    <li>Miles Ackerman</li>
-                    <li>David Chung</li>
-                    <li>Steve Meenan</li>
-                    <li>Kristin Bresnahan</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2016</span>
-                  <ul>
-                    <li>Scott Lindbloom</li>
-                    <li>Teresa Sampson</li>
-                    <li>Sebastian Quinn</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2015</span>
-                  <ul>
-                    <li>Don Rhee</li>
-                    <li>Jimmy Cranston</li>
-                    <li>Marissa Wilson</li>
-                    <li>Cindy Pugoli</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2014</span>
-                  <ul>
-                    <li>Marcus Steinman</li>
-                    <li>Ann Marie Petri</li>
-                    <li>Lynnette Cavanaugh</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+          <div class="column alumni-section__list-col">
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
               <ul class='marginless-list indented-list'>
@@ -286,10 +262,36 @@
                 </li>
               </ul>
             </div>
+            <div class="list-section">
+              <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
+              <ul class='marginless-list indented-list'>
+                <li>
+                  Alex Curran
+                </li>
+                <li>
+                  Andrew Enoch
+                </li>
+                <li>
+                  Laurence Falvey
+                </li>
+                <li>
+                  Peter Ferguson
+                </li>
+                <li>
+                  Hunter Aron
+                </li>
+                <li>
+                  Maggie Olerud
+                </li>
+                <li>
+                  Sumi Lee
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -357,16 +359,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.station-details {
+.station-profile {
   padding-top: 2em;
   padding-bottom: 2em;
 
   &__label {
     margin-right: .875em;
-  }
-
-  &__picture-column {
-    max-width: 260px;
   }
 
   &__map {
@@ -375,6 +373,7 @@ export default {
     max-width: 990px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2em;
   }
 
   &__name-block {
@@ -384,13 +383,18 @@ export default {
 
   &__name {
     margin-right: 1em;
-    margin-bottom: .5rem;
+    margin-bottom: 0;
+  }
+
+  &__picture-column {
+    width: 312px;
+    flex-basis: 312px;
+    flex-grow: 0;
   }
 
   &__details-column {
     margin-right: 20px;
-    max-width: 737px;
-    margin-top: .5em;
+    max-width: 810px;
 
     &:last-child {
       margin-right: 0;
@@ -403,6 +407,12 @@ export default {
 
     a {
       margin-right: .875em;
+    }
+  }
+
+  &__list-col {
+    &:last-of-type {
+      margin-right: 112px;
     }
   }
 
@@ -458,21 +468,19 @@ export default {
   }
 
   &__alumni-section {
-    max-width: 990px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 2em;
     padding-bottom: 2em;
 
     h3 {
-      font-size: 34px;
+      font-size: 36px;
       margin-bottom: 1.5rem;
     }
 
     ul {
       > li {
         margin-bottom: 1em;
-        font-size: 18px;
+        font-size: 20px;
 
         &:last-child {
           margin-bottom: 0;
@@ -480,9 +488,10 @@ export default {
 
         ul {
           padding-left: 1em;
+          margin-top: .25em;
 
           > li {
-            margin-bottom: 0;
+            margin-bottom: .25em;
           }
 
         }
@@ -490,7 +499,7 @@ export default {
     }
 
     h4 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: .75rem;
     }
 
@@ -509,17 +518,26 @@ export default {
     }
   }
 }
+
+.indented-list {
+  padding-left: 1em;
+
+  li {
+    margin-bottom: .25em !important;
+  }
+}
 </style>
 
 <style lang='scss'>
-.station-details {
+.station-profile {
   p {
     &:last-child {
       margin-bottom: 0;
     }
 
     a {
-      text-decoration: underline;
+      color: $secondary !important;
+      text-decoration: underline !important;
     }
   }
 }

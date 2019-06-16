@@ -10,7 +10,7 @@
       <div class="columns stations-directory-list-item__details-block">
         <div class="column stations-directory-list-item__name-block">
           <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
-          <p class="is-marginless">{{ station.location }}</p>
+          <p class="is-marginless">{{ station.location.name }}</p>
         </div>
       </div>
       <div class="columns stations-directory-list-item__details-block">
