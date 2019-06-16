@@ -6,7 +6,7 @@
 		>
 			<div class="station-popup-info">
 				<h4 class="station-popup-info__title">
-					{{ `${station.name}` }}
+					{{ `${ station.stationName || station.name }` }}
 				</h4>
 				<img :src="station.picture" class='station-popup-info__photo'>
 				<router-link 

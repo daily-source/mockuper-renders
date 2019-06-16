@@ -3,6 +3,7 @@ const state = {
     {
       id: 1,
       name: 'Hoya Railroad',
+      stationName: 'Georgetown Hoya Station',
       tagline: 'We are Georgetown University alumni, students, staff, neighbors, friends and fans joining together to help free modern-day slaves. Lets Go Hoyas.',
       description: `
       <p>Everyone in the U.S. today is benefitting from current slavery. Slaves around the world grow and pick some of the food we consume, mine raw materials and make some of the clothing, electronics and other products we all use. In its early years, Georgetown benefitted from slavery, and might not exist now if not for slaves. Later, it benefitted from the sacrifices of people who freed slaves: a former slave, Patrick Healy, became Georgetown’s “second founder” and transformed it from a small rural college to a major national university. With all that in mind, Georgetown alumni, students, staff and fans are joining together to help the people who are involuntarily sacrificing and suffering the most now: modern-day slaves.</p>

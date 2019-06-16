@@ -412,6 +412,7 @@ export default {
     font-size: 21px;
     margin-right: 1em;
     margin-bottom: 0;
+    color: $primary;
   }
 
   &__join-button {
