@@ -1,39 +1,54 @@
 <template>
   <div class='station-details'>
-    <div class='station-details__columns columns'>
-      <div class='column station-details__picture-column'>
-        <h4 class='has-text-weight-bold station-details__name'>{{ station.name }}</h4>
-        <Avatar 
-          :url='station.picture'
-          :alt='station.name'
-        />
-      </div>
-      <div class='column station-details__details-column'>
-        <div class='station-details__block is-flex'>
-          <div v-html='station.description'></div>
+    <div class="container">
+      <div class='station-details__columns columns'>
+        <div class='column station-details__picture-column'>
+          <div class="station-details__name-block is-flex">
+            <h4 class='has-text-weight-bold station-details__name'>{{ station.name }}</h4>
+            <button class='is-secondary button station-details__join-button'>
+              Join
+            </button>
+          </div>
+          <Avatar 
+            :url='station.picture'
+            :alt='station.name'
+          />
+          <div class="station-details__additional-details">
+            <p>
+              Participants: {{ station.participants }}
+            </p>
+            <p>
+              Donated: {{ station.amountDonated | usd }}
+            </p>
+          </div>
         </div>
+        <div class='column station-details__details-column'>
+          <div class='station-details__block is-flex'>
+            <div v-html='station.description'></div>
+          </div>
+        </div>
+        <!-- <div class='station-details__office-locations column'>
+          <p class='has-text-weight-bold'>Locations: </p>
+          <template v-if='station.locations.length === 0'>
+            <p>
+              There are no registered locations for this stations yet.
+            </p>
+          </template>
+          <template v-else>
+            <ol class='station-details__locations'>
+              <li 
+                class='station-details__locations-item'
+                v-for='(location, index) in station.locations'
+                :key='location.placeId || index'
+              >
+                {{ location.location }}
+              </li>
+            </ol>
+          </template>
+        </div> -->
       </div>
-      <!-- <div class='station-details__office-locations column'>
-        <p class='has-text-weight-bold'>Locations: </p>
-        <template v-if='station.locations.length === 0'>
-          <p>
-            There are no registered locations for this stations yet.
-          </p>
-        </template>
-        <template v-else>
-          <ol class='station-details__locations'>
-            <li 
-              class='station-details__locations-item'
-              v-for='(location, index) in station.locations'
-              :key='location.placeId || index'
-            >
-              {{ location.location }}
-            </li>
-          </ol>
-        </template>
-      </div> -->
     </div>
-    <div class='station-details__map'>
+    <!-- <div class='station-details__map'>
       <virtual-railroad-map 
         :users='[]'
         :nonprofits='[]'
@@ -62,8 +77,24 @@
           />
         </button>
       </div>
+    </div> -->
+    <div class="station-details__map-section">
+      <general-info 
+        :opened='true'
+        class='station-general-info'
+      />
+      <home-page-actions 
+        :show-play-button='false'
+      />
+      <station-map 
+        :station='station'
+      />
+      <map-legends 
+        :opened='opened'
+        @toggle='toggleLegends'
+      />
     </div>
-    <div class="station-details__alumni-section">
+    <div class="station-details__alumni-section" v-if='station.establishmentType === "school"'>
       <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
       <div class="station-details__alumni-section-columns">
         <div class="columns">
@@ -71,8 +102,7 @@
             <div class="list-section">
               <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
               <ul>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2020</span>
+                <li>  
                   <ul>
                     <li>
                       Jill Smith
@@ -91,8 +121,7 @@
                     </li>
                   </ul>
                 </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2021</span>
+                <li>  
                   <ul>
                     <li>
                       Ira Rosen 
@@ -111,8 +140,7 @@
                     </li>
                   </ul>
                 </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2022</span>
+                <li>  
                   <ul>
                     <li>
                       Mackensie Stevens
@@ -125,8 +153,7 @@
                     </li>
                   </ul>
                 </li>
-                <li>
-                  <span class="has-text-weight-bold">Class of 2023</span>
+                <li>  
                   <ul>
                     <li>
                       Yousef Kabran
@@ -185,8 +212,7 @@
                     <li></li>
                   </ul>
                 </li> -->
-                <li>
-                  <span class="has-text-weight-bold">Class of 2019</span>
+                <li>  
                   <ul>
                     <li>David Lynn</li>
                     <li>Rafael Mason</li>
@@ -290,6 +316,167 @@
         </div>
       </div>
     </div>
+    <div class="station-details__alumni-section" v-else>
+      <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
+      <div class="station-details__alumni-section-columns">
+        <div class="columns">
+          <div class="column is-6 alumni-section__list-col">
+            <div class="list-section">
+              <!-- <h4 class='has-text-primary has-text-weight-bold'>Current students</h4> --> 
+              <ul class='marginless-list'>
+                <li>
+                  Jill Smith
+                </li>
+                <li>
+                  Kevin Guitierrez
+                </li>
+                <li>
+                  Susan Lundgren
+                </li>
+                <li>
+                  Mel Hollis
+                </li>
+                <li>
+                  Karen Nguyen
+                </li>
+                <li>
+                  Ira Rosen 
+                </li>
+                <li>
+                  Jason Claiborne  
+                </li>
+                <li>
+                  Nick Palexis
+                </li>
+                <li>
+                  Mel Hollis
+                </li>
+                <li>
+                  Linda Joubert
+                </li>
+                <li>
+                  Mackensie Stevens
+                </li>
+                <li>
+                  Mike Andrews  
+                </li>
+                <li>
+                  Nate Birbiglia 
+                </li>
+                <li>
+                  Yousef Kabran
+                </li>
+                <li>
+                  David Tosi
+                </li>
+                <li>
+                  Amet Guzdar
+                </li>
+                <li>
+                  Justin Pearl
+                </li>
+                <li>
+                  Ted Roppel 
+                </li>
+                <li>
+                  Alex Curran
+                </li>
+                <li>
+                  Andrew Enoch
+                </li>
+                <li>
+                  Laurence Falvey
+                </li>
+                <li>
+                  Peter Ferguson
+                </li>
+                <li>
+                  Hunter Aron
+                </li>
+                <li>
+                  Maggie Olerud
+                </li>
+                <li>
+                  Sumi Lee
+                </li>
+                 <li>
+                  Anthony Larelli
+                </li>
+                <li>
+                  Tina Kavowski
+                </li>
+                <li>
+                  Tom Newfield
+                </li>
+                <li>
+                  Linda Moore
+                </li>
+                <li>
+                  Laphonso Deon
+                </li>
+                <li>
+                  Pablo Ruiz David Lobell
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="column is-4 alumni-section__list-col">
+            <div class="list-section">
+              <!-- <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4> -->
+              <ul class='marginless-list'>
+                <li>David Lynn</li>
+                <li>Rafael Mason</li>
+                <li>Carrie Nardelli</li>
+                <li>Narayan Achi</li>
+                <li>Adi Vichova</li>
+                <li>Seth Aronson</li>
+                <li>Angela Nunez</li>
+                <li>Sharon Wooding</li>
+                <li>Miles Ackerman</li>
+                <li>David Chung</li>
+                <li>Steve Meenan</li>
+                <li>Kristin Bresnahan</li>
+                <li>Scott Lindbloom</li>
+                <li>Teresa Sampson</li>
+                <li>Sebastian Quinn</li>
+                <li>Don Rhee</li>
+                <li>Jimmy Cranston</li>
+                <li>Marissa Wilson</li>
+                <li>Cindy Pugoli</li>
+                <li>Marcus Steinman</li>
+                <li>Ann Marie Petri</li>
+                <li>Lynnette Cavanaugh</li>
+                <li>
+                  Jay Ansin
+                </li>
+                <li>
+                  Roy Amberger                                                                   
+                </li>
+                <li>
+                  Lily Hilgrow
+                </li>
+                <li>
+                  Rob Cohen
+                </li>
+                <li>
+                  Daniel Kim
+                </li>
+                 <li>
+                  Jill Hagandanz
+                </li>
+                <li>
+                  David Chen
+                </li>
+                <li>
+                  Walter Thoreau
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </template>
 
@@ -298,6 +485,10 @@ import { mapActions, mapState } from 'vuex'
 
 import Avatar from 'LocalComponents/Avatar/Avatar'
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
+import MapLegends from 'LocalComponents/MapLegends'
+import GeneralInfo from 'LocalComponents/General/GeneralInfo'
+import HomePageActions from 'LocalComponents/HomePageActions'
+import StationMap from 'LocalComponents/Station/StationMap'
 
 import IconNightMode from 'LocalComponents/Icons/IconNightMode'
 import IconLightMode from 'LocalComponents/Icons/IconLightMode'
@@ -315,20 +506,26 @@ export default {
   components: {
     Avatar,
     VirtualRailroadMap,
+    HomePageActions,
     IconNightMode,
     IconLightMode,
+    MapLegends,
+    StationMap,
+    GeneralInfo,
   },
 
   data () {
     return {
       marker: {
         position: {
-          ...this.station.position
+          lat: 38.907689,
+          lng: -77.0737924,
         },
-        name: 'Hoya Railroad',
+        name: 'Georgetown Hoya Station',
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
+      opened: true,
     }
   },
 
@@ -341,6 +538,10 @@ export default {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
       
       this.changeMapStyle(style)
+    },
+
+    toggleLegends () {
+      this.opened = !this.opened
     },
 
     ...mapActions({
@@ -358,7 +559,6 @@ export default {
 
 <style lang="scss" scoped>
 .station-details {
-  padding-top: 2em;
   padding-bottom: 2em;
 
   &__label {
@@ -369,22 +569,48 @@ export default {
     max-width: 260px;
   }
 
-  &__map {
+  &__additional-details {
+    margin-top: .25em;
+
+    p {
+      margin-bottom: .25em;
+    }
+  }
+
+  // &__map {
+  //   position: relative;
+  //   height: 340px;
+  //   max-width: 990px;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  // }
+
+  &__map-section {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
     position: relative;
-    height: 340px;
-    max-width: 990px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 640px;
+    overflow: hidden;
   }
 
   &__name-block {
-    margin-bottom: 1rem;
+    margin-bottom: .875rem;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  &__join-button {
+    font-size: .875em;
+    height: auto;
+    padding: 0.125em 0.5em !important;
   }
 
   &__name {
+    font-size: 1.375em;
+    color: $primary;
     margin-right: 1em;
-    margin-bottom: .5rem;
+    margin-bottom: 0;
   }
 
   &__details-column {
@@ -458,9 +684,7 @@ export default {
   }
 
   &__alumni-section {
-    max-width: 990px;
-    margin-left: auto;
-    margin-right: auto;
+    border-top: 2px solid $secondary;
     padding-top: 2em;
     padding-bottom: 2em;
 
@@ -499,6 +723,12 @@ export default {
         margin-bottom: 0;
       }
     }
+  }
+
+  &__alumni-section-columns {
+    max-width: 990px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .list-section {

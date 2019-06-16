@@ -2,12 +2,10 @@
   <div class="profile">
     <app-header />
     <intro-video />
-    <section class='section'>
-      <div class='container'>
-        <station-profile
-          :station='station'
-        />
-      </div>
+    <section class='profile__section'>
+      <station-profile
+        :station='station'
+      />
     </section>
     <shared-footer />
   </div>
@@ -68,3 +66,14 @@ export default {
   },
 }
 </script>
+
+
+<style lang="scss" scoped>
+.profile {
+  &__section {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+</style>

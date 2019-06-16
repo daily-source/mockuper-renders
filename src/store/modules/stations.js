@@ -9,16 +9,18 @@ const state = {
 
       <p>In its early years, Georgetown benefitted from slavery, and might not exist now if not for slaves. Later, the sacrifices of people who freed slaves benefitted the school: a former slave, Patrick Healy, became Georgetown’s “second founder” and transformed it from a small rural college into the major urban university it is today.</p>
       
-      <p>With the sacrifices of those people in mind, Georgetown alumni, students, staff and fans are joining together to help the people who are involuntarily sacrificing and suffering the most now: modern-day slaves. Please join in our efforts by clicking here.</p>
+      <p>With the sacrifices of those people in mind, Georgetown alumni, students, staff and fans are joining together to help the people who are involuntarily sacrificing and suffering the most now: modern-day slaves.</p>
       `,
-      participants: 913,
-      amountDonated: 48343,
+      participants: 242,
+      amountDonated: 21371,
       picture: require('@/assets/img/georgetown-university-2.jpg'),
+      icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
       position: {
         lat: 38.907689,
         lng: -77.0737924,
         name: 'Washington D.C',
       },
+      // establishmentType: 'school'
     },
     {
       id: 2,

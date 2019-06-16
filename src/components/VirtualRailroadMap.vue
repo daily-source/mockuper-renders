@@ -37,6 +37,13 @@
 				@click='setSelectedNonprofit(location)'
 
 			/>
+      <gmap-marker
+				v-for='(marker, index) in stations'
+				:key='`station-marker-${index}`'
+				:position='marker.position'
+				:icon='marker.icon'
+				@click='setSelectedStation(marker)'
+			/>
 			<gmap-marker
 				v-for='(marker, index) in validMarkers'
 				:key='`custom-marker-${index}`'
@@ -63,6 +70,11 @@
 				:nonprofit='selectedNonprofit'
 				@nonprofitCloseButtonClicked='setSelectedNonprofit(null)'
 			/>
+      <station-popup-window 
+				v-if='selectedStation'
+				:station='selectedStation'
+				@closeButtonClicked='setSelectedStation(null)'
+			/>
 		</google-map>
 	</div>
 </template>
@@ -73,6 +85,7 @@ import GoogleMap from 'LocalComponents/GoogleMap'
 import PolylineAnimatedSymbol from 'LocalComponents/PolylineAnimatedSymbol'
 import UserPopupWindow from 'LocalComponents/UserPopupWindow/UserPopupWindow.vue'
 import NonprofitPopupWindow from 'LocalComponents/NonprofitPopupWindow/NonprofitPopupWindow.vue'
+import StationPopupWindow from 'LocalComponents/StationPopupWindow/StationPopupWindow.vue'
 import Loader from 'Components/Shared/Loader'
 
 export default {
@@ -82,7 +95,8 @@ export default {
 		GoogleMap,
 		UserPopupWindow,
 		NonprofitPopupWindow,
-		PolylineAnimatedSymbol,
+    PolylineAnimatedSymbol,
+    StationPopupWindow,
 		Loader,
 	},
 
@@ -118,7 +132,18 @@ export default {
 			default: () => {
 				return []
 			}
-		},
+    },
+    
+    /**
+     * Stations
+     */
+    stations: {
+      type: Array,
+      required: false,
+      default: () => {
+        return []
+      }
+    },
 
 		/** 
 		 * Show user pop windows.
@@ -137,7 +162,7 @@ export default {
 			required: false,
 			default: 16,
 			validator: (value) => {
-				const sizes = [16, 27, 29, 31, 32,  64, 128, 256]
+				const sizes = [16, 26, 29, 31, 32,  64, 128, 256]
 
 				return sizes.indexOf(value) !== -1
 			}
@@ -149,7 +174,7 @@ export default {
 		zoom: {
 			type: Number,
 			required: false,
-			default: 1,
+			default: 2,
     },
     
     /**
@@ -169,7 +194,8 @@ export default {
 				strokeOpacity: 1.0,
 				strokeWeight: 2,
 			},
-			selectedNonprofit: null,
+      selectedNonprofit: null,
+      selectedStation: null,
 			polylines: [],
 			google: null,
 			map: null,
@@ -184,8 +210,8 @@ export default {
 		 */
 		onMapClicked (position) {
 			console.log(position)
-			this.setSelectedUsers = []
-			this.setSelectedNonprofit(null)
+			// this.setSelectedUsers = []
+			// this.setSelectedNonprofit(null)
 		},
 
 		/**
@@ -247,7 +273,20 @@ export default {
       }
       
       this.google.maps.event.trigger(this.map, 'resize')
-		},
+    },
+    
+    setSelectedStation (station) {
+      this.selectedStation = null
+
+			if (station) {
+        this.selectedStation = station
+        
+			} else {
+				this.selectedStation = null
+      }
+      
+      this.google.maps.event.trigger(this.map, 'resize')
+    },
 
 		/** 
 		 * Generates a User to Nonprofit polyline path.
