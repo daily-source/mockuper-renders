@@ -3,6 +3,7 @@
     <button 
       class='button is-info home-page-actions__button'
       @click="showVideo"
+      v-if='showPlayButton'
       v-tooltip.bottom-start='"View the Intro Video"'
     >
       <icon-play 
@@ -13,6 +14,7 @@
     <button 
       class='button is-info home-page-actions__button'
       @click='openInfo'
+      v-if='showInfoButton'
       v-tooltip.bottom-start='"Click to show info."'
     >
       <icon-info 
@@ -48,6 +50,20 @@ import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 
 export default {
   name: 'HomePageActions',
+
+  props: {
+    showInfoButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showPlayButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
+  },
 
   components: {
     IconPlay,

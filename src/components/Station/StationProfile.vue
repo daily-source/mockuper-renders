@@ -4,7 +4,7 @@
       <div class='station-details__columns columns'>
         <div class='column station-details__picture-column'>
           <div class="station-details__name-block is-flex">
-            <h4 class='has-text-weight-bold station-details__name'>{{ station.name }}</h4>
+            <h4 class='has-text-weight-bold station-details__name'>{{ station.stationName || station.name }}</h4>
             <button class='is-secondary button station-details__join-button'>
               Join
             </button>
@@ -594,6 +594,13 @@ export default {
     overflow: hidden;
   }
 
+  .home-page-actions {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    z-index: 2;
+  }
+
   &__name-block {
     margin-bottom: .875rem;
     align-items: center;
@@ -738,6 +745,12 @@ export default {
       margin-top: 0;
     }
   }
+}
+
+.station-general-info {
+  z-index: 10;
+  margin-top: 20px;
+  background-color: rgba($primary, .78);
 }
 </style>
 
