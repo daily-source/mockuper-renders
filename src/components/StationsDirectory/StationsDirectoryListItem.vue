@@ -9,7 +9,9 @@
     <div class="column stations-directory-list-item__details-column">
       <div class="columns stations-directory-list-item__details-block">
         <div class="column stations-directory-list-item__name-block">
-          <h4 class='has-text-weight-bold'>{{ station.name }}</h4>
+          <h4 class='has-text-weight-bold'>
+            <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
+          </h4>
           <p class="is-marginless">{{ station.location.name }}</p>
         </div>
       </div>
@@ -23,7 +25,7 @@
       </div>
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
-        <a href="#">See this station</a>
+        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">See this station</router-link>
         <a href="#">Join</a>
       </div>
     </div>
