@@ -113,8 +113,6 @@ import SharedFooter from 'Components/Shared/SharedFooter'
 export default {
   name: 'HomePage',
 
-export default {
-  name: "nonprofit",
   /**
    * Uses dynamic import to speed up page performance.
    * See https://webpack.js.org/guides/code-splitting/ for reference.
