@@ -9,18 +9,10 @@
   </div>
 </template>
 
-<style src='./xthon-core/lib/assets/scss/main.scss' lang="scss"></style>
-<style src='./assets/scss/main.scss' lang="scss"></style>
-
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900|Poppins:400,500,700");
-</style>
+@import 'assets/scss/main';
 
-<style lang="scss">
-@import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
-</style>
-
-<style lang="scss">
 .view {
   display: flex;
   flex-direction: column;
@@ -54,4 +46,6 @@
   @include widescreen {
     display: block;
   }
-}</style>
+}
+</style>
+
