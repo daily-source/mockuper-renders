@@ -6,7 +6,7 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import * as filters from "./xthon-core/lib/util/filters"
-import SmoothScroll from 'Components/plugins/SmoothScroll';
+import SmoothScroll from 'Components/plugins/SmoothScroll'
 
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css';
@@ -26,4 +26,22 @@ new Vue({
   router,
   store,
   render: h => h(App),
+  created: () => {
+    console.log('Created')
+    window.fbAsyncInit = () => {
+      FB.init({
+        appId      : process.env.VUE_APP_FB_APP_ID,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+   };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  }
 }).$mount('#app');
