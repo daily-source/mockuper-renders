@@ -2,10 +2,12 @@
   <div class='nonprofit-details'>
     <div class='nonprofit-details__columns columns'>
       <div class='column is-3 nonprofit-details__picture-column'>
-        <Avatar 
-          :url='nonprofit.picture'
-          :alt='nonprofit.name'
-        />
+        <div class="nonprofit-details__avatar-wrapper">
+          <Avatar 
+            :url='nonprofit.picture'
+            :alt='nonprofit.name'
+          />
+        </div>
       </div>
       <div class='column nonprofit-details__details-column'>
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
@@ -121,6 +123,16 @@ export default {
 
 <style lang="scss" scoped>
 .nonprofit-details {
+  &__avatar-wrapper {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include tablet {
+      max-width: 100%;
+    }
+  }
+
   &__label {
     margin-right: .875em;
   }

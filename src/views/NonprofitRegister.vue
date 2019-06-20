@@ -163,6 +163,13 @@ export default {
     margin-bottom: 1.5rem;
   }
 
+  &__subheading {
+    @include tablet {
+      font-size: 1.125em;
+      margin-bottom: 1.25em;
+    }
+  }
+
   &__register-form {
     margin-top: 1em;
   }

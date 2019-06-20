@@ -254,15 +254,23 @@ export default {
   &__logo-container {
     position: absolute;
     top: .5em;
-    max-width: 300px;
+    max-width: 210px;
     margin-left: auto;
     margin-right: auto;
+
+    @media (min-width: 576px) {
+      max-width: 300px;
+    }
   }
 
   &__navbar {
     position: absolute;
-    top: 40px;
+    top: 30px;
     left: 0;
+
+    @media (min-width: 576px) {
+      top: 40px;
+    }
   }
 }
 
@@ -270,8 +278,12 @@ export default {
   display: flex;
   align-items: center;
   border-bottom: 2px solid $secondary;
-  height: 116px;
+  height: 90px;
   // margin-bottom: 2em;
+
+  @media (min-width: 576px) {
+    height: 116px;
+  }
 
   > .container {
     position: static;
@@ -279,11 +291,15 @@ export default {
 
   .header {
     &__logo-container {
-      max-width: 270px;
+      max-width: 200px;
       position: static;
       margin-left: auto;
       margin-right: auto;
       top: -14px;
+
+      @media (min-width: 576px) {
+        max-width: 270px;
+      }
     }
 
     &__navbar {
@@ -292,6 +308,11 @@ export default {
       flex-shrink: 0;
       display: flex;
       align-items: center;
+      top: 30px;
+
+      @media (min-width: 576px) {
+        top: 40px;
+      }
 
       @include desktop {
         position: static;

@@ -9,19 +9,21 @@
       placeholder='Enter your keyword(s) to search'
       v-model='filterValue'
     >
-    <button 
-      class='button is-primary stations-directory-search-form__button'
-      type='submit'
-    >
-      Search
-    </button>
-    <button 
-      class='button is-secondary stations-directory-search-form__button'
-      @click.prevent.stop='resetFilter'
-      v-if='showResetButton'
-    >
-      Reset
-    </button>
+    <div class="stations-directory-search-form__actions">
+      <button 
+        class='button is-primary stations-directory-search-form__button'
+        type='submit'
+      >
+        Search
+      </button>
+      <button 
+        class='button is-secondary stations-directory-search-form__button'
+        @click.prevent.stop='resetFilter'
+        v-if='showResetButton'
+      >
+        Reset
+      </button>
+    </div>
   </form>
 </template>
 
@@ -65,7 +67,11 @@ export default {
 <style lang="scss" scoped>
 .stations-directory-search-form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
+  @include tablet {
+    align-items: center;
+  }
 
   > form {
     display: flex;
@@ -73,14 +79,29 @@ export default {
   }
 
   &__button {
-    margin-left: 1em;
+    margin-left: 0.75em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    @include tablet {
+      margin-left: 1em;
+    }
+  }
+
+  &__actions {
+    margin-top: .5em;
   }
 
   &__input {
-    flex-basis: 350px;
     width: 350px;
+    max-width: 100%;
     flex-grow: 1;
-    max-width: 350px;
+
+    @include tablet {
+      flex-basis: 350px;
+      max-width: 350px;
+    }
   }
 }
 </style>

@@ -196,10 +196,15 @@ export default {
   align-items: center;
   color: inherit;
   font-size: .875rem;
-  padding: .25rem .75rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
   background-color: rgba(78, 84, 83, 0.7);
   border-radius: 100px;
   align-self: flex-start;
+
+  @include tablet {
+    padding: .25rem .75rem;
+  }
 
   &__menu-text {
     display: none;

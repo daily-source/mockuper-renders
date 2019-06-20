@@ -170,12 +170,23 @@ export default {
   }
 
   &__actions {
-    margin-left: .375rem;
+    margin-top: .5em;
+
+    @include tablet {
+      margin-top: 0;
+      margin-left: .375rem;
+    }
   }
 
   &__heading-row {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
 
     p {
       margin-bottom: 0;
@@ -184,14 +195,25 @@ export default {
 
   &__countries-row {
     margin-top: .5em;
-    margin-left: 2em;
     text-align: left;
+
+    @include tablet {
+      margin-left: 2em;
+    }
   }
 
   &__name-wrapper {
     margin-right: 20px;
-    min-width: 500px;
-    max-width: 500px;
+
+    @include tablet {
+      min-width: 350px;
+      max-width: 350px;
+    }
+
+    @include desktop {
+      min-width: 500px;
+      max-width: 500px;
+    }
   }
 
   &__name {
@@ -203,7 +225,11 @@ export default {
     font-size: .875em;
     height: auto;
     padding: .125em .5em!important;
-    margin-right: 1.25rem;
+    margin-right: .5rem;
+
+    @include tablet {
+      margin-right: 1.25rem;
+    }
 
     &--claim {
       width: 153px;

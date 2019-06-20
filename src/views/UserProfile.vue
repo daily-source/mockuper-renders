@@ -3,7 +3,7 @@
 		<app-header />
 		<intro-video />
 		<section class='user-details-section section'>
-			<div class='container'>	
+			<div class='user-details-section__container container'>	
 				<alert
           v-if='newUser'
           :open='open'
@@ -105,4 +105,14 @@ export default {
 		padding-bottom: 1.5em;
 	}
 } 
+
+.user-details-section {
+  &__container {
+    padding: 0;
+
+    @include tablet {
+      padding: 0 15px;
+    }
+  }
+}
 </style>

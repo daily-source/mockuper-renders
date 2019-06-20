@@ -50,6 +50,12 @@ export default {
      }
    },
 
+   mounted () {
+     if (window.innerWidth <= 768 ) {
+       this.opened = false
+     }
+   },
+
    methods :{
     toggleLegends () {
       this.opened = !this.opened
@@ -104,6 +110,6 @@ header {
 }
 
 .home-general-info {
-  z-index: 1;
+  z-index: 10;
 }
 </style>

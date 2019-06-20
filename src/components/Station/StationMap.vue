@@ -44,13 +44,17 @@ export default {
 		 * the screen.
 		 */
 		setZoom () {
-			const width = window.innerWidth
-
-			const zoom = Math.ceil(Math.log2(width) - 8)
-		
-			if (this.map.zoom <= zoom) {
-				this.map.setZoom(zoom)
-			}
+      const width = window.innerWidth
+      
+      if (width > 768) {
+        const zoom = Math.ceil(Math.log2(width) - 8)
+      
+        if (this.map.zoom <= zoom) {
+          this.map.setZoom(zoom)
+        }
+      } else {
+        this.map.setZoom(2)
+      }
     },
     
     /**
@@ -64,7 +68,7 @@ export default {
 				this.$refs['virtual-railroad-map'].addSelectedUser(user)
       })
 
-      this.setZoom
+      this.setZoom()
       window.addEventListener('resize', this.setZoom)
 
       setTimeout(() => {

@@ -58,7 +58,11 @@ export default {
   }
 
   .subheading {
-    font-size: 1.125em;
+    font-size: 1em;
+    
+    @include tablet {
+      font-size: 1.125em;
+    }
   }
 }
 </style>

@@ -70,9 +70,12 @@ export default {
   }
 
   &__details-column {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      margin-top: 50px;
+    }
   }
 
   &__columns {
@@ -104,8 +107,13 @@ export default {
     }
 
     > .column {
-      padding-top: .5rem;
-      padding-bottom: .5rem;
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+
+      @include tablet {
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+      }
     }
   }
 }

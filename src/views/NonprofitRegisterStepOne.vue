@@ -2,18 +2,12 @@
   <div class="nonprofit-register-form-step nonprofit-register-form-step-one">
     <div class="container nonprofit-register__container nonprofit-register__container--small">
       <h2 class='has-text-weight-bold'>Add your nonprofit</h2>
-      <p class='subheading'>We’ve added most anti-slavery nonprofits to our site already. If you add a 2nd profile, people won’t know which is right, so they will be less likely to pick you to support. Also, when we someday find you have two profiles, we’ll have to delete one. You’ll lose all data and people connected to it.</p>
+      <p class='nonprofit-register__subheading'>We’ve added most anti-slavery nonprofits to our site already. If you add a 2nd profile, people won’t know which is right, so they will be less likely to pick you to support. Also, when we someday find you have two profiles, we’ll have to delete one. You’ll lose all data and people connected to it.</p>
 
-      <p class='subheading'>To prevent that, search to see if your nonprofit is here. If it is, you can claim it. If not, you can add it. The screen for adding a new nonprofit shows up after you’ve done one search. If your name has more than 3 words, don't search for all of them as it reduces the chance of finding it. Instead, search for 1 or 2 unique words of your nonprofit name.</p>
-      <nonprofit-directory-search-form
-        @formSubmit='onFormSubmit'
-        :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
-        id='nonprofit-directory-search-form'
-        class='nonprofit-register-form-step-one__search-form'
-      />
+      <p class='nonprofit-register__subheading'>To prevent that, search to see if your nonprofit is here. If it is, you can claim it. If not, you can add it. The screen for adding a new nonprofit shows up after you’ve done one search. If your name has more than 3 words, don't search for all of them as it reduces the chance of finding it. Instead, search for 1 or 2 unique words of your nonprofit name.</p>
       <div class="nonprofit-register-form-step-one__nonprofit-list">
         <h3 class='has-text-weight-bold nonprofit-register__heading'>Nonprofit Directory</h3>
-        <div class="nonprofit-register-form-step-one__nonprofit-filters">
+        <!-- <div class="nonprofit-register-form-step-one__nonprofit-filters">
           <nonprofit-directory-filters />
         </div>
         <nonprofit-directory-list
@@ -30,8 +24,11 @@
         <nonprofit-register-results
           :show-subheading='false'
           v-if='sortBy === "name"'
-        />
-      </div>
+        /> -->
+        <nonprofit-directory-with-filter 
+          :show-suggest-text='false'
+        />        
+      </div> 
     </div>
   </div>
 </template>
@@ -43,6 +40,8 @@ import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/Non
 import NonprofitDirectoryList from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryList'
 import NonprofitDirectoryFilters from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryFilters'
 import NonprofitRegisterResults from 'LocalComponents/Nonprofit/Register/NonprofitRegisterResults'
+import NonprofitDirectoryWithFilter from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryWithFilter'
+
 
 export default {
   name: 'NonprofitRegisterStepOne',
@@ -52,6 +51,7 @@ export default {
     NonprofitDirectoryList,
     NonprofitDirectoryFilters,
     NonprofitRegisterResults,
+    NonprofitDirectoryWithFilter,
   },
 
   data () {
@@ -106,10 +106,10 @@ export default {
 
 <style lang='scss'>
 .nonprofit-register-form-step-one {
-  .nonprofit-directory-list-item__name {
-    max-width: 457px;
-    min-width: 457px;
-  }
+  // .nonprofit-directory-list-item__name {
+  //   max-width: 457px;
+  //   min-width: 457px;
+  // }
 
   .subheading {
     font-size: 1.125rem;

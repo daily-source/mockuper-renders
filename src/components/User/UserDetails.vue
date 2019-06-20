@@ -97,14 +97,22 @@ export default {
 }
 
 .user-bio {
-	margin-left: .25em;
+  flex-wrap: wrap;
 
 	&__label {
-    margin-left: .25em;
-    
-    @include fullhd {
+    width: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 0.25em;
+
+    @media (min-width: 576px) {
       flex-basis: 18%;
       max-width: 18%;
+      margin-bottom: 1em;
+    }
+
+    @include tablet {
+	    margin-left: .25em;
     }
 
 		&--location {

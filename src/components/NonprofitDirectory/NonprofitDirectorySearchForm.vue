@@ -9,19 +9,21 @@
       :placeholder='inputPlaceholder'
       v-model='filterValue'
     >
-    <button 
-      class='button is-primary nonprofit-directory-search-form__button'
-      type='submit'
-    >
-      Search
-    </button>
-    <button 
-      class='button is-secondary nonprofit-directory-search-form__button'
-      @click.prevent.stop='resetFilter'
-      v-if='showResetButton'
-    >
-      Reset
-    </button>
+    <div class="nonprofit-directory-search-form__actions">
+      <button 
+        class='button is-primary nonprofit-directory-search-form__button'
+        type='submit'
+      >
+        Search
+      </button>
+      <button 
+        class='button is-secondary nonprofit-directory-search-form__button'
+        @click.prevent.stop='resetFilter'
+        v-if='showResetButton'
+      >
+        Reset
+      </button>
+    </div>
   </form>
 </template>
 
@@ -73,15 +75,20 @@ export default {
 .nonprofit-directory-search-form {
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  @include tablet {
+    flex-direction: row;
+  }
 
   @include desktop {
-    flex-direction: row;
     align-items: center;
   }
 
   &__button {
-    margin-top: .25em;
+    margin-top: .625em;
     margin-right: 0.25em;
 
     @include tablet {
@@ -93,11 +100,12 @@ export default {
 
   &__input {
     width: 400px;
-    flex-grow: 1;
     max-width: 100%;
+    flex-grow: 1;
 
     @include tablet {
       flex-basis: 400px;
+      max-width: 400px;
     }
   }
 }

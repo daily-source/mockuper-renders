@@ -7,7 +7,10 @@
         id='nonprofit-directory-search-form'
         class='nonprofit-register-form-with-filter__search-form'
       />
-      <span class='suggest-nonprofit-text'>
+      <span 
+        class='suggest-nonprofit-text'
+        v-if='showSuggestText'
+      >
         To suggest a nonprofit that is not in the list, click <router-link to='/nonprofit-sign-up'>here</router-link>.
       </span>
     </div>
@@ -47,6 +50,14 @@ import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/Non
 
 export default {
   name: 'NonprofitDirectoryWithFilter',
+
+  props: {
+    showSuggestText: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
+  },
 
   components: {
     NonprofitDirectoryFilters,

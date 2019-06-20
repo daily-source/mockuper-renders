@@ -82,8 +82,8 @@ export default {
 <style lang="scss" scoped>
 .legends {
   background-color: rgba($primary, .9);
-  padding: 1.25em 1em;
   position: absolute;
+  padding: 1.25em .75em;
   top: 0;
   left: 0;
   right: 0;
@@ -99,6 +99,7 @@ export default {
     top: initial;
     transition: bottom .2s ease;
     bottom: 0;
+    padding: 1.25em 1em;
   }
 
   &__content {
@@ -173,9 +174,14 @@ export default {
 
   &__text-wrapper {
     display: flex;
-    padding-left: .5em;
     flex: 1;
     max-width: 100%;
+    padding-left: .25em; 
+
+
+    @include tablet {
+      padding-left: .5em; 
+    }
   }
 
   &__text-equals {
@@ -184,15 +190,21 @@ export default {
   }
 
   &__text {
-    font-size: 18px;
     color: #fff;
+
+    @include tablet {
+      font-size: 18px;
+    }
   }
 
   &__text,
   &__text-equals {
     color: #fff;
-    font-size: 18px;
     margin-bottom: 0;
+
+    @include tablet {
+      font-size: 18px;      
+    }
   }
 }
 
@@ -201,11 +213,11 @@ export default {
   display: flex;
   align-items: flex-start;
   margin-top: .5em;
-  padding-left: .1em;
-  padding-right: .1em;
 
   @include tablet {
     max-width: 50%;
+    padding-left: .1em;
+    padding-right: .1em;
   }
 
   img {
@@ -227,12 +239,15 @@ export default {
   //   }
   // }
 
-  &:first-of-type {
-    padding-right: 1rem;
+  @include tablet {
+    &:first-of-type {
+      padding-right: 1rem;
+    }
+
+    &:last-of-type {
+      padding-left: .375rem;
+    }
   }
 
-  &:last-of-type {
-    padding-left: .375rem;
-  }
 }
 </style>

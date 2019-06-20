@@ -534,6 +534,10 @@ export default {
 
   mounted () {
     this.changeMapStyle('light')
+
+    if (window.innerWidth <= 768) {
+      this.opened = false
+    }
   },
 
   methods: {
@@ -570,14 +574,25 @@ export default {
 
   &__name-block {
     margin-bottom: 1rem;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include tablet {
+      align-items: center;
+      flex-direction: row;
+    }
   }
 
   &__name {
     font-size: 21px;
-    margin-right: 1em;
-    margin-bottom: 0;
+    margin-bottom: .25em;
     color: $primary;
+
+    @include tablet {
+      margin-bottom: 0;
+      margin-right: 1em;
+    }
   }
 
   &__join-button {
@@ -605,7 +620,10 @@ export default {
   &__picture-column {
     width: 340px;
     flex-basis: 340px;
+    max-width: 100%;
     flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__details-column {
@@ -683,7 +701,9 @@ export default {
   }
 
   &__alumni-section-columns {
-    margin-left: 100px;
+    @include tablet {
+      margin-left: 100px;
+    }
 
     > .columns {
       justify-content: center;
@@ -697,14 +717,22 @@ export default {
     padding-top: 1.375em;
 
     h3 {
-      font-size: 36px;
+      font-size: 24px;
       margin-bottom: 1.5rem;
+
+      @include tablet {
+        font-size: 36px;
+      }
     }
 
     ul {
       > li {
         margin-bottom: 1em;
-        font-size: 20px;
+        font-size: 18px;
+
+        @include tablet {
+          font-size: 20px;
+        }
 
         &:last-child {
           margin-bottom: 0;
@@ -723,8 +751,12 @@ export default {
     }
 
     h4 {
-      font-size: 30px;
+      font-size: 20px;
       margin-bottom: .75rem;
+
+      @include tablet {
+        font-size: 30px;
+      }
     }
 
     .marginless-list {
