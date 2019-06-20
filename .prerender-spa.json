@@ -30,7 +30,6 @@
     "/station/2",
     "/station/3"
   ],
-  "maxConcurrentRoutes": 1,
   "useRenderEvent":false,
   "headless":true,
   "onlyProduction":true

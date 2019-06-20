@@ -79,7 +79,7 @@ export default new Router({
           component: NonprofitRegisterStepThree,
         },
         {
-          path: '',
+          path: '/',
           redirect: {
             name: 'nonprofit-sign-up-step-one'
           }
