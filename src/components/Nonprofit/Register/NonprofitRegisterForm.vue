@@ -36,6 +36,7 @@
               <div class='nonprofit-register-form__location-chooser-wrapper'>
                 <location-chooser
                   ref='locationChooser'
+                  :markers='locationChooserMarkers'
                   @placeChanged='onAddOfficeLocationClicked'
                 />
               </div>
@@ -84,6 +85,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { extractUSLocationFromGeocodedLocation } from '@/util/locations'
 
 import AvatarUpload from 'LocalComponents/Avatar/AvatarUpload'
 import NonprofitRegisterFormDetails from 'LocalComponents/Nonprofit/Register/NonprofitRegisterFormDetails'
@@ -149,17 +151,28 @@ export default {
     onAddOfficeLocationClicked (place, location) {
       if (this.form.locations.length >= 12) return
       // const state = place.address
-      const state = place.address_components.find(place => place.types.indexOf("administrative_area_level_1") !== -1 )
-
-      const city = place.address_components.find(place => place.types.indexOf("locality") !== -1 )
+      let state = ''
+      let city = ''
+      let geocodedLocation = ''
 
       const country = place.address_components.find(place => place.types.indexOf("country") !== -1 )
 
+      if (country.short_name === 'US') {
+        const extractedLocation = extractUSLocationFromGeocodedLocation(place)
+        state = extractedLocation.state.long_name
+        city = extractedLocation.city.long_name
+        geocodedLocation = extractedLocation.formatedAddress
+      } else {
+        city = place.address_components.find(place => place.types.indexOf("locality") !== -1 )
+        state = place.address_components.find(place => place.types.indexOf("administrative_area_level_1") !== -1 )
+        geocodedLocation = `${city ? city.long_name : state.long_name}, ${country.long_name}`
+      }
+
       const loc = {
-        state: state.long_name,
-        city: city ? city.long_name : state.long_name,
+        state,
+        city,
+        location: geocodedLocation,
         placeId: place.place_id,
-        location: `${city ? city.long_name : state.long_name}, ${country.long_name}`,
         ...location,
       }
 
@@ -198,6 +211,21 @@ export default {
      */
     isFormValid () {
       return this.croppaObject.imageSet && this.form.name && this.form.description && this.form.url
+    },
+
+    /**
+     * Location Chooser Markers
+     */
+    locationChooserMarkers  () {
+      return this.form.locations.map(location => {
+        return {
+          position: {
+            lat: location.lat(),
+            lng: location.lng(),
+          },
+          icon: require('@/assets/img/star_32.png')
+        }
+      })
     },
   },
 }

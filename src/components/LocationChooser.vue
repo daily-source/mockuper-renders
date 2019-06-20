@@ -7,6 +7,7 @@
           ref='autocomplete'
           placeholder='Enter zip code, city/state or city/country'
           class='location-chooser-autocomplete__input input'
+          :types='["(regions)"]'
         />
         <button 
           class='button is-primary'
@@ -43,7 +44,7 @@
           />
         </div>
       </transition>
-      <google-map
+      <virtual-railroad-map
         class='location-chooser-map'
         @mapReady='onMapReady'
         @mapClicked='onMapClicked'
@@ -51,11 +52,9 @@
           lat: 22.85288426736647,
           lng: 0.954086738974298,
         }'
+        :markers='mapMarkers'
       >
-        <gmap-marker 
-          :position='selectedLocation'
-        />
-      </google-map>
+      </virtual-railroad-map>
       <div class="actions">
         <button
           class='button is-info actions__button'
@@ -84,6 +83,7 @@ import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
 
 import GoogleMap from 'LocalComponents/GoogleMap'
+import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
 import IconNightMode from 'LocalComponents/Icons/IconNightMode'
 import IconLightMode from 'LocalComponents/Icons/IconLightMode'
 import Loader from 'Components/Shared/Loader'
@@ -95,6 +95,7 @@ export default {
   
   components: {
     GoogleMap,
+    VirtualRailroadMap,
     Loader,
     IconNightMode,
     IconLightMode,
@@ -108,6 +109,17 @@ export default {
       type: Object,
       required: false,
       default: null,
+    },
+
+    /**
+     * Custom markers to be displayed on the map
+     */
+    markers: {
+      type: Array,
+      required: false,
+      default: () => {
+        return []
+      }
     },
   },
 
@@ -236,6 +248,9 @@ export default {
         this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
       }
 
+      console.log('Selected place:', this.selectedPlace)
+      console.log('Selected location:', this.selectedLocation)
+
       this.selectedPlace = null
       this.selectedLocation = null
       this.$refs.autocomplete.$refs.input.value = ''
@@ -267,6 +282,27 @@ export default {
   },
 
   computed: {
+    /**
+     * Markers to be displayed on the screen including the nonprofit markers above.
+     */
+    mapMarkers () {
+      let mapMarkers = []
+
+      if (this.selectedLocation) {
+        mapMarkers.push({
+          position: {
+            lat: this.selectedLocation.lat(),
+            lng: this.selectedLocation.lng()
+          }
+        })
+      }
+
+      return [
+        ...mapMarkers,
+        ...this.markers,
+      ]
+    },
+
     ...mapState({
       mapStyle: state => state.map.mapStyle
     })

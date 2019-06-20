@@ -152,7 +152,16 @@ export default {
 			type: Boolean,
 			required: false,
 			default: true,
-		},
+    },
+    
+    /**
+     * Show nonprofit popup windows
+     */
+    showNonprofitPopupWindows: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
 
 		/**
 		 * Size of the icons.
@@ -208,10 +217,8 @@ export default {
 		/** 
 		 * Handle on Google Map clicked events
 		 */
-		onMapClicked (position) {
-			console.log(position)
-			// this.setSelectedUsers = []
-			// this.setSelectedNonprofit(null)
+		onMapClicked (event) {
+      this.$emit('mapClicked', event)
 		},
 
 		/**
