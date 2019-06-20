@@ -18,13 +18,13 @@
         </div>
         <nonprofit-directory-list
           :enable-nonprofit-suggest='false'
-          :show-claim-nonprofit-button='true'
           :show-search='false'
-          class='nonprofit-register__directory'
           :list-item-options='{
+            showClaimNonprofitButton: true,
             showDonateButton: false,
             showLocationsButton: false,
           }'
+          class='nonprofit-register__directory'
           v-if='sortBy === "country"'
         />
         <nonprofit-register-results

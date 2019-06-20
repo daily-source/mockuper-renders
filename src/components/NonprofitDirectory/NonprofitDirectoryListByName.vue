@@ -16,7 +16,7 @@
           <div class="nonprofit-directory-list-by-name__name-wrapper">
             <p class='nonprofit-directory-list-by-name__name'>{{ nonprofit.name }}</p>
           </div>
-          <div class="nonprofit-directory-list-by-name__actions">
+          <!-- <div class="nonprofit-directory-list-by-name__actions">
             <button
               class='button is-secondary nonprofit-directory-list-by-name__action nonprofit-directory-list-by-name__action--claim'
               :disabled='nonprofit.claimed'        
@@ -29,6 +29,23 @@
             >
               View Profile
             </router-link>
+          </div> -->
+          <div class="nonprofit-directory-list-by-name__actions">
+            <button
+              class='button is-secondary nonprofit-directory-list-by-name__action nonprofit-directory-list-by-name__action--claim'
+              :disabled='nonprofit.claimed'     
+              v-if='showClaimNonprofitButton'   
+            >
+              {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
+            </button>
+            <router-link
+              :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"
+              class='button is-primary nonprofit-directory-list-by-name__action'
+            >
+              View Profile
+            </router-link>
+            <button class='nonprofit-directory-list-by-name__action is-secondary is-small button' v-if='showDonateButton'>Donate</button>
+            <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-by-name__link' v-if='showLocationsButton'>See more locations</router-link>
           </div>
         </div>
         <div class="nonprofit-directory-list-by-name__countries-row">
@@ -68,7 +85,25 @@ export default {
       type: String,
       required: false,
       default: '',
-    }
+    },
+    
+    showClaimNonprofitButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
+    showDonateButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showLocationsButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
 
   methods: {
@@ -170,6 +205,7 @@ export default {
   }
 
   &__actions {
+    align-items: center;
     margin-left: .375rem;
   }
 
@@ -197,6 +233,11 @@ export default {
   &__name {
     font-size: 1.375em;
     font-weight: 700;
+  }
+
+  &__link {
+    font-size: 17px;
+    text-decoration: underline;
   }
 
   &__action {

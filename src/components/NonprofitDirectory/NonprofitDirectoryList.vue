@@ -14,6 +14,9 @@
           v-for='nonprofit in np.nonprofits'
           :key='nonprofit.id'
           :nonprofit='nonprofit'
+          :show-claim-nonprofit-button='listItemOptions.showClaimNonprofitButton'
+          :show-donate-button='listItemOptions.showDonateButton'
+          :show-locations-button='listItemOptions.showLocationsButton'
         />
       </div>
       <div 
@@ -34,6 +37,9 @@
               v-for='nonprofit in nonprofit.nonprofits'
               :key='nonprofit.id'
               :nonprofit='nonprofit'
+              :show-claim-nonprofit-button='listItemOptions.showClaimNonprofitButton'
+              :show-donate-button='listItemOptions.showDonateButton'
+              :show-locations-button='listItemOptions.showLocationsButton'
             />
           </div>
         </div>
@@ -51,6 +57,16 @@ import NonprofitDirectoryListItem from 'LocalComponents/NonprofitDirectory/Nonpr
 
 export default {
   name: 'NonprofitList',
+
+  props: {
+    listItemOptions: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {}
+      },  
+    },
+  },
 
   components: {
     NonprofitDirectoryListItem,
