@@ -28,6 +28,11 @@
         <nonprofit-directory-with-filter 
           :show-suggest-text='false'
           :standalone='true'
+          :list-item-options='{
+            showDonateButton: false,
+            showLocationsButton: false,
+            showClaimNonprofitButton: true,
+          }'
           @search:submit='onFormSubmit'
           @search:rest='onFormReset'
         />        

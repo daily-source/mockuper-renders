@@ -85,7 +85,7 @@ export default {
     max-width: 500px;
     
     @include tablet {
-      max-width: 900px;
+      max-width: 990px;
     }
   }
 }

@@ -20,8 +20,9 @@
     <div class="nonprofit-directory-with-filter__nonprofit-list">
       <nonprofit-directory-list
         :enable-nonprofit-suggest='false'
-        :show-claim-nonprofit-button='false'
         :show-search='false'
+        :show-claim-nonprofit-button='listItemOptions.showClaimNonprofitButton'        
+        :list-item-options='listItemOptions'
         class='nonprofit-register__directory'
         v-if='sortBy === "country"'
         :filter='filter'
@@ -31,6 +32,9 @@
       <nonprofit-directory-list-by-name
         :show-subheading='false'
         :filter='filter'
+        :show-claim-nonprofit-button='listItemOptions.showClaimNonprofitButton'
+        :show-donate-button='listItemOptions.showDonateButton'
+        :show-locations-button='listItemOptions.showLocationsButton'
         v-if='sortBy === "name"'
       >
         <p slot='errorMessage'>It's possible the current profile on our site has a typo, so please do another search using other words from your name.</p>
@@ -63,6 +67,18 @@ export default {
       required: false,
       default: false,
     },
+
+    listItemOptions: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          showClaimNonprofitButton: false,
+          showDonateButton: true,
+          showLocationsButton: true,
+        }
+      }
+    }
   },
 
   components: {

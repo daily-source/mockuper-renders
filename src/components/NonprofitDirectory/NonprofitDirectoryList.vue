@@ -341,7 +341,6 @@ export default {
 
         return state.nonprofits.data
       },
-
     })
   }
 }

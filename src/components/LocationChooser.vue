@@ -352,6 +352,10 @@ export default {
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
   }
 
   &__actions {

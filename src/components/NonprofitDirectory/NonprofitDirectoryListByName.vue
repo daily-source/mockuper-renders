@@ -19,7 +19,8 @@
           <div class="nonprofit-directory-list-by-name__actions">
             <button
               class='button is-secondary nonprofit-directory-list-by-name__action nonprofit-directory-list-by-name__action--claim'
-              :disabled='nonprofit.claimed'        
+              :disabled='nonprofit.claimed'     
+              v-if='showClaimNonprofitButton'   
             >
               {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
             </button>
@@ -29,6 +30,8 @@
             >
               View Profile
             </router-link>
+            <button class='nonprofit-directory-list-by-name__action is-secondary is-small button' v-if='showDonateButton'>Donate</button>
+            <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-by-name__link' v-if='showLocationsButton'>See all locations</router-link>
           </div>
         </div>
         <div class="nonprofit-directory-list-by-name__countries-row">
@@ -68,7 +71,25 @@ export default {
       type: String,
       required: false,
       default: '',
-    }
+    },
+
+    showClaimNonprofitButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
+    showDonateButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+
+    showLocationsButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
 
   methods: {
@@ -171,6 +192,8 @@ export default {
 
   &__actions {
     margin-top: .5em;
+    display: flex;
+    align-items: center;
 
     @include tablet {
       margin-top: 0;
@@ -226,6 +249,7 @@ export default {
     height: auto;
     padding: .125em .5em!important;
     margin-right: .5rem;
+    border-radius: 4px;
 
     @include tablet {
       margin-right: 1.25rem;
@@ -234,6 +258,11 @@ export default {
     &--claim {
       width: 153px;
     }
+  }
+
+  &__link {
+    text-decoration: underline;
+    font-size: 17px;
   }
 }
 </style>

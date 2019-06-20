@@ -8,6 +8,9 @@
       <nonprofit-directory-list-by-name 
         class='nonprofit-register-step-two__results'
         :filter='filterValue'
+        :show-claim-nonprofit-button='true'
+        :show-donate-button='false'
+        :show-locations-button='false'
       />
       <div class="nonprofit-register-form-step-two__search">
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
