@@ -29,7 +29,7 @@
       </div>
       <div class="nonprofit-register-form__choose-location">
         <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location(s) <span class="has-text-danger">*</span></p>
-        <div class="nonprofit-register-form__columns columns">
+        <div class="nonprofit-register-form__columns columns is-multiline">
           <div class="column nonprofit-register-form__location-column">
           <p>At least one location is required. The maximum is 12. Only add ones where you have a physical presence such as an office. Each location will appear on your profile page and also as a star on our Google map of anti-slavery nonprofits. After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the “Add” button will become clickable.</p>            
             <div class='field'>
@@ -39,18 +39,6 @@
                   :markers='locationChooserMarkers'
                   @placeChanged='onAddOfficeLocationClicked'
                 />
-              </div>
-            </div>
-            <div class='field is-grouped'>
-              <div class='control'>
-                <button 
-                  type='submit' 
-                  class='button is-primary'
-                  :disabled='!isFormValid'
-                  @click='onFormSubmit'
-                > 
-                  Save Profile 
-                </button>
               </div>
             </div>
           </div>
@@ -77,6 +65,20 @@
                 </li>
               </ol>
             </template>
+          </div>
+        </div>
+      </div>
+      <div class="nonprofit-register-form__actions">
+        <div class='field is-grouped'>
+          <div class='control'>
+            <button 
+              type='submit' 
+              class='button is-primary'
+              :disabled='!isFormValid'
+              @click='onFormSubmit'
+            > 
+              Save Profile 
+            </button>
           </div>
         </div>
       </div>
@@ -240,8 +242,11 @@ export default {
   }
 
   &__office-column {
-    padding-top: 118px;
     padding-right: 1.75rem;
+
+    @include widescreen {
+      padding-top: 118px;
+    }
   }
 
   &__avatar-upload {
@@ -300,11 +305,17 @@ export default {
   }
 
   &__location-column {
-    flex-basis: 905px;
-    max-width: 905px;
-    width: 905px;
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
     flex-grow: 1;
     padding-right: 1rem;
+
+    @include widescreen {
+      flex-basis: 905px;
+      max-width: 905px;
+      width: 905px;
+    }
   }
 
   &__location-chooser-wrapper {

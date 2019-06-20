@@ -9,19 +9,21 @@
           class='location-chooser-autocomplete__input input'
           :types='["(regions)"]'
         />
-        <button 
-          class='button is-primary'
-          @click.prevent.stop='setSelectedPlace()'
-        >
-          Search
-        </button>
-        <button 
-          class='button is-primary'
-          :disabled='!selectedLocation || !selectedPlace'
-          @click.prevent.stop='submitLocation'
-        >
-          Add This Location
-        </button>
+        <div class="location-chooser-autocomplete__actions">
+          <button 
+            class='button is-primary'
+            @click.prevent.stop='setSelectedPlace()'
+          >
+            Search
+          </button>
+          <button 
+            class='button is-primary'
+            :disabled='!selectedLocation || !selectedPlace'
+            @click.prevent.stop='submitLocation'
+          >
+            Add This Location
+          </button>
+        </div>
       </div>
       <div 
         class="location-chooser-autocomplete__errors"
@@ -349,6 +351,19 @@ export default {
   &__fields {
     margin-bottom: 1em;
     display: flex;
+    flex-direction: column;
+  }
+
+  &__actions {
+    margin-top: .5em;
+
+    @include tablet {
+      margin-top: 0;
+    }
+  }
+
+  @include tablet {
+    flex-direction: row;
   }
 
   &__input {
