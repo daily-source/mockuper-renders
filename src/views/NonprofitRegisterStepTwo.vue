@@ -5,8 +5,9 @@
   >
     <div class="container nonprofit-register__container nonprofit-register__container--small">
       <h2 class='has-text-weight-bold nonprofit-register__heading'>Results</h2>    
-      <nonprofit-register-results 
+      <nonprofit-directory-list-by-name 
         class='nonprofit-register-step-two__results'
+        :filter='filterValue'
       />
       <div class="nonprofit-register-form-step-two__search">
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
@@ -31,6 +32,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import NonprofitDirectorySearchForm from 'LocalComponents/NonprofitDirectory/NonprofitDirectorySearchForm'
+import NonprofitDirectoryListByName from 'LocalComponents/NonprofitDirectory/NonprofitDirectoryListByName'
 import NonprofitRegisterResults from 'LocalComponents/Nonprofit/Register/NonprofitRegisterResults'
 
 export default {
@@ -39,6 +41,7 @@ export default {
   components: {
     NonprofitDirectorySearchForm,
     NonprofitRegisterResults,
+    NonprofitDirectoryListByName,
   },
 
   computed: {

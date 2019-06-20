@@ -55,7 +55,7 @@ import { mapState } from 'vuex'
 import { orderBy } from 'lodash'
 
 export default {
-  name: 'NonprofitDirectoryListByNa,e',
+  name: 'NonprofitDirectoryListByName',
 
   props: {
     showSubheading: {

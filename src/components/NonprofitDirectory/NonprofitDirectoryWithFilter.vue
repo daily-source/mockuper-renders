@@ -56,7 +56,13 @@ export default {
       type: Boolean,
       required: false,
       default: true,
-    }
+    },
+
+    standalone: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   components: {
@@ -68,11 +74,19 @@ export default {
 
   methods: {
     onFormSubmit (filter) {
-      this.setFilterValue(filter)
+      if (!this.standalone) {
+        this.setFilterValue(filter)
+      }
+
+      this.$emit('search:submit', filter)
     },
 
     onFormReset (filter) {
-      this.resetFilter()
+      if (!this.standalone) {
+        this.resetFilter()
+      }
+
+      this.$emit('search:reset')
     },
 
     ...mapActions({

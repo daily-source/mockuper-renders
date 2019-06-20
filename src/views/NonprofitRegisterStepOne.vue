@@ -27,6 +27,9 @@
         /> -->
         <nonprofit-directory-with-filter 
           :show-suggest-text='false'
+          :standalone='true'
+          @search:submit='onFormSubmit'
+          @search:rest='onFormReset'
         />        
       </div> 
     </div>
