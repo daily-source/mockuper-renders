@@ -141,8 +141,13 @@ export default {
     position: relative;
     height: 500px;
     max-width: 990px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    @include tablet {      
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &__name-block {

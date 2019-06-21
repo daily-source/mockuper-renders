@@ -108,7 +108,7 @@ export default {
 
 .user-details-section {
   &__container {
-    padding: 0;
+    padding: 0 15px;
 
     @include tablet {
       padding: 0 15px;
