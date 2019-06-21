@@ -70,6 +70,7 @@ export default {
   flex-direction: column;
 
   @include tablet {
+    flex-direction: row;
     align-items: center;
   }
 
@@ -91,6 +92,11 @@ export default {
 
   &__actions {
     margin-top: .5em;
+
+    @include tablet {
+      margin-left: 1em;
+      margin-top: 0;
+    }
   }
 
   &__input {
