@@ -584,7 +584,7 @@ export default {
     margin-bottom: 2em;
     width: 100%;
     position: relative;
-    height: 640px;
+    height: 780px;
     overflow: hidden;
   }
 

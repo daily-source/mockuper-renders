@@ -7,6 +7,10 @@
       :zoom='initialZoom'
       :icon-size='26'
       :stations='[station]'
+      :center='{
+        lat: 27.620995834987486, 
+        lng: 2.008774238974298,
+      }'
       ref='virtual-railroad-map'
     />	
   </div>
