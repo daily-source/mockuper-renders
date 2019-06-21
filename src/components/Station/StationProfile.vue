@@ -563,8 +563,6 @@ export default {
 
 <style lang="scss" scoped>
 .station-profile {
-  padding-top: 2em;
-  padding-bottom: 2em;
 
   &__label {
     margin-right: .875em;
@@ -617,8 +615,8 @@ export default {
   }
 
   &__picture-column {
-    width: 312px;
-    flex-basis: 312px;
+    width: 300px;
+    flex-basis: 300px;
     flex-grow: 0;
   }
 
@@ -772,7 +770,6 @@ export default {
 <style lang='scss'>
 .station-profile {
   .avatar__img {
-    min-height: 216px;
     object-fit: cover;
   }
 
