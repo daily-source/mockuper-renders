@@ -2,7 +2,7 @@
   <div class="stations-directory">
     <app-header />
     <intro-video />
-    <section class="section">
+    <section>
       <div class="container stations-directory__container">
         <h3 class='has-text-weight-bold'>Stations On The Virtual Railroad</h3>
         <p class='subheading'>A station is a group of people such as a school, business, church, synagogue or community that is helping to fight slavery through donations or volunteering. To create a new station, click <a href="#">here</a>. To find a station, use the search field or scroll.</p>
@@ -45,11 +45,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.stations-directory {
+.stations-directory {  
   &__container {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1em;
   }
 
   h3 {

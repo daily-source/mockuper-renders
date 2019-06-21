@@ -95,7 +95,7 @@
       />
     </div>
     <div class="station-details__alumni-section" v-if='station.establishmentType === "school"'>
-      <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
+      <h3 class='has-text-weight-bold has-text-centered'>People who support this station</h3>
       <div class="station-details__alumni-section-columns">
         <div class="columns">
           <div class="column is-6 alumni-section__list-col">
@@ -317,7 +317,7 @@
       </div>
     </div>
     <div class="station-details__alumni-section" v-else>
-      <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.name }}</h3>
+      <h3 class='has-text-weight-bold has-text-centered'>People who support this station</h3>
       <div class="station-details__alumni-section-columns">
         <div class="columns">
           <div class="column is-6 alumni-section__list-col">
@@ -590,7 +590,7 @@ export default {
     margin-bottom: 2em;
     width: 100%;
     position: relative;
-    height: 640px;
+    height: 780px;
     overflow: hidden;
   }
 
