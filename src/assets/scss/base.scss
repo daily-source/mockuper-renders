@@ -78,6 +78,11 @@ $navbar-background-color: #fff;
 $navbar-border-color: #ddd;
 
 
+// Station colors
+$hoya-primary-color: #2a2f8a;
+$hoya-secondary-color: $hoya-primary-color;
+
+
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
 @import '~bulma/sass/utilities/initial-variables';
