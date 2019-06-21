@@ -88,11 +88,11 @@
     </div>
     <div class="station-profile__alumni-section" v-if='station.establishmentType === "school"'>
       <div class="container">
-        <h3 class='has-text-weight-bold has-text-centered'>People who support the {{ station.stationName || station.name }}</h3>
+        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ station.stationName || station.name }}</h3>
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
             <div class="column alumni-section__list-col">
-              <h4 class='has-text-primary has-text-weight-bold'>Alumni</h4>
+              <h4 class='has-text-weight-bold'>Alumni</h4>
               <ul class=''>
                 <!-- <li>
                   <ul>
@@ -157,7 +157,7 @@
             </div>
             <div class="column alumni-section__list-col">
               <div class="list-section">
-                <h4 class='has-text-primary has-text-weight-bold'>Current students</h4>
+                <h4 class='has-text-weight-bold'>Current students</h4>
                 <ul>
                   <li>
                     <span class="has-text-weight-bold">Class of 2020</span>
@@ -238,7 +238,7 @@
             </div>
             <div class="column alumni-section__list-col">
               <div class="list-section">
-                <h4 class='has-text-primary has-text-weight-bold'>Fans</h4>
+                <h4 class='has-text-weight-bold'>Fans</h4>
                 <ul class='marginless-list indented-list'>
                   <li>
                     Jay Ansin
@@ -285,7 +285,7 @@
                 </ul>
               </div>
               <div class="list-section">
-                <h4 class='has-text-primary has-text-weight-bold'>Faculty and staff</h4>
+                <h4 class='has-text-weight-bold'>Faculty and staff</h4>
                 <ul class='marginless-list indented-list'>
                   <li>
                     Alex Curran
@@ -606,7 +606,7 @@ export default {
     margin-bottom: 2em;
     width: 100%;
     position: relative;
-    height: 640px;
+    height: 780px;
     overflow: hidden;
   }
 
@@ -724,6 +724,7 @@ export default {
     h3 {
       font-size: 24px;
       margin-bottom: 1.5rem;
+      color: $hoya-primary-color;
 
       @include tablet {
         font-size: 36px;
@@ -758,6 +759,7 @@ export default {
     h4 {
       font-size: 20px;
       margin-bottom: .75rem;
+      color: $hoya-primary-color !important;
 
       @include tablet {
         font-size: 30px;
