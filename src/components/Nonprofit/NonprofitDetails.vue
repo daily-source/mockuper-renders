@@ -131,7 +131,7 @@ export default {
     @include tablet {
       max-width: 100%;
     }
-  }
+  } 
 
   &__label {
     margin-right: .875em;
