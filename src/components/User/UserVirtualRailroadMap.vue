@@ -124,8 +124,13 @@ export default {
   position: relative;
   height: 580px;
   max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: -15px;
+  margin-right: -15px;
+
+  @include tablet {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .actions {
     position: absolute;

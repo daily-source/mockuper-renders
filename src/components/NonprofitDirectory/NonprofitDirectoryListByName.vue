@@ -14,7 +14,12 @@
       >
         <div class="nonprofit-directory-list-by-name__heading-row">
           <div class="nonprofit-directory-list-by-name__name-wrapper">
-            <p class='nonprofit-directory-list-by-name__name'>{{ nonprofit.name }}</p>
+            <p class='nonprofit-directory-list-by-name__name' v-if='addLinkToHeadings'>
+              <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }">{{ nonprofit.name }}</router-link>
+            </p>
+            <p class='nonprofit-directory-list-by-name__name' v-else>
+              {{ nonprofit.name }}
+            </p>
           </div>
           <div class="nonprofit-directory-list-by-name__actions">
             <button
@@ -90,6 +95,12 @@ export default {
       required: false,
       default: true,
     },
+
+    addLinkToHeadings: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   methods: {
@@ -160,9 +171,9 @@ export default {
       align-items: flex-start;
 
       > img {
-        max-width: 170px;
+        max-width: 140px;
         width: 100%;
-        margin-bottom: 1em;
+        margin-bottom: 1.25em;
       }
 
       p {

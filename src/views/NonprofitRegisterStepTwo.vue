@@ -11,6 +11,7 @@
         :show-claim-nonprofit-button='true'
         :show-donate-button='false'
         :show-locations-button='false'
+        :add-link-to-headings='true'
       />
       <div class="nonprofit-register-form-step-two__search">
         <h2 class='has-text-weight-bold nonprofit-register__heading'><span class="has-text-weight-bold">Try another search:</span></h2>
@@ -18,6 +19,7 @@
           @formSubmit='onFormSubmit'
           :show-reset-button='false'
           :input-placeholder='"Enter 1-2 keywords from your nonprofit name"'
+          class='nonprofit-register-step-two__search-form'
         />
       </div>
       <div class="nonprofit-register-step-two__btn-container">
@@ -79,8 +81,14 @@ export default {
     margin-bottom: 1rem;
   }
 
+  &__search-form {
+    padding-top: .375rem; 
+    padding-bottom: .375rem; 
+  }
+
   &__btn-container {
     margin-top: 2em;
+    margin-bottom: .5rem;
 
     .button {
       font-size: 1.25em;

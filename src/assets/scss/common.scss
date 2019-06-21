@@ -33,3 +33,12 @@ html body {
     padding-right: 1.5rem;
   }
 }
+
+.footer {
+  .btn {
+    background-color: $secondary;
+    color: #000;
+    border-color: $secondary;
+    transition: all .2s ease;
+  }
+}
