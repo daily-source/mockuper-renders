@@ -55,10 +55,11 @@ export default {
   h3 {
     font-size: 1.875em;
     margin-bottom: 1.5rem;
+    color: $primary-hoya;
   }
 
   .subheading {
-    font-size: 17px;
+    font-size: 1.125rem;
   }
 }
 </style>

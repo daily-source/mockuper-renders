@@ -74,10 +74,14 @@ export default {
 
   h4 {
     margin-bottom: 0;
-    font-size: 1.75rem;
+    font-size: 1.625rem;
     margin-right: 30px;
-    color: $primary;
+    color: $primary-hoya;
     line-height: 1;
+
+    a {
+      color: inherit;
+    }
   }
 
   &__img {
