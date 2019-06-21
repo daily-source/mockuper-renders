@@ -618,8 +618,8 @@ export default {
   }
 
   &__picture-column {
-    width: 340px;
-    flex-basis: 340px;
+    width: 305px;
+    flex-basis: 305px;
     max-width: 100%;
     flex-grow: 0;
     margin-left: auto;
@@ -716,10 +716,8 @@ export default {
   }
 
   &__alumni-section {
-    border-top: 2px solid $secondary;    
     margin-left: auto;
     margin-right: auto;
-    padding-top: 1.375em;
 
     h3 {
       font-size: 24px;
@@ -800,7 +798,6 @@ export default {
 <style lang='scss'>
 .station-profile {
   .avatar__img {
-    min-height: 237px;
     object-fit: cover;
   }
 

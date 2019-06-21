@@ -6,7 +6,7 @@ const state = {
       stationName: 'Georgetown Hoya Station',
       tagline: 'We are Georgetown University alumni, students, staff, neighbors, friends and fans joining together to help free modern-day slaves. Lets Go Hoyas.',
       description: `
-      <p>Everyone in the U.S. today is benefitting from current slavery. Slaves around the world grow and pick some of the food we consume, mine raw materials and make some of the clothing, electronics and other products we all use. In its early years, Georgetown benefitted from slavery, and might not exist now if not for slaves. Later, it benefitted from the sacrifices of people who freed slaves: a former slave, Patrick Healy, became Georgetown’s “second founder” and transformed it from a small rural college to a major national university. With all that in mind, Georgetown alumni, students, staff and fans are joining together to help the people who are involuntarily sacrificing and suffering the most now: modern-day slaves.</p>
+      <p>In its early years, Georgetown benefitted from slavery, and might not exist now if not for slaves. Later, it benefitted from the sacrifices of people who freed slaves. Today, everyone in the U.S. is benefitting from current slavery. Slaves grow food we eat, mine our raw materials and make many of the products we all use. With all that in mind, we members of the extended Georgetown community are working to help the people who are sacrificing and suffering the most today: modern-day slaves.</p>
       `,
       participants: 913,
       amountDonated: 48343,
@@ -26,7 +26,7 @@ const state = {
       participants: 128,
       amountDonated: 6921,
       description: `
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet mauris id nunc mollis vulputate. Aliquam quis quam vitae tellus sollicitudin semper. Donec in enim volutpat, rhoncus erat sit amet, porta sem. Phasellus mollis quis tortor quis venenatis. Nullam semper faucibus ante, quis auctor velit. Mauris vitae urna in purus sodales condimentum eu vel purus. Nunc ac mattis erat, ac tempor velit. Phasellus accumsan, est vel fringilla ornare, nisl nunc cursus urna, nec fermentum metus risus sed ante. Cras ut arcu sit amet libero mollis pulvinar. Suspendisse molestie, ligula vitae feugiat ornare, ligula mi iaculis lacus, id hendrerit orci dolor ut felis. Mauris sed mi sollicitudin, tincidunt quam volutpat metus.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius tellus posuere, congue nulla vestibulum, ornare mi. Sed commodo metus eu nisi efficitur, et placerat quam ultrices. Proin vehicula egestas nibh eu tincidunt. Nunc suscipit gravida mi, in pretium libero condimentum a. Fusce vehicula quis libero ac faucibus. Nulla facilisi. Cras facilisis enim at eleifend pretium. Ut non erat sed mi euismod suscipit in vitae nibh. Vivamus ac dapibus ante, ut gravida ipsum. Fusce rutrum arcu nullam.</p>
       `,
       picture: require('@/assets/img/church-1.jpg'),
       position: {
@@ -40,7 +40,7 @@ const state = {
       name: 'Sun Glow Apparel',
       tagline: 'Sun Glow Apparel is an online general clothing store. Our products of over 10,000 products covers every aspect of fashion, from shirts to dresses, sneakers to slip-ons, sportswear to watches, and so much more.',
       description: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet mauris id nunc mollis vulputate. Aliquam quis quam vitae tellus sollicitudin semper. Donec in enim volutpat, rhoncus erat sit amet, porta sem. Phasellus mollis quis tortor quis venenatis. Nullam semper faucibus ante, quis auctor velit. Mauris vitae urna in purus sodales condimentum eu vel purus. Nunc ac mattis erat, ac tempor velit. Phasellus accumsan, est vel fringilla ornare, nisl nunc cursus urna, nec fermentum metus risus sed ante. Cras ut arcu sit amet libero mollis pulvinar. Suspendisse molestie, ligula vitae feugiat ornare, ligula mi iaculis lacus, id hendrerit orci dolor ut felis. Mauris sed mi sollicitudin, tincidunt quam volutpat metus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius tellus posuere, congue nulla vestibulum, ornare mi. Sed commodo metus eu nisi efficitur, et placerat quam ultrices. Proin vehicula egestas nibh eu tincidunt. Nunc suscipit gravida mi, in pretium libero condimentum a. Fusce vehicula quis libero ac faucibus. Nulla facilisi. Cras facilisis enim at eleifend pretium. Ut non erat sed mi euismod suscipit in vitae nibh. Vivamus ac dapibus ante, ut gravida ipsum. Fusce rutrum arcu nullam.</p>
       `,
       position: {
         lat: 38.907689,
