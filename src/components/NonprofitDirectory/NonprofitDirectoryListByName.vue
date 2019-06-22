@@ -50,7 +50,7 @@
     >
       <img src="@/assets/img/no-results.png" alt="No Results">
       <p class='results-text'>0 results found.</p>
-      <p class='' v-if='!$slots.errorMessage'>It's possible the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
+      <p class='' v-if='!$slots.errorMessage'>It's possible that the current profile on our site has a typo, so please do a 2nd search using other words from your name. If you've already done that, add a new nonprofit below.</p>
       <div class="nonprofit-directory-list__empty-message">
         <slot name='errorMessage'></slot>
       </div>
@@ -172,7 +172,7 @@ export default {
 
       > img {
         max-width: 140px;
-        width: 100%;
+        // width: 100%;
         margin-bottom: 1.25em;
       }
 

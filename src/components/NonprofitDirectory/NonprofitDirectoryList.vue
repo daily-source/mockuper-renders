@@ -362,9 +362,11 @@ export default {
     align-items: flex-start;
     justify-content: center;
 
+
+
     img {
       max-width: 170px;
-      width: 100%;
+      // width: 100%;
       margin-bottom: 1em;
     }
 
