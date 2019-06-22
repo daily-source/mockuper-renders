@@ -88,7 +88,7 @@
     </div>
     <div class="station-profile__alumni-section" v-if='station.establishmentType === "school"'>
       <div class="container">
-        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ station.stationName || station.name }} station</h3>
+        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ stationName }} station</h3>
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
             <div class="column alumni-section__list-col">
@@ -317,7 +317,7 @@
     </div> 
     <div class="station-profile__alumni-section" v-else>
       <div class="container">
-        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ station.stationName || station.name }} station</h3>        
+        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ stationName }} station</h3>        
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
             <div class="column alumni-section__list-col">
@@ -557,6 +557,20 @@ export default {
   },
 
   computed: {
+    stationName () {
+      if (this.station.stationName) {
+        const words = this.station.stationName.split(' ')
+
+        if (words[words.length - 1].toLowerCase() === 'station') {
+          words.pop()
+
+          return words.join(" ")
+        }
+      }
+
+      return this.station.name
+    },
+
     ...mapState({
       mapStyle: state => state.map.mapStyle
     })
