@@ -33,7 +33,7 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'
     return {
-      title: 'Stations Directory | Hoya Railroad',
+      title: 'Stations Directory - v8 | Virtual Railroad',
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
