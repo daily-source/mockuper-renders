@@ -69,7 +69,7 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad Railroad'
     return {
-      title: `Virtual Railroad`,
+      title: `Virtual Railroad - v8`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
