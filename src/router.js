@@ -23,6 +23,7 @@ const NonprofitRegisterStepFour = () => import('@/views/NonprofitRegisterStepFou
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
 const StationsDirectory = () => import('@/views/StationsDirectory')
 const StationProfile = () => import('@/views/StationProfile')
+const StationEdit = () => import('@/views/StationEdit')
 
 export default new Router({
   mode: 'history',
@@ -106,6 +107,11 @@ export default new Router({
       path: '/station/:id',
       name: 'stations-profile',
       component: StationProfile,
-    }
+    },
+    {
+      path: '/station/:id/edit',
+      name: 'station-edit',
+      component: StationEdit,
+    },
   ],
 });
