@@ -25,10 +25,11 @@
           </div>
 	      </form>
 			</div>
-			<div class='column is-3'>
+			<div class='column is-4'>
 				<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
-				<user-edit-supported-nonprofits 
-					:user='user'	
+				<user-edit-supported-nonprofits
+					:user='user'
+          @submit:locations='onEditNonprofitsLocationsSubmit'
 					@submit='onEditNonprofitsSubmit'
           @onDeleteClicked='deleteNonprofit'
 				/>
@@ -102,7 +103,15 @@ export default {
 				...this.userData,
 				...userDetails,
 			}
-		},
+    },
+    
+    onEditNonprofitsLocationsSubmit (nonprofits) {
+      this.userData.nonprofits = [
+        ...nonprofits,
+      ]
+    
+			this.editUser(this.userData)  
+    },
 
 		/**
 		 * Event handler for whenever the nonprofits change.
@@ -168,8 +177,9 @@ export default {
 
 	&__location {
 		height: 580px;
-		position: relative;
-	}
+    position: relative;
+    margin-bottom: .625rem;
+  }
 
 	&__map {
 		left: 0;
@@ -184,6 +194,3 @@ export default {
 	}
 }
 </style>
-
-
-

@@ -3,6 +3,7 @@
 		<user-supported-nonprofits 
 			:user='user'	
       :edit-mode='true'
+      @save='onUserSupportedNonprofitsSave'
       @delete='onDeleteClicked'
 		/>
 		<div class='user-edit-supported-nonprofits__additional'>
@@ -24,7 +25,7 @@
           </button>
         </div>
       </div>
-      <p>To explore nonprofits to support, view our <router-link to='/nonprofit-directory' target='_blank' class='user-edit-supported-nonprofits__link'>directory</router-link>. It will open in a new window so changes you’ve made here will remain. When you find a nonprofit you like, close the directory to return here and enter the nonprofit in the menu above.</p>
+      <p>To explore nonprofits to support, view our <router-link to='/nonprofit-directory' target='_blank' class='user-edit-supported-nonprofits__link'>directory</router-link>. It will open in a new window, so any changes you’ve made here will remain. When you find a nonprofit you like, close the directory to return here and enter the nonprofit in the menu above.</p>
 		</div>
 	</div>
 </template>
@@ -83,7 +84,11 @@ export default {
 			})
 		
 			this.$emit('nonprofitsChange', this.validNonprofits, this.nonprofits)			
-		},
+    },
+    
+    onUserSupportedNonprofitsSave (changes) {
+      this.$emit('submit:locations', changes)      
+    },
 
 		/**
 		 * Adds another Nonprofit Select

@@ -1,14 +1,13 @@
 <template>
   <modal
     :state='state'
-    size='small'
+    size='large'
     @modal:close='closeModal'
     @modal:open='openModal'
     class='user-choose-location-modal'
   >
     <div class='user-choose-location-modal__content' slot='content'>
-      <p class='has-text-centered'>Click on the map to choose a location. <br /> You can also search for a place and use it instead.</p>
-      <div class='user-choose-location-autocomplete'>
+      <!-- <div class='user-choose-location-autocomplete'>
         <gmap-autocomplete
           @place_changed="setSelectedPlaceTemp"
           placeholder='Enter zip code or city/state'
@@ -59,6 +58,12 @@
         >
           Save
         </button>
+      </div> -->
+      <div class="user-choose-location__map-container">
+        <location-chooser 
+          submit-button-text='Use this Location'
+          @placeChanged='saveLocation'
+        />
       </div>
     </div>
     <button href='#' class='button is-text' slot='trigger'>Edit location</button>
@@ -68,6 +73,7 @@
 <script>
 import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
+import LocationChooser from 'LocalComponents/LocationChooser'
 
 import Modal from 'Components/general/Modal'
 import GoogleMap from 'LocalComponents/GoogleMap'
@@ -82,6 +88,7 @@ export default {
     Modal,
     GoogleMap,
     Loader,
+    LocationChooser,
   },
 
   props: {
@@ -161,6 +168,7 @@ export default {
       this.geocodeLocation(latLng)
     },
 
+
     /**
      * Sets the user position
      * 
@@ -181,42 +189,10 @@ export default {
     },
 
     /**
-     * Sets the selectedPlace to the temporarily stored variable.
-     * 
-     * @param {Object} place
-     */
-    setSelectedPlace (place = this.selectedPlaceTemp) {
-      this.selectedPlace = place
-
-      this.setSelectedLocation(place.geometry.location)
-    },
-
-    /**
-     * Reverse gecodes a point
-     * 
-     * @param {Object} latLng
-     * 
-     * @returns Object
-     */
-    async geocodeLocation (latLng) {
-      if (!this.geocoder) {
-        this.geocoder = new this.google.maps.Geocoder
-      }
-
-      this.showMapLoadingOverlay = true
-
-      const location = await geocoder.geocodeLocation(this.geocoder, latLng)
-
-      this.showMapLoadingOverlay = false
-
-      this.setSelectedPlace(location)
-    },
-
-    /**
      * Triggers when the user clicks on save
      */
-    saveLocation () {
-      this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
+    saveLocation (place, location) {
+      this.$emit('placeChanged', place, location)
 
       this.closeModal()
     },
@@ -243,7 +219,7 @@ export default {
 <style lang="scss" scoped>
 .user-choose-location {
   &__map-container {
-    height: 300px;
+    height: 580px;
     width: 100%;
     position: relative;
   }
@@ -267,12 +243,6 @@ export default {
       color: #fff;
     }
   }
-}
-
-.user-choose-location-map {
-  position: absolute;
-  height: 100%;
-  width: 100%;
 }
 
 .user-choose-location-autocomplete {
@@ -308,5 +278,22 @@ export default {
 }
 .loading-fade-enter, .loading-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+</style>
+
+<style lang='scss'>
+.user-choose-location-modal {
+  .location-chooser {
+    height: 100%;
+  }
+
+  .location-chooser__map-container {
+    height: 100%;
+  }
+
+  .modal-content {
+    max-width: 1100px !important;
+    min-height: 720px;
+  }
 }
 </style>

@@ -21,7 +21,7 @@
             :disabled='!selectedLocation || !selectedPlace'
             @click.prevent.stop='submitLocation'
           >
-            Add This Location
+            {{ submitButtonText }}
           </button>
         </div>
       </div>
@@ -122,6 +122,15 @@ export default {
       default: () => {
         return []
       }
+    },
+
+    /**
+     * The submit button text
+     */
+    submitButtonText: {
+      type: String,
+      required: false,
+      default: 'Add this location'
     },
   },
 
@@ -249,9 +258,6 @@ export default {
       if (this.selectedPlace && this.selectedLocation) {
         this.$emit('placeChanged', this.selectedPlace, this.selectedLocation)
       }
-
-      console.log('Selected place:', this.selectedPlace)
-      console.log('Selected location:', this.selectedLocation)
 
       this.selectedPlace = null
       this.selectedLocation = null

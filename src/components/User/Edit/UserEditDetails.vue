@@ -2,7 +2,7 @@
 	<div class='user-edit-form'>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='firstname'>First name:</label>
+				<label class='label' for='firstname'>First name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -14,7 +14,7 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='lastname'>Last name:</label>
+				<label class='label' for='lastname'>Last name:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -24,9 +24,21 @@
 				</div>
 			</div>
 		</div>
+    <div class='field is-horizontal'>
+			<div class='field-label'>
+				<label class='label' for='username'>Username:</label>
+			</div>
+			<div class='field-body'>
+				<div class='field'>
+					<div class='control'>
+						<input class='input' type='text' id='username' v-model='form.userName'>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				Location:
+				<span class="label">Location:</span>
 			</div>
 			<div class='field-body user-edit-form__location-field'>
 				<span class='user-edit-form__location'>{{ form.location }}</span>
@@ -37,7 +49,7 @@
 		</div>
 		<div class='field is-horizontal'>
 			<div class='field-label'>
-				<label for='about'>About:</label>
+				<label class='label' for='about'>About:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -58,18 +70,6 @@
                 * Description cannot exceed {{ descriptionMaxLength }} characters. Description currently exceeds {{ form.about.length - descriptionMaxLength }} character(s).
               </p>
             </div>
-					</div>
-				</div>
-			</div>
-		</div>
-    <div class='field is-horizontal'>
-			<div class='field-label'>
-				<label for='username'>Username:</label>
-			</div>
-			<div class='field-body'>
-				<div class='field'>
-					<div class='control'>
-						<input class='input' type='text' id='username' v-model='form.userName'>
 					</div>
 				</div>
 			</div>

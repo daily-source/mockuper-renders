@@ -3,18 +3,46 @@
 		<div class='user-nonprofits__nonprofits-list-wrapper'>
 			<ul class='user-nonprofits-list'>
 				<li 
-					class='user-nonprofits-list__item'
+					class='user-nonprofits-list__item-wrapper'
 					v-for='(nonprofit) in nonprofits'
 					:key='nonprofit.id'
 				>
-					<a :href='nonprofit.url'>{{ nonprofit.name }}</a>
-          <button 
-            class='button is-small is-danger'
-            v-if='editMode'
-            @click='onDeleteClicked(nonprofit.id)'
-          >
-            Delete
-          </button>
+          <div class="user-nonprofits-list__item">
+            <a :href='nonprofit.url'>{{ nonprofit.name }}</a>
+            <div 
+              class="user-nonprofits-list__actions"
+              v-if='editMode'
+            >
+              <button class='button is-small is-primary' @click='onEditClicked(nonprofit.id)'>Edit</button>
+              <button class='button is-small is-danger' @click='onDeleteClicked(nonprofit.id)'>Delete</button>
+            </div>
+          </div>
+          <div class="user-nonprofits-list__locations" v-if='editLocationsId === nonprofit.id'>
+            <div 
+              class="user-nonprofits-list__locations-item"
+              v-for='(location, index) in nonprofit.locations'
+              :key='index'
+            >
+              <label class='checkbox'>
+                <input 
+                  type='checkbox'
+                  @change='(event) => setUserLocation(event.target.checked, nonprofit.id, location.id)'
+                  :key='`checkbox-${nonprofit.id}-${location.index}`'
+                  :checked='checkIfUserHasLocation(nonprofit.id, location.id)'
+                >
+                {{ location.location }}
+              </label>
+            </div>
+            <div class="user-nonprofits-list__locations-item-actions">
+              <button 
+                class='button is-secondary is-small'
+                @click='saveLocations(nonprofit.id)'
+              >
+                Save Changes
+              </button>
+              <button class='button is-danger is-small' @click='closeEditLocations(nonprofit.id)'>Cancel</button>
+            </div>
+          </div>
 			</li>
 			</ul>
 		</div>
@@ -22,6 +50,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -40,6 +69,13 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+  },
+
+  data () {
+    return {
+      editLocationsId: {},
+      tempChanges: this.user.nonprofits,
     }
   },
   
@@ -52,7 +88,101 @@ export default {
     onDeleteClicked (id) {
       this.$emit('delete', id)
     },
+
+    /**
+     * Handles edit clicked for an item
+     */
+    onEditClicked (id) {
+      this.editLocationsId = id
+    },
+
+    /**
+     * Closes the edit locations screen
+     */
+    closeEditLocations (id) {
+      this.editLocationsId = null
+    },
+
+    /**
+     * Adds a user location
+     */
+    setUserLocation (checked, nonprofitId, locationId) {
+      /**
+       * We first check if there's only one instance of a nonprofit in the User Nonprofit Location list.
+       * If there's only one, we should set the locationId to null rather than delete the record
+       * because this will remove the nonprofit on the location list.
+       */
+      const nonprofitPairWithNonprofitId = this.tempChanges.filter(np => np.nonprofitId === nonprofitId)
+
+      if (!checked) {
+        let nonprofits = []
+
+        const foundIndex = this.tempChanges.findIndex((np) => {
+          return np.locationId === locationId && np.nonprofitId === nonprofitId
+        })
+
+
+        if (nonprofitPairWithNonprofitId.length === 1) {
+          nonprofits = this.tempChanges.map((np, index) => {
+            if (index === foundIndex) {
+              return {
+                nonprofitId: np.nonprofitId,
+                locationId: null,
+              }
+            }
+            
+            return np
+          })
+        } else {
+          nonprofits = this.tempChanges.filter((np, index) => {
+            return index !== foundIndex
+          })
+        }
+
+
+        this.tempChanges = nonprofits
+      } else {
+        if (nonprofitPairWithNonprofitId.length === 1) {
+          const foundIndex = this.tempChanges.findIndex((np) => {
+            return np.nonprofitId === nonprofitId
+          })
+          const nonprofits = this.tempChanges.map((np, index) => {
+            if (index === foundIndex) {
+              return {
+                nonprofitId: np.nonprofitId,
+                locationId,
+              }
+            }
+            
+            return np
+          })
+
+          this.tempChanges = nonprofits
+        } else {
+          this.tempChanges.push({nonprofitId, locationId})
+        }
+      }
+    },
+
+    /**
+     * Checks if user has that location
+     */
+    checkIfUserHasLocation (nonprofitId, locationId) {
+      console.log(nonprofitId, locationId)
+      const hasLocation = this.user.nonprofits.find(np =>{
+        return np.locationId == locationId && np.nonprofitId == nonprofitId
+      })
+
+      return hasLocation
+    },
+    
+    saveLocations (nonprofitId) {
+      this.$emit('save', this.tempChanges)
+
+      this.closeEditLocations(nonprofitId)
+    },
   },
+
 
 	computed: {
 		...mapState({
@@ -75,25 +205,69 @@ export default {
 				return nonprofits
 			}
 		}),
-	},
+  },
+  
+  watch: {
+    editLocationsId () {
+      this.tempChanges = this.user.nonprofits
+    },
+  },
 }
 </script>
 
 <style lang='scss' scoped>
 .user-nonprofits-list {
+  &__item-wrapper {
+		&:not(:last-child) {
+			margin-bottom: .5em;
+    }
+  }
+
 	&__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-		&:not(:last-child) {
-			margin-bottom: .5em;
-    }
-    
     a {
       text-decoration: underline;
     }
-	}
+  }
+  
+  &__actions {
+    .button {
+      &:not(:last-child) {
+        margin-right: .25em;
+      }
+    }
+  }
+
+  &__locations {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  &__locations-item {
+    padding: .5em;
+    background-color: $primary;
+    color: #fff;
+    margin-bottom: 2px;
+    font-size: .875em;
+
+    .checkbox {
+			&:hover {
+				color: #fff !important;
+			}
+		}
+  }
+
+  &__locations-item-actions {
+    margin-top: 0.5em;
+    .button {
+      &:not(:last-child) {
+        margin-right: .5em;
+      }
+    }
+  }
 }
 </style>
 
