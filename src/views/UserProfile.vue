@@ -17,7 +17,7 @@
 							:user='user'		
 						/>
 					</div>
-					<div class='column is-3'>
+					<div class='column is-3 user-profile__supported-nonprofits'>
 						<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
 						<user-supported-nonprofits 
 							:user='user'	
@@ -100,6 +100,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.user-profile {
+  &__supported-nonprofits {
+    @include tablet {
+      margin-left: .375rem;
+    }
+  }
+}
+
 .user-section {
 	&:not(:last-child) {
 		padding-bottom: 1.5em;

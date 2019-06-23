@@ -14,7 +14,6 @@
 				/>
 			</div>
 			<div class='user-edit-form__details-column column'>
-				<h4 class='user-profile__heading user-profile__heading--underline'>User Details</h4>
 	      <form @submit.prevent.stop='onUserEditFormSubmit'>
           <user-edit-details 
             :user='user'	
@@ -181,7 +180,7 @@ export default {
   }
 
   &__details-column {
-    max-width: 585px;
+    max-width: 595px;
   }
 
 	&__location {

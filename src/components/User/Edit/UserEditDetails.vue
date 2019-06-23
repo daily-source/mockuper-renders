@@ -1,32 +1,14 @@
 <template>
 	<div class='user-edit-form'>
-		<div class='field is-horizontal'>
-			<div class='field-label'>
-				<label class='label' for='firstname'>First name:</label>
-			</div>
-			<div class='field-body'>
-				<div class='field'>
-					<div class='control'>
-						<input class='input' type='text' id='firstname' v-model='form.firstName'>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class='field is-horizontal'>
-			<div class='field-label'>
-				<label class='label' for='lastname'>Last name:</label>
-			</div>
-			<div class='field-body'>
-				<div class='field'>
-					<div class='control'>
-						<input class='input' type='text' id='lastname' v-model='form.lastName'>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="field user-edit-form__name-block user-profile__heading--underline is-flex">
+      <label class='label is-sr-only' for='firstname'>First name:</label>
+      <input class='input' type='text' id='firstname' v-model='form.firstName' placeholder='First name'>
+      <label class='label is-sr-only' for='lastname'>Last name:</label>
+      <input class='input' type='text' id='lastname' v-model='form.lastName' placeholder='Last name'>
+    </div>
     <div class='field is-horizontal'>
 			<div class='field-label'>
-				<label class='label' for='username'>Username:</label>
+				<label class='label has-text-weight-bold' for='username'>Username:</label>
 			</div>
 			<div class='field-body'>
 				<div class='field'>
@@ -48,13 +30,14 @@
 			</div>
 		</div>
 		<div class='field is-horizontal'>
-			<div class='field-label'>
+			<!-- <div class='field-label'>
 				<label class='label' for='about'>About:</label>
-			</div>
+			</div> -->
 			<div class='field-body'>
 				<div class='field'>
 					<div class='control'>
 						<!-- <textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea> -->
+				    <label class='label is-sr-only' for='about'>About:</label>
             <textarea-with-warning
               id='about' 
               class='user-edit-form__textarea' 
@@ -155,7 +138,46 @@ export default {
 	}
 
   &__textarea {
-    height: 215px;
+    height: 192px;
+  }
+
+  .field-label {
+    width: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 0.25em;
+
+    @media (min-width: 576px) {
+      flex-basis: 100px;
+      max-width: 100px;
+      margin-right: 0;
+    }
+
+    @include tablet {
+	    margin-left: .25em;
+    }
+
+		&--location {
+			flex-basis: 0;
+			max-width: 150px;
+    }
+    
+    .label {
+      font-weight: 700 !important;
+    }
+  }
+
+  &__name-block {
+    .input {
+      font-size: 1.2em;
+      font-weight: 700;
+      font-family: Montserrat !important;
+      color: #000;
+
+      &:not(:last-child) {
+        margin-right: .25em;
+      }
+    }
   }
 }
 </style>

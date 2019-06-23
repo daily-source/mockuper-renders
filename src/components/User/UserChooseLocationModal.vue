@@ -66,7 +66,7 @@
         />
       </div>
     </div>
-    <button href='#' class='button is-text' slot='trigger'>Edit location</button>
+    <button href='#' class='button is-text' slot='trigger'>Edit</button>
   </modal>
 </template>
 

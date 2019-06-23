@@ -6,7 +6,7 @@
 				:src='user.picture' 
 				alt='`${user.firstName} ${user.lastName}`'
 			>
-			<router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link>
+			<!-- <router-link :to='{ name: "user-edit", params: { userId: user.id} }' class='button is-primary'>Edit Profile</router-link> -->
 		</div>
 		<div class='column user-details__details-column'>
 				<h4 class='has-text-weight-bold user-profile__heading user-profile__heading--underline'>{{ user.firstName }} {{user.lastName }} </h4>
@@ -22,7 +22,7 @@
 						<p>{{ user.userName }}</p>
 					</div>
 					<div class='user-bio'>
-						<p>
+						<p class='user-bio__about'>
 							{{ user.about }}
 						</p>
 					</div>
@@ -119,7 +119,17 @@ export default {
 			flex-basis: 0;
 			max-width: 150px;
 		}
-	}
+  }
+  
+  &__about {
+    @include tablet {
+      margin-left: .25em;
+    }
+  }
+
+  &__details-column {
+    margin-left: .25em;
+  }
 }
 </style>
 
