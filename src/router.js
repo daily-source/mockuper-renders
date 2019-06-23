@@ -14,6 +14,7 @@ const HomePage = () => import('@/views/HomePage')
 const UserProfile = () => import('@/views/UserProfile')
 const UserProfileEdit = () => import('@/views/UserProfileEdit')
 const UserRegister = () => import('@/views/UserRegister')
+const UsersList = () => import('@/views/Users')
 const NonprofitDirectory = () => import('@/views/NonprofitDirectory')
 const NonprofitRegister = () => import('@/views/NonprofitRegister')
 const NonprofitRegisterStepOne = () => import('@/views/NonprofitRegisterStepOne')
@@ -40,6 +41,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/users',
+      name: 'user-list',
+      component: UsersList,
     },
 		{
 			path: '/user/:userId',

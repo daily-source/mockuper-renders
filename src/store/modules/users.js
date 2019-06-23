@@ -102,7 +102,7 @@ const state = {
 					locationId: 2,
 				},		
 			],
-			location: 'Chrisanoupolis, Filiatra Trifilia Greece',
+			location: 'Filiatra Trifilia Greece',
 		},
 		{
 			id: 6,
@@ -371,10 +371,23 @@ const actions = {
 		commit('setUser', newUser)
 
 		return newUser
-	},
+  },
+  
+  deleteUser({state, commit}, userId) {
+    const users = state.data.filter(user => user.id != userId)
+
+    console.log(userId)
+
+    commit('setUsers', users)
+  },
 }
 
 const mutations = {
+  setUsers (state, users) {
+    state.data = users
+  },
+
+
 	update (state, user) {
 		const newState = state.data.map(rec => {
 			if (rec.id === user.id) {
