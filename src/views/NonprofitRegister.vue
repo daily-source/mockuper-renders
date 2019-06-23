@@ -159,7 +159,7 @@ export default {
   $self: &;
 
   &__heading {
-    font-size: 24px;
+    font-size: 29px;
     margin-bottom: 1.5rem;
   }
 

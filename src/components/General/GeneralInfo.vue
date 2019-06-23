@@ -64,6 +64,7 @@ export default {
   margin-top: 140px;
   max-width: 95%;
   font-size: 0.875em;
+  border-radius: 100px;
 
   @include tablet {
     max-width: 760px;

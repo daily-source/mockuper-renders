@@ -8,8 +8,9 @@
           v-if='newNonprofit'
           :open='open'
           @closeButtonClicked='open = false'
+          class='nonprofit-details__alert'
         >
-          Nonprofit successfuly registered. Below are the information you registered.
+          Thank you for applying to be added to the Virtual Railroad. If we have any questions, we will contact you. After we review your information, we will let you know our decision via email.  Below is how your nonprofit profile page will look at Virtual Railroad. To edit it, click here.
         </alert>
         <nonprofit-details-comp
           :nonprofit='nonprofit'

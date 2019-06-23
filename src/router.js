@@ -19,6 +19,7 @@ const NonprofitRegister = () => import('@/views/NonprofitRegister')
 const NonprofitRegisterStepOne = () => import('@/views/NonprofitRegisterStepOne')
 const NonprofitRegisterStepTwo = () => import('@/views/NonprofitRegisterStepTwo')
 const NonprofitRegisterStepThree = () => import('@/views/NonprofitRegisterStepThree')
+const NonprofitRegisterStepFour = () => import('@/views/NonprofitRegisterStepFour')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
 const StationsDirectory = () => import('@/views/StationsDirectory')
 const StationProfile = () => import('@/views/StationProfile')
@@ -77,6 +78,11 @@ export default new Router({
           path: '/nonprofit-sign-up/step/3',
           name: 'nonprofit-sign-up-step-three',
           component: NonprofitRegisterStepThree,
+        },
+        {
+          path: '/nonprofit-sign-up/step/4',
+          name: 'nonprofit-sign-up-step-four',
+          component: NonprofitRegisterStepFour,
         },
         {
           path: '/',

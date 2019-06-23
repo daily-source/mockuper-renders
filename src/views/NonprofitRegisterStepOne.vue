@@ -1,7 +1,7 @@
 <template>
   <div class="nonprofit-register-form-step nonprofit-register-form-step-one">
     <div class="container nonprofit-register__container nonprofit-register__container--small">
-      <h2 class='has-text-weight-bold'>How To Add A Nonprofit</h2>
+      <h2 class='nonprofit-register__heading has-text-weight-bold'>How To Add A Nonprofit</h2>
       <p class='nonprofit-register__subheading'>We’ve added most anti-slavery nonprofits to our site already. If you add a 2nd profile, people won’t know which is right, so they will be less likely to pick you to support. Also, when we someday find you have two profiles, we’ll have to delete one. You’ll lose all data and people connected to it.</p>
 
       <p class='nonprofit-register__subheading'>To prevent that, search to see if your nonprofit is here. If it is, you can claim it. If not, you can add it. The screen for adding a new nonprofit shows up after you’ve done one search. If your name has more than 3 words, don't search for all of them as it reduces the chance of finding it. Instead, search for 1 or 2 unique words of your nonprofit name.</p>

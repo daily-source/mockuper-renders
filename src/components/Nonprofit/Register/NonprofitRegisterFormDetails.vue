@@ -1,7 +1,7 @@
 <template>
   <div class='nonprofit-register-form-details'>
     <div class='field'>
-      <label for='name' class='label'>Name <span class='has-text-danger'>*</span>:</label>
+      <label for='name' class='label'>Nonprofit name <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
         <input-field-with-warning 
           type='text' 
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class='field'>
-      <label for='link' class='label'>Website Link <span class='has-text-danger'>*</span>:</label>
+      <label for='link' class='label'>Website link <span class='has-text-danger'>*</span>:</label>
       <div class='control'>
         <!-- <input class='input' type='text' name='link' id='link' v-model='form.url'> -->
         <input-field-with-warning 

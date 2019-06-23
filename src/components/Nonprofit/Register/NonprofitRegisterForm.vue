@@ -2,7 +2,7 @@
   <div class='nonprofit-register-form'>
       <div class='nonprofit-register-form__columns columns'>
         <div class='nonprofit-register-form__avatar-column column'>
-          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Your logo or photo</p>
+          <p class='has-text-weight-bold nonprofit-register-form__subheading'>Your logo or photo <span class="has-text-danger">*</span></p>
           <!-- <avatar-upload 
             no-image-message='Profile Photo'
             @avatarChange='onAvatarChange'
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="nonprofit-register-form__choose-location">
-        <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add Your Location(s) <span class="has-text-danger">*</span></p>
+        <p class='is-primary has-text-weight-bold nonprofit-register-form__subheading'>Add your location(s) <span class="has-text-danger">*</span></p>
         <div class="nonprofit-register-form__columns columns is-multiline">
           <div class="column nonprofit-register-form__location-column">
           <p>At least one location is required. The maximum is 12. Only add ones where you have a physical presence such as an office. Each location will appear on your profile page and also as a star on our Google map of anti-slavery nonprofits. After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the “Add” button will become clickable.</p>            
@@ -170,13 +170,17 @@ export default {
         geocodedLocation = `${city ? city.long_name : state.long_name}, ${country.long_name}`
       }
 
+
       const loc = {
-        state,
-        city,
+        state: state.long_name,
+        city: city.long_name,
+        latitude: location.lat(),
+        longitude: location.lng(),
         location: geocodedLocation,
         placeId: place.place_id,
-        ...location,
       }
+
+      console.log(loc)
 
       this.form.locations.push(loc)
     },
@@ -222,8 +226,8 @@ export default {
       return this.form.locations.map(location => {
         return {
           position: {
-            lat: location.lat(),
-            lng: location.lng(),
+            lat: location.latitude,
+            lng: location.longitude,
           },
           icon: require('@/assets/img/star_32.png')
         }
