@@ -4,7 +4,7 @@
 			:open='success'
 			@closeButtonClicked='dismissAlert'
 		>
-			Profile updated successfuly.
+			{{ successMessage }}
 		</alert>
 		<div class='user-edit-form__wrapper columns'>
 			<div class='user-edit-form__avatar-wrapper column'>
@@ -77,7 +77,8 @@ export default {
 			userData: {
 				...this.user,
 			},
-			success: false,
+      success: false,
+      successMessage: 'Profile updated successfuly.'
 		}	
 	},
 
@@ -108,7 +109,7 @@ export default {
         ...nonprofits,
       ]
     
-			this.editUser(this.userData)  
+			this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')  
     },
 
 		/**
@@ -122,15 +123,14 @@ export default {
         ...nonprofits,
       ]
     
-			this.editUser(this.userData)      
+			this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')      
 		},
 		
 		/**
 		 * Event handler for when the form is submitted.
 		 */
 		async onUserEditFormSubmit () {
-			await this.editUser(this.userData)
-			this.success = true
+			await this.processUserUpdate(this.userData)
 			window.scrollTo(0,0)
 		},
 
@@ -149,11 +149,22 @@ export default {
       
       this.userData.nonprofits = nonprofits
 
-      this.editUser(this.userData)
+      this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')
+    },
+
+
+    /**
+     * Calls `updateUser` plus
+     */
+    processUserUpdate (user, message = 'Profile updated successfully.') {
+      this.updateUser(user)
+
+      this.successMessage = message
+      this.success = true
     },
 
 		...mapActions({
-			editUser: 'users/updateUser'
+			updateUser: 'users/updateUser'
 		}),
 	},
 }
