@@ -10,10 +10,11 @@
       <h4 data-v-387cfaac="" class="user-profile__heading">Add Another Nonprofit</h4>
       <div class='user-edit-supported-nonprofits__select-wrapper'>
         <user-add-nonprofits-select
+          :show-action-buttons='false'
+          :exclude='excludedNonprofits'
           @removeButtonClicked='removeNonprofitSelect(index)'
           @locationChange='(locationPair) => onLocationChange(locationPair)'
           @nonprofitChange='onNonprofitChange'
-          :show-action-buttons='false'
           ref='userAddNonprofitsSelect'
         />
         <div class="user-edit-supported-nonprofits__actions has-text-right">
@@ -113,28 +114,31 @@ export default {
 		/**
 		 * Handles `locationChange` events of Nonprofit Selects
 		 * 
-		 * We only listen to when a location changes because you can't
-		 * really select a location when you didn't select any nonprofit.
 		 * 
 		 * @param {Object} locationPair A pair of the nonprofit ID with the locations selected
 		 * @param {Number} index Index of the Nonprofit Select
 		 */
 		onLocationChange (locationPair) {
 			if (locationPair) {
-				const { nonprofitId, locationIds } = locationPair
-
-				const nonprofitObjectArrs = locationIds.map(location => {
-					return {
-						nonprofitId,
-						locationId: location,
-					}
-        })
-
-        this.nonprofits = nonprofitObjectArrs
+        const { nonprofitId, locationIds } = locationPair
+        
+        if (locationIds.length > 0) {
+          const nonprofitObjectArrs = locationIds.map(location => {
+            return {
+              nonprofitId,
+              locationId: location,
+            }
+          })
+          this.nonprofits = nonprofitObjectArrs
+        } else {
+          this.nonprofits = [{
+            nonprofitId,
+            locationId: null,
+          }]
+        }
       } else {
         this.nonprofits = []
       }
-			// this.setValidNonprofits()
     },
     
     /**
@@ -145,7 +149,7 @@ export default {
     onNonprofitChange (nonprofit) {
       this.nonprofits = [{
         nonprofitId: nonprofit,
-        locationId: 0,
+        locationId: null,
       }]
     },
 
@@ -171,8 +175,22 @@ export default {
 		 */
 		nonprofitsCount () {
 			return this.nonprofits.length
-		},
+    },
+    
+    /**
+     * Nonprofits to exclude
+     */
+    excludedNonprofits () {
+      let nonprofits = []
 
+      this.user.nonprofits.forEach(np => {
+        if (nonprofits.indexOf(np.nonprofitId) === -1) {
+          nonprofits.push(np.nonprofitId)
+        }
+      })
+
+      return nonprofits
+    },
 	},
 }
 </script>

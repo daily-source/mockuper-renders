@@ -35,7 +35,6 @@
 					"nonprofit"
 				)'
 				@click='setSelectedNonprofit(location)'
-
 			/>
       <gmap-marker
 				v-for='(marker, index) in stations'
@@ -426,7 +425,6 @@ export default {
 			})
 		},
 
-
 		/**
 		 * Locations to display on the map
 		 */
@@ -464,8 +462,8 @@ export default {
 			this.selectedUsers.forEach( user => {
         if (user.nonprofits) {
           const userNonprofits = user.nonprofits.map(nonprofitPair => {
-            const nonprofit = this.nonprofits.find(nonprofit => nonprofit.id == nonprofitPair.nonprofitId)
-            const location = nonprofit.locations.find(location => location.id == nonprofitPair.locationId)
+            const nonprofit = this.nonprofits.find(nonprofit => nonprofit && nonprofit.id == nonprofitPair.nonprofitId)
+            const location = nonprofit.locations.find(location => location && location.id == nonprofitPair.locationId)
   
             return {
               ...nonprofit,

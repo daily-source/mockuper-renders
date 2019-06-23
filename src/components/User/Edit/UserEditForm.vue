@@ -1,11 +1,11 @@
 <template>
   <div class="user-edit">
-		<!-- <alert
+		<alert
 			:open='success'
 			@closeButtonClicked='dismissAlert'
 		>
 			Profile updated successfuly.
-		</alert> -->
+		</alert>
 		<div class='user-edit-form__wrapper columns'>
 			<div class='user-edit-form__avatar-wrapper column'>
 				<user-edit-avatar 
@@ -36,13 +36,9 @@
 			</div>
 		</div>
 		<div class='user-edit-form__location'>
-			<google-map
-				class='user-edit-form__map'
-			>
-				<gmap-marker 
-					:position='{lat: userData.latitude, lng: userData.longitude}'
-				/>
-			</google-map>
+			<user-virtual-railroad-map 
+        :user='user'
+      />
 		</div>
   </div>
 </template>
@@ -55,6 +51,7 @@ import UserEditAvatar from 'LocalComponents/User/Edit/UserEditAvatar'
 import UserEditDetails from 'LocalComponents/User/Edit/UserEditDetails'
 import UserEditSupportedNonprofits from 'LocalComponents/User/Edit/UserEditSupportedNonprofits'
 import GoogleMap from 'LocalComponents/GoogleMap'
+import UserVirtualRailroadMap from 'LocalComponents/User/UserVirtualRailroadMap'
 
 export default {
   name: 'UserEditForm',
@@ -63,7 +60,8 @@ export default {
 		UserEditAvatar,
 		UserEditDetails,
 		UserEditSupportedNonprofits,
-		GoogleMap,
+    GoogleMap,
+    UserVirtualRailroadMap,
 		Alert,
 	},
 

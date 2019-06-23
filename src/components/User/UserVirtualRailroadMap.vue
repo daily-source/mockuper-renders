@@ -50,21 +50,37 @@ export default {
     VirtualRailroadMap,
     IconNightMode,
     IconLightMode,
-	},
+  },
+  
+  data () {
+    return {
+      map: null,
+      vmap: null,
+    }
+  },
 
 	methods: {
 		/**  
 		 * Handles the `mapReady` event of the Virtual Railroad Map
 		 */
 		onMapReady (map, google, vmap) {
-			vmap.addSelectedUser(this.user)
+      this.vmap = vmap
+			this.vmap.addSelectedUser(this.user)
 
 			// Calling the function immediately here doesn't seem to work.
 			// Tested $nextTick also but it seems it's still not working.
 			// Seems like calling it after 100ms is working. 100ms is not really
 			// that noticeable though.
-			setTimeout(() => {
-				vmap.animatePolylines(this.user)
+      this.animatePolylines()
+    },
+
+    animatePolylines () {
+      this.vmap.removeUser(this.user)
+      
+			this.vmap.addSelectedUser(this.user)
+
+      setTimeout(() => {
+				this.vmap.animatePolylines(this.user)
 			}, 100)
     },
     
@@ -116,6 +132,11 @@ export default {
     })
   },
   
+  watch: {
+    user () {
+      this.animatePolylines()
+    },
+  },
 }
 </script>
 

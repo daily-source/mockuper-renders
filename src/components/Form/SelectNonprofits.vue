@@ -164,12 +164,10 @@ export default {
 		locations (val) {
 			let locationPair = null
 
-			if (val && val.length !== 0) {
-				locationPair = {
-					nonprofitId: this.nonprofit,
-					locationIds: val,
-				}
-			}
+      locationPair = {
+        nonprofitId: this.nonprofit,
+        locationIds: val,
+      }
 			
 			this.$emit('locationChange', locationPair, this.selectedNonprofit, this.selectedLocations)
 		},
