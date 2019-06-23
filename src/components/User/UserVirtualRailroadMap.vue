@@ -75,6 +75,7 @@ export default {
     },
 
     animatePolylines () {
+      // TODO: Add a delay for this to smoothen the animation
       this.vmap.removeUser(this.user)
       
 			this.vmap.addSelectedUser(this.user)
