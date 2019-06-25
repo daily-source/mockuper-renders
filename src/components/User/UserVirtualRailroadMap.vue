@@ -26,6 +26,19 @@
       :zoom='2'
 			@mapReady='onMapReady'
 		/>
+    <transition name='loading-fade'>
+      <div 
+        class="user-virtual-railroad-map__loader"
+        v-show='showLoadingOverlay'
+      >
+        <loader 
+          :width='50'
+          :height='50'
+          color='#dedede'
+          message='Updating map, please wait...'
+        />
+      </div>
+    </transition>
 	</div>
 </template>
 
@@ -35,6 +48,7 @@ import { mapActions, mapState } from 'vuex'
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
 import IconNightMode from 'LocalComponents/Icons/IconNightMode'
 import IconLightMode from 'LocalComponents/Icons/IconLightMode'
+import Loader from 'Components/Shared/Loader'
 
 export default {
 	name: 'UserVirtualRailroadMap',
@@ -50,12 +64,14 @@ export default {
     VirtualRailroadMap,
     IconNightMode,
     IconLightMode,
+    Loader,
   },
   
   data () {
     return {
       map: null,
       vmap: null,
+      showLoadingOverlay: false,
     }
   },
 
@@ -65,7 +81,6 @@ export default {
 		 */
 		onMapReady (map, google, vmap) {
       this.vmap = vmap
-			this.vmap.addSelectedUser(this.user)
 
 			// Calling the function immediately here doesn't seem to work.
 			// Tested $nextTick also but it seems it's still not working.
@@ -75,14 +90,20 @@ export default {
     },
 
     animatePolylines () {
+      this.showLoadingOverlay = true
       // TODO: Add a delay for this to smoothen the animation
-      this.vmap.removeUser(this.user)
-      
-			this.vmap.addSelectedUser(this.user)
 
-      setTimeout(() => {
-				this.vmap.animatePolylines(this.user)
-			}, 100)
+      this.vmap.removeUser(this.user)
+
+      setTimeout( () => {
+        this.vmap.addSelectedUser(this.user)
+
+        setTimeout(() => {
+          this.vmap.animatePolylines(this.user)
+        this.showLoadingOverlay = false
+        }, 300)
+
+      }, 100)
     },
     
     onSwitchThemeClicked () {
@@ -134,8 +155,9 @@ export default {
   },
   
   watch: {
-    user () {
-      this.animatePolylines()
+    user: {
+      deep: true,
+      handler: 'animatePolylines'
     },
   },
 }
@@ -167,6 +189,26 @@ export default {
       padding: 0;
       outline: none !important;
       box-shadow: none !important;
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(#000, .3);
+    color: #fff;
+
+    p {
+      text-align: center;
+      margin-top: .5em;
+      color: #fff;
     }
   }
 }

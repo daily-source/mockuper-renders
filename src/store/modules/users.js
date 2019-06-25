@@ -5,8 +5,9 @@ const state = {
 			firstName: 'Arianna',
 			lastName: 'Simmons',
 			userName: 'arianna.simmons21',
-			latitude: 36.2418215,
-			longitude: -115.2973598,
+			latitude: 44.0341262,
+      longitude: -107.45118709999997,
+      location: 'Ten Sleep, WY 82442, USA',
 			picture: 'https://randomuser.me/api/portraits/women/30.jpg',
 			about: 'This is a sample about.',
 			nonprofits: [

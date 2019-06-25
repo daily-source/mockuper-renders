@@ -6,6 +6,17 @@
       <label class='label is-sr-only' for='lastname'>Last name:</label>
       <input class='input' type='text' id='lastname' v-model='form.lastName' placeholder='Last name'>
     </div>
+		<div class='field is-horizontal'>
+			<div class='field-label'>
+				<span class="label">Location:</span>
+			</div>
+			<div class='field-body user-edit-form__location-field'>
+				<span class='user-edit-form__location'>{{ form.location }}</span>
+				<user-choose-location-modal
+					@placeChanged='onPlaceChange'
+				/>
+			</div>
+		</div>
     <div class='field is-horizontal'>
 			<div class='field-label'>
 				<label class='label has-text-weight-bold' for='username'>Username:</label>
@@ -16,17 +27,6 @@
 						<input class='input' type='text' id='username' v-model='form.userName'>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class='field is-horizontal'>
-			<div class='field-label'>
-				<span class="label">Location:</span>
-			</div>
-			<div class='field-body user-edit-form__location-field'>
-				<span class='user-edit-form__location'>{{ form.location }}</span>
-				<user-choose-location-modal
-					@placeChanged='onPlaceChange'
-				/>
 			</div>
 		</div>
 		<div class='field is-horizontal'>

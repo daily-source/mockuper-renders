@@ -36,11 +36,11 @@
             <div class="user-nonprofits-list__locations-item-actions">
               <button 
                 class='button is-secondary is-small'
-                @click='saveLocations(nonprofit.id)'
+                @click.prevent.stop='saveLocations(nonprofit.id)'
               >
                 Save Changes
               </button>
-              <button class='button is-danger is-small' @click='closeEditLocations(nonprofit.id)'>Cancel</button>
+              <button class='button is-danger is-small' @click.prevent.stop='closeEditLocations(nonprofit.id)'>Cancel</button>
             </div>
           </div>
 			</li>
@@ -75,7 +75,7 @@ export default {
   data () {
     return {
       editLocationsId: {},
-      tempChanges: this.user.nonprofits,
+      tempChanges: [...this.user.nonprofits],
     }
   },
   
@@ -114,6 +114,7 @@ export default {
        */
       const nonprofitPairWithNonprofitId = this.tempChanges.filter(np => np.nonprofitId === nonprofitId)
 
+
       if (!checked) {
         let nonprofits = []
 
@@ -142,7 +143,7 @@ export default {
 
         this.tempChanges = nonprofits
       } else {
-        if (nonprofitPairWithNonprofitId.length === 1) {
+        if (nonprofitPairWithNonprofitId.length === 1 && nonprofitPairWithNonprofitId.locationId === null) {
           const foundIndex = this.tempChanges.findIndex((np) => {
             return np.nonprofitId === nonprofitId
           })
@@ -168,7 +169,6 @@ export default {
      * Checks if user has that location
      */
     checkIfUserHasLocation (nonprofitId, locationId) {
-      console.log(nonprofitId, locationId)
       const hasLocation = this.user.nonprofits.find(np =>{
         return np.locationId == locationId && np.nonprofitId == nonprofitId
       })
@@ -209,7 +209,7 @@ export default {
   
   watch: {
     editLocationsId () {
-      this.tempChanges = this.user.nonprofits
+      this.tempChanges = [...this.user.nonprofits]
     },
   },
 }

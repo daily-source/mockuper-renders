@@ -180,7 +180,7 @@ export default {
   }
 
   &__details-column {
-    max-width: 595px;
+    max-width: 600px;
   }
 
 	&__location {

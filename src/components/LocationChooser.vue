@@ -407,12 +407,4 @@ export default {
     box-shadow: none !important;
   }
 }
-
-// Transitions
-.loading-fade-enter-active, .loading-fade-leave-active {
-  transition: opacity .5s;
-}
-.loading-fade-enter, .loading-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 </style>

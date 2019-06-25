@@ -251,6 +251,9 @@ export default {
 		 * Removes a user from the `selectedUser` array if it exists.
 		 */
 		removeUser (user) {
+      const removedUser = this.selectedUsers.find(userRecord => userRecord.id == user.id)
+
+      console.log(removedUser)
 			const selectedUsers = this.selectedUsers.filter(userRecord => userRecord.id !== user.id)
 
 			this.selectedUsers = selectedUsers
@@ -323,7 +326,6 @@ export default {
 		animatePolylines (user) {
 			if (this.polylines) {
 				this.polylines.forEach(({polyline, userId}) => {
-					console.log(polyline)
 					if (userId === user.id) {
 						polyline.animateCircle()
 					}
@@ -461,7 +463,9 @@ export default {
 
 			this.selectedUsers.forEach( user => {
         if (user.nonprofits) {
-          const userNonprofits = user.nonprofits.map(nonprofitPair => {
+          const validNonprofits = user.nonprofits.filter(nonprofitPair => nonprofitPair.locationId)
+          
+          const userNonprofits = validNonprofits.map(nonprofitPair => {
             const nonprofit = this.nonprofits.find(nonprofit => nonprofit && nonprofit.id == nonprofitPair.nonprofitId)
             const location = nonprofit.locations.find(location => location && location.id == nonprofitPair.locationId)
   

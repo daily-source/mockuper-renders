@@ -13,7 +13,7 @@
 				<div class='user-details__bio-wrapper'>
 					<div class='user-bio is-flex'>
 						<p class='user-bio__label has-text-weight-bold'>
-							Location:
+            Location:
 						</p>
 						<p>{{ user.location }}</p>
 					</div>
@@ -90,7 +90,7 @@ export default {
     flex-basis: 75%;
 
     @include desktop {
-      max-width: 720px;
+      max-width: 585px;
       flex-basis: 0;
     }
   }
@@ -123,6 +123,7 @@ export default {
   
   &__about {
     @include tablet {
+      max-width: 557px;
       margin-left: .25em;
     }
   }
