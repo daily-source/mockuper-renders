@@ -27,8 +27,8 @@
       <div class="stations-directory-list-item__actions">
         <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" class='button is-secondary'>Visit</router-link>
         <router-link to="#" class='button is-primary'>Join</router-link>
-        <div class="stations-directory-list-item__management-actions">
-          <router-link to="#" class='has-text-danger is-primary' v-if='isManagement'>Get info</router-link>
+        <div class="stations-directory-list-item__management-actions" v-if='isManagement'>
+          <router-link to="#" class='has-text-danger is-primary' >Get info</router-link>
           <router-link to="#" class='has-text-danger is-primary'>Admin this station</router-link>
         </div>
       </div>
