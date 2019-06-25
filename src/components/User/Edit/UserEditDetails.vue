@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 import UserChooseLocationModal from 'LocalComponents/User/UserChooseLocationModal'
 import TextareaWithWarning from 'Components/input/TextareaWithWarning'
 
@@ -108,9 +110,11 @@ export default {
 		 * @parma {Object} location LatLng object from Google Maps
 		 */
 		onPlaceChange (place, location) {
-			this.form.location = place.formatted_address
-			this.form.latitude = location.lat()
-			this.form.longitude = location.lng()
+      console.log('Save Location')
+
+      Vue.set(this.form, 'location', place.formatted_address)
+      Vue.set(this.form, 'latitude', location.lat())
+      Vue.set(this.form, 'longitude', location.lng())
     },
     
 
