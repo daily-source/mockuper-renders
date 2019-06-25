@@ -1,5 +1,7 @@
 <template>
-<div class='nonprofit-directory-list-item'>
+<div 
+  :class='["nonprofit-directory-list-item", {"nonprofit-directory-list-item--management": isManagement}]'
+>
   <div class='nonprofit-directory-list-item__nonprofit-details'>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"><span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span></router-link>
   </div>
@@ -8,6 +10,10 @@
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='button nonprofit-directory-list-item__button is-primary nonprofit-directory-list-item__link'>View Profile</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-secondary is-small button' v-if='showDonateButton'>Donate</button>
     <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link' v-if='shouldShowLocationsButton'>See all locations</router-link>
+    <div class="nonprofit-list-item-links__management" v-if='isManagement'>
+      <router-link to='#' class='nonprofit-directory-list-item__link has-text-danger'>Get info</router-link>
+      <router-link to='#' class='nonprofit-directory-list-item__link has-text-danger'>Admin this nonprofit</router-link>
+    </div>
   </div>
 </div>
 </template>
@@ -44,6 +50,10 @@ export default {
   },
 
   computed: {
+    isManagement () {
+      return this.$route.meta.management
+    },
+
     ...mapState({
       shouldShowLocationsButton (state) {
         const nonprofit = state.nonprofits.data.find(np => this.nonprofit.id === np.id)
@@ -84,8 +94,12 @@ export default {
 
   a {
     &:not(.button) {
-      font-size: 17px;
+      font-size: 14px;
       text-decoration: underline;
+
+      @include widescreen {
+        font-size: 17px;
+      }
     }
   }
 
@@ -98,6 +112,7 @@ export default {
     align-items: flex-start;
     justify-content: space-around;
   }
+
 
   &__button {
     padding: .125em .5em !important;
@@ -117,22 +132,37 @@ export default {
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; 
+  flex-wrap: wrap;
+
+  @include tablet {
+    flex-wrap: nowrap;
+  }
 
   a {
     margin-right: 1.25rem;
+    display: inline-block;
 
 
     &:not(.button) {
       font-size: 14px;
       text-decoration: underline;
-      @include tablet {
+      @include desktop {
         font-size: 17px;
       }
     }
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  &__management {
+    width: 100%;
+    margin-top: .25em;
+
+    @include tablet {
+      width: auto;
     }
   }
 }

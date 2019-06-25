@@ -66,7 +66,7 @@
         />
       </div>
     </div>
-    <button class='button is-text' @click.prevent='' slot='trigger'>Edit</button>
+    <button class='button is-text is-paddingless user-choose-location-modal__trigger' @click.prevent='' slot='trigger'>Edit</button>
   </modal>
 </template>
 
@@ -294,6 +294,12 @@ export default {
   .modal-content {
     max-width: 1100px !important;
     min-height: 720px;
+  }
+
+  
+  &__trigger {
+    height: auto;
+    padding: 0 !important;
   }
 }
 </style>

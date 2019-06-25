@@ -2,6 +2,7 @@
   [
     "/",
     "/nonprofit-directory",
+    "/nonprofits/management",
     "/nonprofit-sign-up",
     "/nonprofit-sign-up/step/1",
     "/nonprofit-sign-up/step/2",
@@ -12,6 +13,7 @@
     "/nonprofit/13",
     "/nonprofit/12",
     "/nonprofit/11",
+    "/users",
     "/user/1",
     "/user/2",
     "/user/3",
@@ -26,6 +28,7 @@
     "/user/5/edit",
     "/user/6/edit",
     "/stations-directory",
+    "/stations/management",
     "/station/1",
     "/station/2",
     "/station/3"

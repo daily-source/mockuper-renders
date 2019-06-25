@@ -92,6 +92,7 @@ export default {
     @include desktop {
       max-width: 585px;
       flex-basis: 0;
+      margin-left: .125em;
     }
   }
 }

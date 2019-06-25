@@ -4,7 +4,7 @@
     <intro-video />
     <section class="section">
       <div class="container stations-directory__container">
-        <h3 class='has-text-weight-bold'>Stations On The Virtual Railroad</h3>
+        <h3 class='has-text-weight-bold'>Stations On The Virtual Railroad <span class="has-text-danger" v-if='isManagement'>(Management View)</span></h3>
         <p class='subheading'>A station is a group of people such as a school, business, church, synagogue or community that is helping to fight slavery through donations or volunteering. To create a new station, click <a href="#">here</a>. To find a station, use the search field or scroll.</p>
         <stations-directory-list />
       </div>
@@ -33,13 +33,19 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'
     return {
-      title: 'Stations Directory - v8 | Virtual Railroad',
+      title: `Stations Directory${ this.isManagement ? ' (Management View) ' :'' }- v8 | Virtual Railroad`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
         { vmid: 'og:description', name: 'og:description', content: description },
       ],
     };
+  },
+
+  computed: {
+    isManagement () {
+      return this.$route.meta.management
+    }
   },
 }
 </script>

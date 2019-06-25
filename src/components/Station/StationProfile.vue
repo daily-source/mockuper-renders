@@ -16,7 +16,14 @@
             </button>
           </div>
           <div class='station-profile__block is-flex'>
-            <div v-html='station.description'></div>
+            <div class="station-profile__description station-profile__description--full" v-if='showMoreDescription'>
+              <div v-html='station.description'></div>
+              <span class='staiton-profile__toggle-excerpt'><a @click.prevent.stop='showMoreDescription = false'>See Less</a></span>
+            </div>
+             <div class="station-profile__description station-profile__description--excerpt" v-else>
+              <div v-html='excerpt(station.description)'></div>
+              <span class='staiton-profile__toggle-excerpt'>... <a @click.prevent.stop='showMoreDescription = true'>See More</a></span>
+            </div>
           </div>
         </div>
         <!-- <div class='station-profile__office-locations column'>
@@ -314,7 +321,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <div class="station-profile__alumni-section" v-else>
       <div class="container">
         <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ stationName }} station</h3>        
@@ -343,7 +350,6 @@
                 <li>Cindy Pugoli</li>
                 <li>Marcus Steinman</li>
                 <li>Ann Marie Petri</li>
-                <li>Lynnette Cavanaugh</li>
               </ul>
             </div>
             <div class="column alumni-section__list-col">
@@ -403,7 +409,10 @@
                   <li>
                     Ted Roppel 
                   </li>
-              
+                  <li>Lynnette Cavanaugh</li>
+                  <li>
+                    Sumi Lee
+                  </li>
                 </ul>
               </div>
             </div>
@@ -470,9 +479,6 @@
                   <li>
                     Maggie Olerud
                   </li>
-                  <li>
-                    Sumi Lee
-                  </li>
                 </ul>
               </div>
             </div>
@@ -528,7 +534,9 @@ export default {
         icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
         mainImage: require('@/assets/img/georgetown_school_photo.png'),
       },
+      showMoreDescription: false,
       opened: true,
+      maxchar: 350,
     }
   },
 
@@ -545,6 +553,22 @@ export default {
       const style = this.mapStyle === 'light' ? 'dark' : 'light'
       
       this.changeMapStyle(style)
+    },
+
+
+    excerpt (content) {
+      // var stripHtml = content.replace(/<\/?[^>]+(>|$)/g, "")
+      // Removes the initial <p> tag
+      const test = content.substring(3, content.length - 4)
+      // Removes line breaks
+      const trimmedLinebreaks = test.replace(/(?:\r\n|\r|\n)/g, "")
+      // Temporary replace `</p><p>` tags with line breaks
+      const trimmedParagraphs = trimmedLinebreaks.replace(/<\/p>\s*<p>/g, '\n')
+      // Actual exerpt generation content
+      const actualExcerpt = trimmedParagraphs.substring(0, this.maxchar)
+      // Excerpt with html tags
+      const htmlExcpert = `<p>${actualExcerpt.replace(/(?:\r\n|\r|\n)/g, "</p><p>")}</p>`
+      return htmlExcpert
     },
 
     toggleLegends () {
@@ -616,11 +640,11 @@ export default {
   }
 
   &__map-section {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 1.625em;
+    margin-bottom: 1.625em;
     width: 100%;
     position: relative;
-    height: 780px;
+    height: 820px;
     overflow: hidden;
   }
 
@@ -632,8 +656,8 @@ export default {
   }
 
   &__picture-column {
-    width: 305px;
-    flex-basis: 305px;
+    width: 260px;
+    flex-basis: 260px;
     max-width: 100%;
     flex-grow: 0;
     margin-left: auto;
@@ -641,7 +665,7 @@ export default {
 
     @include tablet {
       margin-left: 0;
-      margin-right: 0;
+      margin-right: .375em;
     }
   }
 
@@ -813,6 +837,21 @@ export default {
 .station-profile {
   .avatar__img {
     object-fit: cover;
+    min-height: 177.09px;
+  }
+
+  &__description {
+    &--excerpt {
+      > div {
+        display: inline;
+
+        p {
+          &:last-of-type {
+            display: inline;
+          }
+        }
+      }
+    }
   }
 
   p {

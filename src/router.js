@@ -119,5 +119,21 @@ export default new Router({
       name: 'station-edit',
       component: StationEdit,
     },
+    {
+      path: '/stations/management',
+      name: 'station-management',
+      component: StationsDirectory,
+      meta: {
+        management: true,
+      }
+    },
+    {
+      path: '/nonprofits/management',
+      name: 'nonprofits-management',
+      component: NonprofitDirectory,
+      meta: {
+        management: true,
+      }
+    },
   ],
 });

@@ -24,7 +24,7 @@
           </div>
 	      </form>
 			</div>
-			<div class='column is-4'>
+			<div class='column is-4 user-edit-form__supported-nonprofits-column'>
 				<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
 				<user-edit-supported-nonprofits
 					:user='user'
@@ -181,6 +181,10 @@ export default {
 
   &__details-column {
     max-width: 600px;
+
+    @include tablet {
+      margin-left: .125em;
+    }
   }
 
 	&__location {
@@ -199,6 +203,10 @@ export default {
 		margin-left: auto;
 		margin-right: auto;
 		height: 100%;
-	}
+  }
+  
+  &__supported-nonprofits-column {
+    margin-left: .375em;
+  }
 }
 </style>

@@ -101,6 +101,8 @@ export default {
 <style lang='scss' scoped>
 .user-profile {
   &__supported-nonprofits {
+    padding-left: 0.75em;
+    padding-right: 0.7em;
     @include tablet {
       margin-left: .375rem;
     }

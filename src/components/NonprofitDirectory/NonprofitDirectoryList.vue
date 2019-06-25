@@ -1,5 +1,7 @@
 <template>
-  <div class='nonprofit-directory-list'>
+  <div 
+    :class='["nonprofit-directory-list", {"nonprofit-directory-list--management": isManagement}]'
+  >
     <div 
       class="nonprofit-directory-list__title"
       v-if='$slots.title'
@@ -327,6 +329,10 @@ export default {
       })
     },
 
+    isManagement () {
+      return this.$route.meta.management
+    },
+
     ...mapState({
       nonprofits (state) {
         if (this.filter) {
@@ -348,6 +354,7 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-directory-list {
+  $self: &;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
   margin-left: auto;
@@ -361,8 +368,6 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-
-
 
     img {
       max-width: 170px;
@@ -384,9 +389,11 @@ export default {
 
 .nonprofit-list {
   margin-bottom: 2em;
+
   &:first-of-type {
     padding-top: .5em;
   }
+
   &__block {
     &--indented {
       @include tablet {
@@ -471,6 +478,16 @@ export default {
 </style>
 
 <style lang='scss'>
+.nonprofit-directory-list {
+  &--management {
+    .nonprofit-list__block--indented 
+    .nonprofit-directory-list-item__name {
+      max-width: calc(400px - 3rem);
+      min-width: calc(400px - 3rem);
+    }
+  }
+}
+
 .nonprofit-list {
   &__block {
     &--indented-level-2 {

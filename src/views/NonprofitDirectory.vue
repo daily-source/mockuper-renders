@@ -1,5 +1,7 @@
 <template>
-  <div class='nonprofit-directory'>
+  <div 
+    :class='["nonprofit-directory", {"nonprofit-directory--management": isManagement}]'
+  >
     <app-header />
     <intro-video />
     <modal
@@ -12,7 +14,7 @@
     </modal>
     <section class='section'>
       <div class='nonprofit-directory__container container'>
-        <h3 class='has-text-weight-bold has-text-centered'>Nonprofits helping the virtual railroad</h3>
+        <h3 class='has-text-weight-bold has-text-centered'>Nonprofits helping the virtual railroad <span class="has-text-danger" v-if='isManagement'>(Management View)</span></h3>
         <nonprofit-directory-with-filter />
       </div>
     </section>
@@ -58,7 +60,7 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'
     return {
-      title: 'Nonprofit Directory | Virtual Railroad',
+      title: `Nonprofit Directory${ this.isManagement ? ' (Management View) ' :'' }- v8 | Virtual Railroad`,      
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },
@@ -66,14 +68,30 @@ export default {
       ],
     };
   },
+
+  computed: {
+    isManagement () {
+      return this.$route.meta.management
+    },
+  },
 }
 </script>
 
 <style lang='scss' scoped>
 .nonprofit-directory {
+  $self: &;
+
   h3 {
     font-size: 22px;
     margin: 0;
+
+    span {
+      display: block;
+      
+      @include tablet {
+        display: inline;
+      }
+    }
 
     @include tablet {
       font-size: 29px;
@@ -86,6 +104,20 @@ export default {
     
     @include tablet {
       max-width: 990px;
+    }
+  }
+
+  &--management {
+    #{ $self }__container {
+      @include desktop {
+        width: 1000px;
+        max-width: 1000px;
+      }
+
+      @include tablet {
+        width: 1100px;
+        max-width: 100%;
+      }
     }
   }
 }

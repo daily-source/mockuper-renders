@@ -84,7 +84,7 @@ export default {
 .profile {
 
   &__section {
-    padding-top: 2em;
+    padding-top: 1.625em;
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;

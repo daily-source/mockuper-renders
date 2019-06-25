@@ -149,7 +149,8 @@ export default {
     width: 100%;
     flex-basis: 100%;
     max-width: 100%;
-    margin-bottom: 0.25em;
+    display: flex;
+    align-items: center;
 
     @media (min-width: 576px) {
       flex-basis: 100px;
@@ -168,6 +169,7 @@ export default {
     
     .label {
       font-weight: 700 !important;
+      line-height: 1.4;
     }
   }
 

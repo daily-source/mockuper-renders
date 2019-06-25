@@ -27,6 +27,10 @@
       <div class="stations-directory-list-item__actions">
         <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" class='button is-secondary'>Visit</router-link>
         <router-link to="#" class='button is-primary'>Join</router-link>
+        <div class="stations-directory-list-item__management-actions">
+          <router-link to="#" class='has-text-danger is-primary' v-if='isManagement'>Get info</router-link>
+          <router-link to="#" class='has-text-danger is-primary'>Admin this station</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -41,6 +45,12 @@ export default {
     station: {
       type: Object,
       required: false,
+    },
+  },
+
+  computed: {
+    isManagement () {
+      return this.$route.meta.management
     },
   }
 }
@@ -83,16 +93,44 @@ export default {
   }
 
   &__actions {
+    display: flex;
+    align-items: center;
     margin-bottom: 1rem;
     margin-top: auto;
 
     a {
-      margin-right: 1em;
       font-size: 0.875em;
       padding: 0.125em 0.5em !important;
       height: auto;
     }
 
+    > a {
+      &:not(:last-of-type) {
+        margin-right: .375em;
+        @media (min-width: 576px) {
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+
+  &__management-actions {
+    margin-left: .375em;
+
+    @media (min-width: 576px) {
+      margin-left: 1em;
+    }
+    
+    a {
+      text-decoration: underline;
+      padding: 0 !important;
+      &:not(:last-of-type) {
+        margin-right: .375em;
+        @media (min-width: 576px) {
+          margin-right: 1em;
+        }
+      }
+    }
   }
 
   img {
