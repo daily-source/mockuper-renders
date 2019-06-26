@@ -18,11 +18,11 @@
           <div class='station-profile__block is-flex'>
             <div class="station-profile__description station-profile__description--full" v-if='showMoreDescription'>
               <div v-html='station.description'></div>
-              <span class='staiton-profile__toggle-excerpt'><a @click.prevent.stop='showMoreDescription = false'>See Less</a></span>
+              <span class='staiton-profile__toggle-excerpt'><a @click.prevent.stop='showMoreDescription = false'>Show Less</a></span>
             </div>
              <div class="station-profile__description station-profile__description--excerpt" v-else>
               <div v-html='excerpt(station.description)'></div>
-              <span class='staiton-profile__toggle-excerpt'>... <a @click.prevent.stop='showMoreDescription = true'>See More</a></span>
+              <span class='staiton-profile__toggle-excerpt'>... <a @click.prevent.stop='showMoreDescription = true'>Show More</a></span>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
     </div>
     <div class="station-profile__alumni-section" v-if='station.establishmentType === "school"'>
       <div class="container">
-        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ stationName }} station</h3>
+        <h3 class='has-text-weight-bold has-text-centered'>People Who Support Our Station</h3>
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
             <div class="column alumni-section__list-col">
@@ -324,7 +324,7 @@
     </div>
     <div class="station-profile__alumni-section" v-else>
       <div class="container">
-        <h3 class='has-text-weight-bold has-text-centered'>Supporters of the {{ stationName }} station</h3>        
+        <h3 class='has-text-weight-bold has-text-centered'>People Who Support Our Station</h3>        
         <div class="station-profile__alumni-section-columns">
           <div class="columns">
             <div class="column alumni-section__list-col">
@@ -855,7 +855,7 @@ export default {
   }
 
   p {
-    line-height: 1.6;
+    line-height: 1.65;
 
     &:last-child {
       margin-bottom: 0;

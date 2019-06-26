@@ -254,11 +254,11 @@ export default {
   &__logo-container {
     position: absolute;
     top: .5em;
-    max-width: 210px;
+    max-width: 180px;
     margin-left: auto;
     margin-right: auto;
 
-    @media (min-width: 576px) {
+    @include tablet {
       max-width: 300px;
     }
   }

@@ -61,12 +61,13 @@ export default {
   margin-right: auto;
   padding: .625rem .75em;
   text-align: center;
-  margin-top: 140px;
+  margin-top: 70px;
   max-width: 95%;
   font-size: 0.875em;
   border-radius: 100px;
 
   @include tablet {
+    margin-top: 140px;
     max-width: 760px;
     font-size: 1.125em;
   }
