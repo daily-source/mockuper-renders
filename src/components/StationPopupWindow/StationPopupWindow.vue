@@ -66,7 +66,8 @@
 		width: 100%;
 		display: inline-block;
 		margin-bottom: .5rem;
-		object-fit: contain;
+		object-fit: cover;
+    height: 110px;
 	}
 
 	.station-popup-info__link {

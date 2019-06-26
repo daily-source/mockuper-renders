@@ -536,7 +536,7 @@ export default {
       },
       showMoreDescription: false,
       opened: true,
-      maxchar: 350,
+      maxchar: 375,
     }
   },
 
@@ -644,7 +644,7 @@ export default {
     margin-bottom: 1.625em;
     width: 100%;
     position: relative;
-    height: 820px;
+    height: 870px;
     overflow: hidden;
   }
 
@@ -656,8 +656,8 @@ export default {
   }
 
   &__picture-column {
-    width: 260px;
-    flex-basis: 260px;
+    width: 310px;
+    flex-basis: 310px;
     max-width: 100%;
     flex-grow: 0;
     margin-left: auto;
@@ -837,7 +837,8 @@ export default {
 .station-profile {
   .avatar__img {
     object-fit: cover;
-    min-height: 177.09px;
+    height: 161px;
+    // min-height: 177.09px;
   }
 
   &__description {
@@ -854,8 +855,13 @@ export default {
     }
   }
 
+  &__description {
+    p {
+      line-height: 1.7;
+    }
+  }
+
   p {
-    line-height: 1.65;
 
     &:last-child {
       margin-bottom: 0;
@@ -869,7 +875,7 @@ export default {
 
   .legends {
     &--minimized {
-      bottom: -136px;
+      bottom: -124px;
     }
   }
 }

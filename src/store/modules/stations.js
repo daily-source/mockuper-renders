@@ -2,13 +2,13 @@ const state = {
   data: [
     {
       id: 1,
-      name: 'Hoya Railroad',
+      name: 'Georgetown Hoya Station',
       stationName: 'Georgetown Hoya Station',
       tagline: 'We are Georgetown University alumni, students, staff, neighbors, friends and fans joining together to help free modern-day slaves. Lets Go Hoyas.',
       description: `<p>In its early years, Georgetown benefitted from slavery, and might not exist now if not for slaves. Later, it benefitted from the sacrifices of people who freed slaves. Today, everyone in the U.S. is benefitting from current slavery. Slaves grow food we eat, mine our raw materials and make many of the products we all use. With all that in mind, we members of the extended Georgetown community are working to help the people who are sacrificing and suffering the most today: modern-day slaves.</p>`,
       participants: 913,
       amountDonated: 48343,
-      picture: require('@/assets/img/georgetown-university-2.jpg'),
+      picture: require('@/assets/img/georgetown-university-3.png'),
       icon: require('@/assets/img/georgetown-hoyas-kepsar-mossor.png'),
       position: {
         lat: 38.907689,
@@ -19,7 +19,7 @@ const state = {
     },
     {
       id: 2,
-      name: 'St. Michael\'s Church',
+      name: 'St. Anthony’s Church Station',
       tagline: 'We started our station in 2019 and our members have responded very positively to it, with more than 15% of our congregation helping out so far and continuing to grow. ',
       participants: 128,
       amountDonated: 6921,

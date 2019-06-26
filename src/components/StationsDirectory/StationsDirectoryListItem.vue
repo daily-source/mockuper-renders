@@ -76,7 +76,7 @@ export default {
   }
 
   &__img-column {
-    width: 325px;
+    width: 380px;
   }
 
   &__details-column {
@@ -124,6 +124,11 @@ export default {
     a {
       text-decoration: underline;
       padding: 0 !important;
+      
+      @include tablet {
+        font-size: 1em;
+      }
+      
       &:not(:last-of-type) {
         margin-right: .375em;
         @media (min-width: 576px) {
@@ -134,7 +139,8 @@ export default {
   }
 
   img {
-    min-height: 225px;
+    // min-height: 225px;
+    height: 200px;
     width: 100%;
     object-fit: cover;
   }
