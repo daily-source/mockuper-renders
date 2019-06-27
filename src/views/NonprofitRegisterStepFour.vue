@@ -27,7 +27,7 @@ export default {
 
   data () {
     return {
-      alertOpened: this.$route.query.nonIrs,
+      alertOpened: true
     }
   },
 

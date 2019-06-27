@@ -1,4 +1,5 @@
 const state = {
+  nonprofitIRS: '',
   filter: '',
 }
 
@@ -12,6 +13,13 @@ const mutations = {
    */
   setFilter (state, filter) {
     state.filter = filter
+  },
+
+  /**
+   * Sets the `nonprofitIRS` value
+   */
+  setNonprofitIRS (state, nonprofit) {
+    state.nonprofitIRS = nonprofit
   },
 }
 

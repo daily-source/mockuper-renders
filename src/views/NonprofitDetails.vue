@@ -12,6 +12,22 @@
         >
           Thank you for applying to be added to the Virtual Railroad. If we have any questions, we will contact you. After we review your information, we will let you know our decision via email.  Below is how your nonprofit profile page will look at Virtual Railroad. To edit it, click here.
         </alert>
+        <alert
+          :open='nonprofitNotClaimedAlertOpened'
+          :dismissable='false'
+          @closeButtonClicked='nonprofitNotClaimedAlertOpenedFlag = false'
+          class='nonprofit-details__alert'
+        >
+          This nonprofit has already been added to the Virtual Railroad by our team, but it has not yet been claimed. To claim it so you can manage this page, click <a href="#">here</a>.
+        </alert>
+        <alert
+          :open='nonprofitAlreadyClaimedAlertOpened'
+          :dismissable='false'
+          @closeButtonClicked='nonprofitAlreadyClaimedAlertOpenedFlag = false'
+          class='nonprofit-details__alert'
+        >
+          his nonprofit is already on the Virtual Railroad and has been claimed. Please check with your team to get the login details. If you have the email but not password, use the Forgot Password feature on the <a href="#">Login screen</a> to reset it. If you can’t find the email, contact us <a href="#">here</a> and let us know you want to re-claim an existing account.
+        </alert>
         <nonprofit-details-comp
           :nonprofit='nonprofit'
         />
@@ -44,6 +60,8 @@ export default {
   data () {
     return {
       open: true,
+      nonprofitNotClaimedAlertOpenedFlag: this.$route.query.claim,
+      nonprofitAlreadyClaimedAlertOpenedFlag: this.$route.query.claim,
     }
   },
 
@@ -57,6 +75,18 @@ export default {
 
     newNonprofit () {
       return this.$route.query.newNonprofit
+    },
+
+    fromRegister () {
+      return this.$route.query.fromRegister
+    },
+
+    nonprofitNotClaimedAlertOpened () {
+      return this.nonprofitNotClaimedAlertOpenedFlag && !this.nonprofit.claimed
+    },
+
+    nonprofitAlreadyClaimedAlertOpened () {
+      return this.nonprofitAlreadyClaimedAlertOpenedFlag && this.nonprofit.claimed
     },
 
     ...mapState({
@@ -83,3 +113,11 @@ export default {
   },
 }
 </script>
+
+<style lang='scss' scoped>
+.nonprofit-details {
+  &__alert {
+    padding-right: 1.25em;
+  }
+}
+</style>

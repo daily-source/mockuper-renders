@@ -1,37 +1,39 @@
 <template>
   <div class="nonprofit-register-non-irs-form-fields">
-    <div class="nonprofit-register-non-irs-form-fields__field field is-horizontal">
-      <div class="nonprofit-register-non-irs-form-fields__field-label field-label">
-        <label class='label has-text-weight-bold' for="name">Nonprofit's legal name:<span class='has-text-danger'>*</span></label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <input-field-with-warning 
-              v-model='form.name'
-              class='nonprofit-register-non-irs-form-fields__input'
-              id='name'
-            />
+    <div class="nonprofit-register-non-irs-form__registered-fields" v-if='!isRegistered'>
+      <div class="nonprofit-register-non-irs-form-fields__field field is-horizontal">
+        <div class="nonprofit-register-non-irs-form-fields__field-label field-label">
+          <label class='label has-text-weight-bold' for="name">Nonprofit's legal name:<span class='has-text-danger'>*</span></label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input-field-with-warning 
+                v-model='form.name'
+                class='nonprofit-register-non-irs-form-fields__input'
+                id='name'
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <p class='nonprofit-register-non-irs-form-fields__small-text has-text-grey'>When you create your profile page, you can have a simpler version of the name show there. For example, minus the “Inc” that is in the legal name.</p>
-    <div class="nonprofit-register-non-irs-form-fields__field field is-horizontal">
-      <div class="nonprofit-register-non-irs-form-fields__field-label field-label">
-        <label class='label has-text-weight-bold' for="country">Country where it’s incorporated:<span class='has-text-danger'>*</span></label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <div class="nonprofit-register-non-irs-form-fields__input is-block select">
-              <select 
-                name="country"
-                id="country"
-                class='nonprofit-register-non-irs-form-fields__input is-block'
-                v-model='form.country'
-              >
-              </select>
+      <p class='nonprofit-register-non-irs-form-fields__small-text has-text-grey'>When you create your profile page, you can have a simpler version of the name show there. For example, minus the “Inc” that is in the legal name.</p>
+      <div class="nonprofit-register-non-irs-form-fields__field field is-horizontal">
+        <div class="nonprofit-register-non-irs-form-fields__field-label field-label">
+          <label class='label has-text-weight-bold' for="country">Country where it’s incorporated:<span class='has-text-danger'>*</span></label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <div class="nonprofit-register-non-irs-form-fields__input is-block select">
+                <select 
+                  name="country"
+                  id="country"
+                  class='nonprofit-register-non-irs-form-fields__input is-block'
+                  v-model='form.country'
+                >
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -190,6 +192,14 @@ export default {
   components: {
     InputFieldWithWarning,
     TextareaWithWarning,
+  },
+
+  props: {
+    isRegistered: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   data () {

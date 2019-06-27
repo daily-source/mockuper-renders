@@ -83,7 +83,8 @@ const state = {
 			name:"KIVA",
 			picture: `${baseURL}img/kiva.jpg`,						
 			state:"New Hampshire",
-			url:"http://eileen.com",
+      url:"http://eileen.com",
+      claimed: false,
 			locations: [
 				{
 					id: 1,

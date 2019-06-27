@@ -22,6 +22,7 @@ const NonprofitRegisterStepTwo = () => import('@/views/NonprofitRegisterStepTwo'
 const NonprofitRegisterStepThree = () => import('@/views/NonprofitRegisterStepThree')
 const NonprofitRegisterStepFour = () => import('@/views/NonprofitRegisterStepFour')
 const NonprofitDetails = () => import('@/views/NonprofitDetails')
+const NonprofitIRSProfile = () => import('@/views/NonprofitIRSProfile')
 const StationsDirectory = () => import('@/views/StationsDirectory')
 const StationProfile = () => import('@/views/StationProfile')
 const StationEdit = () => import('@/views/StationEdit')
@@ -66,6 +67,11 @@ export default new Router({
       path: '/nonprofit-directory',
       name: 'nonprofit-directory',
       component: NonprofitDirectory,
+    },
+    {
+      path: '/nonprofit/irs/:ein',
+      name: 'nonprofit-irs',
+      component: NonprofitIRSProfile,
     },
     {
       path: '/nonprofit-sign-up',

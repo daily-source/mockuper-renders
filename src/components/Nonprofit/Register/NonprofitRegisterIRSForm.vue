@@ -37,7 +37,6 @@
         </div>
       </div>
     </slide-fade>
-
     <slide-fade>
       <div 
         class="nonprofit-register-irs-form__irs"
@@ -47,9 +46,10 @@
           <nonprofit-ajax-search
             class='nonprofit-register-irs-form__irs-nonprofit-search'
             placeholder='Type to search for a nonprofit'
+            @selected='onNonprofitAjaxSelect'
           />
         </div>
-        <button type='submit' class='button is-primary'>Submit</button>
+        <button type='submit' class='button is-primary' :disabled='!isValid'>Submit</button>
       </div>
     </slide-fade>
   </form>
@@ -57,6 +57,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import SlideFade from 'Components/transitions/SlideFade'
 import NonprofitAjaxSearch from 'Components/general/NonprofitAjaxSearch'
 import NonprofitRegisterNonIrsFormFields from 'LocalComponents/Nonprofit/Register/NonprofitRegisterNonIRSFormFields'
@@ -74,6 +76,7 @@ export default {
     return {
       isApproved: 1,
       form: {},
+      nonprofit: null,
       hasError: false,
     }
   },
@@ -85,6 +88,8 @@ export default {
     onFormSubmit () {
       if (this.isApproved === 0) {
         this.handleNonIRSFormSubmission()
+      } else {
+        this.handleIRSFormSubmission()
       }
     },
 
@@ -95,14 +100,34 @@ export default {
       this.$router.push({ name: 'nonprofit-sign-up-step-four', query: {"nonIrs": 1} })
     },
 
+    handleIRSFormSubmission () {
+      this.setNonprofitIRSValue(this.form.nonprofit)
+
+      this.$router.push({ name: 'nonprofit-irs', params: { "ein": this.nonprofit.EIN } , query: {"showAlert": true } } )
+    },
+
+    /**
+     * Handles any details changed on Nonprofit Non-IRS form 
+     */
     onDetailsChanged (data, hasError) {
       this.form = data
 
       if (this.hasError !== hasError) {
         this.hasError = hasError
       }
-
     },
+
+    /**
+     * Handles Nonprofit Ajax Search changes
+     */
+    onNonprofitAjaxSelect (selected) {
+      this.nonprofit = selected
+    },
+
+
+    ...mapMutations({
+      setNonprofitIRSValue: 'nonprofitRegistration/setNonprofitIRS'
+    }),
   },
 
   computed: {
@@ -111,7 +136,7 @@ export default {
         return this.form.name && this.form.email && this.form.firstname && this.form.lastname && this.form.password && this.form.note && this.form.link
       }
 
-      return true
+      return this.nonprofit
     }
   }
 }
@@ -133,12 +158,11 @@ export default {
     padding-left: 300px;
   }
 
-  &__not-irs {
-
-  }
-
   &__irs {
     padding-bottom: 2em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
