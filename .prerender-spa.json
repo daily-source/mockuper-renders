@@ -31,7 +31,8 @@
     "/stations/management",
     "/station/1",
     "/station/2",
-    "/station/3"
+    "/station/3",
+    "/nonprofit/irs/521758517"
   ],
   "useRenderEvent":false,
   "headless":true,

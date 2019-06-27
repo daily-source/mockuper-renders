@@ -165,4 +165,4 @@ export default {
     margin-right: auto;
   }
 }
-</style>
+</style>1

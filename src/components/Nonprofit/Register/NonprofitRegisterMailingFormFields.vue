@@ -144,8 +144,8 @@ export default {
   &__field {
     &--city {
       flex-shrink: 0;
-      flex-basis: 250px;
-      max-width: 250px;
+      flex-basis: 300px;
+      max-width: 300px;
     }
   }
 }

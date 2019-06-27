@@ -73,7 +73,7 @@ export default {
 
   data () {
     return {
-      nonprofit: null,
+      nonprofit: {},
       alertOpened: true,
     }
   },
@@ -107,6 +107,19 @@ export default {
 
     showAlert () {
       return this.$route.query.showAlert
+    }
+  },
+
+  metaInfo() {
+    const description = 'The modern way to help free slaves';
+    const title = 'Virtual Railroad'
+    return {
+      title: `${this.nonprofit.NAME} | Virtual Railroad`,
+      meta: [
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', name: 'og:description', content: description },
+      ],
     }
   },
 }
