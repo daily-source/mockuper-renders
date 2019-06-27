@@ -21,30 +21,6 @@
       v-on:edit:close="closeEdition()"
     ></NonprofitHero>
 
-
-    <div class='nonprofit-info'>
-      <div class='container'>
-        <div class="nonprofit-info__container">
-          <p>
-            In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
-          </p>
-          <ul>
-            <li>Sometimes the bulleted items are used to give a list of benefits of the fundraising activity or approach
-            </li>
-            <li>But they can be used for other lists</li>
-            <li>They are not required, so it’s fine to delete them</li>
-            <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
-            </li>
-            <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <GenericForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
-      <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </GenericForm>
-
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
 
@@ -63,9 +39,30 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
+    <div class="fundraisers-section-heading">
+      <div class="container">
+        <h2>To support our nonprofit, choose from over 70 fundraising options including the following:</h2>
+      </div>
+    </div>
+
+    <div class="fundraisers-section-wrapper">
+      <section 
+        class="section fundraiser-section" 
+        v-for="(fundraiser, key) in fundraisingSites" 
+        :key="key"
+        :id="key"
+      >
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraiser"
+          />
+        </div>
+      </section>
+    </div>
+<!-- 
     <DonorsList
       section-title="Top Donors"
       view-all-cta=""
@@ -86,7 +83,7 @@
         class="button is-large is-info is-centered fundraiser_cta"
         to="/fundraiser/create"
       >Create your own fundraiser</router-link>
-    </section>
+    </section> -->
     <SharedFooter></SharedFooter>
 
     <RegisterOrLoginModal
@@ -112,10 +109,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
 import RegisterOrLoginModal from 'Components/general/RegisterOrLoginModal.vue';
 import ClaimNonprofitModal from 'Components/nonprofit/ClaimNonprofitModal.vue';
+import FundraiserGrid from 'Components/MaximumGood/FundraiserGrid'
 
 Vue.use(VueMeta);
 
@@ -134,16 +133,17 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    AppHeader: () => import('LocalComponents/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
+    FundraiserGrid,
   },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
@@ -202,6 +202,10 @@ export default {
     canManageThisNonprofit() {
       return false;
     },
+
+    ...mapState({
+      fundraisingSites: state => state.fundraiserSites.data,
+    }),
   },
 
   /**
@@ -301,6 +305,15 @@ export default {
   }
 }
 
+#innovative-fundraising {
+  background-color: #eaf7ff;
+}
+
+#fundraising-classics {
+  background-color: #f8f1e2;
+}
+
+
 .nonprofit-intro {
   margin-bottom: 30px;
   font-size: 20px;
@@ -356,6 +369,13 @@ export default {
         font-size: 1.125rem;
       }
     }
+  }
+}
+.fundraisers-section-heading {
+  margin-top: 4em;
+  
+  h2 {
+    margin-bottom: 1.625em;
   }
 }
 </style>

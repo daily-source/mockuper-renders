@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
+import fundraiserSites from './modules/fundraiserSites'
 
 Vue.use(Vuex);
 
@@ -418,6 +419,11 @@ export default new Vuex.Store({
             images: [
               `${baseUrl}img/fundraiser-hero-9x16.jpg`,
             ]
+          },
+          "type": {
+            "name": "Run for Good",
+            "slug": 'run-for-good',
+            "logo": require('@/assets/img/site-logos/run-for-good.png')
           }
         },
         {
@@ -444,6 +450,11 @@ export default new Vuex.Store({
             images: [
               `${baseUrl}img/fundraiser-hero-4x3.jpg`,
             ]
+          },
+          "type": {
+            "name": "Benevolent Birthdays",
+            "slug": 'benevolent-birthdays',
+            "logo": require('@/assets/img/site-logos/benevolent-birthdays.png')
           }
         },
         {
@@ -470,6 +481,11 @@ export default new Vuex.Store({
             images: [
               `${baseUrl}img/fundraiser-hero-3x2.jpg`,
             ]
+          },
+          "type": {
+            "name": "Volunteerathon",
+            "slug": 'volunteerathon',         
+            "logo": require('@/assets/img/site-logos/volunteerathon.png')
           }
         },
         {
@@ -496,6 +512,11 @@ export default new Vuex.Store({
             images: [
               `${baseUrl}img/fundraiser-hero-1x1.jpg`,
             ]
+          },
+          "type": {
+            "name": "Charitable Challenges",
+            "slug": 'charitable-challenges',
+            "logo": require('@/assets/img/site-logos/charitable-challenges.png')
           }
         },
         {
@@ -522,6 +543,11 @@ export default new Vuex.Store({
             images: [
               `${baseUrl}img/fundraiser-hero-2.jpg`,
             ]
+          },
+          "type": {
+            "name": "Quitathon",
+            "slug": 'quitathon',
+            "logo": require('@/assets/img/site-logos/quitathon.png')
           }
         },
       ],
@@ -1021,4 +1047,7 @@ export default new Vuex.Store({
   },
   actions,
   mutations,
+  modules: {
+    fundraiserSites,
+  },
 });
