@@ -17,4 +17,13 @@
 
 .nonprofit-extended {
   background-color: #fff !important;
+  
+  &__separator {
+    padding-top: 40px !important;
+  }
+
+  &__media-wrapper {
+    padding-bottom: 17% !important;
+  }
+
 }

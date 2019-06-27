@@ -44,7 +44,8 @@
 
     <div class="fundraisers-section-heading">
       <div class="container">
-        <h2>To support our nonprofit, choose from over 70 fundraising options including the following:</h2>
+        <h2>To support us, choose from over 70 fundraising options including:</h2>
+        <p>(For information about each option, click on the logos)</p>
       </div>
     </div>
 
@@ -372,10 +373,22 @@ export default {
   }
 }
 .fundraisers-section-heading {
-  margin-top: 4em;
+  margin-top: 2.875rem;
   
   h2 {
-    margin-bottom: 1.625em;
+    font-size: 2em;
+    margin-bottom: 1rem;
   }
+
+  p {
+    margin-bottom: 2rem;
+    font-size: 1.375em;
+    color: $grey;
+  }
+}
+
+.fundraiser-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 </style>
