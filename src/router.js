@@ -28,11 +28,6 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: HomePage,
-    },
-    {
-      path: '/nonprofit/:id',
-      name: 'nonprofit-profile',
       component: Nonprofit,
     },
     {

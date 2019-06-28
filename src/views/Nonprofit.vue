@@ -1,5 +1,19 @@
 <template>
   <div class="">
+    <div 
+      v-if='alertOpened'
+      class="notification is-primary"
+    >
+      <button class="delete" @click='alertOpened = false'></button>
+      <div class="container">
+        <p>
+          Your nonprofit has already been registered with our Maximum Good family of charitable websites. The existing profile page is below. Please check with your team members to get the login details, then log in <a href="#">here</a> to create a profile at the Virtual Railroad.
+        </p>
+        <p class='is-marginless'>
+          If you have the email but not password, use the Forgot Password feature on the <a href="#">Login screen</a> to reset it. If you can’t find the email, contact us <a href="#">here</a> and let us know you want to re-claim an existing account.
+        </p>
+      </div>
+    </div>
     <app-header 
       layout="app"
       volunteer-text='Do one now'
@@ -126,6 +140,7 @@ export default {
       showLoginModal: false,
       showClaimNonprofitModal: false,
       enableEditionForThisNonprofit: false,
+      alertOpened: true,
     };
   },
   /**
@@ -294,6 +309,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.notification {
+  border-radius: 0;
+}
+
 .fundraiser_cta {
   margin: 50px auto;
   border-radius: 10px;
