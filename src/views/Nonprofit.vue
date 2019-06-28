@@ -53,7 +53,7 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2 class='has-text-weight-bold nonprofit-fundraisers__heading'>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -73,7 +73,7 @@
 
     <div class="fundraisers-section-heading">
       <div class="container">
-        <h2>To support us, choose from over 70 fundraising options including:</h2>
+        <h2 class='has-text-weight-bold'>To support us, choose from over 70 fundraising options including:</h2>
         <p>(For information about each option, click on the logos)</p>
       </div>
     </div>
@@ -332,6 +332,12 @@ export default {
 
 #fundraising-classics {
   background-color: #f8f1e2;
+}
+
+.nonprofit-fundraisers {
+  &__heading {
+    font-size: 2em;
+  }
 }
 
 
