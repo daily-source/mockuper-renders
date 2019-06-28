@@ -4,6 +4,13 @@
       <slot name="heading"></slot>
       <div class="volunteerathon__fundraiser-wrapper columns is-multiline">
         <div class="volunteerathon__fundraiser-item column is-one-fifth" v-for="(fundraiser, index) in fundraisers">
+          <div class="volunteerathon__fundraiser-type-content">
+            <img 
+              :src="fundraiser.type.logo" 
+              :alt="fundraiser.type.name"
+              :class='`volunteerathon__fundraiser-type-image volunteerathon__fundraiser-type-image--${fundraiser.type.slug}`'
+            >
+          </div>
           <div class="volunteerathon__fundraiser-content" v-show="!(limit && index >= limit)">
             <router-link :to="`/fundraiser/${fundraiser.id}`">
               <LazyLoadedImage class="volunteerathon__fundraiser-image"
@@ -17,13 +24,6 @@
               By <span>{{fundraiser.User.firstName}} {{fundraiser.User.lastName}}</span><br>
             </p>
             <ProgressBar :details="fundraiser.fundraiserDetails" size="small"/>
-          </div>
-          <div class="volunteerathon__fundraiser-type-content">
-            <img 
-              :src="fundraiser.type.logo" 
-              :alt="fundraiser.type.name"
-              :class='`volunteerathon__fundraiser-type-image volunteerathon__fundraiser-type-image--${fundraiser.type.slug}`'
-            >
           </div>
         </div>
       </div>
@@ -95,11 +95,12 @@ export default {
 
   &__fundraiser-type-image {
     max-height: 50px;
+    margin-bottom: 0.5em;
 
     &--benevolent-birthdays {
       max-height: 70px;
       position: relative;
-      margin-top: -10px;
+      margin-top: -20px;
     }
 
     &--run-for-good {

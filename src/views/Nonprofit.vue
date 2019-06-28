@@ -56,6 +56,21 @@
       <div slot="heading"><h2>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
+    <DonorsList
+      section-title="Top Donors"
+      view-all-cta=""
+      :donations="donations"
+      layout="horizontal"
+    ></DonorsList>
+
+    <DonorsList
+      section-title="Top Fundraisers"
+      view-all-cta=""
+      limit="6"
+      :donations="topFundraisers"
+      layout="horizontal"
+    ></DonorsList>
+
     <div class="fundraisers-section-heading">
       <div class="container">
         <h2>To support us, choose from over 70 fundraising options including:</h2>
@@ -77,21 +92,7 @@
         </div>
       </section>
     </div>
-<!-- 
-    <DonorsList
-      section-title="Top Donors"
-      view-all-cta=""
-      :donations="donations"
-      layout="horizontal"
-    ></DonorsList>
-
-    <DonorsList
-      section-title="Top Fundraisers"
-      view-all-cta=""
-      limit="6"
-      :donations="topFundraisers"
-      layout="horizontal"
-    ></DonorsList>
+<!--
 
     <section>
       <router-link
@@ -155,7 +156,7 @@ export default {
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/Nonprofit/NonprofitFundraisers.vue'),
     GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
