@@ -2,14 +2,17 @@
 <div class='stations-directory-list-item'>
   <div class="columns stations-directory-list-item__columns">
     <div class="column is-3 stations-directory-list-item__img-column">
-      <h4 class='has-text-weight-bold'>
-        <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
-      </h4>
       <div class="stations-directory-list-item__img">
         <img :src="station.picture" :alt="station.name">
       </div>
     </div>
     <div class="column stations-directory-list-item__details-column">
+      <div class="stations-directory-list-item__name-block is-flex">
+        <h4 class='has-text-weight-bold'>
+          <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
+        </h4>
+        <span class="stations-directory-list-item__location">{{ station.position.name }}</span>
+      </div>
       <div class="columns stations-directory-list-item__details-block">
         <div class="column is-3">
           <p class='is-marginless'><span class="has-text-weight-bold">Participants:</span> {{ station.participants }}</p>
@@ -18,11 +21,11 @@
           <p class='is-marginless'><span class="has-text-weight-bold">Amount Donated:</span> {{ station.amountDonated | usd }}</p>
         </div>
       </div>
-      <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
+      <!-- <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
         <div class="column">
           <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.position.name }}</p>
         </div>
-      </div>
+      </div> -->
       <p>{{ station.tagline }}</p>
       <div class="stations-directory-list-item__actions">
         <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" class='button is-secondary'>Visit</router-link>
@@ -66,13 +69,23 @@ export default {
   }
 
   p {
-    font-size: 18px;
+    font-size: 17px;
+  }
+
+  &__name-block {
+    align-items: center;
+    margin-bottom: 1.25em;
+
+    span {
+      font-size: 1.125em;
+    }
   }
 
   h4 {
-    font-size: 24px;
+    font-size: 1.375em;
     color: $primary;
-    margin-bottom: .75rem;
+    margin-bottom: 0;
+    margin-right: 1rem;
   }
 
   &__img-column {
@@ -84,7 +97,7 @@ export default {
     flex-direction: column;
 
     @include tablet {
-      margin-top: 50px;
+      margin-top: -5px;
     }
   }
 
