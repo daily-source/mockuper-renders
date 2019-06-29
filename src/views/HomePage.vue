@@ -21,7 +21,6 @@
       </section>
     </main>
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
