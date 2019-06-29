@@ -27,9 +27,9 @@
 
 <script>
 import SharedHeader from 'Components/Shared/SharedHeader.vue';
-import AppBanner from 'Components/ForThePoor/AppBanner.vue';
-import SharedFooter from 'Components/Shared/SharedFooter.vue';
-import RaiseAwarenessGrid from 'Components/ForThePoor/RaiseAwarenessGrid';
+import AppBanner from 'Components/ForThePoor/AppBanner.2.vue';
+import SharedFooter from 'Components/Shared/SharedFooter.vue'
+import RaiseAwarenessGrid from 'Components/ForThePoor/RaiseAwarenessGrid'
 import RaiseMoneyGrid from 'Components/ForThePoor/RaiseMoneyGrid.vue';
 
 export default {
@@ -74,8 +74,11 @@ export default {
     max-width: 730px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 2.375rem;
+    font-size: 1.875rem;
+    font-family: $font-family-base;
+    line-height: 45px;
     color: $primary;
+    margin-bottom: 0;
 
     &--secondary {
       color: $secondary;
@@ -88,6 +91,7 @@ export default {
     font-weight: 400 !important;
     padding-bottom: 3rem;
     font-family: 'Poppins';
+    margin-bottom: 0;
   }
 
   .home .grid-section {

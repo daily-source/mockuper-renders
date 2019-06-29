@@ -58,3 +58,24 @@ body {
 a.navbar-item:hover {
   background-color: transparent;
 }
+
+.header-nav {
+  .navbar {
+    background-color: #6cc1e9 !important;
+  }
+
+  .navbar-menu {
+    background-color: #6cc1e9 !important;
+  }
+}
+
+.header-top {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.logo-link {
+  img {
+    max-width: 300px !important;
+  }
+}
