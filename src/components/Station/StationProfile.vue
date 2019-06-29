@@ -22,7 +22,7 @@
             </div>
              <div class="station-profile__description station-profile__description--excerpt" v-else>
               <div v-html='excerpt(station.description)'></div>
-              <span class='staiton-profile__toggle-excerpt'>... <a @click.prevent.stop='showMoreDescription = true'>Show More</a></span>
+              <span class='staiton-profile__toggle-excerpt'>&nbsp;... <a @click.prevent.stop='showMoreDescription = true'>Show More</a></span>
             </div>
           </div>
         </div>
@@ -486,6 +486,35 @@
         </div>
       </div>
     </div> 
+    <div class="station-profile__actions-wrapper">
+      <div class="container">
+        <div class="station-profile__actions station-profile__actions--school" v-if='station.establishmentType ==="school"'>
+          <!-- <div class="station-profile__actions-control">
+            <button class='button is-large is-secondary'>Join the Virtual Railroad</button>
+          </div>
+          <div class="station-profile__actions-control">
+            <button class='button is-large is-primary'>Join this station</button>
+          </div>
+          <div class="station-profile__actions-control">
+            <button class='button is-large is-secondary'>Donate Now</button>
+          </div> -->
+          <button class='button is-large is-secondary'>Join the Virtual Railroad</button>
+          <button class='button is-large is-primary'>Join this station</button>
+          <button class='button is-large is-secondary'>Donate Now</button>
+        </div>
+        <div class="station-profile__actions station-profile__actions" v-else>
+          <div class="station-profile__actions-control">
+            <button class='button is-primary'>Join the Virtual Railroad</button>
+          </div>
+          <div class="station-profile__actions-control">
+            <button class='button is-secondary'>Join this station</button>
+          </div>
+          <div class="station-profile__actions-control">
+            <button class='button is-primary'>Donate Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -536,7 +565,7 @@ export default {
       },
       showMoreDescription: false,
       opened: true,
-      maxchar: 375,
+      maxchar: 365,
     }
   },
 
@@ -814,6 +843,34 @@ export default {
 
     &:first-of-type {
       margin-top: 0;
+    }
+  }
+
+  &__actions {
+    padding-top: 1.75em;
+    margin-left: 100px;
+
+    &--school {
+      display: flex;
+      margin-left: 140px;
+      flex-direction: row;
+
+      > .button {
+        &:nth-child(2) {
+          margin-left: 1.5em;
+          margin-right: 1.5em;
+        }
+      }
+    }
+
+    .button:not(.is-large) {
+      font-size: 1.125em;
+    }
+  }
+
+  &__actions-control {
+    &:not(:last-child) {
+      margin-bottom: 1.5em;
     }
   }
 }
