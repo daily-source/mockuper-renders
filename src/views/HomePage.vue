@@ -6,6 +6,9 @@
       layout='page'
     />
     <TopMenu></TopMenu>
+    <component 
+      :is='bannerComponent'
+    />
     <div class='instructions'>
       <h1 class=' has-text-centered'>Amuse your friends and raise money for good.</h1>
       <div class='container'>
@@ -63,10 +66,15 @@ export default {
   },
 
   data () {
-    return {}
+    return {
+      headerComponent: null,
+      bannerComponent: null,
+    }
   },
 
-  mounted () {},
+  mounted () {
+    console.log(this.$version)
+  },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
@@ -86,32 +94,37 @@ export default {
   },
 
   methods: {
-    getHeaderComponent () {
-      
-    }
+    setHeaderComponent () {
+      const comp = () => import(`Components/GrowOneForGood/AppHeader`)
+
+      this.headerComponent = comp
+    },
+
+    setBannerComponent () {
+      if ((this.$version && this.$version == 1) || this.$version === undefined) {
+        this.bannerComponent = 'dynamic-banner'
+        return
+      }
+
+      const comp = () => import('Components/GrowOneForGood/AppBanner')
+
+      this.bannerComponent = comp
+    },
   },
 
   /**
    * Return stored data for this view.
    */
   computed: {
-    home () {
-      return this.$store.state.home
-    },
-
-    headerComponent () {
-      const headerComponentName = (this.$version && this.$version == 1) || this.$version === undefined ? 'AppHeader' : `AppHeader.${this.$version}`
-      const comp = () => import(`Components/GrowOneForGood/${headerComponentName}`)
-
-      return comp
-    },
-
-    bannerComponent () {
-      if ((this.$version && this.$version == 1) || this.$version === undefined) {
-        return 'dynamic-banner'
-      }
-    }
   },
+
+  watch: {
+    $version () {
+      console.log('changed')
+      this.setHeaderComponent()
+      this.setBannerComponent()
+    }
+  }
 }
 </script>
 
