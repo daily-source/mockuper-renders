@@ -2,9 +2,27 @@ const state = {
   version: 1,
 }
 
-const actions = {}
+const actions = {
+  /**
+   * Changes the site version
+   * 
+   * @param {Number} version The site version
+   */
+  setSiteVersion ({ commit }, version) {
+    commit('setVersion', version)
+  }
+}
 
-const mutations = {}
+const mutations = {
+  /**
+   * Stores the site's version to the store
+   * 
+   * @param {Number} version 
+   */
+  setVersion (state, version) {
+    state.version = version
+  }
+}
 
 const getters = {}
 
@@ -19,6 +37,7 @@ export const registerModule = (store) => {
 
 
   store.registerModule ('versionSwitcher', {
+    namespaced: true,
     state,
     actions,
     mutations,

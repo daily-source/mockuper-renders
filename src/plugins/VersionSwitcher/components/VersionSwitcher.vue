@@ -1,7 +1,8 @@
 <template>
   <div class="version-switcher">
     <button 
-      class='button is-primary version-switcher__trigger'
+      :class='["button is-primary version-switcher__trigger", {"version-switcher__trigger--toggled": showContent}]'
+      @click='toggleContent'
     >
       <icon 
         :iconheight='24'
@@ -10,17 +11,34 @@
         icon='gear'
       />
     </button>
-    <div class="version-switcher__content">
-      <a v-for='n in versions' :key='n' :href='`/?version=${n}`'>Version {{ n }}</a>
-    </div>
+    <transition name='simple-fade'>
+      <div 
+        :class="['version-switcher__content', {'version-switcher__content--visible': showContent}]"
+        v-show='showContent'
+      >
+        <div 
+          class="version-switcher__content-item" 
+          v-for='n in versions' 
+          :key='n'
+        >
+          <a :href='`/?version=${n}`'>Version {{ n }}</a>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import Icon from 'Components/general/Icons'
 
 export default {
   name: 'VersionSwitcher',
+  
+  components: {
+    Icon,
+  },
 
   props: {
     /**
@@ -42,12 +60,35 @@ export default {
     },
   },
 
-  components: {
-    Icon,
+  data () {
+    return {
+      showContent: false,
+    }
   },
 
-  data () {
-    versions 
+  methods: {
+    /**
+     * Hides/shows the content
+     */
+    toggleContent () {
+      this.showContent = !this.showContent
+    },
+
+    ...mapActions({
+      switchVersion: 'versionSwitcher/setSiteVersion'
+    })
+  },
+
+  computed: {
+    queryVersion () {
+      return this.$route.query.version
+    },
+  },
+
+  watch: {
+    queryVersion (version) {
+      this.switchVersion(version)
+    },
   },
 }
 </script>
@@ -60,19 +101,6 @@ export default {
   left: 2%;
   z-index: 10;
 
-  &:hover {
-    > #{ $self }__content {
-      opacity: 1;
-      bottom: 10%;
-    }
-
-    > #{ $self }__trigger {
-      svg {
-        transform: rotate(30deg);
-      }
-    }
-  }
-
   &__trigger {
     width: 50px;
     height: 50px;
@@ -84,13 +112,18 @@ export default {
   &__content {
     position: absolute;
     left: 100%;
-    bottom: -9999em;
+    bottom: 10%;
     z-index: 1;
     width: 130px;
     background-color: #333;
     padding: .75em 1em;
-    opacity: 0;
     transition: opacity .2s ease;
+  }
+
+  &__content-item {
+    &:not(:last-child) {
+      margin-bottom: .5em;
+    }
   }
 }
 </style>
@@ -103,10 +136,8 @@ export default {
     svg {
       transition: all .2s ease;
     }
-  }
 
-  &:hover {
-    > #{ $self }__trigger {
+    &--toggled {
       svg {
         transform: rotate(180deg);
       }

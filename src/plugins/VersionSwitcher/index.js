@@ -23,10 +23,6 @@ const VersionSwitcher = {
           $version: state => state.versionSwitcher.version
         })
       },
-
-      mounted () {
-        console.log(this.$route.query.version)
-      },
     })
   }
 }

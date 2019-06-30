@@ -39,7 +39,7 @@ export default new Router({
     {
       path: '/explore',
       name: 'explore',
-      component: ExplorePage,
+    component: ExplorePage,
     },
     {
       path: '/volunteer',

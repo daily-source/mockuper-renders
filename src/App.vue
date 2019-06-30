@@ -6,21 +6,11 @@
       <router-link to="/nonprofit/237069110">Nonprofit</router-link>
     </div>
     <router-view/>
-    <version-switcher />
+    <version-switcher 
+      :versions='2'
+    />
   </div>
 </template>
-
-<script>
-import VersionSwitcher from 'Components/VersionSwitcher'
-
-export default {
-  name: 'App',
-
-  components: {
-    VersionSwitcher,
-  },
-}
-</script>
 
 
 <style src='./xthon-core/lib/assets/scss/main.scss' lang="scss"></style>
