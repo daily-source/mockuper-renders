@@ -26,7 +26,7 @@
           @closeButtonClicked='nonprofitAlreadyClaimedAlertOpenedFlag = false'
           class='nonprofit-details__alert'
         >
-          his nonprofit is already on the Virtual Railroad and has been claimed. Please check with your team to get the login details. If you have the email but not password, use the Forgot Password feature on the <a href="#">Login screen</a> to reset it. If you can’t find the email, contact us <a href="#">here</a> and let us know you want to re-claim an existing account.
+          This nonprofit is already on the Virtual Railroad and has been claimed. Please check with your team to get the login details. If you have the email but not password, use the Forgot Password feature on the <a href="#">Login screen</a> to reset it. If you can’t find the email, contact us <a href="#">here</a> and let us know you want to re-claim an existing account.
         </alert>
         <nonprofit-details-comp
           :nonprofit='nonprofit'

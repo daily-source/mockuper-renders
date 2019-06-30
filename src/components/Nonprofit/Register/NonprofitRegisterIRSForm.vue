@@ -42,6 +42,7 @@
         class="nonprofit-register-irs-form__irs"
         v-if='isApproved === 1'
       >
+        <p>Our database has all IRS-approved 501(c)3 nonprofits in it. Please locate your nonprofit below, then you can add it to the Virtual Railroad.</p>
         <div class="columns">  
           <nonprofit-ajax-search
             class='nonprofit-register-irs-form__irs-nonprofit-search'
@@ -160,7 +161,7 @@ export default {
 
   &__irs {
     padding-bottom: 2em;
-    max-width: 700px;
+    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
   }

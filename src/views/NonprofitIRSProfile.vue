@@ -22,14 +22,21 @@
           <p class='nonprofit-irs-profile__alert' v-if='showAlert'>
             Below is the information for the nonprofit you selected. If it matches your nonprofit, click here to <router-link :to='{ name: "nonprofit-irs", params: { "ein": this.nonprofit.EIN }, query: {claim: true }}'>continue</router-link>. If it’s not the right nonprofit, click <router-link :to='{ name: "nonprofit-sign-up-step-three" }'>here</router-link> to return to the search page.
           </p>
-          <nonprofit-irs-details 
-            v-if='nonprofit'
+
+          <nonprofit-irs-data 
             :nonprofit='nonprofit'
+            v-if='nonprofit && !claim'
           />
           <form 
             v-if='claim'
             @submit.prevent="onFormSubmit"
+            class='nonprofit-irs-profile__form'
           >
+            <h2 class='has-text-weight-bold'>Claim and manage this nonprofit</h2>
+            <nonprofit-irs-details 
+              v-if='nonprofit'
+              :nonprofit='nonprofit'
+            />
             <nonprofit-register-non-irs-form-fields 
               :is-registered='true'
             />
@@ -46,6 +53,7 @@
 </template>
 
 <script>
+import NonprofitIrsData from 'Components/nonprofit/NonprofitIRSData'
 import AppHeader from 'LocalComponents/AppHeader'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import SharedFooter from 'Components/Shared/SharedFooter'
@@ -69,11 +77,12 @@ export default {
     NonprofitRegisterMailingFormFields,
     Loader,
     Alert,
+    NonprofitIrsData,
   },
 
   data () {
     return {
-      nonprofit: {},
+      nonprofit: null,
       alertOpened: true,
     }
   },
@@ -88,7 +97,14 @@ export default {
       
       const resJson = await res.json()
 
-      this.nonprofit = resJson[0]
+      this.nonprofit = {
+        data: {
+          name: resJson[0].NAME
+        },
+        ...resJson[0],
+        NTEE_CD: resJson[0].NTEE_CD && resJson[0].NTEE_CD !== '0' ? resJson[0].NTEE_CD : '-',
+        ACTIVITY: resJson[0].ACTIVITY && resJson[0].ACTIVITY !== '0' ? resJson[0].ACTIVITY : '-',
+      }
     },
 
     onFormSubmit () {
@@ -127,15 +143,15 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-irs-profile {
-  &__container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   &__section {
     position: relative;
     min-height: 300px;
+  }
+
+  &__form {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__loader {
@@ -180,4 +196,11 @@ export default {
     }
   }
 }
+
+.nonprofit-irs-profile {
+  .nonprofit-description__manage-cta {
+    display: none;
+  }
+}
+
 </style>
