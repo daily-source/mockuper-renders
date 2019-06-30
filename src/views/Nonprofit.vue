@@ -140,7 +140,7 @@ export default {
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('LocalComponents/Nonprofit/NonprofitFundraisers.vue'),
+    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
     GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
@@ -377,6 +377,22 @@ export default {
   
   h2 {
     margin-bottom: 1.625em;
+  }
+}
+
+.fundraiser-section {
+  height: 490px;
+  display: flex;
+  align-items: center;
+}
+</style>
+
+<style lang="scss">
+#fundraising-classics {
+  .fundraiser-grid {
+    &__col {
+      margin-bottom: 2em;
+    }
   }
 }
 </style>
