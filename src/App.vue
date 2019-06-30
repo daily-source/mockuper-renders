@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class='`app--v${$version}`'>
     <div id="nav" class="fake-menu">
       <router-link to="/">Home</router-link> |
       <router-link to="/fundraiser/254">Fundraiser</router-link> |
@@ -7,7 +7,7 @@
     </div>
     <router-view/>
     <version-switcher 
-      :versions='2'
+      :versions='3'
     />
   </div>
 </template>

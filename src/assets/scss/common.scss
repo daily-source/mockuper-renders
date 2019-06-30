@@ -1,3 +1,19 @@
+html, body {
+  font-size: 17px;
+
+  h1 {
+    font-size: 38px !important;
+  }
+}
+
+.app {
+  &--v2 {
+    h1 {
+      color: $secondary !important;
+    }
+  }
+}
+
 .comment-item {
   &__avatar {
     border-radius: 100%;
@@ -12,5 +28,15 @@
     content: '';
     display: block;
     margin-bottom: 15px;
+  }
+}
+
+.top-menu {
+  $self: &;
+
+  &--v2 {
+    .navbar {
+      background: $primary !important;
+    }
   }
 }

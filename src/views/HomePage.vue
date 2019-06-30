@@ -1,16 +1,20 @@
 <template>
   <div class="view-home-page">
-    <component
-      :is='headerComponent'
+    <app-header
+      :class="`header--v${$version}`"
       volunteer-text='Do one now'
       layout='page'
     />
-    <TopMenu></TopMenu>
+    <TopMenu
+      :class="`top-menu--v${$version}`"
+    ></TopMenu>
     <component 
       :is='bannerComponent'
     />
     <div class='instructions'>
-      <h1 class=' has-text-centered'>Amuse your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading' v-if='$version == 1'>Amuse your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading instructions__heading--v2' v-else-if='$version == 2'>Grow a beard or moustache to entertain <br /> your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading instructions__heading--v3' v-else-if='$version == 3'>Grow a beard to entertain your friends <br />and raise money for good</h1>
       <div class='container'>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -68,7 +72,6 @@ export default {
   data () {
     return {
       headerComponent: null,
-      bannerComponent: null,
     }
   },
 
@@ -99,32 +102,23 @@ export default {
 
       this.headerComponent = comp
     },
-
-    setBannerComponent () {
-      if ((this.$version && this.$version == 1) || this.$version === undefined) {
-        this.bannerComponent = 'dynamic-banner'
-        return
-      }
-
-      const comp = () => import('Components/GrowOneForGood/AppBanner')
-
-      this.bannerComponent = comp
-    },
+      
   },
 
   /**
    * Return stored data for this view.
    */
   computed: {
-  },
+    bannerComponent () {
+      if ((this.$version && this.$version != 2) || this.$version === undefined) {
+        return 'dynamic-banner'
+      }
 
-  watch: {
-    $version () {
-      console.log('changed')
-      this.setHeaderComponent()
-      this.setBannerComponent()
-    }
-  }
+      const comp = () => import('Components/GrowOneForGood/AppBanner')
+
+      return comp
+    },
+  },
 }
 </script>
 
@@ -132,13 +126,19 @@ export default {
 .instructions {
   padding-top: 3em;
 
-  h1 {
+  &__heading {
+    font-size: 38px;
     padding-bottom: 3rem;
     margin-bottom: 0;
     color: $primary;
+
+    &--v2 {
+      color: $secondary;
+    }
   }
 
   p {
+    font-size: 20px;
     padding-left: 60px;
     padding-right: 60px;
   }
