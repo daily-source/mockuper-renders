@@ -6,8 +6,22 @@
       <router-link to="/nonprofit/237069110">Nonprofit</router-link>
     </div>
     <router-view/>
+    <version-switcher />
   </div>
 </template>
+
+<script>
+import VersionSwitcher from 'Components/VersionSwitcher'
+
+export default {
+  name: 'App',
+
+  components: {
+    VersionSwitcher,
+  },
+}
+</script>
+
 
 <style src='./xthon-core/lib/assets/scss/main.scss' lang="scss"></style>
 <style src='./assets/scss/main.scss' lang="scss"></style>
@@ -41,7 +55,7 @@
   padding: 10px;
   transition: all 0.2s ease-in-out;
   background-color: rgba(0,0,0,0.8);
-  z-index: 20000;
+  z-index: 10;
   font-size: 16px;
   line-height: 16px;
   a {

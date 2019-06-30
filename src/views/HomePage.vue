@@ -22,7 +22,7 @@
       :show-also-section='false'
     />
     <SharedFooter></SharedFooter>
-    <banner-switcher />
+    <!-- <banner-switcher /> -->
   </div>
 </template>
 
