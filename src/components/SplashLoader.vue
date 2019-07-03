@@ -70,15 +70,18 @@ export default {
   flex-direction: column;
 
   &__logo {
+    margin-top: -3em;
     margin-bottom: 1em;
     display: inline-block;
     max-width: 300px;
 
     @media (min-width: 576px) {
       max-width: 270px;
+      margin-top: -1em;
     }
 
     @include tablet {
+      margin-top: -2em;
       max-width: 100%;
     }
   }
