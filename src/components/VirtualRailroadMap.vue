@@ -24,7 +24,7 @@
 				:key='index'
 				:position='generatePosition(user.latitude, user.longitude)'
 				:icon='require(`@/assets/img/light_bulb_${iconSize}.png`)'
-				@click='addSelectedUser(user)'
+				@click='addSelectedUser(user, true)'
 			/>
 			<gmap-marker
 				v-for='(location, index) in locationMarkers'
@@ -236,7 +236,11 @@ export default {
 		 * 
 		 * @param {Object} user
 		 */
-		addSelectedUser (user) {
+		addSelectedUser (user, closePrev = false) {
+      if (closePrev) {
+        this.selectedUsers = []
+      }
+
 			let isAlreadyAdded = false
 
 			if (this.selectedUsers.length > 0) {
@@ -263,6 +267,7 @@ export default {
 		 * @param {Object} nonprofit
 		 */
 		setSelectedNonprofit (nonprofit) {
+      this.selectedUsers = []
       this.selectedNonprofit = null
 
 			if (nonprofit) {
