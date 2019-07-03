@@ -20,7 +20,6 @@
     "vue-no-ssr": "^0.2.2",
     "vue-router": "^3.0.1",
     "vue-youtube": "github:johnveeuminga/vue-youtube",
-    "vue-youtube-embed": "^2.2.1",
     "vue2-google-maps": "^0.10.5",
     "vuex": "^3.0.1",
     "xthon-core": "github:dailysourceorg/xthon-core#0.0.38",

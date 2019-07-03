@@ -15,6 +15,10 @@
 					width='100%'
 					@playing='playing'
 					@ready='onReady'
+          :player-vars='{
+            playsinline: playsinline,
+          }'
+          v-if='render'
 				/>
 			</div>
 			<div class='intro-video__controls'>
@@ -64,7 +68,9 @@ export default {
 			playerCurrentTime: 0,
 			player: null,
 			playingFlag: false,
-			counter: 0,
+      counter: 0,
+      playsinline: 0,
+      render: false,
     }
   },
 
@@ -77,7 +83,15 @@ export default {
 
 			return
 		}
-	},
+  },
+  
+  mounted () {
+    if (window.innerWidth <= 768 ) {
+      this.playsinline = 1
+    } 
+
+    this.render = true
+  },
 
   methods: {
 		onReady (event) {
@@ -186,7 +200,8 @@ export default {
 
 				this.videoTransition = 'video-fade-short'
 			} else {
-				this.hideVideo()
+        this.hideVideo()
+				this.dontShowVideo = true        
 				// this.stopVideo()
 			}
 		},

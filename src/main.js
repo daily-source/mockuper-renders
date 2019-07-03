@@ -53,8 +53,7 @@ router.beforeEach((to, from, next) => {
    * If from.name is `null` and from.path is `/`, this means that we visited the
    * site on the home page, therefore we should play the video.
    */
-  if (!from.name && from.path === '/') {
-    // store.dispatch('video/playVideo')
+  if (!from.name && from.path === '/' && !sessionStorage.getItem('dontShowVideo')) {
     store.dispatch('splash/showSplash')    
   }
 
