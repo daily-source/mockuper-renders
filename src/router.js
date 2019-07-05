@@ -26,6 +26,10 @@ const NonprofitIRSProfile = () => import('@/views/NonprofitIRSProfile')
 const StationsDirectory = () => import('@/views/StationsDirectory')
 const StationProfile = () => import('@/views/StationProfile')
 const StationEdit = () => import('@/views/StationEdit')
+const StationRegister = () => import('@/views/StationRegister')
+const StationRegisterStepOne = () => import('@/views/StationRegisterStepOne')
+const StationRegisterStepTwo = () => import('@/views/StationRegisterStepTwo')
+const StationRegisterStepThree = () => import('@/views/StationRegisterStepThree')
 
 export default new Router({
   mode: 'history',
@@ -132,6 +136,32 @@ export default new Router({
       meta: {
         management: true,
       }
+    },
+    {
+      path: '/stations/register',
+      component: StationRegister,
+      children: [
+        {
+          path: '/stations/register/step/1',
+          name: 'stations-register-step-one',
+          component: StationRegisterStepOne,
+        },
+        {
+          path: '/stations/register/step/2',
+          name: 'stations-register-step-two',
+          component: StationRegisterStepTwo,
+        },{
+          path: '/stations/register/step/3',
+          name: 'stations-register-step-three',
+          component: StationRegisterStepThree,
+        },
+        {
+          path: '/',
+          redirect: {
+            name: 'stations-register-step-one'
+          }
+        },
+      ],
     },
     {
       path: '/nonprofits/management',

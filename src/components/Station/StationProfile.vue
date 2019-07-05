@@ -1,6 +1,13 @@
 <template>
   <div class='station-profile'>
     <div class="container">
+      <alert
+        type='success'
+        :open='alertOpened'
+        @closeButtonClicked='alertOpened = false'
+      >
+        Station successfuly created. Below are the information you entered.
+      </alert>
       <div class='station-profile__columns columns'>
         <div class='column station-profile__picture-column'>
           <Avatar 
@@ -19,13 +26,13 @@
             </button>
           </div>
           <div class='station-profile__block is-flex'>
-            <div class="station-profile__description station-profile__description--full" v-if='showMoreDescription'>
+            <div class="station-profile__description station-profile__description--full" v-if='station.description.length >= maxchar && showMoreDescription'>
               <div v-html='station.description'></div>
               <span class='staiton-profile__toggle-excerpt'><a @click.prevent.stop='showMoreDescription = false'>Show Less</a></span>
             </div>
              <div class="station-profile__description station-profile__description--excerpt" v-else>
               <div v-html='excerpt(station.description)'></div>
-              <span class='staiton-profile__toggle-excerpt'>&nbsp;... <a @click.prevent.stop='showMoreDescription = true'>Show More</a></span>
+              <span class='staiton-profile__toggle-excerpt' v-if='station.description.length >= maxchar'>&nbsp;... <a @click.prevent.stop='showMoreDescription = true'>Show More</a></span>
             </div>
           </div>
         </div>
@@ -325,7 +332,7 @@
         </div>
       </div>
     </div>
-    <div class="station-profile__alumni-section" v-else>
+    <div class="station-profile__alumni-section" v-if='station.establishmentType === "non-school"'>
       <div class="container">
         <h3 class='has-text-weight-bold has-text-centered'>People Who Support Our Station</h3>        
         <div class="station-profile__alumni-section-columns">
@@ -513,6 +520,7 @@ import MapLegends from 'LocalComponents/MapLegends'
 import GeneralInfo from 'LocalComponents/General/GeneralInfo'
 import HomePageActions from 'LocalComponents/HomePageActions'
 import StationMap from 'LocalComponents/Station/StationMap'
+import Alert from 'LocalComponents/Alert/Alert'
 
 import IconNightMode from 'LocalComponents/Icons/IconNightMode'
 import IconLightMode from 'LocalComponents/Icons/IconLightMode'
@@ -536,9 +544,11 @@ export default {
     MapLegends,
     StationMap,
     GeneralInfo,
+    Alert,
   },
 
   data () {
+    console.log(this.$route)
     return {
       marker: {
         position: {
@@ -552,6 +562,7 @@ export default {
       showMoreDescription: false,
       opened: true,
       maxchar: 365,
+      alertOpened: Boolean(this.$route.query.new),
     }
   },
 
@@ -573,14 +584,8 @@ export default {
 
     excerpt (content) {
       // var stripHtml = content.replace(/<\/?[^>]+(>|$)/g, "")
-      // Removes the initial <p> tag
-      const test = content.substring(3, content.length - 4)
-      // Removes line breaks
-      const trimmedLinebreaks = test.replace(/(?:\r\n|\r|\n)/g, "")
-      // Temporary replace `</p><p>` tags with line breaks
-      const trimmedParagraphs = trimmedLinebreaks.replace(/<\/p>\s*<p>/g, '\n')
       // Actual exerpt generation content
-      const actualExcerpt = trimmedParagraphs.substring(0, this.maxchar)
+      const actualExcerpt = content.substring(0, this.maxchar)
       // Excerpt with html tags
       const htmlExcpert = `<p>${actualExcerpt.replace(/(?:\r\n|\r|\n)/g, "</p><p>")}</p>`
       return htmlExcpert
@@ -613,7 +618,7 @@ export default {
     ...mapState({
       mapStyle: state => state.map.mapStyle
     })
-  }
+  },
 }
 </script>
 

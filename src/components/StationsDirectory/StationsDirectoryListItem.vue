@@ -9,16 +9,17 @@
     <div class="column stations-directory-list-item__details-column">
       <div class="stations-directory-list-item__name-block is-flex">
         <h4 class='has-text-weight-bold'>
-          <router-link :to="{ name: 'stations-profile', params: { id: station.id } }">{{ station.name }}</router-link>
+          <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" v-if='!edit'>{{ station.name }}</router-link>
+          <span v-else>{{ station.name }}</span>
         </h4>
         <span class="stations-directory-list-item__location">{{ station.position.name }}</span>
       </div>
       <div class="columns stations-directory-list-item__details-block">
         <div class="column is-3">
-          <p class='is-marginless'><span class="has-text-weight-bold">Participants:</span> {{ station.participants }}</p>
+          <p class='is-marginless'><span class="has-text-weight-bold">Participants:</span> {{ station.participants || 0}}</p>
         </div>
         <div class="column">
-          <p class='is-marginless'><span class="has-text-weight-bold">Amount Donated:</span> {{ station.amountDonated | usd }}</p>
+          <p class='is-marginless'><span class="has-text-weight-bold">Amount Donated:</span> {{ station.amountDonated || 0 | usd }}</p>
         </div>
       </div>
       <!-- <div class="columns stations-directory-list-item__details-block stations-directory-list-item__details-block--last">
@@ -26,9 +27,47 @@
           <p class='is-marginless'><span class="has-text-weight-bold">Location:</span> {{ station.position.name }}</p>
         </div>
       </div> -->
-      <p>{{ station.tagline }}</p>
-      <div class="stations-directory-list-item__actions">
+      <div class="stations-directory-list-item__tagline">
+        <p v-if='!edit'>{{ station.tagline }}</p>
+        <div class="field" v-if='edit'>
+          <div class="control">
+            <textarea-with-warning
+              class='stations-directory-list-item__textarea'
+              name='description'
+              placeholder='Maximum of 225 characters '
+              id='description'
+              rows='3'
+              :max-length='225'
+              :warning-max-length='225'
+              v-model='form.tagline'
+              @invalid='(errors) => onFieldError("description", errors)'
+              @warningChange='(warnings) => onFieldWarning("description", warnings)'
+            />
+            <div class="field-errors">
+              <p 
+                class='help has-text-success has-text-weight-bold'
+              >
+                Maximum {{ 225 }} characters. Remaining: 
+                <span
+                  :class='{"has-text-danger": errors.description && errors.description.maxLength}'
+                >
+                  {{ 225 - form.tagline.length }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stations-directory-list-item__actions" v-if='!edit'>
         <router-link :to="{ name: 'stations-profile', params: { id: station.id } }" class='button is-secondary'>Visit</router-link>
+        <router-link to="#" class='button is-primary'>Join</router-link>
+        <div class="stations-directory-list-item__management-actions" v-if='isManagement'>
+          <router-link to="#" class='has-text-danger is-primary' >Get info</router-link>
+          <router-link to="#" class='has-text-danger is-primary'>Admin this station</router-link>
+        </div>
+      </div>
+      <div class="stations-directory-list-item__actions stations-directory-list-item__actions--edit" v-else>
+        <router-link to="#" class='button is-secondary'>Visit</router-link>
         <router-link to="#" class='button is-primary'>Join</router-link>
         <div class="stations-directory-list-item__management-actions" v-if='isManagement'>
           <router-link to="#" class='has-text-danger is-primary' >Get info</router-link>
@@ -41,13 +80,47 @@
 </template>
 
 <script>
+import TextareaWithWarning from 'Components/input/TextareaWithWarning'
+
 export default {
   name: 'StationsDirectoryListItem',
+
+  components: {
+    TextareaWithWarning,
+  },
 
   props: {
     station: {
       type: Object,
       required: false,
+    },
+
+    edit: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+  },
+
+  data () {
+    const tagline = this.station.tagline ? this.station.tagline : this.stripHtml(this.station.description)
+
+    return {
+      form: {
+        ...this.station,
+        tagline,
+      },
+      errors: {},
+    }
+  },
+
+  methods: {
+    onFormChange () {
+      this.$emit('item:change', this.form)
+    },
+
+    stripHtml (content) {
+      return content.replace(/<\/?[^>]+(>|$)/g, "")
     },
   },
 
@@ -55,7 +128,15 @@ export default {
     isManagement () {
       return this.$route.meta.management
     },
-  }
+  },
+
+  watch: {
+    form: {
+      deep: 'true',
+      handler: 'onFormChange',
+      immediate: true,
+    },
+  },
 }
 </script>
 
@@ -69,7 +150,9 @@ export default {
   }
 
   p {
-    font-size: 17px;
+    &:not(.help) {
+      font-size: 17px;
+    }
   }
 
   &__name-block {
@@ -100,6 +183,16 @@ export default {
     @include tablet {
       margin-top: -5px;
     }
+  }
+
+  .field {
+    margin-bottom: 1rem;
+  }
+
+  &__textarea {
+    font-size: 17px;
+    max-width: 720px;
+    min-width: auto;
   }
 
   &__columns {

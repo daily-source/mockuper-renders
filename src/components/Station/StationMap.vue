@@ -11,6 +11,7 @@
         lat: 27.620995834987486,
         lng: 2.008774238974298,
       }'
+      :markers='markers'
       ref='virtual-railroad-map'
     />	
   </div>
@@ -27,7 +28,18 @@ export default {
   props: {
     station: {
       type: Object,
-      required: true,
+      required: false,
+      default: () => {
+        return {}
+      }
+    },
+
+    markers: {
+      type: Array,
+      required: false,
+      default: () => {
+        return []
+      }
     }
   },
 
@@ -43,6 +55,8 @@ export default {
   },
 
   methods: {
+    onMapReady (map, google) {
+    },
 		/**
 		 * Fits the whole world into the Google Map, which depends on the size of
 		 * the screen.
@@ -66,7 +80,9 @@ export default {
 		 */
 		onMapReady (map, google, vmap) {
 			this.google = google
-			this.map = map
+      this.map = map
+      
+      this.$emit('map:ready', this.map, this.google)
 
 			this.featuredUsers.forEach( user => {
 				this.$refs['virtual-railroad-map'].addSelectedUser(user)
@@ -79,8 +95,17 @@ export default {
 				this.featuredUsers.forEach(async user => {
           vmap.animatePolylines(user)
         })
-			}, 100)
-		},
+      }, 100)
+    },
+  
+    /**
+     * Sets the user position
+     * 
+     * @param {Object} latLng
+     */
+    setSelectedLocation (latLng) {
+      this.selectedLocation = latLng
+    },
   },
 
   computed: {
@@ -101,7 +126,7 @@ export default {
     ...mapGetters({
 			featuredUsers: 'users/getFeaturedUsers',
 		}),
-  }
+  },
 }
 </script>
 
