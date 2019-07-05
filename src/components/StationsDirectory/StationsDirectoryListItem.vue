@@ -73,6 +73,7 @@ export default {
   }
 
   &__name-block {
+    padding-top: .25em;
     align-items: center;
     margin-bottom: 1.25em;
 
@@ -85,7 +86,7 @@ export default {
     font-size: 1.375em;
     color: $primary;
     margin-bottom: 0;
-    margin-right: 1rem;
+    margin-right: .875rem;
   }
 
   &__img-column {

@@ -11,6 +11,9 @@
         <div class='column station-profile__details-column'>
           <div class='station-profile__block is-flex station-profile__name-block'>
             <h4 class='has-text-weight-bold station-profile__name'>{{ station.stationName || station.name }}</h4>
+            <span class="station-profile__location">
+              {{ station.position.name }}
+            </span>
             <button class='button is-secondary station-profile__join-button'>
               Join
             </button>
@@ -488,29 +491,12 @@
     </div> 
     <div class="station-profile__actions-wrapper">
       <div class="container">
-        <div class="station-profile__actions station-profile__actions--school" v-if='station.establishmentType ==="school"'>
-          <!-- <div class="station-profile__actions-control">
-            <button class='button is-large is-secondary'>Join the Virtual Railroad</button>
-          </div>
-          <div class="station-profile__actions-control">
-            <button class='button is-large is-primary'>Join this station</button>
-          </div>
-          <div class="station-profile__actions-control">
-            <button class='button is-large is-secondary'>Donate Now</button>
-          </div> -->
-          <button class='button is-large is-secondary'>Join the Virtual Railroad</button>
-          <button class='button is-large is-primary'>Join this station</button>
-          <button class='button is-large is-secondary'>Donate Now</button>
-        </div>
-        <div class="station-profile__actions station-profile__actions" v-else>
-          <div class="station-profile__actions-control">
-            <button class='button is-primary'>Join the Virtual Railroad</button>
-          </div>
+        <div class="station-profile__actions station-profile__actions">
           <div class="station-profile__actions-control">
             <button class='button is-secondary'>Join this station</button>
           </div>
           <div class="station-profile__actions-control">
-            <button class='button is-primary'>Donate Now</button>
+            <button class='button is-primary'>Join the Virtual Railroad</button>
           </div>
         </div>
       </div>
@@ -658,7 +644,7 @@ export default {
 
     @include tablet {
       margin-bottom: 0;
-      margin-right: 1em;
+      margin-right: 1.25rem;
     }
   }
 
@@ -666,6 +652,11 @@ export default {
     font-size: .875em;
     height: auto;
     padding: 0.125em 0.5em !important;
+  }
+
+  &__location {
+    margin-right: 1rem;
+    font-size: 1rem;
   }
 
   &__map-section {
