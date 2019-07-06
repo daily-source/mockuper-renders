@@ -1,6 +1,7 @@
 <template>
   <div class="station-register-location-chooser">
     <div class="container">
+      <p class='station-register-location-chooser__instructions'>After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the "Use Location" button will become clickable.</p>
       <div class="station-register-location-chooser__autocomplete">
         <gmap-autocomplete
           @place_changed="setSelectedPlaceTemp"
@@ -19,10 +20,17 @@
           <button 
             class='button is-primary'
             @click.prevent.stop='submitLocation'
+            :disabled='!selectedLocation || !selectedPlace'
           >
             Use this location
           </button>
         </div>
+      </div>
+      <div 
+        class="station-register-location-chooser_autocomplete-errors"
+        v-if='locationChooserError'
+      >
+        <p class='has-text-danger has-text-weight-bold help'>* {{ locationChooserError }} Please try another search.</p>
       </div>
     </div>
     <div class="station-register-location-chooser__map-section">
@@ -87,6 +95,7 @@ export default {
       },
       map: null,
       google: null,
+      locationChooserError: null,
     }
   },
 
@@ -277,6 +286,10 @@ export default {
     overflow: hidden;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
+  }
+
+  &__instructions {
+    max-width: 665px;
   }
 }
 </style>

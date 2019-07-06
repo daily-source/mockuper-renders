@@ -5,7 +5,7 @@
   >
     <div class="station-register-step-one-form__radios">
       <div class="field is-horizontal">
-        <div class="station-register-step-one-form__field-label field-label">
+        <div class="station-register-step-one-form__field-label field-label station-register-step-one-form__field-label--large">
           <p class='is-marginless'>Are you a 501(c)3 nonprofit organization?</p>
         </div>
         <div class="field-body">
@@ -144,7 +144,7 @@
 
         <div class="station-register-step-one-form__field field is-horizontal">
           <div class="station-register-step-one-form__field-label field-label">
-            <label class='label has-text-weight-bold' for="website">Website:<span class='has-text-danger'>*</span></label>
+            <label class='label has-text-weight-bold' for="website">Website:</label>
           </div>
           <div class="field-body">
             <div class="field">
@@ -159,7 +159,7 @@
           </div>
         </div>
 
-        <button type='submit' class='button is-primary' :disabled='!isValid'>Submit</button>
+        <button type='submit' class='button is-primary' :disabled='!isValid'>Continue</button>
       </div>
     </slide-fade>
   </form>
@@ -220,12 +220,17 @@ export default {
   }
 
   &__field-label  {
-    flex-basis: 365px;
-    max-width: 365px;
+    // flex-basis: 250px;
+    // max-width: 250px;
     text-align: left;
 
     > .label {
       font-weight: 700 !important;
+    }
+
+    &--large {
+      flex-basis: 365px;
+      max-width: 365px;
     }
   }
 

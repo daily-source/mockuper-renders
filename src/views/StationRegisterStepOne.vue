@@ -4,6 +4,7 @@
       <h1 class='station-register__heading'>Register Your Group</h1>
       <p class='station-register__subheading'>If you are a nonprofit that actively does anti-slavery work, you should join as a nonprofit, not as a station by clicking <router-link :to='{name: "nonprofit-sign-up-step-one"}'>here</router-link>. Joining as a nonprofit adds you to our Nonprofit Directory and our main map pages. It also allows you to receive donations if you’re a 501(c)3. You also show up more prominently on the profile pages of users that support you.</p>
       <p class="station-register__subheading">Stations are for groups (whether nonprofits, businesses or other groups) that are collectively supporting nonprofits that are doing anti-slavery work. For example, a college can have a station showing the students, alumni and faculty that are part of the Virtual Railroad. Or a business can have a station showing the employees of the business who are part of the Virtual Railroad.</p>
+      <p class='station-register__subheading'>If you are a nonprofit and already have an account in the Maximum Good collection of websites, please login <a href="#">here</a>. Then you can continue to setting up your station on the Virtual Railroad. Otherwise, start with answering this:</p>
 
       <div class="station-register-step-one__form-wrapper">
         <station-register-step-one-form />

@@ -83,7 +83,7 @@ export default {
     }
 
     a {
-      color: $secondary;
+      color: $secondary !important;
       text-decoration: underline !important;
     }
   }
