@@ -32,6 +32,7 @@
             showDonateButton: false,
             showLocationsButton: false,
             showClaimNonprofitButton: true,
+            addLinkToHeadings: true,
           }'
           @search:submit='onFormSubmit'
           @search:rest='onFormReset'

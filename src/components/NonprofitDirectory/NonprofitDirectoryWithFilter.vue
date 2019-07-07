@@ -35,6 +35,7 @@
         :show-claim-nonprofit-button='listItemOptions.showClaimNonprofitButton'
         :show-donate-button='listItemOptions.showDonateButton'
         :show-locations-button='listItemOptions.showLocationsButton'
+        :add-link-to-headings='listItemOptions.addLinkToHeadings'
         v-if='sortBy === "name"'
       >
         <p slot='errorMessage'>It's possible the current profile on our site has a typo, so please do another search using other words from your name.</p>
@@ -76,6 +77,7 @@ export default {
           showClaimNonprofitButton: false,
           showDonateButton: true,
           showLocationsButton: true,
+          addLinkToHeadings: false,
         }
       }
     }
