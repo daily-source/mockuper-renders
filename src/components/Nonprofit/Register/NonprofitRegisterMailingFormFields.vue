@@ -1,6 +1,5 @@
 <template>
   <div class="nonprofit-register-mailing-form-fields">
-    <p class='has-text-weight-bold is-marginless'>Your mailing address for receiving checks from us:</p>
     <div class="nonprofit-register-mailing-form-fields__field field is-horizontal">
       <div class="nonprofit-register-mailing-form-fields__field-label field-label">
         <label class='label has-text-weight-bold' for="mailing-address-1">Mailing address:<span class='has-text-danger'>*</span></label>
@@ -79,7 +78,6 @@
         </div>
       </div>
     </div>
-    <p>Note: checks will be made out to your legal name.</p>
   </div>
 </template>
 

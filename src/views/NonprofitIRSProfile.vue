@@ -27,12 +27,12 @@
             :nonprofit='nonprofit'
             v-if='nonprofit && !claim'
           />
-          <form 
+          <!-- <form 
             v-if='claim'
             @submit.prevent="onFormSubmit"
             class='nonprofit-irs-profile__form'
           >
-            <h2 class='has-text-weight-bold'>Claim and manage this nonprofit</h2>
+            <h2 class='has-text-weight-bold'>Claim and Manage This Nonprofit</h2>
             <nonprofit-irs-details 
               v-if='nonprofit'
               :nonprofit='nonprofit'
@@ -44,7 +44,17 @@
             <div class="nonprofit-irs-profile__actions-container">
               <button class='button is-primary' type='submit'>Submit</button>
             </div>
-          </form>
+          </form> -->
+          <div 
+            class="nonprofit-irs-profile__container container" 
+            v-if='nonprofit && claim'
+          >
+            <div class="nonprofit-irs-profile__form">
+              <nonprofit-claim-form 
+                :nonprofit='nonprofit'
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -60,6 +70,7 @@ import SharedFooter from 'Components/Shared/SharedFooter'
 import NonprofitIrsDetails from 'LocalComponents/Nonprofit/NonprofitIRSDetails'
 import NonprofitRegisterNonIrsFormFields from 'LocalComponents/Nonprofit/Register/NonprofitRegisterNonIRSFormFields'
 import NonprofitRegisterMailingFormFields from 'LocalComponents/Nonprofit/Register/NonprofitRegisterMailingFormFields'
+import NonprofitClaimForm from 'Components/nonprofit/NonprofitClaimForm'
 import Loader from 'Components/Shared/Loader'
 import Alert from 'LocalComponents/Alert/Alert'
 
@@ -78,6 +89,7 @@ export default {
     Loader,
     Alert,
     NonprofitIrsData,
+    NonprofitClaimForm,
   },
 
   data () {
@@ -130,7 +142,7 @@ export default {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'
     return {
-      title: `${this.nonprofit.NAME} | Virtual Railroad`,
+      title: `${this.nonprofit ? this.nonprofit.NAME : 'Nonprofit Profile' } | Virtual Railroad`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },

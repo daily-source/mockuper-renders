@@ -1,9 +1,10 @@
 <template>
   <div class="nonprofit-irs-details">
-    <p>{{ nonprofit.NAME }}</p>
-    <p>{{ nonprofit.STATE }}, {{ nonprofit.CITY }}</p>
-    <p>{{ nonprofit.STREET}}, {{ nonprofit.ZIP }}</p>
-    <p>{{ nonprofit.EIN }}</p>
+    <p class='nonprofit-irs-details__name'>{{ nonprofit.NAME }}</p>
+    <p>{{ nonprofit.STREET}}</p>
+    <p>{{ nonprofit.CITY }}, {{ nonprofit.STATE }}, {{ nonprofit.ZIP }}</p>
+    <p>Employer ID Number (EIN): {{ nonprofit.EIN }}</p>
+    <p class='nonprofit-irs-details__note has-text-grey'>The details above are from the IRS.gov database. If it’s wrong, correct it with the IRS and our system will update it automatically within 30 days. Our system checks the IRS database monthly for updates.</p>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-irs-details {
-  p {
+  &__name {
     font-size: 20px;
   }
 }

@@ -22,7 +22,7 @@
     "vue-youtube": "github:johnveeuminga/vue-youtube",
     "vue2-google-maps": "^0.10.5",
     "vuex": "^3.0.1",
-    "xthon-core": "github:dailysourceorg/xthon-core#0.0.41",
+    "xthon-core": "github:dailysourceorg/xthon-core#0.0.42",
     "youtube-player": "^5.5.2"
   },
   "devDependencies": {
