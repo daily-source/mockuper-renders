@@ -27,24 +27,6 @@
             :nonprofit='nonprofit'
             v-if='nonprofit && !claim'
           />
-          <!-- <form 
-            v-if='claim'
-            @submit.prevent="onFormSubmit"
-            class='nonprofit-irs-profile__form'
-          >
-            <h2 class='has-text-weight-bold'>Claim and Manage This Nonprofit</h2>
-            <nonprofit-irs-details 
-              v-if='nonprofit'
-              :nonprofit='nonprofit'
-            />
-            <nonprofit-register-non-irs-form-fields 
-              :is-registered='true'
-            />
-            <nonprofit-register-mailing-form-fields />
-            <div class="nonprofit-irs-profile__actions-container">
-              <button class='button is-primary' type='submit'>Submit</button>
-            </div>
-          </form> -->
           <div 
             class="nonprofit-irs-profile__container container" 
             v-if='nonprofit && claim'
