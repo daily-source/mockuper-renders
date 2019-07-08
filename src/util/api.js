@@ -75,10 +75,8 @@ export async function getNonprofitFromVRDatabase (ein, caps = false) {
         resolve(nonprofit)
         return
       }
-
-      console.log('something')
-
-      reject()
+      
+      resolve(null)
     }, _.random(100, 800))
   })
 }

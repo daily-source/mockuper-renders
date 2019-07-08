@@ -5,7 +5,7 @@
     <section class='section nonprofit-irs-profile__section'>
       <div 
         class="nonprofit-irs-profile__loader"
-        v-show='!nonprofit'
+        v-show='showLoading'
       >
         <loader 
           :width='50'
@@ -38,6 +38,15 @@
             </div>
           </div>
         </div>
+      </div>
+      <div 
+        class="nonprofit-irs-profile__no-results"
+        v-if='noResults'
+      >
+        <img src="@/assets/img/no-results.png" alt="">
+        <p class='is-marginless'>
+          There are no nonprofits found with the EIN {{ this.ein }}.
+        </p>
       </div>
     </section>
     <shared-footer />
@@ -80,11 +89,12 @@ export default {
     return {
       nonprofit: null,
       alertOpened: true,
+      showLoading: true,
+      noResults: false,
     }
   },
 
   mounted () {
-    console.log(this.ein)
     this.fetchNonprofitProfile(this.ein)
   },
 
@@ -102,9 +112,15 @@ export default {
       //   NTEE_CD: resJson[0].NTEE_CD && resJson[0].NTEE_CD !== '0' ? resJson[0].NTEE_CD : '-',
       //   ACTIVITY: resJson[0].ACTIVITY && resJson[0].ACTIVITY !== '0' ? resJson[0].ACTIVITY : '-',
       // }
-      const np = await getNonprofit(ein)
+        const np = await getNonprofit(ein)
 
-      this.nonprofit = np
+        if (np) {
+          this.nonprofit = np
+        } else {
+          this.noResults = true
+        }
+        
+        this.showLoading = false
     },
 
     onFormSubmit () {
@@ -155,7 +171,7 @@ export default {
 .nonprofit-irs-profile {
   &__section {
     position: relative;
-    min-height: 300px;
+    min-height: 400px;
   }
 
   &__form {
@@ -176,6 +192,28 @@ export default {
 
     p {
       text-align: center;
+      margin-top: .5em;
+    }
+  }
+
+  &__no-results {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    img {
+      max-width: 100%;
+      width: 200px;
+    }
+
+    p {
+      font-size: 1.125em;
       margin-top: .5em;
     }
   }
