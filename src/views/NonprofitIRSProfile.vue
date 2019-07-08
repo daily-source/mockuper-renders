@@ -24,8 +24,8 @@
           </p>
 
           <nonprofit-irs-data 
-            :nonprofit='nonprofit'
-            v-if='nonprofit && !claim'
+            :nonprofit='nonprofitAlt'
+            v-if='nonprofit && nonprofitAlt && !claim'
           />
           <div 
             class="nonprofit-irs-profile__container container" 
@@ -45,10 +45,12 @@
 </template>
 
 <script>
-import NonprofitIrsData from 'Components/nonprofit/NonprofitIRSData'
+import { getNonprofit, transformNonprofit } from '@/util/api'
+
 import AppHeader from 'LocalComponents/AppHeader'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import SharedFooter from 'Components/Shared/SharedFooter'
+import NonprofitIrsData from 'Components/nonprofit/NonprofitIRSData'
 import NonprofitIrsDetails from 'LocalComponents/Nonprofit/NonprofitIRSDetails'
 import NonprofitRegisterNonIrsFormFields from 'LocalComponents/Nonprofit/Register/NonprofitRegisterNonIRSFormFields'
 import NonprofitRegisterMailingFormFields from 'LocalComponents/Nonprofit/Register/NonprofitRegisterMailingFormFields'
@@ -66,11 +68,11 @@ export default {
     IntroVideo,
     SharedFooter,
     NonprofitIrsDetails,
+    NonprofitIrsData,
     NonprofitRegisterNonIrsFormFields,
     NonprofitRegisterMailingFormFields,
     Loader,
     Alert,
-    NonprofitIrsData,
     NonprofitClaimForm,
   },
 
@@ -82,27 +84,35 @@ export default {
   },
 
   mounted () {
-    this.fetchNonprofitProfile()
+    console.log(this.ein)
+    this.fetchNonprofitProfile(this.ein)
   },
 
   methods: {
     async fetchNonprofitProfile (ein) {
-      const res = await fetch(`${IRSSearchAPI}/nonprofits/${this.ein}`)
+      // const res = await fetch(`${IRSSearchAPI}/nonprofits/${this.ein}`)
       
-      const resJson = await res.json()
+      // const resJson = await res.json()
 
-      this.nonprofit = {
-        data: {
-          name: resJson[0].NAME
-        },
-        ...resJson[0],
-        NTEE_CD: resJson[0].NTEE_CD && resJson[0].NTEE_CD !== '0' ? resJson[0].NTEE_CD : '-',
-        ACTIVITY: resJson[0].ACTIVITY && resJson[0].ACTIVITY !== '0' ? resJson[0].ACTIVITY : '-',
-      }
+      // this.nonprofit = {
+      //   data: {
+      //     name: resJson[0].NAME
+      //   },
+      //   ...resJson[0],
+      //   NTEE_CD: resJson[0].NTEE_CD && resJson[0].NTEE_CD !== '0' ? resJson[0].NTEE_CD : '-',
+      //   ACTIVITY: resJson[0].ACTIVITY && resJson[0].ACTIVITY !== '0' ? resJson[0].ACTIVITY : '-',
+      // }
+      const np = await getNonprofit(ein)
+
+      this.nonprofit = np
     },
 
     onFormSubmit () {
       this.$router.push({ name: 'nonprofit-sign-up-step-four' })
+    },
+
+    convertNonprofitKeysToAllCaps (nonprofit) {
+      return transformNonprofit(nonprofit, true)
     },
   },
 
@@ -117,14 +127,20 @@ export default {
 
     showAlert () {
       return this.$route.query.showAlert
-    }
+    },
+
+    nonprofitAlt () {
+      if (this.nonprofit) return transformNonprofit(this.nonprofit, true)
+
+      return null
+    },
   },
 
   metaInfo() {
     const description = 'The modern way to help free slaves';
     const title = 'Virtual Railroad'
     return {
-      title: `${this.nonprofit ? this.nonprofit.NAME : 'Nonprofit Profile' } | Virtual Railroad`,
+      title: `${this.nonprofit ? this.nonprofit.name : 'Nonprofit Profile' } | Virtual Railroad`,
       meta: [
         { vmid: 'description', name: 'description', content: description },
         { vmid: 'og:title', property: 'og:title', content: title },

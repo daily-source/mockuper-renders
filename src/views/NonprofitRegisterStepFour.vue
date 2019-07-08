@@ -40,10 +40,6 @@ export default {
 
 <style lang='scss' scoped>
 .nonprofit-register-step-four {
-  h3 {
-    font-size: 29px;
-  }
-
   .subheading {
     font-size: 1.25em;
     margin-bottom: 1.75em;

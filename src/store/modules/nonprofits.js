@@ -3,14 +3,15 @@ const baseURL = process.env.VUE_APP_BASE_URL
 const state = {
 	data: [
 		{
-			id: 1,
+      id: 1,
+      ein: 1,
 			description:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
 			loction:"461 Hermann Greens Apt. 847",
 			name:"OXFAM International",
 			picture: `${baseURL}img/oxfam.png`,
       state:"Kansas",
       claimed: true,
-			url:"https://titus.net",
+      url:"https://titus.net",
 			locations: [
 				{
 					id: 1,
@@ -43,7 +44,8 @@ const state = {
 		},
 		{	
 			description:"International Justice Mission is a human rights agency that secures justice for victims of slavery, sexual exploitation and other forms of violent oppression.",
-			id: 2,
+      id: 2,
+      ein: 2,
 			name:"International Justice Mission",
 			picture: `${baseURL}img/ijm.png`,			
 			url:"http://miracle.info",
@@ -79,7 +81,8 @@ const state = {
 		},
 		{
 			description: "Every day, Kiva connects thousands of people to borrowers and partner institutions around the world, working together to create opportunity and alleviate poverty.",
-			id:3,
+      id:3,
+      ein: 3,
 			name:"KIVA",
 			picture: `${baseURL}img/kiva.jpg`,						
 			state:"New Hampshire",
@@ -119,6 +122,7 @@ const state = {
       name: 'Streetlight',
       picture: `${baseURL}img/streetlight.png`,
       id: 4,
+      ein: 4,
       url: 'gttps://streetlight.com',
       description: 'Streetlight’s Mission is to Eradicate Child Sex Slavery through a 3-tier strategy of Awareness, Prevention, and Aftercare.',
       locations: [
@@ -148,6 +152,7 @@ const state = {
       name: 'Girls Against Slavery',
       picture: `${baseURL}img/gems.jpg`,
       id: 5,
+      ein: 5,
       url: 'https://gems.com',
       description: 'GEMS provides a spectrum of continuous and comprehensive services to address the needs of commercially and sexually exploited girls and young women. Commercial sexual exploitation is intrinsically linked to racism, poverty, gender-based violence, and the criminalization of youth. All these factors are an integral part of any discussion, advocacy work or direct service programming that involves sexual exploitation. All of GEMS programs are based on our philosophy and values that each girl and young woman is.',
       locations: [
@@ -176,6 +181,7 @@ const state = {
       name: 'ZOE Children\'s Homes',
       picture: `${baseURL}img/zoes.jpg`,
       id: 6,
+      ein: 6,
       url: 'https://gems.com',
       description: 'ZOE Children’s Homes is an international Christian organization that rescues children who are at high risk of being sold into slavery, have already been victimized as slaves, have been orphaned, or have suffered other heinous forms of abuse.',
       locations: [
@@ -205,6 +211,7 @@ const state = {
       name: 'Living Water for Girls',
       picture: `${baseURL}img/livingwater.png`,
       id: 7,
+      ein: 7,
       url: '3',
       description: 'The mission of Living Waters for Girls is to rescue, rehabilitate and restore commercially sexually exploited girls by providing safe refuge and holistic therapeutic services.',
       locations: [
@@ -224,6 +231,7 @@ const state = {
       name: 'Raphahouse',
       picture: `${baseURL}img/raphahouse.jpg`,
       id: 8,
+      ein: 8,
       url: '#',
       description: 'Rapha House programs exist to extend unconditional love to girls who have been rescued out of slavery and sexual exploitation.  Every member of the Rapha House staff has dedicated his or herself to seeing each child at Rapha House restored to sustainable freedom.',
       locations: [
@@ -252,6 +260,7 @@ const state = {
       name: 'Tresures Ministry',
       picture: `${baseURL}img/treasures-ministry.png`,
       id: 9,
+      ein: 9,
       url: 'http://www.iamatreasure.com/',
       description: 'Treasures is a unique, faith-based outreach and support group for women in the sex industry, including victims of commercialized sexual exploitation and trafficking. As the only organization of its kind based in the adult industry capital of the world (San Fernando Valley in Los Angeles County), our mission is to reach, restore and equip women in order to help them live healthy, flourishing lives.',
       locations: [
@@ -271,6 +280,7 @@ const state = {
       name: 'Missey',
       picture: `${baseURL}img/missey.jpg`,
       id: 10,
+      ein: 10,
       url: 'http://misssey.org/index.html',
       description: 'Motivating, Inspiring, Supporting, and Serving Sexually Exploited Youth (MISSSEY) advocates and facilitates the empowerment and inner transformation of sexually exploited youth by holistically addressing their specific needs. MISSSEY collaborates to bring about systemic and community change to prevent the sexual exploitation of children and youth through raising awareness, education and policy development.',
       locations: [
@@ -291,6 +301,7 @@ const state = {
       name: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Massa',
       picture: `${baseURL}img/life-impact-international-logo-retina.png`,
       id: 11,
+      ein: 11,
       url: 'https://lifeimpactintl.org/',
       description: 'At Life Impact International, we prevent human trafficking by intervening in the lives of at-risk children, youth, displaced people, refugees and orphans.',
       locations: [
@@ -321,6 +332,7 @@ const state = {
       name: 'Lorem Ipsum Dolor Sit Amet Consectetur Massa Nun',
       picture: `${baseURL}img/hagar.jpg`,
       id: 12,
+      ein: 12,
       url: 'https://hagarinternational.org/',
       description: 'We are an international organisation dedicated to the recovery of women and children who have endured extreme abuses. We are working to see communities free and healed from the trauma of human slavery, trafficking and abuse.',
       locations: [
@@ -351,6 +363,7 @@ const state = {
       name: 'Lorem Ipsum Dolor Sit Amet Viverra Fusce',
       picture: `${baseURL}img/hopeforjustice.jpg`,
       id: 13,
+      ein: 13,
       url: 'https://hopeforjustice.org/',
       description: 'We exist to bring an end to modern slavery by preventing exploitation, rescuing victims, restoring lives and reforming society.',
       locations: [
