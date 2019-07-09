@@ -20,7 +20,8 @@ const state = {
 					city: 'Mumbai',
 					location: 'Mumbai, Maharastra, India',
 					latitude: 19.075983,
-					longitude: 72.877655,
+          longitude: 72.877655,
+          main: true,
 				},
 				{
 					id: 2,
@@ -57,7 +58,8 @@ const state = {
 					city: 'Los Angeles',
 					location: 'Los Angeles, California, USA',
 					latitude: 34.052235,
-					longitude: -118.243683,
+          longitude: -118.243683,
+          main: true,          
 				},
 				{
 					id: 2,
@@ -96,7 +98,8 @@ const state = {
 					city: 'London',
 					location: 'London, United Kingdom, England',
 					latitude: 51.507351,
-					longitude: -0.127758,
+          longitude: -0.127758,
+          main: true,          
 				},
 				{
 					id: 2,
@@ -134,7 +137,8 @@ const state = {
 					state: 'Bogotá',
 					location: 'Bogotá, Colombia',
 					latitude: 4.5819344,
-					longitude: -74.1037359,
+          longitude: -74.1037359,
+          main: true,          
 				},
 				{
 					id: 2,
@@ -164,7 +168,8 @@ const state = {
 					state: 'Bangkok',
 					location: 'Bangkok, Thailand',
 					latitude: 13.7258063,
-					longitude: 100.5246047,
+          longitude: 100.5246047,
+          main: true,          
 				},
 				{
 					id: 2,
@@ -193,7 +198,8 @@ const state = {
 					state: 'La Paz',
 					location: 'La Paz, Bolivia',
 					latitude: -16.5207007,
-					longitude: -68.1941175,
+          longitude: -68.1941175,
+          main: true,
 				},
 				{
 					id: 2,
@@ -223,7 +229,8 @@ const state = {
 					state: 'Jakarta',
 					location: 'Kebon Jeruk, Jakarta, Bolivia',
 					latitude: -6.1856285,
-					longitude: 106.7661928,
+          longitude: 106.7661928,
+          main: true,
 				}
       ],
     },
@@ -243,7 +250,8 @@ const state = {
 					state: 'Asunción',
 					location: 'Asunción, Paraguay',
 					latitude: -25.3122219,
-					longitude: -57.6073105,
+          longitude: -57.6073105,
+          main: true,
 				},
 				{
 					id: 2,
@@ -272,7 +280,8 @@ const state = {
 					state: 'Asunción',
 					location: 'Harare, Zimbabwe',
 					latitude: -17.8282433,
-					longitude: 31.0455279,
+          longitude: 31.0455279,
+          main: true,
 				}
       ],
     },
@@ -292,7 +301,8 @@ const state = {
 					state: 'Naivasha',
 					location: 'Naivasha, Kenya',
 					latitude: -0.713515,
-					longitude: 36.4235122,
+          longitude: 36.4235122,
+          main: true,
 				}
       ],
 		},
@@ -313,7 +323,8 @@ const state = {
 					state: 'Jinst',
 					location: 'Jinst, Mongolia',
 					latitude: 45.8795793,
-					longitude: 100.6180053,
+          longitude: 100.6180053,
+          main: true,
 				},
 				{
 					id: 2,
@@ -344,7 +355,8 @@ const state = {
 					state: 'Istanbul',
 					location: 'Karaköy, Istanbul, Turkey',
 					latitude: 41.0242773,
-					longitude: 28.9761782,
+          longitude: 28.9761782,
+          main: true,
 				},
 				{
 					id: 2,
@@ -375,7 +387,8 @@ const state = {
 					state: 'Djasr Kassentina',
 					location: 'Djasr Kassentina, Algeria',
 					latitude: 26.0739396,
-					longitude: 2.4627029,
+          longitude: 2.4627029,
+          main: true,
 				},
 				{
 					id: 2,
