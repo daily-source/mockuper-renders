@@ -6,7 +6,7 @@
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"><span class='nonprofit-directory-list-item__name'>{{ nonprofit.name }}</span></router-link>
   </div>
   <div class='nonprofit-list-item-links'>
-    <button v-if='showClaimNonprofitButton' :disabled='nonprofit.claimed' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</button>    
+    <router-link :to='{ name: "nonprofit-irs", params: {ein: nonprofit.ein }, query: { claim: true } }' v-if='showClaimNonprofitButton' class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button nonprofit-directory-list-item__button--claim is-secondary is-small button'>{{ !nonprofit.claimed ? 'Claim this nonprofit' : 'Already Claimed' }}</router-link>
     <router-link :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }" class='button nonprofit-directory-list-item__button is-primary nonprofit-directory-list-item__link'>View Profile</router-link>
     <button class='nonprofit-directory-list-item__link nonprofit-directory-list-item__button  is-secondary is-small button' v-if='showDonateButton'>Donate</button>
     <router-link :to='`/nonprofit/${nonprofit.id}`' class='nonprofit-directory-list-item__link' v-if='shouldShowLocationsButton'>See all locations</router-link>

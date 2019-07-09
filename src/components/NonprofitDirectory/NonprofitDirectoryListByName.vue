@@ -22,13 +22,13 @@
             </p>
           </div>
           <div class="nonprofit-directory-list-by-name__actions">
-            <button
+            <router-link
+              :to='{ name: "nonprofit-irs", params: { ein: nonprofit.ein }, query: { claim: true} }'
               class='button is-secondary nonprofit-directory-list-by-name__action nonprofit-directory-list-by-name__action--claim'
-              :disabled='nonprofit.claimed'     
-              v-if='showClaimNonprofitButton'   
+              v-if='showClaimNonprofitButton'
             >
               {{ nonprofit.claimed ? 'Already claimed' : 'Claim this nonprofit' }}
-            </button>
+            </router-link>
             <router-link
               :to="{ name: 'nonprofit-details', params: {nonprofitId: nonprofit.id} }"
               class='button is-primary nonprofit-directory-list-by-name__action'
