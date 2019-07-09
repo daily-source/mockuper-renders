@@ -189,6 +189,8 @@ export default {
       font-weight: 700;
       font-family: Montserrat !important;
       color: #000;
+      flex-basis: 50%;
+      max-width: 50%;
 
       &:not(:last-child) {
         margin-right: .25em;
