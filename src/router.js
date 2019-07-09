@@ -30,6 +30,7 @@ const StationRegister = () => import('@/views/StationRegister')
 const StationRegisterStepOne = () => import('@/views/StationRegisterStepOne')
 const StationRegisterStepTwo = () => import('@/views/StationRegisterStepTwo')
 const StationRegisterStepThree = () => import('@/views/StationRegisterStepThree')
+const StaffPanel = () => import('@/views/StaffPanel')
 
 export default new Router({
   mode: 'history',
@@ -171,5 +172,10 @@ export default new Router({
         management: true,
       }
     },
+    {
+      path: '/staff-panel',
+      name: 'staff-panel',
+      component: StaffPanel,
+    }
   ],
 });

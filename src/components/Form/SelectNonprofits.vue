@@ -23,32 +23,54 @@
 			class='select-nonprofit__locations' 
 			v-if='selectedNonprofit'
 		>
-			<p class='intro-text'>They have multiple locations. Choose the region you support: 
-				<button class='button is-small is-text is-paddingless' @click.stop.prevent='moreInfoButtonClicked'>?</button> 
-			</p>
-			<div 
-				class='select-nonprofit__location'
-				v-for='location in selectedNonprofit.locations'
-				:key='location.id'
-			>
-				<label class='checkbox'>
-					<input 
-						type='checkbox'
-						@change='(event) => onLocationChange(event.target.checked, location.id)'
-						:key='`checkbox-${selectedNonprofit.id}-${location.id}`'
-					>
-					{{ location.location }}
-				</label>
-			</div>
+      <div 
+        class="select-nonprofit__location-checkboxes"
+        v-if='selectedNonprofit.locations.length > 1'
+      >
+        <p class='intro-text'>They have multiple locations. Choose the region you support: 
+          <button class='button is-small is-text is-paddingless' @click.stop.prevent='moreInfoButtonClicked'>?</button> 
+        </p>
+        <div 
+          class='select-nonprofit__location'
+          v-for='location in selectedNonprofit.locations'
+          :key='location.id'
+        >
+          <label class='checkbox'>
+            <input 
+              type='checkbox'
+              @change='(event) => onLocationChange(event.target.checked, location.id)'
+              :key='`checkbox-${selectedNonprofit.id}-${location.id}`'
+            >
+            {{ location.location }}
+          </label>
+        </div>
+      </div>
+      <div 
+        class="select-nonprofit__has-one-location"
+        v-else-if='selectedNonprofit.locations.length === 1'
+      >
+        <alert
+          :open='alertOpened'
+          @closeButtonClicked='alertOpened = false'
+          class='select-nonprofit__has-one-location-alert'
+        >
+          <p class='select-nonprofit__has-one-location-text'>This nonprofit only has one location, it will automatically be selected.</p>
+        </alert>
+      </div>
 		</div>
 	</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Alert from 'LocalComponents/Alert/Alert'
 
 export default {
-	name: 'SelectNonprofits',
+  name: 'SelectNonprofits',
+  
+  components: {
+    Alert,
+  },
 
 	props: {
 		value: {
@@ -69,7 +91,8 @@ export default {
 	data () {
 		return {
 			nonprofit: this.value,
-			locations: [],
+      locations: [],
+      alertOpened: true,
 		}
 	},
 
@@ -170,7 +193,17 @@ export default {
       }
 			
 			this.$emit('locationChange', locationPair, this.selectedNonprofit, this.selectedLocations)
-		},
+    },
+    
+    selectedNonprofit (val) {
+      this.alertOpened = true
+
+      if (val && val.locations.length == 1) {
+        console.log('something')
+
+        this.addLocation(val.locations[0].id)
+      }
+    },
 	},
 }
 </script>
@@ -178,8 +211,9 @@ export default {
 <style lang="scss" scoped>
 .select-nonprofit {
 	&__locations {
+    margin-top: 0.5em;
+
 		.intro-text {
-			margin-top: .5em;
 			margin-bottom: 0.5em;
 			font-size: .875rem;
 
@@ -212,5 +246,10 @@ export default {
 			}
 		}
 	}
+
+  &__has-one-location-text {
+    font-size: .875rem;
+    margin-bottom: 0;
+  }
 }
 </style>
