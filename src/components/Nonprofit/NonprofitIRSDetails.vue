@@ -2,8 +2,11 @@
   <div class="nonprofit-irs-details">
     <p class='nonprofit-irs-details__name'>{{ transformedNonprofit.NAME }}</p>
     <div class="nonprofit-irs-details__irs-exclusive-details" v-if='nonprofit.fromIrs'>
-      <p>{{ transformedNonprofit.STREET}}</p>
+      <p>{{ transformedNonprofit.STREET }}</p>
       <p>{{ transformedNonprofit.CITY }}, {{ transformedNonprofit.STATE }}, {{ transformedNonprofit.ZIP }}</p>
+    </div>
+    <div class="nonprofit-irs-details__non-irs-exclusive-details" v-if='!transformedNonprofit.fromIrs'>
+      <p class='is-uppercase'>{{ mainLocation.location }}</p>
     </div>
     <p>Employer ID Number (EIN): {{ transformedNonprofit.EIN }}</p>
     <p class='nonprofit-irs-details__note has-text-grey' v-if='nonprofit.fromIrs'>The details above are from the IRS.gov database. If it’s wrong, correct it with the IRS and our system will update it automatically within 30 days. Our system checks the IRS database monthly for updates.</p>
@@ -26,7 +29,13 @@ export default {
   computed: {
     transformedNonprofit () {
       return transformNonprofit(this.nonprofit, true)
-    }
+    },
+
+    mainLocation () {
+      if (this.nonprofit.fromIrs === false) {
+        return this.nonprofit.locations.find(location => location.main)
+      }
+    },
   },
 }
 </script>
