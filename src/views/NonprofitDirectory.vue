@@ -14,7 +14,7 @@
     </modal>
     <section class='section'>
       <div class='nonprofit-directory__container container'>
-        <h3 class='has-text-weight-bold has-text-centered'>Nonprofits helping the virtual railroad <span class="has-text-danger" v-if='isManagement'>(Management View)</span></h3>
+        <h3 class='has-text-weight-bold has-text-centered'>Directory of anti-slavery nonprofits <span class="has-text-danger" v-if='isManagement'>(Management View)</span></h3>
         <nonprofit-directory-with-filter />
       </div>
     </section>
