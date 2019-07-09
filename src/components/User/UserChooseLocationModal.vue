@@ -7,58 +7,7 @@
     class='user-choose-location-modal'
   >
     <div class='user-choose-location-modal__content' slot='content'>
-      <!-- <div class='user-choose-location-autocomplete'>
-        <gmap-autocomplete
-          @place_changed="setSelectedPlaceTemp"
-          placeholder='Enter zip code or city/state'
-          class='user-choose-location-autocomplete__input input'
-        />
-        <button 
-          class='button is-primary'
-          @click.prevent.stop='setSelectedPlace()'
-        >
-          Use
-        </button>
-      </div>
-      <div class='user-choose-location__map-container'>
-        <transition name='loading-fade'>
-          <div 
-            class='user-choose-location__loader'
-            v-show='showMapLoadingOverlay'
-          >
-            <loader 
-              :width='50'
-              :height='50'
-              color='#dedede'
-              message='Geocoding point. Please wait...'
-            />
-          </div>
-        </transition>
-        <google-map
-          class='user-choose-location-map'
-          @mapReady='onMapReady'
-          @mapClicked='onMapClicked'
-        >
-          <gmap-marker 
-            :position='selectedLocation'
-          />
-        </google-map>
-      </div>
-      <div class='user-choose-location-actions'>
-        <button 
-          class='user-choose-location-actions__button button is-danger'
-          @click.stop.prevent='closeModal'
-        >
-          Cancel
-        </button>
-        <button 
-          class='user-choose-location-actions__button button is-primary'
-          @click.stop.prevent='saveLocation'
-          :disabled='!selectedPlace && !selectedLocation'
-        >
-          Save
-        </button>
-      </div> -->
+      <p>After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the “Use This Location” button will become clickable.</p>
       <div class="user-choose-location__map-container">
         <location-chooser 
           submit-button-text='Use this Location'
@@ -219,7 +168,7 @@ export default {
 <style lang="scss" scoped>
 .user-choose-location {
   &__map-container {
-    height: 580px;
+    height: 620px;
     width: 100%;
     position: relative;
   }
@@ -293,10 +242,9 @@ export default {
 
   .modal-content {
     max-width: 1100px !important;
-    min-height: 720px;
+    min-height: 830px;
   }
 
-  
   &__trigger {
     height: auto;
     padding: 0 !important;

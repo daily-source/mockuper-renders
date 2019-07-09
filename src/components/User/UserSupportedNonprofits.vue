@@ -17,30 +17,50 @@
               <button class='button is-small is-danger' @click='onDeleteClicked(nonprofit.id)'>Delete</button>
             </div>
           </div>
-          <div class="user-nonprofits-list__locations" v-if='editLocationsId === nonprofit.id'>
+          <div 
+            class="user-nonprofits-list__locations" 
+            v-if='editLocationsId === nonprofit.id'
+          >
             <div 
-              class="user-nonprofits-list__locations-item"
-              v-for='(location, index) in nonprofit.locations'
-              :key='index'
+              class="user-nonprofits-list__locations-list"
+              v-if='nonprofit.locations.length > 1'
             >
-              <label class='checkbox'>
-                <input 
-                  type='checkbox'
-                  @change='(event) => setUserLocation(event.target.checked, nonprofit.id, location.id)'
-                  :key='`checkbox-${nonprofit.id}-${location.index}`'
-                  :checked='checkIfUserHasLocation(nonprofit.id, location.id)'
-                >
-                {{ location.location }}
-              </label>
-            </div>
-            <div class="user-nonprofits-list__locations-item-actions">
-              <button 
-                class='button is-secondary is-small'
-                @click.prevent.stop='saveLocations(nonprofit.id)'
+              <div 
+                class="user-nonprofits-list__locations-item"
+                v-for='(location, index) in nonprofit.locations'
+                :key='index'
               >
-                Save Changes
-              </button>
-              <button class='button is-danger is-small' @click.prevent.stop='closeEditLocations(nonprofit.id)'>Cancel</button>
+                <label class='checkbox'>
+                  <input 
+                    type='checkbox'
+                    @change='(event) => setUserLocation(event.target.checked, nonprofit.id, location.id)'
+                    :key='`checkbox-${nonprofit.id}-${location.index}`'
+                    :checked='checkIfUserHasLocation(nonprofit.id, location.id)'
+                  >
+                  {{ location.location }}
+                </label>
+              </div>
+              <div class="user-nonprofits-list__locations-item-actions">
+                <button 
+                  class='button is-secondary is-small'
+                  @click.prevent.stop='saveLocations(nonprofit.id)'
+                >
+                  Save Changes
+                </button>
+                <button class='button is-danger is-small' @click.prevent.stop='closeEditLocations(nonprofit.id)'>Cancel</button>
+              </div>
+            </div>
+            <div 
+              class="user-nonprofits-list__has-one-location"
+              v-if='nonprofit.locations.length === 1'
+            >
+              <alert
+                class='user-nonprofits-list__has-one-location-alert'
+                :open='alertOpened'
+                @closeButtonClicked='alertOpened = false'
+              >
+                <p class='user-nonprofit-lists__has-one-location-alert-text is-marginless'>This nonprofit only has one location, so there is nothing to edit.</p>
+              </alert>
             </div>
           </div>
 			</li>
@@ -53,8 +73,14 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
+import Alert from 'LocalComponents/Alert/Alert'
+
 export default {
-	name: 'UserSupportedNonprofits',
+  name: 'UserSupportedNonprofits',
+  
+  components: {
+    Alert,
+  },
 
 	props: {
 		user: {
@@ -76,6 +102,7 @@ export default {
     return {
       editLocationsId: {},
       tempChanges: [...this.user.nonprofits],
+      alertOpened: true,
     }
   },
   
@@ -210,6 +237,8 @@ export default {
   watch: {
     editLocationsId () {
       this.tempChanges = [...this.user.nonprofits]
+
+      this.alertOpened = true
     },
   },
 }
@@ -267,6 +296,14 @@ export default {
         margin-right: .5em;
       }
     }
+  }
+
+  &__has-one-location-alert {
+    padding:.75rem 1rem;
+  }
+
+  &__has-one-location-alert-text {
+    font-size: 0.875rem;
   }
 }
 </style>

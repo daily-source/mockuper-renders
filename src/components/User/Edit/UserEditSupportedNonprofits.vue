@@ -8,6 +8,13 @@
 		/>
 		<div class='user-edit-supported-nonprofits__additional'>
       <h4 data-v-387cfaac="" class="user-profile__heading">Add Another Nonprofit</h4>
+      <alert
+        class='user-edit-supported-nonprofits__alert'
+        :open='alertOpened'
+        @closeButtonClicked='alertOpened = false'
+      >
+        Your change is now in your map and your supported nonprofits list at this Edit Profile page. Click Save Profile to save your changes.
+      </alert>
       <div class='user-edit-supported-nonprofits__select-wrapper'>
         <user-add-nonprofits-select
           :show-action-buttons='false'
@@ -34,10 +41,10 @@
 <script>
 import { mapActions } from 'vuex'
 
+import Alert from 'LocalComponents/Alert/Alert'
 import UserSupportedNonprofits from 'LocalComponents/User/UserSupportedNonprofits'
 import UserAddNonprofitsSelect from 'LocalComponents/User/UserAddNonprofitsSelect'
 import SelectNonprofits from 'LocalComponents/Form/SelectNonprofits'
-import VirtualRailroadMapVue from '../../VirtualRailroadMap.vue';
 
 export default {
 	name: 'UserEditSupportedNonprofits',
@@ -45,7 +52,8 @@ export default {
 	components: {
 		UserSupportedNonprofits,
 		UserAddNonprofitsSelect,
-		SelectNonprofits,
+    SelectNonprofits,
+    Alert,
 	},
 
 	props: {
@@ -71,7 +79,9 @@ export default {
 		return {
 			nonprofits: [...Array(this.inputMinimumCount)],
 			validNonprofits: [],
-			counter: 1,
+      counter: 1,
+      alertOpened: false,
+      alertTimeout: null,
 		}
 	},
 
@@ -88,7 +98,8 @@ export default {
     },
     
     onUserSupportedNonprofitsSave (changes) {
-      this.$emit('submit:locations', changes)      
+      this.$emit('submit:locations', changes)
+      this.alertOpened = true    
     },
 
 		/**
@@ -158,6 +169,7 @@ export default {
      */
     submitAdditionalNonprofits () {
       this.$emit('submit', this.nonprofits)
+      this.alertOpened = true
       this.$refs.userAddNonprofitsSelect.resetSelectValue()
     },
 
@@ -166,6 +178,7 @@ export default {
      */
     onDeleteClicked (id) {
       this.$emit('onDeleteClicked', id)
+      this.alertOpened = true
     },
 	},
 
@@ -191,7 +204,26 @@ export default {
 
       return nonprofits
     },
-	},
+  },
+  
+  watch: {
+    alertOpened (val) {
+      if (this.alertTimeout) {
+        clearTimeout(this.alertTimeout)
+      }
+      
+      if (val) {
+        this.alertTimeout = setTimeout(() => {
+          this.alertOpened = false
+          this.alertTimeout = null
+        }, 10000)
+      }
+
+      if (!val) {
+        this.alertTimeout = null
+      }
+    },
+  }
 }
 </script>
 
@@ -214,6 +246,11 @@ export default {
   &__link {
     color: $blue;
     text-decoration: underline;
+  }
+
+  &__alert {
+    padding: .75rem 1.25rem;
+    font-size: 0.875rem;
   }
 }
 

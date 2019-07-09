@@ -39,18 +39,27 @@
 						<!-- <textarea id='about' class='textarea user-edit-form__textarea' v-model='form.about'></textarea> -->
 				    <label class='label is-sr-only' for='about'>About:</label>
             <textarea-with-warning
-              id='about' 
-              class='user-edit-form__textarea' 
+              class='user-edit-form__textarea'             
+              name='about'
+              placeholder='Maximum of 500 characters '
+              id='description'
+              :max-length='aboutMaxLength'
+              :warning-max-length='325'
               v-model='form.about'
-              :max-length='descriptionMaxLength'
               @invalid='(errors) => onFieldError("about", errors)'
+              @warningChange='(warnings) => onFieldWarning("about", warnings)'
             />
             <div class="field-errors">
               <p 
-                class='help has-text-danger has-text-weight-bold'
-                v-if='errors.about && errors.about.maxLength'
+                class='help has-text-success has-text-weight-bold'
+                v-if='(errors.about && errors.about.maxLength) || (warnings.about && warnings.about.maxLength)'
               >
-                * Description cannot exceed {{ descriptionMaxLength }} characters. Description currently exceeds {{ form.about.length - descriptionMaxLength }} character(s).
+                Maximum {{ aboutMaxLength }} characters. Remaining: 
+                <span
+                  :class='{"has-text-danger": errors.about && errors.about.maxLength}'
+                >
+                  {{ aboutMaxLength - form.about.length }}
+                </span>
               </p>
             </div>
 					</div>
@@ -86,8 +95,9 @@ export default {
 			form: {
 				...this.user
       },
-      descriptionMaxLength: 350,
-      errors: {}
+      aboutMaxLength: 350,
+      errors: {},
+      warnings: {},
 		}
 	},
 
@@ -133,7 +143,7 @@ export default {
 .user-edit-form {
 	&__location {
 		display: inline-block;
-		margin-right: .5em;
+		margin-right: .75em;
 	}
 
 	&__location-field {

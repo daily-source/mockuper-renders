@@ -14,6 +14,7 @@
       </div>
       <div class="user-list-item__actions column">
         <router-link :to='{ name: "user-edit", params: {userId: user.id} }'>Edit</router-link>
+        <router-link to='#'>Info</router-link>
         <button @click='onDeleteClicked' class='button user-list-item__delete has-text-danger'>
           <icon 
             icon='trash-can'
@@ -41,7 +42,7 @@ export default {
     user: {
       type: Object,
       required: true,
-    }
+    },
   },
 
   methods: {

@@ -16,7 +16,7 @@
 			<div class='user-edit-form__details-column column'>
 	      <form @submit.prevent.stop='onUserEditFormSubmit'>
           <user-edit-details 
-            :user='user'	
+            :user='userData'	
             @userDetailsChange='onUserDetailsChange'
           />	
           <div class="user-edit-form__submit-block has-text-right">
@@ -27,7 +27,7 @@
 			<div class='column is-4 user-edit-form__supported-nonprofits-column'>
 				<h4 class='user-profile__heading user-profile__heading--underline'>Nonprofits I Support</h4>
 				<user-edit-supported-nonprofits
-					:user='user'
+					:user='userData'
           @submit:locations='onEditNonprofitsLocationsSubmit'
 					@submit='onEditNonprofitsSubmit'
           @onDeleteClicked='deleteNonprofit'
@@ -36,7 +36,7 @@
 		</div>
 		<div class='user-edit-form__location'>
 			<user-virtual-railroad-map 
-        :user='user'
+        :user='userData'
       />
 		</div>
   </div>
@@ -122,7 +122,7 @@ export default {
         ...nonprofits,
       ]
     
-			this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')      
+			// this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')
 		},
 		
 		/**
@@ -147,8 +147,6 @@ export default {
       const nonprofits = this.userData.nonprofits.filter(np => np.nonprofitId !== id)
       
       this.userData.nonprofits = nonprofits
-
-      this.processUserUpdate(this.userData, 'Your supported nonprofits has been successfuly updated.')
     },
 
 
@@ -190,7 +188,7 @@ export default {
 	&__location {
 		height: 580px;
     position: relative;
-    margin-bottom: .625rem;
+    margin-bottom: 1.25rem;
   }
 
 	&__map {
