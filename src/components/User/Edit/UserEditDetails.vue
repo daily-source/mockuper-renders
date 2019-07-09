@@ -152,7 +152,7 @@ export default {
 	}
 
   &__textarea {
-    height: 192px;
+    height: 172px;
   }
 
   .field-label {
