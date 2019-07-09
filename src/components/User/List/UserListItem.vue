@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="user-list-item__details column">
         <div class="user-list-item__details-item user-list-item__details-item--name">
-          <span class="has-text-weight-bold">{{ `${user.firstName} ${user.lastName}` }}</span>
+          <router-link :to='{ name: "user-profile", params: { userId: user.id } }' class="has-text-weight-bold">{{ `${user.firstName} ${user.lastName}` }}</router-link>
         </div>
         <div class="user-list-item__details-item user-list-item__details-item--username">
           {{ `${user.userName}` }}
@@ -14,17 +14,28 @@
       </div>
       <div class="user-list-item__actions column">
         <router-link :to='{ name: "user-edit", params: {userId: user.id} }'>Edit</router-link>
-        <button @click='onDeleteClicked' class='button user-list-item__delete has-text-danger'>Delete</button>
+        <button @click='onDeleteClicked' class='button user-list-item__delete has-text-danger'>
+          <icon 
+            icon='trash-can'
+            :iconheight='24'
+            :iconwidth='24'
+            color='#ff3860'
+          />
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import _ from 'lodash'
+import Icon from 'Components/general/Icons'
 
 export default {
   name: 'UserListItem',
+
+  components: {
+    Icon,
+  },
 
   props: {
     user: {
@@ -68,6 +79,9 @@ export default {
   }
 
   &__actions {
+    display: flex;
+    align-items: center;
+
     a {
       text-decoration: underline;
 
@@ -84,6 +98,18 @@ export default {
     line-height: 1.4;
     background-color: transparent !important;
     text-decoration: underline;
+  }
+}
+</style>
+
+<style lang='scss'>
+.user-list-item {
+  &__delete {
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 </style>

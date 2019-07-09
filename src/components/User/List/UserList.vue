@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 import Alert from 'LocalComponents/Alert/Alert'
 import UserListItem from 'LocalComponents/User/List/UserListItem'
 import UserDeleteModal from 'LocalComponents/User/List/UserDeleteModal'

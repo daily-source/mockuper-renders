@@ -40,7 +40,7 @@ export default {
 <style lang='scss'>
 .users-list {
   &__container {
-    max-width: 1024px;
+    max-width: 1200px;
   }
 }
 </style>
