@@ -216,7 +216,7 @@ export default {
         this.alertTimeout = setTimeout(() => {
           this.alertOpened = false
           this.alertTimeout = null
-        }, 10000)
+        }, 5000)
       }
 
       if (!val) {
