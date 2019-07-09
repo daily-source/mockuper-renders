@@ -8,7 +8,7 @@
 				<option
 					value='0'
 				>
-					Please select a nonprofit
+					Please select
 				</option>
 				<option
 					v-for='nonprofit in nonprofits'

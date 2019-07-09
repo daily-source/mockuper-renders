@@ -29,7 +29,7 @@
             class='button is-primary'
             @click='submitAdditionalNonprofits'
           >
-            Submit
+            Add
           </button>
         </div>
       </div>
@@ -216,7 +216,7 @@ export default {
         this.alertTimeout = setTimeout(() => {
           this.alertOpened = false
           this.alertTimeout = null
-        }, 10000)
+        }, 5000)
       }
 
       if (!val) {
@@ -237,6 +237,7 @@ export default {
 
   &__select-wrapper {
     margin-bottom: 1em;
+    max-width: 360px;
   }
 
   &__additional {

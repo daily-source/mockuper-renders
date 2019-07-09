@@ -20,7 +20,7 @@
             @userDetailsChange='onUserDetailsChange'
           />	
           <div class="user-edit-form__submit-block has-text-right">
-            <button type='submit' class='user-edit-form__submit button is-primary'>Save Profile</button>
+            <button type='submit' class='user-edit-form__submit button is-secondary'>Save Profile</button>
           </div>
 	      </form>
 			</div>
@@ -171,6 +171,8 @@ export default {
 .user-edit-form {
 	&__submit {
 		margin-top: 1em;
+    max-height: none;
+    font-size: 1.25em;
 	}
 
   &__avatar-wrapper {
