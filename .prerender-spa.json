@@ -37,7 +37,8 @@
     "/station/2",
     "/station/3",
     "/nonprofit/irs/521758517",
-    "/nonprofit/irs/830374559"
+    "/nonprofit/irs/830374559",
+    "/staff-panel"
   ],
   "useRenderEvent":false,
   "headless":true,
