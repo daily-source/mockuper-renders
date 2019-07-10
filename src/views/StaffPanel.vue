@@ -29,6 +29,20 @@ export default {
     IntroVideo,
     SharedFooter,
   },
+
+  
+  metaInfo() {
+    const description = 'The modern way to help free slaves';
+    const title = 'Virtual Railroad';
+    return {
+      title: 'Staff Panel | Virtual Railroad',
+      meta: [
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', name: 'og:description', content: description },
+      ],
+    };
+  },
 }
 </script>
 
