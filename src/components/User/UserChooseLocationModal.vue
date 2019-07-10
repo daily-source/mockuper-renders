@@ -8,6 +8,7 @@
   >
     <div class='user-choose-location-modal__content' slot='content'>
       <p>After typing address details into the search box, you must choose a result from the dropdown list of results before you click Search. After you Search, the “Use This Location” button will become clickable.</p>
+      <p>Type your location below, choose a result from the dropdown list that appears, click Search and the “Use This” button will become active. Click it to return to Edit Profile with the new location. To keep your old location, click the X to close this view.</p>
       <div class="user-choose-location__map-container">
         <location-chooser 
           submit-button-text='Use this Location'
