@@ -1,5 +1,5 @@
 <template>
-  <div class='station-profile'>
+  <div :class='["station-profile", {"station-profile--edit": edit }]'>
     <div class="container">
       <alert
         type='success'
@@ -532,6 +532,12 @@ export default {
     station: {
       type: Object,
       required: true,
+    },
+
+    edit: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
 

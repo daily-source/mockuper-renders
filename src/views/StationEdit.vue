@@ -1,10 +1,10 @@
 <template>
   <div class="station-edit">
     <app-header />
-    <section class='section'>
-      <div class="container">
-        
-      </div>
+    <section class='station-edit__section section'>
+      <station-profile 
+        :station='station'
+      />
     </section>
     <shared-footer />
   </div>
@@ -15,12 +15,14 @@ import { mapState } from 'vuex'
 
 import AppHeader from 'LocalComponents/AppHeader'
 import SharedFooter from 'Components/Shared/SharedFooter'
+import StationProfile from 'LocalComponents/Station/StationProfile';
 
 export default {
   name: 'StationEdit',
 
   components: {
     AppHeader,
+    StationProfile,
     SharedFooter,
   },
 
@@ -37,3 +39,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.station-edit {
+  &__section {
+    padding-top: 1.625em;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+</style>
