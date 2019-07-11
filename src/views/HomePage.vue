@@ -11,6 +11,7 @@
     <component 
       :is='bannerComponent'
     />
+    <versioned-banner />
     <div class='instructions'>
       <h1 class=' has-text-centered instructions__heading' v-if='$version == 1'>Amuse your friends and raise money for good.</h1>
       <h1 class=' has-text-centered instructions__heading instructions__heading--v2' v-else-if='$version == 2'>Grow a beard or moustache to entertain <br /> your friends and raise money for good.</h1>
@@ -37,6 +38,7 @@ import Vue from "vue"
 import VueMeta from "vue-meta"
 import Loader from 'Components/Shared/Loader'
 import AppHeader from 'Components/GrowOneForGood/AppHeader'
+import VersionedBanner from 'Components/GrowOneForGood/VersionedBanner'
 
 Vue.use(VueMeta)
 
@@ -51,7 +53,8 @@ export default {
     AppHeader: () => import("Components/GrowOneForGood/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
+    SampleForm: () => import("LocalComponents/SampleForm.vue"),
+    VersionedBanner,
   },
 
   /**
@@ -72,12 +75,10 @@ export default {
   data () {
     return {
       headerComponent: null,
+      header: null,
     }
   },
 
-  mounted () {
-    console.log(this.$version)
-  },
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
