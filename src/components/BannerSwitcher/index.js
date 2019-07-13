@@ -16,6 +16,7 @@ const BannerSwitcher = {
     // Register components
     Vue.component('dynamic-banner', DynamicBanner)
     Vue.component('banner-switcher', BannerSwitcherView)
+    
 
     // Register the background images in the store
     registerModule (store, options.bgImages, options.selected)

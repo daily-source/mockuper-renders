@@ -1,13 +1,20 @@
 <template>
   <div class="view-home-page">
-    <app-header 
+    <app-header
+      :class="`header--v${$version}`"
       volunteer-text='Do one now'
       layout='page'
     />
-    <TopMenu></TopMenu>
-    <dynamic-banner />
+    <TopMenu
+      :class="`top-menu--v${$version}`"
+    ></TopMenu>
+    <versioned-component 
+      base-name='AppBanner'
+    />
     <div class='instructions'>
-      <h1 class=' has-text-centered'>Amuse your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading' v-if='$version == 1'>Amuse your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading instructions__heading--v2' v-else-if='$version == 2'>Grow a beard or moustache to entertain <br /> your friends and raise money for good.</h1>
+      <h1 class=' has-text-centered instructions__heading instructions__heading--v3' v-else-if='$version == 3'>Grow a beard to entertain your friends <br />and raise money for good</h1>
       <div class='container'>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -22,13 +29,14 @@
       :show-also-section='false'
     />
     <SharedFooter></SharedFooter>
-    <banner-switcher />
   </div>
 </template>
 
 <script>
 import Vue from "vue"
 import VueMeta from "vue-meta"
+import Loader from 'Components/Shared/Loader'
+import AppHeader from 'Components/GrowOneForGood/AppHeader'
 
 Vue.use(VueMeta)
 
@@ -43,7 +51,7 @@ export default {
     AppHeader: () => import("Components/GrowOneForGood/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
+    SampleForm: () => import("LocalComponents/SampleForm.vue"),
   },
 
   /**
@@ -61,6 +69,13 @@ export default {
     })
   },
 
+  data () {
+    return {
+      headerComponent: null,
+      header: null,
+    }
+  },
+
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
@@ -70,7 +85,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Grow One For Good - v1",
+      title: `Grow One For Good - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -78,14 +93,30 @@ export default {
       ]
     }
   },
+
+  methods: {
+    setHeaderComponent () {
+      const comp = () => import(`Components/GrowOneForGood/AppHeader`)
+
+      this.headerComponent = comp
+    },
+      
+  },
+
   /**
    * Return stored data for this view.
    */
   computed: {
-    home () {
-      return this.$store.state.home
-    }
-  }
+    bannerComponent () {
+      if ((this.$version && this.$version != 2) || this.$version === undefined) {
+        return 'dynamic-banner'
+      }
+
+      const comp = () => import('Components/GrowOneForGood/AppBanner')
+
+      return comp
+    },
+  },
 }
 </script>
 
@@ -93,13 +124,19 @@ export default {
 .instructions {
   padding-top: 3em;
 
-  h1 {
+  &__heading {
+    font-size: 38px;
     padding-bottom: 3rem;
     margin-bottom: 0;
     color: $primary;
+
+    &--v2 {
+      color: $secondary;
+    }
   }
 
   p {
+    font-size: 20px;
     padding-left: 60px;
     padding-right: 60px;
   }
