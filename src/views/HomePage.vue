@@ -8,10 +8,9 @@
     <TopMenu
       :class="`top-menu--v${$version}`"
     ></TopMenu>
-    <component 
-      :is='bannerComponent'
+    <versioned-component 
+      base-name='AppBanner'
     />
-    <versioned-banner />
     <div class='instructions'>
       <h1 class=' has-text-centered instructions__heading' v-if='$version == 1'>Amuse your friends and raise money for good.</h1>
       <h1 class=' has-text-centered instructions__heading instructions__heading--v2' v-else-if='$version == 2'>Grow a beard or moustache to entertain <br /> your friends and raise money for good.</h1>
@@ -38,7 +37,6 @@ import Vue from "vue"
 import VueMeta from "vue-meta"
 import Loader from 'Components/Shared/Loader'
 import AppHeader from 'Components/GrowOneForGood/AppHeader'
-import VersionedBanner from 'Components/GrowOneForGood/VersionedBanner'
 
 Vue.use(VueMeta)
 
@@ -54,7 +52,6 @@ export default {
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
     SampleForm: () => import("LocalComponents/SampleForm.vue"),
-    VersionedBanner,
   },
 
   /**
@@ -88,7 +85,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Grow One For Good - v1",
+      title: `Grow One For Good - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
