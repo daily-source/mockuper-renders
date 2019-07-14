@@ -505,14 +505,8 @@
 import { mapActions, mapState } from 'vuex'
 
 import Avatar from 'LocalComponents/Avatar/Avatar'
-import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
-import MapLegends from 'LocalComponents/MapLegends'
-import GeneralInfo from 'LocalComponents/General/GeneralInfo'
-import HomePageActions from 'LocalComponents/HomePageActions'
 import StationMap from 'LocalComponents/Station/StationMap'
 import Alert from 'LocalComponents/Alert/Alert'
-
-import GeneralMap from 'LocalComponents/General/GeneralMap'
 
 export default {
   name: 'StationProfile',
@@ -532,17 +526,11 @@ export default {
 
   components: {
     Avatar,
-    VirtualRailroadMap,
-    HomePageActions,
-    MapLegends,
     StationMap,
-    GeneralInfo,
-    GeneralMap,
     Alert,
   },
 
   data () {
-    console.log(this.$route)
     return {
       marker: {
         position: {

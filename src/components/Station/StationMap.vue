@@ -1,21 +1,10 @@
 <template>
   <div class="station-map">
-    <!-- <virtual-railroad-map 
-      :users='users'	 
-      :nonprofits='nonprofits'
-      @mapReady='onMapReady'
-      :zoom='initialZoom'
-      :icon-size='26'
-      :stations='[station]'
-      :center='{
-
-      }'
-      :markers='markers'
-      ref='virtual-railroad-map'
-    /> -->
     <general-map 
       :stations='[station]'
       :map-options='mapOptions'
+      :markers='markers'
+      @map:ready='onMapReady'
     />
   </div>
 </template>
@@ -60,7 +49,8 @@ export default {
         center: {
           lat: 27.620995834987486,
           lng: 2.008774238974298,
-        }
+        },
+        theme: 'light',
       },
     }
   },
@@ -95,18 +85,18 @@ export default {
       
       this.$emit('map:ready', this.map, this.google)
 
-			this.featuredUsers.forEach( user => {
-				this.$refs['virtual-railroad-map'].addSelectedUser(user)
-      })
+			// this.featuredUsers.forEach( user => {
+			// 	this.$refs['virtual-railroad-map'].addSelectedUser(user)
+      // })
 
-      this.setZoom()
-      window.addEventListener('resize', this.setZoom)
+      // this.setZoom()
+      // window.addEventListener('resize', this.setZoom)
 
-      setTimeout(() => {
-				this.featuredUsers.forEach(async user => {
-          vmap.animatePolylines(user)
-        })
-      }, 100)
+      // setTimeout(() => {
+			// 	this.featuredUsers.forEach(async user => {
+      //     vmap.animatePolylines(user)
+      //   })
+      // }, 100)
     },
   
     /**

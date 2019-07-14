@@ -29,12 +29,12 @@
       <icon-night-mode 
         :width='33.42'
         :height='33.42'
-        v-if='mapStyle === "light"'
+        v-if='theme === "light"'
       />
       <icon-light-mode 
         :width='33.42'
         :height='33.42'
-        v-if='mapStyle === "dark"'
+        v-if='theme === "dark"'
       />
     </button>
   </div>
@@ -62,6 +62,10 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+
+    theme: {
+      type: String,
     }
   },
 
@@ -74,23 +78,14 @@ export default {
 
   methods: {
     onSwitchThemeClicked () {
-      const style = this.mapStyle === 'light' ? 'dark' : 'light'
-      
-      this.changeMapStyle(style)
+      this.$emit('switchThemeClicked')
     },
 
     ...mapActions({
       showVideo: 'video/showVideo',
       openInfo: 'info/openInfo',
-      changeMapStyle: 'map/changeMapStyle',
     }),
   },
-
-  computed: {
-    ...mapState({
-      mapStyle: state => state.map.mapStyle
-    })
-  }
 }
 </script>
 

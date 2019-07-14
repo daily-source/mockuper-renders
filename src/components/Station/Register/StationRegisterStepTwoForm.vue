@@ -511,9 +511,6 @@ import SlideFade from 'Components/transitions/SlideFade'
 
 import InputFieldWithWarning from 'Components/input/InputFieldWithWarning'
 import TextareaWithWarning from 'Components/input/TextareaWithWarning'
-import MapLegends from 'LocalComponents/MapLegends'
-import GeneralInfo from 'LocalComponents/General/GeneralInfo'
-import HomePageActions from 'LocalComponents/HomePageActions'
 import StationMap from 'LocalComponents/Station/StationMap'
 import StationRegisterLocationChooser from 'LocalComponents/Station/Register/StationRegisterLocationChooser'
 
@@ -524,9 +521,6 @@ export default {
     InputFieldWithWarning,
     TextareaWithWarning,
     StationMap,
-    GeneralInfo,
-    HomePageActions,
-    MapLegends,
     SlideFade,
     StationRegisterLocationChooser,
   },

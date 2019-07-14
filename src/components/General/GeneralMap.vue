@@ -4,7 +4,7 @@
       <virtual-railroad-map 
         :users='users'	 
 				:nonprofits='nonprofits'
-				:markers='markers'
+				:markers='mapMarkers'
 				:zoom='initialZoom'
 				:icon-size='26'
         :stations='stations'
@@ -18,6 +18,8 @@
     />
     <map-actions 
       class='general-map__actions'
+      :theme='mapOptions.theme'
+      @switch-theme-clicked='switchTheme'
     />
     <map-legends 
       :opened='legendsOpened'
@@ -54,13 +56,21 @@ export default {
       },
     },
 
+    markers: {
+      type: Array,
+      required: false,
+      default: () => {
+        return []
+      }
+    },
+
     mapOptions: {
       type: Object,
       required: false,
       default: () => {
         return {}
       }
-    }
+    },
   },
 
 	mixins: [userGeolocation],
@@ -111,6 +121,8 @@ export default {
 
       window.addEventListener('resize', this.setZoom)
 
+      this.$emit('map:ready', map, google)
+
       setTimeout(() => {
 				this.featuredUsers.forEach(async user => {
           vmap.animatePolylines(user)
@@ -136,18 +148,19 @@ export default {
       } else {
         this.map.setZoom(2)
       }
-
-		},
+    },
+    
+    switchTheme() {
+      this.theme = this.theme === 'light' ? 'dark' : 'light'
+    }
   },
 
   computed: {
     /** 
 		 * Custom markers to display on the map
 		 */
-		markers () {
-      let markers = []
+		mapMarkers () {
 			if (this.userLocation) {
-        console.log(this.userLocation)
         
         if (this.userLocation.coords && this.userLocation.coords.latitude &&  this.userLocation.coords.longitude) {
           const userMarker = {
@@ -156,12 +169,11 @@ export default {
               lng: this.userLocation.coords.longitude,
             }
           }
-          markers.push(userMarker)
+          this.markers.push(userMarker)
         }
 			}
 
-
-			return markers
+			return this.markers
 		},
     /**
 		 * Initial zoom of the map

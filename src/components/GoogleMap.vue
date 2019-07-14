@@ -44,7 +44,15 @@ export default {
       type: Boolean,
       required: false,
       default: true,
-    }
+    },
+
+    theme: {
+      type: String,
+      required: false,
+      validator (val) {
+        return ['dark', 'light'].indexOf(val) !== -1
+      }
+    },
   },
 
   data () {
@@ -124,7 +132,7 @@ export default {
     },
     
     mapTypeId () {
-      return this.mapStyle === 'light' ? this.lightMapTypeId : this.darkMapTypeId
+      return this.theme === 'light' ? this.lightMapTypeId : this.darkMapTypeId
     },
   },
 

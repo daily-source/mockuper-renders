@@ -16,6 +16,7 @@
 			class='virtual-railroad-map'
 			@mapClicked='onMapClicked'
 			@mapReady='onMapReady'
+      :theme='theme'
 			:zoom='zoom'
       :center='center'
 		>
@@ -191,6 +192,17 @@ export default {
     center: {
       type: Object,
       required: false,
+    },
+
+    /**
+     * The theme of the map.
+     */
+    theme: {
+      type: String,
+      required: false,
+      validator (val) {
+        return ['dark', 'light'].indexOf(val) !== -1
+      },
     },
 	},
 

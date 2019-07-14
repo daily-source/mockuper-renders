@@ -26,23 +26,15 @@
 <script>
 import AppHeader from 'LocalComponents/AppHeader'
 import SplashLoader from 'LocalComponents/SplashLoader'
-import HomePageActions from 'LocalComponents/HomePageActions'
-import HomeMap from 'LocalComponents/HomeMap'
 import IntroVideo from 'LocalComponents/IntroVideo'
-import GeneralInfo from 'LocalComponents/General/GeneralInfo'
-import MapLegends from 'LocalComponents/MapLegends'
 import GeneralMap from 'LocalComponents/General/GeneralMap'
 
 export default {
   name: 'BaseLayout',
 
   components: {
-    HomeMap,
-    HomePageActions,
     AppHeader,
     IntroVideo,
-    GeneralInfo,
-    MapLegends,
     SplashLoader,
     GeneralMap,
    },

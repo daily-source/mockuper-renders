@@ -55,6 +55,7 @@
           lng: 0.954086738974298,
         }'
         :markers='mapMarkers'
+        :theme='theme'
       >
       </virtual-railroad-map>
       <div class="actions">
@@ -65,12 +66,12 @@
           <icon-night-mode 
             :width='33.42'
             :height='33.42'
-            v-if='mapStyle === "light"'
+            v-if='theme === "light"'
           />
           <icon-light-mode 
             :width='33.42'
             :height='33.42'
-            v-if='mapStyle === "dark"'
+            v-if='theme === "dark"'
           />
         </button>
       </div>
@@ -147,6 +148,7 @@ export default {
       showMapLoadingOverlay: false,
       map: null,
       locationChooserError: null,
+      theme: 'light',
     }
   },
 
@@ -241,9 +243,8 @@ export default {
     },
 
     onSwitchThemeClicked () {
-      const style = this.mapStyle === 'light' ? 'dark' : 'light'
+      this.theme = this.theme === 'light' ? 'dark' : 'light'
       
-      this.changeMapStyle(style)
     },
 
     resetMap () {

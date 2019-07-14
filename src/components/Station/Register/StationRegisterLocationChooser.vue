@@ -34,20 +34,10 @@
       </div>
     </div>
     <div class="station-register-location-chooser__map-section">
-      <general-info 
-        :opened='true'
-        class='station-general-info'
-      />
-      <home-page-actions 
-        :show-play-button='false'
-      />
       <station-map 
         :markers='markers'
         @map:ready='onMapReady'
-      />
-      <map-legends 
-        :opened='opened'
-        @toggle='toggleLegends'
+        class='station-register-location-chooser__map'
       />
     </div>
   </div>
@@ -58,9 +48,6 @@ import userGeolocation from '@/util/userGeolocation'
 import geocoder from '@/util/geocoder'
 
 import Loader from 'Components/Shared/Loader'
-import MapLegends from 'LocalComponents/MapLegends'
-import GeneralInfo from 'LocalComponents/General/GeneralInfo'
-import HomePageActions from 'LocalComponents/HomePageActions'
 import StationMap from 'LocalComponents/Station/StationMap'
 
 export default {
@@ -79,9 +66,6 @@ export default {
   components: {
     Loader,
     StationMap,
-    MapLegends,
-    GeneralInfo,
-    HomePageActions,
   },
 
   data () {
@@ -112,6 +96,8 @@ export default {
     onMapReady (map, google) {
       this.google = google
       this.map = map
+
+      console.log(this.google)
       this.map.setOptions({
         draggableCursor: 'pointer',
       })
@@ -290,6 +276,15 @@ export default {
 
   &__instructions {
     max-width: 665px;
+  }
+}
+</style>
+
+<style lang='scss'>
+.station-register-location-chooser {
+  .general-info {
+    margin-top: 20px;
+    background-color: rgba($primary, .78);
   }
 }
 </style>

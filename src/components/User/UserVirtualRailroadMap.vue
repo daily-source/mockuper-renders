@@ -8,12 +8,12 @@
         <icon-night-mode 
           :width='33.42'
           :height='33.42'
-          v-if='mapStyle === "light"'
+          v-if='theme === "light"'
         />
         <icon-light-mode 
           :width='33.42'
           :height='33.42'
-          v-if='mapStyle === "dark"'
+          v-if='theme === "dark"'
         />
       </button>
     </div>
@@ -24,6 +24,7 @@
 			:iconSize='32'
 			:show-user-popup-windows='false'
       :zoom='2'
+      :theme='theme'
 			@mapReady='onMapReady'
 		/>
     <transition name='loading-fade'>
@@ -72,6 +73,7 @@ export default {
       map: null,
       vmap: null,
       showLoadingOverlay: false,
+      theme: 'dark',
     }
   },
 
@@ -107,9 +109,7 @@ export default {
     },
     
     onSwitchThemeClicked () {
-      const style = this.mapStyle === 'light' ? 'dark' : 'light'
-      
-      this.changeMapStyle(style)
+      this.theme = this.theme === 'light' ? 'dark' : 'light'   
     },
 
     ...mapActions({
