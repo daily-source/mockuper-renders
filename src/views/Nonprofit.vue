@@ -344,3 +344,12 @@ export default {
   }
 }
 </style>
+
+<style lang='scss'>
+.nonprofit-extended {
+  .helper-text {
+    padding-top: .125em !important;
+    padding-bottom: .25em;
+  }
+}
+</style>
