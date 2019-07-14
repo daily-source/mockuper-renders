@@ -88,19 +88,9 @@
       </div>
     </div> -->
     <div class="station-profile__map-section">
-      <general-info 
-        :opened='true'
-        class='station-general-info'
-      />
-      <home-page-actions 
-        :show-play-button='false'
-      />
       <station-map 
         :station='station'
-      />
-      <map-legends 
-        :opened='opened'
-        @toggle='toggleLegends'
+        class='station-profile__map'
       />
     </div>
     <div class="station-profile__alumni-section" v-if='station.establishmentType === "school"'>
@@ -522,8 +512,7 @@ import HomePageActions from 'LocalComponents/HomePageActions'
 import StationMap from 'LocalComponents/Station/StationMap'
 import Alert from 'LocalComponents/Alert/Alert'
 
-import IconNightMode from 'LocalComponents/Icons/IconNightMode'
-import IconLightMode from 'LocalComponents/Icons/IconLightMode'
+import GeneralMap from 'LocalComponents/General/GeneralMap'
 
 export default {
   name: 'StationProfile',
@@ -545,11 +534,10 @@ export default {
     Avatar,
     VirtualRailroadMap,
     HomePageActions,
-    IconNightMode,
-    IconLightMode,
     MapLegends,
     StationMap,
     GeneralInfo,
+    GeneralMap,
     Alert,
   },
 
@@ -884,12 +872,6 @@ export default {
     margin-bottom: .25em !important;
   }
 }
-
-.station-general-info {
-  z-index: 10;
-  margin-top: 20px;
-  background-color: rgba($primary, .78);
-}
 </style>
 
 <style lang='scss'>
@@ -898,6 +880,14 @@ export default {
     object-fit: cover;
     height: 161px;
     // min-height: 177.09px;
+  }
+
+  &__map {
+    .general-info {
+      z-index: 10;
+      margin-top: 20px;
+      background-color: rgba($primary, .78);
+    }
   }
 
   &__description {

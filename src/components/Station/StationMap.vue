@@ -1,6 +1,6 @@
 <template>
   <div class="station-map">
-    <virtual-railroad-map 
+    <!-- <virtual-railroad-map 
       :users='users'	 
       :nonprofits='nonprofits'
       @mapReady='onMapReady'
@@ -8,12 +8,15 @@
       :icon-size='26'
       :stations='[station]'
       :center='{
-        lat: 27.620995834987486,
-        lng: 2.008774238974298,
+
       }'
       :markers='markers'
       ref='virtual-railroad-map'
-    />	
+    /> -->
+    <general-map 
+      :stations='[station]'
+      :map-options='mapOptions'
+    />
   </div>
 </template>
 
@@ -21,6 +24,7 @@
 import { mapState, mapGetters } from 'vuex'
 
 import VirtualRailroadMap from 'LocalComponents/VirtualRailroadMap'
+import GeneralMap from 'LocalComponents/General/GeneralMap'
 
 export default {
   name: 'StationMap',
@@ -45,12 +49,19 @@ export default {
 
   components: {
     VirtualRailroadMap,
+    GeneralMap,
   },
 
   data () {
     return {
       google: null,
-			map: null,
+      map: null,
+      mapOptions: {
+        center: {
+          lat: 27.620995834987486,
+          lng: 2.008774238974298,
+        }
+      },
     }
   },
 
@@ -139,4 +150,3 @@ export default {
 	height: 100%;
 }
 </style>
-

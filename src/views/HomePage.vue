@@ -7,7 +7,7 @@
       :show-extra-contents='false'
       theme='dark'
      />
-     <home-page-actions />
+    <!-- <home-page-actions />
     <general-info 
       :opened='true'
       class='home-general-info'
@@ -18,7 +18,8 @@
     <map-legends 
       :opened='opened'
       @toggle='toggleLegends'
-    />
+    /> -->
+    <general-map />
   </div>
 </template>
 
@@ -30,6 +31,7 @@ import HomeMap from 'LocalComponents/HomeMap'
 import IntroVideo from 'LocalComponents/IntroVideo'
 import GeneralInfo from 'LocalComponents/General/GeneralInfo'
 import MapLegends from 'LocalComponents/MapLegends'
+import GeneralMap from 'LocalComponents/General/GeneralMap'
 
 export default {
   name: 'BaseLayout',
@@ -42,6 +44,7 @@ export default {
     GeneralInfo,
     MapLegends,
     SplashLoader,
+    GeneralMap,
    },
    
    data () {
