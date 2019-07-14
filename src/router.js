@@ -69,7 +69,7 @@ export default new Router({
       component: NonprofitDetails,
     },
     {
-      path: '/nonprofit-directory',
+      path: '/nonprofits',
       name: 'nonprofit-directory',
       component: NonprofitDirectory,
     },
@@ -116,7 +116,7 @@ export default new Router({
       component: UserRegister,
     },
     {
-      path: '/stations-directory',
+      path: '/stations',
       name: 'stations-directory',
       component: StationsDirectory,
     },

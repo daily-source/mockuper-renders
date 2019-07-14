@@ -1,7 +1,7 @@
 {"renderRoutes":
   [
     "/",
-    "/nonprofit-directory",
+    "/nonprofits",
     "/nonprofits/management",
     "/nonprofit-sign-up",
     "/nonprofit-sign-up/step/1",
@@ -27,7 +27,7 @@
     "/user/4/edit",
     "/user/5/edit",
     "/user/6/edit",
-    "/stations-directory",
+    "/stations",
     "/stations/management",
     "/stations/register",
     "/stations/register/step/1",
