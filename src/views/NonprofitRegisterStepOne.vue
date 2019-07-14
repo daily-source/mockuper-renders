@@ -28,12 +28,7 @@
         <nonprofit-directory-with-filter 
           :show-suggest-text='false'
           :standalone='true'
-          :list-item-options='{
-            showDonateButton: false,
-            showLocationsButton: false,
-            showClaimNonprofitButton: true,
-            addLinkToHeadings: true,
-          }'
+          :list-item-options='listItemOptions'
           @search:submit='onFormSubmit'
           @search:rest='onFormReset'
         />        
@@ -66,6 +61,12 @@ export default {
   data () {
     return {
       filterValue: '',
+      listItemOptions: {
+        showDonateButton: false,
+        showLocationsButton: false,
+        showClaimNonprofitButton: true,
+        addLinkToHeadings: true,
+      },
     }
   },
 

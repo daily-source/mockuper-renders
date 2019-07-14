@@ -24,9 +24,7 @@
             v-for='nonprofit in np.nonprofits'
             :key='nonprofit.id'
             :nonprofit='nonprofit'
-            :show-claim-nonprofit-button='showClaimNonprofitButton'
-            :show-donate-button='listItemOptions.showDonateButton'
-            :show-locations-button='listItemOptions.showLocationsButton'
+            v-bind='listItemOptions'
           />
         </div>
         <div 
@@ -47,9 +45,7 @@
                 v-for='nonprofit in nonprofit.nonprofits'
                 :key='nonprofit.id'
                 :nonprofit='nonprofit'
-                :show-claim-nonprofit-button='showClaimNonprofitButton'
-                :show-donate-button='listItemOptions.showDonateButton'
-                :show-locations-button='listItemOptions.showLocationsButton'
+                v-bind='listItemOptions'
               />
             </div>
           </div>
