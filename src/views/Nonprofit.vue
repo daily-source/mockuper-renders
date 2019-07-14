@@ -121,11 +121,12 @@ export default {
     AppHeader: () => import('Components/Loseathon/AppHeader.3.vue'),
     NonprofitHero: () => import('LocalComponents/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
-    DonorsList: () => import('LocalComponents/general/DonorsList.vue'),
+    DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
-    NonprofitAbout: () => import('LocalComponents/nonprofit/NonprofitAbout.vue'),
-    NonprofitFundraisers: () => import('LocalComponents/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
+    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
     AppDescription,
@@ -341,6 +342,15 @@ export default {
         font-size: 1.125rem;
       }
     }
+  }
+}
+</style>
+
+<style lang='scss'>
+.nonprofit-extended {
+  .helper-text {
+    padding-top: .125em !important;
+    padding-bottom: .25em;
   }
 }
 </style>
