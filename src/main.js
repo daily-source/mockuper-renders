@@ -8,6 +8,7 @@ import * as filters from "./xthon-core/lib/util/filters"
 import SmoothScroll from 'Components/plugins/SmoothScroll'
 import BannerSwitcher from 'LocalComponents/BannerSwitcher'
 import VersionSwitcher from '@/plugins/VersionSwitcher'
+import VuePlyr from 'vue-plyr'
 import store from './store';
 
 // You need a specific loader for CSS files
@@ -16,6 +17,7 @@ import 'vue-datetime/dist/vue-datetime.css';
 Vue.config.productionTip = false;
 
 Vue.use(Datetime);
+Vue.use(VuePlyr)
 
 // register global utility filters.
 Object.keys(filters).forEach((key) => {

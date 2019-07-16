@@ -49,8 +49,8 @@
 
 <script>
 import Vue from 'vue';
-import VueMeta from 'vue-meta';
-import AppHeader from 'Components/XthonFresh/AppHeader.vue';
+import VueMeta from 'vue-meta'
+import AppHeader from 'Components/GrowOneForGood/AppHeader.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);
