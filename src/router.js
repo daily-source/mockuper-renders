@@ -18,7 +18,7 @@ const Fundraiser = () => import('@/views/Fundraiser.vue');
 const MyAccount = () => import('@/views/MyAccount.vue');
 const Default404 = () => import('@/views/Default404.vue');
 const CreateFundraiser = () => import('@/views/CreateFundraiser.vue');
-// const NonprofitGeneric = () => import('@/views/NonprofitGeneric.vue');
+const NonprofitGeneric = () => import('@/views/NonprofitGeneric.vue');
 
 export default new Router({
   mode: 'history',
@@ -106,9 +106,10 @@ export default new Router({
       name: 'account',
       component: MyAccount,
     },
-    //   path: '/nonprofit/generic',
-    //   name: 'nonprofit-generic',
-    //   component: NonprofitGeneric,
-    // },
+    {
+      path: '/nonprofit/generic',
+      name: 'nonprofit-generic',
+      component: NonprofitGeneric,
+    },
   ],
 });
