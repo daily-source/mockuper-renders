@@ -6,6 +6,9 @@
       <router-link to="/nonprofit/">Nonprofit</router-link>
     </div>
     <router-view/>
+    <version-switcher 
+      :versions='3'
+    />
   </div>
 </template>
 
@@ -37,11 +40,11 @@
   position: fixed;
   opacity: 0;
   bottom: 40px;
-  left: 20px;
+  right: 20px;
   padding: 10px;
   transition: all 0.2s ease-in-out;
   background-color: rgba(0,0,0,0.8);
-  z-index: 20000;
+  z-index: 10;
   font-size: 16px;
   line-height: 16px;
   a {
