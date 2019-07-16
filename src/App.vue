@@ -7,7 +7,7 @@
     </div>
     <router-view/>
     <version-switcher 
-      :versions='3'
+      :versions='1'
     />
   </div>
 </template>
