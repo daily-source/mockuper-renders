@@ -1,0 +1,28 @@
+.app {
+  h1 {
+    font-size: 2.375em;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 2.125em;
+    margin-bottom: 20px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @include themify($themes) {
+    color: themed('secondary')
+  }
+}
+
+a,
+a:link {
+  @include themify($themes) {
+    color: themed('linkColor');
+  }
+}

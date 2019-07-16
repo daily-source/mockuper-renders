@@ -219,6 +219,11 @@ export default {
   padding-top: 2em;
   padding-bottom: 2em;
 
+  h2 {
+    font-size: 2.125em;
+    line-height: 1.4;
+  }
+
   &__steps {
     display: flex;
     align-items: flex-start;

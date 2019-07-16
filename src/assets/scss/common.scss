@@ -14,3 +14,15 @@
     margin-bottom: 15px;
   }
 }
+
+.nonprofit-fundraisers {
+  $self: &;
+
+  .fundraiser-pledge {
+    &__progress-bar {
+      @include themify($themes) {
+        background: themed('secondary') !important;
+      }
+    }
+  }
+}

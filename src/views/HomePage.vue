@@ -1,9 +1,18 @@
 <template>
   <div class="layout-base">
-		<app-header />
-    <app-banner />
+		<versioned-component 
+      base-name='AppHeader'
+    />
+    <versioned-component 
+      base-name='AppBanner'
+    />
     <section class='section'>
-      <h1 class='has-text-centered has-text-weight-bold'>Lose Weight for a Good Cause</h1>
+      <h1 
+        class='has-text-centered has-text-weight-bold'
+        v-if='$version == 1 || $version == 4'
+      >
+        Lose Weight for a Good Cause
+      </h1>
       <app-description />
     </section>
     <section class='site-content'>
@@ -12,6 +21,7 @@
     <section class='site-sample-nonprofits'>
       <nonprofit-fundraisers
         :fundraisers='fundraisers'
+        class="nonprofit-fundraisers"
       >
         <h2 class='has-text-centered' slot='heading'>Examples of Loseathons</h2>
       </nonprofit-fundraisers>
@@ -26,7 +36,7 @@ import { mapState } from 'vuex'
 import AppHeader from 'Components/Loseathon/AppHeader'
 import AppBanner from 'Components/Loseathon/AppBanner'
 import NonprofitForm from 'LocalComponents/Loseathon/NonprofitForm'
-import NonprofitFundraisers from 'LocalComponents/nonprofit/NonprofitFundraisers'
+import NonprofitFundraisers from 'Components/nonprofit/NonprofitFundraisers'
 import AppDescription from 'LocalComponents/Loseathon/AppDescription'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
@@ -49,7 +59,7 @@ export default {
     const description = 'A Loseathon is similar to a walkathon but instead of walking a certain distance to raise money, a person loses a certain amount of weight';
     const title = 'Raise money while losing weight!';
     return {
-      title: 'Loseathon - v1',
+      title: `Loseathon - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -76,4 +86,7 @@ export default {
     padding-right: 60px;
   }
 }
+</style>
+
+<style lang='scss'>
 </style>

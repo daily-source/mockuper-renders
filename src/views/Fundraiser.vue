@@ -1,5 +1,7 @@
 <template>
-  <div class="fundraiser">
+  <div 
+    :class="`fundraiser fundraiser--v${$version}`"
+  >
     <app-header 
       layout="app"
       volunteer-text='Do one now'  
@@ -153,6 +155,8 @@ export default {
 
 <style lang="scss">
 .fundraiser {
+  $self: &;
+
   background-color: $color-fundraiser-bg;
 
   @include tablet {
@@ -166,6 +170,13 @@ export default {
       padding: 0 50px 20px;
     }
   }
-}
 
+  &--v2 {
+    .fundraiser-pledge {
+      &__progress-bar {
+        background: $color-emphasis;
+      }
+    }
+  }
+}
 </style>

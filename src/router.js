@@ -46,16 +46,17 @@ export default new Router({
       name: 'volunteer',
       component: VolunteerPage,
     },
-		{
-			path: '/nonprofit',
+    {
+      path: '/nonprofit',
+      name: 'nonprofit-general',
+      component: Nonprofit,
+      // redirect: '/explore',
+    },
+    {
+      path: '/nonprofit/:ein',
       name: 'nonprofit',
       component: Nonprofit,
-		},
-		//{
-    //  path: '/nonprofit/:ein',
-    //  name: 'nonprofit',
-    //  component: Nonprofit,
-    //},
+    },
     {
       path: '/nonprofit/:ein/donate',
       name: 'nonprofit/donate',
@@ -68,17 +69,27 @@ export default new Router({
       redirect: '/nonprofit',
     },
     {
+      path: '/nonprofit/generic',
+      name: 'nonprofit-generic',
+      component: NonprofitGeneric,
+    },
+    {
       path: '/fundraiser/1',
       name: 'fundraiser-main',
       redirect: '/fundraiser',
     },
     {
       path: '/fundraiser',
-      name: 'fundraiser',
+      name: 'fundraiser-demo',
       component: Fundraiser,
     },
     {
       path: '/fundraiser/',
+      name: 'fundraiser',
+      component: Fundraiser,
+    },
+    {
+      path: '/fundraiser/:id',
       name: 'fundraiser',
       component: Fundraiser,
     },
