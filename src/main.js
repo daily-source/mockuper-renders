@@ -1,6 +1,7 @@
 import '@babel/polyfill'
 import Datetime from 'vue-datetime';
 import Vue from 'vue';
+import VuePlyr from 'vue-plyr'
 import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
@@ -33,6 +34,7 @@ const bgImages = [
 ]
 
 Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
+Vue.use(VuePlyr)
 
 new Vue({
   router,
