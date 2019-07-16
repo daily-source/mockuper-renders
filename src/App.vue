@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav" class="fake-menu">
       <router-link to="/">Home</router-link> |
-      <router-link to="/fundraiser/254">Fundraiser</router-link> |
-      <router-link to="/nonprofit/237069110">Nonprofit</router-link>
+      <router-link to="/fundraiser/">Fundraiser</router-link> |
+      <router-link to="/nonprofit/">Nonprofit</router-link>
     </div>
     <router-view/>
   </div>
