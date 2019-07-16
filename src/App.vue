@@ -41,7 +41,7 @@
   position: fixed;
   opacity: 0;
   bottom: 40px;
-  left: 20px;
+  right: 20px;
   padding: 10px;
   transition: all 0.2s ease-in-out;
   background-color: rgba(0,0,0,0.8);
