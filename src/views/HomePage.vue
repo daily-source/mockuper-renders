@@ -7,7 +7,8 @@
     <TopMenu></TopMenu>
     <dynamic-banner />
     <div class='instructions'>
-      <h1 class='has-text-centered'>Quit Something to Raise Money for Good</h1>
+      <h1 class='has-text-centered' v-if='$version == 1'>Quit Something to Raise Money for Good</h1>
+      <h1 class='has-text-centered' v-else>Improve Your Life While Raising Money for Good</h1>
       <div class='container'>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -27,6 +28,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import Vue from "vue"
 import VueMeta from "vue-meta"
 
@@ -45,6 +48,13 @@ export default {
     TopMenu: () => import("Components/general/TopMenu.vue"),
     SampleForm: () => import("LocalComponents/SampleForm.vue")
   },
+
+  methods: {
+    ...mapActions({
+      switchBannerImage: 'switchBannerImage'
+    }),
+  },
+
 
   /**
    * Fetch data and store it just before entering the view.
@@ -70,7 +80,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Quitathon - v1",
+      title: `Quitathon - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -85,7 +95,15 @@ export default {
     home () {
       return this.$store.state.home
     }
-  }
+  },
+
+  watch: {
+    $version (val) {
+      if (val == 2) {
+        this.switchBannerImage(1)
+      }
+    },
+  },
 }
 </script>
 

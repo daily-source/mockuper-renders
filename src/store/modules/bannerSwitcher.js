@@ -21,7 +21,7 @@ const getters = {
 };
 
 const actions = {
-  switchBannerImage({ commit }, index) {
+switchBannerImage({ commit }, index) {
     commit({
       type: 'changeCurrentBannerImage',
       index,
