@@ -17,7 +17,7 @@
     "vue-no-ssr": "^0.2.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "xthon-core": "github:dailysourceorg/xthon-core#0.0.37"
+    "xthon-core": "github:dailysourceorg/xthon-core#0.0.43"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
