@@ -7,7 +7,9 @@
     <TopMenu></TopMenu>
     <dynamic-banner />
     <div class='instructions'>
-      <h1 class="has-text-centered">Go On A Thankfulness Spree For Good</h1>
+      <h1 class="has-text-centered" v-if='$version == 1'>Go On A Thankfulness Spree For Good</h1>
+      <h1 class="has-text-centered" v-else-if='$version == 2'>Be Thankful And Help The World</h1>
+
       <div class='container'>
         <p>
          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Vue from "vue"
 import VueMeta from "vue-meta"
 
@@ -61,6 +64,12 @@ export default {
     })
   },
 
+  methods: {
+    ...mapActions({
+      switchBannerImage: 'switchBannerImage',
+    })
+  },
+
   /**
    * This uses vue-meta in order to render the tags in the page. For the home page, it uses
    * the default values plus a custom description and title. The og:image property is defined
@@ -85,7 +94,15 @@ export default {
     home () {
       return this.$store.state.home
     }
-  }
+  },
+
+  watch: {
+    $version (val) {
+      if (val == 2) {
+        this.switchBannerImage(2)
+      }
+    },
+  },
 }
 </script>
 
