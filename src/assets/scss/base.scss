@@ -87,6 +87,9 @@ $family-primary: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxyge
 $font-primary: $family-primary;
 $font-secondary: $family-primary;
 
+// Theming
+// @import 'themes';
+
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
 @import '~bulma/sass/utilities/initial-variables';

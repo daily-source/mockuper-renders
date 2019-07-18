@@ -28,6 +28,7 @@ html {
       border-right: 1px solid #777
     }
   }
+<<<<<<< HEAD
 
   a { color: #fff; }
 }
@@ -46,3 +47,12 @@ html {
 .button-gradient-secondary {
   background-image: $gradient-secondary;
 }
+=======
+}
+
+html,
+body,
+html body {
+  font-size: 17px;
+}
+>>>>>>> library-xthon-fresh-template
