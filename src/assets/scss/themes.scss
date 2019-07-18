@@ -3,7 +3,7 @@ $themes: (
     primary: $primary,
     secondary: $secondary,
     headingColor: $secondary,
-    linkColor: $primary,
+    linkColor: $secondary,
     btnPrimaryBg: $primary,
     btnPrimaryColor: #fff,
     btnSecondaryBg: $secondary,
@@ -13,26 +13,10 @@ $themes: (
     primary: $secondary,
     secondary: $primary,
     headingColor: $primary,
-    linkColor: $secondary,
+    linkColor: $primary,
     btnPrimaryBg: $secondary,
     btnPrimaryColor: #fff,
     btnSecondaryBg: $primary,
     btnSecondaryColor: #fff,
   )
 );
-
-@mixin themify($themes: $themes) {
-  @each $theme, $map in $themes {
-
-    .theme-#{$theme} & {
-      $theme-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
-      }
-
-      @content;
-      $theme-map: null !global;
-    }
-  }
-}

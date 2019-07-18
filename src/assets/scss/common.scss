@@ -15,6 +15,15 @@
   }
 }
 
-h1 {
-  color: $primary;
+.navbar {
+  min-height: 45px !important;
+  @include themify {
+    background-color: themed('primary') !important;
+  }
+}
+
+html,
+body,
+html body {
+  font-size: 17px;
 }

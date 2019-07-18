@@ -11,7 +11,7 @@
     </div>
     <router-view/>
     <version-switcher 
-      :versions='1'
+      :versions='2'
     />
   </div>
 </template>
