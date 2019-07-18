@@ -21,16 +21,8 @@ html body {
   }
 }
 
-.header__inner {
-  a {
-    color: #f58634 !important;
-  }
-}
-
-.header__wrapper {
-  border-bottom-color: $primary !important;
-}
-
 .navbar {
-  background-color: $primary !important;
+  @include themify {
+    background-color: themed('navbarBackgroundColor') !important;
+  }
 }

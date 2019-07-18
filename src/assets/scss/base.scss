@@ -65,6 +65,8 @@ $primary: #0181CA;
 $secondary: #FED51B;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
+$light-blue: #02a5eb;
+$orange: #f58634;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
 // Fonts
@@ -79,7 +81,7 @@ $btn-border-radius: 0;
 $success: $color-emphasis;
 
 // Theming
-// @import 'themes';
+@import 'themes';
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';

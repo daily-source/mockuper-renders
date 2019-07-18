@@ -2,14 +2,16 @@ $themes: (
   main: (
     primary: $primary,
     secondary: $secondary,
-    headingColor: $secondary,
+    headingColor: $light-blue,
     linkColor: $primary,
     btnPrimaryBg: $primary,
     btnPrimaryColor: #fff,
     btnSecondaryBg: $secondary,
     btnSecondaryColor: #fff,
+    navbarBackgroundColor: $primary,
+    navbarLinkColor: $orange,
   ),
-  inverse: (
+  secondary: (
     primary: $secondary,
     secondary: $primary,
     headingColor: $primary,
@@ -18,5 +20,7 @@ $themes: (
     btnPrimaryColor: #fff,
     btnSecondaryBg: $primary,
     btnSecondaryColor: #fff,
+    navbarBackgroundColor: $light-blue,
+    navbarLinkColor: $primary,
   )
 );
