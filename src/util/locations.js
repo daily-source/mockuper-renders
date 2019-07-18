@@ -21,4 +21,13 @@ export const extractUSLocationFromGeocodedLocation = (geocodedLocation) => {
   }
 }
 
+/**
+ * Gets a country object from a Geocoded Location
+ * 
+ * @param {Object} geocodedLocation 
+ */
+export function extractCountryFromGeocodedLocation (geocodedLocation) {
+  return geocodedLocation.address_components.find(component => component.types.indexOf('country') !== -1)
+}
+
 

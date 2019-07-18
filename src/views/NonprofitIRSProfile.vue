@@ -49,6 +49,9 @@
         </p>
       </div>
     </section>
+    <!-- <gmap-map 
+      :center='{lat: 0, lng: 0}'
+    /> -->
     <shared-footer />
   </div>
 </template>
