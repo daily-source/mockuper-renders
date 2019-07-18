@@ -1,3 +1,9 @@
+html,
+body,
+html body {
+  font-size: 17px;
+}
+
 .comment-item {
   &__avatar {
     border-radius: 100%;
@@ -27,13 +33,4 @@
 
 .navbar {
   background-color: $primary !important;
-}
-
-
-html,
-body {
-  h1,
-  h2 {
-    color: #07a7ec !important;
-  }
 }
