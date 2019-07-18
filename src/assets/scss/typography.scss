@@ -10,15 +10,15 @@
   }
 }
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5 {
-//   @include themify($themes) {
-//     color: themed('secondary')
-//   }
-// }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @include themify($themes) {
+    color: themed('secondary')
+  }
+}
 
 // a,
 // a:link {

@@ -22,7 +22,9 @@
 }
 
 .navbar {
-  background-color: $primary !important;
+  @include themify {
+    background-color: themed('primary') !important;
+  }
 }
 
 html,
