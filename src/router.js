@@ -36,7 +36,6 @@ export default new Router({
       name: 'home',
       component: HomePage,
     },
-<<<<<<< HEAD
     // {
     //   path: '/explore',
     //   name: 'explore',
@@ -98,69 +97,6 @@ export default new Router({
     //   name: 'fundraiser/donate',
     //   component: Fundraiser,
     // },
-=======
-    {
-      path: '/explore',
-      name: 'explore',
-      component: ExplorePage,
-    },
-    {
-      path: '/volunteer',
-      name: 'volunteer',
-      component: VolunteerPage,
-    },
-    {
-      path: '/nonprofit',
-      name: 'nonprofit-general',
-      component: Nonprofit,
-      // redirect: '/explore',
-    },
-    {
-      path: '/nonprofit/:ein',
-      name: 'nonprofit',
-      component: Nonprofit,
-    },
-    {
-      path: '/nonprofit/:ein/donate',
-      name: 'nonprofit/donate',
-      component: Nonprofit,
-    },
-    {
-      path: '/nonprofit/generic',
-      name: 'nonprofit-generic',
-      component: NonprofitGeneric,
-    },
-    {
-      path: '/nonprofit/1',
-      name: 'nonprofit-main',
-      redirect: '/nonprofit',
-    },
-    {
-      path: '/fundraiser/1',
-      name: 'fundraiser-main',
-      redirect: '/fundraiser',
-    },
-    {
-      path: '/fundraiser',
-      name: 'fundraiser-demo',
-      component: Fundraiser,
-    },
-    {
-      path: '/fundraiser/create',
-      name: 'fundraiser/create',
-      component: CreateFundraiser,
-    },
-    {
-      path: '/fundraiser/:id',
-      name: 'fundraiser',
-      component: Fundraiser,
-    },
-    {
-      path: '/fundraiser/:id/donate',
-      name: 'fundraiser/donate',
-      component: Fundraiser,
-    },
->>>>>>> library-xthon-fresh-template
     {
       path: '/404',
       name: 'Default',
