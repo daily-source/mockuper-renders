@@ -1,22 +1,24 @@
 $themes: (
-  main: (
+  v1: (
     primary: $primary,
     secondary: $secondary,
-    headingColor: $secondary,
-    linkColor: $primary,
-    btnPrimaryBg: $primary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $secondary,
-    btnSecondaryColor: #fff,
+    // headingColor: $secondary,
+    // linkColor: $primary,
+    // btnPrimaryBg: $primary,
+    // btnPrimaryColor: #fff,
+    // btnSecondaryBg: $secondary,
+    // btnSecondaryColor: #fff,
+    navbarLinkColor: $secondary
   ),
-  inverse: (
+  v2: (
     primary: $secondary,
     secondary: $primary,
-    headingColor: $primary,
-    linkColor: $secondary,
-    btnPrimaryBg: $secondary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $primary,
-    btnSecondaryColor: #fff,
+    // headingColor: $primary,
+    // linkColor: $secondary,
+    // btnPrimaryBg: $secondary,
+    // btnPrimaryColor: #fff,
+    // btnSecondaryBg: $primary,
+    navbarLinkColor: $color-emphasis-alt,
+    
   )
 );

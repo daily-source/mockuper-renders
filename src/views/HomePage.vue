@@ -1,6 +1,7 @@
 <template>
   <div class="view-home-page">
-    <app-header 
+    <versioned-component 
+      base-name='AppHeader'
       volunteer-text='Support us'
       layout='page'
     />
@@ -10,11 +11,26 @@
         Get closer to divine love, <br /> peace and goodness
       </h1>
     </dynamic-banner>
-    <section class="section intro">
-        <p class='has-text-centered'>We offer churches activities and classes to reach casual churchgoers who lack a full spiritual life, and non-churchgoers who think churches have little to offer. We give them useful tools to become better people, connect with God and develop spiritual skills that bring more love and goodness to themselves and the world. Each logo below goes to a website and a class or activity that churches can use for free. Classes provide useful information plus exercises to help people put the learning into practice. Scroll to the end of this page for more information.</p>
+    <section 
+      class="section intro"
+      v-if='showIntro'
+    >
+        <p 
+          class='has-text-centered intro__text'
+          v-if='$version != 4'
+        >
+          We offer churches activities and classes to reach casual churchgoers who lack a full spiritual life, and non-churchgoers who think churches have little to offer. We give them useful tools to become better people, connect with God and develop spiritual skills that bring more love and goodness to themselves and the world. Each logo below goes to a website and a class or activity that churches can use for free. Classes provide useful information plus exercises to help people put the learning into practice. Scroll to the end of this page for more information.
+        </p>
+        <p 
+          class='has-text-centered intro__text intro__text--v4'
+          v-else
+        >
+          Clicking on most of the logos below will lead to both a website and a class or activity on that topic. Any church can offer the class or activity to its members using our materials that are free to download and use. Most classes will offer useful information followed by silent interior exercises to help participants learn how to put the information to use. Often participants will be given the opportunity to open up to God’s presence and will, and engage in prayer with God about what the new learning means for their life.
+        </p>
     </section>
     <section class="logo-grid-wrapper">
-      <logo-grid 
+      <versioned-component 
+        base-name='LogoGrid'
         v-for='site in sites'
         :key='site.slug'
         :logos='site.logos'
@@ -145,7 +161,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Bridges to God - v1",
+      title: `Bridges to God - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -159,6 +175,10 @@ export default {
   computed: {
     home () {
       return this.$store.state.home
+    },
+
+    showIntro () {
+      return [1, 4, 5].indexOf(parseInt(this.$version)) !== -1
     },
 
     ...mapState({
@@ -182,11 +202,15 @@ export default {
   padding-top: 2.625rem;
   padding-bottom: .25rem;
 
-  p {
+  &__text {
     margin-bottom: 0;
     max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
+
+    &--v4 {
+      max-width: 1000px;
+    }
   }
 }
 

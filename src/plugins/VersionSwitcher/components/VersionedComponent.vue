@@ -2,6 +2,7 @@
   <component 
     :is='component'
     v-if='component'
+    v-bind='$attrs'
   />
 </template>
 
@@ -9,6 +10,8 @@
 import { setImmediate } from 'timers';
 export default {
   name: 'VersionedComponent',
+
+  inheritAttrs: false,
 
   props: {
     baseName: {
@@ -23,6 +26,10 @@ export default {
     }
   },
 
+  mounted () {
+    console.log(this.$attrs)
+  },
+
   methods: {
     setComponent () {
       this.component = () => this.loadComponent()
@@ -32,7 +39,7 @@ export default {
       const componentName = parseInt(this.$version) === 1 ? this.baseName : `${this.baseName}.${this.$version}`
 
       try {        
-        return await import(`Components/XthonFresh/${componentName}`)
+        return await import(`Components/BridgesToGod/${componentName}`)
       } catch {
         return await this.findBaseComponent()
       }
@@ -40,7 +47,7 @@ export default {
 
     async findBaseComponent () {
       try {
-        const comp = await import(`Components/XthonFresh/${this.baseName}`)
+        const comp = await import(`Components/BridgesToGod/${this.baseName}`)
 
         return comp
       } catch {
