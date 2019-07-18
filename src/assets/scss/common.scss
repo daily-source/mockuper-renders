@@ -25,6 +25,8 @@
   background-color: $primary !important;
 }
 
-h1 {
-  color: $secondary !important;
+html,
+body,
+html body {
+  font-size: 17px;
 }
