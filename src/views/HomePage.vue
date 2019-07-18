@@ -8,7 +8,8 @@
     <app-banner />
     <div class='instructions'>
       <div class='container'>
-        <h1 class='has-text-centered'>Donate Money As Part of Your Vacation</h1>
+        <h1 class='has-text-centered' v-if='$verion == 1'>Donate Money As Part of Your Vacation</h1>
+        <h1 class='has-text-centered' v-else-if='$verion == 2'>Do a Vacation That Generates Money for Charity</h1>
         <p>
           WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
         </p>
