@@ -66,6 +66,7 @@ export default {
 
     theme: {
       type: String,
+      required: true,
     }
   },
 
