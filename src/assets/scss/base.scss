@@ -77,6 +77,9 @@ $btn-border-radius: 0;
 // Override Bulma variables here
 $success: $color-emphasis;
 
+// Theming
+// @import 'themes';
+
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
 @import '~bulma/sass/utilities/initial-variables';
