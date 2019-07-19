@@ -15,7 +15,11 @@
   }
 }
 
-html {
+html,
+body,
+html body {
+  font-size: 17px;
+
   h1 {
     color: $secondary !important;
   }
