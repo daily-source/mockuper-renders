@@ -170,8 +170,8 @@ export default new Vuex.Store({
         validated: true,
         data: {
           name: 'OXFAM AMERICA',
-          hero: `${baseUrl}img/nonoprofit-base-hero-oxfam.jpg`,
-          default_hero: `${baseUrl}img/nonoprofit-base-hero.jpg`,
+          hero: `${baseUrl}img/nonprofit-base-hero-oxfam.jpg`,
+          default_hero: `${baseUrl}img/nonprofit-base-hero.jpg`,
           about: 'We are an international confederation of 17 like-minded charitable organizations working together to bring about lasting solutions to poverty and injustice. We work with partners around the world to make a difference in the lives of people in need.',
           slogan: '',
           website: 'https://www.oxfam.org',
@@ -232,20 +232,20 @@ export default new Vuex.Store({
           'NbpRu-yzNfs',
         ]
       },
-      // data: {
-      //   media: [
-      //     `${baseUrl}img/fundraiser-hero-3x2.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-1.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-1x1.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-2.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-4.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-4x3.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-5.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-9x16.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-16x9.jpg`,
-      //     { id: '10', type: 'video', src: 'NbpRu-yzNfs' },
-      //   ],
-      // },
+      data: {
+        media: [
+          `${baseUrl}img/fundraiser-hero-3x2.jpg`,
+          `${baseUrl}img/fundraiser-hero-1.jpg`,
+          `${baseUrl}img/fundraiser-hero-1x1.jpg`,
+          `${baseUrl}img/fundraiser-hero-2.jpg`,
+          `${baseUrl}img/fundraiser-hero-4.jpg`,
+          `${baseUrl}img/fundraiser-hero-4x3.jpg`,
+          `${baseUrl}img/fundraiser-hero-5.jpg`,
+          `${baseUrl}img/fundraiser-hero-9x16.jpg`,
+          `${baseUrl}img/fundraiser-hero-16x9.jpg`,
+          { id: '10', type: 'video', src: 'NbpRu-yzNfs' },
+        ],
+      },
       participant: {
         name: 'Joan',
         fullname: 'Joan Engelman',
