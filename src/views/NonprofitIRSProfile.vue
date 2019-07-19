@@ -103,18 +103,6 @@ export default {
 
   methods: {
     async fetchNonprofitProfile (ein) {
-      // const res = await fetch(`${IRSSearchAPI}/nonprofits/${this.ein}`)
-      
-      // const resJson = await res.json()
-
-      // this.nonprofit = {
-      //   data: {
-      //     name: resJson[0].NAME
-      //   },
-      //   ...resJson[0],
-      //   NTEE_CD: resJson[0].NTEE_CD && resJson[0].NTEE_CD !== '0' ? resJson[0].NTEE_CD : '-',
-      //   ACTIVITY: resJson[0].ACTIVITY && resJson[0].ACTIVITY !== '0' ? resJson[0].ACTIVITY : '-',
-      // }
         const np = await getNonprofit(ein)
 
         if (np) {
