@@ -14,4 +14,16 @@ body {
 
 a.navbar-item:hover {
   background-color: transparent;
+.update__content {
+  br {
+    content: '';
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
+html,
+body,
+html body {
+  font-size: 17px;
 }
