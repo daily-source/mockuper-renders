@@ -1,0 +1,22 @@
+$themes: (
+  main: (
+    primary: $primary,
+    secondary: $secondary,
+    headingColor: $secondary,
+    linkColor: $primary,
+    btnPrimaryBg: $primary,
+    btnPrimaryColor: #fff,
+    btnSecondaryBg: $secondary,
+    btnSecondaryColor: #fff,
+  ),
+  inverse: (
+    primary: $secondary,
+    secondary: $primary,
+    headingColor: $primary,
+    linkColor: $secondary,
+    btnPrimaryBg: $secondary,
+    btnPrimaryColor: #fff,
+    btnSecondaryBg: $primary,
+    btnSecondaryColor: #fff,
+  )
+);
