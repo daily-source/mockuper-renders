@@ -95,7 +95,7 @@
             Share
           </div>
           <div class="nonprofit-hero__cta-manage">
-            <a @click="enableEdition()" class="unselectable" v-if="!editing">Manage this nonprofit</a>
+            <a @click="enableEdition()" class="unselectable" v-if="!editing">Claim this nonprofit</a>
             <a @click="closeEdition()" class="unselectable" v-if="editing">Close edition</a>
           </div>
         </div>

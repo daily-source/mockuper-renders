@@ -1,10 +1,20 @@
 <template>
   <div id="banner-switcher">
     <button class="btn-trigger button is-primary" @click="toggleSwitcher()" v-if="!open">
-      <i class="fas fa-cog"></i>
+      <icon 
+        :iconwidth='30'
+        :iconheight='30'
+        icon='photo'
+        color='#fff'
+      />
     </button>
     <button class="btn-trigger button is-primary" @click="toggleSwitcher()" v-if="open">
-      <i class="fas fa-times"></i>
+      <icon 
+        :iconheight='20'
+        :iconwidth='20'
+        icon='times'
+        color='#fff'
+      />
     </button>
     <div id="banner-overlay" :class="['fade', {'d-none': overlayHideTrigger, 'show': overlayShowTrigger }]">
       <div class="container">
@@ -34,8 +44,14 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import Icon from 'Components/general/Icons'
+
 export default {
   name: 'BannerSwitcherView',
+
+  components: {
+    Icon,
+  },
 
   data() {
     return {
@@ -106,7 +122,7 @@ export default {
   #banner-switcher {
     position: fixed;
     bottom: 3%;
-    right: 5%;
+    right: 7%;
     z-index: 9999;
 
     .btn-trigger  {
