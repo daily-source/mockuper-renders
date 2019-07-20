@@ -1,12 +1,14 @@
 import '@babel/polyfill'
 import Datetime from 'vue-datetime';
 import Vue from 'vue';
+import VuePlyr from 'vue-plyr'
 import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
 import * as filters from "./xthon-core/lib/util/filters"
 import SmoothScroll from 'Components/plugins/SmoothScroll'
 import BannerSwitcher from 'LocalComponents/BannerSwitcher'
+import VersionSwitcher from '@/plugins/VersionSwitcher'
 import store from './store';
 
 // You need a specific loader for CSS files
@@ -22,6 +24,7 @@ Object.keys(filters).forEach((key) => {
 });
 
 Vue.use(SmoothScroll);
+Vue.use(VuePlyr)
 
 const bgImages = [
   'banner-photo-1.jpg',
@@ -30,7 +33,12 @@ const bgImages = [
   'banner-photo-4.png',
 ]
 
+<<<<<<< HEAD
 Vue.use(BannerSwitcher, store, {bgImages, selected: 2})
+=======
+Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
+Vue.use(VersionSwitcher, store)
+>>>>>>> library-xthon-fresh-template
 
 new Vue({
   router,
