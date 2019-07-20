@@ -33,7 +33,7 @@ const bgImages = [
 ]
 
 Vue.use(BannerSwitcher, store, {bgImages, selected: 2})
-Vue.use(VersionSwitcher, store)
+Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
 
 new Vue({
   router,
