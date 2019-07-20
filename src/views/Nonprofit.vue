@@ -134,7 +134,7 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/general/AppHeader.vue'),
+    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
@@ -356,6 +356,15 @@ export default {
         font-size: 1.125rem;
       }
     }
+  }
+}
+</style>
+
+<style lang='scss'>
+.nonprofit-extended {
+  .helper-text {
+    padding-top: .125em !important;
+    padding-bottom: .25em;
   }
 }
 </style>
