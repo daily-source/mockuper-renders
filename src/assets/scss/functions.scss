@@ -2,3 +2,7 @@
 @function enlarge($size, $multiplier: 1.2) {
   @return $size * $multiplier;
 }
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
