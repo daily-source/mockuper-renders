@@ -60,6 +60,7 @@ export default {
       darkMapTypeId: 'virtual-railroad-dark',
       lightMapTypeId: 'virtual-railroad-light',
       map: null,
+      showZoom: true,
     }
   },
 
@@ -71,7 +72,13 @@ export default {
       this.map = map
 			this.map.mapTypes.set(this.lightMapTypeId, this.lightMapType)
 			this.map.mapTypes.set(this.darkMapTypeId, this.darkMapType)
-			this.$emit('mapReady', this.map, this.google)
+      this.$emit('mapReady', this.map, this.google)
+
+      this.checkIfZoomShouldShow()
+      
+      window.addEventListener('resize', () => {
+        this.checkIfZoomShouldShow()
+      })
 		})
   },
 
@@ -86,6 +93,15 @@ export default {
     onDragEnd () {
       const position = this.map.getCenter();
       // console.log(`Lat: ${position.lat()}, Lng: ${position.lng()}`);
+    },
+
+    checkIfZoomShouldShow () {
+      if (window.innerWidth <= 768) {
+        this.showZoom = false
+        return
+      }
+
+      this.showZoom = true
     },
   },
 
@@ -118,16 +134,15 @@ export default {
 		 * TODO: Make options as a prop and then compute the mapoptions using default.
 		 */
 		mapOptions () {
-      console.log(google.maps.ControlPosition.RIGHT_CENTER)
 			return {
 				mapTypeControl: false,
 				panControl: false,
         streetViewControl: false,
         fullscreenControl: false,
+        zoomControl: this.showZoom,
 				zoomControlOptions: {
           style: google.maps.ZoomControlStyle.SMALL,
-          // position: google.maps.ControlPosition.RIGHT_CENTER,
-				}
+        },
 			}
     },
     

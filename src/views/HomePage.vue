@@ -108,3 +108,12 @@ header {
   z-index: 10;
 }
 </style>
+
+<style lang='scss'>
+.home-page {
+  .header__contents {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+</style>

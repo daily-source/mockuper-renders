@@ -14,6 +14,7 @@
       />
     </div>
     <general-info 
+      class='general-map__info'
       :opened='alertOpened'    
     />
     <map-actions 
@@ -204,15 +205,20 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
+
+  &__info {
+    z-index: 20;
+  }
   
   &__actions {
     position: absolute;
-    top: 28%;
-    right: 2%;
+    top: 0;
+    right: 1%;
     z-index: 2;
 
     @include tablet {
       top: 10%;
+      right: 2%;
     }
   }
 }
