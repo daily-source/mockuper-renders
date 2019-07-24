@@ -26,7 +26,7 @@
 
 <script>
 import SharedHeader from 'Components/Shared/SharedHeader.vue';
-import AppBanner from 'Components/ForThePoor/AppBanner.2.vue';
+import AppBanner from 'Components/ForThePoor/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue'
 import RaiseAwarenessGrid from 'Components/ForThePoor/RaiseAwarenessGrid'
 import RaiseMoneyGrid from 'Components/ForThePoor/RaiseMoneyGrid.vue';
@@ -48,8 +48,13 @@ export default {
   metaInfo() {
     const description = 'See many ways to help the poorest half of the peopls.';
     const title = 'For the Poor!';
+
+    const siteTitle = process.env.NODE_ENV === 'development' ?
+      `For The Poor - v${this.$version}` :
+      'For the Poor - Home'
+
     return {
-      title: 'For the Poor - Home',
+      title: siteTitle,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -69,13 +74,15 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  .home__main-heading {
+.home {
+  &__main-heading {
     max-width: 730px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.875rem;
+    font-size: 2.375rem;
     font-family: $font-family-base;
     line-height: 45px;
+    line-height: 1.5;
     color: $primary;
     margin-bottom: 0;
 
@@ -84,16 +91,17 @@ export default {
     }
   }
 
-  .home__sub-heading {
+  &__sub-heading {
     color: #4a4a4a;
     font-size: 1.5rem;
     font-weight: 400 !important;
     padding-bottom: 3rem;
-    font-family: 'Poppins';
+    font-family: $font-primary;
     margin-bottom: 0;
   }
 
-  .home .grid-section {
+  .grid-section {
     margin-bottom: 3rem;
   }
+}
 </style>
