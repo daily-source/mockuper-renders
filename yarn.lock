@@ -5489,6 +5489,11 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+javascript-natural-sort@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
+  integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
+
 javascript-stringify@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-1.6.0.tgz#142d111f3a6e3dae8f4a9afd77d45855b5a9cce3"
@@ -10346,9 +10351,9 @@ xtend@^4.0.0, xtend@~4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-"xthon-core@github:dailysourceorg/xthon-core#0.0.43":
+"xthon-core@github:dailysourceorg/xthon-core#0.0.44":
   version "0.0.42"
-  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#715be86aa25c1b2caa278aa4eeace1b8d5157a9a"
+  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#cc30744acede9738f97cf6da07331509d7498400"
   dependencies:
     array-to-tree "^3.3.0"
     axios "^0.18.0"
@@ -10364,6 +10369,7 @@ xtend@^4.0.0, xtend@~4.0.1:
     flickity "^2.1.1"
     gsap "^2.1.2"
     intersection-observer "^0.5.0"
+    javascript-natural-sort "^0.7.1"
     javascript-time-ago "^1.0.30"
     json-server "^0.12.2"
     lodash "^4.17.10"
