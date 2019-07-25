@@ -1,7 +1,7 @@
 <template>
   <div 
     id="app" 
-    :class='`app theme-v${$version}`'
+    :class='`app app-v${$version}  theme-v${$version}`'
   >
     <div id="nav" class="fake-menu">
       <router-link to="/">Home</router-link> |

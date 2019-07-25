@@ -6,11 +6,9 @@
       layout='page'
     />
     <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>
-        Get closer to divine love, <br /> peace and goodness
-      </h1>
-    </dynamic-banner>
+    <versioned-component 
+      base-name='AppBanner'
+    />
     <section 
       class="section intro"
       v-if='showIntro'
@@ -38,7 +36,10 @@
         :slug='site.slug'
       />
     </section>
-    <section class='section more-info'>
+    <section 
+      class='section more-info'
+      v-if='$version == 1 || $version == 5'
+    >
       <div class="container">
         <h2 class='has-text-centered has-text-weight-bold'>More Information</h2>
         <p>
@@ -160,6 +161,7 @@ export default {
   metaInfo () {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
+
     return {
       title: `Bridges to God - v${this.$version}`,
       meta: [
@@ -182,7 +184,13 @@ export default {
     },
 
     ...mapState({
-      sites: state => state.sites.data,
+      sites (state) {
+        const v = `v${this.$version}`
+
+        if (state.sites.versions[v]) return state.sites.versions[v]
+        
+        return state.sites.versions.v1
+      }
     })
   }
 }
