@@ -46,3 +46,9 @@ html {
 .button-gradient-secondary {
   background-image: $gradient-secondary;
 }
+
+html,
+body,
+html body {
+  font-size: 17px;
+}
