@@ -33,12 +33,8 @@ const bgImages = [
   'banner-photo-4.png',
 ]
 
-<<<<<<< HEAD
 Vue.use(BannerSwitcher, store, {bgImages, selected: 2})
-=======
-Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
 Vue.use(VersionSwitcher, store)
->>>>>>> library-xthon-fresh-template
 
 new Vue({
   router,
