@@ -1,18 +1,20 @@
 <template>
   <div class="layout-base">
-    <app-header />
+    <versioned-component 
+      base-name='AppHeader'
+    />
+    <versioned-component 
+      base-name='AppBanner'
+    />
     <app-banner />
-    <NonprofitForm :enable-nonprofit-search="true"></NonprofitForm>
+    <versioned-component 
+      base-name='NonprofitForm'
+    />
     <shared-footer />
   </div>
 </template>
 
 <script>
-import AppHeader from 'Components/RuleYourWorld/AppHeader'
-import AppBanner from 'Components/RuleYourWorld/AppBanner'
-import NonprofitForm from 'Components/RuleYourWorld/NonprofitForm'
-import SharedFooter from 'Components/Shared/SharedFooter'
-
 export default {
   name: "nonprofit",
   /**
@@ -20,10 +22,7 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppHeader,
-    AppBanner,
-    NonprofitForm,
-    SharedFooter,
+    SharedFooter: () => import('Components/Shared/SharedFooter')
   },
 
   /**
@@ -35,7 +34,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: 'Home - v1',
+      title: `Home - v${this.$version}`,
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },

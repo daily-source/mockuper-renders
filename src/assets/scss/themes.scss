@@ -1,22 +1,14 @@
 $themes: (
-  main: (
-    primary: $primary,
-    secondary: $secondary,
-    headingColor: $secondary,
-    linkColor: $primary,
-    btnPrimaryBg: $primary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $secondary,
-    btnSecondaryColor: #fff,
+  v1: (
+    nonprofitFormHeadingUnderline: true,
+    nonprofitFormHeadingPaddingBottom: 2rem,
   ),
-  inverse: (
-    primary: $secondary,
-    secondary: $primary,
-    headingColor: $primary,
-    linkColor: $secondary,
-    btnPrimaryBg: $secondary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $primary,
-    btnSecondaryColor: #fff,
+  v2: (
+    nonprofitFormHeadingUnderline: false,
+    nonprofitFormHeadingPaddingBottom: 0,
+  ),
+  v3: (
+    nonprofitFormHeadingUnderline: true,
+    nonprofitFormHeadingPaddingBottom: 0,
   )
 );
