@@ -1,5 +1,7 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import { kebabCase } from 'lodash'
+
 
 TimeAgo.locale(en);
 
@@ -43,6 +45,10 @@ export function people(number) {
     }
     return `${number} people`;
   }
+}
+
+export const slugify = (string) => {
+  return kebabCase(string)
 }
 
 // This filter was added for the GiveItUp version

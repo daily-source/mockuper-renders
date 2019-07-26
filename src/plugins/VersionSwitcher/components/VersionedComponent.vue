@@ -11,6 +11,8 @@ import { setImmediate } from 'timers';
 export default {
   name: 'VersionedComponent',
 
+  inheritAttrs: false,
+
   props: {
     baseName: {
       type: String,
@@ -33,7 +35,7 @@ export default {
       const componentName = parseInt(this.$version) === 1 ? this.baseName : `${this.baseName}.${this.$version}`
 
       try {        
-        return await import(`Components/XthonFresh/${componentName}`)
+        return await import(`Components/InSightInMind/${componentName}`)
       } catch {
         return await this.findBaseComponent()
       }
@@ -41,7 +43,7 @@ export default {
 
     async findBaseComponent () {
       try {
-        const comp = await import(`Components/XthonFresh/${this.baseName}`)
+        const comp = await import(`Components/InSightInMind/${this.baseName}`)
 
         return comp
       } catch {

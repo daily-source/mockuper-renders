@@ -1,29 +1,19 @@
 <template>
   <div class="view-home-page">
-    <app-header 
-      volunteer-text='Do one now'
-      layout='page'
+    <app-header />
+    <versioned-component 
+      base-name='BoxesGrid'
     />
-    <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
-    <div class='instructions'>
-      <div class='container'>
-        <p>
-          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
-        </p>
-        <p>
-          ALSO: often a short piece of text in put inside of the banner photo.
-        </p>
-      </div>
+    <div class="home-page-info">
+      <h4 class='has-text-grey has-text-weight-bold has-text-centered'>Hover your mouse over a cause for more information.</h4>
+      <p class='has-text-centered'>
+        <a href="#" class='home-page-info__more'>For links to information in this graphic, click here.</a>
+      </p>
+      <p class='has-text-centered is-marginless'>
+        <a href="#" class='button help-now-button is-large is-secondary has-text-weight-bold is-uppercase'>Help Now</a>
+      </p>
     </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
-    />
-    <SharedFooter></SharedFooter>
-    <banner-switcher />
+    <shared-footer />
   </div>
 </template>
 
@@ -40,11 +30,8 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
+    AppHeader: () => import("Components/InSightInMind/AppHeader.vue"),
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/XthonFresh/AppHeader.vue"),
-    HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
-    TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
   },
 
   /**
@@ -97,6 +84,24 @@ export default {
   p {
     padding-left: 60px;
     padding-right: 60px;
+  }
+}
+
+.home-page-info {
+  padding-bottom: 1em;
+
+  h4 {
+    margin-bottom: .875rem;
+    font-size: 1em;
+
+    @include tablet {
+      font-size: 1.375rem;
+    }
+  }
+
+  &__more {
+    font-size: 1.125em;
+    color: #676767;
   }
 }
 </style>
