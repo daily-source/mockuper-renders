@@ -24,10 +24,7 @@
         </p>
       </div>
     </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
-    />
+    <nonprofit-form />
     <SharedFooter></SharedFooter>
   </div>
 </template>
@@ -51,7 +48,7 @@ export default {
     AppHeader: () => import("Components/GrowOneForGood/AppHeader.vue"),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue"),
+    NonprofitForm: () => import("Components/GrowOneForGood/NonprofitForm")
   },
 
   /**
