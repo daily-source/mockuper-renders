@@ -14,9 +14,10 @@
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
         </div>
         <div class='nonprofit-details__block is-flex'>
-          <p class='is-flex nonprofit-details__website-block'>
+          <p class='is-flex nonprofit-details__links_block'>
             <a :href='nonprofit.url' target='_blank'>View Website</a>
             <button class="button is-secondary is-small">Donate</button>
+            <button class="button is-primary is-small" v-if='showFundraiseButton'>Fundarise</button>
           </p>
         </div>
         <div class='nonprofit-details__block is-flex'>
@@ -91,6 +92,11 @@ export default {
     nonprofit: {
       type: Object,
       required: true,
+    },
+
+    showFundraiseButton: {
+      type: Boolean,
+      required: false,
     },
   },
 
@@ -177,11 +183,14 @@ export default {
     }
   }
 
-  &__website-block {
+  &__links_block {
     align-items: center;
 
-    a {
-      margin-right: .875em;
+    a,
+    button {
+      &:not(:last-child) {
+        margin-right: .875em;
+      }
     }
   }
 

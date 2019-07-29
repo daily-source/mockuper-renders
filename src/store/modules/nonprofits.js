@@ -1,6 +1,62 @@
 const baseURL = process.env.VUE_APP_BASE_URL
 
 const state = {
+  // TODO: This is just to easily differentiate an Unclaimed-501c3 nonprofit.
+  // Later on, this should come from the backend and should be differentiated on
+  // the backend also.
+  unclaimed501: {
+    id: 1,
+    EIN: 1,
+    description:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
+    loction:"461 Hermann Greens Apt. 847",
+    name:"OXFAM International",
+    picture: `${baseURL}img/oxfam.png`,
+    state:"Kansas",
+    claimed: true,
+    url:"https://titus.net",
+    locations: [
+      {
+        id: 1,
+        country: 'India',
+        state: 'Maharastra',
+        city: 'Mumbai',
+        location: 'Mumbai, Maharastra, India',
+        latitude: 19.075983,
+        longitude: 72.877655,
+        main: true,
+      },
+      {
+        id: 2,
+        country: 'India',
+        state: 'Noida Uttar Pradesh',
+        city: 'Mumbai',
+        location: 'Mumbai, Noida Uttar Pradesh, India',
+        latitude: 28.535517,
+        longitude: 77.391029,
+      },
+      // {
+      // 	id: 3,
+      // 	country: 'India',
+      // 	state: 'Poonam Kirti',
+      // 	city: 'Poonam Nayar',
+      // 	location: '29, Poonam Kirti,poonam Nayar, Mahakali Caves Rd, Andheri(e), Poonam Nayar, Poonam Kirti, India',
+      // 	latitude: 21.168190,
+      // 	longitude: 72.814280,
+      // },
+    ],
+    STREET: '360 MAIN ST',
+    CITY: 'MELROSE',
+    STATE: 'MA',
+    ZIP: '02176-4623',
+    ACTIVITY: 'Described in section 170(b)1)(a)(vi) of the Code; International Development, Relief Services',
+    CLASSIFICATION: 'Charitable Organization',
+    DEDUCTIBILITY: 1,
+    SUBSECTION: 3,
+    NTEE_CD: '0',
+    SORT_NAME: '0',
+    validated: true,
+    data: {},
+  },
 	data: [
 		{
       id: 1,

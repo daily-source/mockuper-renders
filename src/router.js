@@ -31,6 +31,7 @@ const StationRegisterStepOne = () => import('@/views/StationRegisterStepOne')
 const StationRegisterStepTwo = () => import('@/views/StationRegisterStepTwo')
 const StationRegisterStepThree = () => import('@/views/StationRegisterStepThree')
 const StaffPanel = () => import('@/views/StaffPanel')
+const Unclaimed501C3Profile = () => import('@/views/Unclaimed501C3Profile')
 
 export default new Router({
   mode: 'history',
@@ -77,6 +78,11 @@ export default new Router({
       path: '/nonprofit/irs/:ein',
       name: 'nonprofit-irs',
       component: NonprofitIRSProfile,
+    },
+    {
+      path: '/nonprofit-unclaimed_501c3',
+      name: 'nonprofit-profile-unclaimed-501c3',
+      component: Unclaimed501C3Profile,
     },
     {
       path: '/nonprofit-sign-up',
@@ -176,6 +182,6 @@ export default new Router({
       path: '/staff-panel',
       name: 'staff-panel',
       component: StaffPanel,
-    }
+    },
   ],
 });
