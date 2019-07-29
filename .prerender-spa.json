@@ -38,6 +38,10 @@
     "/station/3",
     "/nonprofit/irs/521758517",
     "/nonprofit/irs/830374559",
+    "/nonprofit-unclaimed_non-501c3",
+    "/nonprofit-unclaimed_501c3",
+    "/nonprofit-claimed_non-501c3",
+    "/nonprofit-claimed_501c3",
     "/staff-panel"
   ],
   "useRenderEvent":false,
