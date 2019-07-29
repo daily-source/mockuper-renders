@@ -33,6 +33,36 @@
         />
       </div>
     </section>
+     <section class="fundraisers">
+      <nonprofit-fundraisers
+        :fundraisers="fundraisers"
+        :key="nonprofit.EIN"
+        limit="5"
+        section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
+      >
+        <div slot="heading"><h2>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
+      </nonprofit-fundraisers>
+    </section>
+    <section class="donors-fundraisers-list">
+      <donors-list 
+        section-title="Top Donors"
+        view-all-cta=""
+        :donations="donations"
+        layout="horizontal"
+      />
+      <donors-list 
+        section-title="Top Fundraisers"
+        view-all-cta=""
+        :donations="topFundraisers"
+        layout="horizontal"
+      />
+    </section>
+    <section class='section cta-section has-text-centered'>
+      <router-link
+        class="button is-large is-info is-centered nonprofit-profile_cta"
+        to="/fundraiser/create"
+      >Create your own fundraiser</router-link>
+    </section>
     <shared-footer />
   </div>
 </template>
@@ -54,6 +84,8 @@ export default {
     AppHeader,
     IntroVideo,
     NonprofitDetailsComp,
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    DonorsList: () => import('Components/general/DonorsList'),
     SharedFooter,
   },
 
@@ -96,6 +128,18 @@ export default {
       nonprofit (state) {
         return state.nonprofits.data.find(nonprofit => nonprofit.id == this.nonprofitId)
       },
+
+      fundraisers (state) {
+        return state.commonData.fundraisers.data
+      },
+
+      donations (state) {
+        return state.commonData.donations.byAmount.data
+      },
+
+      topFundraisers (state) {
+        return state.commonData.donations.topFundraisers.data
+      },
     })
   },
 
@@ -118,6 +162,15 @@ export default {
 .nonprofit-details {
   &__alert {
     padding-right: 1.25em;
+  }
+
+  .fundraisers {
+    padding-top: 2rem;
+  }
+
+  .cta-section {
+    padding-top: 0;
+    padding-bottom: 3rem;
   }
 }
 </style>
