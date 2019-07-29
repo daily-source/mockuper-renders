@@ -174,6 +174,7 @@
         :key="$route.fullPath"
         :nonprofit-ein="nonprofit.EIN"
         :route-path="$route.fullPath"
+        :hide-donate-button='!nonprofit.is501c3'
         trigger="nonprofit/about/shareIconsRow"
       ></SharingIconsRow>
     </div>
@@ -182,7 +183,7 @@
 
 <script>
 import DonateAction from "Components/general/DonateAction.vue"
-import SharingIconsRow from "Components/general/SharingIconsRow.vue"
+import SharingIconsRow from "LocalComponents/General/SharingIconsRow.vue"
 import Icons from "Components/general/Icons.vue"
 import Flickity from "Components/plugins/Flickity.vue"
 import LazyLoadedImage from "Components/plugins/LazyLoadedImage.js"
@@ -196,7 +197,7 @@ export default {
     SharingIconsRow,
     LazyLoadedImage,
     MediaEditor: () => import("Components/input/MediaEditor.vue"),
-    NonprofitIRSData: () => import("Components/nonprofit/NonprofitIRSData.vue"),
+    NonprofitIRSData: () => import("LocalComponents/Nonprofit/NonprofitIRSData.vue"),
     MediaViewer: () => import("Components/general/MediaViewer.vue"),
     InlineFieldEditor: () => import("Components/input/InlineFieldEditor.vue")
   },

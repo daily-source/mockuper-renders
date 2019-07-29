@@ -13,7 +13,10 @@
         <div class='nonprofit-details__block is-flex nonprofit-details__name-block'>
           <h4 class='has-text-weight-bold nonprofit-details__name'>{{ nonprofit.name }}</h4>
         </div>
-        <div class='nonprofit-details__block is-flex'>
+        <div 
+          class='nonprofit-details__block is-flex'
+          v-if='nonprofit.is501c3'
+        >
           <p class='is-flex nonprofit-details__links_block'>
             <a :href='nonprofit.url' target='_blank'>View Website</a>
             <button class="button is-secondary is-small">Donate</button>

@@ -13,6 +13,7 @@ const state = {
     picture: `${baseURL}img/oxfam.png`,
     state:"Kansas",
     claimed: true,
+    is501c3: true,
     url:"https://titus.net",
     locations: [
       {
@@ -55,11 +56,68 @@ const state = {
     NTEE_CD: '0',
     SORT_NAME: '0',
     validated: true,
-    data: {},
+    data: {
+      name: 'OXFAM International',
+    },
+  },
+
+  unclaimedNon501: {
+    name: 'OXFAM International',
+    id: 71,
+    description:"Working with thousands of local partner organizations, we work with people living in poverty striving to exercise their human rights.",
+    loction:"461 Hermann Greens Apt. 847",
+    picture: `${baseURL}img/oxfam.png`,
+    state:"Kansas",
+    claimed: true,
+    url:"https://titus.net",
+    locations: [
+      {
+        id: 1,
+        country: 'India',
+        state: 'Maharastra',
+        city: 'Mumbai',
+        location: 'Mumbai, Maharastra, India',
+        latitude: 19.075983,
+        longitude: 72.877655,
+        main: true,
+      },
+      {
+        id: 2,
+        country: 'India',
+        state: 'Noida Uttar Pradesh',
+        city: 'Mumbai',
+        location: 'Mumbai, Noida Uttar Pradesh, India',
+        latitude: 28.535517,
+        longitude: 77.391029,
+      },
+      // {
+      // 	id: 3,
+      // 	country: 'India',
+      // 	state: 'Poonam Kirti',
+      // 	city: 'Poonam Nayar',
+      // 	location: '29, Poonam Kirti,poonam Nayar, Mahakali Caves Rd, Andheri(e), Poonam Nayar, Poonam Kirti, India',
+      // 	latitude: 21.168190,
+      // 	longitude: 72.814280,
+      // },
+    ],
+    STREET: '360 MAIN ST',
+    CITY: 'MELROSE',
+    STATE: 'MA',
+    ZIP: '02176-4623',
+    DEDUCTIBILITY: 1,
+    SUBSECTION: 3,
+    NTEE_CD: '0',
+    SORT_NAME: '0',
+    validated: true,
+    is501c3: false,
+    data: {
+      name: 'OXFAM International',
+    },
   },
 
   claimed501: {
     id: 2,
+    is501c3: true,
     claimed: true,
     description: "Every day, Kiva connects thousands of people to borrowers and partner institutions around the world, working together to create opportunity and alleviate poverty.",
     name:"Save the Children Foundation Inc.",
@@ -79,7 +137,9 @@ const state = {
     NTEE_CD: '0',
     SORT_NAME: '0',
     validated: true,
-    data: {},
+    data: {
+      name: 'Save the Children Foundtaion Inc.',
+    },
     locations: [],
     media: {
       images: [
@@ -113,8 +173,10 @@ const state = {
 
 	data: [
 		{
+      name: 'Oxfam International',
       id: 1,
       ein: 1,
+      is501c3: true,
       about: 'We are an international confederation of 17 like-minded charitable organizations working together to bring about lasting solutions to poverty and injustice. We work with partners around the world to make a difference in the lives of people in need.',
 			loction:"461 Hermann Greens Apt. 847",
 			name:"OXFAM International",
@@ -157,6 +219,7 @@ const state = {
 			description:"International Justice Mission is a human rights agency that secures justice for victims of slavery, sexual exploitation and other forms of violent oppression.",
       id: 2,
       ein: 2,
+      is501c3: true,
 			name:"International Justice Mission",
 			picture: `${baseURL}img/ijm.png`,			
 			url:"http://miracle.info",
@@ -236,6 +299,7 @@ const state = {
       picture: `${baseURL}img/streetlight.png`,
       id: 4,
       ein: 4,
+      is501c3: true,
       url: 'gttps://streetlight.com',
       description: 'Streetlight’s Mission is to Eradicate Child Sex Slavery through a 3-tier strategy of Awareness, Prevention, and Aftercare.',
       locations: [
@@ -267,6 +331,7 @@ const state = {
       picture: `${baseURL}img/gems.jpg`,
       id: 5,
       ein: 5,
+      is501c3: true,
       url: 'https://gems.com',
       description: 'GEMS provides a spectrum of continuous and comprehensive services to address the needs of commercially and sexually exploited girls and young women. Commercial sexual exploitation is intrinsically linked to racism, poverty, gender-based violence, and the criminalization of youth. All these factors are an integral part of any discussion, advocacy work or direct service programming that involves sexual exploitation. All of GEMS programs are based on our philosophy and values that each girl and young woman is.',
       locations: [
@@ -297,6 +362,7 @@ const state = {
       picture: `${baseURL}img/zoes.jpg`,
       id: 6,
       ein: 6,
+      is501c3: true,
       url: 'https://gems.com',
       description: 'ZOE Children’s Homes is an international Christian organization that rescues children who are at high risk of being sold into slavery, have already been victimized as slaves, have been orphaned, or have suffered other heinous forms of abuse.',
       locations: [
@@ -328,6 +394,7 @@ const state = {
       picture: `${baseURL}img/livingwater.png`,
       id: 7,
       ein: 7,
+      is501c3: true,
       url: '3',
       description: 'The mission of Living Waters for Girls is to rescue, rehabilitate and restore commercially sexually exploited girls by providing safe refuge and holistic therapeutic services.',
       locations: [
@@ -349,6 +416,7 @@ const state = {
       picture: `${baseURL}img/raphahouse.jpg`,
       id: 8,
       ein: 8,
+      is501c3: true,    
       url: '#',
       description: 'Rapha House programs exist to extend unconditional love to girls who have been rescued out of slavery and sexual exploitation.  Every member of the Rapha House staff has dedicated his or herself to seeing each child at Rapha House restored to sustainable freedom.',
       locations: [
@@ -379,6 +447,7 @@ const state = {
       picture: `${baseURL}img/treasures-ministry.png`,
       id: 9,
       ein: 9,
+      is501c3: true,
       url: 'http://www.iamatreasure.com/',
       description: 'Treasures is a unique, faith-based outreach and support group for women in the sex industry, including victims of commercialized sexual exploitation and trafficking. As the only organization of its kind based in the adult industry capital of the world (San Fernando Valley in Los Angeles County), our mission is to reach, restore and equip women in order to help them live healthy, flourishing lives.',
       locations: [
@@ -400,6 +469,7 @@ const state = {
       picture: `${baseURL}img/missey.jpg`,
       id: 10,
       ein: 10,
+      is501c3: true,
       url: 'http://misssey.org/index.html',
       description: 'Motivating, Inspiring, Supporting, and Serving Sexually Exploited Youth (MISSSEY) advocates and facilitates the empowerment and inner transformation of sexually exploited youth by holistically addressing their specific needs. MISSSEY collaborates to bring about systemic and community change to prevent the sexual exploitation of children and youth through raising awareness, education and policy development.',
       locations: [
@@ -422,6 +492,7 @@ const state = {
       picture: `${baseURL}img/life-impact-international-logo-retina.png`,
       id: 11,
       ein: 11,
+      is501c3: true,
       url: 'https://lifeimpactintl.org/',
       description: 'At Life Impact International, we prevent human trafficking by intervening in the lives of at-risk children, youth, displaced people, refugees and orphans.',
       locations: [
@@ -454,6 +525,7 @@ const state = {
       picture: `${baseURL}img/hagar.jpg`,
       id: 12,
       ein: 12,
+      is501c3: true,
       url: 'https://hagarinternational.org/',
       description: 'We are an international organisation dedicated to the recovery of women and children who have endured extreme abuses. We are working to see communities free and healed from the trauma of human slavery, trafficking and abuse.',
       locations: [
@@ -486,6 +558,7 @@ const state = {
       picture: `${baseURL}img/hopeforjustice.jpg`,
       id: 13,
       ein: 13,
+      is501c3: true,
       url: 'https://hopeforjustice.org/',
       description: 'We exist to bring an end to modern slavery by preventing exploitation, rescuing victims, restoring lives and reforming society.',
       locations: [

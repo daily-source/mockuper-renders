@@ -5,7 +5,7 @@
         <div class="columns">
           <div class="column is-9">
             <div class="table-row columns">
-              <div class="table-heading column is-4"><p>Name:</p></div>
+              <div class="table-heading column is-4"><p>{{ nonprofit.is501c3 ? 'Name:' : 'Legal Name:'}}</p></div>
               <div class="table-data column is-8">
                 <div v-if="!nonprofit.data.name">
                   <InlineFieldEditor
@@ -41,13 +41,33 @@
             </div>
             <div class="table-row columns">
               <div class="table-heading column is-4"><p>Deductibility:</p></div>
-              <div class="table-data column is-8"><p>501(c)({{nonprofit.SUBSECTION}}) nonprofit. Donations are 100% deductible</p></div>
+              <div class="table-data column is-8">
+                <div 
+                  class="nonprofit-is501-c3"
+                  v-if='nonprofit.is501c3'
+                >
+                  <p>501(c)({{nonprofit.SUBSECTION}}) nonprofit. Donations are 100% deductible</p>
+                </div>
+                <div 
+                  class="nonprofit-non501-c3"
+                  v-else
+                >
+                  <p>Not a 501(c)(3) nonprofit. Donations are usually not deductible</p>
+                  <p class='is-small'>We are not able to receive donations to pass on to this nonprofit. If you visit its website, there might be a way to donate directly to it.</p>
+                </div>
+              </div>
             </div>
-            <div class="table-row columns">
+            <div 
+              class="table-row columns"
+              v-if='nonprofit.CLASSIFICATION'
+            >
               <div class="table-heading column is-4"><p>Classification:</p></div>
               <div class="table-data column is-8"><p v-html="nonprofit.CLASSIFICATION"></p></div>
             </div>
-            <div class="table-row columns">
+            <div 
+              class="table-row columns"
+              v-if='nonprofit.ACTIVITY'
+            >
               <div class="table-heading column is-4"><p>Type/Activity:</p></div>
               <div class="table-data column is-8"><p>{{nonprofit.NTEE_CD.length > 1 ? nonprofit.NTEE_CD : nonprofit.ACTIVITY}}</p></div>
             </div>
@@ -62,7 +82,10 @@
                 </p>
               </div>
             </div>
-            <div class="table-row columns">
+            <div 
+              class="table-row columns"
+              v-if='nonprofit.is501c3'
+            >
               <div class="table-heading column is-4"><p>Employer ID Number (EIN):</p></div>
               <div class="table-data column is-8"><p>{{nonprofit.EIN}}</p></div>
             </div>
@@ -77,7 +100,7 @@
                 class="unselectable button is-medium is-rounded"
                 v-if="!editing && !canEdit"
               >
-                {{ nonprofit.CLAIMED ? "Manage this nonprofit" : "Claim this organization"}}
+                {{ nonprofit.claimed ? "Manage this nonprofit" : "Claim this organization"}}
               </button>
               <button
                 @click="enableEdition()"
@@ -208,6 +231,18 @@ export default {
     align-items: flex-end;
     button {
       font-size: 1.1rem;
+    }
+  }
+}
+
+.nonprofit-non501-c3 {
+  p {
+    &.is-small {
+      font-size: .875rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
     }
   }
 }
