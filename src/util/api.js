@@ -90,7 +90,7 @@ export async function getNonprofitFromVRDatabase (ein, caps = false) {
  * @param {*} nonprofit 
  */
 export function transformNonprofit (nonprofit, caps = false) {
-  return _.transform(nonprofit, (result, val, key) => {
+  const transformedNonprofit =  _.transform(nonprofit, (result, val, key) => {
     if (protectedKeys.indexOf(key) !== -1) {
       result[key] = val
     } else {
@@ -98,4 +98,9 @@ export function transformNonprofit (nonprofit, caps = false) {
       result[transformedKey] = val
     }
   })
+
+  return {
+    ...transformNonprofit,
+    ...nonprofit,
+  }
 }

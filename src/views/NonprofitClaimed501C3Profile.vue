@@ -23,7 +23,7 @@
         limit="5"
         section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
       >
-        <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+        <div slot="heading"><h2>Who's doing a fundraiser to raise money for this nonprofit?</h2></div>
       </nonprofit-fundraisers>
     </section>
     <section class="donors-fundraisers-list">
@@ -55,13 +55,13 @@ import { mapState } from 'vuex'
 import { transformNonprofit } from '@/util/api'
 
 export default {
-  name: 'Unclaimed501C3Profile',
+  name: 'Claimed501C3Profile',
 
   components: {
     AppHeader: () => import('LocalComponents/AppHeader'),
     IntroVideo: () => import('LocalComponents/IntroVideo'),
     NonprofitDetails: () => import('LocalComponents/Nonprofit/NonprofitDetails'),
-    NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout'),
+    NonprofitAbout: () => import('LocalComponents/Nonprofit/NonprofitAbout'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     DonorsList: () => import('Components/general/DonorsList'),
     SharedFooter: () => import('Components/Shared/SharedFooter'), 
@@ -74,7 +74,7 @@ export default {
 
     ...mapState({
       nonprofit (state) {
-        return state.nonprofits.unclaimed501
+        return state.nonprofits.claimed501
       },
 
       fundraisers (state) {
