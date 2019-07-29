@@ -33,6 +33,17 @@
         />
       </div>
     </section>
+    <section class="sharing-icons">
+      <div class="container">
+        <sharing-icons-row
+          :key="$route.fullPath"
+          :nonprofit-ein="nonprofit.EIN || nonprofit.ein"
+          :route-path="$route.fullPath"
+          :hide-donate-button='!nonprofit.is501c3'
+          trigger="nonprofit/about/shareIconsRow"
+        />
+      </div>
+    </section>
      <section class="fundraisers">
       <nonprofit-fundraisers
         :fundraisers="fundraisers"
@@ -84,6 +95,7 @@ export default {
     AppHeader,
     IntroVideo,
     NonprofitDetailsComp,
+    SharingIconsRow: () => import('LocalComponents/General/SharingIconsRow'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     DonorsList: () => import('Components/general/DonorsList'),
     SharedFooter,
@@ -165,7 +177,7 @@ export default {
   }
 
   .fundraisers {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
   }
 
   .cta-section {
