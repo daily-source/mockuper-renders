@@ -53,6 +53,7 @@ $btn-border-radius: 0;
 // Colors
 $primary: #004A85;
 $secondary: #FF5F00;
+$danger: #ff0000;
 $color-emphasis: $primary;
 $color-emphasis-alt: $secondary;
 $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
@@ -70,7 +71,7 @@ $button-padding-vertical: .5em;
 $success: $color-emphasis;
 
 // Theming
-// @import 'themes';
+@import 'themes';
 
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';

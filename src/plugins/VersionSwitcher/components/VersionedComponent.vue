@@ -33,7 +33,7 @@ export default {
       const componentName = parseInt(this.$version) === 1 ? this.baseName : `${this.baseName}.${this.$version}`
 
       try {        
-        return await import(`Components/XthonFresh/${componentName}`)
+        return await import(`Components/0to100/${componentName}`)
       } catch {
         return await this.findBaseComponent()
       }
@@ -41,7 +41,7 @@ export default {
 
     async findBaseComponent () {
       try {
-        const comp = await import(`Components/XthonFresh/${this.baseName}`)
+        const comp = await import(`Components/0to100/${this.baseName}`)
 
         return comp
       } catch {

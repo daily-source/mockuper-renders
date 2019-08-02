@@ -1,6 +1,5 @@
 .button {
   font-size: .875em;
-  text-transform: uppercase;
   font-weight: 700;
   height: auto;
   border-color: transparent;
@@ -8,5 +7,11 @@
   &.is-secondary {
     color: #fff;
     background-color: $secondary;
+  }
+
+  @include themify {
+    @if themed('buttonUppercase') {
+      text-transform: uppercase;
+    }
   }
 }

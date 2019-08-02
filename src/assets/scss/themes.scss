@@ -1,22 +1,17 @@
 $themes: (
-  main: (
-    primary: $primary,
-    secondary: $secondary,
-    headingColor: $secondary,
-    linkColor: $primary,
-    btnPrimaryBg: $primary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $secondary,
-    btnSecondaryColor: #fff,
+  v1: (
+    buttonUppercase: true
   ),
-  inverse: (
-    primary: $secondary,
-    secondary: $primary,
-    headingColor: $primary,
-    linkColor: $secondary,
-    btnPrimaryBg: $secondary,
-    btnPrimaryColor: #fff,
-    btnSecondaryBg: $primary,
-    btnSecondaryColor: #fff,
+  v2: (
+    buttonUppercase: false,
+  ),
+  v3: (
+    buttonUppercase: true,
+  ),
+  v4: (
+    buttonUppercase: true,
+  ),
+  v5: (
+    buttonUppercase: true,
   )
 );

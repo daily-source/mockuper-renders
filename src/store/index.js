@@ -3,7 +3,11 @@ import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
 
-import incomeLevels from './modules/incomeLevels'
+import incomeLevels1 from './modules/incomeLevels1'
+import incomeLevels2 from './modules/incomeLevels2'
+import incomeLevels3 from './modules/incomeLevels3'
+import incomeLevels4 from './modules/incomeLevels4'
+import incomeLevels5 from './modules/incomeLevels5'
 
 Vue.use(Vuex);
 
@@ -965,6 +969,10 @@ export default new Vuex.Store({
   actions,
   mutations,
   modules: {
-    incomeLevels,
+    incomeLevels1,
+    incomeLevels2,
+    incomeLevels3,
+    incomeLevels4,
+    incomeLevels5,
   },
 });
