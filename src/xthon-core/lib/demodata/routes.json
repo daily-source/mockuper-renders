@@ -1,5 +1,0 @@
-{
-  "/nonprofits/:EIN": "/nonprofits?EIN=:EIN",
-  "/fundraisers/:id": "/fundraisers?id=:id"
-}
-
