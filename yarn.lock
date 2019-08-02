@@ -2662,24 +2662,6 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
-countries-list@^2.3.2:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/countries-list/-/countries-list-2.4.3.tgz#bc4190ba6dc18bca32b89c2d2615294613c10ebe"
-  integrity sha512-3iIRoU2j6II5OCULdzvR+QS1DKMb776+r0e2oD98V0sX2a0SfTz/bnpwUPhOCM7jmzoEF5PgTMuPw9M7eeJrJA==
-
-country-state-city@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/country-state-city/-/country-state-city-0.0.5.tgz#2ad37501bfcf7444270eef0cdecca0046705fad2"
-  integrity sha1-KtN1Ab/PdEQnDu8M3sygBGcF+tI=
-
-countrycitystatejson@^0.2.12:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/countrycitystatejson/-/countrycitystatejson-0.2.12.tgz#3dfc3ab8e03c8645a1d83b1138797adfd05c11d6"
-  integrity sha512-1P1A6YvKwMFR6zg1wFP/xrnI+CJ4fsO1mvxz2aBdXZy0dRVoNRhefQZxoM8zYNV5UeEiNGwDIvifuazjDN/MGQ==
-  dependencies:
-    countries-list "^2.3.2"
-    country-state-city "0.0.5"
-
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
@@ -5505,11 +5487,6 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
-
-javascript-natural-sort@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
-  integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
 
 javascript-stringify@^1.6.0:
   version "1.6.0"
@@ -9754,7 +9731,7 @@ vue-cli-plugin-prerender-spa@^1.0.3:
   dependencies:
     prerender-spa-plugin "^3.2.1"
 
-vue-croppa@^1.3.8:
+vue-croppa@^1.3.7:
   version "1.3.8"
   resolved "https://registry.yarnpkg.com/vue-croppa/-/vue-croppa-1.3.8.tgz#1aac95bf5d94020de7bc1ea7ca61e3aadfff1811"
   integrity sha512-WwYgEKscTCD7BzhnbfRJfzWIU6RcMq2JRimB3aI5gGzpADmpKuqmDh9+oVfiZaEnpmRthgXZxcAvbxU6CeIU9w==
@@ -9762,7 +9739,7 @@ vue-croppa@^1.3.8:
     canvas-exif-orientation "^0.4.0"
     object-assign "^4.1.1"
 
-vue-datetime@^1.0.0-beta.10:
+vue-datetime@^1.0.0-beta.8:
   version "1.0.0-beta.10"
   resolved "https://registry.yarnpkg.com/vue-datetime/-/vue-datetime-1.0.0-beta.10.tgz#788a1c2deefa3e14fbf549373ec00ebde707596a"
   integrity sha512-/wJkj95JSzWqH0Ja4JpXX6I+fXo2A34GCtsx00vR5RjNxk3++93rg7G4ZlI3MFo807zH9bIxXfIohbAZgnAWbQ==
@@ -10372,15 +10349,14 @@ xtend@^4.0.0, xtend@~4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-"xthon-core@github:dailysourceorg/xthon-core#0.0.44":
-  version "0.0.42"
-  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#cc30744acede9738f97cf6da07331509d7498400"
+"xthon-core@github:dailysourceorg/xthon-core#0.0.40":
+  version "0.0.37"
+  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#134e79078067e86c564f4197012a3a20759e2702"
   dependencies:
     array-to-tree "^3.3.0"
     axios "^0.18.0"
     bulma "0.7.4"
     compression "^1.7.1"
-    countrycitystatejson "^0.2.12"
     csv-loader "^3.0.2"
     dotenv "^5.0.1"
     echarts "^4.2.1"
@@ -10390,7 +10366,6 @@ xtend@^4.0.0, xtend@~4.0.1:
     flickity "^2.1.1"
     gsap "^2.1.2"
     intersection-observer "^0.5.0"
-    javascript-natural-sort "^0.7.1"
     javascript-time-ago "^1.0.30"
     json-server "^0.12.2"
     lodash "^4.17.10"
@@ -10404,8 +10379,8 @@ xtend@^4.0.0, xtend@~4.0.1:
     vue "^2.5.17"
     vue-avatar "^2.1.4"
     vue-axios "^2.1.1"
-    vue-croppa "^1.3.8"
-    vue-datetime "^1.0.0-beta.10"
+    vue-croppa "^1.3.7"
+    vue-datetime "^1.0.0-beta.8"
     vue-echarts "^4.0.1"
     vue-meta "^1.5.0"
     vue-no-ssr "^0.2.2"
