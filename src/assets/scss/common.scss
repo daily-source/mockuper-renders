@@ -18,5 +18,13 @@
 html,
 body,
 html body {
-  font-size: 16px;
+  font-size: 17px;
+
+  h1, h2, h3, h4, h5 { line-height: 1.4; }
+}
+
+.container {
+  @include desktop {
+    max-width: 1160px !important;
+  }
 }
