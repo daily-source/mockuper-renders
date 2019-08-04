@@ -224,10 +224,15 @@ export default {
 
 .more-info {
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
+    padding-bottom: 1rem;
     color: $primary;
-    padding-bottom: 2rem;
     margin-bottom: 0;
+
+    @include tablet {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+    }
   }
 
   p {
