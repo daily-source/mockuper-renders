@@ -4,15 +4,13 @@
       base-name='TheHeader'
     />
     <the-banner />
-
     <versioned-component 
       base-name='IncomeLevelsSlider'
       v-if='showIncomeLevelsSlider'
     />
-
     <section class='card-slider-wrapper'>
       <h2 class='card-slider-wrapper__heading card-slider-wrapper__heading--v3' v-if='$version == 3'>Details About All The Levels</h2>
-            <h2 class='card-slider-wrapper__heading card-slider-wrapper__heading--v4' v-else-if='$version == 4'>See All The Income Levels</h2>
+      <h2 class='card-slider-wrapper__heading card-slider-wrapper__heading--v4' v-else-if='$version == 4'>See All The Income Levels</h2>
       <div 
         :class='`card-slider-section card-slider-section--v${$version}`'
         v-for='(incomeLevel, index) in topIncomeLevels'
