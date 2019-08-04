@@ -6,7 +6,7 @@
     />
     <TopMenu></TopMenu>
     <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
+      <h1>Trek, bike, climb, raft, ride, sledge, ski, build… Push yourself to your limits, achieve an incredible personal goal and support the charity of your choice.</h1>
     </dynamic-banner>
     <div class='instructions'>
       <div class='container'>
@@ -71,7 +71,7 @@ export default {
     var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
     var title = "Create a volunteerathon and do good!"
     return {
-      title: "Chartiable Contests - Home",
+      title: "Chartiable Challenges - Home",
       meta: [
         { vmid: "description", name: "description", content: description },
         { vmid: "og:title", property: "og:title", content: title },
@@ -95,8 +95,10 @@ export default {
   padding-top: 3em;
 
   p {
-    padding-left: 60px;
-    padding-right: 60px;
+    @include tablet {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
   }
 }
 </style>

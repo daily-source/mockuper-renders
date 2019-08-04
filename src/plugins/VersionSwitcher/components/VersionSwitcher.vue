@@ -21,7 +21,7 @@
           v-for='n in versions' 
           :key='n'
         >
-          <a :href='`/?version=${n}`'>Version {{ n }}</a>
+          <a :href='`${$route.path}?version=${n}`'>Version {{ n }}</a>
         </div>
       </div>
     </transition>

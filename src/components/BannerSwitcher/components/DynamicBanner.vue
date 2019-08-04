@@ -65,11 +65,14 @@ export default {
   .dynamic-banner__content {
     color: #fff;
     align-self: center;
-    max-width: 400px;
+    max-width: 720px;
     text-align: left;
-    margin-left: 10%;
     position: relative;
     z-index: 10;
+
+    @include tablet {
+      margin-left: 10%;
+    }
 
     h1 {
       text-align: left;

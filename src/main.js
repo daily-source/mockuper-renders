@@ -2,6 +2,7 @@ import '@babel/polyfill'
 import Datetime from 'vue-datetime';
 import Vue from 'vue';
 import VuePlyr from 'vue-plyr'
+import VueCroppa from 'vue-croppa'
 import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
@@ -25,6 +26,7 @@ Object.keys(filters).forEach((key) => {
 
 Vue.use(SmoothScroll);
 Vue.use(VuePlyr)
+Vue.use(VueCroppa)
 
 const bgImages = [
   'banner-photo-1.jpg',
