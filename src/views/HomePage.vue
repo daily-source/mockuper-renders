@@ -1,102 +1,139 @@
 <template>
-  <div class="view-home-page">
-    <app-header 
-      volunteer-text='Do one now'
-      layout='page'
+  <div class="layout-base">
+		<app-header />
+    <versioned-component 
+      base-name='AppBanner'
+			:widget-id='1'
     />
-    <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
-    <div class='instructions'>
-      <div class='container'>
-        <p>
-          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
-        </p>
-        <p>
-          ALSO: often a short piece of text in put inside of the banner photo.
-        </p>
+    <section class="quote-container section">
+      <div class="container">
+        <h2 class='quote has-text-centered'>"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness."<br /> <span class='author'>- Declaration of Independence</span></h2> 
       </div>
-    </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
-    />
-    <SharedFooter></SharedFooter>
-    <banner-switcher />
+			<!-- <counter-widget-jumbotron 
+				:widget-id='1'
+				:bg-image='require("../assets/img/images/widget-imgs/mlk.jpg")'
+				:widget-position='["top", "left"]'
+        class='mlk-banner'
+			/> -->
+      <versioned-component 
+        base-name='CounterWidgetJumbotron'
+        :widget-id='1'
+				:bg-image='require("@/assets/img/images/widget-imgs/mlk.jpg")'
+				:widget-position='["top", "left"]'
+        class='mlk-banner'
+      />
+    </section>
+    <section class="widget-customize section">
+      <div class="container">
+        <h2 class='has-text-centered'>Place a widget on your blog or website</h2>
+        <p class='has-text-centered'>Create your customized widget and we'll give you code to paste onto your website. It's as easy as that!</p>
+        <versioned-component 
+          base-name='WidgetCustomizer'
+          :widget-id='1'
+        />
+      </div>
+    </section>
+    <section class="section poor-kid-section widget-jumbotron">
+      <versioned-component 
+        :widget-id='1'
+        base-name='CounterWidgetJumbotron'
+				:bg-image='require("@/assets/img/images/widget-imgs/poor-kid-v1.jpg")'
+				:widget-position='["top", "left"]'
+      />
+    </section>
+    <section class="section counter-page-creator-section">
+        <div class='container'>
+          <h2 class='has-text-centered'>Create your own counter page to share</h2>
+          <p class='has-text-centered'>Share the link with your networks and all donations made through it will go to a charity of your choice.</p>
+          <counter-page-creator />
+        </div>
+    </section>
+		<shared-footer />
   </div>
 </template>
 
 <script>
-import Vue from "vue"
-import VueMeta from "vue-meta"
-
-Vue.use(VueMeta)
+import AppHeader from 'Components/CountersForThePoor/AppHeader'
+import AppBanner from 'Components/CountersForThePoor/AppBanner'
+import CounterWidgetJumbotron from 'Components/CountersForThePoor/CounterWidgetJumbotron'
+import WidgetCustomizer from 'Components/CountersForThePoor/WidgetCustomizer'
+import CounterPageCreator from 'Components/CountersForThePoor/CounterPageCreator'
+import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
-  name: "nonprofit",
-  /**
-   * Uses dynamic import to speed up page performance.
-   * See https://webpack.js.org/guides/code-splitting/ for reference.
-   */
+  name: 'BaseLayout',
+
   components: {
-    SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/XthonFresh/AppHeader.vue"),
-    HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
-    TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
+		AppHeader,
+    AppBanner,
+		CounterWidgetJumbotron,
+		WidgetCustomizer,
+		CounterPageCreator,
+    SharedFooter,
   },
 
-  /**
-   * Fetch data and store it just before entering the view.
-   */
-  asyncData ({ store, route: { params: { ein } } }) {
-    return new Promise((resolve, reject) => {
-      return store.dispatch("FETCH_HOME_PAGE")
-        .then(data => {
-          resolve(data)
-        })
-        .catch(err => {
-          reject(err)
-        })
-    })
-  },
-
-  /**
-   * This uses vue-meta in order to render the tags in the page. For the home page, it uses
-   * the default values plus a custom description and title. The og:image property is defined
-   * in the template, ./src/App.vue
-   */
-  metaInfo () {
-    var description = "Double the results, half the effort. A Volunteerathon® lets you make a far greater impact with your time than traditional fundraising events."
-    var title = "Create a volunteerathon and do good!"
+  metaInfo() {
+    const description = 'Every lives count.';
+    const title = '';
     return {
-      title: "Home",
+      title: 'Counters for the Poor - v1',
       meta: [
-        { vmid: "description", name: "description", content: description },
-        { vmid: "og:title", property: "og:title", content: title },
-        { vmid: "og:description", name: "og:description", content: description }
-      ]
-    }
+        { vmid: 'description', name: 'description', content: description },
+        { vmid: 'og:title', property: 'og:title', content: title },
+        { vmid: 'og:description', name: 'og:description', content: description },
+      ],
+    };
   },
-  /**
-   * Return stored data for this view.
-   */
+
   computed: {
-    home () {
-      return this.$store.state.home
-    }
-  }
-}
+    mlkPosition () {
+      let position = ["top", "middle"]
+      switch (this.$version) {
+        case '1':
+          
+      }
+    },
+  },
+
+};
 </script>
 
-<style scoped lang="scss">
-.instructions {
-  padding-top: 3em;
+<style lang='scss'>
+  .quote {
+    font-style: italic;
+    font-weight: 700;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5rem;
+    color: $color-gray;
+    margin-bottom: 4rem;
 
-  p {
-    padding-left: 60px;
-    padding-right: 60px;
+    .author {
+      color: $color-dark-gray;
+      font-size: 1.375rem;
+      display: block;
+      // font-style: normal;
+    }
   }
-}
+
+  .img-container {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+	.widget-customize {
+		padding-top: 0;
+		padding-bottom: 0;
+		
+		.widget-customizer {
+			margin-top: 1.75rem;
+		}
+	}
+
+	.counter-page-creator-section {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 </style>
+

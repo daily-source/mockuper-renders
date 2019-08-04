@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
 
+import counterwidgets from './modules/counterwidgets'
+
 Vue.use(Vuex);
 
 const baseUrl = process.env.VUE_APP_BASE_URL;
@@ -962,4 +964,7 @@ export default new Vuex.Store({
   },
   actions,
   mutations,
+  modules: {
+    counterwidgets,
+  },
 });

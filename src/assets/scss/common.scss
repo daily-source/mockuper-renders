@@ -18,5 +18,24 @@
 html,
 body,
 html body {
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.4;
+
+  h2 {
+    font-weight: 800;	
+    line-height: 1.4;
+    margin-bottom: 1rem;
+	}
+}
+
+.app--v1 {
+  @import 'jumbotron-themes';
+}
+
+.app--v2 {
+  @import 'jumbotron-themes-v2';
+}
+
+.v-select .dropdown-toggle {
+  border-color: #b5b5b5 !important;
 }
