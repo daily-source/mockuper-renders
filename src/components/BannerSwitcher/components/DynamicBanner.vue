@@ -65,7 +65,6 @@ export default {
   .dynamic-banner__content {
     color: #fff;
     align-self: center;
-    max-width: 720px;
     text-align: left;
     position: relative;
     z-index: 10;
@@ -75,6 +74,7 @@ export default {
     }
 
     h1 {
+      max-width: 720px;
       text-align: left;
       color: $primary;
     }
