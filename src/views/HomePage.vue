@@ -4,26 +4,9 @@
       volunteer-text='Do one now'
       layout='page'
     />
-    <TopMenu></TopMenu>
-    <dynamic-banner>
-      <h1>Raise money for a cause you support</h1>
-    </dynamic-banner>
-    <div class='instructions'>
-      <div class='container'>
-        <p>
-          WEB DEVELOPER: when the fundraising activity section is completed at the nonprofit profile page, normally you should copy it here so that users can start creating their fundraiser from the front page. For some websites, we don’t use that approach. But normally we do.   
-        </p>
-        <p>
-          ALSO: often a short piece of text in put inside of the banner photo.
-        </p>
-      </div>
-    </div>
-    <sample-form 
-      submit-button-label='Submit' 
-      :show-also-section='false'
-    />
-    <SharedFooter></SharedFooter>
-    <banner-switcher />
+    <app-banner />
+    <site-content />
+    <shared-footer />
   </div>
 </template>
 
@@ -40,11 +23,10 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
+    AppHeader: () => import("Components/ForLearning/AppHeader.vue"),
+    AppBanner: () => import("Components/ForLearning/AppBanner.vue"),
+    SiteContent: () => import("Components/ForLearning/SiteContent.vue"),
     SharedFooter: () => import("Components/Shared/SharedFooter.vue"),
-    AppHeader: () => import("Components/XthonFresh/AppHeader.vue"),
-    HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
-    TopMenu: () => import("Components/general/TopMenu.vue"),
-    SampleForm: () => import("LocalComponents/SampleForm.vue")
   },
 
   /**

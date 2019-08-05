@@ -4214,7 +4214,7 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-fizzy-ui-utils@^2.0.7:
+fizzy-ui-utils@^2.0.0, fizzy-ui-utils@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz#7df45dcc4eb374a08b65d39bb9a4beedf7330505"
   integrity sha512-CZXDVXQ1If3/r8s0T+v+qVeMshhfcuq0rqIFgJnrtd+Bu8GmDmqMjntjUePypVtjHXKJ6V4sw9zeyox34n9aCg==
@@ -4245,7 +4245,15 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-flickity@^2.1.1:
+flickity-as-nav-for@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/flickity-as-nav-for/-/flickity-as-nav-for-2.0.1.tgz#64edcc3b27ccdfcbc89bab9c086bd6cac4651b1b"
+  integrity sha1-ZO3MOyfM38vIm6ucCGvWysRlGxs=
+  dependencies:
+    fizzy-ui-utils "^2.0.0"
+    flickity "^2.0.0"
+
+flickity@^2.0.0, flickity@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/flickity/-/flickity-2.2.1.tgz#81126e3d656cb54577358a5f959ffdbda088e670"
   integrity sha512-fCZJGNqabgDrIhaUBqt2ydE8c5V6iiB3KQAf6dH3Z45MoDUm7g6+uZmteN0aLV9pzVItNqCbfOJQjsJM/rHuSA==

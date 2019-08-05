@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "dotenv": "^5.0.1",
+    "flickity-as-nav-for": "^2.0.1",
     "luxon": "^1.6.2",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
