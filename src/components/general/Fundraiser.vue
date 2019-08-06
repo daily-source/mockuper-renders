@@ -9,6 +9,10 @@
     <div class="fundraiser__info">
       <h5 class="fundraiser__title has-text-weight-bold has-text-primary">{{ fundraiser.name }}</h5>
       <small class='fundraiser__user'>by {{ user.name }}</small>
+      <img 
+        :src="require(`Public/img/event-images/${fundraiserData.imgName}`)" 
+        alt="Quitathon"
+      >
     </div>
   </div>
 </template>

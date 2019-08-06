@@ -6,11 +6,15 @@
         :alt="user.name"
       >
     </div>
-    <div class="participant__details is-flex">
+    <div class="participant__details">
       <div class="participant__info">
-        <h4 class='participant__name has-text-weight-bold has-text-primary'>{{ user.name }}</h4>
+        <div class="participant__header is-flex">
+          <h4 class='participant__name has-text-weight-bold has-text-primary'>{{ user.name }}</h4>
+          <p class='participant__reached has-text-weight-bold'>{{ total | usdCurrencyFormat }}</p>
+        </div>
         <div class="participant__fundraisers">
           <participant-fundraiser 
+            class='participant__fundraiser'
             v-for='(fundraiser, index) in fundraisers'
             :key='index'
             :fundraiser='fundraiser'
@@ -18,8 +22,6 @@
         </div>
       </div>
       <div class="participant__progress">
-        <p class='participant__reached'>Reached {{ total | usdCurrencyFormat }}<br />of {{ goal | usdCurrencyFormat }} goal</p>
-        <button class='button is-primary participant__donate'>Donate</button>
       </div>
     </div>
   </div>
@@ -91,6 +93,10 @@ export default {
     }
   }
 
+  &__header {
+    justify-content: space-between;
+  }
+
   &__details {
     flex-grow: 1;
     flex-shrink: 0;
@@ -112,11 +118,26 @@ export default {
     padding-left: .5rem;
   }
 
+  &__fundraiser {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      border: 0;
+    }
+  }
+
   &__reached {
     line-height: 1.5;
     margin-bottom: 0;
     text-align: right;
-    color: $primary;
+    font-size: 1.25em;
+    color: $secondary;
   }
 
   &__progress {

@@ -51,13 +51,18 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 // Colors
-$primary: #00adef;
-$secondary: #8AC557;
+$secondary: #673921;
+$primary: #b78b4e;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+
 
 // Fonts
 $font-family-base: 'Poppins';
 $headings-font-family: 'Montserrat';
 $headings-font-weight: 900;
+
 
 // Buttons
 $btn-border-radius: 0;
