@@ -182,8 +182,6 @@ export default {
       text-transform: uppercase;
       font-weight: 700;
       border-radius: 4px;
-      background-color: lighten($primary, 30%);
-      border-color: lighten($primary, 30%);
       font-size: .875em;
     }
   }
