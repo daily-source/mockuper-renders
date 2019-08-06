@@ -37,7 +37,7 @@
             </div>
             <fundraiser-progress 
               class='group-content__fundraiser-progress'
-              cause="Catholic Relief Services"
+              cause="Oxfam America"
               :goal="7000"
               :reached="3425"
             />
