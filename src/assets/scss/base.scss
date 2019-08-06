@@ -51,8 +51,11 @@ $headings-font-weight: 900;
 $btn-border-radius: 0;
 
 // Colors
-$primary: #00adef;
-$secondary: #8AC557;
+$secondary: #d22127;
+$primary: #233e84;
+$color-emphasis: $primary;
+$color-emphasis-alt: $secondary;
+$color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
 
 // Fonts
 $font-family-base: 'Poppins';

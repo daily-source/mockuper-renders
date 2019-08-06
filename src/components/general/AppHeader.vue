@@ -11,7 +11,7 @@
     <div class="container">
       <div class="header-top">
         <router-link to="/" class="logo-link">
-          <img :src="require('Public/logo-300x53.png')" alt="CalendarForGood">
+          <img :src="require('Public/img/logo.png')" alt="CalendarForGood">
         </router-link>
         <div class="header-top__nav-section">
           <ul class="header-top__nav">
@@ -159,11 +159,7 @@ export default {
 
   .logo-link {
     img {
-      max-width: 300px;
-
-      @include mobile {
-        max-width: 200px;
-      }
+      max-width: 200px;
     }
   }
 
