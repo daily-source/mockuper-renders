@@ -73,6 +73,7 @@ export default {
     font-weight: 700;
     color: #fff;
     text-transform: uppercase;
+    color: #000;
   }
 }
 </style>

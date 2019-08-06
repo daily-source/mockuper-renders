@@ -183,6 +183,8 @@ export default {
       font-weight: 700;
       border-radius: 4px;
       font-size: .875em;
+      background-color: $secondary;
+      color: #000;
     }
   }
 

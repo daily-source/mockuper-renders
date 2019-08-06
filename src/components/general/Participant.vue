@@ -112,6 +112,7 @@ export default {
     line-height: 1.5;
     margin-bottom: .5rem;
     font-family: $font-primary;
+    color: $secondary !important;
   }
 
   &__fundraisers {

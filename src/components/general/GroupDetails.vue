@@ -1,14 +1,14 @@
 <template>
   <div class="group-details">
     <div class="group-details__header">
-      <h1 class='group-details__title has-text-left'>Portiuncula Fraternity</h1>
-      <small>Sarasota, Florida</small>
+      <h1 class='group-details__title has-text-left'>Sun Glow Apparel</h1>
+      <small>Sarasota, FL</small>
     </div>
     <div class="group-details__main-image">
-      <img src="@/assets/img/main-image.png" class="group-details__image" alt="Portiuncula Fraternity">
+      <img src="@/assets/img/main-image.jpg" class="group-details__image" alt="Portiuncula Fraternity">
     </div>
     <div class="group-details__description">
-      <p class="group-details__text">We are a Secular Franciscan fraternity of men and women dedicated to living lives of love, service and care for the world following the examples of St. Francis and Jesus. We are collectively giving up things we don’t need in order to give life and hope to “The Least of These” - people who have next to nothing and have no avenue for moving forward. Francis and Jesus consumed very little so that their spirit and their attention would be freed up to serve God, and also so that others could have more. We are trying to move in the same direction.</p>
+      <p class="group-details__text">Sun Glow Apparel is an online general clothing store. Our products of over 10,000 products covers every aspect of fashion, from shirts to dresses, sneakers to slip-ons, sportswear to watches, and so much more. We, as an organization, are encouraging our employees to do various fundraisers where 100% of the money raised will be donated to charity.</p>
     </div>
   </div>
 </template>

@@ -10,8 +10,8 @@
       <h5 class="fundraiser__title has-text-weight-bold has-text-primary">{{ fundraiser.name }}</h5>
       <small class='fundraiser__user'>by {{ user.name }}</small>
       <img 
+        class='fundraiser__image'
         :src="require(`Public/img/event-images/${fundraiserData.imgName}`)" 
-        alt="Quitathon"
       >
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
     }),
     ...mapState('fundraisers', {
       fundraiserData (state) {
-        return state.data.find(fundraiser => fundraiser.slug === this.fundraiser.slug)
+        return state.data.find(fundraiser => fundraiser.slug === this.fundraiser.fundraiserSlug)
       } 
     }),
   },
@@ -62,6 +62,12 @@ export default {
 
   &:first-of-type {
     border-top: 0;
+  }
+
+  &__image {
+    max-width: 200px;
+    display: block;
+    margin-top: 1em;
   }
 
   &__img-container {

@@ -11,7 +11,7 @@
     <div class="container">
       <div class="header-top">
         <router-link to="/" class="logo-link">
-          <img :src="require('Public/img/franciscans-for-good.png')" alt="CalendarForGood">
+          <img :src="require('Public/img/logo.png')" alt="CalendarForGood">
         </router-link>
         <div class="header-top__nav-section">
           <ul class="header-top__nav">
