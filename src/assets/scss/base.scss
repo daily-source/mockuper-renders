@@ -3,7 +3,7 @@
 
 // Override the custom variables here
 $font-primary: "Poppins", sans-serif;
-$font-secondary: "Montserrat", sans-serif;
+$font-secondary: "Khula", sans-serif;
 
 // Colors
 $color-text: #000507;
@@ -40,16 +40,19 @@ $max-flickity-width: 620px;
 $max-container-width: 1344px;
 $max-fluid-container-width: 1162px;
 $max-combo-wrapper-width: 960px;
+$fullhd-enabled: false;
 
+// Fonts
+$font-family-base: 'Poppins';
+$headings-font-family: 'Khula';
+$headings-font-weight: 900;
 
+// Buttons
+$btn-border-radius: 0;
 
-// These variable definitions are here for the GiveItUpForGood version
 // Colors
-// $secondary: #d22127;
-// $primary: #233e84;
-// $color-emphasis: $primary;
-// $color-emphasis-alt: $secondary;
-// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
+$primary: #00adef;
+$secondary: #8AC557;
 
 // Fonts
 $font-family-base: 'Poppins';
@@ -58,26 +61,6 @@ $headings-font-weight: 900;
 
 // Buttons
 $btn-border-radius: 0;
-
-
-// These variable definitions are here for the RunForGood version
-// Colors
-// $primary: #2e3094;
-// $secondary: #85c53a;
-// $color-emphasis: $primary;
-// $color-emphasis-alt: $secondary;
-// $color-emphasis-alt-modified: rgba($color-emphasis-alt, 0.9);
-
-// Fonts
-$font-family-base: 'Poppins';
-$headings-font-family: 'Montserrat';
-$headings-font-weight: 900;
-
-// Buttons
-$btn-border-radius: 0;
-
-// Override Bulma variables here
-$success: $color-emphasis;
 
 // Theming
 // @import 'themes';
