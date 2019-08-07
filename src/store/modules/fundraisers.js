@@ -112,6 +112,11 @@ const state = {
           name: "Flash Mobs for Good",
           imgName: "flash-mobs-for-good.png",
         },
+        {
+          id: 'torathon',
+          name: "Torathon",
+          imgName: "torathon.png",
+        },
       ]
     },
     "year-round-holiday-options": {
