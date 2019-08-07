@@ -212,7 +212,12 @@ export default {
           id: 'maps-for-the-poor',
           name: "Maps for the Poor",
           imgName: "maps-for-the-poor.png",
-        }
+        },
+        {
+          id: 'equal-opportunity-giving',
+          name: "Equal Opportunity Giving",
+          imgName: "equal-opportunity-giving.png",
+        },
       ]
     },
     "free-modern-day-slaves": {
@@ -312,7 +317,12 @@ export default {
           id: 'families-for-good',
           name: "Families for Good",
           imgName: "families-for-good.png",
-        }
+        },
+        {
+          id: 'knights-of-columbus',
+          name: "Knights of Columbis",
+          imgName: "knights-of-columbus.png",
+        },
       ]
     }
   }
