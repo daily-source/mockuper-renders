@@ -274,15 +274,20 @@ export default {
           imgName: "environmental-cliff.png",
         },
         {
-          id: 'green-crowd-sourcing',
-          name: "Green Crowd Sourcing",
-          imgName: "green-crowd-sourcing.png",
+          id: 'future-safe-giving',
+          name: "Future Safe Giving",
+          imgName: "future-safe-giving.png",
         },
         {
           id: 'homes-for-the-earth',
           name: "Homes for the Earth",
           imgName: "homes-for-the-earth.png",
-        }
+        },
+        {
+          id: 'green-crowd-sourcing',
+          name: "Green Crowd Sourcing",
+          imgName: "green-crowd-sourcing.png",
+        },
       ]
     },
     "do-good-together": {

@@ -5,38 +5,71 @@
     />
     <app-banner />
     <div id="content">
-      <fundraiser-grid 
-        :fundraiser="fundraisers['innovative-fundraising']"
-        :key="'innovative-fundraising'"
-      />
-      <fundraiser-grid 
-        :fundraiser="fundraisers['year-round-holiday-options']"
-        :key="'year-round-holiday-options'"
-      >
-        <div class="year-round-holiday-options__extra-content has-text-right">
-          <p class="mb-2">To see all the holiday and seasonal options, visit <a href="#" class="text-primary">Calendar for Good</a></p>
+      <section class="section" id='innovative-fundraising'>
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['innovative-fundraising']"
+          />
         </div>
-      </fundraiser-grid>
-      <fundraiser-grid 
-        :fundraiser="fundraisers['fundraising-classics']"
-        :key="'fundraising-classics'"
-      />
-      <fundraiser-grid 
-        :fundraiser="fundraisers['help-the-poorest-half']"
-        :key="'help-the-poorest-half'"
-      />
-      <fundraiser-grid 
-        :fundraiser="fundraisers['free-modern-day-slaves']"
-        :key="'free-modern-day-slaves'"
-      />
-      <fundraiser-grid 
-        :fundraiser="fundraisers['help-the-earth']"
-        :key="'help-the-earth'"
-      />
-      <fundraiser-grid 
-        :fundraiser="fundraisers['do-good-together']"
-        :key="'do-good-together'"
-      />
+      </section>
+      <section class="section" id="year-round-holiday-options">
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['year-round-holiday-options']"
+            :key="'year-round-holiday-options'"
+            id='year-round-holiday-options'
+          >
+            <div class="year-round-holiday-options__extra-content has-text-right">
+              <p class="mb-2">To see all the holiday and seasonal options, visit <a href="#" class="text-primary">Calendar for Good</a></p>
+            </div>
+          </fundraiser-grid>
+        </div>
+      </section>
+      <section class="section" id="fundraising-classics">
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['fundraising-classics']"
+            :key="'fundraising-classics'"
+            id='fundraising-classics'
+          />
+        </div>
+      </section>
+      <section class="section" id="help-the-poorest-half">
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['help-the-poorest-half']"
+            :key="'help-the-poorest-half'"
+            id='help-the-poorest-half'
+          />
+        </div>
+      </section>
+      <section class="section" id="free-modern-day-slaves">
+        <div class="container">  
+          <fundraiser-grid 
+            :fundraiser="fundraisers['free-modern-day-slaves']"
+            :key="'free-modern-day-slaves'"
+            id='free-modern-day-slaves'
+          />
+        </div>
+      </section>
+      <section class="section" id="help-the-earth">
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['help-the-earth']"
+            :key="'help-the-earth'"
+            id='help-the-earth'
+          />
+        </div>
+      </section>
+      <section class="section" id="do-good-together">
+        <div class="container">
+          <fundraiser-grid 
+            :fundraiser="fundraisers['do-good-together']"
+            :key="'do-good-together'"
+            id='do-good-together'
+          />
+        </div>
+      </section>
     </div>
     <SharedFooter></SharedFooter>
     <banner-switcher />
@@ -48,7 +81,7 @@ import { mapState } from 'vuex';
 
 import SharedHeader from 'Components/Shared/SharedHeader.vue';
 import AppBanner from 'Components/OptionsForGood/AppBanner.vue';
-import FundraiserGrid from 'Components/OptionsForGood/FundraiserGrid.vue';
+import FundraiserGrid from 'Components/MaximumGood/FundraiserGrid.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 
 export default {
