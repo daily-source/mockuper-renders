@@ -34,3 +34,11 @@ html body {
     }
   }
 }
+
+.logo-grid {
+  &__logo {
+    &--psychology-and-god {
+      max-width: 310px;
+    }
+  }
+}

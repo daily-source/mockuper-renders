@@ -54,6 +54,11 @@ const sitesv1 = [
         slug: kebabCase('The Lent Site'),
         url: logoUrl('the-lent-site.png'),
       },
+      {
+        name: 'Psychology and God',
+        slug: kebabCase('Psychology and God'),
+        url: logoUrl('psychology-and-god.png'),
+      },
     ],
   },
   {
@@ -108,6 +113,11 @@ const sitesv1 = [
           name: 'The Lent Site',
           slug: kebabCase('The Lent Site'),
           url: logoUrl('the-lent-site.png'),
+        },
+        {
+          name: 'Psychology and God',
+          slug: kebabCase('Psychology and God'),
+          url: logoUrl('psychology-and-god.png'),
         },
       ],
     },
@@ -265,6 +275,11 @@ const sitesv2 = [
         name: 'Christian Song',
         slug: kebabCase('Christian Song'),
         url: logoUrl('christian-song-2.jpg'),
+      },
+      {
+        name: 'Psychology and God',
+        slug: kebabCase('Psychology and God'),
+        url: logoUrl('psychology-and-god.png'),
       },
     ],
   },
@@ -431,6 +446,11 @@ const sitesv3 = [
         name: 'The Lent Site',
         slug: kebabCase('The Lent Site'),
         url: logoUrl('the-lent-site.png'),
+      },
+      {
+        name: 'Psychology and God',
+        slug: kebabCase('Psychology and God'),
+        url: logoUrl('psychology-and-god.png'),
       },
     ],
   },
