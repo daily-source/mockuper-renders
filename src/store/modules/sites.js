@@ -222,6 +222,11 @@ const sitesv1 = [
         slug: kebabCase('Helpful Hannakuh'),
         url: logoUrl('helpful-hannakuh.png'),
       },
+      {
+        name: 'Torathon',
+        slug: kebabCase('Torathon'),
+        url: logoUrl('torathon.png'),
+      },
     ],
   }
 ]
@@ -372,6 +377,11 @@ const sitesv2 = [
         name: 'Helpful Hannakuh',
         slug: kebabCase('Helpful Hannakuh'),
         url: logoUrl('helpful-hannakuh.png'),
+      },
+      {
+        name: 'Torathon',
+        slug: kebabCase('Torathon'),
+        url: logoUrl('torathon.png'),
       },
     ],
   }
@@ -538,6 +548,11 @@ const sitesv3 = [
         name: 'Helpful Hannakuh',
         slug: kebabCase('Helpful Hannakuh'),
         url: logoUrl('helpful-hannakuh.png'),
+      },
+      {
+        name: 'Torathon',
+        slug: kebabCase('Torathon'),
+        url: logoUrl('torathon.png'),
       },
     ],
   }
