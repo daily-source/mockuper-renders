@@ -117,6 +117,16 @@ const state = {
           name: "Torathon",
           imgName: "torathon.png",
         },
+        {
+          id: 'true-mission',
+          name: "True Mission",
+          imgName: "true-mission.png",
+        },
+        {
+          id: 'surrendering-to-love',
+          name: "Surrendering to Love",
+          imgName: "surrendering-to-love.png",
+        },
       ]
     },
     "year-round-holiday-options": {
