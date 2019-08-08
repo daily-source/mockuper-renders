@@ -39,11 +39,11 @@ const sitesv1 = [
         slug: kebabCase('Practice of Letting Go'),
         url: logoUrl('practice-of-letting-go.png'),
       },
-      {
-        name: 'Practicing Gratitude',
-        slug: kebabCase('Praciticing Gratitude'),
-        url: logoUrl('practicing-gratitude.jpg'),
-      },
+      // {
+      //   name: 'Practicing Gratitude',
+      //   slug: kebabCase('Praciticing Gratitude'),
+      //   url: logoUrl('practicing-gratitude.jpg'),
+      // },
       {
         name: 'Christian Song',
         slug: kebabCase('Christian Song'),
@@ -58,6 +58,11 @@ const sitesv1 = [
         name: 'Psychology and God',
         slug: kebabCase('Psychology and God'),
         url: logoUrl('psychology-and-god.png'),
+      },
+      {
+        name: 'Assesing Yourself',
+        slug: kebabCase('Assesing Yourself'),
+        url: logoUrl('assessing-yourself.png'),
       },
     ],
   },
@@ -234,6 +239,11 @@ const sitesv2 = [
         name: 'Psychology and God',
         slug: kebabCase('Psychology and God'),
         url: logoUrl('psychology-and-god.png'),
+      },
+      {
+        name: 'Assesing Yourself',
+        slug: kebabCase('Assesing Yourself'),
+        url: logoUrl('assessing-yourself.png'),
       },
     ],
   },
@@ -415,6 +425,11 @@ const sitesv3 = [
         name: 'Psychology and God',
         slug: kebabCase('Psychology and God'),
         url: logoUrl('psychology-and-god.png'),
+      },
+      {
+        name: 'Assessing Yourself',
+        slug: kebabCase('Assessing Yourself'),
+        url: logoUrl('assessing-yourself.png'),
       },
     ],
   },
