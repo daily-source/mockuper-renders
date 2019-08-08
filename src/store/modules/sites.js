@@ -65,62 +65,6 @@ const sitesv1 = [
     title: 'Connecting with God', 
     slug: kebabCase('Connecting With God'),
     logos: [
-         {
-      title: 'Practical tools for spiritual living',
-      slug: kebabCase('Practical tools for spiritual living'),
-      logos: [
-        {
-          name: 'Forgiveness Class',
-          slug: kebabCase('Forgiveness Class'),
-          url: logoUrl('forgiveness-class.png'),
-        },
-        {
-          name: 'Practicing Gratitude',
-          slug: kebabCase('Praciticing Gratitude'),
-          url: logoUrl('practicing-gratitude.jpg'),
-        },
-        {
-          name: 'Handling Losses',
-          slug: kebabCase('Handling Losses'),
-          url: logoUrl('handling-losses.jpg'),
-        },
-        {
-          name: 'Learning Discrement',
-          slug: kebabCase('Learning Discrement'),
-          url: logoUrl('learning-discrement.png'),
-        },
-        {
-          name: 'Christian Evaluation',
-          slug: kebabCase('Christian Evaluation'),
-          url: logoUrl('christian-evaluation.jpg'),
-        },
-        {
-          name: 'Practice of Letting Go',
-          slug: kebabCase('Practice of Letting Go'),
-          url: logoUrl('practice-of-letting-go.png'),
-        },
-        {
-          name: 'Practicing Gratitude',
-          slug: kebabCase('Praciticing Gratitude'),
-          url: logoUrl('practicing-gratitude.jpg'),
-        },
-        {
-          name: 'Christian Song',
-          slug: kebabCase('Christian Song'),
-          url: logoUrl('christian-song-2.jpg'),
-        },
-        {
-          name: 'The Lent Site',
-          slug: kebabCase('The Lent Site'),
-          url: logoUrl('the-lent-site.png'),
-        },
-        {
-          name: 'Psychology and God',
-          slug: kebabCase('Psychology and God'),
-          url: logoUrl('psychology-and-god.png'),
-        },
-      ],
-    },
       {
         name: 'Prayer Approaches',
         slug: kebabCase('Prayer Approaches'),
@@ -150,6 +94,16 @@ const sitesv1 = [
         name: 'Righteous Resolutions',
         slug: kebabCase('Righteous Resolutions'),
         url: logoUrl('righteous-resolutions.png'),
+      },
+      {
+        name: 'Spritual and Religious',
+        slug: kebabCase('Spritual and Religious'),
+        url: logoUrl('spiritual-and-religious.png'),
+      },
+      {
+        name: 'Using a God Box',
+        slug: kebabCase('Using a God Box'),
+        url: logoUrl('using-a-god-box.png'),
       },
     ]
   },
@@ -311,6 +265,16 @@ const sitesv2 = [
         name: 'Adoration Guide',
         slug: kebabCase('Adoration Guide'),
         url: logoUrl('adoration-guide-v2.png'),
+      },
+      {
+        name: 'Spritual and Religious',
+        slug: kebabCase('Spritual and Religious'),
+        url: logoUrl('spiritual-and-religious.png'),
+      },
+      {
+        name: 'Using a God Box',
+        slug: kebabCase('Using a God Box'),
+        url: logoUrl('using-a-god-box.png'),
       },
     ]
   },
@@ -487,6 +451,16 @@ const sitesv3 = [
         name: 'Righteous Resolutions',
         slug: kebabCase('Righteous Resolutions'),
         url: logoUrl('righteous-resolutions.png'),
+      },
+      {
+        name: 'Spritual and Religious',
+        slug: kebabCase('Spritual and Religious'),
+        url: logoUrl('spiritual-and-religious.png'),
+      },
+      {
+        name: 'Using a God Box',
+        slug: kebabCase('Using a God Box'),
+        url: logoUrl('using-a-god-box.png'),
       },
     ]
   },
