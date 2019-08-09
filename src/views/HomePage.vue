@@ -1,7 +1,7 @@
 <template>
   <div class="layout-base home">
     <shared-header 
-      :logo='require("@/assets/img/logo.png")'
+      :logo='require("@/assets/img/for-the-poor.png")'
     />
     <app-banner />
     <main id="content">
