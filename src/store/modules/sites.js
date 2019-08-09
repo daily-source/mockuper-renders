@@ -111,14 +111,14 @@ const sitesv1 = [
         url: logoUrl('surrendering-to-love.png'),
       },
       {
-        name: 'Using a God Box',
-        slug: kebabCase('Using a God Box'),
-        url: logoUrl('using-a-god-box.png'),
-      },
-      {
         name: 'Atheist or Agnostic',
         slug: kebabCase('Atheist or Agnostic'),
         url: logoUrl('atheist-or-agnostic.png'),
+      },
+      {
+        name: 'Using a God Box',
+        slug: kebabCase('Using a God Box'),
+        url: logoUrl('using-a-god-box.png'),
       },
     ]
   },
@@ -496,11 +496,11 @@ const sitesv3 = [
         name: 'Using a God Box',
         slug: kebabCase('Using a God Box'),
         url: logoUrl('using-a-god-box.png'),
-      },
+      },    
       {
-        name: 'Spritual and Religious',
-        slug: kebabCase('Spritual and Religious'),
-        url: logoUrl('spiritual-and-religious.png'),
+        name: 'Atheist or Agnostic',
+        slug: kebabCase('Atheist or Agnostic'),
+        url: logoUrl('atheist-or-agnostic.png'),
       },
       {
         name: 'Righteous Resolutions',
@@ -512,11 +512,10 @@ const sitesv3 = [
         slug: kebabCase('Surrendering to Love'),
         url: logoUrl('surrendering-to-love.png'),
       },
-      
       {
-        name: 'Atheist or Agnostic',
-        slug: kebabCase('Atheist or Agnostic'),
-        url: logoUrl('atheist-or-agnostic.png'),
+        name: 'Spritual and Religious',
+        slug: kebabCase('Spritual and Religious'),
+        url: logoUrl('spiritual-and-religious.png'),
       },
     ]
   },
