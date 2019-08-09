@@ -106,9 +106,19 @@ const sitesv1 = [
         url: logoUrl('spiritual-and-religious.png'),
       },
       {
+        name: 'Surrendering to Love',
+        slug: kebabCase('Surrendering to Love'),
+        url: logoUrl('surrendering-to-love.png'),
+      },
+      {
         name: 'Using a God Box',
         slug: kebabCase('Using a God Box'),
         url: logoUrl('using-a-god-box.png'),
+      },
+      {
+        name: 'Atheist or Agnostic',
+        slug: kebabCase('Atheist or Agnostic'),
+        url: logoUrl('atheist-or-agnostic.png'),
       },
     ]
   },
@@ -195,6 +205,11 @@ const sitesv1 = [
         name: 'Torathon',
         slug: kebabCase('Torathon'),
         url: logoUrl('torathon.png'),
+      },
+      {
+        name: 'True Mission',
+        slug: kebabCase('True Mission'),
+        url: logoUrl('true-mission.png'),
       },
     ],
   }
@@ -286,6 +301,16 @@ const sitesv2 = [
         slug: kebabCase('Using a God Box'),
         url: logoUrl('using-a-god-box.png'),
       },
+      {
+        name: 'Surrendering to Love',
+        slug: kebabCase('Surrendering to Love'),
+        url: logoUrl('surrendering-to-love.png'),
+      },
+      {
+        name: 'Atheist or Agnostic',
+        slug: kebabCase('Atheist or Agnostic'),
+        url: logoUrl('atheist-or-agnostic.png'),
+      },
     ]
   },
   {
@@ -371,6 +396,11 @@ const sitesv2 = [
         name: 'Torathon',
         slug: kebabCase('Torathon'),
         url: logoUrl('torathon.png'),
+      },
+      {
+        name: 'True Mission',
+        slug: kebabCase('True Mission'),
+        url: logoUrl('true-mission.png'),
       },
     ],
   }
@@ -463,9 +493,9 @@ const sitesv3 = [
         url: logoUrl('adoration-guide-v2.png'),
       },
       {
-        name: 'Righteous Resolutions',
-        slug: kebabCase('Righteous Resolutions'),
-        url: logoUrl('righteous-resolutions.png'),
+        name: 'Using a God Box',
+        slug: kebabCase('Using a God Box'),
+        url: logoUrl('using-a-god-box.png'),
       },
       {
         name: 'Spritual and Religious',
@@ -473,9 +503,20 @@ const sitesv3 = [
         url: logoUrl('spiritual-and-religious.png'),
       },
       {
-        name: 'Using a God Box',
-        slug: kebabCase('Using a God Box'),
-        url: logoUrl('using-a-god-box.png'),
+        name: 'Righteous Resolutions',
+        slug: kebabCase('Righteous Resolutions'),
+        url: logoUrl('righteous-resolutions.png'),
+      },
+      {
+        name: 'Surrendering to Love',
+        slug: kebabCase('Surrendering to Love'),
+        url: logoUrl('surrendering-to-love.png'),
+      },
+      
+      {
+        name: 'Atheist or Agnostic',
+        slug: kebabCase('Atheist or Agnostic'),
+        url: logoUrl('atheist-or-agnostic.png'),
       },
     ]
   },
@@ -562,6 +603,11 @@ const sitesv3 = [
         name: 'Torathon',
         slug: kebabCase('Torathon'),
         url: logoUrl('torathon.png'),
+      },
+      {
+        name: 'True Mission',
+        slug: kebabCase('True Mission'),
+        url: logoUrl('true-mission.png'),
       },
     ],
   }
