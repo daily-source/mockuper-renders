@@ -6,9 +6,9 @@
       <router-link to="/nonprofit/">Nonprofit</router-link>
     </div>
     <router-view/>
-    <version-switcher 
+    <!-- <version-switcher 
       :versions='1'
-    />
+    /> -->
   </div>
 </template>
 

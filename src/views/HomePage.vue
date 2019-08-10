@@ -72,7 +72,7 @@
       </section> -->
     </div>
     <SharedFooter></SharedFooter>
-    <banner-switcher />
+    <!-- <banner-switcher /> -->
   </div>
 </template>
 
