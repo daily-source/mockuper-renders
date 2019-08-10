@@ -34,7 +34,7 @@
           />
         </div>
       </section>
-      <!-- <section class="section" id="help-the-poorest-half">
+      <section class="section" id="help-the-poorest-half">
         <div class="container">
           <fundraiser-grid 
             :fundraiser="fundraisers['help-the-poorest-half']"
@@ -43,7 +43,7 @@
           />
         </div>
       </section>
-      <section class="section" id="free-modern-day-slaves">
+      <!-- <section class="section" id="free-modern-day-slaves">
         <div class="container">  
           <fundraiser-grid 
             :fundraiser="fundraisers['free-modern-day-slaves']"
