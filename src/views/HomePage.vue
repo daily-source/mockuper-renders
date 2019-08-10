@@ -43,7 +43,7 @@
           />
         </div>
       </section>
-      <!-- <section class="section" id="free-modern-day-slaves">
+      <section class="section" id="free-modern-day-slaves">
         <div class="container">  
           <fundraiser-grid 
             :fundraiser="fundraisers['free-modern-day-slaves']"
