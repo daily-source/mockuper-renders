@@ -69,7 +69,7 @@
             id='do-good-together'
           />
         </div>
-      </section>
+      </section> -->
     </div>
     <SharedFooter></SharedFooter>
     <banner-switcher />
