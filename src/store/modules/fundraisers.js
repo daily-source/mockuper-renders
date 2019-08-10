@@ -63,6 +63,16 @@ const state = {
           name: "Knights of Columbis",
           imgName: "knights-of-columbus.png",
         },
+        {
+          id: 'elks-altruism',
+          name: "Elks Altriusm",
+          imgName: "elks-altruism.png",
+        },
+        {
+          id: 'kiwanis-kindness',
+          name: "Kiwanis Kindness",
+          imgName: "kiwanis-kindness.png",
+        },
       ]
     },
     "free-modern-day-slaves": {
