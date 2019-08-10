@@ -1,7 +1,7 @@
-import Fundraisers from "./defaultFundraisers"
+import fundraisers from "Components/MaximumGood/fundraisers"
 
 const state = {
-  data: Fundraisers
+  data: fundraisers
 }
 
 const mutations = {

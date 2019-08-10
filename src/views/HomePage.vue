@@ -34,7 +34,7 @@
           />
         </div>
       </section>
-      <section class="section" id="help-the-poorest-half">
+      <!-- <section class="section" id="help-the-poorest-half">
         <div class="container">
           <fundraiser-grid 
             :fundraiser="fundraisers['help-the-poorest-half']"
@@ -69,7 +69,7 @@
             id='do-good-together'
           />
         </div>
-      </section>
+      </section> -->
     </div>
     <SharedFooter></SharedFooter>
     <banner-switcher />
