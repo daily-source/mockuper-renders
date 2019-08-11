@@ -3,6 +3,7 @@ import _ from 'lodash'
 import fundraisers from "Components/MaximumGood/fundraisers"
 import forThePoorSites from "Components/ForThePoor/sites"
 import forTheEarthSites from "Components/ForTheEarth/sites"
+import forTheSlavesSites from "Components/ForTheSlaves/sites"
 
 function normalizeSite (sites) {
   return sites.map(site => {
@@ -77,38 +78,7 @@ const state = {
     },
     "free-modern-day-slaves": {
       label: "Free Modern-Day Slaves",
-      sites: [
-        {
-          id: 'stands-for-freedom',
-          name: "Stands for Freedom",
-          imgName: "stands-for-freedom.png",
-        },
-        {
-          id: 'freeathon',
-          name: "Freeathon",
-          imgName: "freeathon.png",
-        },
-        {
-          id: 'virtual-railroad',
-          name: "Virtual Railroad",
-          imgName: "virtual-railroad.png",
-        },
-        {
-          id: 'conscience-or-cotton',
-          name: "Conscience or Cotton",
-          imgName: 'conscience-or-cotton.png',
-        },
-        {
-          id: 'the-modern-emancipation-proclamation',
-          name: "The Modern Emancipation Proclamation",
-          imgName: "the-modern-emancipation-proclamation.png",
-        },
-        {
-          id: 'see-our-slaves',
-          name: "See Our Slaves",
-          imgName: 'see-our-slaves.png',
-        }
-      ]
+      sites: normalizeSite(forTheSlavesSites)
     },
   }
 }
