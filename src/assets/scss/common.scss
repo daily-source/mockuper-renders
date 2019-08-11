@@ -37,6 +37,10 @@ html body {
 
 .logo-grid {
   &__logo {
+    &--righteous-resolutions {
+      width: 275px !important;
+    }
+
     &--psychology-and-god {
       max-width: 310px;
     }

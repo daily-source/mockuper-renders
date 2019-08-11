@@ -468,14 +468,14 @@ const sitesv3 = [
     slug: kebabCase('Connecting With God'),
     logos: [
       {
-        name: 'Walks With God',
-        slug: kebabCase('Walks With God'),
-        url: logoUrl('walks-with-god.png'),
-      },
-      {
         name: 'Prayer Approaches',
         slug: kebabCase('Prayer Approaches'),
         url: logoUrl('prayer-approaches.png'),
+      },
+      {
+        name: 'Surrendering to Love',
+        slug: kebabCase('Surrendering to Love'),
+        url: logoUrl('surrendering-to-love.png'),
       },
       {
         name: 'Divine Music',
@@ -488,6 +488,21 @@ const sitesv3 = [
         url: logoUrl('christian-mythics-v2.png'),
       },
       {
+        name: 'Walks With God',
+        slug: kebabCase('Walks With God'),
+        url: logoUrl('walks-with-god.png'),
+      },
+      {
+        name: 'Righteous Resolutions',
+        slug: kebabCase('Righteous Resolutions'),
+        url: logoUrl('righteous-resolutions.png'),
+      },
+      {
+        name: 'Atheist or Agnostic',
+        slug: kebabCase('Atheist or Agnostic'),
+        url: logoUrl('atheist-or-agnostic.png'),
+      },
+      {
         name: 'Adoration Guide',
         slug: kebabCase('Adoration Guide'),
         url: logoUrl('adoration-guide-v2.png'),
@@ -497,21 +512,6 @@ const sitesv3 = [
         slug: kebabCase('Using a God Box'),
         url: logoUrl('using-a-god-box.png'),
       },    
-      {
-        name: 'Atheist or Agnostic',
-        slug: kebabCase('Atheist or Agnostic'),
-        url: logoUrl('atheist-or-agnostic.png'),
-      },
-      {
-        name: 'Righteous Resolutions',
-        slug: kebabCase('Righteous Resolutions'),
-        url: logoUrl('righteous-resolutions.png'),
-      },
-      {
-        name: 'Surrendering to Love',
-        slug: kebabCase('Surrendering to Love'),
-        url: logoUrl('surrendering-to-love.png'),
-      },
       {
         name: 'Spritual and Religious',
         slug: kebabCase('Spritual and Religious'),
