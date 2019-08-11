@@ -120,6 +120,11 @@ const sitesv1 = [
         slug: kebabCase('Using a God Box'),
         url: logoUrl('using-a-god-box.png'),
       },
+      {
+        name: 'Reasons to go to Church',
+        slug: kebabCase('Reasons to go to Church'),
+        url: logoUrl('reasons-to-go-to-church.png'),
+      },
     ]
   },
   {
@@ -461,6 +466,11 @@ const sitesv3 = [
         slug: kebabCase('Assessing Yourself'),
         url: logoUrl('assessing-yourself.png'),
       },
+      {
+        name: 'What Did Jesus Do',
+        slug: kebabCase('What Did Jesus Do'),
+        url: logoUrl('what-did-jesus-do.png'),
+      },
     ],
   },
   {
@@ -516,6 +526,16 @@ const sitesv3 = [
         name: 'Spritual and Religious',
         slug: kebabCase('Spritual and Religious'),
         url: logoUrl('spiritual-and-religious.png'),
+      },
+      {
+        name: 'Reasons to go to Church',
+        slug: kebabCase('Reasons to go to Church'),
+        url: logoUrl('reasons-to-go-to-church.png'),
+      },
+      {
+        name: 'Sufficient Suffering',
+        slug: kebabCase('Sufficient Suffering'),
+        url: logoUrl('sufficient-suffering.png'),
       },
     ]
   },
