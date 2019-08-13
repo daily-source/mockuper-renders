@@ -24,3 +24,11 @@ html body {
 .push-left {
   margin-left: auto;
 }
+
+.site-header {
+  .logo-link {
+    img {
+      max-width: 200px !important;
+    }
+  }
+}
