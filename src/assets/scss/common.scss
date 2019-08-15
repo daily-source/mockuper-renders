@@ -36,7 +36,12 @@ html body {
 }
 
 .logo-grid {
+
   &__logo {
+    display: inline-block;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
     &--righteous-resolutions {
       width: 275px !important;
     }
@@ -46,43 +51,48 @@ html body {
     }
 
     &--spritual-and-religious {
-      max-width: 255px !important;
+      width: 255px !important;
     }
 
     &--using-a-god-box {
-      max-width: 255px !important;
+      width: 255px !important;
     }
 
-    &--assesing-yourself {
-      max-width: 250px !important;
+    &--assesing-yourself,
+    &--assessing-yourself {
+      width: 250px !important;
     }
 
     &--surrendering-to-love {
-      max-width: 240px !important;
+      width: 240px !important;
     }
 
     &--atheist-or-agnostic {
-      max-width: 230px !important;
+      width: 230px !important;
     }
 
     &--assessing-yourself {
-      max-width: 260px !important;
+      width: 260px !important;
     }
 
     &--true-mission {
-      max-width: 260px !important;
+      width: 260px !important;
     }
 
     &--what-did-jesus-do {
-      max-width: 265px !important;
+      width: 265px !important;
     }
 
     &--reasons-to-go-to-church {
-      max-width: 330px !important;
+      width: 330px !important;
     }
 
     &--sufficient-suffering {
-      max-width: 280px !important;
+      width: 280px !important;
+    }
+
+    &--bibleathon {
+      width: 100%;
     }
   }
 }
