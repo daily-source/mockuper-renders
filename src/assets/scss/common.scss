@@ -96,3 +96,16 @@ html body {
     }
   }
 }
+
+.navbar {
+  height: 45px !important;
+  max-height: 45px !important;
+}
+
+.navbar-menu {
+  position: static !important;
+}
+
+#banner {
+  height: 500px;
+}
