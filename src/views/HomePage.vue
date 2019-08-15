@@ -64,9 +64,11 @@
         <div class="columns is-multiline  innovative-sites__columns">
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-the-earth'>
-              <a href='http://fortheearth.org/' target='_blank'>
-                <img src="@/assets/img/site-logos/for-the-earth.png" alt="For the Earth">
-              </a>
+              <div class="innovative-site__link-wrapper">
+                <a href='http://fortheearth.org/' target='_blank'>
+                  <img src="@/assets/img/site-logos/for-the-earth.png" alt="For the Earth">
+                </a>
+              </div>
               <h3 class='is-marginless'>Fight climate change and help the earth. <a href='http://fortheearth.org/' target='_blank' class=' innovative-site__view-link has-text-secondary'> View </a></h3>
             </div>
           </div>
@@ -220,6 +222,7 @@ export default {
     transition: box-shadow .2s ease;
     box-shadow: 0;
     text-align: center;
+    flex: 1;
 
     &:hover {
       box-shadow: 0 2px 8px 2px rgba(#000, .2)
@@ -281,6 +284,11 @@ export default {
 
     h3 {
       color: #4a4a4a;
+    }
+
+    a {
+      max-width: 100%;
+      width: 100%;
     }
   }
 
