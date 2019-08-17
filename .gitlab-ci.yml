@@ -35,6 +35,6 @@ job:
   - npm install puppeteer --unsafe-perm=true --allow-root
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
-  - yarn build
   - cp .env.example .env
+  - yarn build
   - "surge dist --domain franciscansforgood.maxgood.org --token $SURGE_TOKEN"
