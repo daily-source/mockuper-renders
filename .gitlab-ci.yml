@@ -36,4 +36,4 @@ job:
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
   - yarn build
-  - "surge dist --domain 0to100.maxgood.org --token $SURGE_TOKEN"
+  - "surge dist --domain zeroto100.maxgood.org --token $SURGE_TOKEN"
