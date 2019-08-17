@@ -94,7 +94,7 @@
               <a href='http://forthepoor.org/' target='_blank'>                                          
                 <img src="@/assets/img/site-logos/for-the-poor.png" alt="For the Poor">
               </a>
-              <h3 class='is-marginles'>Help the poorest get the basics of life. <router-link to='for-the-poor' class=' innovative-site__view-link has-text-secondary'> View </router-link></h3>
+              <h3 class='is-marginles'>Help the poorest get the basics of life. <a href='http://forthepoor.org/' target='_blank' class=' innovative-site__view-link has-text-secondary'> View </a></h3>
             </div>
           </div>
         </div>
