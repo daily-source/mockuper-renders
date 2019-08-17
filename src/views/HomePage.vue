@@ -83,7 +83,7 @@
           </div>
           <div class="column innovative-sites__column is-6-desktop">
             <div class="innovative-site" id='for-learning'>
-              <a href='http://forlearning.org/' target='_blank'>                            
+              <a href='http://forlearning.surge.sh/' target='_blank'>                            
                 <img src="@/assets/img/site-logos/for-learning.png" alt="For Learning">
               </a>
               <h3 class='is-marginles'>Resources to help you and the world. <a href='http://forlearning.org/' target='_blank' class='innovative-site__view-link has-text-secondary'> View </a></h3>
