@@ -1,4 +1,4 @@
-const baseUrl = process.env.VUE_APP_BASE_URL
+const baseUrl = process.env.VUE_APP_BASE_URL || '/'
 
 function getUserAvatar (imgName = null) {
   if(!imgName) {
