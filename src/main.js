@@ -7,7 +7,7 @@ import router from './router';
 import './registerServiceWorker';
 import * as filters from "./xthon-core/lib/util/filters"
 import SmoothScroll from 'Components/plugins/SmoothScroll'
-import BannerSwitcher from 'LocalComponents/BannerSwitcher'
+// import BannerSwitcher from 'LocalComponents/BannerSwitcher'
 import VersionSwitcher from '@/plugins/VersionSwitcher'
 import store from './store';
 
@@ -35,7 +35,7 @@ const bgImages = [
   'banner-img-6.jpg',
 ]
 
-Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
+// Vue.use(BannerSwitcher, store, {bgImages, selected: 0})
 Vue.use(VersionSwitcher, store)
 
 new Vue({

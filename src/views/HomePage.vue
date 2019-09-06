@@ -30,31 +30,20 @@
       All people who want to help a nonprofit can use our fundraising tools. These include:
     </h2>
 
-    <section 
-      class="section fundraiser-section" 
-      v-for="(fundraiser, key) in data" 
-      :key="key"
-      :id="key"
-    >
-      <div class="container">
-        <fundraiser-grid 
-          :fundraiser="fundraiser"
-        />
-      </div>
-    </section>
+    <fundraiser-grid
+      :category='"Cutting Edge Fundraising"'
+      id='innovative-fundraising'
+    />
 
-    <section 
-        class="section fundraiser-section" 
-        v-for="(fundraiser, key) in fundraisers" 
-        :key="key"
-        :id="key"
-      >
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraiser"
-          />
-        </div>
-      </section>
+    <fundraiser-grid
+      :category='"Fundraising Classics"'
+      id='fundraising-classics'
+    />
+
+    <fundraiser-grid
+      :category='"Year Round Holiday Options"'
+      id='year-round-holiday-options'
+    />
 
     <section class='section innovative-sites'>
       <h2 class="home-heading home-heading--lg has-text-centered has-text-primary">
@@ -109,7 +98,7 @@ import { mapState } from 'vuex'
 
 import AppHeader from 'Components/MaximumGood/AppHeader'
 import NonprofitSlider from 'Components/MaximumGood/NonprofitSlider'
-import FundraiserGrid from 'Components/MaximumGood/FundraiserGrid'
+import FundraiserGrid from 'Components/MaximumGood/FundraiserGridNew'
 import SharedFooter from 'Components/Shared/SharedFooter'
 
 export default {
@@ -125,13 +114,7 @@ export default {
     FundraiserGrid,
     SharedFooter,
   },
-
-  computed: {
-    ...mapState({
-      fundraisers: state => state.siteFundraisers.data,
-    }),
-  },
-
+  
   metaInfo() {
     const description = 'A Ride For Good will allow you to raise money for nonprofits while you ride your bike.';
     const title = 'Raise money while riding!';

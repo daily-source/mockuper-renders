@@ -12,6 +12,7 @@
     "dotenv": "^5.0.1",
     "global": "^4.3.2",
     "gsap": "^2.1.2",
+    "imagesloaded": "^4.1.4",
     "luxon": "^1.6.2",
     "register-service-worker": "^1.0.0",
     "surge": "^0.20.4",
