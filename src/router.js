@@ -10,7 +10,8 @@ Vue.use(Meta, {
 });
 
 // route-level code splitting
-const HomePage = () => import('@/views/HomePage.vue');
+const HomePage = () => import('@/views/HomePage')
+const WebsitePage = () => import('@/views/WebsitePage')
 // const Nonprofit = () => import('@/views/Nonprofit.vue');
 // const ExplorePage = () => import('@/views/ExplorePage.vue');
 // const VolunteerPage = () => import('@/views/VolunteerPage.vue');
@@ -36,6 +37,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/website/:slug',
+      name: 'website',
+      component: WebsitePage,
     },
     // {
     //   path: '/explore',
