@@ -1,75 +1,42 @@
 <template>
   <div class="layout-base">
-    <shared-header 
-      :logo='require("@/assets/img/logo.png")'
+    <app-header 
+      layout='page'
     />
     <app-banner />
     <div id="content">
-      <section class="section" id='innovative-fundraising'>
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['innovative-fundraising']"
-          />
+      <fundraiser-grid 
+        category="Cutting Edge Fundraising"
+        id='innovative-fundraising'
+      />
+      <fundraiser-grid 
+        category="Year-Round Holiday Options"
+        id="year-round-holiday-options"
+      >
+        <div class="year-round-holiday-options__extra-content has-text-right">
+          <p class="mb-2">To see all the holiday and seasonal options, visit <a href="#" class="text-primary">Calendar for Good</a></p>
         </div>
-      </section>
-      <section class="section" id="year-round-holiday-options">
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['year-round-holiday-options']"
-            :key="'year-round-holiday-options'"
-            id='year-round-holiday-options'
-          >
-            <div class="year-round-holiday-options__extra-content has-text-right">
-              <p class="mb-2">To see all the holiday and seasonal options, visit <a href="#" class="text-primary">Calendar for Good</a></p>
-            </div>
-          </fundraiser-grid>
-        </div>
-      </section>
-      <section class="section" id="fundraising-classics">
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['fundraising-classics']"
-            :key="'fundraising-classics'"
-            id='fundraising-classics'
-          />
-        </div>
-      </section>
-      <section class="section" id="help-the-poorest-half">
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['help-the-poorest-half']"
-            :key="'help-the-poorest-half'"
-            id='help-the-poorest-half'
-          />
-        </div>
-      </section>
-      <section class="section" id="free-modern-day-slaves">
-        <div class="container">  
-          <fundraiser-grid 
-            :fundraiser="fundraisers['free-modern-day-slaves']"
-            :key="'free-modern-day-slaves'"
-            id='free-modern-day-slaves'
-          />
-        </div>
-      </section>
-      <section class="section" id="help-the-earth">
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['help-the-earth']"
-            :key="'help-the-earth'"
-            id='help-the-earth'
-          />
-        </div>
-      </section>
-      <section class="section" id="do-good-together">
-        <div class="container">
-          <fundraiser-grid 
-            :fundraiser="fundraisers['do-good-together']"
-            :key="'do-good-together'"
-            id='do-good-together'
-          />
-        </div>
-      </section> -->
+      </fundraiser-grid>
+      <fundraiser-grid 
+        category="Fundraising Classics"
+        id="fundraising-classics"
+      />
+      <fundraiser-grid 
+        category="Help The Poorest Half"
+        id="help-the-poorest-half"
+      />
+      <fundraiser-grid 
+        category="Free Modern Day Slaves"
+        id="free-modern-day-slaves"
+      />
+      <fundraiser-grid 
+        category="Help The Earth"
+        id="help-the-earth"
+      />
+      <fundraiser-grid 
+        category="Do Good Together"
+        id="do-good-together"
+      />
     </div>
     <SharedFooter></SharedFooter>
     <banner-switcher />
@@ -79,11 +46,6 @@
 <script>
 import { mapState } from 'vuex';
 
-import SharedHeader from 'Components/Shared/SharedHeader.vue';
-import AppBanner from 'Components/OptionsForGood/AppBanner.vue';
-import FundraiserGrid from 'Components/MaximumGood/FundraiserGrid.vue';
-import SharedFooter from 'Components/Shared/SharedFooter.vue';
-
 export default {
   name: "nonprofit",
   /**
@@ -91,10 +53,10 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    SharedHeader,
-    AppBanner,
-    FundraiserGrid,
-    SharedFooter,
+    AppHeader:  () => import('Components/OptionsForGood/AppHeader'),
+    AppBanner: () => import('Components/OptionsForGood/AppBanner'),
+    FundraiserGrid: () => import('Components/MaximumGood/FundraiserGridNew'),
+    SharedFooter: () => import('Components/Shared/SharedFooter'),
   },
 
   /**
