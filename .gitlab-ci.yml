@@ -30,6 +30,7 @@ before_script:
 job:
   stage: build
   script:
+  - cp .env.example .env
   - yarn --ignore-engines
   - npm install puppeteer --unsafe-perm=true --allow-root
   - yarn add @vue/cli@latest
