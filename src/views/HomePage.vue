@@ -1,6 +1,6 @@
 <template>
   <div class="layout-base">
-    <app-header />
+    <app-header layout='page' />
     <app-banner />
     <give-it-up-form />
     <shared-footer />

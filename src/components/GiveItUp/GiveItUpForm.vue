@@ -62,7 +62,7 @@
           <div class="total-raised-container my-3">
             You will raise:
             <span class="total has-text-success align-middle">
-              {{ (total ? total : 0) | currencyFormat }}
+              {{ (total ? total : 0) | usdCurrencyFormat }}
             </span>
           </div>
           <div class="nonprofit-select-container is-flex align-items-center">

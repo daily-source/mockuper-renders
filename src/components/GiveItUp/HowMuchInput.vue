@@ -195,6 +195,9 @@ export default {
 
   .how-much__label {
     margin-bottom: 1em;
+    font-weight: 900;
+    font-size: 1.5em;
+    font-family: Montserrat;
   }
 
 	.total-select-input {
