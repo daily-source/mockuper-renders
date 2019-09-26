@@ -1,6 +1,8 @@
 <template>
   <div class="layout-base">
-    <app-header />
+    <app-header 
+      layout='page'
+    />
     <app-banner />
     <NonprofitForm :enable-nonprofit-search="true" :bubbles='false'></NonprofitForm>
     <shared-footer />
