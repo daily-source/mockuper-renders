@@ -2,6 +2,7 @@
   <div class="layout-base">
 		<versioned-component 
       base-name='AppHeader'
+      layout='page'
     />
     <versioned-component 
       base-name='AppBanner'

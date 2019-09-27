@@ -35,4 +35,5 @@ job:
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
   - yarn build
+  - cp .env.example
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"

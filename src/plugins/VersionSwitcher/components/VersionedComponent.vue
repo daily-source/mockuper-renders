@@ -2,6 +2,7 @@
   <component 
     :is='component'
     v-if='component'
+    v-bind='$attrs'
   />
 </template>
 

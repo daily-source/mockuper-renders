@@ -324,3 +324,13 @@ export default {
   }
 }
 </style>
+
+<style lang="scss">
+.loseathon-nonprofit-form {
+  .nonprofit-search-field-wrapper  {
+    .dropdown-toggle {
+      border: $nonprofit-ajax-search-border !important;
+    }
+  }
+}
+</style>
