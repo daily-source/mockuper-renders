@@ -19,7 +19,7 @@ module.exports = {
       // pass options to sass-loader
       sass: {
         // @/ is an alias to src/
-        data: `@import "@/assets/scss/base.scss"; @import "@/assets/scss/functions.scss";`,
+        data: `@import "@/assets/scss/base.scss"; @import "@/assets/scss/functions.scss"; @import "@/assets/scss/mixins.scss";`,
       },
     },
   },

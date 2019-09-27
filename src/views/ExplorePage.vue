@@ -1,12 +1,12 @@
 <template>
   <div class="explore__wrapper" :class="`version${version}`">
     <div  v-if="!version || version === 1">
-      <app-header 
-        volunteer-text='Do one now'
+      <versioned-component 
+        base-name='AppHeader'
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
+          <h1 class="section-title title">Examples of Loseathon done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -25,12 +25,12 @@
         </div>
       </section>
 
-      <SampleForm 
+      <NonprofitForm 
         submit-button-label="Submit"
         nonprofit-search-placeholder='Enter text to find nonprofits'
       >
         <div slot="heading"><h1 class="section-title title title-blue">Start Your Own Fundraiser</h1></div>
-      </SampleForm>
+      </NonprofitForm>
 
       <section class="other-sites__section-wrapper">
         <div class="container">
@@ -172,7 +172,7 @@ export default {
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    SampleForm: () => import('LocalComponents/SampleForm.vue'),
+    NonprofitForm: () => import('LocalComponents/Loseathon/NonprofitForm.vue'),
     WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {
@@ -277,6 +277,12 @@ section {
   }
 }
 
+.other-sites-img__wrapper {
+  width: 85% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .version2 {
   .section-title {
     font-weight: 700;
@@ -340,6 +346,7 @@ section {
   }
 
   .other-sites-img__wrapper {
+
     &.other-sites-0 {
       transform: scale(1.05) translateY(8%);
     }
@@ -397,11 +404,12 @@ section {
   padding-bottom: 50%;
   display: block;
   &.other-sites-0 {
-    transform: scale(.9) translateY(15px) translateX(-12px);
+    transform: scale(.9) translateY(15px);
   }
   &.other-sites-1 {
     // transform: scale(0.75);
-    transform: scale(1.12) translateY(15px) translateX(20px);
+    transform: scale(1.12) translateY(15px);
+    transform-origin: 0;
   }
   &.other-sites-2 {
     transform: scale(0.7);
@@ -458,6 +466,10 @@ section {
       }
     }
   }
+}
+
+.nonprofit-search-field-wrapper .v-select .dropdown-toggle {
+  border: 1px solid rgba(60,60,60,.26) !important;
 }
 </style>
 
