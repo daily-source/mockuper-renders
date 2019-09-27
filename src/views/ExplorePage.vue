@@ -277,6 +277,12 @@ section {
   }
 }
 
+.other-sites-img__wrapper {
+  width: 85% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .version2 {
   .section-title {
     font-weight: 700;
@@ -340,6 +346,7 @@ section {
   }
 
   .other-sites-img__wrapper {
+
     &.other-sites-0 {
       transform: scale(1.05) translateY(8%);
     }
@@ -397,11 +404,12 @@ section {
   padding-bottom: 50%;
   display: block;
   &.other-sites-0 {
-    transform: scale(.9) translateY(15px) translateX(-12px);
+    transform: scale(.9) translateY(15px);
   }
   &.other-sites-1 {
     // transform: scale(0.75);
-    transform: scale(1.12) translateY(15px) translateX(20px);
+    transform: scale(1.12) translateY(15px);
+    transform-origin: 0;
   }
   &.other-sites-2 {
     transform: scale(0.7);
