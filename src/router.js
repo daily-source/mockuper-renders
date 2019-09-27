@@ -12,8 +12,8 @@ Vue.use(Meta, {
 // route-level code splitting
 const HomePage = () => import('@/views/HomePage.vue');
 const DraftPage = () => import('@/views/DraftPage.vue');
+const ExplorePage = () => import('@/views/ExplorePage.vue');
 // const Nonprofit = () => import('@/views/Nonprofit.vue');
-// const ExplorePage = () => import('@/views/ExplorePage.vue');
 // const VolunteerPage = () => import('@/views/VolunteerPage.vue');
 // const Fundraiser = () => import('@/views/Fundraiser.vue');
 // const MyAccount = () => import('@/views/MyAccount.vue');
@@ -42,11 +42,11 @@ export default new Router({
       name: 'home',
       component: DraftPage,
     },
-    // {
-    //   path: '/explore',
-    //   name: 'explore',
-    //   component: ExplorePage,
-    // },
+    {
+      path: '/explore',
+      name: 'explore',
+      component: ExplorePage,
+    },
     // {
     //   path: '/volunteer',
     //   name: 'volunteer',
