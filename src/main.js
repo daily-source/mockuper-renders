@@ -9,7 +9,6 @@ import * as filters from "./xthon-core/lib/util/filters"
 import SmoothScroll from 'Components/plugins/SmoothScroll'
 import BannerSwitcher from 'LocalComponents/BannerSwitcher'
 import VersionSwitcher from '@/plugins/VersionSwitcher'
-import VuePlyr from 'vue-plyr'
 import store from './store';
 
 // You need a specific loader for CSS files
