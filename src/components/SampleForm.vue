@@ -105,7 +105,6 @@ export default {
   },
   mounted () {
     this.canRender = true
-    console.log('This is a test')
     let storedForm = window.localStorage.getItem("nonprofitForm")
     if (storedForm) {
       this.form = JSON.parse(storedForm)
