@@ -42,3 +42,12 @@ html body {
     }
   }
 }
+
+html,
+body,
+html body {
+  font-size: 17px;
+}
+.nonprofit-search-field-wrapper .dropdown-menu li .selection {
+  overflow: hidden !important;
+}

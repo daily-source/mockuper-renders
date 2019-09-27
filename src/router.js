@@ -48,7 +48,7 @@ export default new Router({
     },
     {
       path: '/nonprofit',
-      name: 'nonprofit',
+      name: 'nonprofit-general',
       component: Nonprofit,
       // redirect: '/explore',
     },
@@ -74,7 +74,7 @@ export default new Router({
     },
     {
       path: '/fundraiser',
-      name: 'fundraiser',
+      name: 'fundraiser-demo',
       component: Fundraiser,
     },
     {
