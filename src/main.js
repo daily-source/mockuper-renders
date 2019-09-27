@@ -25,6 +25,7 @@ Object.keys(filters).forEach((key) => {
 
 Vue.use(SmoothScroll);
 Vue.use(VuePlyr)
+Vue.use(VersionSwitcher, store)
 
 const bgImages = [
   'banner-photo-1.jpg',
