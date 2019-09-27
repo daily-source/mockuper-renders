@@ -6,7 +6,7 @@
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
+          <h1 class="section-title title">Examples of Altruistic Anniversaries done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -167,7 +167,7 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    AppHeader: () => import('Components/AltruisticAnniversaries/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
