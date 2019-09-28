@@ -21,7 +21,7 @@
         :fundraisers='fundraisers'
         class="nonprofit-fundraisers"
       >
-        <h2 class='has-text-centered has-text-primary has-text-weight-bold' slot='heading'>Examples of Run for Goods</h2>
+        <h2 class='has-text-centered has-text-primary has-text-weight-bold' slot='heading'>Examples of Ride for Goods</h2>
       </nonprofit-fundraisers>
     </section>
     <shared-footer />
