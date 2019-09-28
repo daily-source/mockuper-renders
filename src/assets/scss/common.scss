@@ -20,6 +20,15 @@ body,
 html body {
   font-size: 17px;
 }
+
 .nonprofit-search-field-wrapper .dropdown-menu li .selection {
   overflow: hidden !important;
+}
+
+.nonprofit-search-field-wrapper .v-select .dropdown-toggle {
+  border: 1px solid rgba(60,60,60,.26) !important;
+}
+
+.input-wrapper .input-icon {
+  top: 12px !important;
 }
