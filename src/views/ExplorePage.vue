@@ -6,7 +6,7 @@
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
+          <h1 class="section-title title has-text-primary">Examples of Run for Good done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>

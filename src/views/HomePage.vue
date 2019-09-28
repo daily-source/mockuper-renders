@@ -16,6 +16,14 @@
     <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="false">
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
     </NonprofitForm>
+    <section class='site-sample-nonprofits'>
+      <nonprofit-fundraisers
+        :fundraisers='fundraisers'
+        class="nonprofit-fundraisers"
+      >
+        <h2 class='has-text-centered has-text-primary has-text-weight-bold' slot='heading'>Examples of Run for Goods</h2>
+      </nonprofit-fundraisers>
+    </section>
     <shared-footer />
   </div>
 </template>
@@ -23,6 +31,7 @@
 <script>
 import Vue from "vue"
 import VueMeta from "vue-meta"
+import { mapState } from 'vuex'
 
 Vue.use(VueMeta)
 
@@ -39,6 +48,7 @@ export default {
     AppBanner: () => import('Components/RideForGood/AppBanner'),
     HomeHero: () => import("Components/Volunteerathon/HomeHero.vue"),
     TopMenu: () => import("Components/general/TopMenu.vue"),
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers')
   },
 
   /**
@@ -79,7 +89,11 @@ export default {
   computed: {
     home () {
       return this.$store.state.home
-    }
+    },
+
+    ...mapState({
+      fundraisers: state => state.fundraisers.data,
+    }),
   }
 }
 </script>
@@ -129,5 +143,9 @@ export default {
       }
     }
   }
+}
+
+.site-sample-nonprofits {
+  padding-bottom: 3rem;
 }
 </style>
