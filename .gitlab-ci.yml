@@ -34,5 +34,6 @@ job:
   - npm install puppeteer --unsafe-perm=true --allow-root
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
+  - cp .env.example .env # Remove once ENV vars are migrated to GitLab 
   - yarn build
   - "surge dist --domain bestseatsinthethouse.maxgood.org --token $SURGE_TOKEN"
