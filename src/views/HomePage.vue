@@ -5,6 +5,14 @@
     />
     <app-banner />
     <NonprofitForm :enable-nonprofit-search="true" :bubbles='false'></NonprofitForm>
+    <section class='site-sample-nonprofits'>
+      <nonprofit-fundraisers
+        :fundraisers='fundraisers'
+        class="nonprofit-fundraisers"
+      >
+        <h2 class='has-text-centered' slot='heading'>Examples of Run for Goods</h2>
+      </nonprofit-fundraisers>
+    </section>
     <shared-footer />
   </div>
 </template>
@@ -17,6 +25,7 @@ import AppHeader from 'Components/RunForGood/AppHeader.vue';
 import AppBanner from 'Components/RunForGood/AppBanner.vue';
 import SharedFooter from 'Components/Shared/SharedFooter.vue';
 import NonprofitForm from 'Components/RunForGood/NonprofitForm.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'BaseLayout',
@@ -26,6 +35,7 @@ export default {
     AppBanner,
     SharedFooter,
     NonprofitForm,
+    NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers')
   },
 
   /**
@@ -44,5 +54,17 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState({
+      fundraisers: state => state.fundraisers.data,
+    }),
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+.site-sample-nonprofits {
+  // padding-top: 1.5em;
+  padding-bottom: 2.5em;
+}
+</style>
