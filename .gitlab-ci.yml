@@ -1,5 +1,5 @@
-# This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
+# This file is a template, and might need editing before it works on your project.
 # https://hub.docker.com/r/library/node/tags/
 image: node:latest
 
@@ -34,5 +34,7 @@ job:
   - npm install puppeteer --unsafe-perm=true --allow-root
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
+  - yarn build
+  - cp .env.example .env # Remove once ENV vars are migrated to GitLab 
   - yarn build
   - "surge dist --domain bowlingforbucks.maxgood.org --token $SURGE_TOKEN"
