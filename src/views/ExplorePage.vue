@@ -25,12 +25,12 @@
         </div>
       </section>
 
-      <SampleForm 
+      <NonprofitForm 
         submit-button-label="Submit"
         nonprofit-search-placeholder='Enter text to find nonprofits'
       >
-        <div slot="heading"><h1 class="section-title title title-blue">Start Your Own Fundraiser</h1></div>
-      </SampleForm>
+        <div slot="heading"><h1 class="section-title title title-blue has-text-weight-bold has-text-primary">Start Your Own Fundraiser</h1></div>
+      </NonprofitForm>
 
       <section class="other-sites__section-wrapper">
         <div class="container">
@@ -97,13 +97,13 @@
         </div>
       </section>
 
-      <sample-form 
+      <nonprofit-form 
         submit-button-label="Submit" 
         :show-also-section='true' 
         class="start-your-own__section-wrapper"
       >
-        <div slot="heading"><h1>Start Your Own Volunteerathon</h1></div>
-      </sample-form>
+        <div slot="heading"><h1 class='has-text-weight-bold'>Start Your Own Volunteerathon</h1></div>
+      </nonprofit-form>
 
       <section>
         <div class="container">
@@ -173,6 +173,7 @@ export default {
     NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     SampleForm: () => import('LocalComponents/SampleForm.vue'),
+    NonprofitForm: () => import('Components/WalkForGood/NonprofitForm'),
     WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {
