@@ -36,4 +36,4 @@ job:
   - yarn add @vue/cli-service-global
   - cp .env.example .env # Remove once ENV vars are migrated to GitLab 
   - yarn build
-  - "surge dist --domain xthon-fresh-template.maxgood.org --token $SURGE_TOKEN"
+  - "surge dist --domain stairathon.maxgood.org --token $SURGE_TOKEN"
