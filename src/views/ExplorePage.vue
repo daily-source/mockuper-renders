@@ -6,7 +6,7 @@
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of Run For Good done to raise money</h1>
+          <h1 class="section-title title has-text-primary">Examples of Run For Good done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -172,7 +172,7 @@ export default {
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    SampleForm: () => import('LocalComponents/SampleForm.vue'),
+    NonprofitForm: () => import('Components/WalkForGood/NonprofitForm.vue'),
     WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {
