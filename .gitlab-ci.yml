@@ -24,18 +24,19 @@ before_script:
   - npm config set user 0
   - npm config set unsafe-perm true
   - node -v
+  - npm config set user 0
+  - npm config set unsafe-perm true
   - npm install yarn
   - yarn global add surge
 
 job:
   stage: build
-  image: cronobo/node-chrome-headless-puppeteer
   script:
-  - npm config set user 0
-  - npm config set unsafe-perm true
   - yarn --ignore-engines
+  - npm install puppeteer --unsafe-perm=true --allow-root
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
+  - cp .env.example .env
   - yarn build
   - ls -al dist
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
