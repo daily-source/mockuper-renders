@@ -31,6 +31,8 @@ job:
   stage: build
   image: cronobo/node-chrome-headless-puppeteer
   script:
+  - npm config set user 0
+  - npm config set unsafe-perm true
   - yarn --ignore-engines
   - yarn add @vue/cli@latest
   - yarn add @vue/cli-service-global
