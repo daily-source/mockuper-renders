@@ -35,7 +35,7 @@
     "friendly-errors-webpack-plugin": "^1.6.1",
     "node-sass": "^4.9.0",
     "path": "^0.12.7",
-    //"prerender-spa-plugin": "^3.2.1",
+    "prerender-spa-plugin": "^3.2.1",
     "sass-loader": "^7.0.1",
     "vue-cli-plugin-prerender-spa": "^1.0.3",
     "vue-template-compiler": "^2.5.17"
