@@ -36,9 +36,9 @@ job:
   script:
   - mkdir ~/.npm-global
   - npm config set prefix '~/.npm-global'
-  - npm install -g @vue/cli-service-global
-  - npm install
-  - npm install @vue/cli@latest
-  - npm run build
+  - yarn add -g @vue/cli-service-global
+  - yarn --ignore-engines
+  - yarn add @vue/cli@latest
+  - yarn build
   - ls -al dist
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
