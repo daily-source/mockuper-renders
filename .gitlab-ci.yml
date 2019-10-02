@@ -13,9 +13,8 @@ stages:
   - build
   
 before_script:
+  image: node:latest
   # Setup SSH deploy keys
-  - mkdir ~/.npm-global
-  - npm config set prefix '~/.npm-global'
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$XTHON_CORE_SSH_KEY")
@@ -33,6 +32,8 @@ job:
   stage: build
   image: alekzonder/puppeteer:latest
   script:
+  - mkdir ~/.npm-global
+  - npm config set prefix '~/.npm-global'
   - npm install -g @vue/cli-service-global
   - npm install
   - npm install @vue/cli@latest
