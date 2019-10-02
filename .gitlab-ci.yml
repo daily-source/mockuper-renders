@@ -1,7 +1,7 @@
 # This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
-image: node:latest
+image: alekzonder/puppeteer:latest
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -24,8 +24,6 @@ before_script:
   - npm config set user 0
   - npm config set unsafe-perm true
   - node -v
-  - npm config set user 0
-  - npm config set unsafe-perm true
   - npm install yarn
   - yarn global add surge
 
@@ -38,5 +36,4 @@ job:
   - yarn add @vue/cli-service-global
   - cp .env.example .env
   - yarn build
-  - ls -al dist
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
