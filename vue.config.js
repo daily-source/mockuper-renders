@@ -1,6 +1,23 @@
 const path = require('path');
 
 module.exports = {
+  pluginOptions: {
+    prerenderSpa: {
+      registry: undefined,
+      renderRoutes: [
+        '/',
+        '/explore'
+      ],
+      useRenderEvent: false,
+      onlyProduction: true,
+ 
+      headless: false, // <- this could also be inside the customRendererConfig
+      customRendererConfig:
+      {
+        args: ["--auto-open-devtools-for-tabs"]
+      }
+    }
+  },
   configureWebpack: {
     resolve: {
       alias: {

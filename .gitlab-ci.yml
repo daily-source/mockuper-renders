@@ -29,12 +29,13 @@ before_script:
 
 job:
   stage: build
+  image: alekzonder/puppeteer:latest
   script:
-  - yarn --ignore-engines
-  - npm install puppeteer --unsafe-perm=true --allow-root
-  - yarn add @vue/cli@latest
-  - yarn add @vue/cli-service-global
-  - cp .env.example .env
-  - yarn build
+  - mkdir ~/.npm-global
+  - npm config set prefix '~/.npm-global'
+  - npm install -g @vue/cli-service-global
+  - npm install
+  - npm install @vue/cli@latest
+  - npm run build
   - ls -al dist
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
