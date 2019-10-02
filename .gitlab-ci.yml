@@ -1,7 +1,7 @@
 # This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
-image: node:latest
+image: alekzonder/puppeteer:latest
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -23,6 +23,9 @@ before_script:
   - git submodule update --init --recursive
   - npm config set user 0
   - npm config set unsafe-perm true
+  - mkdir ~/.npm-global
+  - npm config set prefix '~/.npm-global'
+  - npm install -g @vue/cli-service-global
   - node -v
   - npm install yarn
   - yarn global add surge

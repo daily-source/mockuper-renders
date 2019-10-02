@@ -23,23 +23,4 @@ module.exports = {
       },
     },
   },
-  pluginOptions: {
-    prerenderSpa: {
-      registry: undefined,
-      renderRoutes: [
-        '/',
-        '/explore',
-        '/nonprofit',
-        '/fundraiser'
-      ],
-      useRenderEvent: true,
-      onlyProduction: true,
- 
-      headless: true,
-      customRendererConfig:
-      {
-        args: ["--auto-open-devtools-for-tabs"]
-      }
-    }
-  }
 };
