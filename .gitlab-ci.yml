@@ -14,9 +14,6 @@ stages:
   
 before_script:
   # Setup SSH deploy keys
-  - mkdir ~/.npm-global
-  - npm config set prefix '~/.npm-global'
-  - npm install -g @vue/cli-service-global
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$XTHON_CORE_SSH_KEY")
@@ -40,8 +37,4 @@ job:
   - cp .env.example .env
   - yarn build
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
-
-  artifacts:
-    name: build
-    paths:
-      - dist
+  - npm run ci-test
