@@ -37,4 +37,3 @@ job:
   - cp .env.example .env
   - yarn build
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
-  - npm run ci-test
