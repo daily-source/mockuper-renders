@@ -10,10 +10,13 @@ cache:
     - node_modules/
 
 stages:
+  - prepare
   - build
   
-before_script:
+job:
+  stage: prepare
   image: node:latest
+  script:
   # Setup SSH deploy keys
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
@@ -28,7 +31,6 @@ before_script:
   - npm install yarn
   - yarn global add surge
 
-job:
   stage: build
   image: alekzonder/puppeteer:latest
   script:
