@@ -30,15 +30,15 @@ job:
   - node -v
   - npm install yarn
   - yarn global add surge
+  - yarn add @vue/cli@latest
+  - yarn add -g @vue/cli-service-global
 
   stage: build
   image: alekzonder/puppeteer:latest
   script:
   - mkdir ~/.npm-global
   - npm config set prefix '~/.npm-global'
-  - yarn add -g @vue/cli-service-global
   - yarn --ignore-engines
-  - yarn add @vue/cli@latest
   - yarn build
   - ls -al dist
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
