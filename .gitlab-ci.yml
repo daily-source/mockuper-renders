@@ -14,7 +14,7 @@ stages:
   
 before_script:
   # Setup SSH deploy keys
-  - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+  - 'which ssh-agent || ( sudo apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$XTHON_CORE_SSH_KEY")
   - mkdir -p ~/.ssh
