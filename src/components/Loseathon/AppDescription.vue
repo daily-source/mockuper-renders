@@ -24,7 +24,7 @@ export default {
 .nonprofit-description {
 	p {
     line-height: 1.6;
-    font-size: 1.25em;
+    // font-size: 1.25em;
 	}
 
 	&__container {
@@ -33,7 +33,7 @@ export default {
 	&__list {
 		list-style: disc;
 		margin-left: 20px;
-		font-size: 19px;
+		// font-size: 19px;
 
 		li {
 			line-height: 1.6;
