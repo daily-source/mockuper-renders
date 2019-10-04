@@ -41,9 +41,9 @@
       </div>
     </div>
 
-    <GenericForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
-      <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </GenericForm>
+    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
+      <div slot="heading"><h1 class='has-text-centered'>Change the world in 3 easy steps:</h1></div>
+    </NonprofitForm>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -63,7 +63,7 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Grow One for Good to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -141,7 +141,7 @@ export default {
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
-    GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
+    NonprofitForm: () => import('Components/GrowOneForGood/NonprofitForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
   },

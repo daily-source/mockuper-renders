@@ -247,8 +247,8 @@ export default new Vuex.Store({
         ],
       },
       participant: {
-        name: 'Joan',
-        fullname: 'Joan Engelman',
+        name: 'Chester',
+        fullname: 'Chester Thompson',
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
         // avatar: {
@@ -256,14 +256,14 @@ export default new Vuex.Store({
         //   type: 'image',
         //   src: `${baseUrl}img/donor-8.jpg`,
         // },
-        avatar: `${baseUrl}img/donor-8.jpg`,
+        avatar: `${baseUrl}img/donor-6.jpg`,
       },
       User: {
-        firstName: "Joan",
-        lastName: "Engelman",
+        firstName: "Chester",
+        lastName: "Thompson",
         location: 'Youngstown, Ohio, US',
         email: 'john@email.com',
-        avatar: `${baseUrl}img/donor-8.jpg`,
+        avatar: `${baseUrl}img/donor-6.jpg`,
         // avatar: {
         //   id: '1',
         //   type: 'image',

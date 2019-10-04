@@ -1,18 +1,18 @@
 <template>
-  <div class="fundraiser-nonprofit-organization__wrapper" v-if="fundraiser.participant">
-    <p>{{ fundraiser.introText }}</p>
-    <p><span v-html="fundraiser.participant.name"></span> is raising money for: </p>
+  <div class="fundraiser-nonprofit-organization__wrapper" v-if="fundraiser.User">
+    <p>A Volunteerathon is a fundraiser like a walkathon or bikeathon, except the person's time goes to help a nonprofit or do an independent service project.</p>
+    <p><span v-html="fundraiser.User.firstName"></span> is raising money for: </p>
     <div class="this-nonprofit__wrapper">
       <figure class="fundraiser-lower__logo-wrapper" v-if="fundraiser.Nonprofit.data">
         <LazyLoadedImage
           width="200"
           class="fundraiser-lower__logo"
           v-if="fundraiser.Nonprofit.data.logo"
-          :src="fundraiser.Nonprofit.data.logo.src"
+          :src="fundraiser.Nonprofit.data.logo"
         ></LazyLoadedImage>
       </figure>
       <div class="this-nonprofit__right-side">
-        <span class="this-nonprofit__title" v-html="fundraiser.Nonprofit.NAME"></span>
+        <span class="this-nonprofit__title" v-html="fundraiser.Nonprofit.name"></span>
         <div class="fundraiser-lower__button-wrapper">
           <router-link :to="`/nonprofit/${fundraiser.Nonprofit.EIN}`">
             <button class="button button-style is-warning">View profile</button>
