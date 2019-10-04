@@ -24,9 +24,9 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
+        {{fundraiser.User.firstName}} will skydive 13,000 feet high to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Dollars for Dares</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
@@ -50,7 +50,7 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from 'Components/XthonFresh/AppHeader.vue';
+import AppHeader from 'Components/DaresForDollars/AppHeader.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);
