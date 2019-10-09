@@ -63,7 +63,7 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Virtuous Vacation to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
