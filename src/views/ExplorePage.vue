@@ -6,7 +6,7 @@
       />
       <section class="examples__section-wrapper">
         <div class="container">
-          <h1 class="section-title title">Examples of ADD FUNDRAISER TYPE done to raise money</h1>
+          <h1 class="section-title title">Examples of Give It Up for Good done to raise money</h1>
           <NonprofitFundraisers :fundraisers="fundraisers" limit="5"></NonprofitFundraisers>
         </div>
       </section>
@@ -25,12 +25,12 @@
         </div>
       </section>
 
-      <SampleForm 
+      <nonprofit-form 
         submit-button-label="Submit"
         nonprofit-search-placeholder='Enter text to find nonprofits'
       >
         <div slot="heading"><h1 class="section-title title title-blue">Start Your Own Fundraiser</h1></div>
-      </SampleForm>
+      </nonprofit-form>
 
       <section class="other-sites__section-wrapper">
         <div class="container">
@@ -97,13 +97,13 @@
         </div>
       </section>
 
-      <sample-form 
+      <nonprofit-form
         submit-button-label="Submit" 
         :show-also-section='true' 
         class="start-your-own__section-wrapper"
       >
         <div slot="heading"><h1>Start Your Own Volunteerathon</h1></div>
-      </sample-form>
+      </nonprofit-form>
 
       <section>
         <div class="container">
@@ -167,12 +167,13 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    AppHeader: () => import('Components/GiveItUp/AppHeader.vue'),
     LazyLoadedImage: () => import('Components/plugins/LazyLoadedImage'),
     TopMenu: () => import('Components/general/TopMenu.vue'),
     NonprofitAjaxSearch: () => import('LocalComponents/general/NonprofitAjaxSearch.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
     SampleForm: () => import('LocalComponents/SampleForm.vue'),
+    NonprofitForm: () => import('Components/GiveItUp/GiveItUpForm'),
     WaysSupport: () => import('LocalComponents/explore/WaysSupport.vue'),
   },
   data() {

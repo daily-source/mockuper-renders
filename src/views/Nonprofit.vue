@@ -25,7 +25,20 @@
     <div class='nonprofit-info'>
       <div class='container'>
         <div class="nonprofit-info__container">
-          <p>
+          <p>By giving up a little, you can support nonprofits that really need help.
+          It's as easy as 1, 2, 3. &nbsp;Just choose:</p>
+          <ol class="m-0 p-0">
+            <li>
+              What to give up.
+            </li>
+            <li>
+              How much to give up and for how long.
+            </li>
+            <li>
+              Where to donate the money.
+            </li>
+          </ol>
+          <!-- <p>
             In this section, we should normally put an introduction to and explanation of the fundraising activity. These margins/indents and font sizes usually work well, but you can adjust the margin and font sizes as needed to make the section look nice. Sometimes we also have bulleted items like:
           </p>
           <ul>
@@ -36,14 +49,15 @@
             <li>If you have many bullets, or if the text in them is long, you might need to increase the empty space between each bullet a little.
             </li>
             <li><span class='has-text-weight-bold'>IMPORTANT:</span> change the color of heading below this to one of the colors in the logo</li>
-          </ul>
+          </ul> -->
+          
         </div>
       </div>
     </div>
 
-    <GenericForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
+    <NonprofitForm submit-button-label="Submit" :enable-nonprofit-search="true" :bubbles='true'>
       <div slot="heading"><h1>Change the world in 3 easy steps:</h1></div>
-    </GenericForm>
+    </NonprofitForm>
 
     <FloatingShareTools text="Check out this nonprofit!" via="Volunteerathon" title="Share this" />
 
@@ -134,13 +148,14 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    AppHeader: () => import('Components/GiveItUp/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
     FloatingShareTools: () => import('Components/general/FloatingShareTools.vue'),
     NonprofitAbout: () => import('Components/nonprofit/NonprofitAbout.vue'),
     NonprofitFundraisers: () => import('Components/nonprofit/NonprofitFundraisers.vue'),
+    NonprofitForm: () => import('Components/GiveItUp/GiveItUpForm'),
     GenericForm: () => import('Components/nonprofit/GenericForm.vue'),
     RegisterOrLoginModal,
     ClaimNonprofitModal,
@@ -323,7 +338,7 @@ export default {
 }
 
 .nonprofit-info {
-  margin-top: 20px;
+  margin-top: 2em;
   
   &__container {
     margin-left: auto;
@@ -346,8 +361,9 @@ export default {
     }
   }
 
-  ul {
-    list-style: disc;
+  ol {
+    margin-left: 1.5em;
+    // list-style: disc;
 
     li {
       margin-bottom: .5em;

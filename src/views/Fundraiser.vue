@@ -24,9 +24,9 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
+        {{fundraiser.User.firstName}} will give up alcohol for 2 months to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Give It Up for Good</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
@@ -62,9 +62,9 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppHeader,
+    AppHeader: () => import('Components/GiveItUp/AppHeader.vue'),
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    FundraiserHeader,
+    FundraiserHeader: () => import('Components/fundraiser/FundraiserHeader.vue'),
     FundraiserHero: () => import('Components/fundraiser/FundraiserHero.vue'),
     FundraiserParticipant: () => import('Components/fundraiser/FundraiserParticipant.vue'),
     FundraiserLowerBody: () => import('LocalComponents/fundraiser/FundraiserLowerBody.vue'),
