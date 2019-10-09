@@ -24,9 +24,9 @@
       v-on:edit:open="enableEdition()"
     >
       <p slot="copytext">
-        {{fundraiser.User.firstName}} will WE SHOULD INSERT DETAILS OF THE XTHON HERE to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
+        {{fundraiser.User.firstName}} will throw a 70's themed party to raise money for <router-link :to='`/nonprofit/${fundraiser.Nonprofit.EIN}`'>{{ fundraiser.Nonprofit.NAME }}</router-link>.
       </p>
-      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s FUNDRAISER NAME</span>
+      <span slot="effortstext">Please sponsor {{fundraiser.User.firstName}}'s Parties for Good</span>
     </FundraiserHero>
     <FundraiserParticipant
       id="FundraiserParticipant"
@@ -50,7 +50,6 @@
 <script>
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
-import AppHeader from 'Components/XthonFresh/AppHeader.vue';
 import FundraiserHeader from 'Components/fundraiser/FundraiserHeader.vue';
 
 Vue.use(VueMeta);
@@ -62,7 +61,7 @@ export default {
    * See https://webpack.js.org/guides/code-splitting/ for reference.
    */
   components: {
-    AppHeader,
+    AppHeader: () => import('Components/PartiesForGood/AppHeader'),
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
     FundraiserHeader,
     FundraiserHero: () => import('Components/fundraiser/FundraiserHero.vue'),
