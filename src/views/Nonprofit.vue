@@ -63,7 +63,7 @@
       limit="5"
       section-title="Who's doing a Volunteerathon to raise money for this nonprofit?s nonprofit?"
     >
-      <div slot="heading"><h2>Who's doing a INSERT FUNDRAISER to raise money for this nonprofit?</h2></div>
+      <div slot="heading"><h2>Who's doing a Bibleathon to raise money for this nonprofit?</h2></div>
     </NonprofitFundraisers>
 
     <DonorsList
@@ -134,7 +134,7 @@ export default {
    */
   components: {
     SharedFooter: () => import('Components/Shared/SharedFooter.vue'),
-    AppHeader: () => import('Components/XthonFresh/AppHeader.vue'),
+    AppHeader: () => import('Components/Bibleathon/AppHeader.vue'),
     NonprofitHero: () => import('Components/nonprofit/NonprofitHero.vue'),
     DonateView: () => import('./DonateView.vue'),
     DonorsList: () => import('Components/general/DonorsList.vue'),
