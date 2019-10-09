@@ -10,65 +10,6 @@ export default new Vuex.Store({
   state: {
     fullPath: '',
     common: {
-      bannerPhotos: [
-        `${baseUrl}img/generic-banner/banner-photo-1.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-2.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-3.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-4.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-5.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-6.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-7.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-8.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-9.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-10.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-11.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-12.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-13.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-14.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-15.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-16.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-17.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-18.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-19.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-20.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-21.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-22.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-23.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-24.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-25.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-26.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-27.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-28.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-29.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-30.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-31.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-32.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-33.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-34.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-35.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-36.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-37.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-38.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-39.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-40.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-40-1.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-41.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-42.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-43.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-44.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-45.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-46.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-47.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-48.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-49.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-50.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-51.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-51-1.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-52.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-53.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-54.jpg`,
-        `${baseUrl}img/generic-banner/banner-photo-55.jpg`,
-      ],
       nonprofit: {
         EIN: 60726487,
         NAME: 'SAVE THE CHILDREN FEDERATION INC',
@@ -229,8 +170,8 @@ export default new Vuex.Store({
         validated: true,
         data: {
           name: 'OXFAM AMERICA',
-          hero: `${baseUrl}img/nonoprofit-base-hero-oxfam.jpg`,
-          default_hero: `${baseUrl}img/nonoprofit-base-hero.jpg`,
+          hero: `${baseUrl}img/nonprofit-base-hero-oxfam.jpg`,
+          default_hero: `${baseUrl}img/nonprofit-base-hero.jpg`,
           about: 'We are an international confederation of 17 like-minded charitable organizations working together to bring about lasting solutions to poverty and injustice. We work with partners around the world to make a difference in the lives of people in need.',
           slogan: '',
           website: 'https://www.oxfam.org',
@@ -291,20 +232,20 @@ export default new Vuex.Store({
           'NbpRu-yzNfs',
         ]
       },
-      // data: {
-      //   media: [
-      //     `${baseUrl}img/fundraiser-hero-3x2.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-1.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-1x1.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-2.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-4.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-4x3.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-5.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-9x16.jpg`,
-      //     `${baseUrl}img/fundraiser-hero-16x9.jpg`,
-      //     { id: '10', type: 'video', src: 'NbpRu-yzNfs' },
-      //   ],
-      // },
+      data: {
+        media: [
+          `${baseUrl}img/fundraiser-hero-3x2.jpg`,
+          `${baseUrl}img/fundraiser-hero-1.jpg`,
+          `${baseUrl}img/fundraiser-hero-1x1.jpg`,
+          `${baseUrl}img/fundraiser-hero-2.jpg`,
+          `${baseUrl}img/fundraiser-hero-4.jpg`,
+          `${baseUrl}img/fundraiser-hero-4x3.jpg`,
+          `${baseUrl}img/fundraiser-hero-5.jpg`,
+          `${baseUrl}img/fundraiser-hero-9x16.jpg`,
+          `${baseUrl}img/fundraiser-hero-16x9.jpg`,
+          { id: '10', type: 'video', src: 'NbpRu-yzNfs' },
+        ],
+      },
       participant: {
         name: 'Joan',
         fullname: 'Joan Engelman',
@@ -848,12 +789,12 @@ export default new Vuex.Store({
         data: [
           {
             "id": 1,
-            "name": "Tutoring children for the future",
+            "name": "Help give children life and love",
             "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
               "fullname": "Joan Engelman",
-              "email": " Carol.Engelman@gmail.com",
+              "email": " Joan.Engelman@gmail.com",
             },
             "User": {
               "firstName": "Joan",
@@ -862,58 +803,24 @@ export default new Vuex.Store({
               "email": " joan.Engelman@gmail.com",
             },
             "fundraiserDetails": {
-              "donated": 845000,
-              "goal": 1200000,
+              "donated": 55000,
+              "goal": 80000,
               "timestamp": 1533470481336,
             },
-            "data": {
-              "media": [
-                {
-                  "id": 8,
-                  "src": `${baseUrl}img/fundraiser-hero-3x2.jpg`,
-                  "type": "image"
-                }
+            "media": {
+              images: [
+                `${baseUrl}img/fundraiser-hero-9x16.jpg`,
               ]
             },
           },
           {
             "id": 2,
-            "name": "Raising money for children in need",
-            "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
-            "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
-            "participant": {
-              "fullname": "Carol Engleman",
-              "email": "joan.engelman@mail.com",
-            },
-            User: {
-              firstName: "Carol",
-              lastName: "Engleman",
-              "fullname": "Carol Engleman",
-              "email": "joan.engelman@mail.com",
-            },
-            "fundraiserDetails": {
-              "goal": 45000,
-              "donated": 60000,
-              "timestamp": 1533470481336,
-            },
-            "data": {
-              "media": [
-                {
-                  "id": 8,
-                  "src": `${baseUrl}img/fundraiser-hero-4.jpg`,
-                  "type": "image"
-                }
-              ]
-            },
-          },
-          {
-            "id": 3,
             "name": "For a Brighter Future",
             "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
               "fullname": "Martina Martins",
-              "email": "martina@mail.com",
+              "email": "martina.martins@mail.com",
             },
             User: {
               firstName: "Martina",
@@ -922,46 +829,64 @@ export default new Vuex.Store({
               "email": "martina.martins@mail.com",
             },
             "fundraiserDetails": {
-              "donated": 35000,
+              "goal": 60000,
+              "donated": 24000,
+              "timestamp": 1533470481336,
+            },
+            "media": {
+              images: [
+                `${baseUrl}img/fundraiser-hero-4x3.jpg`,
+              ]
+            },
+          },
+          {
+            "id": 3,
+            "name": "Raising money for children in need",
+            "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
+            "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
+            "participant": {
+              "fullname": "Carol Canter",
+              "email": "carolcanter@mail.com",
+            },
+            User: {
+              firstName: "Carol",
+              lastName: "Canter",
+              "fullname": "Carol Canter",
+              "email": "carol.canter@mail.com",
+            },
+            "fundraiserDetails": {
+              "donated": 85000,
               "goal": 110000,
               "timestamp": 1533470481336,
             },
-            "data": {
-              "media": [
-                {
-                  "id": 8,
-                  "src": `${baseUrl}img/fundraiser-hero-1.jpg`,
-                  "type": "image"
-                }
+            "media": {
+              images: [
+                `${baseUrl}img/fundraiser-hero-3x2.jpg`,
               ]
             },
           },
           {
             "id": 4,
-            "name": "Let's feed the hungry",
+            "name": 'Let\'s feed the hungry',
             "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
-              "fullname": "Ingrid Kertzman",
+              "fullname": "Patricia Mourraile",
             },
             User: {
-              firstName: "Ingrid",
-              lastName: "Kertzman",
-              "fullname": "Ingrid Kertzman",
+              firstName: "Patricia",
+              lastName: "Mourraile",
+              "fullname": "Patricia Mourraile",
               "email": "Ingrid.Kertzman@mail.com",              
             },
             "fundraiserDetails": {
-              "donated": 5500,
-              "goal": 100000,
+              "donated": 93000,
+              "goal": 200000,
               "timestamp": 1533470481336,
             },
-            "data": {
-              "media": [
-                {
-                  "id": 8,
-                  "src": `${baseUrl}img/fundraiser-hero-1x1.jpg`,
-                  "type": "image"
-                }
+            "media": {
+              images: [
+                `${baseUrl}img/fundraiser-hero-1x1.jpg`,
               ]
             },
           },
@@ -971,26 +896,22 @@ export default new Vuex.Store({
             "introText": "<p>Mauris nec pharetra massa. Nulla facilisi. Nulla at scelerisque ante. Nam at nisi vel odio fringilla ultrices. Phasellus quis nunc consectetur, ullamcorper sapien ut, condimentum risus. Quisque feugiat gravida faucibus. Praesent eget nisl bibendum, suscipit odio vitae, euismod nisl. Ut varius aliquam semper. Quisque ac aliquam leo. Suspendisse et rhoncus neque.</p><p>Ut eleifend leo eu est lobortis, nec lobortis magna fringilla. Nullam nec condimentum libero. Vivamus et tristique est, vitae venenatis tellus. Duis tempus nibh justo, at mattis turpis rhoncus ut. Morbi ac est id ex feugiat lacinia a sit amet arcu. Maecenas sit amet eros tellus. Ut sit amet mattis neque. Nunc leo risus, vulputate pellentesque interdum facilisis, suscipit ac sapien. Morbi volutpat ac turpis a blandit. Maecenas ultricies quis nunc vitae aliquam.</p><p>Nulla facilisi. Proin congue imperdiet volutpat. Vivamus quis enim a neque consequat dictum et sed lacus. Vestibulum aliquam vel metus non egestas. Duis ligula lacus, tincidunt a quam non, porta cursus elit. Nunc at fermentum quam. Duis ut elit justo. In eget pulvinar sapien. Cras interdum orci a pellentesque faucibus. Maecenas nec enim ac velit commodo faucibus. Nam vitae lorem sollicitudin, sodales eros ac, congue nibh. Aenean laoreet semper convallis. Vestibulum pharetra, purus non elementum convallis, lectus neque consequat magna, et dictum metus ante non lacus. Quisque scelerisque ex sit amet euismod semper.</p><p>Integer sed ante vitae arcu luctus ultrices. Donec iaculis est ut turpis malesuada, eu bibendum libero malesuada. Sed et fermentum est. Sed sit amet consequat nibh. Mauris posuere mi eu sapien vestibulum, ac viverra urna dictum. Vestibulum finibus enim et pharetra fringilla. Curabitur molestie, dui vitae lobortis dignissim, elit massa facilisis arcu, a lobortis odio felis et sem. Mauris lectus quam, varius in scelerisque ac, condimentum eget nisi. Sed ac vulputate purus, sit amet aliquam lacus. Sed eget euismod arcu. Quisque maximus, sapien at blandit vestibulum, lectus purus sagittis dui, vitae lacinia arcu sapien ut urna. Nunc laoreet mi eget libero condimentum ultricies. Phasellus quam augue, congue ac est ac, rutrum tincidunt nibh.</p><p>Nam quis ligula nibh. Duis viverra at diam a sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ullamcorper nisl et metus dictum viverra. Nam vel iaculis est. Nunc elementum in mauris convallis auctor. Mauris ac enim felis. Sed eget venenatis purus. Nam varius mattis massa.</p><p>Integer rhoncus pretium molestie. Morbi bibendum iaculis volutpat. Morbi id velit lobortis, porttitor neque et, ornare turpis. Sed at tincidunt enim, nec lobortis sapien. Donec posuere, ante at rhoncus euismod, enim libero porta turpis, vel blandit lacus lacus tempus urna. Ut quis lacus eleifend, interdum lorem at, sollicitudin ligula. Suspendisse vel lectus consectetur, gravida dui blandit, molestie erat. Phasellus sit amet mauris sapien. Curabitur vitae tempor elit. Duis id ultricies leo. Nunc quam erat, euismod viverra facilisis eu, rutrum viverra arcu. Quisque porta, orci eget congue hendrerit, quam libero porta diam, vel dictum mauris risus eget nibh. Ut at mi risus. Aliquam in dignissim augue. Vestibulum eros leo, sollicitudin consectetur ipsum ac, rutrum lacinia tortor.</p><p>Nam ullamcorper arcu sed euismod cursus. Nam pretium ultricies lacus. Aliquam auctor diam velit, id consectetur nulla ultrices a. Maecenas pretium arcu in placerat rutrum. Morbi fringilla lectus id magna ullamcorper, eget gravida odio hendrerit. Vivamus non aliquet eros. Phasellus eget lectus at libero tincidunt sollicitudin. Nam interdum vitae justo molestie imperdiet.</p>",
             "description": "Praesent bibendum gravida diam faucibus lobortis. Nulla a leo id mauris fringilla dictum dictum vitae ligula. Etiam maximus turpis vel dolor venenatis malesuada. Duis eget rutrum elit. Fusce elementum tempor condimentum. Cras feugiat consectetur sem, non scelerisque nisi. Donec eu magna a ante imperdiet accumsan. In tempus laoreet mi aliquet fermentum. Nullam nec cursus est. Nulla dapibus dolor fermentum hendrerit lobortis.",
             "participant": {
-              "fullname": "Sabina Rückbauer",
+              "fullname": 'Chester Thompson',
             },
             User: {
-              firstName: "Sabina",
-              lastName: "Rückbauer",
+              firstName: "Ingrid",
+              lastName: "Kertzman",
               "fullname": "Ingrid Kertzman",
               "email": " Sabina.Rückbauer@gmail.com",                           
             },
             "fundraiserDetails": {
-              "donated": 26000,
-              "goal": 50000,
+              "donated": 17000,
+              "goal": 70000,
               "timestamp": 1533470481336,
             },
-            "data": {
-              "media": [
-                {
-                  "id": 8,
-                  "src": `${baseUrl}img/fundraiser-hero-2.jpg`,
-                  "type": "image"
-                }
+            "media": {
+              images: [
+                `${baseUrl}img/fundraiser-hero-2.jpg`,
               ]
             },
           },

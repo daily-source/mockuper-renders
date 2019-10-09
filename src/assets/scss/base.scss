@@ -36,6 +36,9 @@ $navbar-burger-color: #000 !important;
 // Controls what screen size to hide the navbar
 $navbar-breakpoint: 768px;
 
+// Theming
+// @import 'themes';
+
 // Now initialize the library
 @import '~bulma/sass/utilities/mixins';
 @import '~bulma/sass/utilities/initial-variables';

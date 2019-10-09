@@ -1,6 +1,7 @@
 import '@babel/polyfill'
 import Datetime from 'vue-datetime';
 import Vue from 'vue';
+import VuePlyr from 'vue-plyr'
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -21,6 +22,7 @@ Object.keys(filters).forEach((key) => {
 });
 
 Vue.use(SmoothScroll);
+Vue.use(VuePlyr)
 
 new Vue({
   router,
