@@ -1,1 +1,1 @@
-{"renderRoutes":["/","/nonprofit","/fundraiser","/explore", "/nonprofit/generic"],"useRenderEvent":false,"headless":true,"onlyProduction":true}
+{"renderRoutes":["/"],"useRenderEvent":false,"headless":true,"onlyProduction":true}
