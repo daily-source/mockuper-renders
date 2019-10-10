@@ -37,5 +37,5 @@ job:
   - cp .env.example .env
   - yarn build
   - ls -al dist
-  - cp index.html 200.html
+  - cp dist/index.html dist/200.html
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
