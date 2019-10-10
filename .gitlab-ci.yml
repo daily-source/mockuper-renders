@@ -10,13 +10,9 @@ cache:
     - node_modules/
 
 stages:
-  - prepare
   - build
   
-job:
-  stage: prepare
-  image: node:latest
-  script:
+before_script:
   # Setup SSH deploy keys
   - 'which ssh-agent || ( apt-get install -qq openssh-client )'
   - eval $(ssh-agent -s)
@@ -30,17 +26,17 @@ job:
   - node -v
   - npm install yarn
   - yarn global add surge
-  - yarn add @vue/cli@latest
-  - yarn add -g @vue/cli-service-global
 
+job:
   stage: build
-  image: alekzonder/puppeteer:latest
   script:
-  - mkdir ~/.npm-global
-  - npm config set prefix '~/.npm-global'
   - yarn --ignore-engines
+  - npm install puppeteer --unsafe-perm=true --allow-root
+  - yarn add @vue/cli@latest
+  - yarn add @vue/cli-service-global
+  - cp .env.example .env
   - yarn build
   - ls -al dist
-  - cd dist
-  - cp index.html 200.html 
+  - cd dist/
+  - cp index.html 200.html
   - "surge dist --domain loseathon.maxgood.org --token $SURGE_TOKEN"
