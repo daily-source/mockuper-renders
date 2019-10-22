@@ -10257,9 +10257,9 @@ xtend@^4.0.0, xtend@~4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
 
-"xthon-core@github:dailysourceorg/xthon-core#0.0.40":
+"xthon-core@github:daily-source/xthon-core-temp#0.0.40":
   version "0.0.37"
-  resolved "git+ssh://git@github.com/dailysourceorg/xthon-core.git#134e79078067e86c564f4197012a3a20759e2702"
+  resolved "https://codeload.github.com/daily-source/xthon-core-temp/tar.gz/134e79078067e86c564f4197012a3a20759e2702"
   dependencies:
     array-to-tree "^3.3.0"
     axios "^0.18.0"
